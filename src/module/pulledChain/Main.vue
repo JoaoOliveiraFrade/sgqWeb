@@ -17,17 +17,18 @@
         projectFilterTerm: '',
         projectsFilteredByText: [],
         filterProperties: [
+            // {name: 'priorityGlobal'},
             {name: 'subprojectDelivery'},
             {name: 'state'},
-            {name: 'category'},
-            {name: 'testLeader'},
-            {name: 'Release'},
+            {name: 'RT'},
+            {name: 'UN'},
+            {name: 'Typification'},
+            {name: 'statusCategoryORL'},
+            {name: 'releaseClarity'},
             {name: 'nextRelease'},
             {name: 'statusStrategyTestingAndContracting'},
             {name: 'statusTimeline'},
-            {name: 'statusTestPlan'},
-            {name: 'UN'},
-            {name: 'Typification'}
+            {name: 'statusTestPlan'}
         ]
       }
     },

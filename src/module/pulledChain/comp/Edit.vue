@@ -12,7 +12,7 @@
 
     data () {
       return {
-        dtDeliveryTestPlan: '20' + this.project.dtDeliveryTestPlan.substr(6, 2) + '-' + this.project.dtDeliveryTestPlan.substr(3, 2) + '-' + this.project.dtDeliveryTestPlan.substr(0, 2)
+        dtDeliveryTestPlan: this.project.dtDeliveryTestPlan ? '20' + this.project.dtDeliveryTestPlan.substr(6, 2) + '-' + this.project.dtDeliveryTestPlan.substr(3, 2) + '-' + this.project.dtDeliveryTestPlan.substr(0, 2) : ''
       }
     },
 
@@ -21,42 +21,15 @@
         let d = new Date()
         return ('0' + d.getDate()).slice(-2) + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('' + d.getFullYear()).slice(-2) + ' ' + ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2) + ':' + ('0' + d.getSeconds()).slice(-2)
       },
+
       formatDate (d) {
-        let aux = d.substr(8, 2) + '-' + d.substr(5, 2) + '-' + d.substr(2, 2)
-        return aux
+        if (d !== '') {
+          return d.substr(8, 2) + '-' + d.substr(5, 2) + '-' + d.substr(2, 2)
+        } else {
+          return ''
+        }
       },
-      searchItem (state) {
-        this.$emit('onSearchItem', state)
-      },
-      setDtUpdateStrategyTestingAndContracting () {
-        this.projectVal.dtUpdateStrategyTestingAndContracting = this.getDateToday()
-      },
-      setDtUpdateTimeLine () {
-        this.projectVal.dtUpdateTimeLine = this.getDateToday()
-      },
-      setDtUpdateTestPlan () {
-        this.projectVal.dtUpdateTestPlan = this.getDateToday()
-        // this.calculatePlanReady()
-      },
-      save () {
-        this.calculateDtEnd()
 
-        this.project.statusStrategyTestingAndContracting = this.projectVal.statusStrategyTestingAndContracting
-        this.project.dtUpdateStrategyTestingAndContracting = this.projectVal.dtUpdateStrategyTestingAndContracting
-        this.project.dtEndStrategyTestingAndContracting = this.projectVal.dtEndStrategyTestingAndContracting
-
-        this.project.statusTimeline = this.projectVal.statusTimeline
-        this.project.dtUpdateTimeLine = this.projectVal.dtUpdateTimeLine
-        this.project.dtEndTimeline = this.projectVal.dtEndTimeline
-
-        this.project.statusTestPlan = this.projectVal.statusTestPlan
-        this.project.dtUpdateTestPlan = this.projectVal.dtUpdateTestPlan
-        this.project.dtEndTestPlan = this.projectVal.dtEndTestPlan
-
-        this.project.dtDeliveryTestPlan = this.formatDate(this.dtDeliveryTestPlan)
-        services.update(this.project)
-        Toastr.success('Dados gravados!')
-      },
       calculateDtEnd () {
         if (this.projectVal.statusStrategyTestingAndContracting !== 'BACKLOG' && this.projectVal.dtEndStrategyTestingAndContracting === '') {
           this.projectVal.dtEndStrategyTestingAndContracting = this.getDateToday()
@@ -81,6 +54,51 @@
             this.projectVal.dtEndTestPlan = ''
           }
         }
+      },
+
+      searchItem (state) {
+        this.$emit('onSearchItem', state)
+      },
+
+      setDtUpdateStrategyTestingAndContracting () {
+        this.projectVal.dtUpdateStrategyTestingAndContracting = this.getDateToday()
+      },
+
+      setDtUpdateTimeLine () {
+        this.projectVal.dtUpdateTimeLine = this.getDateToday()
+      },
+      setDtUpdateTestPlan () {
+        this.projectVal.dtUpdateTestPlan = this.getDateToday()
+        // this.calculatePlanReady()
+      },
+
+      save () {
+        this.calculateDtEnd()
+
+        this.project.statusStrategyTestingAndContracting = this.projectVal.statusStrategyTestingAndContracting
+        this.project.dtUpdateStrategyTestingAndContracting = this.projectVal.dtUpdateStrategyTestingAndContracting
+        this.project.dtEndStrategyTestingAndContracting = this.projectVal.dtEndStrategyTestingAndContracting
+
+        this.project.statusTimeline = this.projectVal.statusTimeline
+        this.project.dtUpdateTimeLine = this.projectVal.dtUpdateTimeLine
+        this.project.dtEndTimeline = this.projectVal.dtEndTimeline
+
+        this.project.statusTestPlan = this.projectVal.statusTestPlan
+        this.project.dtUpdateTestPlan = this.projectVal.dtUpdateTestPlan
+        this.project.dtEndTestPlan = this.projectVal.dtEndTestPlan
+
+        // dtDeliveryTestPlan
+
+        this.projectVal.dtDeliveryTestPlan = this.formatDate(this.dtDeliveryTestPlan)
+        this.projectVal.readyTestPlan = this.dtDeliveryTestPlan !== '' ? 'S' : 'N'
+        this.projectVal.dtStartTestPlan = this.dtDeliveryTestPlan !== '' ? this.getDateToday() : ''
+
+        this.project.dtDeliveryTestPlan = this.projectVal.dtDeliveryTestPlan
+        this.project.readyTestPlan = this.projectVal.readyTestPlan
+        this.project.dtStartTestPlan = this.projectVal.dtStartTestPlan
+
+        services.update(this.project)
+        Toastr.success('Dados gravados!')
       }
     }
   }
