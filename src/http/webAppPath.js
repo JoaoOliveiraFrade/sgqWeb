@@ -6,7 +6,7 @@ const webAppPath = {
   local,
   homologation,
   production,
-  default: local
+  default: homologation
 }
 
 export default webAppPath
