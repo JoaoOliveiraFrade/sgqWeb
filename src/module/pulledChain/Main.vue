@@ -43,6 +43,7 @@
           @keyup="setPulledChainFilterTerm(filterTerm)"
         />        
       </div>
+    {{pulledChainFilterTerm}}
 
       <!--
         :dataSource="projectsFilteredByText"
