@@ -11,6 +11,7 @@ import { vuexStore as cep } from './cep'
 import { vuexStore as count } from './count'
 import { vuexStore as task } from './task'
 import { vuexStore as brewery } from './brewery'
+import { vuexStore as pulledChain } from './pulledChain'
 
 /*
 export default {
@@ -30,5 +31,6 @@ export default {
   cep,
   count,
   task,
-  brewery
+  brewery,
+  pulledChain
 }
