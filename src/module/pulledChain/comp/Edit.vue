@@ -1,22 +1,34 @@
 <script>
-  import Toastr from 'toastr'
-  import services from '../services'
+  import { mapGetters, mapActions } from 'vuex'
 
   export default {
     name: 'pulledChainGridEdit',
 
-    props: {
-      project: { type: Object },
-      projectVal: { type: Object }
+    computed: {
+      ...mapGetters(['pulledChainProjectSelected'])
     },
 
     data () {
       return {
-        dtDeliveryTestPlan: this.project.dtDeliveryTestPlan ? '20' + this.project.dtDeliveryTestPlan.substr(6, 2) + '-' + this.project.dtDeliveryTestPlan.substr(3, 2) + '-' + this.project.dtDeliveryTestPlan.substr(0, 2) : ''
+        selected: {},
+        dtDeliveryTestPlan: ''
+      }
+    },
+
+    watch: {
+      'pulledChainProjectSelected': {
+        // deep: true,
+        handler () {
+          this.selected = { ...this.pulledChainProjectSelected }
+          // passa do formato dd-mm-yy para yyyy-mm-dd do componente visual
+          this.dtDeliveryTestPlan = this.selected.dtDeliveryTestPlan ? '20' + this.selected.dtDeliveryTestPlan.substr(6, 2) + '-' + this.selected.dtDeliveryTestPlan.substr(3, 2) + '-' + this.selected.dtDeliveryTestPlan.substr(0, 2) : ''
+        }
       }
     },
 
     methods: {
+      ...mapActions(['updatePulledChainProjectSelected']),
+
       getDateToday () {
         let d = new Date()
         return ('0' + d.getDate()).slice(-2) + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('' + d.getFullYear()).slice(-2) + ' ' + ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2) + ':' + ('0' + d.getSeconds()).slice(-2)
@@ -30,75 +42,43 @@
         }
       },
 
-      calculateDtEnd () {
-        if (this.projectVal.statusStrategyTestingAndContracting !== 'BACKLOG' && this.projectVal.dtEndStrategyTestingAndContracting === '') {
-          this.projectVal.dtEndStrategyTestingAndContracting = this.getDateToday()
-        } else {
-          if (this.projectVal.statusStrategyTestingAndContracting === 'BACKLOG' && this.projectVal.dtEndStrategyTestingAndContracting !== '') {
-            this.projectVal.dtEndStrategyTestingAndContracting = ''
-          }
-        }
-
-        if (this.projectVal.statusTimeline !== 'BACKLOG' && this.projectVal.dtEndTimeline === '') {
-          this.projectVal.dtEndTimeline = this.getDateToday()
-        } else {
-          if (this.projectVal.statusTimeline === 'BACKLOG' && this.projectVal.dtEndTimeline !== '') {
-            this.projectVal.dtEndTimeline = ''
-          }
-        }
-
-        if (this.projectVal.statusTestPlan !== 'BACKLOG' && this.projectVal.dtEndTestPlan === '') {
-          this.projectVal.dtEndTestPlan = this.getDateToday()
-        } else {
-          if (this.projectVal.statusTestPlan === 'BACKLOG' && this.projectVal.dtEndTestPlan !== '') {
-            this.projectVal.dtEndTestPlan = ''
-          }
-        }
-      },
-
-      searchItem (state) {
-        this.$emit('onSearchItem', state)
-      },
-
       setDtUpdateStrategyTestingAndContracting () {
-        this.projectVal.dtUpdateStrategyTestingAndContracting = this.getDateToday()
+        this.selected.dtUpdateStrategyTestingAndContracting = this.getDateToday()
+        if (this.selected.statusStrategyTestingAndContracting !== 'BACKLOG' && this.selected.dtEndStrategyTestingAndContracting === '') {
+          this.selected.dtEndStrategyTestingAndContracting = this.getDateToday()
+        } else {
+          if (this.selected.statusStrategyTestingAndContracting === 'BACKLOG' && this.selected.dtEndStrategyTestingAndContracting !== '') {
+            this.selected.dtEndStrategyTestingAndContracting = ''
+          }
+        }
       },
 
       setDtUpdateTimeLine () {
-        this.projectVal.dtUpdateTimeLine = this.getDateToday()
+        this.selected.dtUpdateTimeLine = this.getDateToday()
+        if (this.selected.statusTimeline !== 'BACKLOG' && this.selected.dtEndTimeline === '') {
+          this.selected.dtEndTimeline = this.getDateToday()
+        } else {
+          if (this.selected.statusTimeline === 'BACKLOG' && this.selected.dtEndTimeline !== '') {
+            this.selected.dtEndTimeline = ''
+          }
+        }
       },
+
       setDtUpdateTestPlan () {
-        this.projectVal.dtUpdateTestPlan = this.getDateToday()
-        // this.calculatePlanReady()
+        this.selected.dtUpdateTestPlan = this.getDateToday()
+        if (this.selected.statusTestPlan !== 'BACKLOG' && this.selected.dtEndTestPlan === '') {
+          this.selected.dtEndTestPlan = this.getDateToday()
+        } else {
+          if (this.selected.statusTestPlan === 'BACKLOG' && this.selected.dtEndTestPlan !== '') {
+            this.selected.dtEndTestPlan = ''
+          }
+        }
       },
 
-      save () {
-        this.calculateDtEnd()
-
-        this.project.statusStrategyTestingAndContracting = this.projectVal.statusStrategyTestingAndContracting
-        this.project.dtUpdateStrategyTestingAndContracting = this.projectVal.dtUpdateStrategyTestingAndContracting
-        this.project.dtEndStrategyTestingAndContracting = this.projectVal.dtEndStrategyTestingAndContracting
-
-        this.project.statusTimeline = this.projectVal.statusTimeline
-        this.project.dtUpdateTimeLine = this.projectVal.dtUpdateTimeLine
-        this.project.dtEndTimeline = this.projectVal.dtEndTimeline
-
-        this.project.statusTestPlan = this.projectVal.statusTestPlan
-        this.project.dtUpdateTestPlan = this.projectVal.dtUpdateTestPlan
-        this.project.dtEndTestPlan = this.projectVal.dtEndTestPlan
-
-        // dtDeliveryTestPlan
-
-        this.projectVal.dtDeliveryTestPlan = this.formatDate(this.dtDeliveryTestPlan)
-        this.projectVal.readyTestPlan = this.dtDeliveryTestPlan !== '' ? 'S' : 'N'
-        this.projectVal.dtStartTestPlan = this.dtDeliveryTestPlan !== '' ? this.getDateToday() : ''
-
-        this.project.dtDeliveryTestPlan = this.projectVal.dtDeliveryTestPlan
-        this.project.readyTestPlan = this.projectVal.readyTestPlan
-        this.project.dtStartTestPlan = this.projectVal.dtStartTestPlan
-
-        services.update(this.project)
-        Toastr.success('Dados gravados!')
+      setDtDeliveryTestPlan () {
+        this.selected.dtDeliveryTestPlan = this.formatDate(this.dtDeliveryTestPlan)
+        this.selected.readyTestPlan = this.dtDeliveryTestPlan !== '' ? 'S' : 'N'
+        this.selected.dtStartTestPlan = this.dtDeliveryTestPlan !== '' ? this.getDateToday() : ''
       }
     }
   }
@@ -108,7 +88,7 @@
     <div class="container-fluid">
         <div style="text-align: left; margin:0; border:0; padding:0px">
             <a class="oi-icon" href="#"
-                @click.prevent="save()"
+                @click.prevent="updatePulledChainProjectSelected(selected)"
                 title="Salvar">
                 <span class='glyphicon glyphicon-save'></span>
             </a> 
@@ -118,21 +98,21 @@
             <div class="col-xs-10 col-md-6 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
                 <div>
                     <label class="fd-label">Nome:</label><br>
-                    <label class="fd-content">{{project.name}}</label>
+                    <label class="fd-content">{{selected.name}}</label>
                 </div>
             </div>
 
             <div class="col-xs-2 col-md-2 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
                 <div>
                     <label class="fd-label">Prioridade:</label><br>
-                    <label class="fd-content" style="text-align: center">{{project.priorityGlobal}}</label>
+                    <label class="fd-content" style="text-align: center">{{selected.priorityGlobal}}</label>
                 </div>
             </div>
 
             <div class="col-xs-6 col-md-2 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
                 <div>
                     <label class="fd-label">Estado:</label><br>
-                    <label class="fd-content">{{project.state}}</label>
+                    <label class="fd-content">{{selected.state}}</label>
                 </div>
             </div>
             
@@ -140,7 +120,7 @@
             <div class="col-xs-6 col-md-2 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
                 <div>
                     <label class="fd-label">Release Clarity:</label><br>
-                    <label class="fd-content">{{project.releaseClarity}}</label>
+                    <label class="fd-content">{{selected.releaseClarity}}</label>
                
                 </div>
             </div>
@@ -151,28 +131,28 @@
             <div class="col-xs-6 col-md-3 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
                 <div>
                     <label class="fd-label">Categoria:</label><br>
-                    <label class="fd-content">{{project.category}}</label>
+                    <label class="fd-content">{{selected.category}}</label>
                 </div>
             </div>
 
             <div class="col-xs-6 col-md-3 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
                 <div>
                     <label class="fd-label">Cadeia Produtiva:</label><br>
-                    <label class="fd-content">{{project.productiveChain}}</label>
+                    <label class="fd-content">{{selected.productiveChain}}</label>
                 </div>
             </div>
 
             <div class="col-xs-6 col-md-3 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
                 <div>
                     <label class="fd-label">UN:</label><br>
-                    <label class="fd-content">{{project.UN}}</label>
+                    <label class="fd-content">{{selected.UN}}</label>
                 </div>
             </div>
 
             <div class="col-xs-6 col-md-3 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
                 <div>
                     <label class="fd-label">Tipificação:</label><br>
-                    <label class="fd-content">{{project.Typification}}</label>
+                    <label class="fd-content">{{selected.Typification}}</label>
                 </div>
             </div>
         </div>
@@ -181,28 +161,28 @@
             <div class="col-xs-6 col-md-3 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
                 <div>
                     <label class="fd-label">Estado Frente:</label><br>
-                    <label class="fd-content">{{project.workFrontState}}</label>
+                    <label class="fd-content">{{selected.workFrontState}}</label>
                 </div>
             </div>
 
             <div class="col-xs-6 col-md-3 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
                 <div>
                     <label class="fd-label">Área:</label><br>
-                    <label class="fd-content">{{project.topic}}</label>
+                    <label class="fd-content">{{selected.topic}}</label>
                 </div>
             </div>
 
             <div class="col-xs-6 col-md-3 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
                 <div>
                     <label class="fd-label">Responsável:</label><br>
-                    <label class="fd-content">{{project.RT}}</label>
+                    <label class="fd-content">{{selected.RT}}</label>
                 </div>
             </div>
 
             <div class="col-xs-6 col-md-3 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
                 <div>
                     <label class="fd-label">Estado Entrega:</label><br>
-                    <label class="fd-content">{{project.deliveryState}}</label>
+                    <label class="fd-content">{{selected.deliveryState}}</label>
                 </div>
             </div>
         </div>        
@@ -236,16 +216,16 @@
                         </td>                                
 
                         <td style="text-align: center; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
-                            <img class="img-small" alt="Check Verde" src="../../../asset/image/checkYes.png" v-show="project.readyStrategyTestingAndContracting === 'S' && projectVal.statusStrategyTestingAndContracting !== 'REALIZADO'" style="padding:0; margin:0; border:0">
-                            <img class="img-small" alt="Check Vermelho" src="../../../asset/image/checkNo.png" v-show="project.readyStrategyTestingAndContracting === 'N'" style="padding:0; margin:0; border:0">
-                            <img class="img-small" alt="Check Cinza" src="../../../asset/image/checkGrey.png" v-show="project.readyStrategyTestingAndContracting === 'S' && projectVal.statusStrategyTestingAndContracting === 'REALIZADO'" style="padding:0; margin:0; border:0">
+                            <img class="img-small" alt="Check Verde" src="../../../asset/image/checkYes.png" v-show="selected.readyStrategyTestingAndContracting === 'S' && selected.statusStrategyTestingAndContracting !== 'REALIZADO'" style="padding:0; margin:0; border:0">
+                            <img class="img-small" alt="Check Vermelho" src="../../../asset/image/checkNo.png" v-show="selected.readyStrategyTestingAndContracting === 'N'" style="padding:0; margin:0; border:0">
+                            <img class="img-small" alt="Check Cinza" src="../../../asset/image/checkGrey.png" v-show="selected.readyStrategyTestingAndContracting === 'S' && selected.statusStrategyTestingAndContracting === 'REALIZADO'" style="padding:0; margin:0; border:0">
                         </td>
 
                         <td style="text-align: center; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
                             <select id="StrategyAct" 
                                 @change="setDtUpdateStrategyTestingAndContracting()" 
-                                v-model="projectVal.statusStrategyTestingAndContracting" 
-                                :disabled="projectVal.statusStrategyTestingAndContracting === 'REALIZADO'">
+                                v-model="selected.statusStrategyTestingAndContracting" 
+                                :disabled="selected.statusStrategyTestingAndContracting === 'REALIZADO'">
 
                                 <option value="BACKLOG">BACKLOG</option>
                                 <option value="ON GOING">ON GOING</option>
@@ -254,7 +234,7 @@
                         </td>
 
                         <td style="text-align: center; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
-                            {{projectVal.dtUpdateStrategyTestingAndContracting}}
+                            {{selected.dtUpdateStrategyTestingAndContracting}}
                         </td>
                     </tr>  
 
@@ -264,16 +244,16 @@
                         </td>                                
 
                         <td style="text-align: center; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
-                            <img class="img-small" alt="Check Verde" src="../../../asset/image/checkYes.png" v-show="project.readyTimeline === 'S' && projectVal.statusTimeline !== 'REALIZADO'" style="padding:0; margin:0; border:0">
-                            <img class="img-small" alt="Check Vermelho" src="../../../asset/image/checkNo.png" v-show="project.readyTimeline === 'N'" style="padding:0; margin:0; border:0">
-                            <img class="img-small" alt="Check Cinza" src="../../../asset/image/checkGrey.png" v-show="project.readyTimeline === 'S' && projectVal.statusTimeline === 'REALIZADO'" style="padding:0; margin:0; border:0">
+                            <img class="img-small" alt="Check Verde" src="../../../asset/image/checkYes.png" v-show="selected.readyTimeline === 'S' && selected.statusTimeline !== 'REALIZADO'" style="padding:0; margin:0; border:0">
+                            <img class="img-small" alt="Check Vermelho" src="../../../asset/image/checkNo.png" v-show="selected.readyTimeline === 'N'" style="padding:0; margin:0; border:0">
+                            <img class="img-small" alt="Check Cinza" src="../../../asset/image/checkGrey.png" v-show="selected.readyTimeline === 'S' && selected.statusTimeline === 'REALIZADO'" style="padding:0; margin:0; border:0">
                         </td>
 
                         <td style="text-align: center; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
                             <select id="TimelineAct"
                                 @change="setDtUpdateTimeLine()"
-                                v-model="projectVal.statusTimeline"  
-                                :disabled="projectVal.statusTestPlan != 'BACKLOG' || projectVal.statusStrategyTestingAndContracting != 'REALIZADO' || projectVal.statusTimeline === 'REALIZADO'">
+                                v-model="selected.statusTimeline"  
+                                :disabled="selected.statusTestPlan != 'BACKLOG' || selected.statusStrategyTestingAndContracting != 'REALIZADO' || selected.statusTimeline === 'REALIZADO'">
 
                                 <option value="BACKLOG">BACKLOG</option>
                                 <option value="ON GOING">ON GOING</option>
@@ -282,7 +262,7 @@
                         </td>
 
                         <td style="text-align: center; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
-                            {{projectVal.dtUpdateTimeLine}}
+                            {{selected.dtUpdateTimeLine}}
                         </td>
                     </tr>
 
@@ -292,16 +272,16 @@
                         </td>                                
 
                         <td style="text-align: center; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
-                            <img class="img-small" alt="Check Verde" src="../../../asset/image/checkYes.png" v-show="project.readyTestPlan === 'S' && project.statusTestPlan !== 'REALIZADO'" style="padding:0; margin:0; border:0">
-                            <img class="img-small" alt="Check Vermelho" src="../../../asset/image/checkNo.png" v-show="project.readyTestPlan === 'N'" style="padding:0; margin:0; border:0">
-                            <img class="img-small" alt="Check Cinza" src="../../../asset/image/checkGrey.png" v-show="project.readyTestPlan === 'S' && project.statusTestPlan === 'REALIZADO'" style="padding:0; margin:0; border:0">
+                            <img class="img-small" alt="Check Verde" src="../../../asset/image/checkYes.png" v-show="selected.readyTestPlan === 'S' && selected.statusTestPlan !== 'REALIZADO'" style="padding:0; margin:0; border:0">
+                            <img class="img-small" alt="Check Vermelho" src="../../../asset/image/checkNo.png" v-show="selected.readyTestPlan === 'N'" style="padding:0; margin:0; border:0">
+                            <img class="img-small" alt="Check Cinza" src="../../../asset/image/checkGrey.png" v-show="selected.readyTestPlan === 'S' && selected.statusTestPlan === 'REALIZADO'" style="padding:0; margin:0; border:0">
                         </td>
 
                         <td style="text-align: center; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
                             <select id="PlanAct" 
                                 @change="setDtUpdateTestPlan()"
-                                v-model="projectVal.statusTestPlan" 
-                                :disabled="projectVal.statusTimeline != 'REALIZADO' || projectVal.statusTestPlan === 'REALIZADO' ">
+                                v-model="selected.statusTestPlan" 
+                                :disabled="selected.statusTimeline != 'REALIZADO' || selected.statusTestPlan === 'REALIZADO' ">
 
                                 <option value="BACKLOG">BACKLOG</option>
                                 <option value="ON GOING">ON GOING</option>
@@ -310,7 +290,7 @@
                         </td>
 
                         <td style="text-align: center; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
-                            {{projectVal.dtUpdateTestPlan}}
+                            {{selected.dtUpdateTestPlan}}
                         </td>
                     </tr>  
 
@@ -322,6 +302,7 @@
                         <td style="text-align: center; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle; width: 100px">
                             <input type="date" 
                                 v-model="dtDeliveryTestPlan" 
+                                @change="setDtDeliveryTestPlan()"
                                 style="padding-left: 45px"
                             />
                         </td>

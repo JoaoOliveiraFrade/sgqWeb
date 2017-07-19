@@ -6,7 +6,7 @@ const webApiPath = {
   local,
   homologation,
   production,
-  default: homologation
+  default: local
 }
 
 export default webApiPath

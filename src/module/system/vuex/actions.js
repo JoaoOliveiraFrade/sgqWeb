@@ -2,13 +2,20 @@ import * as types from './mutationsTypes'
 import services from '@/module/system/services'
 
 export const loadSystems = ({ commit }, selectedTestManuf) => {
-  services.getSystemsByTestManuf(selectedTestManuf)
+  services.getAll()
     .then(
       r => {
         commit(types.setSystems, r.data)
       },
       e => console.log(e)
     )
+  // services.getSystemsByTestManuf(selectedTestManuf)
+  //   .then(
+  //     r => {
+  //       commit(types.setSystems, r.data)
+  //     },
+  //     e => console.log(e)
+  //   )
 }
 
 export const loadSystemsByTestManufs = ({ commit }, selectedTestManufs) => {

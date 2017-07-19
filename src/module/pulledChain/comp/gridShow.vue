@@ -1,31 +1,25 @@
 <script>
+  import { mapGetters, mapActions } from 'vuex'
+
   import oiEditButton from './EditButton.vue'
 
   export default {
-    name: 'pulledChainGridShow',
+    name: 'gridShow',
 
     components: { oiEditButton },
 
-    props: {
-      dataSource: {type: Array}
-    },
-
-    data () {
-      return {
-        project: {}
-      }
+    computed: {
+      ...mapGetters(['pulledChainProjectsFilteredByTerm'])
     },
 
     methods: {
-      onSelectItem (project, state) {
-        this.$emit('onSelectItem', project, { ...project }, state)
-      }
+      ...mapActions(['setPulledChainProjectSelected'])
     }
   }
 </script>
 
 <template>
-  <div id="pulledChainGridShow">
+  <div>
     <table class="table table-condensed table-striped table-hover table-bordered" style="margin-bottom:0; padding-bottom:0">
         <thead>
             <tr>
@@ -49,12 +43,10 @@
                 <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle;">Aging</th>
             </tr>
         </thead>
-        <tbody v-for="item in dataSource">
+        <tbody v-for="item in pulledChainProjectsFilteredByTerm">
             <tr>
                 <td rowspan=3 style="white-space: nowrap; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
-                    <oiEditButton
-                        :project="item"
-                    />
+                    <oiEditButton @click.native="setPulledChainProjectSelected(item)"/>
                 </td>
                 <td rowspan=3 style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
                     {{item.priorityGlobal}}
