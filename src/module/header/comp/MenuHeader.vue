@@ -80,13 +80,13 @@
         </router-link>
 
         <li class="dropdown">
-                <a class="oi-menu" 
-                    href="#"
-                    onclick="window.open('http://sgq.intranet/Mobile_Monitor_Defeitos_Menu.aspx', 
-                        'newwindow', ''
-                    ); 
-                    return false;">Monit.Def.
-                </a>            
+            <a class="oi-menu" 
+                href="#"
+                onclick="window.open('http://sgq.intranet/Mobile_Monitor_Defeitos_Menu.aspx', 
+                    'newwindow', ''
+                ); 
+                return false;">Monit.Def.
+            </a>            
         </li>
 
         <li class="dropdown">

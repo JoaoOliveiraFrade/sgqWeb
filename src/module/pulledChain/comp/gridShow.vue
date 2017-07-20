@@ -1,5 +1,5 @@
 <script>
-  import { mapGetters, mapActions } from 'vuex'
+  import { mapGetters } from 'vuex'
 
   import oiEditButton from './EditButton.vue'
 
@@ -10,10 +10,6 @@
 
     computed: {
       ...mapGetters(['pulledChainProjectsFilteredByTerm'])
-    },
-
-    methods: {
-      ...mapActions(['setPulledChainProjectSelected'])
     }
   }
 </script>
@@ -46,7 +42,7 @@
         <tbody v-for="item in pulledChainProjectsFilteredByTerm">
             <tr>
                 <td rowspan=3 style="white-space: nowrap; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
-                    <oiEditButton @click.native="setPulledChainProjectSelected(item)"/>
+                    <oiEditButton :project="item"/>
                 </td>
                 <td rowspan=3 style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
                     {{item.priorityGlobal}}
@@ -141,15 +137,15 @@
                 </td>
 
                 <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
-                    {{item.dtUpdateTimeLine}}
+                    {{item.dtUpdateTimeline}}
                 </td>
 
                 <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
-                    {{item.dtStartTimeLine}}
+                    {{item.dtStartTimeline}}
                 </td>
 
                 <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
-                    {{item.dtEndTimeLine}}
+                    {{item.dtEndTimeline}}
                 </td>
 
                 <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">

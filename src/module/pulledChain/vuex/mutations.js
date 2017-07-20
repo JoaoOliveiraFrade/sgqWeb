@@ -16,10 +16,16 @@ export default {
   [types.updatePulledChainProjectSelected] (state, value) {
     state.pulledChainProjectSelected.statusStrategyTestingAndContracting = value.statusStrategyTestingAndContracting
     state.pulledChainProjectSelected.dtUpdateStrategyTestingAndContracting = value.dtUpdateStrategyTestingAndContracting
+    state.pulledChainProjectSelected.dtEndStrategyTestingAndContracting = value.dtEndStrategyTestingAndContracting
+
     state.pulledChainProjectSelected.statusTimeline = value.statusTimeline
-    state.pulledChainProjectSelected.dtUpdateTimeLine = value.dtUpdateTimeLine
+    state.pulledChainProjectSelected.dtUpdateTimeline = value.dtUpdateTimeline
+    state.pulledChainProjectSelected.dtEndTimeline = value.dtEndTimeline
+
     state.pulledChainProjectSelected.statusTestPlan = value.statusTestPlan
     state.pulledChainProjectSelected.dtUpdateTestPlan = value.dtUpdateTestPlan
+    state.pulledChainProjectSelected.dtEndTestPlan = value.dtEndTestPlan
+
     state.pulledChainProjectSelected.dtDeliveryTestPlan = value.dtDeliveryTestPlan
     state.pulledChainProjectSelected.readyTestPlan = value.readyTestPlan
     state.pulledChainProjectSelected.dtStartTestPlan = value.dtStartTestPlan

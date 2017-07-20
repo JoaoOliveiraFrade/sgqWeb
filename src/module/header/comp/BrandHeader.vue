@@ -5,13 +5,10 @@
 </script>
 
 <template>
-  <a href="/home">
+  <router-link :to="{ name: 'home' }">
     <img src="../../../asset/image/logoOrange.png" height="50" width="50"> 
     <img src="../../../asset/image/sgq.png" height="25" width="50" style="margin-top: 6px;">
-    <!--
-      <span style="font-size:30px; font-weight:bold; padding:1px">SGQ</span>
-    -->
-  </a>
+  </router-link>  
 </template>
 
 <style scoped>

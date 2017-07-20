@@ -17,11 +17,14 @@
 
     watch: {
       'pulledChainProjectSelected': {
-        // deep: true,
         handler () {
           this.selected = { ...this.pulledChainProjectSelected }
           // passa do formato dd-mm-yy para yyyy-mm-dd do componente visual
-          this.dtDeliveryTestPlan = this.selected.dtDeliveryTestPlan ? '20' + this.selected.dtDeliveryTestPlan.substr(6, 2) + '-' + this.selected.dtDeliveryTestPlan.substr(3, 2) + '-' + this.selected.dtDeliveryTestPlan.substr(0, 2) : ''
+          if (this.selected.dtDeliveryTestPlan !== '') {
+            this.dtDeliveryTestPlan = this.selected.dtDeliveryTestPlan ? '20' + this.selected.dtDeliveryTestPlan.substr(6, 2) + '-' + this.selected.dtDeliveryTestPlan.substr(3, 2) + '-' + this.selected.dtDeliveryTestPlan.substr(0, 2) : ''
+          } else {
+            this.dtDeliveryTestPlan = ''
+          }
         }
       }
     },
@@ -53,8 +56,8 @@
         }
       },
 
-      setDtUpdateTimeLine () {
-        this.selected.dtUpdateTimeLine = this.getDateToday()
+      setDtUpdateTimeline () {
+        this.selected.dtUpdateTimeline = this.getDateToday()
         if (this.selected.statusTimeline !== 'BACKLOG' && this.selected.dtEndTimeline === '') {
           this.selected.dtEndTimeline = this.getDateToday()
         } else {
@@ -77,8 +80,27 @@
 
       setDtDeliveryTestPlan () {
         this.selected.dtDeliveryTestPlan = this.formatDate(this.dtDeliveryTestPlan)
-        this.selected.readyTestPlan = this.dtDeliveryTestPlan !== '' ? 'S' : 'N'
+
+        if (this.dtDeliveryTestPlan === '') {
+          this.selected.readyTestPlan = 'N'
+        } else {
+          let dtDeliveryTestPlanYYMMDD = this.selected.dtDeliveryTestPlan.substr(6, 2) + this.selected.dtDeliveryTestPlan.substr(3, 2) + this.selected.dtDeliveryTestPlan.substr(0, 2)
+
+          let d = new Date()
+          let NowYYMMDD = ('' + d.getFullYear()).slice(-2) + ('0' + (d.getMonth() + 1)).slice(-2) + ('0' + d.getDate()).slice(-2)
+
+          if (dtDeliveryTestPlanYYMMDD <= NowYYMMDD) {
+            this.selected.readyTestPlan = 'S'
+          } else {
+            this.selected.readyTestPlan = 'N'
+          }
+        }
+
         this.selected.dtStartTestPlan = this.dtDeliveryTestPlan !== '' ? this.getDateToday() : ''
+      },
+
+      save () {
+        this.updatePulledChainProjectSelected(this.selected)
       }
     }
   }
@@ -88,7 +110,7 @@
     <div class="container-fluid">
         <div style="text-align: left; margin:0; border:0; padding:0px">
             <a class="oi-icon" href="#"
-                @click.prevent="updatePulledChainProjectSelected(selected)"
+                @click.prevent="save"
                 title="Salvar">
                 <span class='glyphicon glyphicon-save'></span>
             </a> 
@@ -251,7 +273,7 @@
 
                         <td style="text-align: center; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
                             <select id="TimelineAct"
-                                @change="setDtUpdateTimeLine()"
+                                @change="setDtUpdateTimeline()"
                                 v-model="selected.statusTimeline"  
                                 :disabled="selected.statusTestPlan != 'BACKLOG' || selected.statusStrategyTestingAndContracting != 'REALIZADO' || selected.statusTimeline === 'REALIZADO'">
 
@@ -262,7 +284,7 @@
                         </td>
 
                         <td style="text-align: center; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
-                            {{selected.dtUpdateTimeLine}}
+                            {{selected.dtUpdateTimeline}}
                         </td>
                     </tr>
 
