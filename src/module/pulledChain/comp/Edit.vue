@@ -19,7 +19,8 @@
       'pulledChainProjectSelected': {
         handler () {
           this.selected = { ...this.pulledChainProjectSelected }
-          // passa do formato dd-mm-yy para yyyy-mm-dd do componente visual
+
+          // muda o formato dd-mm-yy para yyyy-mm-dd (uso do componente visual)
           if (this.selected.dtDeliveryTestPlan !== '') {
             this.dtDeliveryTestPlan = this.selected.dtDeliveryTestPlan ? '20' + this.selected.dtDeliveryTestPlan.substr(6, 2) + '-' + this.selected.dtDeliveryTestPlan.substr(3, 2) + '-' + this.selected.dtDeliveryTestPlan.substr(0, 2) : ''
           } else {
@@ -45,7 +46,10 @@
         }
       },
 
-      setDtUpdateStrategyTestingAndContracting () {
+      /**
+      * Calcula data fim, na alteração do status
+      **********************************************/
+      changeStatusStrategyTestingAndContracting () {
         this.selected.dtUpdateStrategyTestingAndContracting = this.getDateToday()
         if (this.selected.statusStrategyTestingAndContracting !== 'BACKLOG' && this.selected.dtEndStrategyTestingAndContracting === '') {
           this.selected.dtEndStrategyTestingAndContracting = this.getDateToday()
@@ -55,8 +59,7 @@
           }
         }
       },
-
-      setDtUpdateTimeline () {
+      changeStatusTimeline () {
         this.selected.dtUpdateTimeline = this.getDateToday()
         if (this.selected.statusTimeline !== 'BACKLOG' && this.selected.dtEndTimeline === '') {
           this.selected.dtEndTimeline = this.getDateToday()
@@ -66,8 +69,7 @@
           }
         }
       },
-
-      setDtUpdateTestPlan () {
+      changeStatusTestPlan () {
         this.selected.dtUpdateTestPlan = this.getDateToday()
         if (this.selected.statusTestPlan !== 'BACKLOG' && this.selected.dtEndTestPlan === '') {
           this.selected.dtEndTestPlan = this.getDateToday()
@@ -245,7 +247,7 @@
 
                         <td style="text-align: center; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
                             <select id="StrategyAct" 
-                                @change="setDtUpdateStrategyTestingAndContracting()" 
+                                @change="changeStatusStrategyTestingAndContracting()" 
                                 v-model="selected.statusStrategyTestingAndContracting" 
                                 :disabled="selected.statusStrategyTestingAndContracting === 'REALIZADO'">
 
@@ -273,7 +275,7 @@
 
                         <td style="text-align: center; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
                             <select id="TimelineAct"
-                                @change="setDtUpdateTimeline()"
+                                @change="changeStatusTimeline()"
                                 v-model="selected.statusTimeline"  
                                 :disabled="selected.statusTestPlan != 'BACKLOG' || selected.statusStrategyTestingAndContracting != 'REALIZADO' || selected.statusTimeline === 'REALIZADO'">
 
@@ -301,7 +303,7 @@
 
                         <td style="text-align: center; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
                             <select id="PlanAct" 
-                                @change="setDtUpdateTestPlan()"
+                                @change="changeStatusTestPlan()"
                                 v-model="selected.statusTestPlan" 
                                 :disabled="selected.statusTimeline != 'REALIZADO' || selected.statusTestPlan === 'REALIZADO' ">
 

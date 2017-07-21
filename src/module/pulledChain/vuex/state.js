@@ -13,6 +13,7 @@ export default {
 
   pulledChainProjects: [],
   pulledChainProjectsFilteredByText: [],
+
   pulledChainFilterTerm: '',
   pulledChainProjectSelected: {}
 }

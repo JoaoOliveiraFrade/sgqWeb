@@ -1,15 +1,23 @@
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
 
   import oiEditButton from './EditButton.vue'
 
   export default {
-    name: 'gridShow',
+    name: 'GridShow',
 
     components: { oiEditButton },
 
     computed: {
       ...mapGetters(['pulledChainProjectsFilteredByTerm'])
+    },
+
+    methods: {
+      ...mapActions(['loadPulledChainProjects'])
+    },
+
+    mounted () {
+      this.loadPulledChainProjects()
     }
   }
 </script>
@@ -39,7 +47,7 @@
                 <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle;">Aging</th>
             </tr>
         </thead>
-        <tbody v-for="item in pulledChainProjectsFilteredByTerm">
+        <tbody v-for="(item,key) in pulledChainProjectsFilteredByTerm" :item="item" :key="key">
             <tr>
                 <td rowspan=3 style="white-space: nowrap; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
                     <oiEditButton :project="item"/>

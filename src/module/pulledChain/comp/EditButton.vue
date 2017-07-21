@@ -1,7 +1,7 @@
 <script>
   import oiModal from '@/module/modal/comp/Modalx.vue'
   import oiEdit from './Edit.vue'
-  import { mapGetters, mapActions } from 'vuex'
+  import { mapActions } from 'vuex'
 
   export default {
     name: 'EditButton',
@@ -12,16 +12,8 @@
       project: {type: Object}
     },
 
-    computed: {
-      ...mapGetters(['pulledChainProjectSelected'])
-    },
-
     methods: {
-      ...mapActions(['setPulledChainProjectSelected']),
-
-      select () {
-        this.setPulledChainProjectSelected(this.project)
-      }
+      ...mapActions(['setPulledChainProjectSelected'])
     }
   }
 </script>
@@ -31,13 +23,13 @@
         <a class='btn btn-xs my-tool-tip'
             title="Editar"
             style="padding:0;margin:0; text-right"
-            @click="select"
+            @click="setPulledChainProjectSelected(project)"
             data-toggle="modal"
-            :data-target="'#modalEdit' + pulledChainProjectSelected.id">
+            :data-target="'#modalEdit' + project.id">
             <span class="glyphicon glyphicon glyphicon-pencil icon"></span>
         </a>
 
-        <oiModal :id="'modalEdit' + pulledChainProjectSelected.id">
+        <oiModal :id="'modalEdit' + project.id">
             <span style="margin:0; border:0; padding:0" slot="header">
                 <div class="col-xs-1" style="margin:0; border:0; padding:0; text-align: left">
                     <a class="btn btn-primary btn-xs"
@@ -48,7 +40,7 @@
                 </div>
 
                 <div class="col-xs-10" style="margin:0; border:0; padding:0; text-align: center">
-                    <label class="fd-label" style="font-size: 12px; white-space: normal">[Projeto] {{pulledChainProjectSelected.subprojectDelivery}} - {{pulledChainProjectSelected.name}}</label>
+                    <label class="fd-label">[Projeto] {{project.subprojectDelivery}} - {{project.name}}</label>
                 </div>
 
                 <hr class="col-xs-12">
@@ -67,7 +59,8 @@
     margin: 0; 
     border: 0; 
     padding: 0; 
-    color: gray;
+    font-size: 13px; 
+    white-space: normal;
   }
   hr {
       height: 4px;
