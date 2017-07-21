@@ -27,27 +27,27 @@
     <table class="table table-condensed table-striped table-hover table-bordered" style="margin-bottom:0; padding-bottom:0">
         <thead>
             <tr>
-                <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle;"></th>
-                <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle;">Prior.</th>                                
-                <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle;">Proj.</th>
-                <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle;">Estado</th>
-                <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle;">RT</th>
-                <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle;">UN</th>
-                <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle;">Tipif.</th>
-                <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle;">Release<br>Clarity</th>
-                <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle;">Próx.<br>Rel.</th>      
-                <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle;">Status<br>ORL</th>
-                <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle;">Atividade</th> 
-                <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle;">Entrega<br>Plano</th>
-                <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle;">Ready</th> 
-                <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle;">Status</th> 
-                <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle;">Atualiz.<br>Status</th> 
-                <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle;">Início<br>(ready)</th>
-                <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle;">Fim<br>(on going)</th>
-                <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle;">Aging</th>
+                <th style="vertical-align: middle"></th>
+                <th style="vertical-align: middle">Prior.</th>                                
+                <th style="vertical-align: middle">Proj.</th>
+                <th style="vertical-align: middle">Estado</th>
+                <th style="vertical-align: middle">RT</th>
+                <th style="vertical-align: middle">UN</th>
+                <th style="vertical-align: middle">Tipif.</th>
+                <th style="vertical-align: middle">Release<br>Clarity</th>
+                <th style="vertical-align: middle">Próx.<br>Rel.</th>      
+                <th style="vertical-align: middle">Status<br>ORL</th>
+                <th style="vertical-align: middle">Atividade</th> 
+                <th style="vertical-align: middle">Entrega<br>Plano</th>
+                <th style="vertical-align: middle">Ready</th> 
+                <th style="vertical-align: middle">Status</th> 
+                <th style="vertical-align: middle">Atualiz.<br>Status</th> 
+                <th style="vertical-align: middle">Início<br>(ready)</th>
+                <th style="vertical-align: middle">Fim<br>(on going)</th>
+                <th style="vertical-align: middle">Aging</th>
             </tr>
         </thead>
-        <tbody v-for="(item,key) in pulledChainProjectsFilteredByTerm" :item="item" :key="key">
+        <tbody v-for="item in pulledChainProjectsFilteredByTerm">
             <tr>
                 <td rowspan=3 style="white-space: nowrap; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
                     <oiEditButton :project="item"/>
@@ -238,13 +238,21 @@
     }
     hr {
         height: 4px;
-        box-shadow: inset 0 4px 4px -4px rgba(0, 0, 0, 0.4);
+       
         margin: 0px;
         border: 0px;
         padding: 0px;
         margin-top: 2px;
     } 
 
+    th {
+        padding: 1px; 
+        margin: 0px; 
+        border-top: 1px; 
+        padding-left: 5px; 
+        box-shadow: inset 0 4px 4px -4px rgba(0, 0, 0, 0.4);
+    }
+    
     .table-striped > tbody > tr:hover > td {
         background-color: #efefef;
     }
