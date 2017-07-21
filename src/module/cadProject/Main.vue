@@ -149,7 +149,7 @@
         this.loadProductivityXDefectsGroupWeekly(this.project)
 
         let subprojectDelivery = this.project.subprojectDelivery.split(' ')
-        this.email.subject = '[Status TI] SubPrj: ' + subprojectDelivery[0] + ', Ent: ' + subprojectDelivery[1] + ', Nome: ' + this.project.name
+        this.email.subject = '[Status Projeto] SubPrj: ' + subprojectDelivery[0] + ', Ent: ' + subprojectDelivery[1] + ', Nome: ' + this.project.name
       },
 
       showItem () {

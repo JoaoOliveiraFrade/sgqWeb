@@ -64,7 +64,7 @@
     },
 
     mounted () {
-      this.email.subject = '[Agrupador] ' + this.grouper.name
+      this.email.subject = '[Status Agrupador] ' + this.grouper.name
     }
 
   }
@@ -83,7 +83,7 @@
       </div>
     
       <div class="col-xs-10" style="text-align: center">
-        <label class="fd-label">Report - {{email.subject}}</label>
+        <label class="fd-label">{{email.subject}}</label>
       </div>
       
       <hr class="col-xs-12" >
