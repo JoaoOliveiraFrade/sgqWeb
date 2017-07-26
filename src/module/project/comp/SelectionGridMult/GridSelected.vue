@@ -2,7 +2,7 @@
   import { mapGetters } from 'vuex'
 
   export default {
-    name: 'projectSelectionGridMultEdit',
+    name: 'GridSelected',
 
     data () {
       return {

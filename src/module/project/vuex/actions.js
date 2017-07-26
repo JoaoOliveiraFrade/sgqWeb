@@ -12,12 +12,17 @@ export const loadProjects = ({ commit }, parameter) => {
 }
 
 export const loadProjectsByTestManufsAndSystems = ({ commit }, parameter) => {
+  commit(types.projectsByTestManufsAndSystemsLoading, true)
   services.getProjectsByTestManufsAndSystems(parameter)
     .then(
       r => {
         commit(types.setProjectsByTestManufsAndSystems, r.data)
+        commit(types.projectsByTestManufsAndSystemsLoading, false)
       },
-      e => console.log(e)
+      e => {
+        console.log(e)
+        commit(types.projectsByTestManufsAndSystemsLoading, false)
+      }
     )
 }
 

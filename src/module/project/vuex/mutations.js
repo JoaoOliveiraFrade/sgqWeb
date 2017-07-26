@@ -13,6 +13,10 @@ export default {
     state.projectsByTestManufsAndSystems = projectsByTestManufsAndSystems
   },
 
+  [types.projectsByTestManufsAndSystemsLoading] (state, value) {
+    state.projectsByTestManufsAndSystemsLoading = value
+  },
+
   [types.setSelectedProjects] (state, selectedProjects) {
     state.selectedProjects = selectedProjects
   },

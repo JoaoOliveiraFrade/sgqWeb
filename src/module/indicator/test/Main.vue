@@ -1,13 +1,13 @@
 <script>
   import { mapActions, mapGetters } from 'vuex'
 
-  import oiSelectionTestManuf from '@/module/testManuf/comp/SelectionTestManuf.vue'
-  import oiSelectionSystem from '@/module/system/comp/SelectionSystem.vue'
-  import oiSelectionProject from '@/module/project/comp/SelectionProjectGridMult/SelectionProject.vue'
+  import oiSelectionTestManuf from '@/module/testManuf/comp/Selection.vue'
+  import oiSelectionSystem from '@/module/system/comp/Selection.vue'
+  import oiSelectionProject from '@/module/project/comp/selectionGridMult/Selection.vue'
   import oiShowData from './comp/ShowData.vue'
 
   export default {
-    name: 'indicatorOfTestMain',
+    name: 'Main',
 
     components: { oiSelectionTestManuf, oiSelectionSystem, oiSelectionProject, oiShowData },
 
@@ -16,11 +16,7 @@
     },
 
     methods: {
-      ...mapActions(['setFeatureName']),
-
-      loadData () {
-        // this.isShowindicator = true
-      }
+      ...mapActions(['setFeatureName'])
     },
 
     mounted () {
@@ -37,7 +33,6 @@
         :isShowButtonSelected="true"
       />
     </div>
-
     <div class="row well well-sm oi-well" style="margin-bottom:3px" v-if="selectedTestManufs.length > 0">
       <oiSelectionSystem
         :isShowButtonSelected="true"
@@ -45,9 +40,7 @@
     </div>
 
     <div class="row well well-sm oi-well" style="margin-bottom:3px" v-if="selectedSystems.length > 0">
-      <oiSelectionProject
-        @confirmSelection="loadData"
-      />
+      <oiSelectionProject/>
     </div>
 
     <div class="row well well-sm oi-well" style="margin-bottom:3px">

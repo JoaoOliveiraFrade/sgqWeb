@@ -3,6 +3,7 @@ export const setProjectFilterTerm = 'project/setProjectFilterTerm'
 export const setProjects = 'project/setProjects'
 
 export const setProjectsByTestManufsAndSystems = 'project/setProjectsByTestManufsAndSystems'
+export const projectsByTestManufsAndSystemsLoading = 'project/projectsByTestManufsAndSystemsLoading'
 
 export const setSelectedProjects = 'project/setSelectedProjects'
 
