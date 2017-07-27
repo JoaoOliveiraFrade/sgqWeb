@@ -12,8 +12,7 @@ export default {
   },
   [types.pulledChainProjectSelected] (state, value) {
     state.pulledChainProjectSelected = value
-  },
-  [types.updatePulledChainProjectSelected] (state, value) {
+
     state.pulledChainProjectSelected.statusStrategyTestingAndContracting = value.statusStrategyTestingAndContracting
     state.pulledChainProjectSelected.dtUpdateStrategyTestingAndContracting = value.dtUpdateStrategyTestingAndContracting
     state.pulledChainProjectSelected.dtEndStrategyTestingAndContracting = value.dtEndStrategyTestingAndContracting

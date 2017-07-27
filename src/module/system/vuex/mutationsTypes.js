@@ -1,5 +1,5 @@
-export const setSystems = 'system/setSystems'
+export const systems = 'system/systems'
 
-export const setSystemsByTestManufs = 'system/setSystemsByTestManufs'
+export const systemsByTestManufs = 'system/systemsByTestManufs'
 
-export const setSelectedSystems = 'system/setSelectedSystems'
+export const selectedSystems = 'system/selectedSystems'

@@ -1,15 +1,15 @@
 import * as types from './mutationsTypes'
 
 export default {
-  [types.setSystems] (state, systems) {
-    state.systems = systems
+  [types.systems] (state, data) {
+    state.systems = data
   },
 
-  [types.setSystemsByTestManufs] (state, systemsByTestManufs) {
-    state.systemsByTestManufs = systemsByTestManufs
+  [types.systemsByTestManufs] (state, data) {
+    state.systemsByTestManufs = data
   },
 
-  [types.setSelectedSystems] (state, selectedSystems) {
-    state.selectedSystems = selectedSystems
+  [types.selectedSystems] (state, data) {
+    state.selectedSystems = data
   }
 }

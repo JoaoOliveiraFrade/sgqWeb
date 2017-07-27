@@ -1,10 +1,10 @@
 import * as types from './mutationsTypes'
 
 export default {
-  [types.setUser] (state, user) {
-    state.user = user
+  [types.user] (state, data) {
+    state.user = data
   },
-  [types.setToken] (state, token) {
-    state.token = token
+  [types.token] (state, data) {
+    state.token = data
   }
 }

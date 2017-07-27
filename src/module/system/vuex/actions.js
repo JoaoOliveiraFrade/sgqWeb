@@ -5,7 +5,7 @@ export const loadSystems = ({ commit }, selectedTestManuf) => {
   services.getAll()
     .then(
       r => {
-        commit(types.setSystems, r.data)
+        commit(types.systems, r.data)
       },
       e => console.log(e)
     )
@@ -22,14 +22,14 @@ export const loadSystemsByTestManufs = ({ commit }, selectedTestManufs) => {
   services.getSystemsByTestManufs(selectedTestManufs)
     .then(
       r => {
-        commit(types.setSystemsByTestManufs, r.data)
+        commit(types.systemsByTestManufs, r.data)
       },
       e => console.log(e)
     )
 }
 
 export const setSelectedSystems = ({ commit, getters, dispatch }, selectedSystems) => {
-  commit(types.setSelectedSystems, selectedSystems)
+  commit(types.selectedSystems, selectedSystems)
 
   dispatch('loadProjectsByTestManufsAndSystems', {
     selectedTestManuf: getters.selectedTestManufs,

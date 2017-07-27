@@ -5,7 +5,7 @@ export const loadProjects = ({ commit }, parameter) => {
   services.getProjectsByTestManufsAndSystems(parameter)
     .then(
       r => {
-        commit(types.setProjects, r.data)
+        commit(types.projects, r.data)
       },
       e => console.log(e)
     )
@@ -16,7 +16,7 @@ export const loadProjectsByTestManufsAndSystems = ({ commit }, parameter) => {
   services.getProjectsByTestManufsAndSystems(parameter)
     .then(
       r => {
-        commit(types.setProjectsByTestManufsAndSystems, r.data)
+        commit(types.projectsByTestManufsAndSystems, r.data)
         commit(types.projectsByTestManufsAndSystemsLoading, false)
       },
       e => {
@@ -27,10 +27,10 @@ export const loadProjectsByTestManufsAndSystems = ({ commit }, parameter) => {
 }
 
 export const setProjectFilterTerm = ({ commit }, filterTerm) => {
-  commit(types.setProjectFilterTerm, filterTerm)
+  commit(types.projectFilterTerm, filterTerm)
 }
 export const setSelectedProjects = ({ commit, dispatch }, selectedProjects) => {
-  commit(types.setSelectedProjects, selectedProjects)
+  commit(types.selectedProjects, selectedProjects)
 
   if (selectedProjects.length > 0) {
     dispatch('setIndicatorOfTestIsShow', true)

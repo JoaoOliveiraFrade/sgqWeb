@@ -3,7 +3,7 @@
   import oiSelection from '@/module/selection/comp/selections.vue'
 
   export default {
-    name: 'Selection',
+    name: 'SelectionByTestManufs',
 
     components: { oiSelection },
 

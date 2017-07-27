@@ -1,27 +1,27 @@
 import * as types from './mutationsTypes'
 
 export default {
-  [types.setProjectFilterTerm] (state, projectFilterTerm) {
-    state.projectFilterTerm = projectFilterTerm
+  [types.projectFilterTerm] (state, data) {
+    state.projectFilterTerm = data
   },
 
-  [types.setProjects] (state, projects) {
-    state.projects = projects
+  [types.projects] (state, data) {
+    state.projects = data
   },
 
-  [types.setProjectsByTestManufsAndSystems] (state, projectsByTestManufsAndSystems) {
-    state.projectsByTestManufsAndSystems = projectsByTestManufsAndSystems
+  [types.projectsByTestManufsAndSystems] (state, data) {
+    state.projectsByTestManufsAndSystems = data
   },
 
-  [types.projectsByTestManufsAndSystemsLoading] (state, value) {
-    state.projectsByTestManufsAndSystemsLoading = value
+  [types.projectsByTestManufsAndSystemsLoading] (state, data) {
+    state.projectsByTestManufsAndSystemsLoading = data
   },
 
-  [types.setSelectedProjects] (state, selectedProjects) {
-    state.selectedProjects = selectedProjects
+  [types.selectedProjects] (state, data) {
+    state.selectedProjects = data
   },
 
-  [types.setProject] (state, project) {
-    state.project = project
+  [types.project] (state, data) {
+    state.project = data
   }
 }

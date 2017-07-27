@@ -1,10 +1,10 @@
-export const setProjectFilterTerm = 'project/setProjectFilterTerm'
+export const projectFilterTerm = 'project/projectFilterTerm'
 
-export const setProjects = 'project/setProjects'
+export const projects = 'project/projects'
 
-export const setProjectsByTestManufsAndSystems = 'project/setProjectsByTestManufsAndSystems'
+export const projectsByTestManufsAndSystems = 'project/projectsByTestManufsAndSystems'
 export const projectsByTestManufsAndSystemsLoading = 'project/projectsByTestManufsAndSystemsLoading'
 
-export const setSelectedProjects = 'project/setSelectedProjects'
+export const selectedProjects = 'project/selectedProjects'
 
-export const setProject = 'project/setProject'
+export const project = 'project/project'

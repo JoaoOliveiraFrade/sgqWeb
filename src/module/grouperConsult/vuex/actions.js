@@ -4,21 +4,21 @@ import ServicesProjectXgrouper from '@/module/projectXgrouper/services'
 import ServicesProject from '@/module/project/services'
 // import Toastr from 'toastr'
 
-export const loadGroupers = (context) => {
+export const loadGroupers = ({ commit }) => {
   services.getAll().then(r => {
     // Toastr.success('Agrupadores carregados!', '', { timeOut: 2000 })
-    context.commit(types.setGroupers, r.data)
+    commit(types.groupers, r.data)
   })
 }
-export const setFilterTerm = (context, filterTerm) => {
-  context.commit(types.setFilterTerm, filterTerm)
+export const setFilterTerm = ({ commit }, filterTerm) => {
+  commit(types.filterTerm, filterTerm)
 }
-export const setGrouper = (context, grouperId) => {
+export const setGrouper = ({ commit }, grouperId) => {
   // Toastr.success('Agrupador selecionado!', '', { timeOut: 1000 })
   services.get(grouperId).then(r => {
     let grouper = r.data
 
-    context.commit(types.setGrouper, grouper)
+    commit(types.grouper, grouper)
 
     ServicesProjectXgrouper.getByGrouper(grouper.id).then(pg => {
       if (pg.data.length !== 0) {
@@ -26,11 +26,11 @@ export const setGrouper = (context, grouperId) => {
 
         ServicesProject.getProjectsByIds(projectsIds)
           .then(r => {
-            context.commit(types.setGrouperProjects, r.data)
+            commit(types.grouperProjects, r.data)
           }
         )
       } else {
-        context.commit(types.setGrouperProjects, [])
+        commit(types.grouperProjects, [])
       }
     })
   })

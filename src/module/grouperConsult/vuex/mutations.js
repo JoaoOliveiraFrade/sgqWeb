@@ -1,23 +1,23 @@
 import * as types from './mutationsTypes'
 
 export default {
-  [types.setGroupers] (state, groupers) {
-    state.groupers = groupers
+  [types.groupers] (state, data) {
+    state.groupers = data
   },
 
-  [types.setFilterTerm] (state, filterTerm) {
-    state.filterTerm = filterTerm
+  [types.filterTerm] (state, data) {
+    state.filterTerm = data
   },
 
-  [types.setFilterProperties] (state, filterProperties) {
-    state.filterProperties = filterProperties
+  [types.filterProperties] (state, data) {
+    state.filterProperties = data
   },
 
-  [types.setGrouper] (state, grouper) {
-    state.grouper = grouper
+  [types.grouper] (state, data) {
+    state.grouper = data
   },
 
-  [types.setGrouperProjects] (state, grouperProjects) {
-    state.grouperProjects = grouperProjects
+  [types.grouperProjects] (state, data) {
+    state.grouperProjects = data
   }
 }

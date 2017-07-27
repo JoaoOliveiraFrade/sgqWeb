@@ -24,7 +24,7 @@ export const setPulledChainProjectSelected = ({ commit }, selected) => {
 export const updatePulledChainProjectSelected = ({ commit }, updatedItem) => {
   services.update(updatedItem)
 
-  commit(types.updatePulledChainProjectSelected, updatedItem)
+  commit(types.pulledChainProjectSelected, updatedItem)
 
   Toastr.success('Dados gravados!')
 }

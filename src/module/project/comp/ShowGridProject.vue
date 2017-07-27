@@ -80,18 +80,6 @@
         <tbody v-for="item in items">
             <tr>
                 <td class="text-center" style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; padding:1px; white-space: nowrap; width:26px;">
-                  <!--
-                  <a class='btn' 
-                    data-toggle="tooltip" 
-                    title="Exibir" 
-                    style="padding:0;margin:0; text-right"
-                    @click="selectItem(item)">
-                    <i class='glyphicon glyphicon-list-alt'></i>
-                  </a>
-
-                  :onclick="'window.open(\'http://sgq.intranet/dist/index.html#/project/show/' + item.subproject + '/' + item.delivery + '\', \'newwindow\', \'fullscreen=yes, titlebar=no, toolbar=no, location=no, channelmode=0no, status=no, menubar=no, scrollbars=yes, resizable=yes\'); return false;'">
-                  :onclick="'window.open(\'http://sgq.intranet/dist/index.html#/project/show/' + item.subproject + '/' + item.delivery + '\', \'newwindow\', \'fullscreen=yes, titlebar=no, toolbar=no, location=no, channelmode=0no, status=no, menubar=no, scrollbars=yes, resizable=yes\'); return false;'">
-                 -->
                   <a 
                      href="#"
                      :onclick="'window.open(\'' + pathApp + '/projectConsult/show/' + item.subproject + '/' + item.delivery + '\', \'newwindow\', \'\'); return false;'">

@@ -1,4 +1,5 @@
 <script>
+  import { paths } from '@/environment'
   export default {
     name: 'ProjectGridShow',
 
@@ -72,20 +73,9 @@
         <tbody v-for="item in items">
             <tr>
                 <td class="text-center" style="padding:0; margin:0; border:0; width:26px; white-space: nowrap">
-                  <!--
-                  <a class='btn' 
-                    data-toggle="tooltip" 
-                    title="Exibir" 
-                    style="padding:0;margin:0; text-right"
-                    @click="selectItem(item)">
-                    <i class='glyphicon glyphicon-list-alt'></i>
-                  </a>
-
-                  :onclick="'window.open(\'http://sgq.intranet/dist/index.html#/project/show/' + item.subproject + '/' + item.delivery + '\', \'newwindow\', \'fullscreen=yes, titlebar=no, toolbar=no, location=no, channelmode=0no, status=no, menubar=no, scrollbars=yes, resizable=yes\'); return false;'">
-                 -->
                   <a 
                      href="#"
-                     :onclick="'window.open(\'http://sgq.intranet/dist/index.html#/project/show/' + item.subproject + '/' + item.delivery + '\', \'newwindow\', \'fullscreen=yes, titlebar=no, toolbar=no, location=no, channelmode=0no, status=no, menubar=no, scrollbars=yes, resizable=yes\'); return false;'">
+                     :onclick="'window.open(\'' + pathApp + '/projectConsult/show/' + item.subproject + '/' + item.delivery + '\', \'newwindow\', \'\'); return false;'">
                      <i class='glyphicon glyphicon-list-alt' style="padding-top:4px"></i>
                   </a>
 

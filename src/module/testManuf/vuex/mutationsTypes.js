@@ -1,2 +1,2 @@
-export const setTestManufs = 'testManuf/setTestManufs'
-export const setSelectedTestManufs = 'testManuf/setSelectedTestManufs'
+export const testManufs = 'testManuf/testManufs'
+export const selectedTestManufs = 'testManuf/selectedTestManufs'

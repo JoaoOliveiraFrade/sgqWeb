@@ -1,2 +1,2 @@
-export const setUser = 'auth/setUser'
-export const setToken = 'auth/setToken'
+export const user = 'auth/user'
+export const token = 'auth/token'
