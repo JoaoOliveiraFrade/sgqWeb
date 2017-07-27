@@ -30,7 +30,12 @@ export const loadSystemsByTestManufs = ({ commit }, selectedTestManufs) => {
 
 export const setSelectedSystems = ({ commit, getters, dispatch }, selectedSystems) => {
   commit(types.setSelectedSystems, selectedSystems)
-  dispatch('loadProjectsByTestManufsAndSystems', { selectedTestManuf: getters.selectedTestManufs, selectedSystem: getters.selectedSystems })
+
+  dispatch('loadProjectsByTestManufsAndSystems', {
+    selectedTestManuf: getters.selectedTestManufs,
+    selectedSystem: getters.selectedSystems
+  })
+
   dispatch('setSelectedProjects', [])
   dispatch('setIndicatorOfTestIsShow', false)
 }

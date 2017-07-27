@@ -173,7 +173,7 @@
       },
 
       sendReportByEmail () {
-        this.email.url = paths.appDefault + '/project/report/' + this.project.subproject + '/' + this.project.delivery
+        this.email.url = paths.appDefault + '/projectConsult/report/' + this.project.subproject + '/' + this.project.delivery
         Toastr.info('E-mail solicitado! Pode continuar a usar a aplicação...', '', { timeOut: 20000 })
         this.$http.post(paths.apiDefault + '/SendEmail', this.email).then(r => {
           Toastr.success('E-mail enviado!', '', { timeOut: 15000 })

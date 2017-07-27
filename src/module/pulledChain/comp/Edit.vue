@@ -2,7 +2,7 @@
   import { mapGetters, mapActions } from 'vuex'
 
   export default {
-    name: 'pulledChainGridEdit',
+    name: 'Edit',
 
     computed: {
       ...mapGetters(['pulledChainProjectSelected'])

@@ -1,12 +1,8 @@
 selected<script>
   import { mapActions, mapGetters } from 'vuex'
 
-  // import oiGridEditSelectionProject from '@/module/project/comp/SelectionProjectGridMult/GridEditSelectionProject.vue'
-
   export default {
-    name: 'EditSelectionProject',
-
-    // components: { oiGridEditSelectionProject },
+    name: 'GridSelection',
 
     data () {
       return {
@@ -16,6 +12,10 @@ selected<script>
       }
     },
 
+    computed: {
+      ...mapGetters(['projectsFilteredByTerm', 'selectedProjects'])
+    },
+
     watch: {
       'selectedProjects': {
         // deep: true,
@@ -23,10 +23,6 @@ selected<script>
           this.selected = this.selectedProjects
         }
       }
-    },
-
-    computed: {
-      ...mapGetters(['projectsFilteredByTerm', 'selectedProjects'])
     },
 
     methods: {
@@ -49,7 +45,6 @@ selected<script>
       confirm: function () {
         this.setSelectedProjects(this.selected)
         this.isUpdate = false
-        this.$emit('confirmSelection')
       }
     }
   }
