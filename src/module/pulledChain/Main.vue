@@ -1,11 +1,11 @@
 <script>
   import { mapActions } from 'vuex'
-  import oiGridShow from './comp/GridShow.vue'
+  import oiShowGrid from './comp/ShowGrid.vue'
   
   export default {
     name: 'pulledChainMain',
 
-    components: { oiGridShow },
+    components: { oiShowGrid },
 
     data () {
       return {
@@ -36,7 +36,7 @@
         />        
       </div>
 
-      <oiGridShow style="padding-top: 2px;"/>
+      <oiShowGrid style="padding-top: 2px;"/>
   </div>
 </template>
 

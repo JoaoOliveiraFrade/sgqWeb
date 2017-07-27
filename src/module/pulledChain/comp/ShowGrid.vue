@@ -4,7 +4,7 @@
   import oiEditButton from './EditButton.vue'
 
   export default {
-    name: 'GridShow',
+    name: 'ShowGrid',
 
     components: { oiEditButton },
 

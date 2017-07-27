@@ -2,7 +2,7 @@
   import { mapGetters } from 'vuex'
 
   export default {
-    name: 'GridSelected',
+    name: 'SelectedGrid',
 
     data () {
       return {

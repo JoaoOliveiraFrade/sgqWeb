@@ -1,11 +1,11 @@
 <script>
   import oiModal from '@/module/modal/comp/Modalx.vue'
-  import oiGridSelected from '@/module/project/comp/SelectionGridMult/GridSelected.vue'
+  import oiSelectedGrid from '@/module/project/comp/SelectionGridMult/SelectedGrid.vue'
 
   export default {
     name: 'SelectedButton',
 
-    components: { oiModal, oiGridSelected }
+    components: { oiModal, oiSelectedGrid }
   }
 </script>
 
@@ -35,7 +35,7 @@
               <hr class="col-xs-12">
           </div>
 
-          <oiGridSelected slot="body"/>
+          <oiSelectedGrid slot="body"/>
         </oiModal>
     </span>
 </template>

@@ -2,7 +2,7 @@ selected<script>
   import { mapActions, mapGetters } from 'vuex'
 
   export default {
-    name: 'GridSelection',
+    name: 'SelectionGrid',
 
     data () {
       return {
