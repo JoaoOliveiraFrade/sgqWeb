@@ -2,8 +2,10 @@
 // import { vuex as defectMonitor } from './defectMonitor'
 import { vuexStore as grouperConsult } from './grouperConsult'
 import { vuexStore as indicatorOfDevelopment } from './indicator/development'
+import { vuexStore as indicatorOfDevelopment2 } from './indicator/development.2'
 import { vuexStore as indicatorOfTest } from './indicator/test'
 import { vuexStore as testManuf } from './testManuf'
+import { vuexStore as devManuf } from './devManuf'
 import { vuexStore as system } from './system'
 import { vuexStore as project } from './project'
 import { vuexStore as auth } from './auth'
@@ -23,8 +25,10 @@ export default {
 export default {
   grouperConsult,
   indicatorOfDevelopment,
+  indicatorOfDevelopment2,
   indicatorOfTest,
   testManuf,
+  devManuf,
   system,
   project,
   auth,
