@@ -99,6 +99,10 @@
                     <a class="oi-menu">Desenvolvimento</a>
                 </router-link>
 
+                <router-link :to="{ name: 'indicatorOfDevelopment2' }" tag="li">
+                    <a class="oi-menu">Desenvolvimento.2</a>
+                </router-link>
+
                 <router-link :to="{ name: 'indicatorOfTest' }" tag="li">
                     <a class="oi-menu">Teste</a>
                 </router-link>
