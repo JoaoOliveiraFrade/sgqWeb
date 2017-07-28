@@ -1,9 +1,16 @@
 <script>
+  import { paths } from '@/environment'
   export default {
     name: 'ProjectGridShow',
 
     props: {
       items: {type: Array}
+    },
+
+    data () {
+      return {
+        pathApp: paths.appDefault
+      }
     },
 
     methods: {
@@ -73,6 +80,7 @@
                 <td class="text-center" style="padding:0; margin:0; border:0; width:26px; white-space: nowrap">
                   <a 
                      href="#"
+
                      :onclick="'window.open(\'' + pathApp + '/projectConsult/show/' + item.subproject + '/' + item.delivery + '\', \'newwindow\', \'\'); return false;'">
                      <i class='glyphicon glyphicon-list-alt' style="padding-top:4px"></i>
                   </a>
