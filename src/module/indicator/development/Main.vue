@@ -1587,7 +1587,7 @@ chartDensityDevManuf<script>
 
       loadJsonDevManufacturers () {
         let _this = this
-        _this.$http.get(paths.apiDefault + '/devManufacturers')
+        _this.$http.get(paths.api + '/devManufacturers')
           .then(
               r => {
                 _this.devManufacturers = r.data
@@ -1597,7 +1597,7 @@ chartDensityDevManuf<script>
       },
       loadJsonSystems () {
         let _this = this
-        _this.$http.get(paths.apiDefault + '/systems')
+        _this.$http.get(paths.api + '/systems')
           .then(
             r => { _this.systems = r.data },
             e => { console.log(e) }
@@ -1605,7 +1605,7 @@ chartDensityDevManuf<script>
       },
       loadJsonProjects () {
         let _this = this
-        _this.$http.get(paths.apiDefault + '/projects')
+        _this.$http.get(paths.api + '/projects')
           .then(
               r => { _this.projects = r.data },
               e => { console.log(e) }
@@ -1613,7 +1613,7 @@ chartDensityDevManuf<script>
       },
       loadJsonDensity () {
         let _this = this
-        _this.$http.get(paths.apiDefault + '/defectsDensity')
+        _this.$http.get(paths.api + '/defectsDensity')
         .then(
             r => {
               _this.density = r.data
@@ -1625,7 +1625,7 @@ chartDensityDevManuf<script>
       },
       loadJsonAverageTime () {
         let _this = this
-        _this.$http.get(paths.apiDefault + '/DefectsMiddleAges')
+        _this.$http.get(paths.api + '/DefectsMiddleAges')
         .then(
             r => {
               _this.averageTime = r.data
@@ -1637,7 +1637,7 @@ chartDensityDevManuf<script>
       },
       loadJsonWrongClassif () {
         let _this = this
-        _this.$http.get(paths.apiDefault + '/defectsWrongClassif')
+        _this.$http.get(paths.api + '/defectsWrongClassif')
         .then(
             r => { _this.wrongClassif = r.data },
             e => { console.log(e) }
@@ -1645,7 +1645,7 @@ chartDensityDevManuf<script>
       },
       loadJsonDetectableInDev () {
         let _this = this
-        _this.$http.get(paths.apiDefault + '/defectsDetectableInDev')
+        _this.$http.get(paths.api + '/defectsDetectableInDev')
         .then(
             r => {
               _this.detectableInDev = r.data
@@ -1657,7 +1657,7 @@ chartDensityDevManuf<script>
       },
       loadJsonReopened () {
         let _this = this
-        _this.$http.get(paths.apiDefault + '/defectsReopened')
+        _this.$http.get(paths.api + '/defectsReopened')
         .then(
             r => {
               _this.reopened = r.data
@@ -1669,7 +1669,7 @@ chartDensityDevManuf<script>
       },
       loadJsonNoPrediction () {
         let _this = this
-        _this.$http.get(paths.apiDefault + '/defectsNoPrediction')
+        _this.$http.get(paths.api + '/defectsNoPrediction')
         .then(
             r => {
               _this.noPrediction = r.data
@@ -2660,7 +2660,7 @@ chartDensityDevManuf<script>
         /*
         let _this = this
 
-        _this.$http.get(paths.apiDefault + '/ping')
+        _this.$http.get(paths.api + '/ping')
         .then(
           r => {
             // if(_this.pingCounter % 2 === 0) {

@@ -2,7 +2,7 @@ import vueResource from '@/http/vueResource'
 // import { paths } from '@/environment'
 import { paths } from '@/environment'
 
-const resource = vueResource.resource(paths.apiDefault + '/iterations/{subproject}/{delivery}')
+const resource = vueResource.resource(paths.api + '/iterations/{subproject}/{delivery}')
 
 // const currentProfile = JSON.parse(window.localStorage.getItem('current-profile'))
 

@@ -10,17 +10,17 @@ import { paths } from '@/environment'
 
 export default {
   getUsers () {
-    let resource = Resource.resource(paths.apiDefault + '/users')
+    let resource = Resource.resource(paths.api + '/users')
     return resource.get()
   },
 
   getUserByCpf (login, cpf) {
-    let resource = Resource.resource(paths.apiDefault + '/userByCpf{/login}{/cpf}')
+    let resource = Resource.resource(paths.api + '/userByCpf{/login}{/cpf}')
     return resource.get({ login: login, cpf: cpf })
   },
 
   getUserByPassword (login, password) {
-    let resource = Resource.resource(paths.apiDefault + '/userBypassword/{/login}{/password}')
+    let resource = Resource.resource(paths.api + '/userBypassword/{/login}{/password}')
     return resource.get({ login: login, password: password })
   }
 }

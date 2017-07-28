@@ -112,7 +112,7 @@
           body: myPage
         }
 
-        this.$http.post(paths.apiDefault + '/SaveImageByHtml', email)
+        this.$http.post(paths.api + '/SaveImageByHtml', email)
       },
 
       selectDefect (defect) {

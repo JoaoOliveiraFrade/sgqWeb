@@ -10,7 +10,7 @@
 
     data () {
       return {
-        pathApp: paths.appDefault
+        pathApp: paths.app
       }
     },
 

@@ -35,11 +35,11 @@
       sendReportByEmail () {
         Toastr.info('E-mail solicitado! Pode continuar a usar a aplicação...', '', { timeOut: 20000 })
 
-        this.email.url = paths.appDefault + '/grouperConsult/reportById/' + this.grouper.id
+        this.email.url = paths.app + '/grouperConsult/reportById/' + this.grouper.id
 
         if (this.emailType === 'Imagem') {
-          // this.email.url = paths.appDefault + '/grouperConsult/report/' + this.grouper.id
-          this.$http.post(paths.apiDefault + '/SendEmailGrouper', this.email).then(r => {
+          // this.email.url = paths.app + '/grouperConsult/report/' + this.grouper.id
+          this.$http.post(paths.api + '/SendEmailGrouper', this.email).then(r => {
             Toastr.success('E-mail enviado!', '', { timeOut: 15000 })
           }, e => {
             Toastr.error('Não foi possível enviar o e-mail. Tente novamente!', '', { timeOut: 15000 })
@@ -50,7 +50,7 @@
             grouper: this.grouper,
             projects: this.grouperProjects
           }
-          this.$http.post(paths.apiDefault + '/SendEmailGrouperHtml', reportGrouper).then(r => {
+          this.$http.post(paths.api + '/SendEmailGrouperHtml', reportGrouper).then(r => {
             Toastr.success('E-mail enviado!', '', { timeOut: 15000 })
           }, e => {
             Toastr.error('Não foi possível enviar o e-mail. Tente novamente!', '', { timeOut: 15000 })

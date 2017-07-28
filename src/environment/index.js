@@ -1,9 +1,7 @@
-import apiAll from './apiPaths'
-import appAll from './appPaths'
+import apiPaths from './apiPaths'
+import appPaths from './appPaths'
 
 export const paths = {
-  apiDefault: apiAll.homologation,
-  appDefault: appAll.homologation
-  // apiAll,
-  // appAll
+  api: apiPaths.local,
+  app: appPaths.local
 }
