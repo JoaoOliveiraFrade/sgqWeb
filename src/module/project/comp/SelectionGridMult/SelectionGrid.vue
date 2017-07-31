@@ -61,14 +61,14 @@ selected<script>
           <button 
             type="button" 
             class="btn btn-xs" 
-            @click="selectAll">Tudo
+            @click="selectAll">Todos
           </button>
 
           <!--  v-show="selected.length > 0" -->
           <button 
             type="button" 
             class="btn btn-xs" 
-            @click="unSelectAll">Nada
+            @click="unSelectAll">Nenhum
           </button>
 
           <button 

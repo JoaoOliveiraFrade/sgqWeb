@@ -37,5 +37,4 @@ export const setSelectedSystems = ({ commit, getters, dispatch }, selectedSystem
   })
 
   dispatch('setSelectedProjects', [])
-  dispatch('setIndicatorOfTestIsShow', false)
 }

@@ -23,5 +23,9 @@ export default {
 
   [types.project] (state, data) {
     state.project = data
+  },
+
+  [types.projectConfirmed] (state, value) {
+    state.projectConfirmed = value
   }
 }

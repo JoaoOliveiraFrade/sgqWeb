@@ -12,5 +12,7 @@ export default {
   projectsByTestManufsAndSystems: [],
   projectsByTestManufsAndSystemsLoading: false,
   selectedProjects: [],
-  project: {}
+  project: {},
+
+  projectConfirmed: false
 }

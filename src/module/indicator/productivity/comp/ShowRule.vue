@@ -2,7 +2,7 @@ selected<script>
   import oiModal from '@/module/modal/comp/Modalx.vue'
 
   export default {
-    name: 'ProdutivityIndShowRule',
+    name: 'ShowRule',
 
     components: { oiModal }
   }
@@ -14,10 +14,10 @@ selected<script>
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
-        data-target="#ProdutivityIndShowRule">Regra
+        data-target="#ProdutivityShowRule">Regra
     </button>
 
-    <oiModal id="ProdutivityIndShowRule">
+    <oiModal id="ProdutivityShowRule">
       <div style="margin:0; border:0; padding:0" slot="header">
         <div class="col-xs-1" style="padding:0; margin:0; border:0">
           <a class="btn btn-primary btn-xs"   
@@ -36,7 +36,7 @@ selected<script>
 
       <div style="margin:0; padding:10px" slot="body">
         <label class="fd-label">
-          Quantidade de <b>Execuções PASSED + FAILED</b>, dos Casos de Testes da etapa de <b>TI</b>, e que atenda aos filtros definidos para as Fáb. Teste, Sistema e Projeto.
+          Quantidade de Execuções (PASSED + FAILED) dos Casos de Testes de TI, que atenda aos filtros definidos (Fáb. Teste, Sistema e Projeto).
         </label>
       </div>
     </oiModal>

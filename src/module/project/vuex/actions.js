@@ -29,10 +29,12 @@ export const loadProjectsByTestManufsAndSystems = ({ commit }, parameter) => {
 export const setProjectFilterTerm = ({ commit }, filterTerm) => {
   commit(types.projectFilterTerm, filterTerm)
 }
-export const setSelectedProjects = ({ commit, dispatch }, selectedProjects) => {
+export const setSelectedProjects = ({ commit }, selectedProjects) => {
   commit(types.selectedProjects, selectedProjects)
 
   if (selectedProjects.length > 0) {
-    dispatch('setIndicatorOfTestIsShow', true)
+    commit(types.projectConfirmed, true)
+  } else {
+    commit(types.projectConfirmed, false)
   }
 }

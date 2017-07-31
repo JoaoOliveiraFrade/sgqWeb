@@ -36,7 +36,7 @@ import { routes as cadGrouper } from './cadGrouper'
 import { routes as cadProject } from './cadProject'
 import { routes as indicatorOfDevelopment } from './indicator/development'
 import { routes as indicatorOfDevelopment2 } from './indicator/development.2'
-import { routes as indicatorOfTest } from './indicator/test'
+import { routes as indicatorTest } from './indicator/test'
 import { routes as cep } from './cep'
 import { routes as count } from './count'
 import { routes as home } from './home'
@@ -52,7 +52,7 @@ export default [
   ...cadProject,
   ...indicatorOfDevelopment,
   ...indicatorOfDevelopment2,
-  ...indicatorOfTest,
+  ...indicatorTest,
   ...cep,
   ...count,
   ...home,

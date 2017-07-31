@@ -1,9 +1,7 @@
 export default {
-  // indicatorOfTestIsShow: false,
+  produtivitys: [],
+  produtivityLoading: false,
 
-  // produtivityIndAllFiltered: [],
-  // produtivityIndChartTestManufSelected: '',
-  // produtivityIndChartSystemSelected: '',
-
-  // rateRejectionEvidenceIndAllFiltered: []
+  produtivityChartTestManufSelected: '',
+  produtivityChartSystemSelected: ''
 }

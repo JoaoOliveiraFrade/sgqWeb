@@ -7,6 +7,7 @@
         title: {type: String},
         dataSource: {type: Array},
         itemsSelected: {type: Array},
+        gender: { type: String },
         onStart: {type: Function}
        // onConfirm: {type: Function}
       },
@@ -65,14 +66,14 @@
             type="button" 
             id="selectAll" 
             class="btn btn-xs"
-            @click="selectAll()">Tudo
+            @click="selectAll()">{{ gender === 'male' ? 'Todos' : 'Todas'}}
         </button>
         
         <button 
             type="button" 
             id="unSelectAll" 
             class="btn btn-xs" 
-            @click="unSelectAll()">Nada
+            @click="unSelectAll()">{{ gender === 'male' ? 'Nenhum' : 'Nenhuma' }}
         </button>
         
         <button 

@@ -1,26 +1,45 @@
-selected<script>
-  import oiChartProductivityIndTotal from '@/module/indicator/productivity/comp/ChartProductivityIndTotal.vue'
-  import oiChartProductivityIndGroupTestManuf from '@/module/indicator/productivity/comp/ChartProductivityIndGroupTestManuf.vue'
-  import oiChartProductivityIndGroupTimeline from '@/module/indicator/productivity/comp/ChartProductivityIndGroupTimeline.vue'
+<script>
+  import { mapGetters, mapActions } from 'vuex'
 
-  import oiProductivityIndShowRule from '@/module/indicator/productivity/comp/ProductivityIndShowRule.vue'
-  import oiProductivityIndShowAnalytic from '@/module/indicator/productivity/comp/ProductivityIndShowAnalytic.vue'
+  import oiProductivityShowChartGroupTestManuf from '@/module/indicator/productivity/comp/ShowChartGroupTestManuf.vue'
+  import oiProductivityShowChartGroupTimeline from '@/module/indicator/productivity/comp/ShowChartGroupTimeline.vue'
+  import oiProductivityShowChartTotal from '@/module/indicator/productivity/comp/ShowChartTotal.vue'
+  import oiProductivityShowRule from '@/module/indicator/productivity/comp/ShowRule.vue'
+  import oiProductivityShowAnalytic from '@/module/indicator/productivity/comp/ShowAnalytic.vue'
 
-  import oiRateRejectionEvidenceIndShowRule from '@/module/indicator/rateRejectionEvidence/comp/RateRejectionEvidenceIndShowRule.vue'
-  import oiRateRejectionEvidenceIndShowAnalytic from '@/module/indicator/rateRejectionEvidence/comp/RateRejectionEvidenceIndShowAnalytic.vue'
+  import oiRateEvidRejectedShowChartTotal from '@/module/indicator/rateEvidRejected/comp/ShowChartTotal.vue'
+  import oiRateEvidRejectedShowRule from '@/module/indicator/rateEvidRejected/comp/ShowRule.vue'
+  import oiRateEvidRejectedShowAnalytic from '@/module/indicator/rateEvidRejected/comp/ShowAnalytic.vue'
 
   export default {
-    name: 'ShowDataIndicatorTest',
+    name: 'ShowData',
+
+    computed: {
+      ...mapGetters(['selectedProjects', 'produtivityLoading', 'rateEvidRejectedLoading'])
+    },
+
+    methods: {
+      ...mapActions(['loadProdutivity', 'loadRateEvidRejected'])
+    },
 
     components: {
-      oiChartProductivityIndTotal,
-      oiChartProductivityIndGroupTestManuf,
-      oiChartProductivityIndGroupTimeline,
-      oiProductivityIndShowRule,
-      oiProductivityIndShowAnalytic,
+      oiProductivityShowChartGroupTestManuf,
+      oiProductivityShowChartGroupTimeline,
+      oiProductivityShowChartTotal,
+      oiProductivityShowRule,
+      oiProductivityShowAnalytic,
+      oiRateEvidRejectedShowChartTotal,
+      oiRateEvidRejectedShowRule,
+      oiRateEvidRejectedShowAnalytic
+    },
 
-      oiRateRejectionEvidenceIndShowRule,
-      oiRateRejectionEvidenceIndShowAnalytic
+    watch: {
+      'selectedProjects': {
+        handler () {
+          this.loadProdutivity()
+          this.loadRateEvidRejected()
+        }
+      }
     }
   }
 </script>
@@ -28,8 +47,8 @@ selected<script>
 <template>
   <div>
     <ul class="nav nav-tabs" style="margin-top:3px">
-      <li class="active"><a data-toggle="tab" href="#produtivityInd" style="padding:4px">Produtividade</a></li>
-      <li><a data-toggle="tab" href="#rateRejectionEvidenceInd" style="padding:4px">Taxa Rejeição Evidência</a></li>
+      <li class="active"><a data-toggle="tab" href="#produtivity" style="padding:4px">Produtividade</a></li>
+      <li><a data-toggle="tab" href="#rateEvidRejected" style="padding:4px">Taxa Rejeição Evidência</a></li>
       <li><a data-toggle="tab" href="#rateUnfoundedDefectInd" style="padding:4px">Taxa Defeito Improcedente</a></li>
       <li><a data-toggle="tab" href="#rateUatDefectsInd" style="padding:4px">Taxa Defeito UAT</a></li>
       <li><a data-toggle="tab" href="#averageReTestTimeInd" style="padding:4px">Tempo Médio Re-Teste</a></li>
@@ -37,42 +56,47 @@ selected<script>
 
     <div class="tab-content">
 
-      <div id="produtivityInd" class="tab-pane fade in active" style="padding:0; margin:0; text-align: right">
-        <oiProductivityIndShowRule style="text-align: left"/>
-        <oiProductivityIndShowAnalytic style="text-align: left"/>
+      <div id="produtivity" class="tab-pane fade in active" style="padding:0; margin:0; text-align: right">
+        <oiProductivityShowRule style="text-align: left"/>
+        <oiProductivityShowAnalytic style="text-align: left"/>
 
-        <div class="row" style="margin:0; border:0; padding:0">
+        <div class="loader" v-show="produtivityLoading" style="margin-top: 25px;margin-bottom: 25px"></div>        
+        <div class="row" v-show="!produtivityLoading" style="margin:0; border:0; padding:0">
           <div class="col-sm-4">
-            <oiChartProductivityIndGroupTestManuf/>
+            <oiProductivityShowChartGroupTestManuf/>
           </div>
 
           <div class="col-sm-4">
-            <oiChartProductivityIndGroupTimeline/>
+            <oiProductivityShowChartGroupTimeline/>
           </div>
 
           <div class="col-sm-4">
-            <oiChartProductivityIndTotal/>
+            <oiProductivityShowChartTotal/>
           </div>
         </div>
+
       </div>
 
-      <div id="rateRejectionEvidenceInd" class="tab-pane fade" style="padding:0; margin:0; text-align: right">
-        <oiRateRejectionEvidenceIndShowRule style="text-align: left"/>
-        <oiRateRejectionEvidenceIndShowAnalytic style="text-align: left"/>
+      <div id="rateEvidRejected" class="tab-pane fade" style="padding:0; margin:0; text-align: right">
+        <oiRateEvidRejectedShowRule style="text-align: left"/>
+        <oiRateEvidRejectedShowAnalytic style="text-align: left"/>
 
+        <div class="loader" v-show="rateEvidRejectedLoading" style="margin-top: 25px;margin-bottom: 25px"></div>        
+        <!--
         <div class="row" style="margin:0; border:0; padding:0">
           <div class="col-sm-4">
-            <oiChartProductivityIndGroupTestManuf/>
+            <oRateEvidRejectedShowChartGroupTestManuf/>
           </div>
 
           <div class="col-sm-4">
-            <oiChartProductivityIndGroupTimeline/>
+            <oRateEvidRejectedShowChartGroupTimeline/>
           </div>
+        -->  
 
           <div class="col-sm-4">
-            <oiChartProductivityIndTotal/>
+            <oiRateEvidRejectedShowChartTotal/>
           </div>
-        </div>        
+        </div>
       </div>
 
       <div id="rateUnfoundedDefectInd" class="tab-pane fade">
@@ -103,5 +127,21 @@ selected<script>
       border: 0px;
       padding: 0px;
       margin-top: 2px;
-  }   
+  }
+  .loader {
+      margin: auto;
+      width: 50%;
+      border: 16px solid #f3f3f3; /* Light grey */
+      border-top: 16px solid #3498db; /* Blue */
+      border-bottom: 16px solid #3498db;
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      animation: spin 2s linear infinite;
+  }
+
+  @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+  }    
 </style>

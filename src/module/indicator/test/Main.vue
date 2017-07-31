@@ -12,7 +12,7 @@
     components: { oiSelectionTestManuf, oiSelectionSystem, oiSelectionProject, oiShowData },
 
     computed: {
-      ...mapGetters(['selectedTestManufs', 'selectedSystems', 'indicatorOfTestIsShow'])
+      ...mapGetters(['selectedTestManufs', 'selectedSystems', 'projectConfirmed'])
     },
 
     methods: {
@@ -33,6 +33,7 @@
         :isShowButtonSelected="true"
       />
     </div>
+
     <div class="row well well-sm oi-well" style="margin-bottom:3px" v-if="selectedTestManufs.length > 0">
       <oiSelectionSystem
         :isShowButtonSelected="true"
@@ -44,8 +45,9 @@
     </div>
 
     <div class="row well well-sm oi-well" style="margin-bottom:3px">
-      <oiShowData v-show="indicatorOfTestIsShow"/>
+      <oiShowData v-show="projectConfirmed"/>
     </div>
+
   </div> 
 </template>
 
@@ -62,5 +64,5 @@
     padding: 3px;
     margin: 0;
     border: 0;
-  }    
+  }
 </style>

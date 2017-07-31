@@ -1,12 +1,10 @@
 <script>
   import { mapGetters } from 'vuex'
-
   import Highcharts from 'highcharts'
-
   import chartStandParam from '@/module/chart/comp/types/Total'
 
   export default {
-    name: 'ChartRateRejectionsEvidenceIndTotal',
+    name: 'ShowChartTotal',
 
     data () {
       return {
@@ -16,7 +14,7 @@
     },
 
     computed: {
-      ...mapGetters(['produtivityIndTotal'])
+      ...mapGetters(['produtivityTotal'])
     },
 
     updated () {
@@ -29,11 +27,11 @@
         this.chartParam.title.text = 'Total'
         this.chartParam.yAxis.title.text = 'Qte<br>Exec.'
         this.chartParam.plotOptions.gauge.dataLabels.format = '{point.y:.0f}'
-        this.chartParam.yAxis.max = this.produtivityIndTotal.productivity
+        this.chartParam.yAxis.max = this.produtivityTotal.productivity
 
         this.chartParam.yAxis.plotBands = [
-          {from: 0, to: this.produtivityIndTotal.passed, color: '#00CC00'},
-          {from: this.produtivityIndTotal.passed, to: this.produtivityIndTotal.productivity, color: '#FF3300'}
+          {from: 0, to: this.produtivityTotal.passed, color: '#00CC00'},
+          {from: this.produtivityTotal.passed, to: this.produtivityTotal.productivity, color: '#FF3300'}
         ]
 
         // this.parameters.yAxis.plotBands = [
@@ -43,11 +41,11 @@
         //   {from: 30, to: this.parameters.yAxis.max, color: '#FF3300'}
         // ]
 
-        this.chartParam.tooltip.pointFormat = 'Passed: ' + this.produtivityIndTotal.passed + '<br>' +
-          'Failed: ' + this.produtivityIndTotal.failed + '<br>' +
-          'Total: ' + this.produtivityIndTotal.productivity
+        this.chartParam.tooltip.pointFormat = 'Passed: ' + this.produtivityTotal.passed + '<br>' +
+          'Failed: ' + this.produtivityTotal.failed + '<br>' +
+          'Total: ' + this.produtivityTotal.productivity
 
-        this.chartParam.series = [ { name: 'Total', colorByPoint: true, data: [ this.produtivityIndTotal.productivity ] } ]
+        this.chartParam.series = [ { name: 'Total', colorByPoint: true, data: [ this.produtivityTotal.productivity ] } ]
       }
     }
   }
@@ -55,6 +53,6 @@
 
 <template>
   <div style="width:250px; height:250px; margin:0 auto">
-    {{produtivityIndTotal.productivity}}
+    {{produtivityTotal.productivity}}
   </div>
 </template>

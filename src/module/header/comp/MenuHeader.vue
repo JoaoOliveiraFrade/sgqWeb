@@ -103,7 +103,7 @@
                     <a class="oi-menu">Desenvolvimento.2</a>
                 </router-link>
 
-                <router-link :to="{ name: 'indicatorOfTest' }" tag="li">
+                <router-link :to="{ name: 'indicatorTest' }" tag="li">
                     <a class="oi-menu">Teste</a>
                 </router-link>
             </ul>

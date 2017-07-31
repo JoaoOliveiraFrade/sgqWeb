@@ -25,3 +25,5 @@ export const projectsFilteredByTerm = ({ projectsByTestManufsAndSystems, project
 }
 
 export const project = ({ project }) => project
+
+export const projectConfirmed = ({ projectConfirmed }) => projectConfirmed

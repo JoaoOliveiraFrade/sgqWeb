@@ -2,10 +2,10 @@
   import { mapGetters } from 'vuex'
 
   export default {
-    name: 'ProdutivityIndShowAnalyticGrid',
+    name: 'ShowAnalyticGrid',
 
     computed: {
-      ...mapGetters(['produtivityIndFilteredByChart'])
+      ...mapGetters(['rateEvidRejectedFilteredByChart'])
     }
   }
 
@@ -40,28 +40,49 @@
                     </a>
                 </font>
             </th>
+
             <th style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
-                <font size="2" class="text-nowrap">Passed
+                <font size="2" class="text-nowrap">Evid. TI
                     <a href="#" @click.prevent="setOrder('Passed')">
                     </a>
                 </font>
             </th>
             <th style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
-                <font size="2" class="text-nowrap">Failed
+                <font size="2" class="text-nowrap">Rej. TI
                     <a href="#" @click.prevent="setOrder('Failed')">
                     </a>
                 </font>
             </th>
+
             <th style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
-                <font size="2" class="text-nowrap">Produtividade
-                    <a href="#" @click.prevent="setOrder('productivity')">
+                <font size="2" class="text-nowrap">Evid. UAT
+                    <a href="#" @click.prevent="setOrder('Passed')">
+                    </a>
+                </font>
+            </th>
+            <th style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
+                <font size="2" class="text-nowrap">Rej. UAT
+                    <a href="#" @click.prevent="setOrder('Failed')">
+                    </a>
+                </font>
+            </th>
+
+            <th style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
+                <font size="2" class="text-nowrap">Evid. Total
+                    <a href="#" @click.prevent="setOrder('Passed')">
+                    </a>
+                </font>
+            </th>
+            <th style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
+                <font size="2" class="text-nowrap">Rej. Total
+                    <a href="#" @click.prevent="setOrder('Failed')">
                     </a>
                 </font>
             </th>
         </tr>
     </thead>
 
-    <tbody v-for="item in produtivityIndFilteredByChart">
+    <tbody v-for="item in rateEvidRejectedFilteredByChart">
         <tr style="padding:0">
             <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: center">
                 <font size="2">{{item.monthYear}}</font>
@@ -78,17 +99,26 @@
             <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: center">
                 <font size="2">{{item.subprojectDelivery}}</font>
             </td style="padding:0">
-
             <td style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
-                <font size="2">{{item.passed}}</font>
+                <font size="2">{{item.tiEvidences}}</font>
             </td style="padding:0">
 
             <td style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
-                <font size="2">{{item.failed}}</font>
+                <font size="2">{{item.tiRejections}}</font>
+            </td style="padding:0">
+            <td style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
+                <font size="2">{{item.uatEvidences}}</font>
             </td style="padding:0">
 
             <td style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
-                <font size="2">{{item.productivity}}</font>
+                <font size="2">{{item.uatRejections}}</font>
+            </td style="padding:0">
+
+            <td style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
+                <font size="2">{{item.totalEvidences}}</font>
+            </td style="padding:0">
+            <td style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
+                <font size="2">{{item.totalRejections}}</font>
             </td style="padding:0">
         </tr>
     </tbody> 

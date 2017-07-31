@@ -10,7 +10,7 @@
   import chartStandParam from '@/module/chart/comp/types/drillDown'
 
   export default {
-    name: 'ChartProdutivityIndGroupTestManuf',
+    name: 'ShowChartGroupTestManuf',
 
     data () {
       return {
@@ -20,7 +20,7 @@
     },
 
     computed: {
-      ...mapGetters(['produtivityIndGroupTestManuf', 'produtivityIndByTestManufGroupSystem', 'produtivityIndChartTitle'])
+      ...mapGetters(['produtivityGroupTestManuf', 'produtivityByTestManufGroupSystem', 'produtivityChartTitle'])
     },
 
     updated () {
@@ -29,7 +29,7 @@
     },
 
     methods: {
-      ...mapActions(['produtivityIndChartChangeFilter']),
+      ...mapActions(['produtivityChartChangeFilter']),
 
       setChartParam () {
         this.chartParam.title.text = 'Fáb.Teste / Sistema'
@@ -42,7 +42,7 @@
           {
             name: 'produtividade',
             colorByPoint: true,
-            data: this.produtivityIndGroupTestManuf.map(i => ({
+            data: this.produtivityGroupTestManuf.map(i => ({
               name: i.testManuf.charAt(0).toUpperCase() + i.testManuf.slice(1).toLowerCase(),
               y: i.productivity,
               drilldown: i.testManuf
@@ -51,10 +51,10 @@
         ]
 
         this.chartParam.drilldown = {
-          series: this.produtivityIndGroupTestManuf.map(i => ({
+          series: this.produtivityGroupTestManuf.map(i => ({
             name: i.testManuf,
             id: i.testManuf,
-            data: this.produtivityIndByTestManufGroupSystem(i.testManuf).map(s => [ s.system.charAt(0).toUpperCase() + s.system.slice(1).toLowerCase(), s.productivity ])
+            data: this.produtivityByTestManufGroupSystem(i.testManuf).map(s => [ s.system.charAt(0).toUpperCase() + s.system.slice(1).toLowerCase(), s.productivity ])
           }))
         }
 
@@ -62,15 +62,15 @@
 
         this.chartParam.plotOptions.bar.events = {
           click: function (event) {
-            self.produtivityIndChartChangeFilter(event.point.name.toUpperCase())
-            self.chart.setTitle({text: self.produtivityIndChartTitle})
+            self.produtivityChartChangeFilter(event.point.name.toUpperCase())
+            self.chart.setTitle({text: self.produtivityChartTitle})
           }
         }
 
         this.chartParam.chart.events = {
           drillup: function (e) {
-            self.produtivityIndChartChangeFilter('')
-            self.chart.setTitle({text: self.produtivityIndChartTitle})
+            self.produtivityChartChangeFilter('')
+            self.chart.setTitle({text: self.produtivityChartTitle})
           }
         }
       }
@@ -80,7 +80,7 @@
 
 <template> 
   <div style="width:250px; height:350px; margin:0 auto">
-    <pre>{{produtivityIndGroupTestManuf}}</pre>
+    <pre>{{produtivityGroupTestManuf}}</pre>
   </div>
 </template>
 

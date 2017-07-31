@@ -8,3 +8,6 @@ export const projectsByTestManufsAndSystemsLoading = 'project/projectsByTestManu
 export const selectedProjects = 'project/selectedProjects'
 
 export const project = 'project/project'
+
+export const projectConfirmed = 'project/projectConfirmed'
+

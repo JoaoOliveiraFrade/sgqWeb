@@ -1,6 +1,5 @@
-// export const indicatorOfTestIsShow = 'indicatorOfTest/indicatorIsShow'
+export const produtivitys = 'productivity/produtivitys'
+export const produtivityLoading = 'productivity/produtivityLoading'
 
-// export const produtivityIndAllFiltered = 'indicatorOfTest/produtivityIndAllFiltered'
-// export const produtivityIndChartTestManufSelected = 'indicatorOfTest/produtivityIndChartTestManufSelected'
-// export const produtivityIndChartSystemSelected = 'indicatorOfTest/produtivityIndChartSystemSelected'
-// export const rateRejectionEvidenceIndAllFiltered = 'indicatorOfTest/rateRejectionEvidenceIndAllFiltered'
+export const produtivityChartTestManufSelected = 'productivity/produtivityChartTestManufSelected'
+export const produtivityChartSystemSelected = 'productivity/produtivityChartSystemSelected'

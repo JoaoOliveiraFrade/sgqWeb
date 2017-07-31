@@ -15,5 +15,4 @@ export const setSelectedTestManufs = ({ commit, dispatch }, selectedTestManufs) 
   commit(types.selectedTestManufs, selectedTestManufs)
   dispatch('loadSystemsByTestManufs', selectedTestManufs)
   dispatch('setSelectedSystems', [])
-  dispatch('setIndicatorOfTestIsShow', false)
 }

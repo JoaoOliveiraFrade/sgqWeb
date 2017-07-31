@@ -99,6 +99,7 @@
           :title="title"
           :dataSource="dataSource"
           :itemsSelected="itemsSelected_"
+          :gender="gender"
           @onChangeSelected="changeSelected">
       </editSelections> 
 
