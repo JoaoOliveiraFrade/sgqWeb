@@ -1,10 +1,10 @@
 import * as types from './mutationsTypes'
 
 export default {
-  [types.setDevManufs] (state, devManufs) {
-    state.devManufs = devManufs
+  [types.devManufs] (state, data) {
+    state.devManufs = data
   },
-  [types.setSelectedDevManufs] (state, selectedDevManufs) {
-    state.selectedDevManufs = selectedDevManufs
+  [types.selectedDevManufs] (state, data) {
+    state.selectedDevManufs = data
   }
 }

@@ -9,13 +9,16 @@ export const loadSystems = ({ commit }, selectedTestManuf) => {
       },
       e => console.log(e)
     )
-  // services.getSystemsByTestManuf(selectedTestManuf)
-  //   .then(
-  //     r => {
-  //       commit(types.setSystems, r.data)
-  //     },
-  //     e => console.log(e)
-  //   )
+}
+
+export const loadDevSystems = ({ commit }, selectedDevManuf) => {
+  services.getAll()
+    .then(
+      r => {
+        commit(types.devSystems, r.data)
+      },
+      e => console.log(e)
+    )
 }
 
 export const loadSystemsByTestManufs = ({ commit }, selectedTestManufs) => {
@@ -26,6 +29,27 @@ export const loadSystemsByTestManufs = ({ commit }, selectedTestManufs) => {
       },
       e => console.log(e)
     )
+}
+
+export const loadSystemsByDevManufs = ({ commit }, selectedDevManufs) => {
+  services.getSystemsByDevManufs(selectedDevManufs)
+    .then(
+      r => {
+        commit(types.systemsByDevManufs, r.data)
+      },
+      e => console.log(e)
+    )
+}
+
+export const setSelectedDevSystems = ({ commit, getters, dispatch }, selectedDevSystems) => {
+  commit(types.selectedDevSystems, selectedDevSystems)
+
+ // dispatch('loadProjectsByDevManufsAndSystems', {
+ //   selectedDevManuf: getters.selectedDevManuf,
+ //   selectedDevSystem: getters.selectedDevSystem
+ // })
+
+ // dispatch('setSelectedDevProjects', [])
 }
 
 export const setSelectedSystems = ({ commit, getters, dispatch }, selectedSystems) => {
