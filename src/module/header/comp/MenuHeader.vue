@@ -1,5 +1,5 @@
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
   
   export default {
     name: 'MenuHeader',
@@ -8,6 +8,8 @@
       }
     },
     methods: {
+      ...mapGetters(['logOff']),
+      
       logoff () {
         this.collapseMenuMobile()
         this.$router.push('/')
@@ -145,13 +147,10 @@
                 </router-link>
             </ul>
         </li>
-    </ul>
 
         
 
     
-        <!--
-
         <li class="dropdown">
           <a href="#" 
             style="margin:0;padding:0;border:0"
@@ -159,13 +158,8 @@
             data-toggle="dropdown" 
             role="button" 
             aria-haspopup="true" 
-            aria-expanded="false"
-          >
-            &nbsp;
-            <span class="glyphicon glyphicon-user"/>
-            
-            {{currentUser.name}}
-            <span class="caret"/>&nbsp;
+            aria-expanded="false">
+            <span class="glyphicon glyphicon-user"/> {{currentUser.name}} <span class="caret"/>
           </a>
 
           <ul class="dropdown-menu">
@@ -173,12 +167,11 @@
               <a class="oi-menu" @click="logoff">Sair</a>
             </li>
 
-            <router-link :to="{ name: 'auth' }" tag="li" @click.native="collapseMenuMobile" v-show="!isLogged">
+            <router-link v-show="!isLogged" :to="{ name: 'auth' }" tag="li" @click.native="collapseMenuMobile" >
               <a class="oi-menu">Entrar</a>
             </router-link>
           </ul>
         </li>        
-        -->
     </ul>
 </template>
 

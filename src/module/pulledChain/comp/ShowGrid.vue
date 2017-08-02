@@ -1,12 +1,13 @@
 <script>
   import { mapGetters, mapActions } from 'vuex'
 
+  import oiShowButton from './ShowButton.vue'
   import oiEditButton from './EditButton.vue'
 
   export default {
     name: 'ShowGrid',
 
-    components: { oiEditButton },
+    components: { oiShowButton, oiEditButton },
 
     computed: {
       ...mapGetters(['pulledChainProjectsFilteredByTerm'])
@@ -50,6 +51,7 @@
         <tbody v-for="item in pulledChainProjectsFilteredByTerm">
             <tr>
                 <td rowspan=3 style="white-space: nowrap; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
+                    <oiShowButton :project="item"/>
                     <oiEditButton :project="item"/>
                 </td>
                 <td rowspan=3 style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">

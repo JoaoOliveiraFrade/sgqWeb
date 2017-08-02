@@ -23,7 +23,7 @@ export const rateEvidRejectedGroupTestManuf = ({ rateEvidRejected }) => {
       })
     }
   })
-  return result.sort((a, b) => a.productivity > b.productivity ? 1 : -1)
+  return result.filter(r => r.totalRejections > 0).sort((a, b) => a.totalRejections > b.totalRejections ? 1 : -1)
 }
 
 export const rateEvidRejectedByTestManufGroupSystem = ({ rateEvidRejected }) => (testManuf) => {
@@ -49,7 +49,7 @@ export const rateEvidRejectedByTestManufGroupSystem = ({ rateEvidRejected }) => 
       })
     }
   })
-  return result.sort((a, b) => a.productivity > b.productivity ? 1 : -1)
+  return result.filter(r => r.totalRejections > 0).sort((a, b) => a.totalRejections > b.totalRejections ? 1 : -1)
 }
 
 export const rateEvidRejectedFilteredByChart = ({ rateEvidRejected, rateEvidRejectedChartTestManufSelected, rateEvidRejectedChartSystemSelected }) => {

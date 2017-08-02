@@ -36,7 +36,7 @@ selected<script>
 
       <div style="margin:0; padding:10px" slot="body">
         <label class="fd-label">
-          Quantidade de Casos de Testes (PASSED), da etapa de TI, diferente de MASSA, que tenha sido REJEITADO e que atenda aos filtros definidos (Fáb. Teste, Sistema e Projeto).
+          Quantidade de REJEIÇÕES de CTs de TI, PASSED e diferentes de MASSA.
         </label>
       </div>
     </oiModal>

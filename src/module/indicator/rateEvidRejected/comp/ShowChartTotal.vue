@@ -25,9 +25,13 @@
 
     methods: {
       setChartParam () {
+        let percTiRejections = this.rateEvidRejectedTotal.tiRejections / (this.rateEvidRejectedTotal.tiEvidences ? this.rateEvidRejectedTotal.tiEvidences : 1) * 100
+        let percUatRejections = this.rateEvidRejectedTotal.uatRejections / (this.rateEvidRejectedTotal.uatEvidences ? this.rateEvidRejectedTotal.uatEvidences : 1) * 100
+        let percTotalRejections = this.rateEvidRejectedTotal.totalRejections / (this.rateEvidRejectedTotal.totalEvidences ? this.rateEvidRejectedTotal.totalEvidences : 1) * 100
+
         this.chartParam.title.text = 'Total'
-        this.chartParam.yAxis.title.text = 'Qte<br>CTs.'
-        this.chartParam.plotOptions.gauge.dataLabels.format = '{point.y:.0f}'
+        this.chartParam.yAxis.title.text = 'Qte<br>Rej.'
+        this.chartParam.plotOptions.gauge.dataLabels.format = '{point.y:.0f}' + '<br>' + percTotalRejections.toFixed(0) + '%'
         this.chartParam.yAxis.max = this.rateEvidRejectedTotal.totalEvidences
 
         this.chartParam.yAxis.plotBands = [
@@ -44,14 +48,14 @@
 
         this.chartParam.tooltip.pointFormat = '' +
           'TI<br>' +
-          ' -Evidências: ' + this.rateEvidRejectedTotal.tiEvidences + '<br>' +
-          ' -Rejeições : ' + this.rateEvidRejectedTotal.tiRejections + '<br>' +
+          ' - Evidências: ' + this.rateEvidRejectedTotal.tiEvidences + '<br>' +
+          ' - Rejeições : ' + this.rateEvidRejectedTotal.tiRejections + '(' + percTiRejections.toFixed(2) + '%)<br>' +
           'UAT<br>' +
-          ' -Evidências: ' + this.rateEvidRejectedTotal.uatEvidences + '<br>' +
-          ' -Rejeições : ' + this.rateEvidRejectedTotal.uatRejections + '<br>' +
-          'Total<br>' +
-          ' -Evidências: ' + this.rateEvidRejectedTotal.totalEvidences + '<br>' +
-          ' -Rejeições : ' + this.rateEvidRejectedTotal.totalRejections
+          ' - Evidências: ' + this.rateEvidRejectedTotal.uatEvidences + '<br>' +
+          ' - Rejeições : ' + this.rateEvidRejectedTotal.uatRejections + '(' + percUatRejections.toFixed(2) + '%)<br>' +
+          'TOTAL<br>' +
+          ' - Evidências: ' + this.rateEvidRejectedTotal.totalEvidences + '<br>' +
+          ' - Rejeições : ' + this.rateEvidRejectedTotal.totalRejections + '(' + percTotalRejections.toFixed(2) + '%)'
 
         this.chartParam.series = [ { name: 'Total', colorByPoint: true, data: [ this.rateEvidRejectedTotal.totalRejections ] } ]
       }

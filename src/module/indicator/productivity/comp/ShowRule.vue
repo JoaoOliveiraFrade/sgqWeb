@@ -36,7 +36,7 @@ selected<script>
 
       <div style="margin:0; padding:10px" slot="body">
         <label class="fd-label">
-          Quantidade de Execuções (PASSED + FAILED) dos Casos de Testes de TI, que atenda aos filtros definidos (Fáb. Teste, Sistema e Projeto).
+          Quantidade de Execuções (PASSED + FAILED) de CTs de TI.
         </label>
       </div>
     </oiModal>
