@@ -5,15 +5,14 @@ export const loadDevManufs = ({ commit }) => {
   services.getAll()
     .then(
       r => {
-        commit(types.setDevManufs, r.data)
+        commit(types.devManufs, r.data)
       },
       e => console.log(e)
     )
 }
 
 export const setSelectedDevManufs = ({ commit, dispatch }, selectedDevManufs) => {
-  commit(types.setSelectedDevManufs, selectedDevManufs)
+  commit(types.selectedDevManufs, selectedDevManufs)
   dispatch('loadSystemsByDevManufs', selectedDevManufs)
-  dispatch('setSelectedSystems', [])
-  dispatch('setIndicatorOfDevIsShow', false)
+ // dispatch('setSelectedDevSystems', [])
 }

@@ -2,22 +2,19 @@
   import { mapActions, mapGetters } from 'vuex'
 
   import oiSelectionDevManuf from '@/module/devManuf/comp/SelectionDevManuf.vue'
+  import oiSelectionSystem from '@/module/system/comp/SelectionByDevManufs.vue'
 
   export default {
     name: 'indicatorOfDevMain',
 
-    components: { oiSelectionDevManuf },
+    components: { oiSelectionDevManuf, oiSelectionSystem },
 
     computed: {
-      ...mapGetters(['selectedDevManufs'])
+      ...mapGetters(['selectedDevManufs', 'selectedSystems'])
     },
 
     methods: {
-      ...mapActions(['setFeatureName']),
-
-      loadData () {
-        // this.isShowindicator = true
-      }
+      ...mapActions(['setFeatureName'])
     },
 
     mounted () {
@@ -34,7 +31,11 @@
         :isShowButtonSelected="true"
       />
     </div>
-
+    <div class="row well well-sm oi-well" style="margin-bottom:3px" v-if="selectedDevManufs.length > 0">
+      <oiSelectionSystem
+        :isShowButtonSelected="true"
+      />
+    </div>
   </div> 
 </template>
 
