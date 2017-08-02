@@ -3,6 +3,8 @@
   // import { mapActions } from '@/module/auth/vuexModule'
   // import store from '@/vuexStore'
   // import { logon } from 'vuex'
+  import Toastr from 'toastr'
+
   import { mapActions } from 'vuex'
 
   export default {
@@ -34,11 +36,13 @@
       logon () {
         this.tryLogon({...this.user})
           .then(() => {
-            console.log('/' + this.to)
+            Toastr.success('Logon realizado!', '', { timeOut: 3000 })
             this.$router.push('/' + this.to)
           },
-            () => { throw new Error('sfsfsdd') }
-          )
+          e => {
+            Toastr.error('Falha no Logon!', '', { timeOut: 3000 })
+            throw new Error('Falha no Logon!')
+          })
       }
     },
     computed: {

@@ -1,20 +1,24 @@
 import * as types from './mutationsTypes'
 import services from '../services'
+import Toastr from 'toastr'
+
 // getUser('login', 'password')
 
 export const tryLogon = ({ commit }, user) => {
-  console.log(user)
-  if (user.login === '' || user.cpf === '') {
-    return Promise.reject('Login ou CPF não informados')
-  } else {
+  return new Promise((resolve, reject) => {
     services.getUserByCpf(user)
       .then(d => {
         commit(types.token, user.cpf)
         commit(types.user, d.data)
+        resolve()
+      },
+      e => {
+        reject()
       })
-  }
+  })
 }
 
 export const logOff = ({ commit }) => {
   commit(types.token, '')
+  Toastr.success('Logoff realizado!', '', { timeOut: 3000 })
 }

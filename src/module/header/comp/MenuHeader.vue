@@ -8,14 +8,12 @@
       }
     },
     methods: {
-      ...mapGetters(['logOff']),
-      
-      logoff () {
-        this.collapseMenuMobile()
-        this.$router.push('/')
-      },
-      collapseMenuMobile () {
+      ...mapActions(['logOff']),
+
+      localLogoff () {
+        this.logOff()
         this.$emit('collapseMenuMobile')
+        this.$router.push('/')
       }
     },
     computed: {
@@ -26,7 +24,7 @@
 
 <template>
     <ul id="menu" class="nav navbar-nav navbar-right">
-        <router-link :to="{ name: 'home' }" tag="li" @click.native="collapseMenuMobile">
+        <router-link :to="{ name: 'home' }" tag="li" @click.native="$emit('collapseMenuMobile')">
           <a class="oi-menu">Home</a>
         </router-link>
 
@@ -36,11 +34,11 @@
                 role="button" aria-haspopup="true" aria-expanded="false">Consultas<span class="caret"/>&nbsp;
             </a>
             <ul class="dropdown-menu">
-                <router-link :to="{ name: 'projectConsult' }" tag="li" @click.native="collapseMenuMobile">
+                <router-link :to="{ name: 'projectConsult' }" tag="li" @click.native="$emit('collapseMenuMobile')">
                     <a class="oi-menu">Projetos</a>
                 </router-link>
 
-                <router-link :to="{ name: 'searchGrouperConsult' }" tag="li" @click.native="collapseMenuMobile">
+                <router-link :to="{ name: 'searchGrouperConsult' }" tag="li" @click.native="$emit('collapseMenuMobile')">
                     <a class="oi-menu">Agrupadores</a>
                 </router-link>
                 <!--
@@ -48,7 +46,7 @@
                 -->
 
                 <li>
-                    <a class="oi-menu"
+                    <a class="oi-menu" @click="$emit('collapseMenuMobile')"
                         href="#"
                         onclick="window.open('http://sgq.intranet/Mobile_Status_TRG_Menu.aspx', 
                             'newwindow', ''
@@ -57,7 +55,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="oi-menu" style="height:20px;margin:0;padding-top:0px;" 
+                    <a class="oi-menu" @click="$emit('collapseMenuMobile')" style="height:20px;margin:0;padding-top:0px;" 
                         href="#"
                         onclick="window.open('http://sgq.intranet/Mobile_Status_Release_Menu.aspx', 
                             'newwindow', ''
@@ -66,7 +64,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="oi-menu"
+                    <a class="oi-menu" @click="$emit('collapseMenuMobile')"
                         href="#"
                         onclick="window.open('http://sgq.intranet/Mobile_Painel_Menu.aspx', 
                             'newwindow', ''
@@ -77,12 +75,12 @@
             </ul>
         </li>
 
-        <router-link :to="{ name: 'pulledChain' }" tag="li" @click.native="collapseMenuMobile">
+        <router-link :to="{ name: 'pulledChain' }" tag="li" @click.native="$emit('collapseMenuMobile')">
             <a class="oi-menu">Cadeia Puxada</a>
         </router-link>
 
         <li class="dropdown">
-            <a class="oi-menu" 
+            <a class="oi-menu" @click="$emit('collapseMenuMobile')"
                 href="#"
                 onclick="window.open('http://sgq.intranet/Mobile_Monitor_Defeitos_Menu.aspx', 
                     'newwindow', ''
@@ -147,9 +145,6 @@
                 </router-link>
             </ul>
         </li>
-
-        
-
     
         <li class="dropdown">
           <a href="#" 
@@ -159,15 +154,15 @@
             role="button" 
             aria-haspopup="true" 
             aria-expanded="false">
-            <span class="glyphicon glyphicon-user"/> {{currentUser.name}} <span class="caret"/>
+            <span class="glyphicon glyphicon-user"/> <label v-show="isLogged">{{currentUser.name}}</label> <span class="caret"/>
           </a>
 
           <ul class="dropdown-menu">
             <li v-show="isLogged">
-              <a class="oi-menu" @click="logoff">Sair</a>
+              <a class="oi-menu" @click="localLogoff">Sair</a>
             </li>
 
-            <router-link v-show="!isLogged" :to="{ name: 'auth' }" tag="li" @click.native="collapseMenuMobile" >
+            <router-link v-show="!isLogged" :to="{ name: 'auth' }" tag="li">
               <a class="oi-menu">Entrar</a>
             </router-link>
           </ul>

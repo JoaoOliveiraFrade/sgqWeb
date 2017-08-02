@@ -9,5 +9,9 @@ export default {
   getSystemsByTestManufs (testManufs) {
     let resource = Resource.resource(paths.api + '/System/SystemsByTestManufs')
     return resource.save(testManufs)
+  },
+  getSystemsByDevManufs (devManufs) {
+    let resource = Resource.resource(paths.api + '/System/SystemsByDevManufs')
+    return resource.save(devManufs)
   }
 }
