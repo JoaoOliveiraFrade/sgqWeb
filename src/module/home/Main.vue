@@ -1,8 +1,11 @@
 <script>
   import { mapActions } from 'vuex'
+  // import oiSelectionLogonLogoff from '@/module/auth/comp/SelectionLogonLogoff.vue'
 
   export default {
     name: 'MainHome',
+
+    // components: { oiSelectionLogonLogoff },
 
     data () {
       return {
@@ -27,7 +30,7 @@
         <div class="col-xs-12 col-md-6">
             <img style="height:auto; width:70%" src="../../asset/image/Arquitetura.png">
         </div>
-    </div>    
+    </div> 
   </div>
 </template>
 

@@ -10,7 +10,11 @@
     components: { oiShowButton, oiEditButton },
 
     computed: {
-      ...mapGetters(['pulledChainProjectsFilteredByTerm'])
+      ...mapGetters(['pulledChainProjectsFilteredByTerm', 'currentUserProfiles']),
+
+      currentUserCanEdit () {
+        return this.currentUserProfiles.findIndex(o => o.id === 1 || o.id === 2) > -1
+      }
     },
 
     methods: {
@@ -51,8 +55,8 @@
         <tbody v-for="item in pulledChainProjectsFilteredByTerm">
             <tr>
                 <td rowspan=3 style="white-space: nowrap; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
-                    <oiShowButton :project="item"/>
-                    <oiEditButton :project="item"/>
+                    <oiEditButton v-if="currentUserCanEdit" :project="item"/>
+                    <oiShowButton v-if="!currentUserCanEdit" :project="item"/>
                 </td>
                 <td rowspan=3 style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
                     {{item.priorityGlobal}}

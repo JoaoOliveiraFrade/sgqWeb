@@ -5,9 +5,6 @@
   import oiMenu from './comp/MenuHeader.vue'
   import { mapGetters } from 'vuex'
 
-  // import oiAuth from './AuthHeader.vue'
-  // import oiShowAuth from '@/module/auth/comp/ShowAuth.vue'
-
   export default {
     name: 'MainHeader',
     components: { oiBrand, oiMenu, oiButtonMobile },

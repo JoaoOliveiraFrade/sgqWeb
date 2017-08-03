@@ -21,15 +21,15 @@
 <template>
     <span style="margin:0; border:0; padding:0">
         <a class='btn btn-xs my-tool-tip'
-            title="Editar"
+            title="Exibir"
             style="padding:0;margin:0; text-right"
             @click="setPulledChainProjectSelected(project)"
             data-toggle="modal"
-            :data-target="'#modalEdit' + project.id">
+            :data-target="'#modalShow' + project.id">
             <span class="glyphicon glyphicon glyphicon glyphicon-list-alt icon"></span>
         </a>
 
-        <oiModal :id="'modalEdit' + project.id">
+        <oiModal :id="'modalShow' + project.id">
             <span style="margin:0; border:0; padding:0" slot="header">
                 <div class="col-xs-1" style="margin:0; border:0; padding:0; text-align: left">
                     <a class="btn btn-primary btn-xs"

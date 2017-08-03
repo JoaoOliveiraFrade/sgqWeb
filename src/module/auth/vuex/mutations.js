@@ -6,5 +6,8 @@ export default {
   },
   [types.token] (state, data) {
     state.token = data
+  },
+  [types.currentUserProfiles] (state, data) {
+    state.currentUserProfiles = data
   }
 }

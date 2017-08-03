@@ -13,6 +13,13 @@ export default {
   [types.pulledChainProjectSelected] (state, value) {
     state.pulledChainProjectSelected = value
 
+    // let index = state.pulledChainProjects.findIndex(o => o.id === value.id)
+    // if (index !== -1) {
+    //   state.pulledChainProjects[index] = value
+    // }
+    // state.pulledChainProjectSelected = value
+  },
+  [types.pulledChainProjectSelectedUpdate] (state, value) {
     state.pulledChainProjectSelected.statusStrategyTestingAndContracting = value.statusStrategyTestingAndContracting
     state.pulledChainProjectSelected.dtUpdateStrategyTestingAndContracting = value.dtUpdateStrategyTestingAndContracting
     state.pulledChainProjectSelected.dtEndStrategyTestingAndContracting = value.dtEndStrategyTestingAndContracting
@@ -28,11 +35,5 @@ export default {
     state.pulledChainProjectSelected.dtDeliveryTestPlan = value.dtDeliveryTestPlan
     state.pulledChainProjectSelected.readyTestPlan = value.readyTestPlan
     state.pulledChainProjectSelected.dtStartTestPlan = value.dtStartTestPlan
-
-    // let index = state.pulledChainProjects.findIndex(o => o.id === value.id)
-    // if (index !== -1) {
-    //   state.pulledChainProjects[index] = value
-    // }
-    // state.pulledChainProjectSelected = value
   }
 }
