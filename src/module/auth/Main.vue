@@ -1,22 +1,10 @@
 <script>
-  import oiModal from '@/module/modal/comp/Modalx.vue'
-  import oiLoginAuth from './comp/LoginAuth.vue'
-  import { mapGetters } from 'vuex'
+  import oiLoginAuth from './comp/Login.vue'
 
   export default {
-    name: 'MainAuth',
+    name: 'Main',
 
-    components: { oiLoginAuth, oiModal },
-
-    data () {
-      return {
-      }
-    },
-    computed: {
-      ...mapGetters(['isLogged'])
-    },
-    methods: {
-    }
+    components: { oiLoginAuth }
   }
 </script>
 

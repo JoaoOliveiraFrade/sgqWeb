@@ -2,8 +2,6 @@ import * as types from './mutationsTypes'
 import services from '../services'
 import Toastr from 'toastr'
 
-// getUser('login', 'password')
-
 export const tryLogon = ({ commit }, user) => {
   return new Promise((resolve, reject) => {
     services.getUserByCpf(user)
