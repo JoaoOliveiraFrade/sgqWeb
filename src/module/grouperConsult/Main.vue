@@ -27,7 +27,7 @@
 <template>
   <div class="container-fluid" style="padding-top: 10px">
     <input type="text"
-      autofocus
+      autofocus v-focus
       class="form-control" 
       style="margin: 0; padding-left: 3px; height: 25px"
       v-model="filterTerm"

@@ -4,6 +4,10 @@ selected<script>
   export default {
     name: 'SelectionGrid',
 
+    props: {
+      projects: { type: Array }
+    },
+
     data () {
       return {
         filterTerm: '',
@@ -13,7 +17,7 @@ selected<script>
     },
 
     computed: {
-      ...mapGetters(['projectsFilteredByTerm', 'selectedProjects', 'projectsByTestManufsAndSystemsLoading'])
+      ...mapGetters(['projectsFilteredByTerm', 'selectedProjects', 'projectsLoading'])
     },
 
     watch: {
@@ -29,7 +33,7 @@ selected<script>
       ...mapActions(['setProjectFilterTerm', 'setSelectedProjects']),
 
       selectAll: function () {
-        this.selected = this.projectsFilteredByTerm
+        this.selected = this.projectsFilteredByTerm(this.projects)
         this.isUpdate = true
       },
 
@@ -52,9 +56,9 @@ selected<script>
 
 <template>
   <span>
-    <div class="loader" v-show="projectsByTestManufsAndSystemsLoading" style="margin-top: 25px;margin-bottom: 25px"></div>    
+    <div class="loader" v-show="projectsLoading" style="margin-top: 25px;margin-bottom: 25px"></div>    
 
-    <div v-show="!projectsByTestManufsAndSystemsLoading">
+    <div v-show="!projectsLoading">
       <div class="col-xs-12" style="margin:0; border:0; padding:0; padding-bottom: 3px">
         <span style="white-space:nowrap; padding:0">
           <!--  v-show="dataSource.length > 0" -->
@@ -85,7 +89,7 @@ selected<script>
       </div>
       
       <input type="text"
-          autofocus
+          autofocus v-focus
           class="form-control" 
           style="margin: 0; padding-left: 3px; height: 25px"
           placeholder="Informe os filtros. Na pesq. por farol, digite a cor 'verd' ou 'amar' ou 'verm'. Ex: multip+verd+2017."
@@ -93,7 +97,7 @@ selected<script>
           @keyup="setProjectFilterTerm(filterTerm)"
       />    
       
-      <table class="table table-condensed table-striped table-hover table-bordered" style="margin-bottom:0; padding-bottom:0; margin-top:3px">
+      <table class="table table-condensed table-striped table-hover table-bordered" style="margin-bottom:5px; padding-bottom:0; margin-top:3px">
         <thead>
             <tr>
                 <th style="padding: 1px; margin: 0px; border-top: 1px; text-align: center; width: 25px;">
@@ -129,7 +133,7 @@ selected<script>
             </tr>
         </thead>
 
-        <tbody v-for="project in projectsFilteredByTerm">
+        <tbody v-for="project in projectsFilteredByTerm(projects)">
             <tr>
                 <td style="padding: 1px; margin: 0px; border-top: 1px; text-align: center; width: 25px; border-radius: 3px;">
                     <input

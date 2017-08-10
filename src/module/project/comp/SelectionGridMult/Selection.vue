@@ -8,6 +8,10 @@
 
     components: { oiSelectionButton, oiSelectedButton },
 
+    props: {
+      projects: { type: Array }
+    },
+
     computed: {
       ...mapGetters(['selectedProjects'])
     }
@@ -17,7 +21,9 @@
 <template>
   <span style="margin:0; border:0; padding:0">
     <label class="fd-label">Projeto:</label>
-    <oiSelectionButton/>
+    
+    <oiSelectionButton :projects="projects"/>
+
     <oiSelectedButton v-show="selectedProjects.length"/>
   </span>
 </template>

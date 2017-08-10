@@ -1,11 +1,15 @@
 <script>
-  import oiModal from '@/module/modal/comp/Modalx.vue'
+  import oiModal from '@/module/modal/comp/modal.vue'
   import oiSelectionGrid from '@/module/project/comp/selectionGridMult/SelectionGrid.vue'
 
   export default {
     name: 'SelectionButton',
 
-    components: { oiModal, oiSelectionGrid }
+    components: { oiModal, oiSelectionGrid },
+
+    props: {
+      projects: { type: Array }
+    }
   }
 </script>
 
@@ -15,10 +19,26 @@
             type="button"     
             class="btn btn-xs"
             data-toggle="modal" 
-            data-target="#modalSelectionButton">Seleção
+            data-target="#modalSelectionProject">Seleção
+        </button>        
+
+        <button v-show="isLogged"
+            type="button"     
+            class="btn btn-xs"
+            @click="logOff"
         </button>
 
-        <oiModal id="modalSelectionButton">
+        <oiModal id="modalSelectionProject" ref="vuemodal" title="Seleção de Projeto" size="l">
+            <oiSelectionGrid 
+                slot="body"
+                :projects="projects"
+            />
+        </oiModal>    
+
+        <!--
+        <oiModal 
+            id="modalSelectionButton"
+            title="Seleção de Projeto">
             <div class="row" style="margin:0; border:0; padding:0" slot="header">
                 <div class="col-xs-1" style="padding:0; margin:0; border:0">
                   <a class="btn btn-primary btn-xs"   
@@ -34,9 +54,10 @@
                 
                 <hr class="col-xs-12" >
             </div>
-
-            <oiSelectionGrid slot="header"/>
+        
         </oiModal>
+        -->
+        
     </span>
 </template>
 
@@ -58,4 +79,8 @@
       padding: 0px;
       margin-top: 2px;
   } 
+    .oiModal { /* Width */
+        max-width: 95%;
+        width: auto !important;
+    }  
 </style>

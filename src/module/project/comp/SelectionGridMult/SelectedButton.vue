@@ -1,5 +1,5 @@
 <script>
-  import oiModal from '@/module/modal/comp/Modalx.vue'
+  import oiModal from '@/module/modal/comp/modal.vue'
   import oiSelectedGrid from '@/module/project/comp/SelectionGridMult/SelectedGrid.vue'
 
   export default {
@@ -18,23 +18,7 @@
             data-target="#modalSelectedButton">Selecionado
         </button>
 
-        <oiModal id="modalSelectedButton">
-          <div class="row" style="padding:0; margin:0; border:0" slot="header">
-              <div class="col-xs-1" style="padding:0; margin:0; border:0">
-                <a class="btn btn-primary btn-xs"   
-                    role="button"
-                    data-dismiss="modal">
-                    Fechar
-                </a> 
-              </div>
-          
-              <div class="col-xs-10" style="color: read; padding:0; margin:0; border:0; text-align: center">
-              <label class="fd-label">Projeto Selecionado</label>
-              </div>
-              
-              <hr class="col-xs-12">
-          </div>
-
+        <oiModal id="modalSelectedButton" title="Projeto Selecionado" size="l">
           <oiSelectedGrid slot="body"/>
         </oiModal>
     </span>

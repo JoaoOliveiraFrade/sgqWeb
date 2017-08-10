@@ -27,7 +27,7 @@
   <div class="container-fluid" style="padding-top: 10px">
       <div class="row well well-sm oi-well" >
         <input type="text" id="Filter"
-          autofocus
+          autofocus v-focus
           class="form-control" 
           style="margin: 0; padding-left: 3px; height: 25px"
           placeholder="Informe os filtros! Exemplo: desenv+comit+nov/2017"

@@ -217,7 +217,7 @@
       <input type="text" 
         class="form-control"
         style="margin: 0; padding-left: 3px; height: 30px"          
-        autofocus
+        autofocus v-focus
         placeholder="Informe o filtro!"
         v-model="itemFilterTerm"
         @keyup="filterItems"/>

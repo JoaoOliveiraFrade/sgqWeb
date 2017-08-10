@@ -13,8 +13,8 @@ export default {
     state.projectsByTestManufsAndSystems = data
   },
 
-  [types.projectsByTestManufsAndSystemsLoading] (state, data) {
-    state.projectsByTestManufsAndSystemsLoading = data
+  [types.projectsLoading] (state, data) {
+    state.projectsLoading = data
   },
 
   [types.selectedProjects] (state, data) {

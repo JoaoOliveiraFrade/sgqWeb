@@ -1,5 +1,5 @@
 <script>
-  import oiModal from '@/module/modal/comp/Modalx.vue'
+  import oiModal from '@/module/modal/comp/modal.vue'
   import showSelections from '@/module/selection/comp/showSelections.vue'
   import editSelections from '@/module/selection/comp/editSelections.vue'
 
@@ -73,27 +73,12 @@
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
-        :data-target="'#modalEdit' + idChild">Seleção
+        :data-target="'#modalEdit' + idChild"
+      >
+        Seleção
     </button>
-
-    <oiModal :id="'modalEdit' + idChild">
-
-      <div class="row" style="margin:0; border:0; padding:0" slot="header">
-        <div class="col-xs-1" style="padding:0; margin:0; border:0">
-          <a class="btn btn-primary btn-xs"   
-            role="button"
-            data-dismiss="modal">
-            Fechar
-          </a> 
-        </div>
-      
-        <div class="col-xs-10" style="text-align: center">
-          <label class="fd-label">Seleção de {{title}}</label>
-        </div>
-        
-        <hr class="col-xs-12" >
-      </div>
-
+    
+    <oiModal :id="'modalEdit' + idChild" :title="'Seleção de ' + title" size="l">
       <editSelections slot="body"
           :id="idChild"
           :title="title"
@@ -102,13 +87,7 @@
           :gender="gender"
           @onChangeSelected="changeSelected">
       </editSelections> 
-
-    </oiModal>
-
-    <showSelections
-        v-show="hasItemsSelected && !isShowButtonSelected"
-        :dataSource="itemsSelected_">
-    </showSelections> 
+    </oiModal>    
 
     <!-- SHOW -->
     <button 
@@ -117,32 +96,22 @@
         class="btn btn-xs"
         data-toggle="modal" 
         :data-target="'#modalShow' + idChild"
-    >{{selectedText}}
+    >
+      {{selectedText}}
     </button>
 
-    <oiModal :id="'modalShow' + idChild">
-      <div class="row" style="padding:0; margin:0; border:0" slot="header">
-        <div class="col-xs-1" style="padding:0; margin:0; border:0">
-          <a class="btn btn-primary btn-xs"   
-            role="button"
-            data-dismiss="modal">
-            Fechar
-          </a> 
-        </div>
-      
-        <div class="col-xs-10" style="color: read; padding:0; margin:0; border:0; text-align: center">
-          <label class="fd-label">{{title}} {{selectedText}}</label>
-        </div>
-        
-        <hr class="col-xs-12">
-      </div>
-
+    <oiModal :id="'modalShow' + idChild" :title="title + ' ' + selectedText" size="l">
       <showSelections slot="body"
           :title="title"
           :dataSource="itemsSelected_"
       ></showSelections> 
-
     </oiModal>
+
+    <showSelections
+        v-show="hasItemsSelected && !isShowButtonSelected"
+        :dataSource="itemsSelected_">
+    </showSelections>     
+    
   </span>
 </template>
 

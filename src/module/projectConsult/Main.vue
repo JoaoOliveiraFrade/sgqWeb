@@ -136,7 +136,7 @@
 <template>
     <div class="container-fluid" style="padding: 10px">
       <input type="text"
-          autofocus
+          autofocus v-focus
           class="form-control" 
           style="margin: 0; padding-left: 3px; height: 25px"
           placeholder="Informe os filtros. Na pesq. por farol, digite a cor 'verd' ou 'amar' ou 'verm'. Ex: multip+verd+2017."

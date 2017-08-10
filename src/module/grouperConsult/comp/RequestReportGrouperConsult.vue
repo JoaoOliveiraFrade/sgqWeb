@@ -93,7 +93,7 @@
     <div class="text-center" style="padding: 0; padding-left: 15px; padding-right: 15px" slot="body">
       <div class="form-group" style="text-align: left">
           E-mail de destino:
-        <input type="email" v-focus
+        <input type="email" autofocus v-focus
           class="form-control" 
           placeholder="email de destino" 
           v-model="email.to">

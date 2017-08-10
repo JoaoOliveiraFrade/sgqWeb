@@ -9,8 +9,9 @@ export default {
   projectFilterTerm: '',
 
   projects: [],
+  projectsByDevManufsAndSystems: [],
   projectsByTestManufsAndSystems: [],
-  projectsByTestManufsAndSystemsLoading: false,
+  projectsLoading: false,
   selectedProjects: [],
   project: {},
 

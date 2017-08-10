@@ -1,8 +1,12 @@
 <script>
   import { mapGetters, mapActions } from 'vuex'
+  import oiSelectionLogonLogoff from '@/module/auth/comp/SelectionLogonLogoff.vue'
   
   export default {
     name: 'MenuHeader',
+
+    components: { oiSelectionLogonLogoff },
+
     data () {
       return {
       }
@@ -146,7 +150,9 @@
             </ul>
         </li>
     
-        <li class="dropdown">
+        <oiSelectionLogonLogoff v-show="!isLogged"/>
+
+        <li class="dropdown" v-show="isLogged">
           <a href="#" 
             style="margin:0;padding:0;border:0"
             class="dropdown-toggle oi-menu" 
@@ -157,14 +163,16 @@
             <span class="glyphicon glyphicon-user"/> <label v-show="isLogged">{{currentUser.name}}</label> <span class="caret"/>
           </a>
 
-          <ul class="dropdown-menu">
-            <li v-show="isLogged">
-              <a class="oi-menu" @click="localLogoff">Sair</a>
-            </li>
 
+          <ul class="dropdown-menu">
+            <li >
+              <a class="oi-menu" @click="localLogoff">Logoff</a>
+            </li>
+            <!--
             <router-link v-show="!isLogged" :to="{ name: 'auth' }" tag="li">
               <a class="oi-menu">Entrar</a>
             </router-link>
+            -->
           </ul>
         </li>        
     </ul>

@@ -101,7 +101,7 @@
     <div class="row well well-sm" style="margin-bottom:3px">
       <input type="text" 
         class="form-control" 
-        autofocus
+        autofocus v-focus
         style="margin: 0px; padding: 2px; padding-left: 5px; height: 28px"
         placeholder="Informe o filtro"
         v-model="filterTerm"

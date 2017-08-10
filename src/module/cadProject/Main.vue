@@ -409,7 +409,7 @@
       <input type="text"
         class="form-control"
         style="margin: 0; padding-left: 3px; height: 30px"
-        autofocus
+        autofocus v-focus
         placeholder="Informe o filtro! Ex: multip+verde"
         v-model="projectFilterTerm"
         @keyup="filterProjects"/>

@@ -126,7 +126,7 @@
     <br>
     <div class="row well well-sm" style="margin-bottom: 2px; padding: 0px">
       <input type="text" 
-        autofocus
+        autofocus v-focus
         class="form-control" 
         style="margin: 0; padding: 0; border: 0; padding-left: 3px; height: 25px"
         placeholder="Informe o filtro"

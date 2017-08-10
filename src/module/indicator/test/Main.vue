@@ -3,7 +3,7 @@
 
   import oiSelectionTestManuf from '@/module/testManuf/comp/Selection.vue'
   import oiSelectionSystem from '@/module/system/comp/SelectionByTestManufs.vue'
-  import oiSelectionProject from '@/module/project/comp/selectionGridMult/Selection.vue'
+  import oiSelectionProject from '@/module/project/comp/SelectionByTestManufs.vue'
   import oiShowData from './comp/ShowData.vue'
 
   export default {

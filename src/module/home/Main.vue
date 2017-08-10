@@ -1,11 +1,8 @@
 <script>
   import { mapActions } from 'vuex'
-  // import oiSelectionLogonLogoff from '@/module/auth/comp/SelectionLogonLogoff.vue'
 
   export default {
     name: 'MainHome',
-
-    // components: { oiSelectionLogonLogoff },
 
     data () {
       return {

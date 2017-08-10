@@ -111,7 +111,7 @@
             <oiRateEvidRejectedShowChartGroupTestManuf/>
           </div>
           <div class="col-sm-4">
-            <oRateEvidRejectedShowChartGroupTimeline/>
+            <!--<oRateEvidRejectedShowChartGroupTimeline/>-->
           </div>
           <div class="col-sm-4">
             <oiRateEvidRejectedShowChartTotal/>
