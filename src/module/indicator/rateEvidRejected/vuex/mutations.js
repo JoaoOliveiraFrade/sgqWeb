@@ -7,6 +7,9 @@ export default {
   [types.rateEvidRejectedLoading] (state, data) {
     state.rateEvidRejectedLoading = data
   },
+  [types.selectedRejectionType] (state, data) {
+    state.selectedRejectionType = data
+  },
 
   [types.rateEvidRejectedChartTestManufSelected] (state, data) {
     state.rateEvidRejectedChartTestManufSelected = data

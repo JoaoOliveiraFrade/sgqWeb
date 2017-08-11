@@ -39,3 +39,7 @@ export const rateEvidRejectedChartChangeFilter = ({ commit, state }, item) => {
     }
   }
 }
+
+export const setSelectedRejectionType = ({ commit }, data) => {
+  commit(types.selectedRejectionType, data)
+}

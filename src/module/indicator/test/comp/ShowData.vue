@@ -1,5 +1,5 @@
 <script>
-  import { mapGetters, mapActions } from 'vuex'
+  import { mapGetters, mapActions, mapState } from 'vuex'
 
   import oiProductivityShowChartGroupTestManuf from '@/module/indicator/productivity/comp/ShowChartGroupTestManuf.vue'
   import oiProductivityShowChartGroupTimeline from '@/module/indicator/productivity/comp/ShowChartGroupTimeline.vue'
@@ -17,20 +17,20 @@
     name: 'ShowData',
 
     computed: {
-      ...mapGetters(['selectedProjects', 'produtivityLoading', 'rateEvidRejectedLoading'])
+      ...mapGetters(['selectedProjects', 'produtivityLoading', 'rateEvidRejectedLoading']),
+      ...mapState(['selectedRejectionType'])
     },
 
     data () {
       return {
-        typesRejects: [ { name: 'Técnica', hours: 16 }, { name: 'Cliente', hours: 8 }, { name: 'Todas', hours: 4 } ],
-        typesRejectsSelected: 'Cliente'
+        typesRejects: [ { name: 'Técnica', hours: 16 }, { name: 'Cliente', hours: 8 }, { name: 'Todas', hours: 4 } ]
       }
     },
 
     methods: {
-      ...mapActions(['loadProdutivity', 'loadRateEvidRejected']),
-      selectTypesRejects (typesRejectsSelected) {
-        this.typesRejectsSelected = typesRejectsSelected
+      ...mapActions(['loadProdutivity', 'loadRateEvidRejected', 'setSelectedRejectionType']),
+      selectTypesRejects (selectedRejectionType) {
+        this.selectedRejectionType = selectedRejectionType
       }
     },
 
@@ -94,18 +94,24 @@
       <div id="rateEvidRejected" class="tab-pane fade" style="padding:0; margin:0">
         <oiRateEvidRejectedShowRule style="text-align: left"/>
         <oiRateEvidRejectedShowAnalytic style="text-align: left"/>
-        &nbsp;&nbsp;<label>Tipo:</label>
+        <label>&nbsp;&nbsp;Tipo:</label>
+        <!--
         <span v-for="i in typesRejects">
-            <button style="margin:1px; border:0; padding:0; height: 19px; padding-left:4px; padding-right:4px"
+            <butto
                 class="btn btn-xs"
-                :class="(typesRejectsSelected === i.name) ? 'active btn-default' : ''" 
+                :class="(selectedRejectionType === i.name) ? 'active btn-default' : ''" 
             >
               {{i.name}}
             </button>
         </span>
+        -->
+        <button class="btn btn-xs" :class="(selectedRejectionType === 'Técnica') ? 'active btn-default' : ''" @click="setSelectedRejectionType('Técnica')" v-text="'Técnica'"/>
+        <button class="btn btn-xs" :class="(selectedRejectionType === 'Cliente') ? 'active btn-default' : ''" @click="setSelectedRejectionType('Cliente')" v-text="'Cliente'"/>
+        <button class="btn btn-xs" :class="(selectedRejectionType === 'Todas') ? 'active btn-default' : ''" @click="setSelectedRejectionType('Todas')" v-text="'Todas'"/>
+
         <hr style="margin:0; height: 1px; border: 0; box-shadow: 0 7px 7px -7px #d9d9d9 inset">
 
-        <div class="loader" v-show="rateEvidRejectedLoading" style="margin-top: 25px;margin-bottom: 25px"></div>        
+        <div class="loader" v-show="rateEvidRejectedLoading" style="margin-top: 25px;margin-bottom: 25px"/>
         <div class="row" style="margin:0; border:0; padding:0">
           <div class="col-sm-4">
             <oiRateEvidRejectedShowChartGroupTestManuf/>
@@ -167,9 +173,17 @@
       height: 120px;
       animation: spin 2s linear infinite;
   }
-
   @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
-  }    
+  }
+  button {
+    margin:0px; 
+    margin-bottom:1px; 
+    border:0; 
+    padding:0; 
+    height: 19px; 
+    padding-left:4px; 
+    padding-right:4px
+  }
 </style>

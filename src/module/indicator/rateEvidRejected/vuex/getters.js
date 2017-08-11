@@ -129,3 +129,5 @@ export const rateEvidRejectedChartTitle = ({ rateEvidRejectedChartTestManufSelec
     }
   }
 }
+
+export const selectedRejectionType = ({ selectedRejectionType }) => selectedRejectionType

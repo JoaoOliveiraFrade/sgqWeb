@@ -1,8 +1,8 @@
 // import { vuex as dashboard } from './dashboard'
 // import { vuex as defectMonitor } from './defectMonitor'
 import { vuexStore as grouperConsult } from './grouperConsult'
-import { vuexStore as indicatorOfDevelopment } from './indicator/development'
-import { vuexStore as indicatorOfDevelopment2 } from './indicator/development.2'
+import { vuexStore as indicatorDevelopment } from './indicator/development'
+import { vuexStore as indicatorDevelopment2 } from './indicator/development.2'
 import { vuexStore as indicatorProductivity } from './indicator/productivity'
 import { vuexStore as indicatorRateEvidRejected } from './indicator/rateEvidRejected'
 import { vuexStore as indicatorTest } from './indicator/test'
@@ -26,8 +26,8 @@ export default {
 */
 export default {
   grouperConsult,
-  indicatorOfDevelopment,
-  indicatorOfDevelopment2,
+  indicatorDevelopment,
+  indicatorDevelopment2,
   indicatorProductivity,
   indicatorRateEvidRejected,
   indicatorTest,
