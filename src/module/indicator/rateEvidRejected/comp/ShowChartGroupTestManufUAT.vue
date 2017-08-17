@@ -1,5 +1,5 @@
 <script>
-  import { mapGetters, mapActions } from 'vuex'
+  import { mapGetters, mapState, mapActions } from 'vuex'
 
   import Highcharts from 'highcharts'
   import HighchartsDrilldown from 'highcharts-drilldown'
@@ -10,7 +10,7 @@
   import chartStandParam from '@/module/chart/comp/types/drillDown'
 
   export default {
-    name: 'ShowChartGroupTestManuf',
+    name: 'ShowChartGroupTestManufUAT',
 
     data () {
       return {
@@ -20,7 +20,8 @@
     },
 
     computed: {
-      ...mapGetters(['rateEvidRejectedGroupTestManuf', 'rateEvidRejectedByTestManufGroupSystem', 'rateEvidRejectedChartTitle'])
+      ...mapGetters('indicatorRateEvidRejected', ['groupTestManufUAT', 'byTestManufGroupSystemUAT', 'chartTitleUAT']),
+      ...mapState('indicatorRateEvidRejected', ['selectedRejectionType'])
     },
 
     updated () {
@@ -29,7 +30,7 @@
     },
 
     methods: {
-      ...mapActions(['rateEvidRejectedChartChangeFilter']),
+      ...mapActions('indicatorRateEvidRejected', ['chartChangeFilterUAT']),
 
       setChartParam () {
         this.chartParam.title.text = 'Fáb.Teste / Sistema'
@@ -42,19 +43,19 @@
           {
             name: 'Taxa Rejeição',
             colorByPoint: true,
-            data: this.rateEvidRejectedGroupTestManuf.map(i => ({
-              name: i.testManuf.charAt(0).toUpperCase() + i.testManuf.slice(1).toLowerCase(),
-              y: i.totalRejections,
+            data: this.groupTestManufUAT.map(i => ({
+              name: i.testManuf ? i.testManuf.charAt(0).toUpperCase() + i.testManuf.slice(1).toLowerCase() : '',
+              y: i.rejections,
               drilldown: i.testManuf
             }))
           }
         ]
 
         this.chartParam.drilldown = {
-          series: this.rateEvidRejectedGroupTestManuf.map(i => ({
+          series: this.groupTestManufUAT.map(i => ({
             name: i.testManuf,
             id: i.testManuf,
-            data: this.rateEvidRejectedByTestManufGroupSystem(i.testManuf).map(s => [ s.system.charAt(0).toUpperCase() + s.system.slice(1).toLowerCase(), s.totalRejections ])
+            data: this.byTestManufGroupSystemUAT(i.testManuf).map(s => [ s.system ? s.system.charAt(0).toUpperCase() + s.system.slice(1).toLowerCase() : '', s.rejections ])
           }))
         }
 
@@ -62,15 +63,15 @@
 
         this.chartParam.plotOptions.bar.events = {
           click: function (event) {
-            self.rateEvidRejectedChartChangeFilter(event.point.name.toUpperCase())
-            self.chart.setTitle({text: self.rateEvidRejectedChartTitle})
+            self.chartChangeFilterUAT(event.point.name.toUpperCase())
+            self.chart.setTitle({text: self.chartTitleUAT})
           }
         }
 
         this.chartParam.chart.events = {
           drillup: function (e) {
-            self.rateEvidRejectedChartChangeFilter('')
-            self.chart.setTitle({text: self.rateEvidRejectedChartTitle})
+            self.chartChangeFilterUAT('')
+            self.chart.setTitle({text: self.chartTitleUAT})
           }
         }
       }
@@ -80,7 +81,7 @@
 
 <template> 
   <div style="width:250px; height:350px; margin:0 auto">
-    <pre>{{rateEvidRejectedGroupTestManuf}}</pre>
+    <pre>{{groupTestManufUAT}}</pre>
   </div>
 </template>
 

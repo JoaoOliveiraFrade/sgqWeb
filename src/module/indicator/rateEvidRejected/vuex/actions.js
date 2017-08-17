@@ -1,41 +1,68 @@
 import * as types from './mutationsTypes'
 import services from '../services'
 
-export const loadRateEvidRejected = ({ getters, commit }) => {
-  commit(types.rateEvidRejectedLoading, true)
-  console.log('loadRateEvidRejected - Inicio')
+export const load = ({ commit, rootState }) => {
+  if (rootState.testManuf.selectedTestManufs.length === 0 || rootState.system.selectedSystems.length === 0 || rootState.project.selectedProjects.length === 0) {
+    return
+  }
+
+  commit(types.loading, true)
   return new Promise((resolve, reject) => {
-    services.getRateEvidRejectedByListTestManufSystemProject({
-      selectedTestManufs: getters.selectedTestManufs,
-      selectedSystems: getters.selectedSystems,
-      selectedProjects: getters.selectedProjects.map(i => i.subproject + i.delivery)
+    services.getByListTestManufSystemProject({
+      selectedTestManufs: rootState.testManuf.selectedTestManufs,
+      selectedSystems: rootState.system.selectedSystems,
+      selectedProjects: rootState.project.selectedProjects.map(i => i.subproject + i.delivery)
     })
     .then(
       r => {
-        console.log('loadRateEvidRejected - Fim - ok')
-        commit(types.rateEvidRejected, r.data)
-        commit(types.rateEvidRejectedLoading, false)
+        commit(types.data, r.data)
+        commit(types.loading, false)
         resolve()
       },
       e => {
         console.log(e)
-        console.log('loadRateEvidRejected - Fim - erro')
-        commit(types.rateEvidRejectedLoading, false)
+        commit(types.loading, false)
         reject()
       }
     )
   })
 }
 
-export const rateEvidRejectedChartChangeFilter = ({ commit, state }, item) => {
+export const chartChangeFilterTI = ({ commit, state }, item) => {
   if (item === '') {
-    commit(types.rateEvidRejectedChartTestManufSelected, '')
-    commit(types.rateEvidRejectedChartSystemSelected, '')
+    commit(types.ChartTestManufSelectedTI, '')
+    commit(types.ChartSystemSelectedTI, '')
   } else {
-    if (state.rateEvidRejectedChartTestManufSelected === '') {
-      commit(types.rateEvidRejectedChartTestManufSelected, item)
+    if (state.ChartTestManufSelectedTI === '') {
+      commit(types.ChartTestManufSelectedTI, item)
     } else {
-      commit(types.rateEvidRejectedChartSystemSelected, item)
+      commit(types.ChartSystemSelectedTI, item)
+    }
+  }
+}
+
+export const chartChangeFilterUAT = ({ commit, state }, item) => {
+  if (item === '') {
+    commit(types.ChartTestManufSelectedUAT, '')
+    commit(types.ChartSystemSelectedTI, '')
+  } else {
+    if (state.ChartTestManufSelectedUAT === '') {
+      commit(types.ChartTestManufSelectedUAT, item)
+    } else {
+      commit(types.ChartSystemSelectedUAT, item)
+    }
+  }
+}
+
+export const chartChangeFilterTotal = ({ commit, state }, item) => {
+  if (item === '') {
+    commit(types.ChartTestManufSelectedTotal, '')
+    commit(types.ChartSystemSelectedTI, '')
+  } else {
+    if (state.ChartTestManufSelectedTotal === '') {
+      commit(types.ChartTestManufSelectedTotal, item)
+    } else {
+      commit(types.ChartSystemSelectedTotal, item)
     }
   }
 }

@@ -1,74 +1,114 @@
-export const rateEvidRejectedLoading = ({ rateEvidRejectedLoading }) => rateEvidRejectedLoading
-
-export const rateEvidRejectedGroupTestManuf = ({ rateEvidRejected }) => {
+export const groupTestManufTI = ({ data }) => {
   let result = []
-  rateEvidRejected.forEach(p => {
+  data.forEach(p => {
     let index = result.findIndex(r => r.testManuf === p.testManuf)
     if (index > -1) {
-      result[index].tiEvidences += p.tiEvidences
-      result[index].tiRejections += p.tiRejections
-      result[index].uatEvidences += p.uatEvidences
-      result[index].uatRejections += p.uatRejections
-      result[index].totalEvidences += p.totalEvidences
-      result[index].totalRejections += p.totalRejections
+      result[index].evidences += p.tiEvidences
+      result[index].rejections += p.tiRejections
     } else {
       result.push({
         testManuf: p.testManuf,
-        tiEvidences: p.tiEvidences,
-        tiRejections: p.tiRejections,
-        uatEvidences: p.uatEvidences,
-        uatRejections: p.uatRejections,
-        totalEvidences: p.totalEvidences,
-        totalRejections: p.totalRejections
+        evidences: p.tiEvidences,
+        rejections: p.tiRejections
       })
     }
   })
-  return result.filter(r => r.totalRejections > 0).sort((a, b) => a.totalRejections > b.totalRejections ? 1 : -1)
+  return result.filter(r => r.rejections > 0).sort((a, b) => a.rejections > b.rejections ? 1 : -1)
 }
 
-export const rateEvidRejectedByTestManufGroupSystem = ({ rateEvidRejected }) => (testManuf) => {
+export const groupTestManufUAT = ({ data }) => {
   let result = []
-  rateEvidRejected.filter(p => p.testManuf === testManuf).forEach(p => {
+  data.forEach(p => {
+    let index = result.findIndex(r => r.testManuf === p.testManuf)
+    if (index > -1) {
+      result[index].evidences += p.uatEvidences
+      result[index].rejections += p.uatRejections
+    } else {
+      result.push({
+        testManuf: p.testManuf,
+        evidences: p.uatEvidences,
+        rejections: p.uatRejections
+      })
+    }
+  })
+  return result.filter(r => r.rejections > 0).sort((a, b) => a.rejections > b.rejections ? 1 : -1)
+}
+
+export const groupTestManufTotal = ({ data }) => {
+  let result = []
+  data.forEach(p => {
+    let index = result.findIndex(r => r.testManuf === p.testManuf)
+    if (index > -1) {
+      result[index].evidences += p.totalEvidences
+      result[index].rejections += p.totalRejections
+    } else {
+      result.push({
+        testManuf: p.testManuf,
+        evidences: p.totalEvidences,
+        rejections: p.totalRejections
+      })
+    }
+  })
+  return result.filter(r => r.rejections > 0).sort((a, b) => a.rejections > b.rejections ? 1 : -1)
+}
+
+export const byTestManufGroupSystemTI = ({ data }) => (testManuf) => {
+  let result = []
+  data.filter(p => p.testManuf === testManuf).forEach(p => {
     let index = result.findIndex(r => r.system === p.system)
     if (index > -1) {
-      result[index].tiEvidences += p.tiEvidences
-      result[index].tiRejections += p.tiRejections
-      result[index].uatEvidences += p.uatEvidences
-      result[index].uatRejections += p.uatRejections
-      result[index].totalEvidences += p.totalEvidences
-      result[index].totalRejections += p.totalRejections
+      result[index].evidences += p.tiEvidences
+      result[index].rejections += p.tiRejections
     } else {
       result.push({
         system: p.system,
-        tiEvidences: p.tiEvidences,
-        tiRejections: p.tiRejections,
-        uatEvidences: p.uatEvidences,
-        uatRejections: p.uatRejections,
-        totalEvidences: p.totalEvidences,
-        totalRejections: p.totalRejections
+        evidences: p.tiEvidences,
+        rejections: p.tiRejections
       })
     }
   })
-  return result.filter(r => r.totalRejections > 0).sort((a, b) => a.totalRejections > b.totalRejections ? 1 : -1)
+  return result.filter(r => r.rejections > 0).sort((a, b) => a.rejections > b.rejections ? 1 : -1)
 }
 
-export const rateEvidRejectedFilteredByChart = ({ rateEvidRejected, rateEvidRejectedChartTestManufSelected, rateEvidRejectedChartSystemSelected }) => {
-  let ds = []
-  if (rateEvidRejectedChartTestManufSelected === '' && rateEvidRejectedChartSystemSelected === '') {
-    ds = rateEvidRejected
-  } else {
-    if (rateEvidRejectedChartSystemSelected === '') {
-      ds = rateEvidRejected.filter(i => i.testManuf === rateEvidRejectedChartTestManufSelected)
-    } else {
-      ds = rateEvidRejected.filter(i => i.testManuf === rateEvidRejectedChartTestManufSelected && i.system === rateEvidRejectedChartSystemSelected)
-    }
-  }
-  return ds
-}
-
-export const rateEvidRejectedGroupTimeline = (state, { rateEvidRejectedFilteredByChart }) => {
+export const byTestManufGroupSystemUAT = ({ data }) => (testManuf) => {
   let result = []
-  rateEvidRejectedFilteredByChart.forEach(i => {
+  data.filter(p => p.testManuf === testManuf).forEach(p => {
+    let index = result.findIndex(r => r.system === p.system)
+    if (index > -1) {
+      result[index].evidences += p.uatEvidences
+      result[index].rejections += p.uatRejections
+    } else {
+      result.push({
+        system: p.system,
+        evidences: p.uatEvidences,
+        rejections: p.uatRejections
+      })
+    }
+  })
+  return result.filter(r => r.rejections > 0).sort((a, b) => a.rejections > b.rejections ? 1 : -1)
+}
+
+export const byTestManufGroupSystemTotal = ({ data }) => (testManuf) => {
+  let result = []
+  data.filter(p => p.testManuf === testManuf).forEach(p => {
+    let index = result.findIndex(r => r.system === p.system)
+    if (index > -1) {
+      result[index].evidences += p.totalEvidences
+      result[index].rejections += p.totalRejections
+    } else {
+      result.push({
+        system: p.system,
+        evidences: p.totalEvidences,
+        rejections: p.totalRejections
+      })
+    }
+  })
+  return result.filter(r => r.rejections > 0).sort((a, b) => a.rejections > b.rejections ? 1 : -1)
+}
+
+export const groupTimeline = (state, { filteredByChart }) => {
+  let result = []
+  filteredByChart.forEach(i => {
     let index = result.findIndex(o => o.monthYear === i.monthYear)
     if (index > -1) {
       result[index].tiEvidences += i.tiEvidences
@@ -93,41 +133,129 @@ export const rateEvidRejectedGroupTimeline = (state, { rateEvidRejectedFilteredB
   return result.sort((a, b) => a.yearMonth > b.yearMonth ? 1 : -1)
 }
 
-export const rateEvidRejectedTotal = (state, { rateEvidRejectedFilteredByChart }) => {
-  let tiEvidences = 0
-  let tiRejections = 0
-  let uatEvidences = 0
-  let uatRejections = 0
-  let totalEvidences = 0
-  let totalRejections = 0
-  rateEvidRejectedFilteredByChart.forEach(i => {
-    tiEvidences += i.tiEvidences
-    tiRejections += i.tiRejections
-    uatEvidences += i.uatEvidences
-    uatRejections += i.uatRejections
-    totalEvidences += i.totalEvidences
-    totalRejections += i.totalRejections
+export const totalTI = (state, { filteredByChartTI }) => {
+  let evidences = 0
+  let rejections = 0
+  filteredByChartTI.forEach(i => {
+    evidences += i.tiEvidences
+    rejections += i.tiRejections
   })
   return {
-    tiEvidences,
-    tiRejections,
-    uatEvidences,
-    uatRejections,
-    totalEvidences,
-    totalRejections
+    evidences,
+    rejections
   }
 }
 
-export const rateEvidRejectedChartTitle = ({ rateEvidRejectedChartTestManufSelected, rateEvidRejectedChartSystemSelected }) => {
-  if (rateEvidRejectedChartTestManufSelected === '' && rateEvidRejectedChartSystemSelected === '') {
+export const totalUAT = (state, { filteredByChartUAT }) => {
+  let evidences = 0
+  let rejections = 0
+  filteredByChartUAT.forEach(i => {
+    evidences += i.uatEvidences
+    rejections += i.uatRejections
+  })
+  return {
+    evidences,
+    rejections
+  }
+}
+
+export const totalTotal = (state, { filteredByChartTotal }) => {
+  let evidences = 0
+  let rejections = 0
+  filteredByChartTotal.forEach(i => {
+    evidences += i.totalEvidences
+    rejections += i.totalRejections
+  })
+  return {
+    evidences,
+    rejections
+  }
+}
+
+export const filteredByChart = ({ selectedRejectionType }, {filteredByChartTI, filteredByChartUAT, filteredByChartTotal}) => {
+  if (selectedRejectionType === 'Técnica') {
+    return filteredByChartTI
+  } else if (selectedRejectionType === 'Cliente') {
+    return filteredByChartUAT
+  } else {
+    return filteredByChartTotal
+  }
+}
+
+export const filteredByChartTI = ({ data, ChartTestManufSelectedTI, ChartSystemSelectedTI }) => {
+  let ds = []
+  if (ChartTestManufSelectedTI === '' && ChartSystemSelectedTI === '') {
+    ds = data
+  } else {
+    if (ChartSystemSelectedTI === '') {
+      ds = data.filter(i => i.testManuf === ChartTestManufSelectedTI)
+    } else {
+      ds = data.filter(i => i.testManuf === ChartTestManufSelectedTI && i.system === ChartSystemSelectedTI)
+    }
+  }
+  return ds
+}
+
+export const filteredByChartUAT = ({ data, ChartTestManufSelectedUAT, ChartSystemSelectedUAT }) => {
+  let ds = []
+  if (ChartTestManufSelectedUAT === '' && ChartSystemSelectedUAT === '') {
+    ds = data
+  } else {
+    if (ChartSystemSelectedUAT === '') {
+      ds = data.filter(i => i.testManuf === ChartTestManufSelectedUAT)
+    } else {
+      ds = data.filter(i => i.testManuf === ChartTestManufSelectedUAT && i.system === ChartSystemSelectedUAT)
+    }
+  }
+  return ds
+}
+
+export const filteredByChartTotal = ({ data, ChartTestManufSelectedTotal, ChartSystemSelectedTotal }) => {
+  let ds = []
+  if (ChartTestManufSelectedTotal === '' && ChartSystemSelectedTotal === '') {
+    ds = data
+  } else {
+    if (ChartSystemSelectedTotal === '') {
+      ds = data.filter(i => i.testManuf === ChartTestManufSelectedTotal)
+    } else {
+      ds = data.filter(i => i.testManuf === ChartTestManufSelectedTotal && i.system === ChartSystemSelectedTotal)
+    }
+  }
+  return ds
+}
+
+export const chartTitleTI = ({ ChartTestManufSelectedTI, ChartSystemSelectedTI }) => {
+  if (ChartTestManufSelectedTI === '' && ChartSystemSelectedTI === '') {
     return 'Fáb.Teste / Sistema'
   } else {
-    if (rateEvidRejectedChartSystemSelected === '') {
-      return rateEvidRejectedChartTestManufSelected.charAt(0).toUpperCase() + rateEvidRejectedChartTestManufSelected.slice(1).toLowerCase() + ' / Sistema'
+    if (ChartSystemSelectedTI === '') {
+      return ChartTestManufSelectedTI.charAt(0).toUpperCase() + ChartTestManufSelectedTI.slice(1).toLowerCase() + ' / Sistema'
     } else {
-      return rateEvidRejectedChartTestManufSelected.charAt(0).toUpperCase() + rateEvidRejectedChartTestManufSelected.slice(1).toLowerCase() + ' / ' + rateEvidRejectedChartSystemSelected.charAt(0).toUpperCase() + rateEvidRejectedChartSystemSelected.slice(1).toLowerCase()
+      return ChartTestManufSelectedTI.charAt(0).toUpperCase() + ChartTestManufSelectedTI.slice(1).toLowerCase() + ' / ' + ChartSystemSelectedTI.charAt(0).toUpperCase() + ChartSystemSelectedTI.slice(1).toLowerCase()
     }
   }
 }
 
-export const selectedRejectionType = ({ selectedRejectionType }) => selectedRejectionType
+export const chartTitleUAT = ({ ChartTestManufSelectedUAT, ChartSystemSelectedUAT }) => {
+  if (ChartTestManufSelectedUAT === '' && ChartSystemSelectedUAT === '') {
+    return 'Fáb.Teste / Sistema'
+  } else {
+    if (ChartSystemSelectedUAT === '') {
+      return ChartTestManufSelectedUAT.charAt(0).toUpperCase() + ChartTestManufSelectedUAT.slice(1).toLowerCase() + ' / Sistema'
+    } else {
+      return ChartTestManufSelectedUAT.charAt(0).toUpperCase() + ChartTestManufSelectedUAT.slice(1).toLowerCase() + ' / ' + ChartSystemSelectedUAT.charAt(0).toUpperCase() + ChartSystemSelectedUAT.slice(1).toLowerCase()
+    }
+  }
+}
+
+export const chartTitleTotal = ({ ChartTestManufSelectedTotal, ChartSystemSelectedTotal }) => {
+  if (ChartTestManufSelectedTotal === '' && ChartSystemSelectedTotal === '') {
+    return 'Fáb.Teste / Sistema'
+  } else {
+    if (ChartSystemSelectedTotal === '') {
+      return ChartTestManufSelectedTotal.charAt(0).toUpperCase() + ChartTestManufSelectedTotal.slice(1).toLowerCase() + ' / Sistema'
+    } else {
+      return ChartTestManufSelectedTotal.charAt(0).toUpperCase() + ChartTestManufSelectedTotal.slice(1).toLowerCase() + ' / ' + ChartSystemSelectedTotal.charAt(0).toUpperCase() + ChartSystemSelectedTotal.slice(1).toLowerCase()
+    }
+  }
+}

@@ -7,32 +7,19 @@
   import oiProductivityShowRule from '@/module/indicator/productivity/comp/ShowRule.vue'
   import oiProductivityShowAnalytic from '@/module/indicator/productivity/comp/ShowAnalytic.vue'
 
-  import oiRateEvidRejectedShowChartGroupTestManuf from '@/module/indicator/rateEvidRejected/comp/ShowChartGroupTestManuf.vue'
-  import oiRateEvidRejectedShowChartGroupTimeline from '@/module/indicator/rateEvidRejected/comp/ShowChartGroupTimeline.vue'
-  import oiRateEvidRejectedShowChartTotal from '@/module/indicator/rateEvidRejected/comp/ShowChartTotal.vue'
+  import oiSelectionRejectionType from '@/module/indicator/rateEvidRejected/comp/SelectionRejectionType.vue'
   import oiRateEvidRejectedShowRule from '@/module/indicator/rateEvidRejected/comp/ShowRule.vue'
   import oiRateEvidRejectedShowAnalytic from '@/module/indicator/rateEvidRejected/comp/ShowAnalytic.vue'
+  import oiRateEvidRejectedShowChartGroupTestManufTI from '@/module/indicator/rateEvidRejected/comp/ShowChartGroupTestManufTI.vue'
+  import oiRateEvidRejectedShowChartGroupTestManufUAT from '@/module/indicator/rateEvidRejected/comp/ShowChartGroupTestManufUAT.vue'
+  import oiRateEvidRejectedShowChartGroupTestManufTotal from '@/module/indicator/rateEvidRejected/comp/ShowChartGroupTestManufTotal.vue'
+  // import oiRateEvidRejectedShowChartGroupTimeline from '@/module/indicator/rateEvidRejected/comp/ShowChartGroupTimeline.vue'
+  import oiRateEvidRejectedShowChartTotalTI from '@/module/indicator/rateEvidRejected/comp/ShowChartTotalTI.vue'
+  import oiRateEvidRejectedShowChartTotalUAT from '@/module/indicator/rateEvidRejected/comp/ShowChartTotalUAT.vue'
+  import oiRateEvidRejectedShowChartTotalTotal from '@/module/indicator/rateEvidRejected/comp/ShowChartTotalTotal.vue'
 
   export default {
     name: 'ShowData',
-
-    computed: {
-      ...mapGetters(['selectedProjects', 'produtivityLoading', 'rateEvidRejectedLoading']),
-      ...mapState(['selectedRejectionType'])
-    },
-
-    data () {
-      return {
-        typesRejects: [ { name: 'Técnica', hours: 16 }, { name: 'Cliente', hours: 8 }, { name: 'Todas', hours: 4 } ]
-      }
-    },
-
-    methods: {
-      ...mapActions(['loadProdutivity', 'loadRateEvidRejected', 'setSelectedRejectionType']),
-      selectTypesRejects (selectedRejectionType) {
-        this.selectedRejectionType = selectedRejectionType
-      }
-    },
 
     components: {
       oiProductivityShowChartGroupTestManuf,
@@ -40,11 +27,28 @@
       oiProductivityShowChartTotal,
       oiProductivityShowRule,
       oiProductivityShowAnalytic,
-      oiRateEvidRejectedShowChartGroupTestManuf,
-      oiRateEvidRejectedShowChartGroupTimeline,
-      oiRateEvidRejectedShowChartTotal,
+
+      oiSelectionRejectionType,
       oiRateEvidRejectedShowRule,
-      oiRateEvidRejectedShowAnalytic
+      oiRateEvidRejectedShowAnalytic,
+      oiRateEvidRejectedShowChartGroupTestManufTI,
+      oiRateEvidRejectedShowChartGroupTestManufUAT,
+      oiRateEvidRejectedShowChartGroupTestManufTotal,
+      // oiRateEvidRejectedShowChartGroupTimeline,
+      oiRateEvidRejectedShowChartTotalTI,
+      oiRateEvidRejectedShowChartTotalUAT,
+      oiRateEvidRejectedShowChartTotalTotal
+    },
+
+    computed: {
+      ...mapGetters(['selectedProjects', 'produtivityLoading']),
+      ...mapState('indicatorRateEvidRejected', { loadingRateEvidRejected: state => state.loading }),
+      ...mapState('indicatorRateEvidRejected', ['selectedRejectionType'])
+    },
+
+    methods: {
+      ...mapActions(['loadProdutivity']),
+      ...mapActions({'loadRateEvidRejected': 'indicatorRateEvidRejected/load'})
     },
 
     watch: {
@@ -70,13 +74,14 @@
 
     <div class="tab-content">
 
-      <div id="produtivity" class="tab-pane fade in active" style="padding:0; margin:0">
-        <oiProductivityShowRule style="text-align: left"/>
-        <oiProductivityShowAnalytic style="text-align: left"/>
-        <hr style="margin:1px; height: 1px; border: 0; box-shadow: 0 7px 7px -7px #d9d9d9 inset">
-
+      <div id="produtivity" class="tab-pane fade in active" style="padding:0; margin:0; padding-top:5px;">
         <div class="loader" v-show="produtivityLoading" style="margin-top: 25px;margin-bottom: 25px"></div>        
         <div class="row" v-show="!produtivityLoading" style="margin:0; border:0; padding:0">
+          <oiProductivityShowRule style="text-align: left"/>
+          <oiProductivityShowAnalytic style="text-align: left"/>
+          
+          <hr style="margin:1px; height: 1px; border: 0; box-shadow: 0 7px 7px -7px #d9d9d9 inset">
+        
           <div class="col-sm-4">
             <oiProductivityShowChartGroupTestManuf/>
           </div>
@@ -91,36 +96,28 @@
         </div>
       </div>
 
-      <div id="rateEvidRejected" class="tab-pane fade" style="padding:0; margin:0">
-        <oiRateEvidRejectedShowRule style="text-align: left"/>
-        <oiRateEvidRejectedShowAnalytic style="text-align: left"/>
-        <label>&nbsp;&nbsp;Tipo:</label>
-        <!--
-        <span v-for="i in typesRejects">
-            <butto
-                class="btn btn-xs"
-                :class="(selectedRejectionType === i.name) ? 'active btn-default' : ''" 
-            >
-              {{i.name}}
-            </button>
-        </span>
-        -->
-        <button class="btn btn-xs" :class="(selectedRejectionType === 'Técnica') ? 'active btn-default' : ''" @click="setSelectedRejectionType('Técnica')" v-text="'Técnica'"/>
-        <button class="btn btn-xs" :class="(selectedRejectionType === 'Cliente') ? 'active btn-default' : ''" @click="setSelectedRejectionType('Cliente')" v-text="'Cliente'"/>
-        <button class="btn btn-xs" :class="(selectedRejectionType === 'Todas') ? 'active btn-default' : ''" @click="setSelectedRejectionType('Todas')" v-text="'Todas'"/>
+      <div id="rateEvidRejected" class="tab-pane fade" style="padding:0; margin:0; padding-top:5px;">
+        <div class="loader" v-show="loadingRateEvidRejected" style="margin-top: 25px; margin-bottom: 25px"/>
+        <div class="row" v-show="!loadingRateEvidRejected" style="margin:0; border:0; padding:0">
+          <oiRateEvidRejectedShowRule style="text-align: left"/>
+          <oiRateEvidRejectedShowAnalytic style="text-align: left"/>
 
-        <hr style="margin:0; height: 1px; border: 0; box-shadow: 0 7px 7px -7px #d9d9d9 inset">
+          <oiSelectionRejectionType/>
 
-        <div class="loader" v-show="rateEvidRejectedLoading" style="margin-top: 25px;margin-bottom: 25px"/>
-        <div class="row" style="margin:0; border:0; padding:0">
+          <hr style="margin-top: 2px; height: 1px; border: 0; box-shadow: 0 7px 7px -7px #d9d9d9 inset">
+
           <div class="col-sm-4">
-            <oiRateEvidRejectedShowChartGroupTestManuf/>
+            <oiRateEvidRejectedShowChartGroupTestManufTI v-show="selectedRejectionType==='Técnica'"/>
+            <oiRateEvidRejectedShowChartGroupTestManufUAT v-show="selectedRejectionType==='Cliente'"/>
+            <oiRateEvidRejectedShowChartGroupTestManufTotal v-show="selectedRejectionType==='Todas'"/>
           </div>
           <div class="col-sm-4">
             <!--<oRateEvidRejectedShowChartGroupTimeline/>-->
           </div>
           <div class="col-sm-4">
-            <oiRateEvidRejectedShowChartTotal/>
+            <oiRateEvidRejectedShowChartTotalTI v-show="selectedRejectionType==='Técnica'"/>
+            <oiRateEvidRejectedShowChartTotalUAT v-show="selectedRejectionType==='Cliente'"/>
+            <oiRateEvidRejectedShowChartTotalTotal v-show="selectedRejectionType==='Todas'"/>
           </div>
         </div>
       </div>

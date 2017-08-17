@@ -5,7 +5,7 @@
     name: 'ShowAnalyticGrid',
 
     computed: {
-      ...mapGetters(['rateEvidRejectedFilteredByChart'])
+      ...mapGetters('indicatorRateEvidRejected', ['filteredByChart'])
     }
   }
 
@@ -82,7 +82,7 @@
         </tr>
     </thead>
 
-    <tbody v-for="item in rateEvidRejectedFilteredByChart">
+    <tbody v-for="item in filteredByChart">
         <tr style="padding:0">
             <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: center">
                 <font size="2">{{item.monthYear}}</font>

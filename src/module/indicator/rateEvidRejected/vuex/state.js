@@ -1,8 +1,14 @@
 export default {
-  rateEvidRejected: [],
-  rateEvidRejectedLoading: false,
+  typesRejects: [ 'Técnica', 'Cliente', 'Todas' ],
   selectedRejectionType: 'Técnica',
 
-  rateEvidRejectedChartTestManufSelected: '',
-  rateEvidRejectedChartSystemSelected: ''
+  data: [],
+  loading: false,
+
+  ChartTestManufSelectedTI: '',
+  ChartSystemSelectedTI: '',
+  ChartTestManufSelectedUAT: '',
+  ChartSystemSelectedUAT: '',
+  ChartTestManufSelectedTotal: '',
+  ChartSystemSelectedTotal: ''
 }
