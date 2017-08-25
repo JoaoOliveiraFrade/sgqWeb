@@ -1,12 +1,13 @@
 import * as types from './mutationsTypes'
 import services from '../services'
 
-export const load = ({ commit, rootState }) => {
+export const load = ({ commit, state, rootState }) => {
   if (rootState.testManuf.selectedTestManufs.length === 0 || rootState.system.selectedSystems.length === 0 || rootState.project.selectedProjects.length === 0) {
     return
   }
 
   commit(types.loading, true)
+
   return new Promise((resolve, reject) => {
     services.getByListTestManufSystemProject({
       selectedTestManufs: rootState.testManuf.selectedTestManufs,
@@ -28,45 +29,50 @@ export const load = ({ commit, rootState }) => {
   })
 }
 
-export const chartChangeFilterTI = ({ commit, state }, item) => {
-  if (item === '') {
-    commit(types.ChartTestManufSelectedTI, '')
-    commit(types.ChartSystemSelectedTI, '')
-  } else {
-    if (state.ChartTestManufSelectedTI === '') {
-      commit(types.ChartTestManufSelectedTI, item)
-    } else {
-      commit(types.ChartSystemSelectedTI, item)
-    }
+export const loadTimeline = ({ commit, state, rootState }) => {
+  if (rootState.testManuf.selectedTestManufs.length === 0 || rootState.system.selectedSystems.length === 0 || rootState.project.selectedProjects.length === 0) {
+    return
   }
+
+  commit(types.loadingTimeline, true)
+
+  return new Promise((resolve, reject) => {
+    services.getByListTestManufSystemProjectGroupTimeline({
+      selectedTestManufs: rootState.testManuf.selectedTestManufs,
+      selectedSystems: rootState.system.selectedSystems,
+      selectedProjects: rootState.project.selectedProjects.map(i => i.subproject + i.delivery)
+    })
+    .then(
+      r => {
+        commit(types.dataTimeline, r.data)
+        commit(types.loadingTimeline, false)
+        resolve()
+      },
+      e => {
+        console.log(e)
+        commit(types.loadingTimeline, false)
+        reject()
+      }
+    )
+  })
 }
 
-export const chartChangeFilterUAT = ({ commit, state }, item) => {
+export const changeChartFilter = ({ state, commit }, item) => {
+  console.log('changeChartFilter: ' + item)
   if (item === '') {
-    commit(types.ChartTestManufSelectedUAT, '')
-    commit(types.ChartSystemSelectedTI, '')
+    commit(types.testManufSelected, '')
+    commit(types.systemSelected, '')
   } else {
-    if (state.ChartTestManufSelectedUAT === '') {
-      commit(types.ChartTestManufSelectedUAT, item)
+    if (state.testManufSelected === '') {
+      commit(types.testManufSelected, item)
     } else {
-      commit(types.ChartSystemSelectedUAT, item)
-    }
-  }
-}
-
-export const chartChangeFilterTotal = ({ commit, state }, item) => {
-  if (item === '') {
-    commit(types.ChartTestManufSelectedTotal, '')
-    commit(types.ChartSystemSelectedTI, '')
-  } else {
-    if (state.ChartTestManufSelectedTotal === '') {
-      commit(types.ChartTestManufSelectedTotal, item)
-    } else {
-      commit(types.ChartSystemSelectedTotal, item)
+      commit(types.systemSelected, item)
     }
   }
 }
 
 export const setSelectedRejectionType = ({ commit }, data) => {
   commit(types.selectedRejectionType, data)
+  commit(types.testManufSelected, '')
+  commit(types.systemSelected, '')
 }

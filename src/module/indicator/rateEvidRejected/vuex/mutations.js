@@ -4,29 +4,25 @@ export default {
   [types.data] (state, parameter) {
     state.data = parameter
   },
+  [types.dataTimeline] (state, parameter) {
+    state.dataTimeline = parameter
+  },
+
   [types.loading] (state, parameter) {
     state.loading = parameter
   },
+  [types.loadingTimeline] (state, parameter) {
+    state.loadingTimeline = parameter
+  },
+
   [types.selectedRejectionType] (state, parameter) {
     state.selectedRejectionType = parameter
   },
 
-  [types.ChartTestManufSelectedTI] (state, parameter) {
-    state.ChartTestManufSelectedTI = parameter
+  [types.testManufSelected] (state, parameter) {
+    state.testManufSelected = parameter
   },
-  [types.ChartSystemSelectedTI] (state, parameter) {
-    state.ChartSystemSelectedTI = parameter
-  },
-  [types.ChartTestManufSelectedUAT] (state, parameter) {
-    state.ChartTestManufSelectedUAT = parameter
-  },
-  [types.ChartSystemSelectedUAT] (state, parameter) {
-    state.ChartSystemSelectedUAT = parameter
-  },
-  [types.ChartTestManufSelectedTotal] (state, parameter) {
-    state.ChartTestManufSelectedTotal = parameter
-  },
-  [types.ChartSystemSelectedTotal] (state, parameter) {
-    state.ChartSystemSelectedTotal = parameter
+  [types.systemSelected] (state, parameter) {
+    state.systemSelected = parameter
   }
 }

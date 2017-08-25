@@ -1,14 +1,14 @@
 export default {
-  typesRejects: [ 'Técnica', 'Cliente', 'Todas' ],
+  typesRejects: [ 'Técnica', 'Cliente', 'Todos' ],
   selectedRejectionType: 'Técnica',
+  maxRejectionPercentage: 15,
 
   data: [],
-  loading: false,
+  dataTimeline: [],
 
-  ChartTestManufSelectedTI: '',
-  ChartSystemSelectedTI: '',
-  ChartTestManufSelectedUAT: '',
-  ChartSystemSelectedUAT: '',
-  ChartTestManufSelectedTotal: '',
-  ChartSystemSelectedTotal: ''
+  loading: false,
+  loadingTimeline: false,
+
+  testManufSelected: '',
+  systemSelected: ''
 }

@@ -10,7 +10,7 @@
   import chartStandParam from '@/module/chart/comp/types/drillDown'
 
   export default {
-    name: 'ShowChartGroupTestManuf',
+    name: 'ShowChartGroupTestManufProductivity',
 
     data () {
       return {

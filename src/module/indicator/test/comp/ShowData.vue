@@ -10,13 +10,10 @@
   import oiSelectionRejectionType from '@/module/indicator/rateEvidRejected/comp/SelectionRejectionType.vue'
   import oiRateEvidRejectedShowRule from '@/module/indicator/rateEvidRejected/comp/ShowRule.vue'
   import oiRateEvidRejectedShowAnalytic from '@/module/indicator/rateEvidRejected/comp/ShowAnalytic.vue'
-  import oiRateEvidRejectedShowChartGroupTestManufTI from '@/module/indicator/rateEvidRejected/comp/ShowChartGroupTestManufTI.vue'
-  import oiRateEvidRejectedShowChartGroupTestManufUAT from '@/module/indicator/rateEvidRejected/comp/ShowChartGroupTestManufUAT.vue'
-  import oiRateEvidRejectedShowChartGroupTestManufTotal from '@/module/indicator/rateEvidRejected/comp/ShowChartGroupTestManufTotal.vue'
-  // import oiRateEvidRejectedShowChartGroupTimeline from '@/module/indicator/rateEvidRejected/comp/ShowChartGroupTimeline.vue'
-  import oiRateEvidRejectedShowChartTotalTI from '@/module/indicator/rateEvidRejected/comp/ShowChartTotalTI.vue'
-  import oiRateEvidRejectedShowChartTotalUAT from '@/module/indicator/rateEvidRejected/comp/ShowChartTotalUAT.vue'
-  import oiRateEvidRejectedShowChartTotalTotal from '@/module/indicator/rateEvidRejected/comp/ShowChartTotalTotal.vue'
+  import oiRateEvidRejectedShowAnalyticTimeline from '@/module/indicator/rateEvidRejected/comp/ShowAnalyticTimeline.vue'
+  import oiRateEvidRejectedShowChartGroupTestManuf from '@/module/indicator/rateEvidRejected/comp/ShowChartGroupTestManuf.vue'
+  import oiRateEvidRejectedShowChartGroupTimeline from '@/module/indicator/rateEvidRejected/comp/ShowChartGroupTimeline.vue'
+  import oiRateEvidRejectedShowChartTotal from '@/module/indicator/rateEvidRejected/comp/ShowChartTotal.vue'
 
   export default {
     name: 'ShowData',
@@ -31,31 +28,30 @@
       oiSelectionRejectionType,
       oiRateEvidRejectedShowRule,
       oiRateEvidRejectedShowAnalytic,
-      oiRateEvidRejectedShowChartGroupTestManufTI,
-      oiRateEvidRejectedShowChartGroupTestManufUAT,
-      oiRateEvidRejectedShowChartGroupTestManufTotal,
-      // oiRateEvidRejectedShowChartGroupTimeline,
-      oiRateEvidRejectedShowChartTotalTI,
-      oiRateEvidRejectedShowChartTotalUAT,
-      oiRateEvidRejectedShowChartTotalTotal
+      oiRateEvidRejectedShowAnalyticTimeline,
+      oiRateEvidRejectedShowChartGroupTestManuf,
+      oiRateEvidRejectedShowChartGroupTimeline,
+      oiRateEvidRejectedShowChartTotal
     },
 
     computed: {
       ...mapGetters(['selectedProjects', 'produtivityLoading']),
-      ...mapState('indicatorRateEvidRejected', { loadingRateEvidRejected: state => state.loading }),
-      ...mapState('indicatorRateEvidRejected', ['selectedRejectionType'])
+      ...mapState('indicatorRateEvidRejected', { loadingRateEvidRejected: state => (state.loading || state.loadingTimeline) })
     },
 
     methods: {
       ...mapActions(['loadProdutivity']),
-      ...mapActions({'loadRateEvidRejected': 'indicatorRateEvidRejected/load'})
+      ...mapActions({'loadRateEvidRejected': 'indicatorRateEvidRejected/load'}),
+      ...mapActions({'loadRateEvidRejectedTimeline': 'indicatorRateEvidRejected/loadTimeline'})
     },
 
     watch: {
       'selectedProjects': {
         handler () {
           this.loadProdutivity()
+
           this.loadRateEvidRejected()
+          this.loadRateEvidRejectedTimeline()
         }
       }
     }
@@ -101,23 +97,20 @@
         <div class="row" v-show="!loadingRateEvidRejected" style="margin:0; border:0; padding:0">
           <oiRateEvidRejectedShowRule style="text-align: left"/>
           <oiRateEvidRejectedShowAnalytic style="text-align: left"/>
+          <oiRateEvidRejectedShowAnalyticTimeline style="text-align: left"/>
 
           <oiSelectionRejectionType/>
 
           <hr style="margin-top: 2px; height: 1px; border: 0; box-shadow: 0 7px 7px -7px #d9d9d9 inset">
 
           <div class="col-sm-4">
-            <oiRateEvidRejectedShowChartGroupTestManufTI v-show="selectedRejectionType==='Técnica'"/>
-            <oiRateEvidRejectedShowChartGroupTestManufUAT v-show="selectedRejectionType==='Cliente'"/>
-            <oiRateEvidRejectedShowChartGroupTestManufTotal v-show="selectedRejectionType==='Todas'"/>
+            <oiRateEvidRejectedShowChartGroupTestManuf/>
           </div>
           <div class="col-sm-4">
-            <!--<oRateEvidRejectedShowChartGroupTimeline/>-->
+            <oiRateEvidRejectedShowChartGroupTimeline/>
           </div>
           <div class="col-sm-4">
-            <oiRateEvidRejectedShowChartTotalTI v-show="selectedRejectionType==='Técnica'"/>
-            <oiRateEvidRejectedShowChartTotalUAT v-show="selectedRejectionType==='Cliente'"/>
-            <oiRateEvidRejectedShowChartTotalTotal v-show="selectedRejectionType==='Todas'"/>
+            <oiRateEvidRejectedShowChartTotal/>
           </div>
         </div>
       </div>

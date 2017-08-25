@@ -3,7 +3,11 @@ import { paths } from '@/environment'
 
 export default {
   getByListTestManufSystemProject (parameter) {
-    let resource = Resource.resource(paths.api + '/indicatorTest/rateEvidRejected/ByListTestManufSystemProject')
-    return resource.update(parameter)
+    let resource = Resource.resource(paths.api + '/indicatorTest/rateEvidRejected/byListTestManufSystemProject')
+    return resource.save(parameter)
+  },
+  getByListTestManufSystemProjectGroupTimeline (parameter) {
+    let resource = Resource.resource(paths.api + '/indicatorTest/rateEvidRejected/byListTestManufSystemProject/groupTimeline')
+    return resource.save(parameter)
   }
 }

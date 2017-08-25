@@ -14,6 +14,6 @@ export default {
 
   getProdutivityByListTestManufSystemProject (parameter) {
     let resource = Resource.resource(paths.api + '/indicatorTest/produtivity/byListTestManufSystemProject')
-    return resource.update(parameter)
+    return resource.save(parameter)
   }
 }

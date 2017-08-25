@@ -19,7 +19,6 @@ export const produtivityGroupTestManuf = ({ produtivitys }) => {
   })
   return result.sort((a, b) => a.productivity > b.productivity ? 1 : -1)
 }
-
 export const produtivityByTestManufGroupSystem = ({ produtivitys }) => (testManuf) => {
   let result = []
   produtivitys.filter(p => p.testManuf === testManuf).forEach(p => {

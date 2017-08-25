@@ -14,7 +14,7 @@
     "axios": "^0.16.2",
     "bootstrap": "^3.3.7",
     "bootstrap-sass": "^3.3.7",
-    "highcharts": "^5.0.12",
+    "highcharts": "^5.0.3",
     "highcharts-drilldown": "^0.1.2",
     "highcharts-more": "^0.1.2",
     "highcharts-no-data-to-display": "^0.1.2",
