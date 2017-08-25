@@ -19,12 +19,11 @@ export const tryLoadProfiles = ({ commit }, userId) => {
   return new Promise((resolve, reject) => {
     services.getProfilesByUser(userId)
       .then(d => {
-        console.log(d.data)
         commit(types.currentUserProfiles, d.data)
-        resolve()
+        resolve(d.data)
       },
       e => {
-        reject()
+        reject(e)
       })
   })
 }

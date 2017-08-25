@@ -12,16 +12,14 @@ export const loadRateEvidRejected = ({ getters, commit }) => {
     })
     .then(
       r => {
-        console.log('loadRateEvidRejected - Fim - ok')
         commit(types.rateEvidRejected, r.data)
         commit(types.rateEvidRejectedLoading, false)
-        resolve()
+        resolve(r.data)
       },
       e => {
         console.log(e)
-        console.log('loadRateEvidRejected - Fim - erro')
         commit(types.rateEvidRejectedLoading, false)
-        reject()
+        reject(e)
       }
     )
   })

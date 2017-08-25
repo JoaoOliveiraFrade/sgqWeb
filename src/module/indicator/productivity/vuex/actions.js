@@ -13,12 +13,12 @@ export const loadProdutivity = ({ getters, commit }) => {
       r => {
         commit(types.produtivitys, r.data)
         commit(types.produtivityLoading, false)
-        resolve()
+        resolve(r.data)
       },
       e => {
-        console.log(e)
         commit(types.produtivityLoading, false)
-        reject()
+        console.log(e)
+        reject(e)
       }
     )
   })
