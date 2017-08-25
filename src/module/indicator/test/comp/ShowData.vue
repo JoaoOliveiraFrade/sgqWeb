@@ -1,5 +1,5 @@
 <script>
-  import { mapGetters, mapActions } from 'vuex'
+  import { mapGetters, mapActions, mapState } from 'vuex'
 
   import oiProductivityShowChartGroupTestManuf from '@/module/indicator/productivity/comp/ShowChartGroupTestManuf.vue'
   import oiProductivityShowChartGroupTimeline from '@/module/indicator/productivity/comp/ShowChartGroupTimeline.vue'
@@ -7,32 +7,16 @@
   import oiProductivityShowRule from '@/module/indicator/productivity/comp/ShowRule.vue'
   import oiProductivityShowAnalytic from '@/module/indicator/productivity/comp/ShowAnalytic.vue'
 
+  import oiSelectionRejectionType from '@/module/indicator/rateEvidRejected/comp/SelectionRejectionType.vue'
+  import oiRateEvidRejectedShowRule from '@/module/indicator/rateEvidRejected/comp/ShowRule.vue'
+  import oiRateEvidRejectedShowAnalytic from '@/module/indicator/rateEvidRejected/comp/ShowAnalytic.vue'
+  import oiRateEvidRejectedShowAnalyticTimeline from '@/module/indicator/rateEvidRejected/comp/ShowAnalyticTimeline.vue'
   import oiRateEvidRejectedShowChartGroupTestManuf from '@/module/indicator/rateEvidRejected/comp/ShowChartGroupTestManuf.vue'
   import oiRateEvidRejectedShowChartGroupTimeline from '@/module/indicator/rateEvidRejected/comp/ShowChartGroupTimeline.vue'
   import oiRateEvidRejectedShowChartTotal from '@/module/indicator/rateEvidRejected/comp/ShowChartTotal.vue'
-  import oiRateEvidRejectedShowRule from '@/module/indicator/rateEvidRejected/comp/ShowRule.vue'
-  import oiRateEvidRejectedShowAnalytic from '@/module/indicator/rateEvidRejected/comp/ShowAnalytic.vue'
 
   export default {
     name: 'ShowData',
-
-    computed: {
-      ...mapGetters(['selectedProjects', 'produtivityLoading', 'rateEvidRejectedLoading'])
-    },
-
-    data () {
-      return {
-        typesRejects: [ { name: 'Técnica', hours: 16 }, { name: 'Cliente', hours: 8 }, { name: 'Todas', hours: 4 } ],
-        typesRejectsSelected: 'Cliente'
-      }
-    },
-
-    methods: {
-      ...mapActions(['loadProdutivity', 'loadRateEvidRejected']),
-      selectTypesRejects (typesRejectsSelected) {
-        this.typesRejectsSelected = typesRejectsSelected
-      }
-    },
 
     components: {
       oiProductivityShowChartGroupTestManuf,
@@ -40,18 +24,34 @@
       oiProductivityShowChartTotal,
       oiProductivityShowRule,
       oiProductivityShowAnalytic,
+
+      oiSelectionRejectionType,
+      oiRateEvidRejectedShowRule,
+      oiRateEvidRejectedShowAnalytic,
+      oiRateEvidRejectedShowAnalyticTimeline,
       oiRateEvidRejectedShowChartGroupTestManuf,
       oiRateEvidRejectedShowChartGroupTimeline,
-      oiRateEvidRejectedShowChartTotal,
-      oiRateEvidRejectedShowRule,
-      oiRateEvidRejectedShowAnalytic
+      oiRateEvidRejectedShowChartTotal
+    },
+
+    computed: {
+      ...mapGetters(['selectedProjects', 'produtivityLoading']),
+      ...mapState('indicatorRateEvidRejected', { loadingRateEvidRejected: state => (state.loading || state.loadingTimeline) })
+    },
+
+    methods: {
+      ...mapActions(['loadProdutivity']),
+      ...mapActions({'loadRateEvidRejected': 'indicatorRateEvidRejected/load'}),
+      ...mapActions({'loadRateEvidRejectedTimeline': 'indicatorRateEvidRejected/loadTimeline'})
     },
 
     watch: {
       'selectedProjects': {
         handler () {
           this.loadProdutivity()
+
           this.loadRateEvidRejected()
+          this.loadRateEvidRejectedTimeline()
         }
       }
     }
@@ -70,13 +70,14 @@
 
     <div class="tab-content">
 
-      <div id="produtivity" class="tab-pane fade in active" style="padding:0; margin:0">
-        <oiProductivityShowRule style="text-align: left"/>
-        <oiProductivityShowAnalytic style="text-align: left"/>
-        <hr style="margin:1px; height: 1px; border: 0; box-shadow: 0 7px 7px -7px #d9d9d9 inset">
-
+      <div id="produtivity" class="tab-pane fade in active" style="padding:0; margin:0; padding-top:5px;">
         <div class="loader" v-show="produtivityLoading" style="margin-top: 25px;margin-bottom: 25px"></div>        
         <div class="row" v-show="!produtivityLoading" style="margin:0; border:0; padding:0">
+          <oiProductivityShowRule style="text-align: left"/>
+          <oiProductivityShowAnalytic style="text-align: left"/>
+          
+          <hr style="margin:1px; height: 1px; border: 0; box-shadow: 0 7px 7px -7px #d9d9d9 inset">
+        
           <div class="col-sm-4">
             <oiProductivityShowChartGroupTestManuf/>
           </div>
@@ -91,27 +92,22 @@
         </div>
       </div>
 
-      <div id="rateEvidRejected" class="tab-pane fade" style="padding:0; margin:0">
-        <oiRateEvidRejectedShowRule style="text-align: left"/>
-        <oiRateEvidRejectedShowAnalytic style="text-align: left"/>
-        &nbsp;&nbsp;<label>Tipo:</label>
-        <span v-for="i in typesRejects">
-            <button style="margin:1px; border:0; padding:0; height: 19px; padding-left:4px; padding-right:4px"
-                class="btn btn-xs"
-                :class="(typesRejectsSelected === i.name) ? 'active btn-default' : ''" 
-            >
-              {{i.name}}
-            </button>
-        </span>
-        <hr style="margin:0; height: 1px; border: 0; box-shadow: 0 7px 7px -7px #d9d9d9 inset">
+      <div id="rateEvidRejected" class="tab-pane fade" style="padding:0; margin:0; padding-top:5px;">
+        <div class="loader" v-show="loadingRateEvidRejected" style="margin-top: 25px; margin-bottom: 25px"/>
+        <div class="row" v-show="!loadingRateEvidRejected" style="margin:0; border:0; padding:0">
+          <oiRateEvidRejectedShowRule style="text-align: left"/>
+          <oiRateEvidRejectedShowAnalytic style="text-align: left"/>
+          <oiRateEvidRejectedShowAnalyticTimeline style="text-align: left"/>
 
-        <div class="loader" v-show="rateEvidRejectedLoading" style="margin-top: 25px;margin-bottom: 25px"></div>        
-        <div class="row" style="margin:0; border:0; padding:0">
+          <oiSelectionRejectionType/>
+
+          <hr style="margin-top: 2px; height: 1px; border: 0; box-shadow: 0 7px 7px -7px #d9d9d9 inset">
+
           <div class="col-sm-4">
             <oiRateEvidRejectedShowChartGroupTestManuf/>
           </div>
           <div class="col-sm-4">
-            <!--<oRateEvidRejectedShowChartGroupTimeline/>-->
+            <oiRateEvidRejectedShowChartGroupTimeline/>
           </div>
           <div class="col-sm-4">
             <oiRateEvidRejectedShowChartTotal/>
@@ -167,9 +163,17 @@
       height: 120px;
       animation: spin 2s linear infinite;
   }
-
   @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
-  }    
+  }
+  button {
+    margin:0px; 
+    margin-bottom:1px; 
+    border:0; 
+    padding:0; 
+    height: 19px; 
+    padding-left:4px; 
+    padding-right:4px
+  }
 </style>

@@ -1,6 +1,10 @@
-export const rateEvidRejected = 'rateEvidRejected/rateEvidRejected'
-export const rateEvidRejectedLoading = 'rateEvidRejected/rateEvidRejectedLoading'
+export const data = 'data'
+export const dataTimeline = 'dataGroupTimeline'
 
-export const rateEvidRejectedChartTestManufSelected = 'productivity/rateEvidRejectedChartTestManufSelected'
-export const rateEvidRejectedChartSystemSelected = 'productivity/rateEvidRejectedChartSystemSelected'
+export const loading = 'loading'
+export const loadingTimeline = 'loadingGroupTimeline'
 
+export const selectedRejectionType = 'selectedRejectionType'
+
+export const testManufSelected = 'testManufSelected'
+export const systemSelected = 'systemSelected'

@@ -20,7 +20,7 @@
 <template>
     <div class="modal" :id="id" >
         <div class="modal-dialog" :style="size==='l' ? 'max-width: 95%; width: auto !important;' : ''">
-            <div class="modal-content" style="background-color: #fff9e6">
+            <div class="modal-content" style="background-color: #f8f8ff">
                 <div class="modal-header">
                     <a class='oi-icon' href="#"
                         data-toggle="tooltip" 

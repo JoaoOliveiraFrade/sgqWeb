@@ -150,7 +150,9 @@
             </ul>
         </li>
     
-        <oiSelectionLogonLogoff v-show="!isLogged"/>
+        <li class="dropdown">
+            <oiSelectionLogonLogoff v-show="!isLogged"/>
+        </li>
 
         <li class="dropdown" v-show="isLogged">
           <a href="#" 

@@ -1,17 +1,28 @@
 import * as types from './mutationsTypes'
 
 export default {
-  [types.rateEvidRejected] (state, data) {
-    state.rateEvidRejected = data
+  [types.data] (state, parameter) {
+    state.data = parameter
   },
-  [types.rateEvidRejectedLoading] (state, data) {
-    state.rateEvidRejectedLoading = data
+  [types.dataTimeline] (state, parameter) {
+    state.dataTimeline = parameter
   },
 
-  [types.rateEvidRejectedChartTestManufSelected] (state, data) {
-    state.rateEvidRejectedChartTestManufSelected = data
+  [types.loading] (state, parameter) {
+    state.loading = parameter
   },
-  [types.rateEvidRejectedChartSystemSelected] (state, data) {
-    state.rateEvidRejectedChartSystemSelected = data
+  [types.loadingTimeline] (state, parameter) {
+    state.loadingTimeline = parameter
+  },
+
+  [types.selectedRejectionType] (state, parameter) {
+    state.selectedRejectionType = parameter
+  },
+
+  [types.testManufSelected] (state, parameter) {
+    state.testManufSelected = parameter
+  },
+  [types.systemSelected] (state, parameter) {
+    state.systemSelected = parameter
   }
 }

@@ -11,6 +11,7 @@ export default {
   projects: [],
   projectsByDevManufsAndSystems: [],
   projectsByTestManufsAndSystems: [],
+  projectsByTestManufsAndSystemsSelected: [],
   projectsLoading: false,
   selectedProjects: [],
   project: {},

@@ -1,5 +1,5 @@
 selected<script>
-  import oiModal from '@/module/modal/comp/Modalx.vue'
+  import oiModal from '@/module/modal/comp/modal.vue'
   import oiRateEvidRejectedShowAnalyticGrid from '@/module/indicator/rateEvidRejected/comp/ShowAnalyticGrid.vue'
 
   export default {
@@ -11,34 +11,21 @@ selected<script>
 
 <template>
   <span style="padding:0; margin:0">
-    <button style="margin:0; border:0; padding:0; height: 19px; padding-left:4px; padding-right:4px"
+
+    <button 
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
-        data-target="#RateEvidRejectedShowAnalytic">Analítico
+        data-target="#RateEvidRejectedShowAnalytic">
+        Analítico
     </button>
 
-    <oiModal id="RateEvidRejectedShowAnalytic">
-      <div style="margin:0; border:0; padding:0" slot="header">
-        <div class="col-xs-1" style="padding:0; margin:0; border:0">
-          <a class="btn btn-primary btn-xs"   
-            role="button"
-            data-dismiss="modal">
-            Fechar
-          </a> 
-        </div>
-      
-        <div class="col-xs-10" style="text-align: center">
-          <label class="fd-label">Analítico</label>
-        </div>
-        
-        <hr class="col-xs-12" >
-      </div>
-
+    <oiModal id="RateEvidRejectedShowAnalytic" title="Taxa Rejeição Evidência - Analítico" size="l">   
       <div style="margin:0; padding:10px" slot="body">
         <oiRateEvidRejectedShowAnalyticGrid/>
       </div>
-    </oiModal> 
+    </oiModal>
+
   </span>
 </template>
 

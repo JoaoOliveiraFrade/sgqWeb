@@ -2,10 +2,10 @@
   import { mapGetters } from 'vuex'
 
   export default {
-    name: 'ShowAnalyticGrid',
+    name: 'ShowAnalyticGridTimeline',
 
     computed: {
-      ...mapGetters('indicatorRateEvidRejected', ['filteredByChart'])
+      ...mapGetters('indicatorRateEvidRejected', ['dataTimelineBySelectedRejectionType'])
     }
   }
 
@@ -16,6 +16,12 @@
     <table class="table table-condensed table-striped table-hover table-bordered" style="margin-bottom:0; padding-bottom:0">
     <thead>
         <tr>
+            <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: center">
+                <font size="2" class="text-nowrap">Data
+                    <a href="#" @click.prevent="setOrder('monthYear')">
+                    </a>
+                </font>
+            </th>
             <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">
                 <font size="2" class="text-nowrap">Fáb. Test
                     <a href="#" @click.prevent="setOrder('testManuf')">
@@ -36,13 +42,6 @@
             </th>
 
             <th style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
-                <font size="2" class="text-nowrap">Evidencias
-                    <a href="#" @click.prevent="setOrder('Passed')">
-                    </a>
-                </font>
-            </th>
-
-            <th style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
                 <font size="2" class="text-nowrap">Rejeições
                     <a href="#" @click.prevent="setOrder('Failed')">
                     </a>
@@ -51,8 +50,12 @@
         </tr>
     </thead>
 
-    <tbody v-for="item in filteredByChart">
+    <tbody v-for="item in dataTimelineBySelectedRejectionType">
         <tr style="padding:0">
+            <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: center">
+                <font size="2">{{item.monthYear}}</font>
+            </td style="padding:0">
+
             <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">
                 <font size="2">{{item.testManuf}}</font>
             </td style="padding:0">
@@ -63,10 +66,6 @@
 
             <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: center">
                 <font size="2">{{item.subprojectDelivery}}</font>
-            </td style="padding:0">
-
-            <td style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
-                <font size="2">{{item.evidences}}</font>
             </td style="padding:0">
 
             <td style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
