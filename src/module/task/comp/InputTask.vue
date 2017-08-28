@@ -14,7 +14,7 @@
       addTask () {
         let task = this.createTask(this.taskName)
         console.log(task)
-        // this.$VuexStoreTask.commit('addTask', { task })
+        // this.$VuexTask.commit('addTask', { task })
         this.clearFields()
       },
       createTask (value) {

@@ -1,7 +1,7 @@
 <script>
   import oiHeader from '@/module/header/Main.vue'
   // import { mapState, mapActions } from 'vuex'
-  // import store from './vuexStore'
+  // import store from './vuex'
 
   export default {
     name: 'App',

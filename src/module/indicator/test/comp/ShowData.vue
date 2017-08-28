@@ -15,7 +15,13 @@
   import oiRateEvidRejectedShowChartGroupTimeline from '@/module/indicator/rateEvidRejected/comp/ShowChartGroupTimeline.vue'
   import oiRateEvidRejectedShowChartTotal from '@/module/indicator/rateEvidRejected/comp/ShowChartTotal.vue'
 
-  export default {
+  import oiRateDefectUnfoundedShowRule from '@/module/indicator/rateDefectUnfounded/comp/ShowRule.vue'
+  import oiRateDefectUnfoundedShowAnalytic from '@/module/indicator/rateDefectUnfounded/comp/ShowAnalytic.vue'
+  import oiRateDefectUnfoundedShowChartGroupTestManuf from '@/module/indicator/rateDefectUnfounded/comp/ShowChartGroupTestManuf.vue'
+  import oiRateDefectUnfoundedShowChartGroupTimeline from '@/module/indicator/rateDefectUnfounded/comp/ShowChartGroupTimeline.vue'
+  import oiRateDefectUnfoundedShowChartTotal from '@/module/indicator/rateDefectUnfounded/comp/ShowChartTotal.vue'
+
+export default {
     name: 'ShowData',
 
     components: {
@@ -31,18 +37,26 @@
       oiRateEvidRejectedShowAnalyticTimeline,
       oiRateEvidRejectedShowChartGroupTestManuf,
       oiRateEvidRejectedShowChartGroupTimeline,
-      oiRateEvidRejectedShowChartTotal
+      oiRateEvidRejectedShowChartTotal,
+
+      oiRateDefectUnfoundedShowRule,
+      oiRateDefectUnfoundedShowAnalytic,
+      oiRateDefectUnfoundedShowChartGroupTestManuf,
+      oiRateDefectUnfoundedShowChartGroupTimeline,
+      oiRateDefectUnfoundedShowChartTotal
     },
 
     computed: {
       ...mapGetters(['selectedProjects', 'produtivityLoading']),
-      ...mapState('indicatorRateEvidRejected', { loadingRateEvidRejected: state => (state.loading || state.loadingTimeline) })
+      ...mapState('indicatorRateEvidRejected', { loadingRateEvidRejected: state => (state.loading || state.loadingTimeline) }),
+      ...mapState('indicatorRateDefectUnfounded', { loadingRateDefectUnfounded: state => (state.loading) })
     },
 
     methods: {
       ...mapActions(['loadProdutivity']),
       ...mapActions({'loadRateEvidRejected': 'indicatorRateEvidRejected/load'}),
-      ...mapActions({'loadRateEvidRejectedTimeline': 'indicatorRateEvidRejected/loadTimeline'})
+      ...mapActions({'loadRateEvidRejectedTimeline': 'indicatorRateEvidRejected/loadTimeline'}),
+      ...mapActions({'loadRateDefectUnfounded': 'indicatorRateDefectUnfounded/load'})
     },
 
     watch: {
@@ -52,6 +66,8 @@
 
           this.loadRateEvidRejected()
           this.loadRateEvidRejectedTimeline()
+
+          this.loadRateDefectUnfounded()
         }
       }
     }
@@ -63,7 +79,7 @@
     <ul class="nav nav-tabs" style="margin-top:3px">
       <li class="active"><a data-toggle="tab" href="#produtivity" style="padding:4px">Produtividade</a></li>
       <li><a data-toggle="tab" href="#rateEvidRejected" style="padding:4px">Taxa Rejeição Evidência</a></li>
-      <li><a data-toggle="tab" href="#rateUnfoundedDefectInd" style="padding:4px">Taxa Defeito Improcedente</a></li>
+      <li><a data-toggle="tab" href="#rateDefectUnfounded" style="padding:4px">Taxa Defeito Improcedente</a></li>
       <li><a data-toggle="tab" href="#rateUatDefectsInd" style="padding:4px">Taxa Defeito UAT</a></li>
       <li><a data-toggle="tab" href="#averageReTestTimeInd" style="padding:4px">Tempo Médio Re-Teste</a></li>
     </ul>
@@ -115,7 +131,24 @@
         </div>
       </div>
 
-      <div id="rateUnfoundedDefectInd" class="tab-pane fade">
+      <div id="rateDefectUnfounded" class="tab-pane fade"style="padding:0; margin:0; padding-top:5px;">
+        <div class="loader" v-show="loadingRateDefectUnfounded" style="margin-top: 25px; margin-bottom: 25px"/>
+        <div class="row" v-show="!loadingRateDefectUnfounded" style="margin:0; border:0; padding:0">
+          <oiRateDefectUnfoundedShowRule style="text-align: left"/>
+          <oiRateDefectUnfoundedShowAnalytic style="text-align: left"/>
+
+          <hr style="margin-top: 2px; height: 1px; border: 0; box-shadow: 0 7px 7px -7px #d9d9d9 inset">
+
+          <div class="col-sm-4">
+            <oiRateDefectUnfoundedShowChartGroupTestManuf/>
+          </div>
+          <div class="col-sm-4">
+            <oiRateDefectUnfoundedShowChartGroupTimeline/>
+          </div>
+          <div class="col-sm-4">
+            <oiRateDefectUnfoundedShowChartTotal/>
+          </div>
+        </div>
       </div>
 
       <div id="rateUatDefectsInd" class="tab-pane fade">

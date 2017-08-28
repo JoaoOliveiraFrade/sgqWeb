@@ -2,7 +2,7 @@ import 'babel-polyfill'
 
 import Vue from 'vue'
 import router from './router'
-import store from './vuexStore'
+import store from './vuex'
 
 // import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.js'

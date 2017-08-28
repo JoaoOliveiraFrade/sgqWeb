@@ -1,4 +1,4 @@
-// import store from 'vuexStore'
+// import store from 'vuex'
 
 // const isLogged = () => store.getters.isLogged
 // const isAuthRoute = route => route.path.indexOf('/auth') !== -1
@@ -18,7 +18,7 @@
 //   next()
 // }
 
-import store from '@/vuexStore'
+import store from '@/vuex'
 
 const isLogged = () => store.getters.isLogged
 // const isAuthRoute = route => route.path.indexOf('/auth') !== -1

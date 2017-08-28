@@ -62,19 +62,15 @@
         vertical-align: top;
     }
     .oi-icon {
-        margin: 0; margin-left:4px;
+        margin: 0; margin-left:5px;
         border: 0;
         padding: 0; 
         font-size: large;
     }    
-    .modal-dialog { /* Width */
-        // max-width: 95%;
-        // width: auto !important;
-    }
     .modal-header {
-        margin:0px; 
+        margin:0px; margin-top: 3px;
         border:0px;
-        padding:1px;
+        padding:0px;
     }
     .modal-body, .modal-footer {
         margin:0px;

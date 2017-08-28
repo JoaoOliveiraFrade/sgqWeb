@@ -4,7 +4,7 @@
 
     computed: {
       sortedTasks: function () {
-        // let sorted = this.$VuexStoreTask.state.tasks
+        // let sorted = this.$VuexTask.state.tasks
         let sorted = []
         return sorted.sort((a, b) => {
           if (a.name < b.name) return -1
@@ -13,7 +13,7 @@
         })
       },
       tasks: function () {
-        return this.$VuexStoreTask.state.tasks
+        return this.$VuexTask.state.tasks
       }
     }
   }

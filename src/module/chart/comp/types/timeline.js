@@ -3,7 +3,8 @@ export default function () {
     chart: {
       type: 'spline',
       zoomType: 'xy',
-      backgroundColor: 'transparent'
+      backgroundColor: 'transparent',
+      style: { fontFamily: 'arial' }
     },
 
     title: {
@@ -15,20 +16,8 @@ export default function () {
     credits: { enabled: false },
     exporting: { enabled: false },
     lang: { noData: 'Sem dados!' },
-    xAxis: { type: '' },
-
-    yAxis: {
-      title: {
-        text: ''
-      },
-      plotLines: [
-        {
-          value: 0,
-          width: 1,
-          color: '#FF8080'
-        }
-      ]
-    },
+    xAxis: { type: 'category', labels: { style: { fontSize: '10px', padding: '[0px 0px 0px 0px]' } } },
+    yAxis: { title: { text: '' }, plotLines: [ { value: 0, width: 1, color: '#FF8080' } ] },
     tooltip: { pointFormat: '' },
     plotOptions: {
       bar: {
@@ -56,3 +45,4 @@ export default function () {
     series: []
   }
 }
+
