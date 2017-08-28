@@ -3,7 +3,7 @@
   import oiSelectionGridMult from './SelectionGridMult/selection.vue'
 
   export default {
-    name: 'SelectionByTestManufs',
+    name: 'SelectionProjectByTestManufsAndSystems',
 
     components: { oiSelectionGridMult },
 

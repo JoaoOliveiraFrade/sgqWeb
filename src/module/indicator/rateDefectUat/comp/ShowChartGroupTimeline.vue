@@ -13,7 +13,7 @@
     },
 
     computed: {
-      ...mapGetters('indicatorRateDefectUnfounded', ['groupTimeline'])
+      ...mapGetters('indicatorRateDefectUat', ['groupTimeline'])
     },
 
     updated () {
@@ -25,15 +25,15 @@
       setChartParam () {
         // let _this = this
         this.chartParam.title.text = 'Temporal'
-        this.chartParam.yAxis.title.text = 'Qte Rej.'
+        this.chartParam.yAxis.title.text = 'Def. Uat'
 
         this.chartParam.tooltip.headerFormat = ''
         this.chartParam.tooltip.pointFormat = `
           <b>{point.monthYear}</b><br>
-          Improcedente Mês: {point.qtyUnfounded:.0f} ({point.percUnfounded:.2f}%)<br>
-          Improcedente Acum: {point.qtyUnfoundedAcc:.0f} ({point.percUnfoundedAcc:.2f}%)<br>
-          Total Defeito: {point.qtyTotalDefect:.0f}<br>
-          Limite Máximo: {point.limitMaxQty:.0f} ({point.limitMaxPerc:.0f}%)
+          Def. Uat Mês: {point.qtyDefectUat:.0f} ({point.percDefectUat:.2f}%)<br>
+          Def. Uat Acum: {point.qtyDefectUatAcc:.0f} ({point.percDefectUatAcc:.2f}%)<br>
+          Limite Máximo: {point.limitMaxQty:.0f} ({point.limitMaxPerc:.0f}%)<br>
+          Total Defeito: {point.qtyTotalDefect:.0f}
           `
         this.chartParam.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
         this.chartParam.xAxis.categories = this.groupTimeline.map(i => i.monthYear)
@@ -47,11 +47,11 @@
               {
                 name: i.date,
                 y: i.limitMaxQty,
-                qtyUnfounded: i.qtyUnfounded,
+                qtyDefectUat: i.qtyDefectUat,
                 monthYear: i.monthYear,
-                percUnfounded: i.percUnfounded,
-                qtyUnfoundedAcc: i.qtyUnfoundedAcc,
-                percUnfoundedAcc: i.percUnfoundedAcc,
+                percDefectUat: i.percDefectUat,
+                qtyDefectUatAcc: i.qtyDefectUatAcc,
+                percDefectUatAcc: i.percDefectUatAcc,
                 qtyTotalDefect: i.qtyTotalDefect,
                 limitMaxQty: i.limitMaxQty,
                 limitMaxPerc: i.limitMaxPerc
@@ -62,12 +62,12 @@
             data: this.groupTimeline.map(i => (
               {
                 name: i.date,
-                y: i.qtyUnfounded,
+                y: i.qtyDefectUat,
                 monthYear: i.monthYear,
-                qtyUnfounded: i.qtyUnfounded,
-                percUnfounded: i.percUnfounded,
-                qtyUnfoundedAcc: i.qtyUnfoundedAcc,
-                percUnfoundedAcc: i.percUnfoundedAcc,
+                qtyDefectUat: i.qtyDefectUat,
+                percDefectUat: i.percDefectUat,
+                qtyDefectUatAcc: i.qtyDefectUatAcc,
+                percDefectUatAcc: i.percDefectUatAcc,
                 qtyTotalDefect: i.qtyTotalDefect,
                 limitMaxQty: i.limitMaxQty,
                 limitMaxPerc: i.limitMaxPerc
@@ -78,12 +78,12 @@
             data: this.groupTimeline.map(i => (
               {
                 name: i.date,
-                y: i.qtyUnfoundedAcc,
+                y: i.qtyDefectUatAcc,
                 monthYear: i.monthYear,
-                qtyUnfounded: i.qtyUnfounded,
-                percUnfounded: i.percUnfounded,
-                qtyUnfoundedAcc: i.qtyUnfoundedAcc,
-                percUnfoundedAcc: i.percUnfoundedAcc,
+                qtyDefectUat: i.qtyDefectUat,
+                percDefectUat: i.percDefectUat,
+                qtyDefectUatAcc: i.qtyDefectUatAcc,
+                percDefectUatAcc: i.percDefectUatAcc,
                 qtyTotalDefect: i.qtyTotalDefect,
                 limitMaxQty: i.limitMaxQty,
                 limitMaxPerc: i.limitMaxPerc

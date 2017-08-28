@@ -32,8 +32,8 @@
           <b>{point.monthYear}</b><br>
           Rejeições Mês: {point.rejections:.0f} ({point.rejectionsPerc:.2f}%)<br>
           Rejeições Acum: {point.rejectionsAcc:.0f} ({point.rejectionsAccPerc:.2f}%)<br>
-          Total Evidências: {point.totalEvidences:.0f}<br>
-          Limite Máximo: {point.maxLimit:.0f} ({point.maxLimitPerc:.2f}%)
+          Limite Máximo: {point.maxLimit:.0f} ({point.maxLimitPerc:.2f}%)<br>
+          Total Evidências: {point.totalEvidences:.0f}
           `
         this.chartParam.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
         this.chartParam.xAxis.categories = this.groupTimeline.map(i => i.monthYear)

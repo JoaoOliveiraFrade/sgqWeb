@@ -20,13 +20,13 @@ selected<script>
     <oiModal id="RateEvidRejectedShowRule" title="Regra">   
       <div style="margin:0; padding:10px" slot="body">
         <label class="fd-label">
-          Quantidade de REJEIÇÕES de Evidências (existentes nos CTs de TI, com status PASSED),
-          em relação à quantidade de CTs (com evidências e status PASSED).<br>
+          Quantidade de REJEIÇÕES de Evidências, em relação à quantidade de CTs (que contém evidências).<br>
+          <br>
+          São considerados somente os CTs de TI, com status PASSED.<br>
           <br>
           No gráfico Temporal, as rejeições são contabilizadas no mês/ano em que elas ocorreram.<br>
           <br>
-          Observação: 
-          <br>CTs com evidências, são os que contém o campo 'validação evidência' diferente de 'N/A'.
+          CTs com evidências, são os que contém o campo 'validação evidência' diferente de 'N/A'.
         </label>
       </div>
     </oiModal>

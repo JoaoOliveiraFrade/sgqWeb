@@ -11,12 +11,12 @@ export const groupTestManuf = ({data}) => {
 
         qtyDefect: d.qtyDefect,
         qtyTotalDefect: 0,
-        percDefectTotal: 0,
+        percTotalDefect: 0,
 
         qtyUnfounded: d.qtyUnfounded,
         percUnfounded: 0,
         qtyTotalUnfounded: 0,
-        percUnfoundedTotal: 0
+        percTotalUnfounded: 0
       })
     }
   })
@@ -24,11 +24,11 @@ export const groupTestManuf = ({data}) => {
   let qtyTotalUnfounded = result.reduce((sum, e) => sum + e.qtyUnfounded, 0)
   result.forEach(r => {
     r.qtyTotalDefect = qtyTotalDefect
-    r.percDefectTotal = parseFloat(parseFloat(r.qtyDefect / (qtyTotalDefect !== 0 ? qtyTotalDefect : 1) * 100).toFixed(2))
+    r.percTotalDefect = parseFloat(parseFloat(r.qtyDefect / (qtyTotalDefect !== 0 ? qtyTotalDefect : 1) * 100).toFixed(2))
 
     r.percUnfounded = parseFloat(parseFloat(r.qtyUnfounded / (r.qtyDefect ? r.qtyDefect : 1) * 100).toFixed(2))
     r.qtyTotalUnfounded = qtyTotalUnfounded
-    r.percUnfoundedTotal = parseFloat(parseFloat(r.qtyUnfounded / (qtyTotalUnfounded !== 0 ? qtyTotalUnfounded : 1) * 100).toFixed(2))
+    r.percTotalUnfounded = parseFloat(parseFloat(r.qtyUnfounded / (qtyTotalUnfounded !== 0 ? qtyTotalUnfounded : 1) * 100).toFixed(2))
   })
   return result.filter(r => r.qtyUnfounded > 0).sort((a, b) => a.qtyUnfounded > b.qtyUnfounded ? 1 : -1)
 }
@@ -47,12 +47,12 @@ export const byTestManufGroupSystem = ({data}, {qtyTotalDefect, qtyTotalUnfounde
         system: p.system,
         qtyDefect: p.qtyDefect,
         qtyTotalDefect: 0,
-        percDefectTotal: 0,
+        percTotalDefect: 0,
 
         qtyUnfounded: p.qtyUnfounded,
         percUnfounded: 0,
         qtyTotalUnfounded: 0,
-        percUnfoundedTotal: 0
+        percTotalUnfounded: 0
       })
     }
   })
@@ -60,11 +60,11 @@ export const byTestManufGroupSystem = ({data}, {qtyTotalDefect, qtyTotalUnfounde
   let qtyTotalUnfounded = result.reduce((sum, e) => sum + e.qtyUnfounded, 0)
   result.forEach(r => {
     r.qtyTotalDefect = qtyTotalDefect
-    r.percDefectTotal = parseFloat(parseFloat(r.qtyDefect / (qtyTotalDefect !== 0 ? qtyTotalDefect : 1) * 100).toFixed(2))
+    r.percTotalDefect = parseFloat(parseFloat(r.qtyDefect / (qtyTotalDefect !== 0 ? qtyTotalDefect : 1) * 100).toFixed(2))
 
     r.percUnfounded = parseFloat(parseFloat(r.qtyUnfounded / (r.qtyDefect ? r.qtyDefect : 1) * 100).toFixed(2))
     r.qtyTotalUnfounded = qtyTotalUnfounded
-    r.percUnfoundedTotal = parseFloat(parseFloat(r.qtyUnfounded / (qtyTotalUnfounded !== 0 ? qtyTotalUnfounded : 1) * 100).toFixed(2))
+    r.percTotalUnfounded = parseFloat(parseFloat(r.qtyUnfounded / (qtyTotalUnfounded !== 0 ? qtyTotalUnfounded : 1) * 100).toFixed(2))
   })
   return result.filter(r => r.qtyUnfounded > 0).sort((a, b) => a.qtyUnfounded > b.qtyUnfounded ? 1 : -1)
 }

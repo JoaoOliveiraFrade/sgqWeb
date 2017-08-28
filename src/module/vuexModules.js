@@ -6,6 +6,7 @@ import { vuex as indicatorDevelopment2 } from './indicator/development.2'
 import { vuex as indicatorProductivity } from './indicator/productivity'
 import { vuex as indicatorRateEvidRejected } from './indicator/rateEvidRejected'
 import { vuex as indicatorRateDefectUnfounded } from './indicator/rateDefectUnfounded'
+import { vuex as indicatorRateDefectUat } from './indicator/rateDefectUat'
 import { vuex as indicatorTest } from './indicator/test'
 import { vuex as testManuf } from './testManuf'
 import { vuex as devManuf } from './devManuf'
@@ -32,6 +33,7 @@ export default {
   indicatorProductivity,
   indicatorRateEvidRejected,
   indicatorRateDefectUnfounded,
+  indicatorRateDefectUat,
   indicatorTest,
   testManuf,
   devManuf,

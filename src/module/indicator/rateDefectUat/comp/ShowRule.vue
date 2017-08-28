@@ -14,16 +14,19 @@ selected<script>
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
-        data-target="#RateDefectUnfoundedShowRule">
+        data-target="#RateDefectUatShowRule">
         Regra
     </button>
-    <oiModal id="RateDefectUnfoundedShowRule" title="Regra">   
+    <oiModal id="RateDefectUatShowRule" title="Regra">   
       <div style="margin:0; padding:10px" slot="body">
         <label class="fd-label">
-          Quantidade de Defeitos de TI, com status CANCELLED e origem IMPROCEDENTE, 
-          em relação a quantidade de Defeitos de TI.<br>
+          Quantidade de Defeitos de UAT em relação a quantidade de Defeitos de TI e UAT.<br>
           <br>
-          No gráfico Temporal, os defeitos improcedentes são contabilizadas no mês/ano mais recente em que eles foram alterados para IMPROCEDENTE.
+          São desconsiderados os defeitos com status CANCELLED.<br>
+          <br>
+          No gráfico Temporal, os defeitos de UAT são contabilizadas no mês/ano em que eles foram criados.<br>
+          <br>
+          Os defeitos são identificados como TI ou UAT, atraves do campo Ciclo do ALM.
         </label>
       </div>
     </oiModal>

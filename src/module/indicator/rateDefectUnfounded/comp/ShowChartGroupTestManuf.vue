@@ -38,8 +38,8 @@
         this.chartParam.tooltip.headerFormat = ''
         this.chartParam.tooltip.pointFormat = `
           <b>{point.name}</b><br>
-          Improcedente: {point.qtyUnfounded:.0f} ({point.percUnfounded:.2f}%{point.percUnfoundedTotal})<br>
-          Defeito: {point.qtyDefect:.0f}{point.percDefectTotal}<br>
+          Improcedente: {point.qtyUnfounded:.0f} ({point.percUnfounded:.2f}%{point.percTotalUnfounded})<br>
+          Defeito: {point.qtyDefect:.0f}{point.percTotalDefect}<br>
           Total Improcedente: {point.qtyTotalUnfounded:.0f}<br>
           Total Defeito: {point.qtyTotalDefect:.0f}
         `
@@ -55,9 +55,9 @@
               y: i.qtyUnfounded,
               qtyUnfounded: i.qtyUnfounded,
               percUnfounded: i.percUnfounded,
-              percUnfoundedTotal: i.percUnfoundedTotal !== 100 ? ', ' + i.percUnfoundedTotal + '% total' : '',
+              percTotalUnfounded: i.percTotalUnfounded !== 100 ? ', ' + i.percTotalUnfounded + '% total' : '',
               qtyDefect: i.qtyDefect,
-              percDefectTotal: i.percDefectTotal !== 100 ? ' (' + i.percDefectTotal + '% total)' : '',
+              percTotalDefect: i.percTotalDefect !== 100 ? ' (' + i.percTotalDefect + '% total)' : '',
               qtyTotalUnfounded: i.qtyTotalUnfounded,
               qtyTotalDefect: i.qtyTotalDefect,
               drilldown: i.testManuf
@@ -74,9 +74,9 @@
               y: s.qtyUnfounded,
               qtyUnfounded: s.qtyUnfounded,
               percUnfounded: s.percUnfounded,
-              percUnfoundedTotal: s.percUnfoundedTotal !== 100 ? ', ' + s.percUnfoundedTotal + '% total' : '',
+              percTotalUnfounded: s.percTotalUnfounded !== 100 ? ', ' + s.percTotalUnfounded + '% total' : '',
               qtyDefect: s.qtyDefect,
-              percDefectTotal: s.percDefectTotal !== 100 ? ' (' + s.percDefectTotal + '% total)' : '',
+              percTotalDefect: s.percTotalDefect !== 100 ? ' (' + s.percTotalDefect + '% total)' : '',
               qtyTotalUnfounded: s.qtyTotalUnfounded,
               qtyTotalDefect: s.qtyTotalDefect
             }))
@@ -87,7 +87,6 @@
 
         this.chartParam.plotOptions.bar.events = {
           click: function (event) {
-            console.log('click: function')
             self.changeChartFilter(event.point.name.toUpperCase())
             self.chart.setTitle({text: self.chartTitle})
           }

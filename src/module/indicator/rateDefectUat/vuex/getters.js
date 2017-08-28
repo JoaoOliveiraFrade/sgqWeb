@@ -4,36 +4,36 @@ export const groupTestManuf = ({data}) => {
     let index = result.findIndex(r => r.testManuf === d.testManuf)
     if (index > -1) {
       result[index].qtyDefect += d.qtyDefect
-      result[index].qtyUnfounded += d.qtyUnfounded
+      result[index].qtyDefectUat += d.qtyDefectUat
     } else {
       result.push({
         testManuf: d.testManuf,
 
         qtyDefect: d.qtyDefect,
         qtyTotalDefect: 0,
-        percDefectTotal: 0,
+        percTotalDefect: 0,
 
-        qtyUnfounded: d.qtyUnfounded,
-        percUnfounded: 0,
-        qtyTotalUnfounded: 0,
-        percUnfoundedTotal: 0
+        qtyDefectUat: d.qtyDefectUat,
+        percDefectUat: 0,
+        qtyTotalDefectUat: 0,
+        percTotalDefectUat: 0
       })
     }
   })
   let qtyTotalDefect = result.reduce((sum, e) => sum + e.qtyDefect, 0)
-  let qtyTotalUnfounded = result.reduce((sum, e) => sum + e.qtyUnfounded, 0)
+  let qtyTotalDefectUat = result.reduce((sum, e) => sum + e.qtyDefectUat, 0)
   result.forEach(r => {
     r.qtyTotalDefect = qtyTotalDefect
-    r.percDefectTotal = parseFloat(parseFloat(r.qtyDefect / (qtyTotalDefect !== 0 ? qtyTotalDefect : 1) * 100).toFixed(2))
+    r.percTotalDefect = parseFloat(parseFloat(r.qtyDefect / (qtyTotalDefect !== 0 ? qtyTotalDefect : 1) * 100).toFixed(2))
 
-    r.percUnfounded = parseFloat(parseFloat(r.qtyUnfounded / (r.qtyDefect ? r.qtyDefect : 1) * 100).toFixed(2))
-    r.qtyTotalUnfounded = qtyTotalUnfounded
-    r.percUnfoundedTotal = parseFloat(parseFloat(r.qtyUnfounded / (qtyTotalUnfounded !== 0 ? qtyTotalUnfounded : 1) * 100).toFixed(2))
+    r.percDefectUat = parseFloat(parseFloat(r.qtyDefectUat / (r.qtyDefect ? r.qtyDefect : 1) * 100).toFixed(2))
+    r.qtyTotalDefectUat = qtyTotalDefectUat
+    r.percTotalDefectUat = parseFloat(parseFloat(r.qtyDefectUat / (qtyTotalDefectUat !== 0 ? qtyTotalDefectUat : 1) * 100).toFixed(2))
   })
-  return result.filter(r => r.qtyUnfounded > 0).sort((a, b) => a.qtyUnfounded > b.qtyUnfounded ? 1 : -1)
+  return result.filter(r => r.qtyDefectUat > 0).sort((a, b) => a.qtyDefectUat > b.qtyDefectUat ? 1 : -1)
 }
 
-export const byTestManufGroupSystem = ({data}, {qtyTotalDefect, qtyTotalUnfounded}) => (testManuf) => {
+export const byTestManufGroupSystem = ({data}, {qtyTotalDefect, qtyTotalDefectUat}) => (testManuf) => {
   let byTestManuf = data.filter(p => p.testManuf === testManuf)
 
   let result = []
@@ -41,32 +41,32 @@ export const byTestManufGroupSystem = ({data}, {qtyTotalDefect, qtyTotalUnfounde
     let index = result.findIndex(r => r.system === p.system)
     if (index > -1) {
       result[index].qtyDefect += p.qtyDefect
-      result[index].qtyUnfounded += p.qtyUnfounded
+      result[index].qtyDefectUat += p.qtyDefectUat
     } else {
       result.push({
         system: p.system,
         qtyDefect: p.qtyDefect,
         qtyTotalDefect: 0,
-        percDefectTotal: 0,
+        percTotalDefect: 0,
 
-        qtyUnfounded: p.qtyUnfounded,
-        percUnfounded: 0,
-        qtyTotalUnfounded: 0,
-        percUnfoundedTotal: 0
+        qtyDefectUat: p.qtyDefectUat,
+        percDefectUat: 0,
+        qtyTotalDefectUat: 0,
+        percTotalDefectUat: 0
       })
     }
   })
   let qtyTotalDefect = result.reduce((sum, e) => sum + e.qtyDefect, 0)
-  let qtyTotalUnfounded = result.reduce((sum, e) => sum + e.qtyUnfounded, 0)
+  let qtyTotalDefectUat = result.reduce((sum, e) => sum + e.qtyDefectUat, 0)
   result.forEach(r => {
     r.qtyTotalDefect = qtyTotalDefect
-    r.percDefectTotal = parseFloat(parseFloat(r.qtyDefect / (qtyTotalDefect !== 0 ? qtyTotalDefect : 1) * 100).toFixed(2))
+    r.percTotalDefect = parseFloat(parseFloat(r.qtyDefect / (qtyTotalDefect !== 0 ? qtyTotalDefect : 1) * 100).toFixed(2))
 
-    r.percUnfounded = parseFloat(parseFloat(r.qtyUnfounded / (r.qtyDefect ? r.qtyDefect : 1) * 100).toFixed(2))
-    r.qtyTotalUnfounded = qtyTotalUnfounded
-    r.percUnfoundedTotal = parseFloat(parseFloat(r.qtyUnfounded / (qtyTotalUnfounded !== 0 ? qtyTotalUnfounded : 1) * 100).toFixed(2))
+    r.percDefectUat = parseFloat(parseFloat(r.qtyDefectUat / (r.qtyDefect ? r.qtyDefect : 1) * 100).toFixed(2))
+    r.qtyTotalDefectUat = qtyTotalDefectUat
+    r.percTotalDefectUat = parseFloat(parseFloat(r.qtyDefectUat / (qtyTotalDefectUat !== 0 ? qtyTotalDefectUat : 1) * 100).toFixed(2))
   })
-  return result.filter(r => r.qtyUnfounded > 0).sort((a, b) => a.qtyUnfounded > b.qtyUnfounded ? 1 : -1)
+  return result.filter(r => r.qtyDefectUat > 0).sort((a, b) => a.qtyDefectUat > b.qtyDefectUat ? 1 : -1)
 }
 
 export const filteredByChart = ({data, testManufSelected, systemSelected}) => {
@@ -84,40 +84,40 @@ export const groupTimeline = ({limitMaxPerc}, {filteredByChart, total}) => {
   filteredByChart.filter(d => d.year !== '').forEach(d => {
     let index = result.findIndex(r => r.yearMonth === (d.year + d.month))
     if (index > -1) {
-      result[index].qtyUnfounded += d.qtyUnfounded
+      result[index].qtyDefectUat += d.qtyDefectUat
     } else {
       result.push({
         yearMonth: d.year + d.month,
         monthYear: d.month + '/' + d.year,
-        qtyUnfounded: d.qtyUnfounded,
-        percUnfounded: 0,
-        qtyUnfoundedAcc: 0,
-        percUnfoundedAcc: 0,
+        qtyDefectUat: d.qtyDefectUat,
+        percDefectUat: 0,
+        qtyDefectUatAcc: 0,
+        percDefectUatAcc: 0,
         qtyTotalDefect: total.qtyDefect,
         limitMaxPerc: limitMaxPerc,
         limitMaxQty: 0
       })
     }
   })
-  let qtyUnfoundedAcc = 0
+  let qtyDefectUatAcc = 0
   result.forEach(r => {
-    r.percUnfounded = parseFloat(parseFloat(r.qtyUnfounded / (total.qtyDefect !== 0 ? total.qtyDefect : 1) * 100).toFixed(2))
+    r.percDefectUat = parseFloat(parseFloat(r.qtyDefectUat / (total.qtyDefect !== 0 ? total.qtyDefect : 1) * 100).toFixed(2))
     r.limitMaxQty = Math.round(total.qtyDefect * limitMaxPerc / 100)
 
-    qtyUnfoundedAcc = qtyUnfoundedAcc + r.qtyUnfounded
-    r.qtyUnfoundedAcc = qtyUnfoundedAcc
-    r.percUnfoundedAcc = parseFloat(parseFloat(qtyUnfoundedAcc / (total.qtyDefect !== 0 ? total.qtyDefect : 1) * 100).toFixed(2))
+    qtyDefectUatAcc = qtyDefectUatAcc + r.qtyDefectUat
+    r.qtyDefectUatAcc = qtyDefectUatAcc
+    r.percDefectUatAcc = parseFloat(parseFloat(qtyDefectUatAcc / (total.qtyDefect !== 0 ? total.qtyDefect : 1) * 100).toFixed(2))
   })
-  return result.filter(r => r.qtyUnfounded > 0).sort((a, b) => a.yearMonth > b.yearMonth ? 1 : -1)
+  return result.filter(r => r.qtyDefectUat > 0).sort((a, b) => a.yearMonth > b.yearMonth ? 1 : -1)
 }
 
 export const total = ({limitMaxPerc}, {filteredByChart}) => {
   let qtyDefect = filteredByChart.reduce((sum, e) => sum + e.qtyDefect, 0)
-  let qtyUnfounded = filteredByChart.reduce((sum, e) => sum + e.qtyUnfounded, 0)
+  let qtyDefectUat = filteredByChart.reduce((sum, e) => sum + e.qtyDefectUat, 0)
   return {
     qtyDefect,
-    qtyUnfounded,
-    percUnfounded: Number((qtyUnfounded / (qtyDefect !== 0 ? qtyDefect : 1) * 100).toFixed(2)),
+    qtyDefectUat,
+    percDefectUat: Number((qtyDefectUat / (qtyDefect !== 0 ? qtyDefect : 1) * 100).toFixed(2)),
     limitMaxPerc,
     limitMaxQty: Math.round(qtyDefect * limitMaxPerc / 100)
   }
@@ -129,7 +129,6 @@ export const chartTitle = ({testManufSelected, systemSelected}) => {
   } else if (systemSelected === '') {
     return (testManufSelected ? testManufSelected.charAt(0).toUpperCase() + testManufSelected.slice(1).toLowerCase() : 'Fáb.Teste') + ' / Sistema'
   } else {
-    return (testManufSelected ? testManufSelected.charAt(0).toUpperCase() + testManufSelected.slice(1).toLowerCase() : 'Fáb.Teste') + ' / ' +
-    (systemSelected ? systemSelected.charAt(0).toUpperCase() + systemSelected.slice(1).toLowerCase() : '')
+    return (testManufSelected ? testManufSelected.charAt(0).toUpperCase() + testManufSelected.slice(1).toLowerCase() : 'Fáb.Teste') + ' / ' + (systemSelected ? systemSelected.charAt(0).toUpperCase() + systemSelected.slice(1).toLowerCase() : '')
   }
 }

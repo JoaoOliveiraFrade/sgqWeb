@@ -32,8 +32,8 @@
           <b>{point.monthYear}</b><br>
           Improcedente Mês: {point.qtyUnfounded:.0f} ({point.percUnfounded:.2f}%)<br>
           Improcedente Acum: {point.qtyUnfoundedAcc:.0f} ({point.percUnfoundedAcc:.2f}%)<br>
-          Total Defeito: {point.qtyTotalDefect:.0f}<br>
-          Limite Máximo: {point.limitMaxQty:.0f} ({point.limitMaxPerc:.0f}%)
+          Limite Máximo: {point.limitMaxQty:.0f} ({point.limitMaxPerc:.0f}%)<br>
+          Total Defeito: {point.qtyTotalDefect:.0f}
           `
         this.chartParam.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
         this.chartParam.xAxis.categories = this.groupTimeline.map(i => i.monthYear)

@@ -10,7 +10,7 @@
   import chartStandParam from '@/module/chart/comp/types/drillDown'
 
   export default {
-    name: 'ShowChartGroupTestManufRateDefectUnfounded',
+    name: 'ShowChartGroupTestManufRateDefectUat',
 
     data () {
       return {
@@ -20,7 +20,7 @@
     },
 
     computed: {
-      ...mapGetters('indicatorRateDefectUnfounded', ['groupTestManuf', 'byTestManufGroupSystem', 'chartTitle'])
+      ...mapGetters('indicatorRateDefectUat', ['groupTestManuf', 'byTestManufGroupSystem', 'chartTitle'])
     },
 
     updated () {
@@ -29,7 +29,7 @@
     },
 
     methods: {
-      ...mapActions('indicatorRateDefectUnfounded', ['changeChartFilter']),
+      ...mapActions('indicatorRateDefectUat', ['changeChartFilter']),
 
       setChartParam () {
         this.chartParam.title.text = 'Fáb.Teste / Sistema'
@@ -38,27 +38,27 @@
         this.chartParam.tooltip.headerFormat = ''
         this.chartParam.tooltip.pointFormat = `
           <b>{point.name}</b><br>
-          Improcedente: {point.qtyUnfounded:.0f} ({point.percUnfounded:.2f}%{point.percUnfoundedTotal})<br>
-          Defeito: {point.qtyDefect:.0f}{point.percDefectTotal}<br>
-          Total Improcedente: {point.qtyTotalUnfounded:.0f}<br>
+          Def. Uat: {point.qtyDefectUat:.0f} ({point.percDefectUat:.2f}%{point.percTotalDefectUat})<br>
+          Defeito: {point.qtyDefect:.0f}{point.percTotalDefect}<br>
+          Total Def. Uat: {point.qtyTotalDefectUat:.0f}<br>
           Total Defeito: {point.qtyTotalDefect:.0f}
         `
-        this.chartParam.series.name = 'Taxa Improcedente'
+        this.chartParam.series.name = 'Taxa Def. Uat'
         this.chartParam.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
 
         this.chartParam.series = [
           {
-            name: 'Taxa Improcedente',
+            name: 'Taxa Def. Uat',
             colorByPoint: true,
             data: this.groupTestManuf.map(i => ({
               name: i.testManuf ? i.testManuf.charAt(0).toUpperCase() + i.testManuf.slice(1).toLowerCase() : '',
-              y: i.qtyUnfounded,
-              qtyUnfounded: i.qtyUnfounded,
-              percUnfounded: i.percUnfounded,
-              percUnfoundedTotal: i.percUnfoundedTotal !== 100 ? ', ' + i.percUnfoundedTotal + '% total' : '',
+              y: i.qtyDefectUat,
+              qtyDefectUat: i.qtyDefectUat,
+              percDefectUat: i.percDefectUat,
+              percTotalDefectUat: i.percTotalDefectUat !== 100 ? ', ' + i.percTotalDefectUat + '% total' : '',
               qtyDefect: i.qtyDefect,
-              percDefectTotal: i.percDefectTotal !== 100 ? ' (' + i.percDefectTotal + '% total)' : '',
-              qtyTotalUnfounded: i.qtyTotalUnfounded,
+              percTotalDefect: i.percTotalDefect !== 100 ? ' (' + i.percTotalDefect + '% total)' : '',
+              qtyTotalDefectUat: i.qtyTotalDefectUat,
               qtyTotalDefect: i.qtyTotalDefect,
               drilldown: i.testManuf
             }))
@@ -71,13 +71,13 @@
             id: i.testManuf,
             data: this.byTestManufGroupSystem(i.testManuf).map(s => ({
               name: s.system ? s.system.charAt(0).toUpperCase() + s.system.slice(1).toLowerCase() : '',
-              y: s.qtyUnfounded,
-              qtyUnfounded: s.qtyUnfounded,
-              percUnfounded: s.percUnfounded,
-              percUnfoundedTotal: s.percUnfoundedTotal !== 100 ? ', ' + s.percUnfoundedTotal + '% total' : '',
+              y: s.qtyDefectUat,
+              qtyDefectUat: s.qtyDefectUat,
+              percDefectUat: s.percDefectUat,
+              percTotalDefectUat: s.percTotalDefectUat !== 100 ? ', ' + s.percTotalDefectUat + '% total' : '',
               qtyDefect: s.qtyDefect,
-              percDefectTotal: s.percDefectTotal !== 100 ? ' (' + s.percDefectTotal + '% total)' : '',
-              qtyTotalUnfounded: s.qtyTotalUnfounded,
+              percTotalDefect: s.percTotalDefect !== 100 ? ' (' + s.percTotalDefect + '% total)' : '',
+              qtyTotalDefectUat: s.qtyTotalDefectUat,
               qtyTotalDefect: s.qtyTotalDefect
             }))
           }))
@@ -87,7 +87,6 @@
 
         this.chartParam.plotOptions.bar.events = {
           click: function (event) {
-            console.log('click: function')
             self.changeChartFilter(event.point.name.toUpperCase())
             self.chart.setTitle({text: self.chartTitle})
           }

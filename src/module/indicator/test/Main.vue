@@ -7,7 +7,7 @@
   import oiShowData from './comp/ShowData.vue'
 
   export default {
-    name: 'Main',
+    name: 'indicatorTestMain',
 
     components: { oiSelectionTestManuf, oiSelectionSystem, oiSelectionProject, oiShowData },
 

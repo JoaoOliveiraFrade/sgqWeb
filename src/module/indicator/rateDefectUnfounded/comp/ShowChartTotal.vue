@@ -46,8 +46,8 @@
 
         this.chartParam.tooltip.pointFormat = '' +
           'Improcente: ' + this.total.qtyUnfounded + ' (' + this.total.percUnfounded + '%)<br>' +
-          'Defeito: ' + this.total.qtyDefect + '<br>' +
-          'Limite Máximo: ' + this.total.limitMaxQty + ' (' + this.total.limitMaxPerc + '%)'
+          'Limite Máximo: ' + this.total.limitMaxQty + ' (' + this.total.limitMaxPerc + '%)<br>' +
+          'Defeito: ' + this.total.qtyDefect
 
         this.chartParam.series = [ { name: 'Total', colorByPoint: true, data: [ this.total.qtyUnfounded ] } ]
       }

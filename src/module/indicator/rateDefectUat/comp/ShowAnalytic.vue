@@ -1,11 +1,11 @@
 selected<script>
   import oiModal from '@/module/modal/comp/modal.vue'
-  import oiRateDefectUnfoundedShowAnalyticGrid from '@/module/indicator/rateDefectUnfounded/comp/ShowAnalyticGrid.vue'
+  import oiRateDefectUatShowAnalyticGrid from '@/module/indicator/rateDefectUat/comp/ShowAnalyticGrid.vue'
 
   export default {
     name: 'ShowAnalytic',
 
-    components: { oiModal, oiRateDefectUnfoundedShowAnalyticGrid }
+    components: { oiModal, oiRateDefectUatShowAnalyticGrid }
   }
 </script>
 
@@ -15,13 +15,13 @@ selected<script>
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
-        data-target="#RateDefectUnfoundedShowAnalytic">
+        data-target="#RateDefectUatShowAnalytic">
         Analítico
     </button>
 
-    <oiModal id="RateDefectUnfoundedShowAnalytic" title="Taxa Defeito Improcendente - Analítico" size="l">   
+    <oiModal id="RateDefectUatShowAnalytic" title="Taxa Defeito UAT - Analítico" size="l">   
       <div style="margin:0; padding:10px" slot="body">
-        <oiRateDefectUnfoundedShowAnalyticGrid/>
+        <oiRateDefectUatShowAnalyticGrid/>
       </div>
     </oiModal>
   </span>
