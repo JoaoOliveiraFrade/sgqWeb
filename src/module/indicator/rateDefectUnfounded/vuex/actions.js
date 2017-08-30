@@ -29,7 +29,7 @@ export const load = ({ commit, state, rootState }) => {
   })
 }
 
-export const changeChartFilter = ({ state, commit }, item) => {
+export const setChartFilter = ({ state, commit }, item) => {
   if (item === '') {
     commit(types.testManufSelected, '')
     commit(types.systemSelected, '')

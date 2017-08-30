@@ -118,8 +118,8 @@ export const total = ({limitMaxPerc}, {filteredByChart}) => {
     qtyDefect,
     qtyDefectUat,
     percDefectUat: Number((qtyDefectUat / (qtyDefect !== 0 ? qtyDefect : 1) * 100).toFixed(2)),
-    limitMaxPerc,
-    limitMaxQty: Math.round(qtyDefect * limitMaxPerc / 100)
+    limitMaxQty: Math.round(qtyDefect * limitMaxPerc / 100),
+    limitMaxPerc
   }
 }
 
@@ -131,4 +131,111 @@ export const chartTitle = ({testManufSelected, systemSelected}) => {
   } else {
     return (testManufSelected ? testManufSelected.charAt(0).toUpperCase() + testManufSelected.slice(1).toLowerCase() : 'Fáb.Teste') + ' / ' + (systemSelected ? systemSelected.charAt(0).toUpperCase() + systemSelected.slice(1).toLowerCase() : '')
   }
+}
+
+import chartTotalStandParam from '@/module/chart/comp/types/Total2'
+export const chartTotalParam = (state, {total}) => {
+  let param = chartTotalStandParam
+
+  param.title.text = 'Total'
+  param.yAxis.title.text = 'Def.<br>Uat'
+  // param.plotOptions.gauge.dataLabels.borderWidth = 0
+  param.plotOptions.gauge.dataLabels.useHTML = true
+  param.plotOptions.gauge.dataLabels.format = '<span style=font-size:9px><center>{point.y:.0f}</center>' + total.percDefectUat + '%</span>'
+
+  if (total.qtyDefectUat < total.qtyDefect) {
+    param.yAxis.max = total.qtyDefect
+    param.yAxis.plotBands = [
+      {from: 0, to: total.limitMaxQty, color: '#00CC00'},
+      {from: total.limitMaxQty, to: total.qtyDefect, color: '#FF3300'}
+    ]
+  } else {
+    param.yAxis.max = total.qtyDefectUat
+    param.yAxis.plotBands = [
+      {from: 0, to: total.limitMaxQty, color: '#00CC00'},
+      {from: total.limitMaxQty, to: total.qtyDefectUat, color: '#FF3300'}
+    ]
+  }
+
+  param.tooltip.pointFormat = '' +
+    'Def. Uat: ' + total.qtyDefectUat + ' (' + total.percDefectUat + '%)<br>' +
+    'Limite Máximo: ' + total.limitMaxQty + ' (' + total.limitMaxPerc + '%)<br>' +
+    'Defeito: ' + total.qtyDefect
+
+  param.series = [ { name: 'Total', colorByPoint: true, data: [ total.qtyDefectUat ] } ]
+  return param
+}
+
+import chartGroupTestManufStandParam from '@/module/chart/comp/types/drillDown2'
+export const chartGroupTestManufParam = (state, {groupTestManuf, byTestManufGroupSystem}) => {
+  let param = chartGroupTestManufStandParam
+  console.log('getter: chartGroupTestManufParam')
+  param.title.text = 'Fáb.Teste / Sistema'
+  param.yAxis.title.text = 'Qte Rej.'
+
+  param.tooltip.headerFormat = ''
+  param.tooltip.pointFormat = `
+    <b>{point.name}</b><br>
+    Def. Uat: {point.qtyDefectUat:.0f} ({point.percDefectUat:.2f}%{point.percTotalDefectUat})<br>
+    Defeito: {point.qtyDefect:.0f}{point.percTotalDefect}<br>
+    Total Def. Uat: {point.qtyTotalDefectUat:.0f}<br>
+    Total Defeito: {point.qtyTotalDefect:.0f}
+  `
+  param.series.name = 'Taxa Def. Uat'
+  param.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
+
+  param.series = [
+    {
+      name: 'Taxa Def. Uat',
+      colorByPoint: true,
+      data: groupTestManuf.map(i => ({
+        name: i.testManuf ? i.testManuf.charAt(0).toUpperCase() + i.testManuf.slice(1).toLowerCase() : '',
+        y: i.qtyDefectUat,
+        qtyDefectUat: i.qtyDefectUat,
+        percDefectUat: i.percDefectUat,
+        percTotalDefectUat: i.percTotalDefectUat !== 100 ? ', ' + i.percTotalDefectUat + '% total' : '',
+        qtyDefect: i.qtyDefect,
+        percTotalDefect: i.percTotalDefect !== 100 ? ' (' + i.percTotalDefect + '% total)' : '',
+        qtyTotalDefectUat: i.qtyTotalDefectUat,
+        qtyTotalDefect: i.qtyTotalDefect,
+        drilldown: i.testManuf
+      }))
+    }
+  ]
+
+  param.drilldown = {
+    series: groupTestManuf.map(i => ({
+      name: i.testManuf,
+      id: i.testManuf,
+      data: byTestManufGroupSystem(i.testManuf).map(s => ({
+        name: s.system ? s.system.charAt(0).toUpperCase() + s.system.slice(1).toLowerCase() : '',
+        y: s.qtyDefectUat,
+        qtyDefectUat: s.qtyDefectUat,
+        percDefectUat: s.percDefectUat,
+        percTotalDefectUat: s.percTotalDefectUat !== 100 ? ', ' + s.percTotalDefectUat + '% total' : '',
+        qtyDefect: s.qtyDefect,
+        percTotalDefect: s.percTotalDefect !== 100 ? ' (' + s.percTotalDefect + '% total)' : '',
+        qtyTotalDefectUat: s.qtyTotalDefectUat,
+        qtyTotalDefect: s.qtyTotalDefect
+      }))
+    }))
+  }
+
+  let self = this
+
+  param.plotOptions.bar.events = {
+    click: function (event) {
+      self.setChartFilter(event.point.name.toUpperCase())
+      self.chart.setTitle({text: self.chartTitle})
+    }
+  }
+
+  param.chart.events = {
+    drillup: function (e) {
+      self.setChartFilter('')
+      self.chart.setTitle({text: self.chartTitle})
+    }
+  }
+  console.log(param)
+  return param
 }

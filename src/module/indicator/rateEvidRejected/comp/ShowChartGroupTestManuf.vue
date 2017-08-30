@@ -29,7 +29,7 @@
     },
 
     methods: {
-      ...mapActions('indicatorRateEvidRejected', ['changeChartFilter']),
+      ...mapActions('indicatorRateEvidRejected', ['setChartFilter']),
 
       setChartParam () {
         this.chartParam.title.text = 'Fáb.Teste / Sistema'
@@ -88,14 +88,14 @@
         this.chartParam.plotOptions.bar.events = {
           click: function (event) {
             console.log('click: function')
-            self.changeChartFilter(event.point.name.toUpperCase())
+            self.setChartFilter(event.point.name.toUpperCase())
             self.chart.setTitle({text: self.chartTitle})
           }
         }
 
         this.chartParam.chart.events = {
           drillup: function (e) {
-            self.changeChartFilter('')
+            self.setChartFilter('')
             self.chart.setTitle({text: self.chartTitle})
           }
         }

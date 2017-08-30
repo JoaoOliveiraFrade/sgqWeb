@@ -53,10 +53,8 @@
         this.selected.dtUpdateStrategyTestingAndContracting = this.getDateToday()
         if (this.selected.statusStrategyTestingAndContracting !== 'BACKLOG' && this.selected.dtEndStrategyTestingAndContracting === '') {
           this.selected.dtEndStrategyTestingAndContracting = this.getDateToday()
-        } else {
-          if (this.selected.statusStrategyTestingAndContracting === 'BACKLOG' && this.selected.dtEndStrategyTestingAndContracting !== '') {
-            this.selected.dtEndStrategyTestingAndContracting = ''
-          }
+        } else if (this.selected.statusStrategyTestingAndContracting === 'BACKLOG' && this.selected.dtEndStrategyTestingAndContracting !== '') {
+          this.selected.dtEndStrategyTestingAndContracting = ''
         }
       },
       changeStatusTimeline () {

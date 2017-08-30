@@ -48,8 +48,9 @@
                 <th style="vertical-align: middle">Status</th> 
                 <th style="vertical-align: middle">Atualiz.<br>Status</th> 
                 <th style="vertical-align: middle">Início<br>(ready)</th>
-                <th style="vertical-align: middle">Fim<br>(on going)</th>
+                <th style="vertical-align: middle">Início<br>(on going)</th>
                 <th style="vertical-align: middle">Aging</th>
+                <th style="vertical-align: middle">Aging<br>LT</th>
             </tr>
         </thead>
         <tbody v-for="item in pulledChainProjectsFilteredByTerm">
@@ -129,6 +130,10 @@
                 <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
                     {{item.agingStrategyTestingAndContractingFormated}}
                 </td>
+
+                <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
+                    {{item.agingLTStrategyTestingAndContractingFormated}}
+                </td>
             </tr>
 
             <tr>
@@ -164,6 +169,10 @@
 
                 <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
                     {{item.agingTimelineFormated}}
+                </td>
+
+                <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
+                    {{item.agingLTTimelineFormated}}
                 </td>
             </tr>
 
@@ -201,9 +210,13 @@
                 <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
                     {{item.agingTestPlanFormated}}
                 </td>
+
+                <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
+                    {{item.agingLTTestPlanFormated}}
+                </td>
             </tr>
 
-            <tr><td colspan=18 style="padding:0"></td></tr>
+            <tr><td colspan=19 style="padding:0"></td></tr>
         </tbody> 
     </table>
   </div>
