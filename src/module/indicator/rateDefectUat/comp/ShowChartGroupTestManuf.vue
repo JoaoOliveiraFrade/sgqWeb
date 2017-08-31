@@ -1,5 +1,5 @@
 <script>
-  import { mapGetters, mapActions } from 'vuex'
+  import { mapState, mapActions } from 'vuex'
 
   import Highcharts from 'highcharts'
   import HighchartsDrilldown from 'highcharts-drilldown'
@@ -11,23 +11,32 @@
     name: 'ShowChartGroupTestManufRateDefectUat',
 
     computed: {
-      ...mapGetters('indicatorRateDefectUat', ['chartGroupTestManufParam'])
+      ...mapState('indicatorRateDefectUat', ['chartGroupTestManufParam'])
     },
 
     mounted () {
+      // param.plotOptions.bar.events = {
+      //   click: function (event) {
+      //     self.setChartFilter(event.point.name.toUpperCase())
+      //     self.chart.setTitle({text: self.chartTitle})
+      //   }
+      // }
+      this.setChartGroupTestManufParam()
       this.drawChart()
     },
 
     watch: {
       'chartGroupTestManufParam': {
         handler () {
+          this.setChartGroupTestManufParam()
           this.drawChart()
         }
       }
     },
 
     methods: {
-      ...mapActions('indicatorRateDefectUat', ['setChartFilter']),
+      ...mapActions('indicatorRateDefectUat', ['setChartFilter', 'setChartGroupTestManufParam']),
+
       drawChart () {
         Highcharts.chart(this.$refs.idChart, this.chartGroupTestManufParam)
       }
