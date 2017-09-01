@@ -5,4 +5,4 @@ export const loading = 'loading'
 export const testManufSelected = 'testManufSelected'
 export const systemSelected = 'systemSelected'
 
-export const chartGroupTestManufParam = 'chartGroupTestManufParam'
+// export const chartGroupTestManufParam = 'chartGroupTestManufParam'

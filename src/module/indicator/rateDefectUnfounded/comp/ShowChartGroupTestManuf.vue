@@ -23,6 +23,12 @@
       ...mapGetters('indicatorRateDefectUnfounded', ['groupTestManuf', 'byTestManufGroupSystem', 'chartTitle'])
     },
 
+    mounted () {
+      this.setChartParam()
+      this.setChartFilter('')
+      this.chart = Highcharts.chart(this.$el, this.chartParam)
+    },
+
     updated () {
       this.setChartParam()
       this.chart = Highcharts.chart(this.$el, this.chartParam)

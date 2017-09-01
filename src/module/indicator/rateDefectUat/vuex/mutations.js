@@ -14,8 +14,8 @@ export default {
   },
   [types.systemSelected] (state, parameter) {
     state.systemSelected = parameter
-  },
-  [types.chartGroupTestManufParam] (state, parameter) {
-    state.chartGroupTestManufParam = parameter
   }
+  // [types.chartGroupTestManufParam] (state, parameter) {
+  //   state.chartGroupTestManufParam = parameter
+  // }
 }

@@ -30,6 +30,7 @@ export const load = ({ commit, state, rootState }) => {
 }
 
 export const setChartFilter = ({ state, commit }, item) => {
+  console.log('passou pelo setChartFilter FOUNDED:' + item + ':')
   if (item === '') {
     commit(types.testManufSelected, '')
     commit(types.systemSelected, '')
