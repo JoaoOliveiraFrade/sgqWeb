@@ -120,6 +120,7 @@ Max Pool Size=150;
 Min Pool Size=50;
 
 senha antiga: GT_prd@teste
+Email: SDGM6001@oi.net.br
 
 Highchart 
 =========================================================

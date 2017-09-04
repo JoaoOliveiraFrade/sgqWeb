@@ -5,7 +5,7 @@
     name: 'ShowAnalyticGrid',
 
     computed: {
-      ...mapGetters('indicatorRateDefectUat', ['filteredByChart'])
+      ...mapGetters('indicatorAverangeRetestHours', ['filteredByChart'])
     }
   }
 
@@ -49,7 +49,7 @@
             </th>
 
             <th style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
-                <font size="2" class="text-nowrap">Def. Uat
+                <font size="2" class="text-nowrap">Horas<br>Reteste
                     <a href="#" @click.prevent="setOrder('Failed')">
                     </a>
                 </font>
@@ -79,7 +79,7 @@
             </td style="padding:0">
 
             <td style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
-                <font size="2">{{item.qtyDefectUat}}</font>
+                <font size="2">{{item.qtyRetestHours}}</font>
             </td style="padding:0">
         </tr>
     </tbody> 

@@ -28,7 +28,7 @@
   import oiRateDefectUatShowChartTotal from '@/module/indicator/rateDefectUat/comp/ShowChartTotal.vue'
 
   import oiAverangeRetestHoursShowRule from '@/module/indicator/averangeRetestHours/comp/ShowRule.vue'
-  // import oiAverangeRetestHoursShowAnalytic from '@/module/indicator/averangeRetestHours/comp/ShowAnalytic.vue'
+  import oiAverangeRetestHoursShowAnalytic from '@/module/indicator/averangeRetestHours/comp/ShowAnalytic.vue'
   // import oiAverangeRetestHoursShowChartGroupTestManuf from '@/module/indicator/averangeRetestHours/comp/ShowChartGroupTestManuf.vue'
   // import oiAverangeRetestHoursShowChartGroupTimeline from '@/module/indicator/averangeRetestHours/comp/ShowChartGroupTimeline.vue'
   // import oiAverangeRetestHoursShowChartTotal from '@/module/indicator/averangeRetestHours/comp/ShowChartTotal.vue'
@@ -63,8 +63,8 @@
       oiRateDefectUatShowChartGroupTimeline,
       oiRateDefectUatShowChartTotal,
 
-      oiAverangeRetestHoursShowRule
-      // oiAverangeRetestHoursShowAnalytic,
+      oiAverangeRetestHoursShowRule,
+      oiAverangeRetestHoursShowAnalytic
       // oiAverangeRetestHoursShowChartGroupTestManuf
       // oiAverangeRetestHoursShowChartGroupTimeline,
       // oiAverangeRetestHoursShowChartTotal
@@ -74,8 +74,8 @@
       ...mapGetters(['selectedProjects', 'produtivityLoading']),
       ...mapState('indicatorRateEvidRejected', { loadingRateEvidRejected: state => (state.loading || state.loadingTimeline) }),
       ...mapState('indicatorRateDefectUnfounded', { loadingRateDefectUnfounded: state => (state.loading) }),
-      ...mapState('indicatorRateDefectUat', { loadingRateDefectUat: state => (state.loading) })
-      // ...mapState('indicatorAverangeRetestHours', { loadingAverangeRetestHours: state => (state.loading) })
+      ...mapState('indicatorRateDefectUat', { loadingRateDefectUat: state => (state.loading) }),
+      ...mapState('indicatorAverangeRetestHours', { loadingAverangeRetestHours: state => (state.loading) })
     },
 
     methods: {
@@ -83,8 +83,8 @@
       ...mapActions({'loadRateEvidRejected': 'indicatorRateEvidRejected/load'}),
       ...mapActions({'loadRateEvidRejectedTimeline': 'indicatorRateEvidRejected/loadTimeline'}),
       ...mapActions({'loadRateDefectUnfounded': 'indicatorRateDefectUnfounded/load'}),
-      ...mapActions({'loadRateDefectUat': 'indicatorRateDefectUat/load'})
-      // ...mapActions({'loadAverangeRetestHours': 'indicatorAverangeRetestHours/load'})
+      ...mapActions({'loadRateDefectUat': 'indicatorRateDefectUat/load'}),
+      ...mapActions({'loadAverangeRetestHours': 'indicatorAverangeRetestHours/load'})
     },
 
     watch: {
@@ -97,7 +97,7 @@
 
           this.loadRateDefectUnfounded()
           this.loadRateDefectUat()
-          // this.loadAverangeRetestHours()
+          this.loadAverangeRetestHours()
         }
       }
     }
@@ -133,7 +133,7 @@
           </div>
 
           <div class="col-sm-4">
-            <oiProductivityShowChartTotal/>
+            <!--<oiProductivityShowChartTotal/>-->
           </div>
         </div>
       </div>
@@ -205,7 +205,7 @@
         <div class="loader" v-show="loadingAverangeRetestHours" style="margin-top: 25px; margin-bottom: 25px"/>
         <div class="row" v-show="!loadingAverangeRetestHours" style="margin:0; border:0; padding:0">
           <oiAverangeRetestHoursShowRule style="text-align: left"/>
-          <!--<oiAverangeRetestHoursShowAnalytic style="text-align: left"/>-->
+          <oiAverangeRetestHoursShowAnalytic style="text-align: left"/>
 
           <hr style="margin-top: 2px; height: 1px; border: 0; box-shadow: 0 7px 7px -7px #d9d9d9 inset">
 
