@@ -27,7 +27,13 @@
   import oiRateDefectUatShowChartGroupTimeline from '@/module/indicator/rateDefectUat/comp/ShowChartGroupTimeline.vue'
   import oiRateDefectUatShowChartTotal from '@/module/indicator/rateDefectUat/comp/ShowChartTotal.vue'
 
-export default {
+  import oiAverangeRetestHoursShowRule from '@/module/indicator/averangeRetestHours/comp/ShowRule.vue'
+  // import oiAverangeRetestHoursShowAnalytic from '@/module/indicator/averangeRetestHours/comp/ShowAnalytic.vue'
+  // import oiAverangeRetestHoursShowChartGroupTestManuf from '@/module/indicator/averangeRetestHours/comp/ShowChartGroupTestManuf.vue'
+  // import oiAverangeRetestHoursShowChartGroupTimeline from '@/module/indicator/averangeRetestHours/comp/ShowChartGroupTimeline.vue'
+  // import oiAverangeRetestHoursShowChartTotal from '@/module/indicator/averangeRetestHours/comp/ShowChartTotal.vue'
+
+  export default {
     name: 'ShowData',
 
     components: {
@@ -55,7 +61,13 @@ export default {
       oiRateDefectUatShowAnalytic,
       oiRateDefectUatShowChartGroupTestManuf,
       oiRateDefectUatShowChartGroupTimeline,
-      oiRateDefectUatShowChartTotal
+      oiRateDefectUatShowChartTotal,
+
+      oiAverangeRetestHoursShowRule
+      // oiAverangeRetestHoursShowAnalytic,
+      // oiAverangeRetestHoursShowChartGroupTestManuf
+      // oiAverangeRetestHoursShowChartGroupTimeline,
+      // oiAverangeRetestHoursShowChartTotal
     },
 
     computed: {
@@ -63,6 +75,7 @@ export default {
       ...mapState('indicatorRateEvidRejected', { loadingRateEvidRejected: state => (state.loading || state.loadingTimeline) }),
       ...mapState('indicatorRateDefectUnfounded', { loadingRateDefectUnfounded: state => (state.loading) }),
       ...mapState('indicatorRateDefectUat', { loadingRateDefectUat: state => (state.loading) })
+      // ...mapState('indicatorAverangeRetestHours', { loadingAverangeRetestHours: state => (state.loading) })
     },
 
     methods: {
@@ -71,6 +84,7 @@ export default {
       ...mapActions({'loadRateEvidRejectedTimeline': 'indicatorRateEvidRejected/loadTimeline'}),
       ...mapActions({'loadRateDefectUnfounded': 'indicatorRateDefectUnfounded/load'}),
       ...mapActions({'loadRateDefectUat': 'indicatorRateDefectUat/load'})
+      // ...mapActions({'loadAverangeRetestHours': 'indicatorAverangeRetestHours/load'})
     },
 
     watch: {
@@ -83,6 +97,7 @@ export default {
 
           this.loadRateDefectUnfounded()
           this.loadRateDefectUat()
+          // this.loadAverangeRetestHours()
         }
       }
     }
@@ -96,7 +111,7 @@ export default {
       <li><a data-toggle="tab" href="#rateEvidRejected" style="padding:4px">Taxa Rejeição Evidência</a></li>
       <li><a data-toggle="tab" href="#rateDefectUnfounded" style="padding:4px">Taxa Defeito Improcedente</a></li>
       <li><a data-toggle="tab" href="#rateDefectUat" style="padding:4px">Taxa Defeito UAT</a></li>
-      <li><a data-toggle="tab" href="#averageReTestTimeInd" style="padding:4px">Tempo Médio Re-Teste</a></li>
+      <li><a data-toggle="tab" href="#averangeRetestHours" style="padding:4px">Tempo Médio Reteste Defeito</a></li>
     </ul>
 
     <div class="tab-content">
@@ -186,9 +201,25 @@ export default {
         </div>
       </div>
 
-      <div id="averageReTestTimeInd" class="tab-pane fade">
-      </div>
+      <div id="averangeRetestHours" class="tab-pane fade"style="padding:0; margin:0; padding-top:5px;">
+        <div class="loader" v-show="loadingAverangeRetestHours" style="margin-top: 25px; margin-bottom: 25px"/>
+        <div class="row" v-show="!loadingAverangeRetestHours" style="margin:0; border:0; padding:0">
+          <oiAverangeRetestHoursShowRule style="text-align: left"/>
+          <!--<oiAverangeRetestHoursShowAnalytic style="text-align: left"/>-->
 
+          <hr style="margin-top: 2px; height: 1px; border: 0; box-shadow: 0 7px 7px -7px #d9d9d9 inset">
+
+          <div class="col-sm-4">
+            <!--<oiAverangeRetestHoursShowChartGroupTestManuf/>-->
+          </div>
+          <div class="col-sm-4">
+            <!--<oiAverangeRetestHoursShowChartGroupTimeline/>-->
+          </div>
+          <div class="col-sm-4">
+            <!--<oiAverangeRetestHoursShowChartTotal/>-->
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>

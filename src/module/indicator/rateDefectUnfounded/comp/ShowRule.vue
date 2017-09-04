@@ -20,7 +20,7 @@ selected<script>
     <oiModal id="RateDefectUnfoundedShowRule" title="Regra">   
       <div style="margin:0; padding:10px" slot="body">
         <label class="fd-label">
-          Quantidade de defeitos com status CANCELLED e origem IMPROCEDENTE, em relação a quantidade total de defeitos.<br>
+          Quantidade de defeitos com status CANCELLED e origem IMPROCEDENTE em relação a quantidade total de defeitos.<br>
           <br>
           São considerados somente os defeitos de TI.<br>
           <br>

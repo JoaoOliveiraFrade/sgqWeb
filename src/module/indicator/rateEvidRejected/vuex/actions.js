@@ -58,7 +58,6 @@ export const loadTimeline = ({ commit, state, rootState }) => {
 }
 
 export const setChartFilter = ({ state, commit }, item) => {
-  console.log('setChartFilter: ' + item)
   if (item === '') {
     commit(types.testManufSelected, '')
     commit(types.systemSelected, '')

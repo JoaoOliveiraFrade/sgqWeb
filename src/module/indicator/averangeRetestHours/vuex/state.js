@@ -1,5 +1,5 @@
 export default {
-  limitMaxPerc: 5,
+  limitMaxQtyHours: 5,
   data: [],
   loading: false,
   testManufSelected: '',

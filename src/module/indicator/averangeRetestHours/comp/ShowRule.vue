@@ -14,17 +14,19 @@ selected<script>
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
-        data-target="#RateDefectUatShowRule">
+        data-target="#averangeRetestHoursShowRule">
         Regra
     </button>
-    <oiModal id="RateDefectUatShowRule" title="Regra">   
+    <oiModal id="averangeRetestHoursShowRule" title="Regra">   
       <div style="margin:0; padding:10px" slot="body">
         <label class="fd-label">
-          Quantidade de Defeitos de UAT em relação a quantidade de Defeitos de TI e UAT.<br>
+          Quantidade de Horas de Reteste de Defeitos em relação a quantidade de Defeitos.<br>
+          <br>
+          São considerados somente os defeitos de TI.<br>
           <br>
           São desconsiderados os defeitos com status CANCELLED.<br>
           <br>
-          No gráfico Temporal, os defeitos de UAT são contabilizadas no mês/ano em que eles foram criados.<br>
+          No gráfico Temporal, as horas são contabilizadas no mês/ano em que os defeitos estiveram em reteste.<br>
         </label>
       </div>
     </oiModal>

@@ -1,52 +1,42 @@
 <script>
   import { mapGetters, mapActions } from 'vuex'
-
   import Highcharts from 'highcharts'
   import HighchartsDrilldown from 'highcharts-drilldown'
   if (!Highcharts.Chart.prototype.addSeriesAsDrilldown) {
     HighchartsDrilldown(Highcharts)
   }
-
-  import chartStandParam from '@/module/chart/comp/types/drillDown'
+  import chartStandParam from '@/module/chart/comp/types/drillDown2'
 
   export default {
     name: 'ShowChartGroupTestManufRateEvidRejected',
 
     data () {
       return {
-        chartParam: chartStandParam(),
-        chart: undefined
+        chart: null
       }
     },
 
     computed: {
-      ...mapGetters('indicatorRateEvidRejected', ['groupTestManuf', 'byTestManufGroupSystem', 'chartTitle'])
-    },
+      ...mapGetters('indicatorRateEvidRejected', ['groupTestManuf', 'byTestManufGroupSystem', 'chartTitle']),
 
-    updated () {
-      this.setChartParam()
-      this.chart = Highcharts.chart(this.$el, this.chartParam)
-    },
+      chartParam () {
+        let param = chartStandParam
 
-    methods: {
-      ...mapActions('indicatorRateEvidRejected', ['setChartFilter']),
+        param.title.text = 'Fáb.Teste / Sistema'
+        param.yAxis.title.text = 'Qte Rej.'
 
-      setChartParam () {
-        this.chartParam.title.text = 'Fáb.Teste / Sistema'
-        this.chartParam.yAxis.title.text = 'Qte Rej.'
-
-        this.chartParam.tooltip.headerFormat = ''
-        this.chartParam.tooltip.pointFormat = `
+        param.tooltip.headerFormat = ''
+        param.tooltip.pointFormat = `
           <b>{point.name}</b><br>
           Rejeições: {point.rejections:.0f} ({point.rejectionsPerc:.2f}%{point.rejectionsPercTotal})<br>
           Evidências: {point.evidences:.0f}{point.evidencesPercTotal}<br>
           Total Rejeições: {point.totalRejections:.0f}<br>
           Total Evidências: {point.totalEvidences:.0f}
         `
-        this.chartParam.series.name = 'Taxa Rejeição'
-        this.chartParam.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
+        param.series.name = 'Taxa Rejeição'
+        param.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
 
-        this.chartParam.series = [
+        param.series = [
           {
             name: 'Taxa Rejeição',
             colorByPoint: true,
@@ -65,7 +55,7 @@
           }
         ]
 
-        this.chartParam.drilldown = {
+        param.drilldown = {
           series: this.groupTestManuf.map(i => ({
             name: i.testManuf,
             id: i.testManuf,
@@ -85,21 +75,37 @@
 
         let self = this
 
-        this.chartParam.plotOptions.bar.events = {
+        param.plotOptions.bar.events = {
           click: function (event) {
-            console.log('click: function')
             self.setChartFilter(event.point.name.toUpperCase())
             self.chart.setTitle({text: self.chartTitle})
           }
         }
 
-        this.chartParam.chart.events = {
+        param.chart.events = {
           drillup: function (e) {
             self.setChartFilter('')
             self.chart.setTitle({text: self.chartTitle})
           }
         }
+        return param
       }
+    },
+
+    methods: {
+      ...mapActions('indicatorRateEvidRejected', ['setChartFilter']),
+
+      drawChart () {
+        this.chart = Highcharts.chart(this.$el, this.chartParam)
+      }
+    },
+
+    mounted () {
+      this.drawChart()
+    },
+
+    updated () {
+      this.drawChart()
     }
   }
 </script>

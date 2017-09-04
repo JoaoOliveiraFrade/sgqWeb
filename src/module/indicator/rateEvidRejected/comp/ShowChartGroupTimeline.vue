@@ -1,46 +1,33 @@
 <script>
   import { mapGetters } from 'vuex'
   import Highcharts from 'highcharts'
-  import chartStandParam from '@/module/chart/comp/types/timeline'
+  import chartStandParam from '@/module/chart/comp/types/timeline2'
 
   export default {
     name: 'ShowChartGroupTimeline',
 
-    data () {
-      return {
-        chartParam: chartStandParam()
-      }
-    },
-
     computed: {
-      ...mapGetters('indicatorRateEvidRejected', ['groupTimeline'])
-    },
+      ...mapGetters('indicatorRateEvidRejected', ['groupTimeline']),
 
-    updated () {
-      this.setChartParam()
-      Highcharts.chart(this.$el, this.chartParam)
-    },
+      chartParam () {
+        let param = chartStandParam
+        param.title.text = 'Temporal'
+        param.yAxis.title.text = 'Qte Rej.'
 
-    methods: {
-      setChartParam () {
-        // let _this = this
-        this.chartParam.title.text = 'Temporal'
-        this.chartParam.yAxis.title.text = 'Qte Rej.'
-
-        this.chartParam.tooltip.headerFormat = ''
-        this.chartParam.tooltip.pointFormat = `
+        param.tooltip.headerFormat = ''
+        param.tooltip.pointFormat = `
           <b>{point.monthYear}</b><br>
           Rejeições Mês: {point.rejections:.0f} ({point.rejectionsPerc:.2f}%)<br>
           Rejeições Acum: {point.rejectionsAcc:.0f} ({point.rejectionsAccPerc:.2f}%)<br>
           Limite Máximo: {point.maxLimit:.0f} ({point.maxLimitPerc:.2f}%)<br>
           Total Evidências: {point.totalEvidences:.0f}
           `
-        this.chartParam.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
-        this.chartParam.xAxis.categories = this.groupTimeline.map(i => i.monthYear)
+        param.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
+        param.xAxis.categories = this.groupTimeline.map(i => i.monthYear)
 
-        this.chartParam.colors = ['#FF3300', '#89A54E', '#4572A7']
+        param.colors = ['#FF3300', '#89A54E', '#4572A7']
 
-        this.chartParam.series = [
+        param.series = [
           {
             name: 'Limite Máx',
             data: this.groupTimeline.map(i => (
@@ -93,12 +80,24 @@
             ))
           }
         ]
-
-        // this.chartParam.series[0].showInLegend = false
+        return param
       }
+    },
+
+    methods: {
+      drawChart () {
+        Highcharts.chart(this.$el, this.chartParam)
+      }
+    },
+
+    mounted () {
+      this.drawChart()
+    },
+
+    updated () {
+      this.drawChart()
     }
   }
-  // evid: 1598, rej: 1310, pico: 405, pico perc: 25
 </script>
 
 <template> 

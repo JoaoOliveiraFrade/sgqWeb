@@ -33,7 +33,7 @@ export const groupTestManuf = ({data}) => {
   return result.filter(r => r.qtyUnfounded > 0).sort((a, b) => a.qtyUnfounded > b.qtyUnfounded ? 1 : -1)
 }
 
-export const byTestManufGroupSystem = ({data}, {qtyTotalDefect, qtyTotalUnfounded}) => (testManuf) => {
+export const byTestManufGroupSystem = ({data}) => (testManuf) => {
   let byTestManuf = data.filter(p => p.testManuf === testManuf)
 
   let result = []
@@ -108,7 +108,7 @@ export const groupTimeline = ({limitMaxPerc}, {filteredByChart, total}) => {
     r.qtyUnfoundedAcc = qtyUnfoundedAcc
     r.percUnfoundedAcc = parseFloat(parseFloat(qtyUnfoundedAcc / (total.qtyDefect !== 0 ? total.qtyDefect : 1) * 100).toFixed(2))
   })
-  return result.filter(r => r.qtyUnfounded > 0).sort((a, b) => a.yearMonth > b.yearMonth ? 1 : -1)
+  return result.sort((a, b) => a.yearMonth > b.yearMonth ? 1 : -1)
 }
 
 export const total = ({limitMaxPerc}, {filteredByChart}) => {

@@ -1,44 +1,33 @@
 <script>
   import { mapGetters, mapActions } from 'vuex'
-
+  import chartStandParam from '@/module/chart/comp/types/drillDown2'
   import Highcharts from 'highcharts'
   import HighchartsDrilldown from 'highcharts-drilldown'
   if (!Highcharts.Chart.prototype.addSeriesAsDrilldown) {
     HighchartsDrilldown(Highcharts)
   }
 
-  import chartStandParam from '@/module/chart/comp/types/drillDown'
-
   export default {
     name: 'ShowChartGroupTestManufProductivity',
 
     data () {
       return {
-        chartParam: chartStandParam(),
-        chart: undefined
+        chart: null
       }
     },
 
     computed: {
-      ...mapGetters(['produtivityGroupTestManuf', 'produtivityByTestManufGroupSystem', 'produtivityChartTitle'])
-    },
+      ...mapGetters(['produtivityGroupTestManuf', 'produtivityByTestManufGroupSystem', 'produtivityChartTitle']),
 
-    updated () {
-      this.setChartParam()
-      this.chart = Highcharts.chart(this.$el, this.chartParam)
-    },
+      chartParam () {
+        let param = chartStandParam
+        param.title.text = 'Fáb.Teste / Sistema'
+        param.yAxis.title.text = 'Qte Exec.'
+        param.tooltip.pointFormat = '{point.y:.0f}'
+        param.series.name = 'Produtividade'
+        param.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
 
-    methods: {
-      ...mapActions(['produtivityChartChangeFilter']),
-
-      setChartParam () {
-        this.chartParam.title.text = 'Fáb.Teste / Sistema'
-        this.chartParam.yAxis.title.text = 'Qte Exec.'
-        this.chartParam.tooltip.pointFormat = '{point.y:.0f}'
-        this.chartParam.series.name = 'Produtividade'
-        this.chartParam.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
-
-        this.chartParam.series = [
+        param.series = [
           {
             name: 'produtividade',
             colorByPoint: true,
@@ -50,7 +39,7 @@
           }
         ]
 
-        this.chartParam.drilldown = {
+        param.drilldown = {
           series: this.produtivityGroupTestManuf.map(i => ({
             name: i.testManuf,
             id: i.testManuf,
@@ -60,27 +49,44 @@
 
         let self = this
 
-        this.chartParam.plotOptions.bar.events = {
+        param.plotOptions.bar.events = {
           click: function (event) {
             self.produtivityChartChangeFilter(event.point.name.toUpperCase())
             self.chart.setTitle({text: self.produtivityChartTitle})
           }
         }
 
-        this.chartParam.chart.events = {
+        param.chart.events = {
           drillup: function (e) {
             self.produtivityChartChangeFilter('')
             self.chart.setTitle({text: self.produtivityChartTitle})
           }
         }
+        return param
       }
+    },
+
+    methods: {
+      ...mapActions(['produtivityChartChangeFilter']),
+
+      drawChart () {
+        this.chart = Highcharts.chart(this.$el, this.chartParam)
+      }
+    },
+
+    mounted () {
+      this.drawChart()
+    },
+
+    updated () {
+      this.drawChart()
     }
   }
 </script>
 
 <template> 
   <div style="width:250px; height:350px; margin:0 auto">
-    <pre>{{produtivityGroupTestManuf}}</pre>
+    {{produtivityGroupTestManuf}}
   </div>
 </template>
 
