@@ -1,5 +1,5 @@
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapState } from 'vuex'
   import Highcharts from 'highcharts'
   import chartStandParam from '@/module/chart/comp/types/timeline2'
 
@@ -7,21 +7,25 @@
     name: 'ShowChartGroupTimeline',
 
     computed: {
-      ...mapGetters('indicatorRateDefectUat', ['groupTimeline']),
+      ...mapGetters('indicatorAverangeRetestHours', ['groupTimeline']),
+      ...mapState('indicatorAverangeRetestHours', ['limitMaxQtyHours']),
 
       chartParam () {
         let param = chartStandParam
 
         param.title.text = 'Temporal'
-        param.yAxis.title.text = 'Def. Uat'
+        param.yAxis.title.text = 'Média Horas'
 
         param.tooltip.headerFormat = ''
         param.tooltip.pointFormat = `
           <b>{point.monthYear}</b><br>
-          Def. Uat Mês: {point.qtyDefectUat:.0f} ({point.percDefectUat:.2f}%)<br>
-          Def. Uat Acum: {point.qtyDefectUatAcc:.0f} ({point.percDefectUatAcc:.2f}%)<br>
-          Limite Máximo: {point.limitMaxQty:.0f} ({point.limitMaxPerc:.0f}%)<br>
-          Total Defeito: {point.qtyTotalDefect:.0f}
+          Tempo Médio (h): {point.averangeRetestHours:.2f}<br>
+          Defeito: {point.qtyDefect:.0f}<br>
+          Horas Reteste: {point.qtyRetestHours:.2f}<br>
+          Limite Máximo (h): {point.limitMaxQtyHours:.0f}<br>
+          Tempo Médio Acum (h): {point.qtyAccAverangeRetestHours:.2f}<br>
+          Defeito Acum: {point.qtyAccDefect:.0f}<br>
+          Horas Reteste Acum: {point.qtyAccRetestHours:.2f}
           `
         param.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
         param.xAxis.categories = this.groupTimeline.map(i => i.monthYear)
@@ -33,48 +37,48 @@
             name: 'Limite Máx',
             data: this.groupTimeline.map(i => (
               {
-                name: i.date,
-                y: i.limitMaxQty,
-                qtyDefectUat: i.qtyDefectUat,
+                name: i.monthYear,
+                y: i.limitMaxQtyHours,
                 monthYear: i.monthYear,
-                percDefectUat: i.percDefectUat,
-                qtyDefectUatAcc: i.qtyDefectUatAcc,
-                percDefectUatAcc: i.percDefectUatAcc,
-                qtyTotalDefect: i.qtyTotalDefect,
-                limitMaxQty: i.limitMaxQty,
-                limitMaxPerc: i.limitMaxPerc
+                qtyDefect: i.qtyDefect,
+                qtyRetestHours: i.qtyRetestHours,
+                averangeRetestHours: i.averangeRetestHours,
+                qtyAccDefect: i.qtyAccDefect,
+                qtyAccRetestHours: i.qtyAccRetestHours,
+                qtyAccAverangeRetestHours: i.qtyAccAverangeRetestHours,
+                limitMaxQtyHours: this.limitMaxQtyHours
               }
             ))
           }, {
             name: 'Mês',
             data: this.groupTimeline.map(i => (
               {
-                name: i.date,
-                y: i.qtyDefectUat,
+                name: i.monthYear,
+                y: i.averangeRetestHours,
                 monthYear: i.monthYear,
-                qtyDefectUat: i.qtyDefectUat,
-                percDefectUat: i.percDefectUat,
-                qtyDefectUatAcc: i.qtyDefectUatAcc,
-                percDefectUatAcc: i.percDefectUatAcc,
-                qtyTotalDefect: i.qtyTotalDefect,
-                limitMaxQty: i.limitMaxQty,
-                limitMaxPerc: i.limitMaxPerc
+                qtyDefect: i.qtyDefect,
+                qtyRetestHours: i.qtyRetestHours,
+                averangeRetestHours: i.averangeRetestHours,
+                qtyAccDefect: i.qtyAccDefect,
+                qtyAccRetestHours: i.qtyAccRetestHours,
+                qtyAccAverangeRetestHours: i.qtyAccAverangeRetestHours,
+                limitMaxQtyHours: this.limitMaxQtyHours
               }
             ))
           }, {
             name: 'Acumulado',
             data: this.groupTimeline.map(i => (
               {
-                name: i.date,
-                y: i.qtyDefectUatAcc,
+                name: i.monthYear,
+                y: i.qtyAccAverangeRetestHours,
                 monthYear: i.monthYear,
-                qtyDefectUat: i.qtyDefectUat,
-                percDefectUat: i.percDefectUat,
-                qtyDefectUatAcc: i.qtyDefectUatAcc,
-                percDefectUatAcc: i.percDefectUatAcc,
-                qtyTotalDefect: i.qtyTotalDefect,
-                limitMaxQty: i.limitMaxQty,
-                limitMaxPerc: i.limitMaxPerc
+                qtyDefect: i.qtyDefect,
+                qtyRetestHours: i.qtyRetestHours,
+                averangeRetestHours: i.averangeRetestHours,
+                qtyAccDefect: i.qtyAccDefect,
+                qtyAccRetestHours: i.qtyAccRetestHours,
+                qtyAccAverangeRetestHours: i.qtyAccAverangeRetestHours,
+                limitMaxQtyHours: this.limitMaxQtyHours
               }
             ))
           }

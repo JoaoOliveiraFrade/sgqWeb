@@ -1,27 +1,21 @@
 export const groupTestManuf = ({data}) => {
   let result = []
-  data.forEach(d => {
-    let index = result.findIndex(r => r.testManuf === d.testManuf)
+  data.forEach(i => {
+    let index = result.findIndex(r => r.testManuf === i.testManuf)
     if (index > -1) {
-      result[index].qtyDefect += d.qtyDefect
-      result[index].qtyRetestHours += d.qtyRetestHours
+      result[index].qtyDefect += i.qtyDefect
+      result[index].qtyRetestHours += i.qtyRetestHours
     } else {
       result.push({
-        testManuf: d.testManuf,
-        qtyDefect: d.qtyDefect,
-        qtyRetestHours: d.qtyRetestHours,
-        averangeRetestHours: 0,
-        qtyTotalDefect: 0,
-        qtyTotalRetestHours: 0
+        testManuf: i.testManuf,
+        qtyDefect: i.qtyDefect,
+        qtyRetestHours: i.qtyRetestHours,
+        averangeRetestHours: 0
       })
     }
   })
-  let qtyTotalDefect = result.reduce((sum, e) => sum + e.qtyDefect, 0)
-  let qtyTotalRetestHours = result.reduce((sum, e) => sum + e.qtyRetestHours, 0)
   result.forEach(r => {
-    r.averangeRetestHours = parseFloat(parseFloat(r.qtyRetestHours / (r.qtyDefect !== 0 ? r.qtyDefect : 1) * 100).toFixed(2))
-    r.qtyTotalDefect = qtyTotalDefect
-    r.qtyTotalRetestHours = qtyTotalRetestHours
+    r.averangeRetestHours = parseFloat(parseFloat(r.qtyRetestHours / (r.qtyDefect !== 0 ? r.qtyDefect : 1)).toFixed(2))
   })
   return result.filter(r => r.averangeRetestHours > 0).sort((a, b) => a.averangeRetestHours > b.averangeRetestHours ? 1 : -1)
 }
@@ -30,28 +24,22 @@ export const byTestManufGroupSystem = ({data}) => (testManuf) => {
   let byTestManuf = data.filter(p => p.testManuf === testManuf)
 
   let result = []
-  byTestManuf.forEach(p => {
-    let index = result.findIndex(r => r.system === p.system)
+  byTestManuf.forEach(i => {
+    let index = result.findIndex(r => r.system === i.system)
     if (index > -1) {
-      result[index].qtyDefect += p.qtyDefect
-      result[index].qtyRetestHours += p.qtyRetestHours
+      result[index].qtyDefect += i.qtyDefect
+      result[index].qtyRetestHours += i.qtyRetestHours
     } else {
       result.push({
-        system: p.system,
-        qtyDefect: p.qtyDefect,
-        qtyRetestHours: p.qtyRetestHours,
-        averangeRetestHours: 0,
-        qtyTotalDefect: 0,
-        qtyTotalRetestHours: 0
+        system: i.system,
+        qtyDefect: i.qtyDefect,
+        qtyRetestHours: i.qtyRetestHours,
+        averangeRetestHours: 0
       })
     }
   })
-  let qtyTotalDefect = result.reduce((sum, e) => sum + e.qtyDefect, 0)
-  let qtyTotalRetestHours = result.reduce((sum, e) => sum + e.qtyRetestHours, 0)
   result.forEach(r => {
-    r.averangeRetestHours = parseFloat(parseFloat(r.qtyRetestHours / (r.qtyDefect !== 0 ? r.qtyDefect : 1) * 100).toFixed(2))
-    r.qtyTotalDefect = qtyTotalDefect
-    r.qtyTotalRetestHours = qtyTotalRetestHours
+    r.averangeRetestHours = parseFloat(parseFloat(r.qtyRetestHours / (r.qtyDefect !== 0 ? r.qtyDefect : 1)).toFixed(2))
   })
   return result.filter(r => r.averangeRetestHours > 0).sort((a, b) => a.averangeRetestHours > b.averangeRetestHours ? 1 : -1)
 }
@@ -68,7 +56,7 @@ export const filteredByChart = ({data, testManufSelected, systemSelected}) => {
 
 export const groupTimeline = ({limitMaxQtyHours}, {filteredByChart, total}) => {
   let result = []
-  filteredByChart.filter(f => f.year !== '').forEach(i => {
+  filteredByChart.forEach(i => {
     let index = result.findIndex(r => r.yearMonth === (i.year + i.month))
     if (index > -1) {
       result[index].qtyDefect += i.qtyDefect
@@ -78,10 +66,9 @@ export const groupTimeline = ({limitMaxQtyHours}, {filteredByChart, total}) => {
         yearMonth: i.year + i.month,
         monthYear: i.month + '/' + i.year,
         qtyDefect: i.qtyDefect,
-        qtyTotalDefect: total.qtyDefect,
-        qtyAccDefect: 0,
         qtyRetestHours: i.qtyRetestHours,
-        qtyTotalRetestHours: total.qtyTotalRetestHours,
+        averangeRetestHours: 0,
+        qtyAccDefect: 0,
         qtyAccRetestHours: 0,
         qtyAccAverangeRetestHours: 0,
         limitMaxQtyHours: limitMaxQtyHours
@@ -91,21 +78,23 @@ export const groupTimeline = ({limitMaxQtyHours}, {filteredByChart, total}) => {
   let qtyAccDefect = 0
   let qtyAccRetestHours = 0
   result.forEach(i => {
+    i.averangeRetestHours = parseFloat(parseFloat(i.qtyRetestHours / (i.qtyDefect !== 0 ? i.qtyDefect : 1)).toFixed(2))
     qtyAccDefect = qtyAccDefect + i.qtyDefect
     qtyAccRetestHours = qtyAccRetestHours + i.qtyRetestHours
     i.qtyAccDefect = qtyAccDefect
     i.qtyAccRetestHours = qtyAccRetestHours
-    i.qtyAccAverangeRetestHours = parseFloat(parseFloat(qtyAccRetestHours / (qtyAccDefect !== 0 ? qtyAccDefect : 1) * 100).toFixed(2))
+    i.qtyAccAverangeRetestHours = parseFloat(parseFloat(qtyAccRetestHours / (qtyAccDefect !== 0 ? qtyAccDefect : 1)).toFixed(2))
   })
   return result.sort((a, b) => a.yearMonth > b.yearMonth ? 1 : -1)
 }
 
-export const total = ({limitMaxQtyHours}, {filteredByChart}) => {
+export const total = (state, {filteredByChart}) => {
   let qtyDefect = filteredByChart.reduce((sum, e) => sum + e.qtyDefect, 0)
   let qtyRetestHours = filteredByChart.reduce((sum, e) => sum + e.qtyRetestHours, 0)
   return {
     qtyDefect,
-    qtyRetestHours
+    qtyRetestHours,
+    averangeRetestHours: parseFloat(parseFloat(qtyRetestHours / (qtyDefect !== 0 ? qtyDefect : 1)).toFixed(2))
   }
 }
 

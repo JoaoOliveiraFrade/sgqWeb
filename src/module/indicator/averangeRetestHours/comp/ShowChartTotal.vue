@@ -1,5 +1,5 @@
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapState } from 'vuex'
   import Highcharts from 'highcharts'
   import chartTotalStandParam from '@/module/chart/comp/types/Total2'
 
@@ -7,37 +7,38 @@
     name: 'ShowChartTotal',
 
     computed: {
-      ...mapGetters('indicatorRateDefectUat', ['total']),
+      ...mapGetters('indicatorAverangeRetestHours', ['total']),
+      ...mapState('indicatorAverangeRetestHours', ['limitMaxQtyHours']),
 
       chartParam () {
         let param = chartTotalStandParam
 
         param.title.text = 'Total'
-        param.yAxis.title.text = 'Def.<br>Uat'
+        param.yAxis.title.text = 'Média<br>Horas'
         // param.plotOptions.gauge.dataLabels.borderWidth = 0
         param.plotOptions.gauge.dataLabels.useHTML = true
-        param.plotOptions.gauge.dataLabels.format = '<span style=font-size:9px><center>{point.y:.0f}</center>' + this.total.percDefectUat + '%</span>'
+        param.plotOptions.gauge.dataLabels.format = '<span style=font-size:9px><center>{point.y:.0f}</center>' + this.total.averangeRetestHours + '%</span>'
 
-        if (this.total.qtyDefectUat < this.total.qtyDefect) {
-          param.yAxis.max = this.total.qtyDefect
+        if (this.total.averangeRetestHours > this.limitMaxQtyHours) {
+          param.yAxis.max = this.total.averangeRetestHours
           param.yAxis.plotBands = [
-            {from: 0, to: this.total.limitMaxQty, color: '#00CC00'},
-            {from: this.total.limitMaxQty, to: this.total.qtyDefect, color: '#FF3300'}
+            {from: 0, to: this.limitMaxQtyHours, color: '#00CC00'},
+            {from: this.limitMaxQtyHours, to: this.total.averangeRetestHours, color: '#FF3300'}
           ]
         } else {
-          param.yAxis.max = this.total.qtyDefectUat
+          param.yAxis.max = this.total.limitMaxQtyHours
           param.yAxis.plotBands = [
-            {from: 0, to: this.total.limitMaxQty, color: '#00CC00'},
-            {from: this.total.limitMaxQty, to: this.total.qtyDefectUat, color: '#FF3300'}
+            {from: 0, to: this.limitMaxQtyHours, color: '#00CC00'}
           ]
         }
 
-        param.tooltip.pointFormat = '' +
-          'Def. Uat: ' + this.total.qtyDefectUat + ' (' + this.total.percDefectUat + '%)<br>' +
-          'Limite Máximo: ' + this.total.limitMaxQty + ' (' + this.total.limitMaxPerc + '%)<br>' +
-          'Defeito: ' + this.total.qtyDefect
-
-        param.series = [ { name: 'Total', colorByPoint: true, data: [ this.total.qtyDefectUat ] } ]
+        param.tooltip.pointFormat = `
+          Tempo Médio (h): ${this.total.averangeRetestHours}<br>
+          Defeito: ${this.total.qtyDefect}<br>
+          Horas Reteste: ${this.total.qtyRetestHours}<br>
+          Limite Máximo (h): ${this.limitMaxQtyHours}
+          `
+        param.series = [ { name: 'Total', colorByPoint: true, data: [ this.total.averangeRetestHours ] } ]
         return param
       }
     },

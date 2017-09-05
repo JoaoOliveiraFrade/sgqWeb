@@ -32,7 +32,7 @@
             name: 'Limite Máx',
             data: this.groupTimeline.map(i => (
               {
-                name: i.date,
+                name: i.monthYear,
                 y: i.maxLimit,
                 rejections: i.rejections,
                 monthYear: i.monthYear,
@@ -49,7 +49,7 @@
             name: 'Mês',
             data: this.groupTimeline.map(i => (
               {
-                name: i.date,
+                name: i.monthYear,
                 y: i.rejections,
                 monthYear: i.monthYear,
                 rejections: i.rejections,
@@ -66,7 +66,7 @@
             name: 'Acumulado',
             data: this.groupTimeline.map(i => (
               {
-                name: i.date,
+                name: i.monthYear,
                 y: i.rejectionsAcc,
                 monthYear: i.monthYear,
                 rejections: i.rejections,

@@ -49,7 +49,7 @@
             </th>
 
             <th style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
-                <font size="2" class="text-nowrap">Horas<br>Reteste
+                <font size="2" class="text-nowrap">Reteste<br>(horas)
                     <a href="#" @click.prevent="setOrder('Failed')">
                     </a>
                 </font>

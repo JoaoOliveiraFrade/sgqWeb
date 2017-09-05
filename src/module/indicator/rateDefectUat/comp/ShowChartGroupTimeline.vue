@@ -33,7 +33,7 @@
             name: 'Limite Máx',
             data: this.groupTimeline.map(i => (
               {
-                name: i.date,
+                name: i.monthYear,
                 y: i.limitMaxQty,
                 qtyDefectUat: i.qtyDefectUat,
                 monthYear: i.monthYear,
@@ -49,7 +49,7 @@
             name: 'Mês',
             data: this.groupTimeline.map(i => (
               {
-                name: i.date,
+                name: i.monthYear,
                 y: i.qtyDefectUat,
                 monthYear: i.monthYear,
                 qtyDefectUat: i.qtyDefectUat,
@@ -65,7 +65,7 @@
             name: 'Acumulado',
             data: this.groupTimeline.map(i => (
               {
-                name: i.date,
+                name: i.monthYear,
                 y: i.qtyDefectUatAcc,
                 monthYear: i.monthYear,
                 qtyDefectUat: i.qtyDefectUat,

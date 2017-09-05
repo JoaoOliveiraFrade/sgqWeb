@@ -29,9 +29,9 @@
 
   import oiAverangeRetestHoursShowRule from '@/module/indicator/averangeRetestHours/comp/ShowRule.vue'
   import oiAverangeRetestHoursShowAnalytic from '@/module/indicator/averangeRetestHours/comp/ShowAnalytic.vue'
-  // import oiAverangeRetestHoursShowChartGroupTestManuf from '@/module/indicator/averangeRetestHours/comp/ShowChartGroupTestManuf.vue'
-  // import oiAverangeRetestHoursShowChartGroupTimeline from '@/module/indicator/averangeRetestHours/comp/ShowChartGroupTimeline.vue'
-  // import oiAverangeRetestHoursShowChartTotal from '@/module/indicator/averangeRetestHours/comp/ShowChartTotal.vue'
+  import oiAverangeRetestHoursShowChartGroupTestManuf from '@/module/indicator/averangeRetestHours/comp/ShowChartGroupTestManuf.vue'
+  import oiAverangeRetestHoursShowChartGroupTimeline from '@/module/indicator/averangeRetestHours/comp/ShowChartGroupTimeline.vue'
+  import oiAverangeRetestHoursShowChartTotal from '@/module/indicator/averangeRetestHours/comp/ShowChartTotal.vue'
 
   export default {
     name: 'ShowData',
@@ -64,10 +64,10 @@
       oiRateDefectUatShowChartTotal,
 
       oiAverangeRetestHoursShowRule,
-      oiAverangeRetestHoursShowAnalytic
-      // oiAverangeRetestHoursShowChartGroupTestManuf
-      // oiAverangeRetestHoursShowChartGroupTimeline,
-      // oiAverangeRetestHoursShowChartTotal
+      oiAverangeRetestHoursShowAnalytic,
+      oiAverangeRetestHoursShowChartGroupTestManuf,
+      oiAverangeRetestHoursShowChartGroupTimeline,
+      oiAverangeRetestHoursShowChartTotal
     },
 
     computed: {
@@ -210,13 +210,13 @@
           <hr style="margin-top: 2px; height: 1px; border: 0; box-shadow: 0 7px 7px -7px #d9d9d9 inset">
 
           <div class="col-sm-4">
-            <!--<oiAverangeRetestHoursShowChartGroupTestManuf/>-->
+            <oiAverangeRetestHoursShowChartGroupTestManuf/>
           </div>
           <div class="col-sm-4">
-            <!--<oiAverangeRetestHoursShowChartGroupTimeline/>-->
+            <oiAverangeRetestHoursShowChartGroupTimeline/>
           </div>
           <div class="col-sm-4">
-            <!--<oiAverangeRetestHoursShowChartTotal/>-->
+            <oiAverangeRetestHoursShowChartTotal/>
           </div>
         </div>
       </div>

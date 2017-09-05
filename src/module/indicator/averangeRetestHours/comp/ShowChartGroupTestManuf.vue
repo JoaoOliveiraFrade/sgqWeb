@@ -9,7 +9,7 @@
   }
 
   export default {
-    name: 'ShowChartGroupTestManufRateDefectUat',
+    name: 'ShowChartGroupTestManufAverangeRetestHours',
 
     data () {
       return {
@@ -18,29 +18,25 @@
     },
 
     computed: {
-      ...mapGetters('indicatorRateDefectUat', ['groupTestManuf', 'byTestManufGroupSystem', 'chartTitle']),
+      ...mapGetters('indicatorAverangeRetestHours', ['groupTestManuf', 'byTestManufGroupSystem', 'chartTitle']),
 
       chartParam () {
         let param = chartStandParam
 
         param.title.text = 'Fáb.Teste / Sistema'
-        param.yAxis.title.text = 'Qte Rej.'
+        param.yAxis.title.text = 'Média Horas'
 
         param.tooltip.headerFormat = ''
         param.tooltip.pointFormat = `
           <b>{point.name}</b><br>
+          Tempo Médio (h): {point.averangeRetestHours:.2f}<br>
           Defeito: {point.qtyDefect:.0f}<br>
-          Horas Reteste: {point.qtyRetestHours:.0f}<br>
-          Tempo Médio: {point.averangeRetestHours:.0f}<br>
-          Total Defeito: {point.qtyTotalDefect:.0f}<br>
-          Total Horas Reteste: {point.qtyTotalRetestHours:.0f}
+          Horas Reteste: {point.qtyRetestHours:.2f}
         `
-        param.series.name = 'Taxa Uat'
         param.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
 
         param.series = [
           {
-            name: 'Taxa Def. Uat',
             colorByPoint: true,
             data: this.groupTestManuf.map(i => ({
               name: i.testManuf ? i.testManuf.charAt(0).toUpperCase() + i.testManuf.slice(1).toLowerCase() : '',
@@ -48,8 +44,6 @@
               qtyDefect: i.qtyDefect,
               qtyRetestHours: i.qtyRetestHours,
               averangeRetestHours: i.averangeRetestHours,
-              qtyTotalDefect: i.qtyTotalDefect,
-              qtyTotalRetestHours: i.qtyTotalRetestHours,
               drilldown: i.testManuf
             }))
           }
@@ -61,12 +55,10 @@
             id: i.testManuf,
             data: this.byTestManufGroupSystem(i.testManuf).map(s => ({
               name: s.system ? s.system.charAt(0).toUpperCase() + s.system.slice(1).toLowerCase() : '',
-              y: i.averangeRetestHours,
-              qtyDefect: i.qtyDefect,
-              qtyRetestHours: i.qtyRetestHours,
-              averangeRetestHours: i.averangeRetestHours,
-              qtyTotalDefect: i.qtyTotalDefect,
-              qtyTotalRetestHours: i.qtyTotalRetestHours
+              y: s.averangeRetestHours,
+              qtyDefect: s.qtyDefect,
+              qtyRetestHours: s.qtyRetestHours,
+              averangeRetestHours: s.averangeRetestHours
             }))
           }))
         }
@@ -91,10 +83,10 @@
     },
 
     methods: {
-      ...mapActions('indicatorRateDefectUat', ['setChartFilter']),
+      ...mapActions('indicatorAverangeRetestHours', ['setChartFilter']),
 
       drawChart () {
-        this.chart = Highcharts.chart(this.$refs.idChart, this.chartParam)
+        this.chart = Highcharts.chart(this.$el, this.chartParam)
       }
     },
 
@@ -110,7 +102,7 @@
 </script>
 
 <template> 
-  <div ref="idChart" style="width:250px; height:350px; margin:0 auto">
+  <div style="width:250px; height:350px; margin:0 auto">
     {{groupTestManuf}}
   </div>
 </template>
