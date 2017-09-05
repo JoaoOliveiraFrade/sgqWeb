@@ -5,38 +5,41 @@
   if (!Highcharts.Chart.prototype.addSeriesAsDrilldown) {
     HighchartsDrilldown(Highcharts)
   }
-  import chartStandParam from '@/module/chart/comp/types/drillDown2'
+  import chartStandParam from '@/module/chart/comp/types/drillDown'
 
   export default {
     name: 'ShowChartGroupTestManufRateEvidRejected',
 
     data () {
       return {
+        chartParam: chartStandParam(),
         chart: null
       }
     },
 
     computed: {
-      ...mapGetters('indicatorRateEvidRejected', ['groupTestManuf', 'byTestManufGroupSystem', 'chartTitle']),
+      ...mapGetters('indicatorRateEvidRejected', ['groupTestManuf', 'byTestManufGroupSystem', 'chartTitle'])
+    },
 
-      chartParam () {
-        let param = chartStandParam
+    methods: {
+      ...mapActions('indicatorRateEvidRejected', ['setChartFilter']),
 
-        param.title.text = 'Fáb.Teste / Sistema'
-        param.yAxis.title.text = 'Qte Rej.'
+      setChartParam () {
+        this.chartParam.title.text = 'Fáb.Teste / Sistema'
+        this.chartParam.yAxis.title.text = 'Qte Rej.'
 
-        param.tooltip.headerFormat = ''
-        param.tooltip.pointFormat = `
+        this.chartParam.tooltip.headerFormat = ''
+        this.chartParam.tooltip.pointFormat = `
           <b>{point.name}</b><br>
           Rejeições: {point.rejections:.0f} ({point.rejectionsPerc:.2f}%{point.rejectionsPercTotal})<br>
           Evidências: {point.evidences:.0f}{point.evidencesPercTotal}<br>
           Total Rejeições: {point.totalRejections:.0f}<br>
           Total Evidências: {point.totalEvidences:.0f}
         `
-        param.series.name = 'Taxa Rejeição'
-        param.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
+        this.chartParam.series.name = 'Taxa Rejeição'
+        this.chartParam.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
 
-        param.series = [
+        this.chartParam.series = [
           {
             name: 'Taxa Rejeição',
             colorByPoint: true,
@@ -55,7 +58,7 @@
           }
         ]
 
-        param.drilldown = {
+        this.chartParam.drilldown = {
           series: this.groupTestManuf.map(i => ({
             name: i.testManuf,
             id: i.testManuf,
@@ -75,27 +78,23 @@
 
         let self = this
 
-        param.plotOptions.bar.events = {
+        this.chartParam.plotOptions.bar.events = {
           click: function (event) {
             self.setChartFilter(event.point.name.toUpperCase())
             self.chart.setTitle({text: self.chartTitle})
           }
         }
 
-        param.chart.events = {
+        this.chartParam.chart.events = {
           drillup: function (e) {
             self.setChartFilter('')
             self.chart.setTitle({text: self.chartTitle})
           }
         }
-        return param
-      }
-    },
-
-    methods: {
-      ...mapActions('indicatorRateEvidRejected', ['setChartFilter']),
+      },
 
       drawChart () {
+        this.setChartParam()
         this.chart = Highcharts.chart(this.$el, this.chartParam)
       }
     },

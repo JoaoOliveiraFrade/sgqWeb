@@ -133,7 +133,7 @@
           </div>
 
           <div class="col-sm-4">
-            <!--<oiProductivityShowChartTotal/>-->
+            <oiProductivityShowChartTotal/>
           </div>
         </div>
       </div>

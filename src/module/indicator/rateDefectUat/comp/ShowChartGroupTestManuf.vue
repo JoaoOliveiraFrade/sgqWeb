@@ -2,7 +2,7 @@
   import { mapGetters, mapActions } from 'vuex'
   import Highcharts from 'highcharts'
   import HighchartsDrilldown from 'highcharts-drilldown'
-  import chartStandParam from '@/module/chart/comp/types/drillDown2'
+  import chartStandParam from '@/module/chart/comp/types/drillDown'
 
   if (!Highcharts.Chart.prototype.addSeriesAsDrilldown) {
     HighchartsDrilldown(Highcharts)
@@ -13,31 +13,34 @@
 
     data () {
       return {
+        chartParam: chartStandParam(),
         chart: null
       }
     },
 
     computed: {
-      ...mapGetters('indicatorRateDefectUat', ['groupTestManuf', 'byTestManufGroupSystem', 'chartTitle']),
+      ...mapGetters('indicatorRateDefectUat', ['groupTestManuf', 'byTestManufGroupSystem', 'chartTitle'])
+    },
 
-      chartParam () {
-        let param = chartStandParam
+    methods: {
+      ...mapActions('indicatorRateDefectUat', ['setChartFilter']),
 
-        param.title.text = 'Fáb.Teste / Sistema'
-        param.yAxis.title.text = 'Qte Rej.'
+      setChartParam () {
+        this.chartParam.title.text = 'Fáb.Teste / Sistema'
+        this.chartParam.yAxis.title.text = 'Qte Rej.'
 
-        param.tooltip.headerFormat = ''
-        param.tooltip.pointFormat = `
+        this.chartParam.tooltip.headerFormat = ''
+        this.chartParam.tooltip.pointFormat = `
           <b>{point.name}</b><br>
-          Uat: {point.qtyUat:.0f} ({point.percUat:.2f}%{point.percTotalUat})<br>
+          Uat: {point.qtyDefectUat:.0f} ({point.percDefectUat:.2f}%{point.percTotalDefectUat})<br>
           Defeito: {point.qtyDefect:.0f}{point.percTotalDefect}<br>
-          Total Uat: {point.qtyTotalUat:.0f}<br>
+          Total Uat: {point.qtyTotalDefectUat:.0f}<br>
           Total Defeito: {point.qtyTotalDefect:.0f}
         `
-        param.series.name = 'Taxa Uat'
-        param.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
+        this.chartParam.series.name = 'Taxa Uat'
+        this.chartParam.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
 
-        param.series = [
+        this.chartParam.series = [
           {
             name: 'Taxa Def. Uat',
             colorByPoint: true,
@@ -56,7 +59,7 @@
           }
         ]
 
-        param.drilldown = {
+        this.chartParam.drilldown = {
           series: this.groupTestManuf.map(i => ({
             name: i.testManuf,
             id: i.testManuf,
@@ -76,27 +79,23 @@
 
         let self = this
 
-        param.plotOptions.bar.events = {
+        this.chartParam.plotOptions.bar.events = {
           click: function (event) {
             self.setChartFilter(event.point.name.toUpperCase())
             self.chart.setTitle({text: self.chartTitle})
           }
         }
 
-        param.chart.events = {
+        this.chartParam.chart.events = {
           drillup: function (e) {
             self.setChartFilter('')
             self.chart.setTitle({text: self.chartTitle})
           }
         }
-        return param
-      }
-    },
-
-    methods: {
-      ...mapActions('indicatorRateDefectUat', ['setChartFilter']),
+      },
 
       drawChart () {
+        this.setChartParam()
         this.chart = Highcharts.chart(this.$refs.idChart, this.chartParam)
       }
     },

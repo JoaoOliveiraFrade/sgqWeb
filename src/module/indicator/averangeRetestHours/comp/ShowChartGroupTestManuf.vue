@@ -2,7 +2,7 @@
   import { mapGetters, mapActions } from 'vuex'
   import Highcharts from 'highcharts'
   import HighchartsDrilldown from 'highcharts-drilldown'
-  import chartStandParam from '@/module/chart/comp/types/drillDown2'
+  import chartStandParam from '@/module/chart/comp/types/drillDown'
 
   if (!Highcharts.Chart.prototype.addSeriesAsDrilldown) {
     HighchartsDrilldown(Highcharts)
@@ -13,29 +13,32 @@
 
     data () {
       return {
+        chartParam: chartStandParam(),
         chart: null
       }
     },
 
     computed: {
-      ...mapGetters('indicatorAverangeRetestHours', ['groupTestManuf', 'byTestManufGroupSystem', 'chartTitle']),
+      ...mapGetters('indicatorAverangeRetestHours', ['groupTestManuf', 'byTestManufGroupSystem', 'chartTitle'])
+    },
 
-      chartParam () {
-        let param = chartStandParam
+    methods: {
+      ...mapActions('indicatorAverangeRetestHours', ['setChartFilter']),
 
-        param.title.text = 'Fáb.Teste / Sistema'
-        param.yAxis.title.text = 'Média Horas'
+      setChartParam () {
+        this.chartParam.title.text = 'Fáb.Teste / Sistema'
+        this.chartParam.yAxis.title.text = 'Média Horas'
 
-        param.tooltip.headerFormat = ''
-        param.tooltip.pointFormat = `
+        this.chartParam.tooltip.headerFormat = ''
+        this.chartParam.tooltip.pointFormat = `
           <b>{point.name}</b><br>
           Tempo Médio (h): {point.averangeRetestHours:.2f}<br>
           Defeito: {point.qtyDefect:.0f}<br>
           Horas Reteste: {point.qtyRetestHours:.2f}
         `
-        param.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
+        this.chartParam.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
 
-        param.series = [
+        this.chartParam.series = [
           {
             colorByPoint: true,
             data: this.groupTestManuf.map(i => ({
@@ -49,7 +52,7 @@
           }
         ]
 
-        param.drilldown = {
+        this.chartParam.drilldown = {
           series: this.groupTestManuf.map(i => ({
             name: i.testManuf,
             id: i.testManuf,
@@ -65,27 +68,23 @@
 
         let self = this
 
-        param.plotOptions.bar.events = {
+        this.chartParam.plotOptions.bar.events = {
           click: function (event) {
             self.setChartFilter(event.point.name.toUpperCase())
             self.chart.setTitle({text: self.chartTitle})
           }
         }
 
-        param.chart.events = {
+        this.chartParam.chart.events = {
           drillup: function (e) {
             self.setChartFilter('')
             self.chart.setTitle({text: self.chartTitle})
           }
         }
-        return param
-      }
-    },
-
-    methods: {
-      ...mapActions('indicatorAverangeRetestHours', ['setChartFilter']),
+      },
 
       drawChart () {
+        this.setChartParam()
         this.chart = Highcharts.chart(this.$el, this.chartParam)
       }
     },
