@@ -1,17 +1,9 @@
 <script>
-  import { mapGetters } from 'vuex'
-
   export default {
     name: 'SelectedGrid',
 
-    data () {
-      return {
-        selected: []
-      }
-    },
-
-    computed: {
-      ...mapGetters(['projects', 'selectedProjects'])
+    props: {
+      selected: { type: Array }
     }
   }
 
@@ -37,7 +29,7 @@
           </tr>
       </thead>
 
-      <tbody v-for="project in selectedProjects">
+      <tbody v-for="project in selected">
           <tr style="padding:0">
               <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">
                   <font size="2">{{project.subprojectDelivery}}</font>

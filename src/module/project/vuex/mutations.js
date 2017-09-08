@@ -1,6 +1,10 @@
 import * as types from './mutationsTypes'
 
 export default {
+  [types.data] (state, parameter) {
+    state.data = parameter
+  },
+
   [types.projectFilterTerm] (state, data) {
     state.projectFilterTerm = data
   },
@@ -27,5 +31,9 @@ export default {
 
   [types.projectConfirmed] (state, value) {
     state.projectConfirmed = value
+  },
+
+  [types.setSelectedFromMonitorDefect] (state, parameter) {
+    state.selectedFromMonitorDefect = parameter
   }
 }

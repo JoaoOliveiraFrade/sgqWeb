@@ -265,8 +265,6 @@
           </div>
         </div>        
 
-      
-
 
         <!-- TABELA RESULTADO  -->
         <table class="table table-condensed table-striped table-hover" style="margin-bottom:0;padding-bottom:0">

@@ -1,11 +1,11 @@
 <script>
   import { mapGetters, mapActions, mapState } from 'vuex'
 
+  import oiProductivityShowRule from '@/module/indicator/productivity/comp/ShowRule.vue'
+  import oiProductivityShowAnalytic from '@/module/indicator/productivity/comp/ShowAnalytic.vue'
   import oiProductivityShowChartGroupTestManuf from '@/module/indicator/productivity/comp/ShowChartGroupTestManuf.vue'
   import oiProductivityShowChartGroupTimeline from '@/module/indicator/productivity/comp/ShowChartGroupTimeline.vue'
   import oiProductivityShowChartTotal from '@/module/indicator/productivity/comp/ShowChartTotal.vue'
-  import oiProductivityShowRule from '@/module/indicator/productivity/comp/ShowRule.vue'
-  import oiProductivityShowAnalytic from '@/module/indicator/productivity/comp/ShowAnalytic.vue'
 
   import oiSelectionRejectionType from '@/module/indicator/rateEvidRejected/comp/SelectionRejectionType.vue'
   import oiRateEvidRejectedShowRule from '@/module/indicator/rateEvidRejected/comp/ShowRule.vue'
@@ -37,11 +37,11 @@
     name: 'ShowData',
 
     components: {
+      oiProductivityShowRule,
+      oiProductivityShowAnalytic,
       oiProductivityShowChartGroupTestManuf,
       oiProductivityShowChartGroupTimeline,
       oiProductivityShowChartTotal,
-      oiProductivityShowRule,
-      oiProductivityShowAnalytic,
 
       oiSelectionRejectionType,
       oiRateEvidRejectedShowRule,
@@ -133,7 +133,7 @@
           </div>
 
           <div class="col-sm-4">
-            <oiProductivityShowChartTotal/>
+            <!--<oiProductivityShowChartTotal/>-->
           </div>
         </div>
       </div>

@@ -8,6 +8,9 @@ export default {
 
   projectFilterTerm: '',
 
+  data: [],
+  selectedFromMonitorDefect: [],
+
   projects: [],
   projectsByDevManufsAndSystems: [],
   projectsByTestManufsAndSystems: [],

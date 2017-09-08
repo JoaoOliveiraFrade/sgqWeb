@@ -3,7 +3,7 @@
   import oiSelection from '@/comp/selection/selections.vue'
 
   export default {
-    name: 'defectSlaSelection',
+    name: 'defectTrafficLightSelection',
 
     components: { oiSelection },
 
@@ -12,11 +12,11 @@
     },
 
     computed: {
-      ...mapState('defectSla', ['data', 'selected'])
+      ...mapState('defectTrafficLight', ['data', 'selected'])
     },
 
     methods: {
-      ...mapActions('defectSla', ['load', 'setSelected'])
+      ...mapActions('defectTrafficLight', ['load', 'setSelected'])
     },
 
     mounted () {
@@ -28,10 +28,11 @@
 <template>
   <span>
     <oiSelection
-      title="SLA Defeito"               
+      title="Farol Defeito"               
       :data="data"
       :selected="selected"
       :isShowButtonSelected="isShowButtonSelected"
+      :gender="male"
       @onSelect="setSelected"        
     />
   </span>

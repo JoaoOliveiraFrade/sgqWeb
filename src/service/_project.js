@@ -9,7 +9,7 @@ const resource = vueResource.resource(paths.api + '/projects_{/id}')
 export default {
   // Read
   getAll () {
-    return resource.get({})
+    return resource.get()
   },
   getOne (id) {
     return resource.get({id: id})

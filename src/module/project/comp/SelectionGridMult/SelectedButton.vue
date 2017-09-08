@@ -5,6 +5,10 @@
   export default {
     name: 'SelectedButton',
 
+    props: {
+      selected: { type: Array }
+    },
+
     components: { oiModal, oiSelectedGrid }
   }
 </script>
@@ -19,7 +23,7 @@
         </button>
 
         <oiModal id="modalSelectedButton" title="Projeto Selecionado" size="l">
-          <oiSelectedGrid slot="body"/>
+          <oiSelectedGrid :selected="selected" slot="body"/>
         </oiModal>
     </span>
 </template>

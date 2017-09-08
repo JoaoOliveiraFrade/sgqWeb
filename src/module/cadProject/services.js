@@ -4,28 +4,33 @@ import { paths } from '@/environment'
 // const currentProfile = JSON.parse(window.localStorage.getItem('current-profile'))
 
 export default {
+  // getAll () {
+  //   let resource = Resource.resource(paths.api + '/Projects{/id}')
+  //   return resource.get({})
+  // },
+
+  // getOne (id) {
+  //   let resource = Resource.resource(paths.api + '/Projects{/id}')
+  //   return resource.get({id: id})
+  // },
+
   getProjects () {
     let resource = Resource.resource(paths.api + '/Project/All')
     return resource.get()
   },
 
   getProjectsByIds (ids) {
-    let resource = Resource.resource(paths.api + '/Project/ProjectsByIds/{ids}')
+    let resource = Resource.resource(paths.api + '/project/byIds/{ids}')
     return resource.get({ids: ids})
   },
 
   getProjectBySubEnt (subproject, delivery) {
-    let resource = Resource.resource(paths.api + '/Project/Project{/subproject}{/delivery}')
+    let resource = Resource.resource(paths.api + '/project/bySubprojectDelivery{/subproject}{/delivery}')
     return resource.get({ subproject: subproject, delivery: delivery })
   },
 
   getProject (project) {
-    let resource = Resource.resource(paths.api + '/Project/Project{/subproject}{/delivery}')
-    return resource.get({ subproject: project.subproject, delivery: project.delivery })
-  },
-
-  getProjectFull (project) {
-    let resource = Resource.resource(paths.api + '/Project/ProjectFull{/subproject}{/delivery}')
+    let resource = Resource.resource(paths.api + '/project/bySubprojectDelivery{/subproject}{/delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
@@ -104,18 +109,8 @@ export default {
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
-  getAll () {
-    let resource = Resource.resource(paths.api + '/Projects{/id}')
-    return resource.get({})
-  },
-
-  getOne (id) {
-    let resource = Resource.resource(paths.api + '/Projects{/id}')
-    return resource.get({id: id})
-  },
-
   update (item) {
-    let resource = Resource.resource(paths.api + '/Project/Project{/id}')
+    let resource = Resource.resource(paths.api + '/project/update{/id}')
     return resource.update({id: item.id}, item)
   },
 

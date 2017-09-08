@@ -2,28 +2,38 @@ import Resource from '@/http/vueResource'
 import { paths } from '@/environment'
 
 export default {
+  // getAll () {
+  //   let resource = Resource.resource(paths.api + '/projects')
+  //   return resource.get()
+  // },
+
+  // getOne (id) {
+  //   let resource = Resource.resource(paths.api + '/Projects{/id}')
+  //   return resource.get({id: id})
+  // },
+
+  getAll () {
+    let resource = Resource.resource(paths.api + '/project/all')
+    return resource.get()
+  },
+
   getProjects () {
     let resource = Resource.resource(paths.api + '/Project/All')
     return resource.get()
   },
 
   getProjectsByIds (ids) {
-    let resource = Resource.resource(paths.api + '/Project/ProjectsByIds/{ids}')
+    let resource = Resource.resource(paths.api + '/project/byIds/{ids}')
     return resource.get({ids: ids})
   },
 
   getProjectBySubEnt (subproject, delivery) {
-    let resource = Resource.resource(paths.api + '/Project/Project{/subproject}{/delivery}')
+    let resource = Resource.resource(paths.api + '/project/bySubprojectDelivery{/subproject}{/delivery}')
     return resource.get({ subproject: subproject, delivery: delivery })
   },
 
   getProject (project) {
-    let resource = Resource.resource(paths.api + '/Project/Project{/subproject}{/delivery}')
-    return resource.get({ subproject: project.subproject, delivery: project.delivery })
-  },
-
-  getProjectFull (project) {
-    let resource = Resource.resource(paths.api + '/Project/ProjectFull{/subproject}{/delivery}')
+    let resource = Resource.resource(paths.api + '/project/bySubprojectDelivery{/subproject}{/delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
@@ -105,16 +115,6 @@ export default {
   getProductivityXDefectsGroupWeekly (project) {
     let resource = Resource.resource(paths.api + '/Project/ProductivityXDefectsGroupWeekly{/subproject}{/delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
-  },
-
-  getAll () {
-    let resource = Resource.resource(paths.api + '/Projects{/id}')
-    return resource.get({})
-  },
-
-  getOne (id) {
-    let resource = Resource.resource(paths.api + '/Projects{/id}')
-    return resource.get({id: id})
   },
 
   // ITERATIONS

@@ -1,6 +1,21 @@
 import * as types from './mutationsTypes'
 import services from '@/module/project/services'
 
+export const load = ({ commit }) => {
+  services.getAll()
+    .then(
+      r => {
+        console.log(r.data)
+        commit(types.data, r.data)
+      },
+      e => console.log(e)
+    )
+}
+
+export const setSelectedFromMonitorDefect = ({ commit }, selected) => {
+  commit(types.setSelectedFromMonitorDefect, selected)
+}
+
 export const loadProjects = ({ commit }, parameter) => {
   services.getProjectsByTestManufsAndSystems(parameter)
     .then(

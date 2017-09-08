@@ -1,3 +1,5 @@
+export const data = 'data'
+
 export const projectFilterTerm = 'project/projectFilterTerm'
 
 export const projects = 'project/projects'
@@ -11,3 +13,4 @@ export const project = 'project/project'
 
 export const projectConfirmed = 'project/projectConfirmed'
 
+export const setSelectedFromMonitorDefect = 'setSelectedFromMonitorDefect'

@@ -8,7 +8,7 @@
     components: { oiSelectionGridMult },
 
     computed: {
-      ...mapGetters(['projectsByDevManufsAndSystems'])
+      ...mapGetters(['projectsByDevManufsAndSystems', 'selectedProjects'])
     }
 
   }
@@ -17,6 +17,7 @@
 <template>
     <oiSelectionGridMult
       :projects="projectsByDevManufsAndSystems"
+      :selected="selectedProjects"
     />
 </template>
 

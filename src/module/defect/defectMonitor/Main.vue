@@ -3,14 +3,15 @@
 
   import oiSelectionDefectQueue from '@/module/defect/defectQueue/comp/Selection.vue'
   import oiSelectionDefectStatus from '@/module/defect/defectStatus/comp/Selection.vue'
-  import oiSelectionDefectSla from '@/module/defect/defectSla/comp/Selection.vue'
-  import oiSelectionProject from '@/module/project/comp/SelectionByTestManufs.vue'
+  import oiSelectionDefectTrafficLight from '@/module/defect/defectTrafficLight/comp/Selection.vue'
+  import oiSelectionProject from '@/module/project/comp/SelectionGridMult/selection.vue'
+
   // import oiShowData from './comp/ShowData.vue'
 
   export default {
     name: 'defectMonitor',
 
-    components: { oiSelectionDefectQueue, oiSelectionDefectStatus, oiSelectionDefectSla, oiSelectionProject }
+    components: { oiSelectionDefectQueue, oiSelectionDefectStatus, oiSelectionDefectTrafficLight, oiSelectionProject }
 
     // computed: {
     //   ...mapGetters(['selectedTestManufs', 'selectedSystems', 'projectConfirmed'])
@@ -38,7 +39,7 @@
     </div>
 
     <div class="row well well-sm oi-well" style="margin-bottom:3px">
-      <oiSelectionDefectSla/>
+      <oiSelectionDefectTrafficLight/>
     </div>
 
     <div class="row well well-sm oi-well" style="margin-bottom:3px">

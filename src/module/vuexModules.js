@@ -10,7 +10,7 @@ import { vuex as indicatorRateDefectUat } from './indicator/rateDefectUat'
 import { vuex as indicatorAverangeRetestHours } from './indicator/averangeRetestHours'
 import { vuex as defectQueue } from './defect/defectQueue'
 import { vuex as defectStatus } from './defect/defectStatus'
-import { vuex as defectSla } from './defect/defectSla'
+import { vuex as defectTrafficLight } from './defect/defectTrafficLight'
 import { vuex as defectMonitor } from './defect/defectMonitor'
 import { vuex as indicatorTest } from './indicator/test'
 import { vuex as testManuf } from './testManuf'
@@ -31,6 +31,7 @@ export default {
   defectMonitor
 }
 */
+
 export default {
   grouperConsult,
   indicatorDevelopment,
@@ -43,7 +44,7 @@ export default {
   indicatorTest,
   defectQueue,
   defectStatus,
-  defectSla,
+  defectTrafficLight,
   defectMonitor,
   testManuf,
   devManuf,
