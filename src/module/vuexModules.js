@@ -8,6 +8,10 @@ import { vuex as indicatorRateEvidRejected } from './indicator/rateEvidRejected'
 import { vuex as indicatorRateDefectUnfounded } from './indicator/rateDefectUnfounded'
 import { vuex as indicatorRateDefectUat } from './indicator/rateDefectUat'
 import { vuex as indicatorAverangeRetestHours } from './indicator/averangeRetestHours'
+import { vuex as defectQueue } from './defect/defectQueue'
+import { vuex as defectStatus } from './defect/defectStatus'
+import { vuex as defectSla } from './defect/defectSla'
+import { vuex as defectMonitor } from './defect/defectMonitor'
 import { vuex as indicatorTest } from './indicator/test'
 import { vuex as testManuf } from './testManuf'
 import { vuex as devManuf } from './devManuf'
@@ -37,6 +41,10 @@ export default {
   indicatorRateDefectUat,
   indicatorAverangeRetestHours,
   indicatorTest,
+  defectQueue,
+  defectStatus,
+  defectSla,
+  defectMonitor,
   testManuf,
   devManuf,
   system,

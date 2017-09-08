@@ -1,7 +1,9 @@
 Config proxy NPM
 =========================================================
-npm config set proxy http://oi12949:DaniJOA7@10.32.150.40:82
-npm config set https-proxy http://oi12949:DaniJOA7@10.32.150.40:82
+npm config set proxy http://oi12949:JoaoDAN8@10.32.150.40:82
+npm config set https-proxy http://oi12949:JoaoDAN8@10.32.150.40:82
+
+
 
 
 Config proxy GITHUB

@@ -93,6 +93,10 @@
             </a>            
         </li>
 
+        <router-link :to="{ name: 'defectMonitor' }" tag="li" @click.native="$emit('collapseMenuMobile')">
+          <a class="oi-menu">Monit.Def.2</a>
+        </router-link>
+
         <li class="dropdown">
             <a href="#" 
                 class="dropdown-toggle oi-menu" data-toggle="dropdown" 

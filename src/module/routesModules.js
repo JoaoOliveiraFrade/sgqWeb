@@ -37,6 +37,7 @@ import { routes as cadProject } from './cadProject'
 import { routes as indicatorDevelopment } from './indicator/development'
 import { routes as indicatorDevelopment2 } from './indicator/development.2'
 import { routes as indicatorTest } from './indicator/test'
+import { routes as defectMonitor } from './defect/defectMonitor'
 import { routes as cep } from './cep'
 import { routes as count } from './count'
 import { routes as home } from './home'
@@ -53,6 +54,7 @@ export default [
   ...indicatorDevelopment,
   ...indicatorDevelopment2,
   ...indicatorTest,
+  ...defectMonitor,
   ...cep,
   ...count,
   ...home,
