@@ -15,7 +15,7 @@ git config --global --get http.proxy
 git config --global --unset http.proxy
 git config --global http.proxy http://oi12949:JoaoDAN8@10.32.150.40:82
 
-URL do reposi�tio: https://github.com/joao-o-frade/sgqWeb.git
+URL do reposi?tio: https://github.com/joao-o-frade/sgqWeb.git
 
 
 Criar projeto
@@ -33,33 +33,33 @@ Comandos do GIT
 =========================================================
 git init
 git add .
-git reset HEAD filename (para remover arquivo adicionado a staged �rea)
+git reset HEAD filename (para remover arquivo adicionado a staged ?rea)
 
-git rm filename (quando se remove um arquivo na work area, ele n�o � removido na staged. use este comando para isto)
+git rm filename (quando se remove um arquivo na work area, ele n?o ? removido na staged. use este comando para isto)
 
 git commit -m "init"
-git commit --amend -m "init - edi��o" (altera um commit j� realizado)
+git commit --amend -m "init - edi??o" (altera um commit j? realizado)
 
-git diff (diferen�as dos aquivos no diretorio de trabalho)
-git diff --staged (diferen�as dos aquivos na staged �rea)
+git diff (diferen?as dos aquivos no diretorio de trabalho)
+git diff --staged (diferen?as dos aquivos na staged ?rea)
 
 git log (historico de commits)
 git log --pretty=oneline (historico de commits, com somente resumo)
 git log -p (historico de commits com diff)
 git log -p -1 (historico de commits com diff do ultimo commit)
-gitk (interface gr�fica com report dos logs)
+gitk (interface gr?fica com report dos logs)
 
-git checkout -- filename (desfaz todas as altera��es realizadas no filename da work area, copia da staged para a work area)
+git checkout -- filename (desfaz todas as altera??es realizadas no filename da work area, copia da staged para a work area)
 
 -------------------------
 git branch cpuxada) (cria o branch cpuxada) 
 git branch (lista os branch existentes)
 git checkout cpuxada) ( altera o branch)
-git add, commit, .... (durante a manuten��o do branch, pode-se voltar ao branch master e fazer algum acerto a vers�o que esta implantada em produ��o)
+git add, commit, .... (durante a manuten??o do branch, pode-se voltar ao branch master e fazer algum acerto a vers?o que esta implantada em produ??o)
 
 ao final do desenvolvimento do branch:
 git checkout master
-git merge cpuxada) (deve-se esta no branch de destino e o parametro � o branch de origem)
+git merge cpuxada) (deve-se esta no branch de destino e o parametro ? o branch de origem)
 
 git branch -d cpuxada (delete o branch)
 
@@ -67,13 +67,13 @@ git checkout -b teste2 (cria e seleciona o branch teste2)
 ----------------
 
 
-instala��o libs sass
+instalação libs sass
 =========================================================
 npm i bootstrap-sass --save
 npm i sass-loader node-sass --save-dev
 
 
-Problema na instala��o do node-sass:
+Problema na instalação do node-sass:
 =========================================================
  - Download the binary file and put into temp directory
  - SET SASS_BINARY_PATH=C:/temp/win32-x64-51_binding.node
@@ -85,14 +85,14 @@ Para usar mapState e mapActions tem que importar:
 npm i babel-plugin-transform-object-rest-spread --save-dev
 
 
-Usu�rio de Servi�o do Remedy, usado para acessar o SGQ:
-�rea: Transicao Para Producao, Paulo Spirlandelli
+Usuário de Serviço do Remedy, usado para acessar o SGQ:
+?rea: Transicao Para Producao, Paulo Spirlandelli
 =========================================================
 login: SV011232
 Senha: SV#011oi232#
 
 
-Usu�rio de Servi�o do SGQ, usado para consultar o banco:
+Usuário de Serviço do SGQ, usado para consultar o banco:
 =========================================================
 NOVO
 login: SDGM6001
@@ -113,7 +113,7 @@ Connect Timeout=600;
 Max Pool Size=150;
 Min Pool Size=50;
 
-Acesso de atualiza��o ao banco do SGQ
+Acesso de atualização ao banco do SGQ
 =========================================================
 Data Source=SQLPRD071\dbinst1,1440;
 Initial Catalog=BDGestaoTestes;
