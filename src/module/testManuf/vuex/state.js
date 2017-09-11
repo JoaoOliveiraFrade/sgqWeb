@@ -1,4 +1,4 @@
 export default {
-  testManufs: [],
-  selectedTestManufs: []
+  data: [],
+  selected: []
 }

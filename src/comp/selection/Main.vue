@@ -1,12 +1,12 @@
 <script>
   import oiModal from '@/module/modal/comp/modal.vue'
-  import showSelections from './showSelections.vue'
-  import editSelections from './editSelections.vue'
+  import oiShow from './Show.vue'
+  import oiEdit from './Edit.vue'
 
   export default {
     name: 'selections',
 
-    components: { oiModal, showSelections, editSelections },
+    components: { oiModal, oiShow, oiEdit },
 
     props: {
       title: { type: String, required: true },
@@ -49,9 +49,9 @@
     },
 
     methods: {
-      changeSelected (selected) {
+      confirm (selected) {
         this.selected_ = selected
-        this.$emit('onSelect', selected)
+        this.$emit('onConfirm', selected)
       }
     }
 
@@ -65,17 +65,17 @@
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
-        :data-target="'#modalEdit' + title.split(' ').join('')">
+        :data-target="'#modalEdit' + title.replace(' ', '').replace('.', '')">
         Seleção
     </button>
-    <oiModal :id="'modalEdit' + title.split(' ').join('')" :title="'Seleção de ' + title" size="l">
-      <editSelections slot="body"
+    <oiModal :id="'modalEdit' + title.replace(' ', '').replace('.', '')" :title="'Seleção de ' + title" size="l">
+      <oiEdit slot="body"
           :title="title"
           :data="data"
           :selected="selected_"
           :gender="gender"
-          @onSelect="changeSelected">
-      </editSelections> 
+          @onConfirm="confirm">
+      </oiEdit> 
     </oiModal>
 
     <button 
@@ -83,20 +83,20 @@
         v-show="hasSelected && isShowButtonSelected"
         class="btn btn-xs"
         data-toggle="modal" 
-        :data-target="'#modalShow' + title.split(' ').join('')">
+        :data-target="'#modalShow' + title.replace(' ', '').replace('.', '')">
       {{selectedText}}
     </button>
-    <oiModal :id="'modalShow' + title.split(' ').join('')" :title="title + ' ' + selectedText" size="l">
-      <showSelections slot="body"
+    <oiModal :id="'modalShow' + title.replace(' ', '').replace('.', '')" :title="title + ' ' + selectedText" size="l">
+      <oiShow slot="body"
           :title="title"
           :data="selected_"
-      ></showSelections> 
+      ></oiShow> 
     </oiModal>
 
-    <showSelections
+    <oiShow
         v-show="hasSelected && !isShowButtonSelected"
         :data="selected_">
-    </showSelections>     
+    </oiShow>     
   </span>
 </template>
 

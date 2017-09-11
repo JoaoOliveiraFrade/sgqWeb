@@ -6,18 +6,11 @@ export default {
     {name: 'name'}
   ],
 
-  projectFilterTerm: '',
-
   data: [],
-  selectedFromMonitorDefect: [],
+  ofTestManufsAndSystems: [],
 
-  projects: [],
-  projectsByDevManufsAndSystems: [],
-  projectsByTestManufsAndSystems: [],
-  projectsByTestManufsAndSystemsSelected: [],
-  projectsLoading: false,
-  selectedProjects: [],
-  project: {},
+  filterTerm: '',
+  selected: [],
 
-  projectConfirmed: false
+  Loading: false
 }

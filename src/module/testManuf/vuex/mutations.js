@@ -1,10 +1,10 @@
 import * as types from './mutationsTypes'
 
 export default {
-  [types.testManufs] (state, data) {
-    state.testManufs = data
+  [types.data] (state, parameter) {
+    state.data = parameter
   },
-  [types.selectedTestManufs] (state, data) {
-    state.selectedTestManufs = data
+  [types.selected] (state, parameter) {
+    state.selected = parameter
   }
 }

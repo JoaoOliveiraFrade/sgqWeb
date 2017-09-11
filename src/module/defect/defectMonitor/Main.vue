@@ -1,35 +1,48 @@
 <script>
-  // import { mapActions, mapGetters } from 'vuex'
+  import { mapActions, mapState } from 'vuex'
 
   import oiSelectionDefectQueue from '@/module/defect/defectQueue/comp/Selection.vue'
   import oiSelectionDefectStatus from '@/module/defect/defectStatus/comp/Selection.vue'
   import oiSelectionDefectTrafficLight from '@/module/defect/defectTrafficLight/comp/Selection.vue'
-  import oiSelectionProject from '@/module/project/comp/SelectionGridMult/selection.vue'
+  import oiSelectionProject from '@/module/project/comp/SelectionGridMult/Main.vue'
 
   // import oiShowData from './comp/ShowData.vue'
 
   export default {
     name: 'defectMonitor',
 
-    components: { oiSelectionDefectQueue, oiSelectionDefectStatus, oiSelectionDefectTrafficLight, oiSelectionProject }
+    components: {
+      oiSelectionDefectQueue,
+      oiSelectionDefectStatus,
+      oiSelectionDefectTrafficLight,
+      oiSelectionProject
+    },
 
-    // computed: {
-    //   ...mapGetters(['selectedTestManufs', 'selectedSystems', 'projectConfirmed'])
-    // },
+    computed: {
+      // ...mapState(['selectedTestManufs', 'selectedSystems', 'projectConfirmed'])
+      ...mapState('project', ['data']),
+      ...mapState('defectMonitor', ['selectedProjects'])
+    },
 
-    // methods: {
-    //   ...mapActions(['setFeatureName'])
-    // },
+    methods: {
+      ...mapActions('project', ['load']),
+      ...mapActions('defectMonitor', ['setSelectedProjects']),
+      ...mapActions(['setFeatureName']),
 
-    // mounted () {
-    //   this.setFeatureName('Monitor de Defeito')
-    // }
+      confirmSelection (parameter) {
+        this.setSelectedProjects(parameter)
+      }
+    },
+
+    mounted () {
+      this.setFeatureName('Monitor de Defeito')
+      this.load()
+    }
   }
 </script>
 
 <template>
   <div class="container-fluid" style="padding-top: 10px">
-
     <div class="row well well-sm oi-well" style="margin-bottom:3px">
       <oiSelectionDefectQueue/>
     </div>
@@ -43,7 +56,11 @@
     </div>
 
     <div class="row well well-sm oi-well" style="margin-bottom:3px">
-      <oiSelectionProject/>
+      <oiSelectionProject 
+        :projects="data" 
+        :selected="selectedProjects"
+        @confirmSelection="confirmSelection"
+      />
     </div>
 
     <!--

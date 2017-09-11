@@ -19,7 +19,7 @@ export const loadDevSystems = ({ commit }, selectedDevManuf) => {
 }
 
 export const loadSystemsByDevManufs = ({ commit }, selectedDevManufs) => {
-  services.getSystemsByDevManufs(selectedDevManufs)
+  services.getByDevManufs(selectedDevManufs)
     .then(
       r => {
         commit(types.setSystemsByDevManufs, r.data)

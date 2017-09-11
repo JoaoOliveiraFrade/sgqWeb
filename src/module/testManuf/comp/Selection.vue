@@ -1,6 +1,6 @@
 <script>
-  import { mapActions, mapGetters } from 'vuex'
-  import oiSelection from '@/module/selection/comp/selections.vue'
+  import { mapActions, mapState } from 'vuex'
+  import oiSelection from '@/comp/selection/Main.vue'
 
   export default {
     name: 'SelectionTestManuf',
@@ -11,18 +11,22 @@
       isShowButtonSelected: {type: Boolean}
     },
 
-    mounted () {
-      this.loadTestManufs()
+    computed: {
+      ...mapState('testManuf', ['data', 'selected'])
     },
 
     methods: {
-      ...mapActions(['loadTestManufs', 'setSelectedTestManufs'])
+      ...mapActions('testManuf', ['load', 'setSelected']),
+
+      confirm (selected) {
+        this.setSelected(selected)
+        this.$emit('onConfirm', selected)
+      }
     },
 
-    computed: {
-      ...mapGetters(['testManufs', 'selectedTestManufs'])
+    mounted () {
+      this.load()
     }
-
   }
 </script>
 
@@ -30,20 +34,12 @@
   <span>
     <oiSelection
       title="Fáb. Teste"               
-      idChild="testManuf"
-      :dataSource="testManufs"
-      :itemsSelected="selectedTestManufs"
-      :isShowButtonSelected="isShowButtonSelected"
-      @onChangeSelected="setSelectedTestManufs"        
+      :data="data"
+      :selected="selected"
+      @onConfirm="confirm"        
     />
   </span>
 </template>
 
 <style scoped>
-  .fd-label {
-    margin: 0; 
-    border: 0; 
-    padding: 0; 
-    color: gray;
-  }
 </style>

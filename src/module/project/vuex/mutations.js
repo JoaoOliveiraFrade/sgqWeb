@@ -5,35 +5,19 @@ export default {
     state.data = parameter
   },
 
-  [types.projectFilterTerm] (state, data) {
-    state.projectFilterTerm = data
+  [types.ofTestManufsAndSystems] (state, data) {
+    state.ofTestManufsAndSystems = data
   },
 
-  [types.projects] (state, data) {
-    state.projects = data
+  [types.filterTerm] (state, data) {
+    state.filterTerm = data
   },
 
-  [types.projectsByTestManufsAndSystems] (state, data) {
-    state.projectsByTestManufsAndSystems = data
+  [types.selected] (state, data) {
+    state.selected = data
   },
 
-  [types.projectsLoading] (state, data) {
-    state.projectsLoading = data
-  },
-
-  [types.selectedProjects] (state, data) {
-    state.selectedProjects = data
-  },
-
-  [types.project] (state, data) {
-    state.project = data
-  },
-
-  [types.projectConfirmed] (state, value) {
-    state.projectConfirmed = value
-  },
-
-  [types.setSelectedFromMonitorDefect] (state, parameter) {
-    state.selectedFromMonitorDefect = parameter
+  [types.loading] (state, data) {
+    state.loading = data
   }
 }

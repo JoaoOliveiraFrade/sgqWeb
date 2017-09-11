@@ -7,13 +7,13 @@
   import oiProductivityShowChartGroupTimeline from '@/module/indicator/productivity/comp/ShowChartGroupTimeline.vue'
   import oiProductivityShowChartTotal from '@/module/indicator/productivity/comp/ShowChartTotal.vue'
 
-  import oiSelectionRejectionType from '@/module/indicator/rateEvidRejected/comp/SelectionRejectionType.vue'
   import oiRateEvidRejectedShowRule from '@/module/indicator/rateEvidRejected/comp/ShowRule.vue'
   import oiRateEvidRejectedShowAnalytic from '@/module/indicator/rateEvidRejected/comp/ShowAnalytic.vue'
   import oiRateEvidRejectedShowAnalyticTimeline from '@/module/indicator/rateEvidRejected/comp/ShowAnalyticTimeline.vue'
   import oiRateEvidRejectedShowChartGroupTestManuf from '@/module/indicator/rateEvidRejected/comp/ShowChartGroupTestManuf.vue'
   import oiRateEvidRejectedShowChartGroupTimeline from '@/module/indicator/rateEvidRejected/comp/ShowChartGroupTimeline.vue'
   import oiRateEvidRejectedShowChartTotal from '@/module/indicator/rateEvidRejected/comp/ShowChartTotal.vue'
+  import oiSelectionRejectionType from '@/module/indicator/rateEvidRejected/comp/SelectionRejectionType.vue'
 
   import oiRateDefectUnfoundedShowRule from '@/module/indicator/rateDefectUnfounded/comp/ShowRule.vue'
   import oiRateDefectUnfoundedShowAnalytic from '@/module/indicator/rateDefectUnfounded/comp/ShowAnalytic.vue'
@@ -43,13 +43,13 @@
       oiProductivityShowChartGroupTimeline,
       oiProductivityShowChartTotal,
 
-      oiSelectionRejectionType,
       oiRateEvidRejectedShowRule,
       oiRateEvidRejectedShowAnalytic,
       oiRateEvidRejectedShowAnalyticTimeline,
       oiRateEvidRejectedShowChartGroupTestManuf,
       oiRateEvidRejectedShowChartGroupTimeline,
       oiRateEvidRejectedShowChartTotal,
+      oiSelectionRejectionType,
 
       oiRateDefectUnfoundedShowRule,
       oiRateDefectUnfoundedShowAnalytic,

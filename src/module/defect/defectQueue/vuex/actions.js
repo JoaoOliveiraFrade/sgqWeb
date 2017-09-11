@@ -12,7 +12,7 @@ export const load = ({ commit }) => {
     )
 }
 
-export const setSelected = ({ commit }, selected) => {
-  commit(types.selected, selected)
+export const setSelected = ({ commit }, paramenter) => {
+  commit(types.selected, paramenter)
 }
 

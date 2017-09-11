@@ -25,5 +25,3 @@ export const projectsFilteredByTerm = ({ projectFilterProperties, projectFilterT
 }
 
 export const project = ({ project }) => project
-
-export const projectConfirmed = ({ projectConfirmed }) => projectConfirmed

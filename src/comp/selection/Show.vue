@@ -9,7 +9,7 @@
 </script>
 
 <template>
-  <div class="row well-sm" style="padding-top:0px; padding-bottom:0px">
+  <div class="row well-sm" style="padding-top:5px; padding-bottom:8px">
     <div class="col-xs-12 col-sm-6 col-lg-4" v-for="item in data" track-by="$index" style="padding:0">
           <!--
           <div class="col-xs-1" style="margin:0; border:0">

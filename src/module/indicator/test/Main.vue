@@ -1,22 +1,24 @@
 <script>
-  import { mapActions, mapGetters } from 'vuex'
+  import { mapActions, mapState } from 'vuex'
 
-  import oiSelectionTestManuf from '@/module/testManuf/comp/Selection.vue'
-  import oiSelectionSystem from '@/module/system/comp/SelectionByTestManufs.vue'
-  import oiSelectionProject from '@/module/project/comp/SelectionByTestManufs.vue'
+  import oiTestManufSelection from '@/module/testManuf/comp/Selection.vue'
+  import oiSystemSelectionOfTestManufs from '@/module/system/comp/SelectionOfTestManufs.vue'
+  import oiProjectSelectionOfTestManufsAndSystems from '@/module/project/comp/SelectionOfTestManufsAndSystems.vue'
   import oiShowData from './comp/ShowData.vue'
 
   export default {
     name: 'indicatorTestMain',
 
-    components: { oiSelectionTestManuf, oiSelectionSystem, oiSelectionProject, oiShowData },
+    components: { oiTestManufSelection, oiSystemSelectionOfTestManufs, oiProjectSelectionOfTestManufsAndSystems, oiShowData },
 
     computed: {
-      ...mapGetters(['selectedTestManufs', 'selectedSystems', 'projectConfirmed'])
+      ...mapState('indicatorTest', ['selectedTestManufs', 'selectedSystems', 'selectedProjects'])
+      // ...mapState('project', ['projectConfirmed'])
     },
 
     methods: {
-      ...mapActions(['setFeatureName'])
+      ...mapActions(['setFeatureName']),
+      ...mapActions('indicatorTest', ['setSelectedTestManufs', 'setSelectedSystems', 'setSelectedProjects'])
     },
 
     mounted () {
@@ -28,26 +30,35 @@
 <template>
   <div class="container-fluid" style="padding-top: 10px">
 
-    <div class="row well well-sm oi-well" style="margin-bottom:3px">
-      <oiSelectionTestManuf
+    <div class="row well well-sm oi-well">
+      <oiTestManufSelection
         :isShowButtonSelected="true"
+        @onConfirm="setSelectedTestManufs"
       />
     </div>
 
-    <div class="row well well-sm oi-well" style="margin-bottom:3px" v-if="selectedTestManufs.length > 0">
-      <oiSelectionSystem
-        :isShowButtonSelected="true"
+    <div class="row well well-sm oi-well" v-if="selectedTestManufs.length > 0">
+      <oiSystemSelectionOfTestManufs
+        :testManufs="selectedTestManufs"
+        :selectedSystems="selectedSystems"
+        @onConfirm="setSelectedSystems"
+      />
+    </div>
+    <div class="row well well-sm oi-well" v-if="selectedSystems.length > 0">
+      <oiProjectSelectionOfTestManufsAndSystems
+        :testManufs="selectedTestManufs"
+        :sytems="selectedSystems"
+        :selectedProjects="selectedProjects"
+        @onConfirm="setSelectedProjects"
       />
     </div>
 
-    <div class="row well well-sm oi-well" style="margin-bottom:3px" v-if="selectedSystems.length > 0">
-      <oiSelectionProject/>
-    </div>
-
-    <div class="row well well-sm oi-well" style="margin-bottom:3px">
+<!--
+    <div class="row well well-sm oi-well" v-if="selectedProjects.length > 0">
       <oiShowData v-show="projectConfirmed"/>
     </div>
-
+-->
+    
   </div> 
 </template>
 
@@ -57,8 +68,10 @@
   }
   .oi-well {
     margin: 0;
+    margin-bottom:0px;
     border: 0;
     padding: 3px;
+    padding-left: 7px;
   } 
   .oi-col {
     padding: 3px;

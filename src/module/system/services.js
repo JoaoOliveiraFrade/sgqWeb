@@ -2,16 +2,12 @@ import Resource from '@/http/vueResource'
 import { paths } from '@/environment'
 
 export default {
-  getAll () {
-    let resource = Resource.resource(paths.api + '/System/All')
+  load () {
+    let resource = Resource.resource(paths.api + '/system/all')
     return resource.get()
   },
-  getSystemsByTestManufs (testManufs) {
-    let resource = Resource.resource(paths.api + '/System/SystemsByTestManufs')
+  loadOfTestManufs (testManufs) {
+    let resource = Resource.resource(paths.api + '/system/ofTestManufs')
     return resource.save(testManufs)
-  },
-  getSystemsByDevManufs (devManufs) {
-    let resource = Resource.resource(paths.api + '/System/SystemsByDevManufs')
-    return resource.save(devManufs)
   }
 }

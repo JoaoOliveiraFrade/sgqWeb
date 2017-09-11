@@ -1,3 +1,6 @@
+      // ...mapActions({'loadRateEvidRejected': 'indicatorRateEvidRejected/load'})
+      // ...mapState('indicatorRateDefectUnfounded', { loadingRateDefectUnfounded: state => (state.loading) })
+
 Config proxy NPM
 =========================================================
 npm config set proxy http://oi12949:JoaoDAN8@10.32.150.40:82
@@ -12,7 +15,7 @@ git config --global --get http.proxy
 git config --global --unset http.proxy
 git config --global http.proxy http://oi12949:JoaoDAN8@10.32.150.40:82
 
-URL do reposiótio: https://github.com/joao-o-frade/sgqWeb.git
+URL do reposiï¿½tio: https://github.com/joao-o-frade/sgqWeb.git
 
 
 Criar projeto
@@ -30,33 +33,33 @@ Comandos do GIT
 =========================================================
 git init
 git add .
-git reset HEAD filename (para remover arquivo adicionado a staged área)
+git reset HEAD filename (para remover arquivo adicionado a staged ï¿½rea)
 
-git rm filename (quando se remove um arquivo na work area, ele não é removido na staged. use este comando para isto)
+git rm filename (quando se remove um arquivo na work area, ele nï¿½o ï¿½ removido na staged. use este comando para isto)
 
 git commit -m "init"
-git commit --amend -m "init - edição" (altera um commit já realizado)
+git commit --amend -m "init - ediï¿½ï¿½o" (altera um commit jï¿½ realizado)
 
-git diff (diferenças dos aquivos no diretorio de trabalho)
-git diff --staged (diferenças dos aquivos na staged área)
+git diff (diferenï¿½as dos aquivos no diretorio de trabalho)
+git diff --staged (diferenï¿½as dos aquivos na staged ï¿½rea)
 
 git log (historico de commits)
 git log --pretty=oneline (historico de commits, com somente resumo)
 git log -p (historico de commits com diff)
 git log -p -1 (historico de commits com diff do ultimo commit)
-gitk (interface gráfica com report dos logs)
+gitk (interface grï¿½fica com report dos logs)
 
-git checkout -- filename (desfaz todas as alterações realizadas no filename da work area, copia da staged para a work area)
+git checkout -- filename (desfaz todas as alteraï¿½ï¿½es realizadas no filename da work area, copia da staged para a work area)
 
 -------------------------
 git branch cpuxada) (cria o branch cpuxada) 
 git branch (lista os branch existentes)
 git checkout cpuxada) ( altera o branch)
-git add, commit, .... (durante a manutenção do branch, pode-se voltar ao branch master e fazer algum acerto a versão que esta implantada em produção)
+git add, commit, .... (durante a manutenï¿½ï¿½o do branch, pode-se voltar ao branch master e fazer algum acerto a versï¿½o que esta implantada em produï¿½ï¿½o)
 
 ao final do desenvolvimento do branch:
 git checkout master
-git merge cpuxada) (deve-se esta no branch de destino e o parametro é o branch de origem)
+git merge cpuxada) (deve-se esta no branch de destino e o parametro ï¿½ o branch de origem)
 
 git branch -d cpuxada (delete o branch)
 
@@ -64,13 +67,13 @@ git checkout -b teste2 (cria e seleciona o branch teste2)
 ----------------
 
 
-instalação libs sass
+instalaï¿½ï¿½o libs sass
 =========================================================
 npm i bootstrap-sass --save
 npm i sass-loader node-sass --save-dev
 
 
-Problema na instalação do node-sass:
+Problema na instalaï¿½ï¿½o do node-sass:
 =========================================================
  - Download the binary file and put into temp directory
  - SET SASS_BINARY_PATH=C:/temp/win32-x64-51_binding.node
@@ -82,14 +85,14 @@ Para usar mapState e mapActions tem que importar:
 npm i babel-plugin-transform-object-rest-spread --save-dev
 
 
-Usuário de Serviço do Remedy, usado para acessar o SGQ:
-Área: Transicao Para Producao, Paulo Spirlandelli
+Usuï¿½rio de Serviï¿½o do Remedy, usado para acessar o SGQ:
+ï¿½rea: Transicao Para Producao, Paulo Spirlandelli
 =========================================================
 login: SV011232
 Senha: SV#011oi232#
 
 
-Usuário de Serviço do SGQ, usado para consultar o banco:
+Usuï¿½rio de Serviï¿½o do SGQ, usado para consultar o banco:
 =========================================================
 NOVO
 login: SDGM6001
@@ -110,7 +113,7 @@ Connect Timeout=600;
 Max Pool Size=150;
 Min Pool Size=50;
 
-Acesso de atualização ao banco do SGQ
+Acesso de atualizaï¿½ï¿½o ao banco do SGQ
 =========================================================
 Data Source=SQLPRD071\dbinst1,1440;
 Initial Catalog=BDGestaoTestes;

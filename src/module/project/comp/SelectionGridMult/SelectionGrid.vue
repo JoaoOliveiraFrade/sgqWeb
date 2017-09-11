@@ -1,44 +1,61 @@
 selected<script>
-  import { mapActions, mapGetters } from 'vuex'
+  import { mapGetters } from 'vuex'
 
   export default {
     name: 'SelectionGrid',
 
     props: {
-      projects: { type: Array }
+      projects: { type: Array, default: [] },
+      selected: { type: Array, default: [] },
+      projectsLoading: { type: Boolean, default: false }
     },
 
     data () {
       return {
         filterTerm: '',
-        selected: [],
+        selected_: this.selected,
         isUpdate: false
       }
     },
 
     computed: {
-      ...mapGetters(['projectsFilteredByTerm', 'selectedProjects', 'projectsLoading'])
+      ...mapGetters('project', ['projectFilterProperties']),
+
+      filteredByTerm () {
+        if (this.filterTerm !== '') {
+          let words = this.filterTerm.split('+')
+
+          return this.projects.filter(item => {
+            return words.every(word => {
+              return this.projectFilterProperties.some(filterProperty => {
+                return item[filterProperty.name].toLowerCase().indexOf(word.toLowerCase()) > -1
+              })
+            })
+          })
+        } else {
+          return this.projects
+        }
+      }
     },
 
     watch: {
-      'selectedProjects': {
-        // deep: true,
+      'selected': {
         handler () {
-          this.selected = this.selectedProjects
+          this.selected_ = this.selected
         }
       }
     },
 
     methods: {
-      ...mapActions(['setProjectFilterTerm', 'setSelectedProjects']),
+      // ...mapActions('project', ['setProjectFilterTerm', 'setSelectedProjects']),
 
       selectAll: function () {
-        this.selected = this.projectsFilteredByTerm(this.projects)
+        this.selected_ = this.filteredByTerm
         this.isUpdate = true
       },
 
       unSelectAll: function () {
-        this.selected = []
+        this.selected_ = []
         this.isUpdate = true
       },
 
@@ -47,7 +64,7 @@ selected<script>
       },
 
       confirm: function () {
-        this.setSelectedProjects(this.selected)
+        this.$emit('onConfirm', this.selected_)
         this.isUpdate = false
       }
     }
@@ -133,13 +150,13 @@ selected<script>
             </tr>
         </thead>
 
-        <tbody v-for="project in projectsFilteredByTerm(projects)">
+        <tbody v-for="project in filteredByTerm">
             <tr>
                 <td style="padding: 1px; margin: 0px; border-top: 1px; text-align: center; width: 25px; border-radius: 3px;">
                     <input
                         type="checkbox" 
                         :value="project" 
-                        v-model="selected"
+                        v-model="selected_"
                         @click="selectProject"
                     />
                 </td>

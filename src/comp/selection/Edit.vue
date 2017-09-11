@@ -50,7 +50,7 @@
         },
 
         confirm () {
-          this.$emit('onSelect', this.selected_)
+          this.$emit('onConfirm', this.selected_)
           this.isUpdate = false
         }
       }
@@ -58,7 +58,7 @@
 </script>
 
 <template>
-    <span style="margin-left:3px">
+    <span style="margin-left:3px;  margin-bottom:0px">
         <button 
             type="button" 
             class="btn btn-xs"
@@ -92,7 +92,7 @@
               />
             </div>       
 
-            <div class="col-xs-11">
+            <div class="col-xs-11" style="padding:0; margin-bottom:0px">
               <label style="font-size:small; font-weight:normal; margin-left:-15px; margin-bottom:1px" v-text="item.name"></label>
             </div>                
         </div>                

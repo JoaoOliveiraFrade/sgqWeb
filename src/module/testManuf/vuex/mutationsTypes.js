@@ -1,2 +1,2 @@
-export const testManufs = 'testManuf/testManufs'
-export const selectedTestManufs = 'testManuf/selectedTestManufs'
+export const data = 'data'
+export const selected = 'selected'

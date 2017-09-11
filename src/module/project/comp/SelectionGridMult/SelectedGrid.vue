@@ -11,7 +11,7 @@
 
 <template>
   <span>
-    <table class="table table-condensed table-striped table-hover table-bordered" style="margin-bottom:0; padding-bottom:0">
+    <table class="table table-condensed table-striped table-hover table-bordered" style="margin-top:8px; margin-bottom:10px">
       <thead>
           <tr>
               <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">

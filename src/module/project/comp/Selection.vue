@@ -1,5 +1,5 @@
 <script>
-  import oiSelectionGridMult from './SelectionGridMult/selection.vue'
+  import oiSelectionGridMult from './SelectionGridMult/Main.vue'
 
   export default {
     name: 'SelectionProjectByTestManufsAndSystems',

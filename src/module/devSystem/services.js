@@ -6,7 +6,7 @@ export default {
     let resource = Resource.resource(paths.apiDefault + '/DevSystem/All')
     return resource.get()
   },
-  getSystemsByDevManufs (devManufs) {
+  getByDevManufs (devManufs) {
     let resource = Resource.resource(paths.apiDefault + '/DevSystem/SystemsByDevManufs')
     return resource.save(devManufs)
   }

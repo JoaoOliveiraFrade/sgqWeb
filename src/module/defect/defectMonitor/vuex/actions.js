@@ -1,6 +1,9 @@
-// import * as types from './mutationsTypes'
+import * as types from './mutationsTypes'
 // import services from '../services'
 
+export const setSelectedProjects = ({ commit }, selected) => {
+  commit(types.setSelectedProjects, selected)
+}
 // export const load = ({ commit, state, rootState }) => {
 //   if (rootState.testManuf.selectedTestManufs.length === 0 || rootState.system.selectedSystems.length === 0 || rootState.project.selectedProjects.length === 0) {
 //     return
