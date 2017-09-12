@@ -1,5 +1,6 @@
 export default {
   selectedTestManufs: [],
   selectedSystems: [],
-  selectedProjects: []
+  selectedProjects: [],
+  showData: false
 }

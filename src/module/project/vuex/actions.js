@@ -23,6 +23,8 @@ export const load = ({ commit }) => {
 // }
 
 export const loadOfTestManufsAndSystems = ({ commit }, parameter) => {
+  console.log('project - action - loadOfTestManufsAndSystems')
+  console.log(parameter)
   commit(types.loading, true)
   services.loadOfTestManufsAndSystems(parameter)
     .then(

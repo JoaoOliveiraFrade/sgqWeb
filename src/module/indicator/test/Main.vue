@@ -1,5 +1,5 @@
 <script>
-  import { mapActions, mapState } from 'vuex'
+  import { mapActions, mapState, mapGetters } from 'vuex'
 
   import oiTestManufSelection from '@/module/testManuf/comp/Selection.vue'
   import oiSystemSelectionOfTestManufs from '@/module/system/comp/SelectionOfTestManufs.vue'
@@ -12,8 +12,8 @@
     components: { oiTestManufSelection, oiSystemSelectionOfTestManufs, oiProjectSelectionOfTestManufsAndSystems, oiShowData },
 
     computed: {
-      ...mapState('indicatorTest', ['selectedTestManufs', 'selectedSystems', 'selectedProjects'])
-      // ...mapState('project', ['projectConfirmed'])
+      ...mapState('indicatorTest', ['selectedTestManufs', 'selectedSystems', 'selectedProjects']),
+      ...mapGetters('indicatorTest', ['showData'])
     },
 
     methods: {
@@ -47,17 +47,15 @@
     <div class="row well well-sm oi-well" v-if="selectedSystems.length > 0">
       <oiProjectSelectionOfTestManufsAndSystems
         :testManufs="selectedTestManufs"
-        :sytems="selectedSystems"
+        :systems="selectedSystems"
         :selectedProjects="selectedProjects"
         @onConfirm="setSelectedProjects"
       />
     </div>
 
-<!--
-    <div class="row well well-sm oi-well" v-if="selectedProjects.length > 0">
+    <div class="row well well-sm oi-well" v-if="showData">
       <oiShowData v-show="projectConfirmed"/>
     </div>
--->
     
   </div> 
 </template>

@@ -18,7 +18,7 @@ export default {
   },
 
   loadOfTestManufsAndSystems (testManufsAndSystems) {
-    console.log('testManufsAndSystems:')
+    console.log('project - service - testManufsAndSystems:')
     console.log(testManufsAndSystems)
     let resource = Resource.resource(paths.api + '/project/ofTestManufsAndSystems')
     return resource.save(testManufsAndSystems)

@@ -12,11 +12,12 @@ export const load = ({ commit }) => {
 }
 
 export const loadOfTestManufs = ({ commit }, selectedTestManufs) => {
-  console.log('action loadOfTestManufs')
+  console.log('system - action - loadOfTestManufs')
   console.log(selectedTestManufs)
   services.loadOfTestManufs(selectedTestManufs.map(i => i.id))
     .then(
       r => {
+        console.log(r.data)
         commit(types.ofTestManufs, r.data)
       },
       e => console.log(e)

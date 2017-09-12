@@ -19,10 +19,10 @@
     },
 
     watch: {
-      'testManufs': {
+      'systems': {
         handler () {
-          this.loadOfTestManufs(this.testManufs)
-          this.setSelected(this.selectedSystems)
+          this.loadOfTestManufsAndSystems({ testManufs: this.testManufs.map(i => i.id), systems: this.systems.map(i => i.id) })
+          this.setSelected(this.selectedProjects)
         }
       }
     },
@@ -39,6 +39,8 @@
     },
 
     mounted () {
+      console.log('project - ProjectSelectionOfTestManufsAndSystems - mounted')
+      console.log(this.systems)
       this.loadOfTestManufsAndSystems({ testManufs: this.testManufs.map(i => i.id), systems: this.systems.map(i => i.id) })
       this.setSelected(this.selectedProjects)
     }
