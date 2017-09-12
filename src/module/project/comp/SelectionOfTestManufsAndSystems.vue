@@ -31,16 +31,12 @@
       ...mapActions('project', ['loadOfTestManufsAndSystems', 'setSelected']),
 
       confirm (selected) {
-        console.log('confirmado')
-        console.log(selected)
         this.setSelected(selected)
         this.$emit('onConfirm', selected)
       }
     },
 
     mounted () {
-      console.log('project - ProjectSelectionOfTestManufsAndSystems - mounted')
-      console.log(this.systems)
       this.loadOfTestManufsAndSystems({ testManufs: this.testManufs.map(i => i.id), systems: this.systems.map(i => i.id) })
       this.setSelected(this.selectedProjects)
     }

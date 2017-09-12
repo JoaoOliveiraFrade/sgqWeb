@@ -54,7 +54,7 @@
     </div>
 
     <div class="row well well-sm oi-well" v-if="showData">
-      <oiShowData v-show="projectConfirmed"/>
+      <oiShowData/>
     </div>
     
   </div> 

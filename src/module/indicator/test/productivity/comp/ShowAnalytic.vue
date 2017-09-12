@@ -1,29 +1,31 @@
 selected<script>
   import oiModal from '@/module/modal/comp/modal.vue'
-  import oiAverangeRetestHoursShowAnalyticGrid from '@/module/indicator/test/averangeRetestHours/comp/ShowAnalyticGrid.vue'
+  import oiProductivityShowAnalyticGrid from '@/module/indicator/test/productivity/comp/ShowAnalyticGrid.vue'
 
   export default {
     name: 'ShowAnalytic',
 
-    components: { oiModal, oiAverangeRetestHoursShowAnalyticGrid }
+    components: { oiModal, oiProductivityShowAnalyticGrid }
   }
 </script>
 
 <template>
   <span style="padding:0; margin:0">
+
     <button 
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
-        data-target="#averangeRetestHoursShowAnalytic">
+        data-target="#productivityShowAnalytic">
         Analítico
     </button>
 
-    <oiModal id="averangeRetestHoursShowAnalytic" title="Tempo Médio Reteste Defeito - Analítico" size="l">   
+    <oiModal id="productivityShowAnalytic" title="Produtividade - Analítico" size="l">   
       <div style="margin:0; padding:10px" slot="body">
-        <oiAverangeRetestHoursShowAnalyticGrid/>
+        <oiProductivityShowAnalyticGrid/>
       </div>
     </oiModal>
+
   </span>
 </template>
 

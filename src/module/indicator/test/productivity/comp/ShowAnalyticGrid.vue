@@ -5,7 +5,7 @@
     name: 'ShowAnalyticGrid',
 
     computed: {
-      ...mapGetters('indicatorTestAverangeRetestHours', ['filteredByChart'])
+      ...mapGetters('indicatorProductivity', ['filteredByChart'])
     }
   }
 
@@ -16,9 +16,9 @@
     <table class="table table-condensed table-striped table-hover table-bordered" style="margin-bottom:0; padding-bottom:0">
     <thead>
         <tr>
-            <th style="padding: 1px; margin: 0px; border-top: 1px; text-align: center">
-                <font size="2" class="text-nowrap">Mês/Ano
-                    <a href="#" @click.prevent="setOrder('year + month')">
+            <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: center">
+                <font size="2" class="text-nowrap">Data
+                    <a href="#" @click.prevent="setOrder('monthYear')">
                     </a>
                 </font>
             </th>
@@ -34,23 +34,27 @@
                     </a>
                 </font>
             </th>
-            <th style="padding: 1px; margin: 0px; border-top: 1px; text-align: center">
+            <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: center">
                 <font size="2" class="text-nowrap">Proj.
                     <a href="#" @click.prevent="setOrder('project')">
                     </a>
                 </font>
             </th>
-
             <th style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
-                <font size="2" class="text-nowrap">Defeito
+                <font size="2" class="text-nowrap">Passed
                     <a href="#" @click.prevent="setOrder('Passed')">
                     </a>
                 </font>
             </th>
-
             <th style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
-                <font size="2" class="text-nowrap">Reteste<br>(horas)
+                <font size="2" class="text-nowrap">Failed
                     <a href="#" @click.prevent="setOrder('Failed')">
+                    </a>
+                </font>
+            </th>
+            <th style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
+                <font size="2" class="text-nowrap">Produtividade
+                    <a href="#" @click.prevent="setOrder('productivity')">
                     </a>
                 </font>
             </th>
@@ -59,9 +63,10 @@
 
     <tbody v-for="item in filteredByChart">
         <tr style="padding:0">
-            <td style="padding: 1px; margin: 0px; border-top: 1px; text-align: center">
-                <font size="2">{{item.month + (item.month ? '/' : '') + item.year}}</font>
+            <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: center">
+                <font size="2">{{item.monthYear}}</font>
             </td style="padding:0">
+
             <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">
                 <font size="2">{{item.testManuf}}</font>
             </td style="padding:0">
@@ -70,16 +75,20 @@
                 <font size="2">{{item.system}}</font>
             </td style="padding:0">
 
-            <td style="padding: 1px; margin: 0px; border-top: 1px; text-align: center">
+            <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: center">
                 <font size="2">{{item.subprojectDelivery}}</font>
             </td style="padding:0">
 
             <td style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
-                <font size="2">{{item.qtyDefect}}</font>
+                <font size="2">{{item.passed}}</font>
             </td style="padding:0">
 
             <td style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
-                <font size="2">{{item.qtyRetestHours}}</font>
+                <font size="2">{{item.failed}}</font>
+            </td style="padding:0">
+
+            <td style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
+                <font size="2">{{item.productivity}}</font>
             </td style="padding:0">
         </tr>
     </tbody> 

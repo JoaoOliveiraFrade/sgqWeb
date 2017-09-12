@@ -5,7 +5,6 @@ export const load = ({ commit }) => {
   services.load()
     .then(
       r => {
-        console.log(r.data)
         commit(types.data, r.data)
       },
       e => console.log(e)
@@ -23,8 +22,6 @@ export const load = ({ commit }) => {
 // }
 
 export const loadOfTestManufsAndSystems = ({ commit }, parameter) => {
-  console.log('project - action - loadOfTestManufsAndSystems')
-  console.log(parameter)
   commit(types.loading, true)
   services.loadOfTestManufsAndSystems(parameter)
     .then(

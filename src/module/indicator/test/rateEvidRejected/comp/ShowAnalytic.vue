@@ -1,11 +1,11 @@
 selected<script>
   import oiModal from '@/module/modal/comp/modal.vue'
-  import oiAverangeRetestHoursShowAnalyticGrid from '@/module/indicator/test/averangeRetestHours/comp/ShowAnalyticGrid.vue'
+  import oiRateEvidRejectedShowAnalyticGrid from '@/module/indicator/test/rateEvidRejected/comp/ShowAnalyticGrid.vue'
 
   export default {
     name: 'ShowAnalytic',
 
-    components: { oiModal, oiAverangeRetestHoursShowAnalyticGrid }
+    components: { oiModal, oiRateEvidRejectedShowAnalyticGrid }
   }
 </script>
 
@@ -15,13 +15,13 @@ selected<script>
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
-        data-target="#averangeRetestHoursShowAnalytic">
+        data-target="#RateEvidRejectedShowAnalytic">
         Analítico
     </button>
 
-    <oiModal id="averangeRetestHoursShowAnalytic" title="Tempo Médio Reteste Defeito - Analítico" size="l">   
+    <oiModal id="RateEvidRejectedShowAnalytic" title="Taxa Rejeição Evidência - Analítico" size="l">   
       <div style="margin:0; padding:10px" slot="body">
-        <oiAverangeRetestHoursShowAnalyticGrid/>
+        <oiRateEvidRejectedShowAnalyticGrid/>
       </div>
     </oiModal>
   </span>

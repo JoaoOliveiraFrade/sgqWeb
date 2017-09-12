@@ -92,7 +92,7 @@
               />
             </div>       
 
-            <div class="col-xs-11" style="padding:0; margin-bottom:0px">
+            <div class="col-xs-11" style="padding-left:10px; margin-bottom:0px">
               <label style="font-size:small; font-weight:normal; margin-left:-15px; margin-bottom:1px" v-text="item.name"></label>
             </div>                
         </div>                
