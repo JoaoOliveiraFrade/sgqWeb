@@ -12,5 +12,5 @@ export default {
   filterTerm: '',
   selected: [],
 
-  Loading: false
+  loading: false
 }

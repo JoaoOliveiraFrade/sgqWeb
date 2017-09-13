@@ -13,12 +13,28 @@
         let param = chartStandParam
         param.title.text = 'Temporal'
         param.yAxis.title.text = 'Qte Exec.'
-        param.tooltip.pointFormat = '{point.y:.0f}'
+
+        param.tooltip.headerFormat = ''
+        param.tooltip.pointFormat = `
+          <b>{point.monthYear}</b><br>
+          Exec:: {point.y:.0f}
+          `
+        // param.tooltip.pointFormat = '{point.y:.0f}'
         param.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
         param.xAxis.categories = this.groupTimeline.map(i => i.monthYear)
+
         param.series = [
-          { name: 'Real', data: this.groupTimeline.map(i => i.productivity) }
+          {
+            name: 'Real',
+            data: this.groupTimeline.map(i => (
+              {
+                y: i.productivity,
+                monthYear: i.monthYear
+              }
+            ))
+          }
         ]
+
         param.series[0].showInLegend = false
 
         return param

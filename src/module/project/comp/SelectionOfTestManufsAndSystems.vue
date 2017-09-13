@@ -46,7 +46,6 @@
 <template>
   <span>
     <oiSelection
-      title="Sistema"               
       :projects="ofTestManufsAndSystems"
       :selected="selected"
       @onConfirm="confirm"        

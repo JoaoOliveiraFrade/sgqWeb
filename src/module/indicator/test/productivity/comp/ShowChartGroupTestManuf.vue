@@ -27,7 +27,13 @@
       setChartParam () {
         this.chartParam.title.text = 'Fáb.Teste / Sistema'
         this.chartParam.yAxis.title.text = 'Qte Exec.'
-        this.chartParam.tooltip.pointFormat = '{point.y:.0f}'
+
+        this.chartParam.tooltip.headerFormat = ''
+        this.chartParam.tooltip.pointFormat = `
+          <b>{point.name}</b><br>
+          Exec: {point.y:.0f}
+        `
+        // this.chartParam.tooltip.pointFormat = '{point.y:.0f}'
         this.chartParam.series.name = 'Produtividade'
         this.chartParam.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
 

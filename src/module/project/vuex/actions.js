@@ -2,12 +2,17 @@ import * as types from './mutationsTypes'
 import services from '@/module/project/services'
 
 export const load = ({ commit }) => {
+  commit(types.loading, true)
   services.load()
     .then(
       r => {
         commit(types.data, r.data)
+        commit(types.loading, false)
       },
-      e => console.log(e)
+      e => {
+        console.log(e)
+        commit(types.loading, false)
+      }
     )
 }
 

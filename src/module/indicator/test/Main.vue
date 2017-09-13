@@ -30,21 +30,22 @@
 <template>
   <div class="container-fluid" style="padding-top: 10px">
 
-    <div class="row well well-sm oi-well">
+    <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4">
       <oiTestManufSelection
         :isShowButtonSelected="true"
         @onConfirm="setSelectedTestManufs"
       />
     </div>
 
-    <div class="row well well-sm oi-well" v-if="selectedTestManufs.length > 0">
+    <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" v-if="selectedTestManufs.length > 0">
       <oiSystemSelectionOfTestManufs
         :testManufs="selectedTestManufs"
         :selectedSystems="selectedSystems"
         @onConfirm="setSelectedSystems"
       />
     </div>
-    <div class="row well well-sm oi-well" v-if="selectedSystems.length > 0">
+    
+    <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" v-if="selectedSystems.length > 0">
       <oiProjectSelectionOfTestManufsAndSystems
         :testManufs="selectedTestManufs"
         :systems="selectedSystems"
@@ -53,7 +54,7 @@
       />
     </div>
 
-    <div class="row well well-sm oi-well" v-if="showData">
+    <div class="row well well-sm oi-well" style="padding-top: 30px" v-if="showData">
       <oiShowData/>
     </div>
     
@@ -67,10 +68,8 @@
   .oi-well {
     margin: 0;
     margin-bottom:0px;
-    border: 0;
-    padding: 3px;
-    padding-left: 7px;
-  } 
+    padding: 2px;
+  }   
   .oi-col {
     padding: 3px;
     margin: 0;

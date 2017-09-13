@@ -1,26 +1,22 @@
 <script>
   import { mapGetters } from 'vuex'
   import Highcharts from 'highcharts'
-  import chartStandParam from '@/module/chart/comp/types/Total2'
+  import chartTotalStandParam from '@/module/chart/comp/types/Total2'
 
-  export default {
+export default {
     name: 'ShowChartTotal',
-
-    data () {
-      return {
-        chartParam: chartStandParam(),
-        chart: undefined
-      }
-    },
 
     computed: {
       ...mapGetters('indicatorProductivity', ['total']),
 
       chartParam () {
-        let param = chartStandParam
+        let param = chartTotalStandParam
+
         param.title.text = 'Total'
         param.yAxis.title.text = 'Qte<br>Exec.'
-        param.plotOptions.gauge.dataLabels.format = '{point.y:.0f}'
+
+        param.plotOptions.gauge.dataLabels.useHTML = true
+        param.plotOptions.gauge.dataLabels.format = '<span style=font-size:9px><center>{point.y:.0f}</center></span>'
         param.yAxis.max = this.total.productivity
 
         param.yAxis.plotBands = [
@@ -30,7 +26,7 @@
 
         param.tooltip.pointFormat = 'Passed: ' + this.total.passed + '<br>' +
           'Failed: ' + this.total.failed + '<br>' +
-          'Total: ' + this.total.productivity
+          'Total Exec: ' + this.total.productivity
 
         param.series = [ { name: 'Total', colorByPoint: true, data: [ this.total.productivity ] } ]
         return param

@@ -43,19 +43,19 @@
 
 <template>
   <div class="container-fluid" style="padding-top: 10px">
-    <div class="row well well-sm oi-well" style="margin-bottom:3px">
+    <div class="row well well-sm oi-well col-12 col-sm-6 col-md-3">
       <oiSelectionDefectQueue/>
     </div>
 
-    <div class="row well well-sm oi-well" style="margin-bottom:3px">
+    <div class="row well well-sm oi-well col-12 col-sm-6 col-md-3">
       <oiSelectionDefectStatus/>
     </div>
 
-    <div class="row well well-sm oi-well" style="margin-bottom:3px">
+    <div class="row well well-sm oi-well col-12 col-sm-6 col-md-3">
       <oiSelectionDefectTrafficLight/>
     </div>
 
-    <div class="row well well-sm oi-well" style="margin-bottom:3px">
+    <div class="row well well-sm oi-well col-12 col-sm-6 col-md-3">
       <oiSelectionProject 
         :projects="data" 
         :selected="selectedProjects"
@@ -64,17 +64,17 @@
     </div>
 
     <!--
-    <div class="row well well-sm oi-well" style="margin-bottom:3px" v-if="selectedTestManufs.length > 0">
+    <div class="row well well-sm oi-well col-12 col-sm-6 col-md-3" v-if="selectedTestManufs.length > 0">
       <oiSelectionSystem
         :isShowButtonSelected="true"
       />
     </div>
 
-    <div class="row well well-sm oi-well" style="margin-bottom:3px" v-if="selectedSystems.length > 0">
+    <div class="row well well-sm oi-well col-12 col-sm-6 col-md-3" v-if="selectedSystems.length > 0">
       <oiSelectionProject/>
     </div>
 
-    <div class="row well well-sm oi-well" style="margin-bottom:3px">
+    <div class="row well well-sm oi-well col-12 col-sm-6 col-md-3">
       <oiShowData v-show="projectConfirmed"/>
     </div>
     -->
@@ -87,12 +87,7 @@
   }
   .oi-well {
     margin: 0;
-    border: 0;
-    padding: 3px;
+    margin-bottom:0px;
+    padding: 2px;
   } 
-  .oi-col {
-    padding: 3px;
-    margin: 0;
-    border: 0;
-  }
 </style>

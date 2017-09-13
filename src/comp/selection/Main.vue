@@ -105,6 +105,7 @@
     margin: 0; 
     border: 0; 
     padding: 0; 
+    padding-left: 5px; 
     color: gray;
   }
   hr {

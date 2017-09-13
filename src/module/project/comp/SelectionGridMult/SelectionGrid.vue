@@ -1,13 +1,13 @@
 selected<script>
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapState } from 'vuex'
 
   export default {
     name: 'SelectionGrid',
 
     props: {
       projects: { type: Array, default: [] },
-      selected: { type: Array, default: [] },
-      projectsLoading: { type: Boolean, default: false }
+      selected: { type: Array, default: [] }
+      // projectsLoading: { type: Boolean, default: false }
     },
 
     data () {
@@ -20,6 +20,7 @@ selected<script>
 
     computed: {
       ...mapGetters('project', ['projectFilterProperties']),
+      ...mapState('project', ['loading']),
 
       filteredByTerm () {
         if (this.filterTerm !== '') {
@@ -73,9 +74,9 @@ selected<script>
 
 <template>
   <span>
-    <div class="loader" v-show="projectsLoading" style="margin-top: 25px;margin-bottom: 25px"></div>    
+    <div class="loader" v-show="loading" style="margin-top: 25px;margin-bottom: 25px"></div>    
 
-    <div v-show="!projectsLoading">
+    <div v-show="!loading">
       <div class="col-xs-12" style="margin:0; border:0; padding:0; padding-bottom: 3px">
         <span style="white-space:nowrap; padding:0">
           <!--  v-show="dataSource.length > 0" -->
