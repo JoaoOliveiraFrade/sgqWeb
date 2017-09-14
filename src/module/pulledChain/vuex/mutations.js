@@ -4,6 +4,15 @@ export default {
   [types.data] (state, parameter) {
     state.data = parameter
   },
+
+  [types.paramChartCFD] (state, parameter) {
+    state.paramChartCFD = parameter
+  },
+
+  [types.dataChartCFD] (state, parameter) {
+    state.dataChartCFD = parameter
+  },
+
   [types.filteredByText] (state, parameter) {
     state.filteredByText = parameter
   },

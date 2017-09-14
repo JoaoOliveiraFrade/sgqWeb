@@ -305,7 +305,7 @@
             <oiGridDefectsOpen 
               :project="project"
               :defects="defectsOpenInTestManuf"
-              id="xpto1"
+              id="sfafafasdfasfs1"
               @onSelectDefect="selectDefect"
             />
           </div>
@@ -315,7 +315,7 @@
             <oiGridDefectsOpen 
               :project="project"
               :defects="defectsOpenInDevManuf"
-              id="xpto2"
+              id="sfafafasdfasfs2"
               @onSelectDefect="selectDefect"
             />
           </div>

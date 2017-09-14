@@ -26,7 +26,7 @@ export default {
 
         param.tooltip.pointFormat = 'Passed: ' + this.total.passed + '<br>' +
           'Failed: ' + this.total.failed + '<br>' +
-          'Total Exec: ' + this.total.productivity
+          'Total: ' + this.total.productivity
 
         param.series = [ { name: 'Total', colorByPoint: true, data: [ this.total.productivity ] } ]
         return param

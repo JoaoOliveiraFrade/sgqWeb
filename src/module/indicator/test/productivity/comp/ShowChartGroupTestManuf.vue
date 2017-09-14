@@ -31,7 +31,7 @@
         this.chartParam.tooltip.headerFormat = ''
         this.chartParam.tooltip.pointFormat = `
           <b>{point.name}</b><br>
-          Exec: {point.y:.0f}
+          {point.y:.0f}
         `
         // this.chartParam.tooltip.pointFormat = '{point.y:.0f}'
         this.chartParam.series.name = 'Produtividade'

@@ -17,7 +17,7 @@
         param.tooltip.headerFormat = ''
         param.tooltip.pointFormat = `
           <b>{point.monthYear}</b><br>
-          Exec:: {point.y:.0f}
+          {point.y:.0f}
           `
         // param.tooltip.pointFormat = '{point.y:.0f}'
         param.plotOptions.bar.dataLabels.format = '{point.y:.0f}'

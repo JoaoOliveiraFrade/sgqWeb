@@ -1,11 +1,17 @@
 selected<script>
+  import { mapActions } from 'vuex'
+  
   import oiModal from '@/module/modal/comp/modal.vue'
-  // import oiAverangeRetestHoursShowAnalyticGrid from '@/module/indicator/test/averangeRetestHours/comp/ShowAnalyticGrid.vue'
+  import oiShowChartCFD from './ShowChartCFD.vue'
 
   export default {
     name: 'ShowButtonChartCFD',
 
-    components: { oiModal }
+    components: { oiModal, oiShowChartCFD },
+
+    methods: {
+      ...mapActions('pulledChain', ['loadDataChartCFD'])
+    }
   }
 </script>
 
@@ -14,14 +20,15 @@ selected<script>
     <button 
         type="button"     
         class="btn btn-xs"
+        @click="loadDataChartCFD"
         data-toggle="modal" 
         data-target="#sfsdfsdsdf">
         Gráfico CFD
     </button>
 
-    <oiModal id="sfsdfsdsdf" title="Tempo Médio Reteste Defeito - Analítico" size="l">   
+    <oiModal id="sfsdfsdsdf" title="Gráfico CFD">   
       <div style="margin:0; padding:10px" slot="body">
-        <!--<oiAverangeRetestHoursShowAnalyticGrid/>-->
+        <oiShowChartCFD/>
       </div>
     </oiModal>
   </span>

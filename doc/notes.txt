@@ -131,3 +131,18 @@ Highchart
 =========================================================
 -version ok: 5.0.12
 -last version: 5.0.14
+
+
+Acesso remoto ao servidor do TDM:
+=========================================================
+Servidor: tdmpw01 (ip: 10.58.183.9)
+Porta: 33341
+
+10.58.183.9:33341
+
+
+Definir host (hml) no load balance:
+=========================================================
+Colocar no arquivo de host:
+-Servidor a: 10.58.178.71 sgqhml.intranet
+-Servidor b: 10.58.178.72 sgqhml.intranet

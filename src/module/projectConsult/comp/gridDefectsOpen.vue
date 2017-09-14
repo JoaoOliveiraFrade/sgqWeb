@@ -109,11 +109,11 @@
         </tbody> 
     </table>
 
-    <oiModal :id="id">
-        <oiDefectShow
+    <oiModal :id="id" :title="'Detalhamento Defeito ' + selectedDefect.defect" style="text-align: left">
+        <oiDefectShow slot="body"
             :defect="selectedDefectDetail"
         />
-    </oiModal>
+    </oiModal>    
   </div>
 </template>
 

@@ -6,8 +6,8 @@ export default {
     let resource = Resource.resource(paths.api + '/PulledChain/All')
     return resource.get()
   },
-  loadChartCFD () {
-    let resource = Resource.resource(paths.api + '/PulledChain/All')
+  loadDataChartCFD () {
+    let resource = Resource.resource(paths.api + '/PulledChain/chartCFD')
     return resource.get()
   },
   update (item) {

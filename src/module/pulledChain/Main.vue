@@ -28,18 +28,20 @@
 <template>
   <div class="container-fluid" style="padding-top: 10px">
       <div class="row well well-sm oi-well">
-        <div class="col-sm-11">
-          <input type="text" id="Filter"
-            autofocus v-focus
-            class="form-control" 
-            style="margin: 0; padding-left: 5px; height:25px;"
-            placeholder="Informe os filtros! Exemplo: desenv+comit+nov/2017"
-            v-model="filterTerm"
-            @keyup="setFilterTerm(filterTerm)"
-          />        
-        </div>
-        <div class="col-sm-1">
-          <oiShowButtonChartCFD />
+        <div class="row">
+          <div class="col-xs-7">
+            <input type="text" id="Filter"
+              autofocus v-focus
+              class="form-control" 
+              style="margin: 0; padding-left: 5px; height:25px;"
+              placeholder="Informe os filtros! Exemplo: desenv+comit+nov/2017"
+              v-model="filterTerm"
+              @keyup="setFilterTerm(filterTerm)"
+            />        
+          </div>
+          <div class="col-xs-1">
+            <oiShowButtonChartCFD />
+          </div>
         </div>
       </div>
 
