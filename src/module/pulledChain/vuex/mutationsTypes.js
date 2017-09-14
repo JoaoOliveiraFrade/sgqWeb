@@ -1,6 +1,6 @@
-export const pulledChainProjects = 'pulledChain/pulledChainProjects'
-export const pulledChainProjectsFilteredByText = 'pulledChain/pulledChainProjectsFilteredByText'
-export const pulledChainFilterTerm = 'pulledChain/pulledChainFilterTerm'
-export const pulledChainProjectSelected = 'pulledChain/pulledChainProjectSelected'
-export const pulledChainProjectSelectedUpdate = 'pulledChain/pulledChainProjectSelectedUpdate'
+export const data = 'data'
+export const filteredByText = 'filteredByText'
+export const filterTerm = 'filterTerm'
+export const selected = 'selected'
+export const updateSelected = 'selectedUpdate'
 

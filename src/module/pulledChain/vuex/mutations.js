@@ -1,39 +1,39 @@
 import * as types from './mutationsTypes'
 
 export default {
-  [types.pulledChainProjects] (state, value) {
-    state.pulledChainProjects = value
+  [types.data] (state, parameter) {
+    state.data = parameter
   },
-  [types.pulledChainProjectsFilteredByText] (state, value) {
-    state.pulledChainProjectsFilteredByText = value
+  [types.filteredByText] (state, parameter) {
+    state.filteredByText = parameter
   },
-  [types.pulledChainFilterTerm] (state, value) {
-    state.pulledChainFilterTerm = value
+  [types.filterTerm] (state, parameter) {
+    state.filterTerm = parameter
   },
-  [types.pulledChainProjectSelected] (state, value) {
-    state.pulledChainProjectSelected = value
+  [types.selected] (state, parameter) {
+    state.selected = parameter
 
-    // let index = state.pulledChainProjects.findIndex(o => o.id === value.id)
+    // let index = state.projects.findIndex(o => o.id === parameter.id)
     // if (index !== -1) {
-    //   state.pulledChainProjects[index] = value
+    //   state.projects[index] = parameter
     // }
-    // state.pulledChainProjectSelected = value
+    // state.selected = parameter
   },
-  [types.pulledChainProjectSelectedUpdate] (state, value) {
-    state.pulledChainProjectSelected.statusStrategyTestingAndContracting = value.statusStrategyTestingAndContracting
-    state.pulledChainProjectSelected.dtUpdateStrategyTestingAndContracting = value.dtUpdateStrategyTestingAndContracting
-    state.pulledChainProjectSelected.dtEndStrategyTestingAndContracting = value.dtEndStrategyTestingAndContracting
+  [types.updateSelected] (state, parameter) {
+    state.selected.statusStrategyTestingAndContracting = parameter.statusStrategyTestingAndContracting
+    state.selected.dtUpdateStrategyTestingAndContracting = parameter.dtUpdateStrategyTestingAndContracting
+    state.selected.dtEndStrategyTestingAndContracting = parameter.dtEndStrategyTestingAndContracting
 
-    state.pulledChainProjectSelected.statusTimeline = value.statusTimeline
-    state.pulledChainProjectSelected.dtUpdateTimeline = value.dtUpdateTimeline
-    state.pulledChainProjectSelected.dtEndTimeline = value.dtEndTimeline
+    state.selected.statusTimeline = parameter.statusTimeline
+    state.selected.dtUpdateTimeline = parameter.dtUpdateTimeline
+    state.selected.dtEndTimeline = parameter.dtEndTimeline
 
-    state.pulledChainProjectSelected.statusTestPlan = value.statusTestPlan
-    state.pulledChainProjectSelected.dtUpdateTestPlan = value.dtUpdateTestPlan
-    state.pulledChainProjectSelected.dtEndTestPlan = value.dtEndTestPlan
+    state.selected.statusTestPlan = parameter.statusTestPlan
+    state.selected.dtUpdateTestPlan = parameter.dtUpdateTestPlan
+    state.selected.dtEndTestPlan = parameter.dtEndTestPlan
 
-    state.pulledChainProjectSelected.dtDeliveryTestPlan = value.dtDeliveryTestPlan
-    state.pulledChainProjectSelected.readyTestPlan = value.readyTestPlan
-    state.pulledChainProjectSelected.dtStartTestPlan = value.dtStartTestPlan
+    state.selected.dtDeliveryTestPlan = parameter.dtDeliveryTestPlan
+    state.selected.readyTestPlan = parameter.readyTestPlan
+    state.selected.dtStartTestPlan = parameter.dtStartTestPlan
   }
 }

@@ -10,7 +10,8 @@
     components: { oiShowButton, oiEditButton },
 
     computed: {
-      ...mapGetters(['pulledChainProjectsFilteredByTerm', 'currentUserProfiles']),
+      ...mapGetters(['currentUserProfiles']),
+      ...mapGetters('pulledChain', ['filteredByTerm']),
 
       currentUserCanEdit () {
         return this.currentUserProfiles.findIndex(o => o.id === 1 || o.id === 2) > -1
@@ -18,11 +19,11 @@
     },
 
     methods: {
-      ...mapActions(['loadPulledChainProjects'])
+      ...mapActions('pulledChain', ['load'])
     },
 
     mounted () {
-      this.loadPulledChainProjects()
+      this.load()
     }
   }
 </script>
@@ -53,11 +54,11 @@
                 <th style="vertical-align: middle">Aging<br>LT</th>
             </tr>
         </thead>
-        <tbody v-for="item in pulledChainProjectsFilteredByTerm">
+        <tbody v-for="item in filteredByTerm">
             <tr>
-                <td rowspan=3 style="white-space: nowrap; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
+                <td rowspan=3 style="white-space: nowrap; padding:0px; margin: 0px; border-top: 1px; padding-left: 0px; vertical-align: middle">
                     <oiEditButton v-if="currentUserCanEdit" :project="item"/>
-                    <oiShowButton v-if="!currentUserCanEdit" :project="item"/>
+                    <oiShowButton :project="item"/>
                 </td>
                 <td rowspan=3 style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
                     {{item.priorityGlobal}}

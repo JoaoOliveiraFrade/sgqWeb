@@ -1,11 +1,12 @@
 <script>
   import { mapActions } from 'vuex'
   import oiShowGrid from './comp/ShowGrid.vue'
+  import oiShowButtonChartCFD from './comp/ShowButtonChartCFD.vue'
   
   export default {
     name: 'pulledChainMain',
 
-    components: { oiShowGrid },
+    components: { oiShowButtonChartCFD, oiShowGrid },
 
     data () {
       return {
@@ -14,7 +15,8 @@
     },
 
     methods: {
-      ...mapActions(['setFeatureName', 'setPulledChainFilterTerm'])
+      ...mapActions(['setFeatureName']),
+      ...mapActions('pulledChain', ['setFilterTerm'])
     },
 
     mounted () {
@@ -25,15 +27,20 @@
 
 <template>
   <div class="container-fluid" style="padding-top: 10px">
-      <div class="row well well-sm oi-well" >
-        <input type="text" id="Filter"
-          autofocus v-focus
-          class="form-control" 
-          style="margin: 0; padding-left: 3px; height: 25px"
-          placeholder="Informe os filtros! Exemplo: desenv+comit+nov/2017"
-          v-model="filterTerm"
-          @keyup="setPulledChainFilterTerm(filterTerm)"
-        />        
+      <div class="row well well-sm oi-well">
+        <div class="col-sm-11">
+          <input type="text" id="Filter"
+            autofocus v-focus
+            class="form-control" 
+            style="margin: 0; padding-left: 5px; height:25px;"
+            placeholder="Informe os filtros! Exemplo: desenv+comit+nov/2017"
+            v-model="filterTerm"
+            @keyup="setFilterTerm(filterTerm)"
+          />        
+        </div>
+        <div class="col-sm-1">
+          <oiShowButtonChartCFD />
+        </div>
       </div>
 
       <oiShowGrid style="padding-top: 2px;"/>
@@ -48,6 +55,7 @@
     margin-top: 15px;
   }
   .oi-well {
+
     margin: 0;
     border: 0;
     padding: 0;

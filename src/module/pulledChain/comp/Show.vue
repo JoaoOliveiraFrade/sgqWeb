@@ -1,28 +1,28 @@
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapState } from 'vuex'
 
   export default {
     name: 'Show',
 
     computed: {
-      ...mapGetters(['pulledChainProjectSelected'])
+      ...mapState('pulledChain', ['selected'])
     },
 
     data () {
       return {
-        selected: {},
+        selected_: {},
         dtDeliveryTestPlan: ''
       }
     },
 
     watch: {
-      'pulledChainProjectSelected': {
+      'selected': {
         handler () {
-          this.selected = { ...this.pulledChainProjectSelected }
+          this.selected_ = { ...this.selected }
 
           // muda o formato dd-mm-yy para yyyy-mm-dd (uso do componente visual)
-          if (this.selected.dtDeliveryTestPlan !== '') {
-            this.dtDeliveryTestPlan = this.selected.dtDeliveryTestPlan ? '20' + this.selected.dtDeliveryTestPlan.substr(6, 2) + '-' + this.selected.dtDeliveryTestPlan.substr(3, 2) + '-' + this.selected.dtDeliveryTestPlan.substr(0, 2) : ''
+          if (this.selected_.dtDeliveryTestPlan !== '') {
+            this.dtDeliveryTestPlan = this.selected_.dtDeliveryTestPlan ? '20' + this.selected_.dtDeliveryTestPlan.substr(6, 2) + '-' + this.selected_.dtDeliveryTestPlan.substr(3, 2) + '-' + this.selected_.dtDeliveryTestPlan.substr(0, 2) : ''
           } else {
             this.dtDeliveryTestPlan = ''
           }
@@ -48,55 +48,55 @@
       * Calcula data fim, na alteração do status
       **********************************************/
       changeStatusStrategyTestingAndContracting () {
-        this.selected.dtUpdateStrategyTestingAndContracting = this.getDateToday()
-        if (this.selected.statusStrategyTestingAndContracting !== 'BACKLOG' && this.selected.dtEndStrategyTestingAndContracting === '') {
-          this.selected.dtEndStrategyTestingAndContracting = this.getDateToday()
+        this.selected_.dtUpdateStrategyTestingAndContracting = this.getDateToday()
+        if (this.selected_.statusStrategyTestingAndContracting !== 'BACKLOG' && this.selected_.dtEndStrategyTestingAndContracting === '') {
+          this.selected_.dtEndStrategyTestingAndContracting = this.getDateToday()
         } else {
-          if (this.selected.statusStrategyTestingAndContracting === 'BACKLOG' && this.selected.dtEndStrategyTestingAndContracting !== '') {
-            this.selected.dtEndStrategyTestingAndContracting = ''
+          if (this.selected_.statusStrategyTestingAndContracting === 'BACKLOG' && this.selected_.dtEndStrategyTestingAndContracting !== '') {
+            this.selected_.dtEndStrategyTestingAndContracting = ''
           }
         }
       },
       changeStatusTimeline () {
-        this.selected.dtUpdateTimeline = this.getDateToday()
-        if (this.selected.statusTimeline !== 'BACKLOG' && this.selected.dtEndTimeline === '') {
-          this.selected.dtEndTimeline = this.getDateToday()
+        this.selected_.dtUpdateTimeline = this.getDateToday()
+        if (this.selected_.statusTimeline !== 'BACKLOG' && this.selected_.dtEndTimeline === '') {
+          this.selected_.dtEndTimeline = this.getDateToday()
         } else {
-          if (this.selected.statusTimeline === 'BACKLOG' && this.selected.dtEndTimeline !== '') {
-            this.selected.dtEndTimeline = ''
+          if (this.selected_.statusTimeline === 'BACKLOG' && this.selected_.dtEndTimeline !== '') {
+            this.selected_.dtEndTimeline = ''
           }
         }
       },
       changeStatusTestPlan () {
-        this.selected.dtUpdateTestPlan = this.getDateToday()
-        if (this.selected.statusTestPlan !== 'BACKLOG' && this.selected.dtEndTestPlan === '') {
-          this.selected.dtEndTestPlan = this.getDateToday()
+        this.selected_.dtUpdateTestPlan = this.getDateToday()
+        if (this.selected_.statusTestPlan !== 'BACKLOG' && this.selected_.dtEndTestPlan === '') {
+          this.selected_.dtEndTestPlan = this.getDateToday()
         } else {
-          if (this.selected.statusTestPlan === 'BACKLOG' && this.selected.dtEndTestPlan !== '') {
-            this.selected.dtEndTestPlan = ''
+          if (this.selected_.statusTestPlan === 'BACKLOG' && this.selected_.dtEndTestPlan !== '') {
+            this.selected_.dtEndTestPlan = ''
           }
         }
       },
 
       setDtDeliveryTestPlan () {
-        this.selected.dtDeliveryTestPlan = this.formatDate(this.dtDeliveryTestPlan)
+        this.selected_.dtDeliveryTestPlan = this.formatDate(this.dtDeliveryTestPlan)
 
         if (this.dtDeliveryTestPlan === '') {
-          this.selected.readyTestPlan = 'N'
+          this.selected_.readyTestPlan = 'N'
         } else {
-          let dtDeliveryTestPlanYYMMDD = this.selected.dtDeliveryTestPlan.substr(6, 2) + this.selected.dtDeliveryTestPlan.substr(3, 2) + this.selected.dtDeliveryTestPlan.substr(0, 2)
+          let dtDeliveryTestPlanYYMMDD = this.selected_.dtDeliveryTestPlan.substr(6, 2) + this.selected_.dtDeliveryTestPlan.substr(3, 2) + this.selected_.dtDeliveryTestPlan.substr(0, 2)
 
           let d = new Date()
           let NowYYMMDD = ('' + d.getFullYear()).slice(-2) + ('0' + (d.getMonth() + 1)).slice(-2) + ('0' + d.getDate()).slice(-2)
 
           if (dtDeliveryTestPlanYYMMDD <= NowYYMMDD) {
-            this.selected.readyTestPlan = 'S'
+            this.selected_.readyTestPlan = 'S'
           } else {
-            this.selected.readyTestPlan = 'N'
+            this.selected_.readyTestPlan = 'N'
           }
         }
 
-        this.selected.dtStartTestPlan = this.dtDeliveryTestPlan !== '' ? this.getDateToday() : ''
+        this.selected_.dtStartTestPlan = this.dtDeliveryTestPlan !== '' ? this.getDateToday() : ''
       }
     }
   }

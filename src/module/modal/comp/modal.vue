@@ -21,7 +21,7 @@
     <div class="modal" :id="id" >
         <div class="modal-dialog" :style="size==='l' ? 'max-width: 95%; width: auto !important;' : ''">
             <div class="modal-content" style="background-color: #f8f8ff">
-                <div class="modal-header">
+                <div class="modal-header" style="text-align: left;">
                     <a class='oi-icon' href="#"
                         data-toggle="tooltip" 
                         data-dismiss="modal"
@@ -54,7 +54,7 @@
 -->
 <style scoped>
     .fd-label {
-        margin: 0; margin-left:5px;margin-top:0.5px;
+        margin: 0; margin-left:5px; margin-top:0.5px;
         border: 0; 
         padding: 0; 
         font-size: medium;

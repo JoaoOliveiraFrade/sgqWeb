@@ -2,29 +2,40 @@ import * as types from './mutationsTypes'
 import services from '../services'
 import Toastr from 'toastr'
 
-export const loadPulledChainProjects = ({ commit }) => {
-  services.getAll()
+export const load = ({ commit }) => {
+  services.load()
     .then(
       r => {
-        commit(types.pulledChainProjects, r.data)
-        commit(types.pulledChainProjectsFilteredByText, r.data)
+        commit(types.data, r.data)
+        commit(types.filteredByText, r.data)
       },
       e => console.log(e)
     )
 }
 
-export const setPulledChainFilterTerm = ({ commit }, filterTerm) => {
-  commit(types.pulledChainFilterTerm, filterTerm)
+export const loadChartCFD = ({ commit }) => {
+  services.load()
+    .then(
+      r => {
+        commit(types.data, r.data)
+        commit(types.filteredByText, r.data)
+      },
+      e => console.log(e)
+    )
 }
 
-export const setPulledChainProjectSelected = ({ commit }, selected) => {
-  commit(types.pulledChainProjectSelected, selected)
+export const setFilterTerm = ({ commit }, filterTerm) => {
+  commit(types.filterTerm, filterTerm)
 }
 
-export const updatePulledChainProjectSelected = ({ commit }, updatedItem) => {
+export const setSelected = ({ commit }, selected) => {
+  commit(types.selected, selected)
+}
+
+export const updateSelected = ({ commit }, updatedItem) => {
   services.update(updatedItem)
 
-  commit(types.pulledChainProjectSelectedUpdate, updatedItem)
+  commit(types.updateSelected, updatedItem)
 
   Toastr.success('Dados gravados!')
 }
