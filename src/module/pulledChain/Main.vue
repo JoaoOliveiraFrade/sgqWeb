@@ -1,5 +1,5 @@
 <script>
-  import { mapActions } from 'vuex'
+  import { mapActions, mapState } from 'vuex'
   import oiShowGrid from './comp/ShowGrid.vue'
   import oiShowButtonChartCFD from './comp/ShowButtonChartCFD.vue'
   
@@ -12,6 +12,10 @@
       return {
         filterTerm: ''
       }
+    },
+
+    computed: {
+      ...mapState('pulledChain', ['loading'])
     },
 
     methods: {
@@ -27,25 +31,29 @@
 
 <template>
   <div class="container-fluid" style="padding-top: 10px">
-      <div class="row well well-sm oi-well">
-        <div class="row">
-          <div class="col-xs-7">
-            <input type="text" id="Filter"
-              autofocus v-focus
-              class="form-control" 
-              style="margin: 0; padding-left: 5px; height:25px;"
-              placeholder="Informe os filtros! Exemplo: desenv+comit+nov/2017"
-              v-model="filterTerm"
-              @keyup="setFilterTerm(filterTerm)"
-            />        
-          </div>
-          <div class="col-xs-1">
-            <oiShowButtonChartCFD />
-          </div>
+
+    <div class="loader" v-show="loading" style="margin-top: 25px;margin-bottom: 25px"></div>
+    
+    <div v-show="!loading" >
+
+      <div class="row">
+        <div class="col-xs-7">
+          <input type="text" id="Filter"
+            autofocus v-focus
+            class="form-control" 
+            style="margin: 0; padding-left: 5px; height:25px;"
+            placeholder="Informe os filtros! Exemplo: desenv+comit+nov/2017"
+            v-model="filterTerm"
+            @keyup="setFilterTerm(filterTerm)"
+          />        
         </div>
+        <oiShowButtonChartCFD />
       </div>
 
-      <oiShowGrid style="padding-top: 2px;"/>
+      <oiShowGrid style="margin-top: 3px"/>
+
+    </div>
+
   </div>
 </template>
 
@@ -53,16 +61,34 @@
   input {
      min-width: 100%
   }
+
   .container {
     margin-top: 15px;
   }
-  .oi-well {
 
+  .oi-well {
     margin: 0;
     border: 0;
     padding: 0;
   }
+
   .oi-icon {
     font-size: medium;
   }
+
+  .loader {
+      margin: auto;
+      width: 50%;
+      border: 16px solid #f3f3f3; /* Light grey */
+      border-top: 16px solid #3498db; /* Blue */
+      border-bottom: 16px solid #3498db;
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      animation: spin 2s linear infinite;
+  }
+  @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+  }  
 </style>

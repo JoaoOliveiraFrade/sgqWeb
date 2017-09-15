@@ -24,7 +24,8 @@
         projectFilterTerm: '',
 
         projects: [],
-        projectsFilteredByTerm: []
+        projectsFilteredByTerm: [],
+        loading: false
       }
     },
 
@@ -38,9 +39,11 @@
 
       loadInitialData () {
         // servicesProject.getAll({}).then(resp => {
+        this.loading = true
         services.getProjects().then(resp => {
           this.projects = resp.data
           this.projectsFilteredByTerm = resp.data
+          this.loading = false
         })
       },
 
@@ -134,7 +137,11 @@
 </script>
 
 <template>
-    <div class="container-fluid" style="padding: 10px">
+  <div class="container-fluid" style="padding: 10px">
+
+    <div class="loader" v-show="loading" style="margin-top: 25px;margin-bottom: 25px"></div>
+    
+    <div v-show="!loading">
       <input type="text"
           autofocus v-focus
           class="form-control" 
@@ -149,6 +156,8 @@
         @onSelectItem="selectItem"
       />
     </div>
+
+  </div>
 </template>
 
 <style scoped>
@@ -166,4 +175,20 @@
   .oi-icon {
     font-size: medium;
   }
+
+  .loader {
+      margin: auto;
+      width: 50%;
+      border: 16px solid #f3f3f3; /* Light grey */
+      border-top: 16px solid #3498db; /* Blue */
+      border-bottom: 16px solid #3498db;
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      animation: spin 2s linear infinite;
+  }
+  @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+  }  
 </style>

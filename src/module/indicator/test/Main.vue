@@ -37,16 +37,16 @@
       />
     </div>
 
-    <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" v-if="selectedTestManufs.length > 0">
-      <oiSystemSelectionOfTestManufs
+    <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
+      <oiSystemSelectionOfTestManufs v-show="selectedTestManufs.length > 0"
         :testManufs="selectedTestManufs"
         :selectedSystems="selectedSystems"
         @onConfirm="setSelectedSystems"
       />
     </div>
     
-    <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" v-if="selectedSystems.length > 0">
-      <oiProjectSelectionOfTestManufsAndSystems
+    <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
+      <oiProjectSelectionOfTestManufsAndSystems v-show="selectedSystems.length > 0"
         :testManufs="selectedTestManufs"
         :systems="selectedSystems"
         :selectedProjects="selectedProjects"
@@ -54,7 +54,7 @@
       />
     </div>
 
-    <div class="row well well-sm oi-well" style="padding-top: 30px" v-if="showData">
+    <div class="row well-sm oi-well" style="padding-top: 30px" v-if="showData">
       <oiShowData/>
     </div>
     
@@ -69,6 +69,7 @@
     margin: 0;
     margin-bottom:0px;
     padding: 2px;
+    height: 30px;
   }   
   .oi-col {
     padding: 3px;

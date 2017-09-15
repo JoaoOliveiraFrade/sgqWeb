@@ -1,5 +1,5 @@
 <script>
-  import { mapActions, mapState } from 'vuex'
+  import { mapState, mapActions } from 'vuex'
   import Highcharts from 'highcharts'
   // import chartStandParam from '@/module/chart/comp/types/timeline2'
 
@@ -13,6 +13,7 @@
     },
 
     computed: {
+      ...mapState('pulledChain', ['dataChartCFD', 'data']),
       ...mapState('pulledChain', ['dataChartCFD', 'paramChartCFD'])
     },
 
@@ -25,14 +26,26 @@
     },
 
     watch: {
+      'data': {
+        handler () {
+          this.loadDataChartCFD()
+          this.drawChart()
+        }
+      },
       'paramChartCFD': {
         handler () {
+          this.loadDataChartCFD()
           this.drawChart()
         }
       }
     },
 
     mounted () {
+      this.loadDataChartCFD()
+      this.drawChart()
+    },
+
+    updated () {
       this.loadDataChartCFD()
       this.drawChart()
     }

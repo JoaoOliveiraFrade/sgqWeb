@@ -5,12 +5,22 @@ export default {
     state.data = parameter
   },
 
-  [types.paramChartCFD] (state, parameter) {
-    state.paramChartCFD = parameter
-  },
-
   [types.dataChartCFD] (state, parameter) {
     state.dataChartCFD = parameter
+  },
+
+  [types.paramChartCFD] (state, parameter) {
+    if (typeof (parameter) !== 'undefined') {
+      state.paramChartCFD.xAxis.categories = parameter.map(i => i.date)
+      state.paramChartCFD.series[0].data = parameter.map(i => i.backlogNotReady)
+      state.paramChartCFD.series[1].data = parameter.map(i => i.backlogReady)
+      state.paramChartCFD.series[2].data = parameter.map(i => i.onGoing)
+      state.paramChartCFD.series[3].data = parameter.map(i => i.finished)
+    }
+  },
+
+  [types.loading] (state, parameter) {
+    state.loading = parameter
   },
 
   [types.filteredByText] (state, parameter) {

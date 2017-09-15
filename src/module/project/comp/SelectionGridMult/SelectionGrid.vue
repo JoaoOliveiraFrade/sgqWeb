@@ -75,7 +75,6 @@ selected<script>
 <template>
   <span>
     <div class="loader" v-show="loading" style="margin-top: 25px;margin-bottom: 25px"></div>    
-
     <div v-show="!loading">
       <div class="col-xs-12" style="margin:0; border:0; padding:0; padding-bottom: 3px">
         <span style="white-space:nowrap; padding:0">
