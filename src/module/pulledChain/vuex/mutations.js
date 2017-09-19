@@ -9,14 +9,12 @@ export default {
     state.dataChartCFD = parameter
   },
 
-  [types.paramChartCFD] (state, parameter) {
-    if (typeof (parameter) !== 'undefined') {
-      state.paramChartCFD.xAxis.categories = parameter.map(i => i.date)
-      state.paramChartCFD.series[0].data = parameter.map(i => i.backlogNotReady)
-      state.paramChartCFD.series[1].data = parameter.map(i => i.backlogReady)
-      state.paramChartCFD.series[2].data = parameter.map(i => i.onGoing)
-      state.paramChartCFD.series[3].data = parameter.map(i => i.finished)
-    }
+  [types.paramChartCFD] (state) {
+    state.paramChartCFD.xAxis.categories = state.dataChartCFD.map(i => i.date)
+    state.paramChartCFD.series[0].data = state.dataChartCFD.map(i => i.backlogNotReady)
+    state.paramChartCFD.series[1].data = state.dataChartCFD.map(i => i.backlogReady)
+    state.paramChartCFD.series[2].data = state.dataChartCFD.map(i => i.onGoing)
+    state.paramChartCFD.series[3].data = state.dataChartCFD.map(i => i.finished)
   },
 
   [types.loading] (state, parameter) {
@@ -31,14 +29,8 @@ export default {
   },
   [types.selected] (state, parameter) {
     state.selected = parameter
-
-    // let index = state.projects.findIndex(o => o.id === parameter.id)
-    // if (index !== -1) {
-    //   state.projects[index] = parameter
-    // }
-    // state.selected = parameter
   },
-  [types.updateSelected] (state, parameter) {
+  [types.update] (state, parameter) {
     state.selected.statusStrategyTestingAndContracting = parameter.statusStrategyTestingAndContracting
     state.selected.dtUpdateStrategyTestingAndContracting = parameter.dtUpdateStrategyTestingAndContracting
     state.selected.dtEndStrategyTestingAndContracting = parameter.dtEndStrategyTestingAndContracting

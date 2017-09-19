@@ -2,7 +2,7 @@
   import { mapState, mapActions } from 'vuex'
 
   export default {
-    name: 'Edit',
+    name: 'pulledChainEdit',
 
     computed: {
       ...mapState('pulledChain', ['selected'])
@@ -10,7 +10,7 @@
 
     data () {
       return {
-        selected_: {},
+        selected_: { ...this.selected },
         dtDeliveryTestPlan: ''
       }
     },
@@ -31,7 +31,11 @@
     },
 
     methods: {
-      ...mapActions('pulledChain', ['updateSelected']),
+      ...mapActions('pulledChain', ['update']),
+
+      save () {
+        this.update(this.selected_)
+      },
 
       getDateToday () {
         let d = new Date()
@@ -46,9 +50,8 @@
         }
       },
 
-      /**
-      * Calcula data fim, na alteração do status
-      **********************************************/
+      /* Calcula data fim, na alteração do status
+      *******************************************/
       changeStatusStrategyTestingAndContracting () {
         this.selected_.dtUpdateStrategyTestingAndContracting = this.getDateToday()
         if (this.selected_.statusStrategyTestingAndContracting !== 'BACKLOG' && this.selected_.dtEndStrategyTestingAndContracting === '') {
@@ -57,6 +60,7 @@
           this.selected_.dtEndStrategyTestingAndContracting = ''
         }
       },
+
       changeStatusTimeline () {
         this.selected_.dtUpdateTimeline = this.getDateToday()
         if (this.selected_.statusTimeline !== 'BACKLOG' && this.selected_.dtEndTimeline === '') {
@@ -67,6 +71,7 @@
           }
         }
       },
+
       changeStatusTestPlan () {
         this.selected_.dtUpdateTestPlan = this.getDateToday()
         if (this.selected_.statusTestPlan !== 'BACKLOG' && this.selected_.dtEndTestPlan === '') {
@@ -97,10 +102,6 @@
         }
 
         this.selected_.dtStartTestPlan = this.dtDeliveryTestPlan !== '' ? this.getDateToday() : ''
-      },
-
-      save () {
-        this.updateSelected(this.selected_)
       }
     }
   }
@@ -110,6 +111,7 @@
     <div class="container-fluid">
         <div style="text-align: left; margin:0; border:0; padding:0px">
             <a class="oi-icon" href="#"
+                data-dismiss="modal"
                 @click.prevent="save"
                 title="Salvar">
                 <span class='glyphicon glyphicon-save'></span>
@@ -120,21 +122,21 @@
             <div class="col-xs-10 col-md-6 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
                 <div>
                     <label class="fd-label">Nome:</label><br>
-                    <label class="fd-content">{{selected.name}}</label>
+                    <label class="fd-content">{{selected_.name}}</label>
                 </div>
             </div>
 
             <div class="col-xs-2 col-md-2 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
                 <div>
                     <label class="fd-label">Prioridade:</label><br>
-                    <label class="fd-content" style="text-align: center">{{selected.priorityGlobal}}</label>
+                    <label class="fd-content" style="text-align: center">{{selected_.priorityGlobal}}</label>
                 </div>
             </div>
 
             <div class="col-xs-6 col-md-2 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
                 <div>
                     <label class="fd-label">Estado:</label><br>
-                    <label class="fd-content">{{selected.state}}</label>
+                    <label class="fd-content">{{selected_.state}}</label>
                 </div>
             </div>
             
@@ -142,7 +144,7 @@
             <div class="col-xs-6 col-md-2 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
                 <div>
                     <label class="fd-label">Release Clarity:</label><br>
-                    <label class="fd-content">{{selected.releaseClarity}}</label>
+                    <label class="fd-content">{{selected_.releaseClarity}}</label>
                
                 </div>
             </div>
@@ -153,28 +155,28 @@
             <div class="col-xs-6 col-md-3 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
                 <div>
                     <label class="fd-label">Categoria:</label><br>
-                    <label class="fd-content">{{selected.category}}</label>
+                    <label class="fd-content">{{selected_.category}}</label>
                 </div>
             </div>
 
             <div class="col-xs-6 col-md-3 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
                 <div>
                     <label class="fd-label">Cadeia Produtiva:</label><br>
-                    <label class="fd-content">{{selected.productiveChain}}</label>
+                    <label class="fd-content">{{selected_.productiveChain}}</label>
                 </div>
             </div>
 
             <div class="col-xs-6 col-md-3 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
                 <div>
                     <label class="fd-label">UN:</label><br>
-                    <label class="fd-content">{{selected.UN}}</label>
+                    <label class="fd-content">{{selected_.UN}}</label>
                 </div>
             </div>
 
             <div class="col-xs-6 col-md-3 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
                 <div>
                     <label class="fd-label">Tipificação:</label><br>
-                    <label class="fd-content">{{selected.Typification}}</label>
+                    <label class="fd-content">{{selected_.Typification}}</label>
                 </div>
             </div>
         </div>
@@ -183,28 +185,28 @@
             <div class="col-xs-6 col-md-3 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
                 <div>
                     <label class="fd-label">Estado Frente:</label><br>
-                    <label class="fd-content">{{selected.workFrontState}}</label>
+                    <label class="fd-content">{{selected_.workFrontState}}</label>
                 </div>
             </div>
 
             <div class="col-xs-6 col-md-3 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
                 <div>
                     <label class="fd-label">Área:</label><br>
-                    <label class="fd-content">{{selected.topic}}</label>
+                    <label class="fd-content">{{selected_.topic}}</label>
                 </div>
             </div>
 
             <div class="col-xs-6 col-md-3 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
                 <div>
                     <label class="fd-label">Responsável:</label><br>
-                    <label class="fd-content">{{selected.RT}}</label>
+                    <label class="fd-content">{{selected_.RT}}</label>
                 </div>
             </div>
 
             <div class="col-xs-6 col-md-3 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
                 <div>
                     <label class="fd-label">Estado Entrega:</label><br>
-                    <label class="fd-content">{{selected.deliveryState}}</label>
+                    <label class="fd-content">{{selected_.deliveryState}}</label>
                 </div>
             </div>
         </div>        
@@ -238,16 +240,16 @@
                         </td>                                
 
                         <td style="text-align: center; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
-                            <img class="img-small" alt="Check Verde" src="../../../asset/image/checkYes.png" v-show="selected.readyStrategyTestingAndContracting === 'S' && selected.statusStrategyTestingAndContracting !== 'REALIZADO'" style="padding:0; margin:0; border:0">
-                            <img class="img-small" alt="Check Vermelho" src="../../../asset/image/checkNo.png" v-show="selected.readyStrategyTestingAndContracting === 'N'" style="padding:0; margin:0; border:0">
-                            <img class="img-small" alt="Check Cinza" src="../../../asset/image/checkGrey.png" v-show="selected.readyStrategyTestingAndContracting === 'S' && selected.statusStrategyTestingAndContracting === 'REALIZADO'" style="padding:0; margin:0; border:0">
+                            <img class="img-small" alt="Check Verde" src="../../../asset/image/checkYes.png" v-show="selected_.readyStrategyTestingAndContracting === 'S' && selected_.statusStrategyTestingAndContracting !== 'REALIZADO'" style="padding:0; margin:0; border:0">
+                            <img class="img-small" alt="Check Vermelho" src="../../../asset/image/checkNo.png" v-show="selected_.readyStrategyTestingAndContracting === 'N'" style="padding:0; margin:0; border:0">
+                            <img class="img-small" alt="Check Cinza" src="../../../asset/image/checkGrey.png" v-show="selected_.readyStrategyTestingAndContracting === 'S' && selected_.statusStrategyTestingAndContracting === 'REALIZADO'" style="padding:0; margin:0; border:0">
                         </td>
 
                         <td style="text-align: center; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
                             <select id="StrategyAct" 
                                 @change="changeStatusStrategyTestingAndContracting()" 
-                                v-model="selected.statusStrategyTestingAndContracting" 
-                                :disabled="selected.statusStrategyTestingAndContracting === 'REALIZADO'">
+                                v-model="selected_.statusStrategyTestingAndContracting" 
+                                :disabled="selected_.statusStrategyTestingAndContracting === 'REALIZADO'">
 
                                 <option value="BACKLOG">BACKLOG</option>
                                 <option value="ON GOING">ON GOING</option>
@@ -256,7 +258,7 @@
                         </td>
 
                         <td style="text-align: center; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
-                            {{selected.dtUpdateStrategyTestingAndContracting}}
+                            {{selected_.dtUpdateStrategyTestingAndContracting}}
                         </td>
                     </tr>  
 
@@ -266,16 +268,16 @@
                         </td>                                
 
                         <td style="text-align: center; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
-                            <img class="img-small" alt="Check Verde" src="../../../asset/image/checkYes.png" v-show="selected.readyTimeline === 'S' && selected.statusTimeline !== 'REALIZADO'" style="padding:0; margin:0; border:0">
-                            <img class="img-small" alt="Check Vermelho" src="../../../asset/image/checkNo.png" v-show="selected.readyTimeline === 'N'" style="padding:0; margin:0; border:0">
-                            <img class="img-small" alt="Check Cinza" src="../../../asset/image/checkGrey.png" v-show="selected.readyTimeline === 'S' && selected.statusTimeline === 'REALIZADO'" style="padding:0; margin:0; border:0">
+                            <img class="img-small" alt="Check Verde" src="../../../asset/image/checkYes.png" v-show="selected_.readyTimeline === 'S' && selected_.statusTimeline !== 'REALIZADO'" style="padding:0; margin:0; border:0">
+                            <img class="img-small" alt="Check Vermelho" src="../../../asset/image/checkNo.png" v-show="selected_.readyTimeline === 'N'" style="padding:0; margin:0; border:0">
+                            <img class="img-small" alt="Check Cinza" src="../../../asset/image/checkGrey.png" v-show="selected_.readyTimeline === 'S' && selected_.statusTimeline === 'REALIZADO'" style="padding:0; margin:0; border:0">
                         </td>
 
                         <td style="text-align: center; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
                             <select id="TimelineAct"
                                 @change="changeStatusTimeline()"
-                                v-model="selected.statusTimeline"  
-                                :disabled="selected.statusTestPlan != 'BACKLOG' || selected.statusStrategyTestingAndContracting != 'REALIZADO' || selected.statusTimeline === 'REALIZADO'">
+                                v-model="selected_.statusTimeline"  
+                                :disabled="selected_.statusTestPlan != 'BACKLOG' || selected_.statusStrategyTestingAndContracting != 'REALIZADO' || selected_.statusTimeline === 'REALIZADO'">
 
                                 <option value="BACKLOG">BACKLOG</option>
                                 <option value="ON GOING">ON GOING</option>
@@ -284,7 +286,7 @@
                         </td>
 
                         <td style="text-align: center; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
-                            {{selected.dtUpdateTimeline}}
+                            {{selected_.dtUpdateTimeline}}
                         </td>
                     </tr>
 
@@ -294,16 +296,16 @@
                         </td>                                
 
                         <td style="text-align: center; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
-                            <img class="img-small" alt="Check Verde" src="../../../asset/image/checkYes.png" v-show="selected.readyTestPlan === 'S' && selected.statusTestPlan !== 'REALIZADO'" style="padding:0; margin:0; border:0">
-                            <img class="img-small" alt="Check Vermelho" src="../../../asset/image/checkNo.png" v-show="selected.readyTestPlan === 'N'" style="padding:0; margin:0; border:0">
-                            <img class="img-small" alt="Check Cinza" src="../../../asset/image/checkGrey.png" v-show="selected.readyTestPlan === 'S' && selected.statusTestPlan === 'REALIZADO'" style="padding:0; margin:0; border:0">
+                            <img class="img-small" alt="Check Verde" src="../../../asset/image/checkYes.png" v-show="selected_.readyTestPlan === 'S' && selected_.statusTestPlan !== 'REALIZADO'" style="padding:0; margin:0; border:0">
+                            <img class="img-small" alt="Check Vermelho" src="../../../asset/image/checkNo.png" v-show="selected_.readyTestPlan === 'N'" style="padding:0; margin:0; border:0">
+                            <img class="img-small" alt="Check Cinza" src="../../../asset/image/checkGrey.png" v-show="selected_.readyTestPlan === 'S' && selected_.statusTestPlan === 'REALIZADO'" style="padding:0; margin:0; border:0">
                         </td>
 
                         <td style="text-align: center; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
                             <select id="PlanAct" 
                                 @change="changeStatusTestPlan()"
-                                v-model="selected.statusTestPlan" 
-                                :disabled="selected.statusTimeline != 'REALIZADO' || selected.statusTestPlan === 'REALIZADO' ">
+                                v-model="selected_.statusTestPlan" 
+                                :disabled="selected_.statusTimeline != 'REALIZADO' || selected_.statusTestPlan === 'REALIZADO' ">
 
                                 <option value="BACKLOG">BACKLOG</option>
                                 <option value="ON GOING">ON GOING</option>
@@ -312,7 +314,7 @@
                         </td>
 
                         <td style="text-align: center; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
-                            {{selected.dtUpdateTestPlan}}
+                            {{selected_.dtUpdateTestPlan}}
                         </td>
                     </tr>  
 

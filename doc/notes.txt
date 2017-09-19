@@ -146,3 +146,14 @@ Definir host (hml) no load balance:
 Colocar no arquivo de host:
 -Servidor a: 10.58.178.71 sgqhml.intranet
 -Servidor b: 10.58.178.72 sgqhml.intranet
+
+
+ALM 12
+=========================================================
+IP do Banco : 10.61.195.118 ou orahx04-scan.interno
+Porta: 1549 ou 1561
+ 
+Banco : qc12hml-h1
+banco: QC12HML
+Usuário : QCALM11
+Senha : tdtdtd

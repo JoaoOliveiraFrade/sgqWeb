@@ -24,18 +24,31 @@ chartDensityDevManuf<script>
   import OptionsTimeline from '@/module/chart/comp/types/timeline'
   import OptionsTotal from '@/module/chart/comp/types/Total'
 
-  import oiRulesDensity from './comp/rules&analytics/rulesDensity.vue'
-  import oiShowDensityAnalytical from './comp/rules&analytics/showDensityAnalytical.vue'
-  import oiShowAnalyticalAverageTime from './comp/rules&analytics/showAnalyticalAverageTime.vue'
-  import oiShowAnalytical from './comp/rules&analytics/showAnalytical.vue'
-  import oiModal from '@/module/modal/comp/Modalx.vue'
+  import oiDensityShowRule from './comp/rules/DensityShowRule.vue'
+  import oiDensityShowAnalytic from './comp/analytics/DensityShowAnalytic.vue'
+
+  import oiAverageTimeShowRule from './comp/rules/AverageTimeShowRule.vue'
+  import oiAverageTimeShowAnalytical from './comp/analytics/AverageTimeShowAnalytical.vue'
+  import oiShowAnalytical from './comp/analytics/showAnalytical.vue'
+  // import oiModal from '@/module/modal/comp/Modalx.vue'
+  import oiModal from '@/module/modal/comp/modal.vue'
 
   import { paths } from '@/environment'
 
   export default {
     name: 'indicatorOfDevelopment',
 
-    components: { oiSelection, oiSelectionProjects, oiRulesDensity, oiShowDensityAnalytical, oiModal, oiShowAnalyticalAverageTime, oiShowAnalytical },
+    components: {
+      oiSelection,
+      oiSelectionProjects,
+      // oiRulesDensity,
+      oiDensityShowRule,
+      oiDensityShowAnalytic,
+      oiModal,
+      oiAverageTimeShowRule,
+      oiAverageTimeShowAnalytical,
+      oiShowAnalytical
+    },
 
     data () {
       return {
@@ -2763,15 +2776,18 @@ chartDensityDevManuf<script>
 
                 <div class="row">
                   <div class="col-sm-12">
+                    <!--
                     <button 
                         type="button" 
                         style="margin-top:3px"
                         class="btn btn-xs"
                         data-toggle="modal" 
-                        data-target="#rulesDensityModal">Regras
+                        data-target="#densityShowRule">Regras
                     </button>
-                    <oiRulesDensity></oiRulesDensity>
-
+                    <oiRulesDensity></oiRulesDensity>-->
+                    
+                    <oiDensityShowRule/>
+                    <!--
                     <button 
                         type="button" 
                         style="margin-top:3px"
@@ -2779,10 +2795,11 @@ chartDensityDevManuf<script>
                         data-toggle="modal" 
                         data-target="#densityAnalyticalModal">Analítico
                     </button>
-                    <oiShowDensityAnalytical
-                        title="Analítico de 'Densidade'" 
+                    -->
+                    <oiDensityShowAnalytic
+                        title="Densidade Defeito - Analítico" 
                         :dataSource="densityFiltered"
-                    ></oiShowDensityAnalytical>
+                    ></oiDensityShowAnalytic>
                   </div>
                 </div>
             </center>
@@ -2826,43 +2843,19 @@ chartDensityDevManuf<script>
 
                 <div class="row">
                   <div class="col-sm-12">
-                      <button 
-                          type="button" 
-                          style="margin-top:3px"
-                          class="btn btn-xs"
-                          data-toggle="modal" 
-                          data-target="#averageTimeRegrasModal">Regras
-                      </button>
-                      <oiModal id="averageTimeRegrasModal">
-                          <h4 style="margin-top:0; text-align:center"><strong>Regras para cálculo de 'Tempo Médio'</strong></h4>
-                          <p style="text-align:left">
-                              Tempo útil em horas (entre 9 e 18 horas, exceto fins de semana) de defeitos fechados, dividido pela quantidade de defeitos fechados.
-                          </p>
-                          <p style="text-align:left">
-                              São considerados os tempos de todos os Status e Agentes por onde o defeito passou.
-                          </p>
-                          <p style="text-align:left">
-                              Os valores de referência para resolução dos defeitos, são: Low: 16h, Medium: 8h e High: 4h.
-                          </p>
-                      </oiModal>
 
-                      <button 
-                        type="button" 
-                        style="margin-top:3px"
-                        class="btn btn-xs"
-                        data-toggle="modal" 
-                        data-target="#averageTimeModal">Analítico
-                    </button>                                
-                    <oiModal id="averageTimeModal">
-                        <oiShowAnalyticalAverageTime
-                            title="Analítico de 'Tempo Médio'" 
-                            :dataSource="averageTimeFiltered"
-                        ></oiShowAnalyticalAverageTime>
-                    </oiModal>                          
+                      <oiAverageTimeShowRule/>
+
+                      <oiAverageTimeShowAnalytical
+                          title="Tempo Médio - Analítico" 
+                          :dataSource="averageTimeFiltered"
+                      />
+                      
                   </div>
                 </div>
             </center>
           </div>  
+
           <div id="wrongClassif" class="tab-pane fade">
             <center class="text-top">
                 <h4 v-show="wrongClassifDevManufSelected != ''" style="margin:3px"><b>{{wrongClassifDevManufSelected}}</b></h4>
@@ -2881,42 +2874,48 @@ chartDensityDevManuf<script>
                 </div>
 
                 <div class="row">
-                <div class="col-sm-12">
-                    <button 
+                  <div class="col-sm-12">
+
+                      <button 
+                          type="button" 
+                          style="margin-top:3px"
+                          class="btn btn-xs"
+                          data-toggle="modal" 
+                          data-target="#wrongClassifRegrasModal">Regras
+                      </button>
+                      <oiModal id="wrongClassifRegrasModal" title="Regras para cálculo da 'Classif. Errada'">   
+                        <div style="margin:0; padding:10px" slot="body">
+
+                          <label class="fd-label">
+                            <p style="text-align:left">
+                                Quantidade de defeitos fechados, com os campos “Fábrica de Desenv. Ofensora” e “Regra Infringida” preenchidos. Isto é, diferente de vazio.
+                            </p>
+                            <p style="text-align:left">
+                                Estes campos são imputados manualmente no SGQ, durante o processo de auditoria.
+                            </p>
+                            <p style="text-align:left">
+                                O valor de referência é 5% do total de defeitos fechados.
+                            </p>        
+                          </label>
+                        </div>
+                      </oiModal>
+
+                      <button 
                         type="button" 
                         style="margin-top:3px"
                         class="btn btn-xs"
                         data-toggle="modal" 
-                        data-target="#wrongClassifRegrasModal">Regras
-                    </button>
-                    <oiModal id="wrongClassifRegrasModal">
-                        <h4 style="margin-top:0; text-align:center"><strong>Regras para cálculo de 'Classif. Errada'</strong></h4>
-                        <p style="text-align:left">
-                            Quantidade de defeitos fechados, com os campos “Fábrica de Desenv. Ofensora” e “Regra Infringida” preenchidos. Isto é, diferente de vazio.
-                        </p>
-                        <p style="text-align:left">
-                            Estes campos são imputados manualmente no SGQ, durante o processo de auditoria.
-                        </p>
-                        <p style="text-align:left">
-                            O valor de referência é 5% do total de defeitos fechados.
-                        </p>
-                    </oiModal> 
-
-                    <button 
-                      type="button" 
-                      style="margin-top:3px"
-                      class="btn btn-xs"
-                      data-toggle="modal" 
-                      data-target="#wrongClassifModal">Analítico
-                  </button>                                
-                  <oiModal id="wrongClassifModal">
-                      <oiShowAnalytical
-                          title="Analítico de 'Classif. Errada'" 
-                          :dataSource="wrongClassifFiltered"
-                      ></oiShowAnalytical>
-                  </oiModal>
+                        data-target="#wrongClassifModalAnalitic">Analítico
+                      </button>                                
+                      <oiModal id="wrongClassifModalAnalitic" title="Classif. Errada - Analítico" size="l">   
+                        <div style="margin:0; padding:10px" slot="body">
+                          <oiShowAnalytical
+                              :dataSource="wrongClassifFiltered"
+                          ></oiShowAnalytical>
+                        </div>
+                      </oiModal>  
                   </div>
-              </div>
+                </div>
             </center>          
           </div>
           <div id="detectableInDev" class="tab-pane fade">
@@ -2945,32 +2944,37 @@ chartDensityDevManuf<script>
                           data-toggle="modal" 
                           data-target="#detectableInDevRegrasModal">Regras
                       </button>
-                      <oiModal id="detectableInDevRegrasModal">
-                          <h4 style="margin-top:0; text-align:center"><strong>Regras para cálculo de 'Detectáveis em Desenv.'</strong></h4>
-                          <p style="text-align:left">
-                              Quantidade de defeitos fechados, o campo “Erro Detectável Em Desenvolvimento” igual a "Sim".
-                          </p>
-                          <p style="text-align:left">
-                              Este campo é imputado manualmente no ALM.
-                          </p>
-                          <p style="text-align:left">
-                              O valor de referência é 5% do total de defeitos fechados.
-                          </p>
-                      </oiModal>   
+                      <oiModal id="detectableInDevRegrasModal" title="Regras para cálculo de 'Detectáveis em Desenv.'">   
+                        <div style="margin:0; padding:10px" slot="body">
+
+                          <label class="fd-label">
+                            <p style="text-align:left">
+                                Quantidade de defeitos fechados com campo “Erro Detectável Em Desenvolvimento” igual a "Sim".
+                            </p>
+                            <p style="text-align:left">
+                                Este campo é imputado manualmente no ALM.
+                            </p>
+                            <p style="text-align:left">
+                                O valor de referência é 5% do total de defeitos fechados.
+                            </p>     
+                          </label>
+                        </div>
+                      </oiModal>
 
                       <button 
                           type="button" 
                           style="margin-top:3px"
                           class="btn btn-xs"
                           data-toggle="modal" 
-                          data-target="#detectableInDevModal">Analítico
-                      </button>                                
-                      <oiModal id="detectableInDevModal">
+                          data-target="#detectableInDevModalAnalitic">Analítico
+                      </button>
+                      <oiModal id="detectableInDevModalAnalitic" title="Detectáveis em Desenv. - Analítico" size="l">   
+                        <div style="margin:0; padding:10px" slot="body">
                           <oiShowAnalytical
-                              title="Analítico de 'Detectáveis em Desenv.'" 
                               :dataSource="detectableInDevFiltered"
                           ></oiShowAnalytical>
-                      </oiModal>                        
+                        </div>
+                      </oiModal>  
                   </div>
               </div>
             </center>          
@@ -3000,29 +3004,34 @@ chartDensityDevManuf<script>
                           data-toggle="modal" 
                           data-target="#reopenedRegrasModal">Regras
                       </button>
-                      <oiModal id="reopenedRegrasModal">
-                          <h4 style="margin-top:0; text-align:center"><strong>Regras para cálculo de 'Reabertos'</strong></h4>
-                          <p style="text-align:left">
-                              Quantidade de vezes em que os defeitos fechados passaram pelo Status "REOPEN", divididos pelo total de defeitos fechados multiplicados por 100.
-                          </p>
-                          <p style="text-align:left">
-                              O valor de referência é 5% do total de defeitos fechados.
-                          </p>
-                      </oiModal>     
+                      <oiModal id="reopenedRegrasModal" title="Regras para cálculo dos 'Reabertos'">   
+                        <div style="margin:0; padding:10px" slot="body">
+
+                          <label class="fd-label">
+                            <p style="text-align:left">
+                                Quantidade de vezes em que os defeitos fechados passaram pelo Status "REOPEN", divididos pelo total de defeitos fechados multiplicados por 100.
+                            </p>
+                            <p style="text-align:left">
+                                O valor de referência é 5% do total de defeitos fechados.
+                            </p>
+                          </label>
+                        </div>
+                      </oiModal>
 
                       <button 
                           type="button" 
                           style="margin-top:3px"
                           class="btn btn-xs"
                           data-toggle="modal" 
-                          data-target="#reopenedModal">Analítico
+                          data-target="#reopenedModalAnalitic">Analítico
                       </button>
-                      <oiModal id="reopenedModal">
+                      <oiModal id="reopenedModalAnalitic" title="Reabetos - Analítico" size="l">   
+                        <div style="margin:0; padding:10px" slot="body">
                           <oiShowAnalytical
-                              title="Analítico de 'Reabertos'" 
                               :dataSource="reopenedFiltered"
                           ></oiShowAnalytical>
-                      </oiModal> 
+                        </div>
+                      </oiModal>  
                   </div>    
               </div>    
             </center>          
@@ -3053,32 +3062,37 @@ chartDensityDevManuf<script>
                           data-toggle="modal" 
                           data-target="#noPredictionRegrasModal">Regras
                       </button>
-                      <oiModal id="noPredictionRegrasModal">
-                          <h4 style="margin-top:0; text-align:center"><strong>Regras para cálculo de 'Sem Prev. de Solução'</strong></h4>
-                          <p style="text-align:left">
-                              Quantidade de defeitos fechados, com o campo “Data Prevista Solução Defeito” vazio, divididos pelo total de defeitos fechados multiplicados por 100.
-                          </p>
-                          <p style="text-align:left">
-                              Este campo “Data Prevista Solução Defeito” é imputado manualmente no ALM.
-                          </p>
-                          <p style="text-align:left">
-                              O valor de referência é 5% do total de defeitos fechados.
-                          </p>
-                      </oiModal>    
+                      <oiModal id="noPredictionRegrasModal" title="Regras para cálculo de 'Sem Prev. de Solução'">   
+                        <div style="margin:0; padding:10px" slot="body">
+
+                          <label class="fd-label">
+                            <p style="text-align:left">
+                                Quantidade de defeitos fechados com o campo “Data Prevista Solução Defeito” vazio, divididos pelo total de defeitos fechados multiplicados por 100.
+                            </p>
+                            <p style="text-align:left">
+                                Este campo “Data Prevista Solução Defeito” é imputado manualmente no ALM.
+                            </p>
+                            <p style="text-align:left">
+                                O valor de referência é 5% do total de defeitos fechados.
+                            </p>
+                          </label>
+                        </div>
+                      </oiModal>
 
                       <button 
                           type="button" 
                           style="margin-top:3px"
                           class="btn btn-xs"
                           data-toggle="modal" 
-                          data-target="#noPredictionModal">Analítico
+                          data-target="#noPredictionModalAnalitic">Analítico
                       </button>
-                      <oiModal id="noPredictionModal">
+                      <oiModal id="noPredictionModalAnalitic" title="Sem Prev. de Solução - Analítico" size="l">   
+                        <div style="margin:0; padding:10px" slot="body">
                           <oiShowAnalytical
-                              title="Analítico de 'Sem Prev. de Solução'" 
                               :dataSource="noPredictionFiltered"
                           ></oiShowAnalytical>
-                      </oiModal>                     
+                        </div>
+                      </oiModal>  
                                           
                   </div> 
               </div> 
@@ -3103,5 +3117,9 @@ chartDensityDevManuf<script>
     padding: 3px;
     margin: 0;
     border: 0;
-  }    
+  }  
+  .fd-label {
+    font-weight: normal;
+    text-align: left;
+  }  
 </style>

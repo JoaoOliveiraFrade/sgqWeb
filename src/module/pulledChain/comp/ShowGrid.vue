@@ -57,7 +57,7 @@
         <tr>
             <td rowspan=3 style="white-space: nowrap; padding:0px; margin: 0px; border-top: 1px; padding-left: 0px; vertical-align: middle">
                 <oiEditButton v-if="currentUserCanEdit" :project="item"/>
-                <oiShowButton :project="item"/>
+                <oiShowButton v-if="!currentUserCanEdit" :project="item"/>
             </td>
             <td rowspan=3 style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
                 {{item.priorityGlobal}}

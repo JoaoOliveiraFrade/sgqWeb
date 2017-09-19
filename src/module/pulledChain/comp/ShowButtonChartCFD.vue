@@ -1,11 +1,17 @@
 selected<script>
+  import { mapActions } from 'vuex'
   import oiModal from '@/module/modal/comp/modal.vue'
   import oiShowChartCFD from './ShowChartCFD.vue'
 
   export default {
     name: 'ShowButtonChartCFD',
 
-    components: { oiModal, oiShowChartCFD }
+    components: { oiModal, oiShowChartCFD },
+
+    methods: {
+      ...mapActions('pulledChain', ['loadDataChartCFD'])
+    }
+
   }
 </script>
 
@@ -14,14 +20,15 @@ selected<script>
     <button  style="height:21px;"
         type="button"     
         class="btn btn-xs"
+        @click="loadDataChartCFD"
         data-toggle="modal" 
         data-target="#sfsdfsdsdf">
         <!--<span class="glyphicon glyphicon-object-align-bottom icon"></span>-->
         Gráfico CFD
     </button>
 
-    <oiModal id="sfsdfsdsdf" title="Cadeia Puxada">   
-      <div style="margin:0; padding:10px" slot="body">
+    <oiModal id="sfsdfsdsdf" title="Cadeia Puxada">    
+      <div style="margin:0px; padding:0px; border:0px" slot="body">
         <oiShowChartCFD/>
       </div>
     </oiModal>

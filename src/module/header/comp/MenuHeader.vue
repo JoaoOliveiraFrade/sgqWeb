@@ -83,20 +83,100 @@
             <a class="oi-menu">Cadeia Puxada</a>
         </router-link>
 
+
         <li class="dropdown">
-            <a class="oi-menu" @click="$emit('collapseMenuMobile')"
-                href="#"
-                onclick="window.open('http://sgq.intranet/Mobile_Monitor_Defeitos_Menu.aspx', 
-                    'newwindow', ''
-                ); 
-                return false;">Monit.Def.
-            </a>            
+            <a href="#" 
+                class="dropdown-toggle oi-menu" data-toggle="dropdown" 
+                role="button" aria-haspopup="true" aria-expanded="false">Indicadores<span class="caret"/>&nbsp;
+            </a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-submenu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-left:4px">Operacionais</a>
+                    <ul class="dropdown-menu">
+                        <router-link :to="{ name: 'indicatorOfDevelopment' }" tag="li">
+                            <a class="oi-menu">Desenvolvimento</a>
+                        </router-link>
+                        <router-link :to="{ name: 'indicatorTest' }" tag="li">
+                            <a class="oi-menu">Teste</a>
+                        </router-link>
+                    </ul>
+                </li>
+                <router-link :to="{ name: 'indicatorOfDevelopment' }" tag="li">
+                    <a class="oi-menu">Desempenho</a>
+                </router-link>
+            </ul>
         </li>
 
-        <router-link :to="{ name: 'defectMonitor' }" tag="li" @click.native="$emit('collapseMenuMobile')">
-          <a class="oi-menu">Monit.Def.2</a>
-        </router-link>
+        <li class="dropdown">
+            <a href="#" 
+                class="dropdown-toggle oi-menu" data-toggle="dropdown" 
+                role="button" aria-haspopup="true" aria-expanded="false">Monit.Def.<span class="caret"/>&nbsp;
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a class="oi-menu" @click="$emit('collapseMenuMobile')"
+                        href="#"
+                        onclick="window.open('http://sgq.intranet/Mobile_Monitor_Defeitos_Menu.aspx', 
+                            'newwindow', ''
+                        ); 
+                        return false;">Anterior
+                    </a>            
+                </li>
+                <router-link :to="{ name: 'defectMonitor' }" tag="li" @click.native="$emit('collapseMenuMobile')">
+                <a class="oi-menu">Novo</a>
+                </router-link>
+            </ul>
+        </li>
 
+
+
+
+<!--
+
+<a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu 2 <b class="caret"></b></a>
+<ul class="dropdown-menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+    <li class="divider"></li>
+    <li><a href="#">One more separated link</a></li>
+    <li class="dropdown-submenu">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+        <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li class="dropdown-submenu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-submenu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+-->
+
+
+
+
+<!--
         <li class="dropdown">
             <a href="#" 
                 class="dropdown-toggle oi-menu" data-toggle="dropdown" 
@@ -116,7 +196,7 @@
                 </router-link>
             </ul>
         </li>
-    
+-->    
 <!--
         <li class="dropdown">
             <a href="#" 
@@ -195,4 +275,52 @@
     font-size: 13px;
     font-weight: bold;
   }
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}  
 </style>

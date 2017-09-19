@@ -8,19 +8,13 @@
 
     components: { oiShowButtonChartCFD, oiShowGrid },
 
-    data () {
-      return {
-        filterTerm: ''
-      }
-    },
-
     computed: {
-      ...mapState('pulledChain', ['loading'])
+      ...mapState('pulledChain', ['loading', 'filterTerm'])
     },
 
     methods: {
       ...mapActions(['setFeatureName']),
-      ...mapActions('pulledChain', ['setFilterTerm'])
+      ...mapActions('pulledChain', ['load', 'setFilterTerm'])
     },
 
     mounted () {
@@ -37,18 +31,41 @@
     <div v-show="!loading" >
 
       <div class="row">
+
         <div class="col-xs-7">
           <input type="text" id="Filter"
             autofocus v-focus
             class="form-control" 
             style="margin: 0; padding-left: 5px; height:25px;"
             placeholder="Informe os filtros! Exemplo: desenv+comit+nov/2017"
-            v-model="filterTerm"
-            @keyup="setFilterTerm(filterTerm)"
-          />        
+            :value="filterTerm"
+            @keyup="setFilterTerm($event.target.value)"
+          />
         </div>
-        <oiShowButtonChartCFD />
-      </div>
+
+        <div class="col-xs-1 oi-well" v-show="filterTerm !== ''">
+          <button style="height:21px;"
+              type="button"     
+              class="btn btn-xs"
+              @click="setFilterTerm('')">
+              Limpar Filtros
+          </button>
+        </div>
+
+        <div class="col-xs-1 oi-well">
+          <button style="height:21px;"
+              type="button"     
+              class="btn btn-xs"
+              @click="load">
+              Refresh
+          </button>
+        </div>
+
+
+        <div class="col-xs-1  oi-well">
+          <oiShowButtonChartCFD/>
+        </div>
+    </div>
 
       <oiShowGrid style="margin-top: 3px"/>
 
