@@ -101,7 +101,7 @@
                         </router-link>
                     </ul>
                 </li>
-                <router-link :to="{ name: 'indicatorOfDevelopment' }" tag="li">
+                <router-link :to="{ name: 'indicatorAccomplishment' }" tag="li">
                     <a class="oi-menu">Desempenho</a>
                 </router-link>
             </ul>

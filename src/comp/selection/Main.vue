@@ -65,10 +65,10 @@
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
-        :data-target="'#modalEdit' + title.replace(' ', '').replace('.', '')">
+        :data-target="'#modalEdit' +  title.replaceAll(' ', '').replaceAll('.', '').replaceAll('(', '').replaceAll(')', '')">
         Seleção
     </button>
-    <oiModal :id="'modalEdit' + title.replace(' ', '').replace('.', '')" :title="'Seleção de ' + title" size="l">
+    <oiModal :id="'modalEdit' +  title.replaceAll(' ', '').replaceAll('.', '').replaceAll('(', '').replaceAll(')', '')" :title="'Seleção de ' + title" size="l">
       <oiEdit slot="body"
           :title="title"
           :data="data"
@@ -83,10 +83,10 @@
         v-show="hasSelected && isShowButtonSelected"
         class="btn btn-xs"
         data-toggle="modal" 
-        :data-target="'#modalShow' + title.replace(' ', '').replace('.', '')">
+        :data-target="'#modalShow' + title.replaceAll(' ', '').replaceAll('.', '').replaceAll('(', '').replaceAll(')', '')">
       {{selectedText}}
     </button>
-    <oiModal :id="'modalShow' + title.replace(' ', '').replace('.', '')" :title="title + ' ' + selectedText" size="l">
+    <oiModal :id="'modalShow' +  title.replaceAll(' ', '').replaceAll('.', '').replaceAll('(', '').replaceAll(')', '')" :title="title + ' ' + selectedText" size="l">
       <oiShow slot="body"
           :title="title"
           :data="selected_"

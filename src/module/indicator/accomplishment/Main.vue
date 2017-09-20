@@ -1,28 +1,29 @@
 <script>
   import { mapActions, mapState, mapGetters } from 'vuex'
 
-  import oiTestManufSelection from '@/module/testManuf/comp/Selection.vue'
-  import oiSystemSelectionOfTestManufs from '@/module/system/comp/SelectionOfTestManufs.vue'
-  import oiProjectSelectionOfTestManufsAndSystems from '@/module/project/comp/SelectionOfTestManufsAndSystems.vue'
-  import oiShowData from './comp/ShowData.vue'
+  import oiDevManufSelection from '@/module/devManuf/comp/SelectionOfQueue.vue'
+  import oiSelectionOfQueueFilteredDevManuf from '@/module/system/comp/SelectionOfQueueFilteredDevManuf.vue'
+  // import oiProjectSelectionOfDevManufsAndSystems from '@/module/project/comp/SelectionOfDevManufsAndSystems.vue'
+  // import oiShowData from './comp/ShowData.vue'
 
   export default {
-    name: 'indicatorTestMain',
+    name: 'indicatorAccomplishmentMain',
 
-    components: { oiTestManufSelection, oiSystemSelectionOfTestManufs, oiProjectSelectionOfTestManufsAndSystems, oiShowData },
+    // components: { oiDevManufSelection, oiSelectionOfQueueFilteredDevManuf, oiProjectSelectionOfDevManufsAndSystems, oiShowData },
+    components: { oiDevManufSelection, oiSelectionOfQueueFilteredDevManuf },
 
     computed: {
-      ...mapState('indicatorTest', ['selectedTestManufs', 'selectedSystems', 'selectedProjects']),
-      ...mapGetters('indicatorTest', ['showData'])
+      ...mapState('indicatorAccomplishment', ['selectedDevManufs', 'selectedSystems', 'selectedProjects']),
+      ...mapGetters('indicatorAccomplishment', ['showData'])
     },
 
     methods: {
       ...mapActions(['setFeatureName']),
-      ...mapActions('indicatorTest', ['setSelectedTestManufs', 'setSelectedSystems', 'setSelectedProjects'])
+      ...mapActions('indicatorAccomplishment', ['setSelectedDevManufs', 'setSelectedSystems', 'setSelectedProjects'])
     },
 
     mounted () {
-      this.setFeatureName('Indicadores de Teste')
+      this.setFeatureName('Indicadores de Desempenho')
     }
   }
 </script>
@@ -31,23 +32,24 @@
   <div class="container-fluid" style="padding-top: 10px">
 
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4">
-      <oiTestManufSelection
+      <oiDevManufSelection
         :isShowButtonSelected="true"
-        @onConfirm="setSelectedTestManufs"
+        @onConfirm="setSelectedDevManufs"
       />
     </div>
 
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
-      <oiSystemSelectionOfTestManufs v-show="selectedTestManufs.length > 0"
-        :testManufs="selectedTestManufs"
+      <oiSelectionOfQueueFilteredDevManuf v-show="selectedDevManufs.length > 0"
+        :devManufs="selectedDevManufs"
         :selectedSystems="selectedSystems"
-        @onConfirm="setSelectedSystems"
       />
     </div>
-    
+
+    <!--
+        @onConfirm="setSelectedSystems"
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
-      <oiProjectSelectionOfTestManufsAndSystems v-show="selectedSystems.length > 0"
-        :testManufs="selectedTestManufs"
+      <oiProjectSelectionOfDevManufsAndSystems v-show="selectedSystems.length > 0"
+        :devManufs="selectedDevManufs"
         :systems="selectedSystems"
         :selectedProjects="selectedProjects"
         @onConfirm="setSelectedProjects"
@@ -57,7 +59,7 @@
     <div class="row well-sm oi-well" style="padding-top: 30px" v-if="showData">
       <oiShowData/>
     </div>
-    
+    -->
   </div> 
 </template>
 

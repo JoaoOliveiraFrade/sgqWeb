@@ -1,5 +1,0 @@
-// export const setGroupers = 'grouperConsult/setGroupers'
-// export const setFilterTerm = 'grouperConsult/setFilterTerm'
-// export const setFilterProperties = 'grouperConsult/setFilterProperties'
-// export const setGrouper = 'grouperConsult/setGrouper'
-// export const setProjects = 'grouperConsult/setProjects'

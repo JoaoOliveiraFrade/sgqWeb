@@ -2,7 +2,7 @@
 // import { vuex as defectMonitor } from './defectMonitor'
 import { vuex as grouperConsult } from './grouperConsult'
 import { vuex as indicatorDevelopment } from './indicator/development'
-import { vuex as indicatorDevelopment2 } from './indicator/development.2'
+// import { vuex as indicatorDevelopment2 } from './indicator/development.2'
 import { vuex as indicatorProductivity } from './indicator/test/productivity'
 import { vuex as indicatorRateEvidRejected } from './indicator/test/rateEvidRejected'
 import { vuex as indicatorRateDefectUnfounded } from './indicator/test/rateDefectUnfounded'
@@ -13,6 +13,7 @@ import { vuex as defectStatus } from './defect/defectStatus'
 import { vuex as defectTrafficLight } from './defect/defectTrafficLight'
 import { vuex as defectMonitor } from './defect/defectMonitor'
 import { vuex as indicatorTest } from './indicator/test'
+import { vuex as indicatorAccomplishment } from './indicator/accomplishment'
 import { vuex as testManuf } from './testManuf'
 import { vuex as devManuf } from './devManuf'
 import { vuex as system } from './system'
@@ -35,13 +36,14 @@ export default {
 export default {
   grouperConsult,
   indicatorDevelopment,
-  indicatorDevelopment2,
+  // indicatorDevelopment2,
   indicatorProductivity,
   indicatorRateEvidRejected,
   indicatorRateDefectUnfounded,
   indicatorRateDefectUat,
   indicatorTestAverangeRetestHours,
   indicatorTest,
+  indicatorAccomplishment,
   defectQueue,
   defectStatus,
   defectTrafficLight,

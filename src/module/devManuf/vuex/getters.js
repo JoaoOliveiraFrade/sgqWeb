@@ -1,2 +1,2 @@
-export const devManufs = ({ devManufs }) => devManufs
-export const selectedDevManufs = ({ selectedDevManufs }) => selectedDevManufs
+// export const devManufs = ({ devManufs }) => devManufs
+// export const selectedDevManufs = ({ selectedDevManufs }) => selectedDevManufs

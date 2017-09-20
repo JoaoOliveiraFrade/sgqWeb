@@ -35,8 +35,9 @@ import { routes as grouperConsult } from './grouperConsult'
 import { routes as cadGrouper } from './cadGrouper'
 import { routes as cadProject } from './cadProject'
 import { routes as indicatorDevelopment } from './indicator/development'
-import { routes as indicatorDevelopment2 } from './indicator/development.2'
+// import { routes as indicatorDevelopment2 } from './indicator/development.2'
 import { routes as indicatorTest } from './indicator/test'
+import { routes as indicatorAccomplishment } from './indicator/accomplishment'
 import { routes as defectMonitor } from './defect/defectMonitor'
 import { routes as cep } from './cep'
 import { routes as count } from './count'
@@ -52,8 +53,9 @@ export default [
   ...cadGrouper,
   ...cadProject,
   ...indicatorDevelopment,
-  ...indicatorDevelopment2,
+  // ...indicatorDevelopment2,
   ...indicatorTest,
+  ...indicatorAccomplishment,
   ...defectMonitor,
   ...cep,
   ...count,

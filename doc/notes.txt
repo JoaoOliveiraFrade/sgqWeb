@@ -125,6 +125,7 @@ Max Pool Size=150;
 Min Pool Size=50;
 
 senha antiga: GT_prd@teste
+senha nova: bsh81Kzr
 Email: SDGM6001@oi.net.br
 
 Highchart 
@@ -148,6 +149,15 @@ Colocar no arquivo de host:
 -Servidor b: 10.58.178.72 sgqhml.intranet
 
 
+ALM 11
+=========================================================
+Usuário antigo: OI273945 
+Senha antiga: t1l1m5r#
+
+Usuário novo: SDGM6001 
+Senha nova: jfrade#171
+
+
 ALM 12
 =========================================================
 IP do Banco : 10.61.195.118 ou orahx04-scan.interno
@@ -157,3 +167,4 @@ Banco : qc12hml-h1
 banco: QC12HML
 Usuário : QCALM11
 Senha : tdtdtd
+

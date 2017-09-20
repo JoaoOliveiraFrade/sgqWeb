@@ -1,18 +1,30 @@
 import * as types from './mutationsTypes'
-import services from '@/module/devManuf/services'
+import services from '../services'
 
-export const loadDevManufs = ({ commit }) => {
-  services.getAll()
+export const load = ({ commit }) => {
+  services.load()
     .then(
       r => {
-        commit(types.devManufs, r.data)
+        commit(types.data, r.data)
       },
       e => console.log(e)
     )
 }
 
-export const setSelectedDevManufs = ({ commit, dispatch }, selectedDevManufs) => {
-  commit(types.selectedDevManufs, selectedDevManufs)
-  dispatch('loadSystemsByDevManufs', selectedDevManufs)
- // dispatch('setSelectedDevSystems', [])
+export const setSelected = ({ commit }, paramenter) => {
+  commit(types.selected, paramenter)
+}
+
+export const loadOfQueue = ({ commit }) => {
+  services.loadOfQueue()
+    .then(
+      r => {
+        commit(types.dataOfQueue, r.data)
+      },
+      e => console.log(e)
+    )
+}
+
+export const setSelectedOfQueue = ({ commit }, paramenter) => {
+  commit(types.selectedOfQueue, paramenter)
 }

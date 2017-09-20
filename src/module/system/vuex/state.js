@@ -1,5 +1,10 @@
 export default {
   data: [],
   ofTestManufs: [],
-  selected: []
+  selected: [],
+
+  devManufs: [],
+
+  ofQueueGroupDevManufs: [],
+  selectedOfQueue: []
 }

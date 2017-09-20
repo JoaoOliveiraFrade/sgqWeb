@@ -9,5 +9,16 @@ export default {
   },
   [types.ofTestManufs] (state, parameter) {
     state.ofTestManufs = parameter
+  },
+
+  [types.devManufs] (state, parameter) {
+    state.devManufs = parameter
+  },
+
+  [types.ofQueueGroupDevManufs] (state, parameter) {
+    state.ofQueueGroupDevManufs = parameter
+  },
+  [types.selectedOfQueue] (state, parameter) {
+    state.selectedOfQueue = parameter
   }
 }

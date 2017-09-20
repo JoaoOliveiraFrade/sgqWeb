@@ -31,3 +31,21 @@ export const setSelected = ({ commit, getters, dispatch }, selectedSystems) => {
 
   // dispatch('setSelectedProjects', [])
 }
+
+export const setDevManufs = ({ commit }, paramenter) => {
+  commit(types.devManufs, paramenter)
+}
+
+export const loadOfQueueGroupDevManufs = ({ commit }) => {
+  services.loadOfQueueGroupDevManufs()
+    .then(
+      r => {
+        commit(types.ofQueueGroupDevManufs, r.data)
+      },
+      e => console.log(e)
+    )
+}
+
+export const setSelectedOfQueue = ({ commit }, paramenter) => {
+  commit(types.selectedOfQueue, paramenter)
+}

@@ -1,4 +1,7 @@
 export default {
-  devManufs: [],
-  selectedDevManufs: []
+  data: [],
+  selected: [],
+
+  dataOfQueue: [],
+  selectedOfQueue: []
 }
