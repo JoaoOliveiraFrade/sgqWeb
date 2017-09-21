@@ -28,8 +28,6 @@
       'selectedSystems': {
         handler () {
           console.log('SelectionOfQueueFilteredDevManuf - watch - selectedSystems')
-          console.log(this.devManufs)
-          console.log('---')
           this.setSelectedOfQueue(this.selectedSystems)
         }
       }
@@ -46,8 +44,6 @@
 
     mounted () {
       console.log('SelectionOfQueueFilteredDevManuf - mounted')
-      console.log(this.devManufs)
-      console.log('---')
       this.loadOfQueueGroupDevManufs(this.devManufs)
       this.setDevManufs(this.devManufs)
       this.setSelectedOfQueue(this.selectedSystems)
