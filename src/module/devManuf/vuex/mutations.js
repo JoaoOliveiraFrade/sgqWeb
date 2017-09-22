@@ -6,12 +6,5 @@ export default {
   },
   [types.selected] (state, parameter) {
     state.selected = parameter
-  },
-
-  [types.dataOfQueue] (state, parameter) {
-    state.dataOfQueue = parameter
-  },
-  [types.selectedOfQueue] (state, parameter) {
-    state.selectedOfQueue = parameter
   }
 }

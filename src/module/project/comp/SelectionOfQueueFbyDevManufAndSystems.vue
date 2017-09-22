@@ -1,7 +1,6 @@
 <script>
-  import { mapActions, mapState, mapGetters } from 'vuex'
+  import { mapActions, mapState } from 'vuex'
   import oiSelection from './SelectionGridMult/Main.vue'
-  
 
   export default {
     name: 'ProjectSelectionOfQueueFbyDevManufAndSystems',
@@ -16,42 +15,30 @@
     },
 
     computed: {
-      ...mapState('project', ['devManufs', 'systems', 'listSubprojectDelivery']),
-      ...mapGetters('project', ['ofQueueFilteredDevManufs'])
+      ...mapState('project', ['ofDevManufsAndSystems', 'selected'])
     },
 
     watch: {
-      'devManufs': {
+      'systems': {
         handler () {
-          console.log('SelectionOfQueueFilteredDevManuf - watch - devManufs')
-          this.setDevManufs(this.devManufs)
-        }
-      },
-      'selectedSystems': {
-        handler () {
-          console.log('SelectionOfQueueFilteredDevManuf - watch - selectedSystems')
-          this.setSelectedOfQueue(this.selectedSystems)
+          this.loadOfQueueFbyDevManufsAndSystems({ devManufs: this.devManufs.map(i => i.id), systems: this.systems.map(i => i.id) })
+          this.setSelected(this.selectedProjects)
         }
       }
     },
 
     methods: {
-      ...mapActions('system', ['loadOfQueueGroupDevManufs', 'setDevManufs', 'setSelectedOfQueue']),
+      ...mapActions('project', ['loadOfQueueFbyDevManufsAndSystems', 'setSelected']),
 
       confirm (selected) {
-        this.setSelectedOfQueue(selected)
+        this.setSelected(selected)
         this.$emit('onConfirm', selected)
       }
     },
 
     mounted () {
-      console.log('SelectionOfQueueFilteredDevManuf - mounted')
-      this.setDevManufs(this.devManufs)
-      this.systems(this.systems)
+      this.loadOfQueueFbyDevManufsAndSystems({ devManufs: this.devManufs.map(i => i.id), systems: this.systems.map(i => i.id) })
       this.setSelected(this.selectedProjects)
-
-      this.loadSubprojectDeliveryOfQueueFbyDevManufAndSystem({ testManufs: this.testManufs.map(i => i.id), systems: this.systems.map(i => i.id) })
-      // this.loadFbySubprojectDelivery()
     }
   }
 </script>
@@ -59,7 +46,7 @@
 <template>
   <span>
     <oiSelection
-      :projects="ofTestManufsAndSystems"
+      :projects="ofDevManufsAndSystems"
       :selected="selected"
       @onConfirm="confirm"        
     />

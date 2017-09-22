@@ -12,14 +12,14 @@
     },
 
     computed: {
-      ...mapState('devManuf', ['dataOfQueue', 'selectedOfQueue'])
+      ...mapState('devManuf', ['data', 'selected'])
     },
 
     methods: {
-      ...mapActions('devManuf', ['loadOfQueue', 'setSelectedOfQueue']),
+      ...mapActions('devManuf', ['loadOfQueue', 'setSelected']),
 
       confirm (selected) {
-        this.setSelectedOfQueue(selected)
+        this.setSelected(selected)
         this.$emit('onConfirm', selected)
       }
     },
@@ -34,9 +34,9 @@
   <span>
     <oiSelection
       title="Fáb. Desenv. (agente)"
-      :data="dataOfQueue"
-      :selected="selectedOfQueue"
-      @onConfirm="confirm"        
+      :data="data"
+      :selected="selected"
+      @onConfirm="confirm"
     />
   </span>
 </template>

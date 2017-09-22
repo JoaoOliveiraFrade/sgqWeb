@@ -12,10 +12,5 @@ export default {
   filterTerm: '',
   selected: [],
 
-  loading: false,
-
-  devManufs: [],
-  systems: [],
-
-  listSubprojectDelivery: []
+  loading: false
 }

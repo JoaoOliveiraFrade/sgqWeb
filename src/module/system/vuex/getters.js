@@ -1,4 +1,4 @@
-export const ofQueueFilteredDevManufs = ({ devManufs, ofQueueGroupDevManufs }) => {
+export const ofQueueFbyDevManufs = ({ devManufs, ofQueueGroupDevManufs }) => {
   const list = ofQueueGroupDevManufs.filter((el) => {
     return devManufs.some((f) => f.id === el.devManuf)
   })

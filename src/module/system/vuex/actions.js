@@ -21,6 +21,16 @@ export const loadOfTestManufs = ({ commit }, selectedTestManufs) => {
     )
 }
 
+export const loadOfQueueGroupDevManufs = ({ commit }) => {
+  services.loadOfQueueGroupDevManufs()
+    .then(
+      r => {
+        commit(types.ofQueueGroupDevManufs, r.data)
+      },
+      e => console.log(e)
+    )
+}
+
 export const setSelected = ({ commit, getters, dispatch }, selectedSystems) => {
   commit(types.selected, selectedSystems)
 
@@ -34,18 +44,4 @@ export const setSelected = ({ commit, getters, dispatch }, selectedSystems) => {
 
 export const setDevManufs = ({ commit }, paramenter) => {
   commit(types.devManufs, paramenter)
-}
-
-export const loadOfQueueGroupDevManufs = ({ commit }) => {
-  services.loadOfQueueGroupDevManufs()
-    .then(
-      r => {
-        commit(types.ofQueueGroupDevManufs, r.data)
-      },
-      e => console.log(e)
-    )
-}
-
-export const setSelectedOfQueue = ({ commit }, paramenter) => {
-  commit(types.selectedOfQueue, paramenter)
 }

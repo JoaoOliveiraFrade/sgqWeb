@@ -17,8 +17,5 @@ export default {
 
   [types.ofQueueGroupDevManufs] (state, parameter) {
     state.ofQueueGroupDevManufs = parameter
-  },
-  [types.selectedOfQueue] (state, parameter) {
-    state.selectedOfQueue = parameter
   }
 }

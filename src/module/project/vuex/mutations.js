@@ -9,6 +9,10 @@ export default {
     state.ofTestManufsAndSystems = data
   },
 
+  [types.ofDevManufsAndSystems] (state, data) {
+    state.ofDevManufsAndSystems = data
+  },
+
   [types.filterTerm] (state, data) {
     state.filterTerm = data
   },
@@ -19,19 +23,5 @@ export default {
 
   [types.loading] (state, data) {
     state.loading = data
-  },
-
-// ----------
-
-  [types.devManufs] (state, parameter) {
-    state.devManufs = parameter
-  },
-
-  [types.systems] (state, parameter) {
-    state.systems = parameter
-  },
-
-  [types.listSubprojectDelivery] (state, parameter) {
-    state.listSubprojectDelivery = parameter
   }
 }

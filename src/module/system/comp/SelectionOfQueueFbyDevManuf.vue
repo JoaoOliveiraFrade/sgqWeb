@@ -3,7 +3,7 @@
   import oiSelection from '@/comp/selection/Main.vue'
 
   export default {
-    name: 'SystemSelectionOfQueueFilteredDevManuf',
+    name: 'SystemSelectionOfQueueFbyDevManuf',
 
     components: { oiSelection },
 
@@ -14,39 +14,39 @@
     },
 
     computed: {
-      ...mapState('system', ['ofDevManufs', 'selectedOfQueue']),
-      ...mapGetters('system', ['ofQueueFilteredDevManufs'])
+      ...mapState('system', ['selected']),
+      ...mapGetters('system', ['ofQueueFbyDevManufs'])
+    },
+
+    methods: {
+      ...mapActions('system', ['loadOfQueueGroupDevManufs', 'setDevManufs', 'setSelected']),
+
+      confirm (selected) {
+        this.setSelected(selected)
+        this.$emit('onConfirm', selected)
+      }
     },
 
     watch: {
       'devManufs': {
         handler () {
-          console.log('SelectionOfQueueFilteredDevManuf - watch - devManufs')
+          console.log('SystemSelectionOfQueueFbyDevManuf - watch - devManufs')
           this.setDevManufs(this.devManufs)
         }
       },
       'selectedSystems': {
         handler () {
-          console.log('SelectionOfQueueFilteredDevManuf - watch - selectedSystems')
-          this.setSelectedOfQueue(this.selectedSystems)
+          console.log('SystemSelectionOfQueueFbyDevManuf - watch - selectedSystems')
+          this.setSelected(this.selectedSystems)
         }
       }
     },
 
-    methods: {
-      ...mapActions('system', ['loadOfQueueGroupDevManufs', 'setDevManufs', 'setSelectedOfQueue']),
-
-      confirm (selected) {
-        this.setSelectedOfQueue(selected)
-        this.$emit('onConfirm', selected)
-      }
-    },
-
     mounted () {
-      console.log('SelectionOfQueueFilteredDevManuf - mounted')
-      this.loadOfQueueGroupDevManufs(this.devManufs)
+      console.log('SystemSelectionOfQueueFbyDevManuf - mounted')
+      this.loadOfQueueGroupDevManufs()
       this.setDevManufs(this.devManufs)
-      this.setSelectedOfQueue(this.selectedSystems)
+      this.setSelected(this.selectedSystems)
     }
   }
 </script>
@@ -55,8 +55,8 @@
   <span>
     <oiSelection
       title="Sistema (agente)"               
-      :data="ofQueueFilteredDevManufs"
-      :selected="selectedOfQueue"
+      :data="ofQueueFbyDevManufs"
+      :selected="selected"
       :isShowButtonSelected="isShowButtonSelected"
       gender="male"
       @onConfirm="confirm"

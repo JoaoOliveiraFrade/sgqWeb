@@ -5,4 +5,3 @@ export const ofTestManufs = 'ofTestManufs'
 export const devManufs = 'devManufs'
 
 export const ofQueueGroupDevManufs = 'ofQueueGroupDevManufs'
-export const selectedOfQueue = 'selectedOfQueue'

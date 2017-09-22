@@ -2,15 +2,15 @@
   import { mapActions, mapState, mapGetters } from 'vuex'
 
   import oiDevManufSelection from '@/module/devManuf/comp/SelectionOfQueue.vue'
-  import oiSelectionOfQueueFilteredDevManuf from '@/module/system/comp/SelectionOfQueueFilteredDevManuf.vue'
-  // import oiProjectSelectionOfDevManufsAndSystems from '@/module/project/comp/SelectionOfDevManufsAndSystems.vue'
+  import oiSelectionOfQueueFbyDevManuf from '@/module/system/comp/SelectionOfQueueFbyDevManuf.vue'
+  import oiProjectSelectionOfDevManufsAndSystems from '@/module/project/comp/SelectionOfQueueFbyDevManufAndSystems.vue'
   // import oiShowData from './comp/ShowData.vue'
 
   export default {
     name: 'indicatorAccomplishmentMain',
 
-    // components: { oiDevManufSelection, oiSelectionOfQueueFilteredDevManuf, oiProjectSelectionOfDevManufsAndSystems, oiShowData },
-    components: { oiDevManufSelection, oiSelectionOfQueueFilteredDevManuf },
+    // components: { oiDevManufSelection, oiSelectionOfQueueFbyDevManuf, oiProjectSelectionOfDevManufsAndSystems, oiShowData },
+    components: { oiDevManufSelection, oiSelectionOfQueueFbyDevManuf, oiProjectSelectionOfDevManufsAndSystems },
 
     computed: {
       ...mapState('indicatorAccomplishment', ['selectedDevManufs', 'selectedSystems', 'selectedProjects']),
@@ -39,7 +39,7 @@
     </div>
 
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
-      <oiSelectionOfQueueFilteredDevManuf v-show="selectedDevManufs.length > 0"
+      <oiSelectionOfQueueFbyDevManuf v-show="selectedDevManufs.length > 0"
         :devManufs="selectedDevManufs"
         :selectedSystems="selectedSystems"
         @onConfirm="setSelectedSystems"
@@ -47,6 +47,12 @@
     </div>
     
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
+      <oiProjectSelectionOfDevManufsAndSystems v-show="selectedSystems.length > 0"
+        :devManufs="selectedDevManufs"
+        :systems="selectedSystems"
+        :selectedProjects="selectedProjects"
+        @onConfirm="setSelectedProjects"
+      />
     </div>
 
     <!--

@@ -11,20 +11,16 @@ export const load = ({ commit }) => {
     )
 }
 
-export const setSelected = ({ commit }, paramenter) => {
-  commit(types.selected, paramenter)
-}
-
 export const loadOfQueue = ({ commit }) => {
   services.loadOfQueue()
     .then(
       r => {
-        commit(types.dataOfQueue, r.data)
+        commit(types.data, r.data)
       },
       e => console.log(e)
     )
 }
 
-export const setSelectedOfQueue = ({ commit }, paramenter) => {
-  commit(types.selectedOfQueue, paramenter)
+export const setSelected = ({ commit }, paramenter) => {
+  commit(types.selected, paramenter)
 }

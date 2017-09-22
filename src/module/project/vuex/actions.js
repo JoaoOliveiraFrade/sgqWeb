@@ -41,6 +41,24 @@ export const loadOfTestManufsAndSystems = ({ commit }, parameter) => {
     )
 }
 
+export const loadOfQueueFbyDevManufsAndSystems = ({ commit }, parameter) => {
+  console.log('loadOfQueueFbyDevManufsAndSystems')
+  console.log(parameter)
+  console.log('')
+  commit(types.loading, true)
+  services.loadOfQueueFbyDevManufsAndSystems(parameter)
+    .then(
+      r => {
+        commit(types.ofDevManufsAndSystems, r.data)
+        commit(types.loading, false)
+      },
+      e => {
+        console.log(e)
+        commit(types.loading, false)
+      }
+    )
+}
+
 export const setSelected = ({ commit }, paramenter) => {
   commit(types.selected, paramenter)
 }
@@ -59,34 +77,34 @@ export const setProjectFilterTerm = ({ commit }, filterTerm) => {
 //   }
 // }
 
-export const setDevManufs = ({ commit }, paramenter) => {
-  commit(types.devManufs, paramenter)
-}
+// export const setDevManufs = ({ commit }, paramenter) => {
+//   commit(types.devManufs, paramenter)
+// }
 
-export const loadSubprojectDeliveryOfQueueFbyDevManufAndSystem = ({ commit, dispatch }, paramenter) => {
-  services.loadSubprojectDeliveryOfQueueFbyDevManufAndSystem(paramenter)
-    .then(
-      r => {
-        commit(types.listSubprojectDelivery, r.data)
-        dispatch('loadFbySubprojectDelivery')
-      },
-      e => {
-        console.log(e)
-      }
-    )
-}
+// export const loadOfQueueGroupDevManufsAndSystems = ({ commit, dispatch }) => {
+//   services.loadOfQueueGroupDevManufsAndSystems()
+//     .then(
+//       r => {
+//         commit(types.listSubprojectDelivery, r.data)
+//         dispatch('loadFbySubprojectDelivery')
+//       },
+//       e => {
+//         console.log(e)
+//       }
+//     )
+// }
 
-export const loadFbySubprojectDelivery = ({ commit, state }) => {
-  commit(types.loading, true)
-  services.loadFbySubprojectDelivery(state.listSubprojectDelivery)
-    .then(
-      r => {
-        commit(types.data, r.data)
-        commit(types.loading, false)
-      },
-      e => {
-        console.log(e)
-        commit(types.loading, false)
-      }
-    )
-}
+// export const loadFbySubprojectDelivery = ({ commit, state }) => {
+//   commit(types.loading, true)
+//   services.loadFbySubprojectDelivery(state.listSubprojectDelivery)
+//     .then(
+//       r => {
+//         commit(types.data, r.data)
+//         commit(types.loading, false)
+//       },
+//       e => {
+//         console.log(e)
+//         commit(types.loading, false)
+//       }
+//     )
+// }
