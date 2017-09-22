@@ -1,21 +1,23 @@
 <script>
   import { mapActions, mapState, mapGetters } from 'vuex'
-  import oiSelection from '@/comp/selection/Main.vue'
+  import oiSelection from './SelectionGridMult/Main.vue'
+  
 
   export default {
-    name: 'SystemSelectionOfQueueFilteredDevManuf',
+    name: 'ProjectSelectionOfQueueFbyDevManufAndSystems',
 
     components: { oiSelection },
 
     props: {
       devManufs: { type: Array, default: () => [] },
-      selectedSystems: { type: Array, default: () => [] },
+      systems: { type: Array, default: () => [] },
+      selectedProjects: { type: Array, default: () => [] },
       isShowButtonSelected: { type: Boolean, default: true }
     },
 
     computed: {
-      ...mapState('system', ['ofDevManufs', 'selectedOfQueue']),
-      ...mapGetters('system', ['ofQueueFilteredDevManufs'])
+      ...mapState('project', ['devManufs', 'systems', 'listSubprojectDelivery']),
+      ...mapGetters('project', ['ofQueueFilteredDevManufs'])
     },
 
     watch: {
@@ -44,9 +46,12 @@
 
     mounted () {
       console.log('SelectionOfQueueFilteredDevManuf - mounted')
-      this.loadOfQueueGroupDevManufs(this.devManufs)
       this.setDevManufs(this.devManufs)
-      this.setSelectedOfQueue(this.selectedSystems)
+      this.systems(this.systems)
+      this.setSelected(this.selectedProjects)
+
+      this.loadSubprojectDeliveryOfQueueFbyDevManufAndSystem({ testManufs: this.testManufs.map(i => i.id), systems: this.systems.map(i => i.id) })
+      // this.loadFbySubprojectDelivery()
     }
   }
 </script>
@@ -54,12 +59,9 @@
 <template>
   <span>
     <oiSelection
-      title="Sistema (agente)"               
-      :data="ofQueueFilteredDevManufs"
-      :selected="selectedOfQueue"
-      :isShowButtonSelected="isShowButtonSelected"
-      gender="male"
-      @onConfirm="confirm"
+      :projects="ofTestManufsAndSystems"
+      :selected="selected"
+      @onConfirm="confirm"        
     />
   </span>
 </template>

@@ -22,6 +22,16 @@ export default {
     return resource.save(testManufsAndSystems)
   },
 
+  loadSubprojectDeliveryOfQueueFbyDevManufAndSystem (testManufsAndSystems) {
+    let resource = Resource.resource(paths.api + '/project/subprojectDeliveryOfQueueFbyDevManufAndSystem')
+    return resource.save(testManufsAndSystems)
+  },
+
+  loadFbySubprojectDelivery (projects) {
+    let resource = Resource.resource(paths.api + '/project/loadFbySubprojectDelivery')
+    return resource.save(projects)
+  },
+
   getProjects () {
     let resource = Resource.resource(paths.api + '/project/all')
     return resource.get()

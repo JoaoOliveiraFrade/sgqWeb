@@ -122,6 +122,20 @@ selected<script>
                 </th>                                
 
                 <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">
+                    <font size="2" class="text-nowrap">Proj.
+                        <a href="#" @click.prevent="setOrder('project')">
+                        </a>
+                    </font>
+                </th>
+
+                <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">
+                    <font size="2" class="text-nowrap">Nome
+                        <a href="#" @click.prevent="setOrder('name')">
+                        </a>
+                    </font>
+                </th>
+
+                <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">
                     <font size="2" class="text-nowrap">Rel.
                         <a href="#" @click.prevent="setOrder('release')">
                         </a>
@@ -134,19 +148,6 @@ selected<script>
                         </a>
                     </font>
                 </th style="padding:0">
-
-                <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">
-                    <font size="2" class="text-nowrap">Proj.
-                        <a href="#" @click.prevent="setOrder('project')">
-                        </a>
-                    </font>
-                </th>
-                <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">
-                    <font size="2" class="text-nowrap">Nome
-                        <a href="#" @click.prevent="setOrder('name')">
-                        </a>
-                    </font>
-                </th>
             </tr>
         </thead>
 
@@ -162,19 +163,19 @@ selected<script>
                 </td>
 
                 <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">
-                    <font size="2">{{project.release}}</font>
-                </td style="padding:0">
-
-                <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">
-                    <font size="2">{{project.classification}}</font>
-                </td style="padding:0">
-
-                <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">
                     <font size="2">{{project.subprojectDelivery}}</font>
                 </td style="padding:0">
 
                 <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">
                     <font size="2">{{project.name}}</font>
+                </td style="padding:0">
+
+                <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">
+                    <font size="2">{{project.release}}</font>
+                </td style="padding:0">
+
+                <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">
+                    <font size="2">{{project.classification}}</font>
                 </td style="padding:0">
             </tr>
         </tbody> 

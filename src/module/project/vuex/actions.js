@@ -58,3 +58,35 @@ export const setProjectFilterTerm = ({ commit }, filterTerm) => {
 //     commit(types.projectConfirmed, false)
 //   }
 // }
+
+export const setDevManufs = ({ commit }, paramenter) => {
+  commit(types.devManufs, paramenter)
+}
+
+export const loadSubprojectDeliveryOfQueueFbyDevManufAndSystem = ({ commit, dispatch }, paramenter) => {
+  services.loadSubprojectDeliveryOfQueueFbyDevManufAndSystem(paramenter)
+    .then(
+      r => {
+        commit(types.listSubprojectDelivery, r.data)
+        dispatch('loadFbySubprojectDelivery')
+      },
+      e => {
+        console.log(e)
+      }
+    )
+}
+
+export const loadFbySubprojectDelivery = ({ commit, state }) => {
+  commit(types.loading, true)
+  services.loadFbySubprojectDelivery(state.listSubprojectDelivery)
+    .then(
+      r => {
+        commit(types.data, r.data)
+        commit(types.loading, false)
+      },
+      e => {
+        console.log(e)
+        commit(types.loading, false)
+      }
+    )
+}

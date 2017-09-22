@@ -42,7 +42,11 @@
       <oiSelectionOfQueueFilteredDevManuf v-show="selectedDevManufs.length > 0"
         :devManufs="selectedDevManufs"
         :selectedSystems="selectedSystems"
+        @onConfirm="setSelectedSystems"
       />
+    </div>
+    
+    <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
     </div>
 
     <!--

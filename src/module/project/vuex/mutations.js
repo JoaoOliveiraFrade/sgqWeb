@@ -19,5 +19,19 @@ export default {
 
   [types.loading] (state, data) {
     state.loading = data
+  },
+
+// ----------
+
+  [types.devManufs] (state, parameter) {
+    state.devManufs = parameter
+  },
+
+  [types.systems] (state, parameter) {
+    state.systems = parameter
+  },
+
+  [types.listSubprojectDelivery] (state, parameter) {
+    state.listSubprojectDelivery = parameter
   }
 }

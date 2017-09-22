@@ -1,9 +1,9 @@
 export default {
   projectFilterProperties: [
-    {name: 'release'},
-    {name: 'classification'},
     {name: 'subprojectDelivery'},
-    {name: 'name'}
+    {name: 'name'},
+    {name: 'release'},
+    {name: 'classification'}
   ],
 
   data: [],
@@ -12,5 +12,10 @@ export default {
   filterTerm: '',
   selected: [],
 
-  loading: false
+  loading: false,
+
+  devManufs: [],
+  systems: [],
+
+  listSubprojectDelivery: []
 }

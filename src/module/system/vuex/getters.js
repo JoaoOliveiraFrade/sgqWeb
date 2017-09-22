@@ -1,5 +1,10 @@
 export const ofQueueFilteredDevManufs = ({ devManufs, ofQueueGroupDevManufs }) => {
-  return ofQueueGroupDevManufs.filter((el) => {
+  const list = ofQueueGroupDevManufs.filter((el) => {
     return devManufs.some((f) => f.id === el.devManuf)
-  }).map(m => ({id: m.system, name: m.system}))
+  })
+  .map(m => m.system)
+
+  const listUnique = list.filter((item, pos) => list.indexOf(item) === pos)
+
+  return listUnique.map(m => ({id: m, name: m}))
 }
