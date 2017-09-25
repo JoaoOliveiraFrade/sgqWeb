@@ -8,6 +8,7 @@ export default {
 
   data: [],
   ofTestManufsAndSystems: [],
+  ofDevManufsAndSystems: [],
 
   filterTerm: '',
   selected: [],

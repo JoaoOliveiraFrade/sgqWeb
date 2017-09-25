@@ -30,20 +30,17 @@
     watch: {
       'devManufs': {
         handler () {
-          console.log('SystemSelectionOfQueueFbyDevManuf - watch - devManufs')
           this.setDevManufs(this.devManufs)
         }
       },
       'selectedSystems': {
         handler () {
-          console.log('SystemSelectionOfQueueFbyDevManuf - watch - selectedSystems')
           this.setSelected(this.selectedSystems)
         }
       }
     },
 
     mounted () {
-      console.log('SystemSelectionOfQueueFbyDevManuf - mounted')
       this.loadOfQueueGroupDevManufs()
       this.setDevManufs(this.devManufs)
       this.setSelected(this.selectedSystems)

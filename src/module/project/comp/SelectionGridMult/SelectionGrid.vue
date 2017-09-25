@@ -1,5 +1,5 @@
 selected<script>
-  import { mapGetters, mapState } from 'vuex'
+  import { mapState, mapActions } from 'vuex'
 
   export default {
     name: 'SelectionGrid',
@@ -19,7 +19,7 @@ selected<script>
     },
 
     computed: {
-      ...mapGetters('project', ['projectFilterProperties']),
+      ...mapState('project', ['projectFilterProperties']),
       ...mapState('project', ['loading']),
 
       filteredByTerm () {
@@ -48,7 +48,7 @@ selected<script>
     },
 
     methods: {
-      // ...mapActions('project', ['setProjectFilterTerm', 'setSelectedProjects']),
+      ...mapActions('project', ['setProjectFilterTerm', 'setSelectedProjects']),
 
       selectAll: function () {
         this.selected_ = this.filteredByTerm

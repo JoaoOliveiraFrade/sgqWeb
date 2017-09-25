@@ -101,9 +101,17 @@
                         </router-link>
                     </ul>
                 </li>
-                <router-link :to="{ name: 'indicatorAccomplishment' }" tag="li">
-                    <a class="oi-menu">Desempenho</a>
-                </router-link>
+                <li class="dropdown-submenu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-left:4px">Desempenho</a>
+                    <ul class="dropdown-menu">
+                        <router-link :to="{ name: 'indicatorAccomplishmentQueue' }" tag="li">
+                            <a class="oi-menu">Taxa Defeitos Dentro SLA</a>
+                        </router-link>
+                        <router-link :to="{ name: 'indicatorAccomplishment' }" tag="li">
+                            <a class="oi-menu">Densidade Defeito</a>
+                        </router-link>
+                    </ul>
+                </li>
             </ul>
         </li>
 
