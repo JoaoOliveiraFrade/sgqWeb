@@ -1,13 +1,13 @@
 <script>
   import { mapActions, mapState } from 'vuex'
 
-  import oiRateDefectsWithinSLAShowRule from '@/module/indicator/accomplishment/rateDefectsWithinSLA/comp/ShowRule.vue'
-  import oiRateDefectsWithinSLAShowAnalytic from '@/module/indicator/accomplishment/rateDefectsWithinSLA/comp/ShowAnalytic.vue'
-  import oiRateDefectsWithinSLAShowChartGroupDevManuf from '@/module/indicator/accomplishment/rateDefectsWithinSLA/comp/ShowChartGroupDevManuf.vue'
-  import oiRateDefectsWithinSLAShowChartGroupTimeline from '@/module/indicator/accomplishment/rateDefectsWithinSLA/comp/ShowChartGroupTimeline.vue'
-  import oiRateDefectsWithinSLAShowChartTotal from '@/module/indicator/accomplishment/rateDefectsWithinSLA/comp/ShowChartTotal.vue'
+  import oiRateDefectsWithinSLAShowRule from '@/module/indicator/accomplishmentQueue/rateDefectsWithinSLA/comp/ShowRule.vue'
+  import oiRateDefectsWithinSLAShowAnalytic from '@/module/indicator/accomplishmentQueue/rateDefectsWithinSLA/comp/ShowAnalytic.vue'
+  import oiRateDefectsWithinSLAShowChartGroupDevManuf from '@/module/indicator/accomplishmentQueue/rateDefectsWithinSLA/comp/ShowChartGroupDevManuf.vue'
+  import oiRateDefectsWithinSLAShowChartGroupTimeline from '@/module/indicator/accomplishmentQueue/rateDefectsWithinSLA/comp/ShowChartGroupTimeline.vue'
+  import oiRateDefectsWithinSLAShowChartTotal from '@/module/indicator/accomplishmentQueue/rateDefectsWithinSLA/comp/ShowChartTotal.vue'
 
-  // import oiDefectDensityRule from '@/module/indicator/accomplishment/defectDensity/comp/ShowRule.vue'
+  // import oiDefectDensityRule from '@/module/indicator/accomplishmentQueue/defectDensity/comp/ShowRule.vue'
 
   export default {
     name: 'ShowData',
@@ -23,7 +23,7 @@
     },
 
     computed: {
-      ...mapState('indicatorAccomplishment', ['selectedProjects']),
+      ...mapState('indicatorAccomplishmentQueue', ['selectedProjects']),
       ...mapState('indicatorRateDefectsWithinSLA', { loadingRateDefectsWithinSLA: state => (state.loading) })
       // ...mapState('indicatorDefectDensity', { loadingDefectDensity: state => (state.loading) })
     },
@@ -56,7 +56,6 @@
   <div>
     <ul class="nav nav-tabs" style="margin-top:3px">
       <li class="active"><a data-toggle="tab" href="#rateDefectsWithinSLA" style="padding:4px">Taxa Defeitos Dentro SLA</a></li>
-      <li><a data-toggle="tab" href="#defectDensity" style="padding:4px">Densidade Defeitos</a></li>
     </ul>
 
     <div class="tab-content">
@@ -81,27 +80,6 @@
           </div>
         </div>
       </div>
-
-      <div id="rateDefectsWithinSLA" class="tab-pane fade in active" style="padding:0; margin:0; padding-top:5px;">
-        <div class="loader" v-show="loadDefectDensity" style="margin-top: 25px; margin-bottom: 25px"/>
-        <div class="row" v-show="!loadDefectDensity" style="margin:0; border:0; padding:0">
-          <oiDefectDensityRule style="text-align: left"/>
-          <!--<oiRateDefectsWithinSLAShowAnalytic style="text-align: left"/>-->
-
-          <hr style="margin-top: 2px; height: 1px; border: 0; box-shadow: 0 7px 7px -7px #d9d9d9 inset">
-
-          <div class="col-sm-4">
-            <!--<oiRateDefectsWithinSLAShowChartGroupDevManuf/>-->
-          </div>
-          <div class="col-sm-4">
-            <!--<oiRateDefectsWithinSLAShowChartGroupTimeline/>-->
-          </div>
-          
-          <div class="col-sm-4">
-            <!--<oiRateDefectsWithinSLAShowChartTotal/>-->
-          </div>
-        </div>
-      </div>      
 
     </div>
   </div>

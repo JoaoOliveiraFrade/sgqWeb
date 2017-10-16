@@ -1,15 +1,15 @@
 <script>
   import { mapActions, mapState, mapGetters } from 'vuex'
 
-  import oiDevManufSelection from '@/module/devManuf/comp/SelectionOfQueue.vue'
-  import oiSelectionOfQueueFbyDevManuf from '@/module/system/comp/SelectionOfQueueFbyDevManuf.vue'
-  import oiProjectSelectionOfDevManufsAndSystems from '@/module/project/comp/SelectionOfQueueFbyDevManufAndSystems.vue'
+  import oiDevManufSelection from '@/module/devManuf/comp/Selection.vue'
+  import oiSystemSelectionFbyDevManufs from '@/module/system/comp/SelectionFbyDevManufs.vue'
+  import oiProjectSelectionOfDevManufsAndSystems from '@/module/project/comp/SelectionOfDevManufFbyDevManufAndSystems.vue'
   import oiShowData from './comp/ShowData.vue'
 
   export default {
     name: 'indicatorAccomplishmentMain',
 
-    components: { oiDevManufSelection, oiSelectionOfQueueFbyDevManuf, oiProjectSelectionOfDevManufsAndSystems, oiShowData },
+    components: { oiDevManufSelection, oiSystemSelectionFbyDevManufs, oiProjectSelectionOfDevManufsAndSystems, oiShowData },
 
     computed: {
       ...mapState('indicatorAccomplishment', ['selectedDevManufs', 'selectedSystems', 'selectedProjects']),
@@ -22,7 +22,8 @@
     },
 
     mounted () {
-      this.setFeatureName('Indicadores de Desempenho')
+      this.setFeatureName('Indicadores de Desempenho - Densidade Defeito')
+      this.setSelectedDevManufs([])
     }
   }
 </script>
@@ -38,7 +39,7 @@
     </div>
 
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
-      <oiSelectionOfQueueFbyDevManuf v-show="selectedDevManufs.length > 0"
+      <oiSystemSelectionFbyDevManufs v-show="selectedDevManufs.length > 0"
         :devManufs="selectedDevManufs"
         :selectedSystems="selectedSystems"
         @onConfirm="setSelectedSystems"

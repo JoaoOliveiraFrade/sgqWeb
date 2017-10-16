@@ -1,5 +1,5 @@
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapState } from 'vuex'
   import Highcharts from 'highcharts'
   import chartTotalStandParam from '@/module/chart/comp/types/Total2'
 
@@ -7,61 +7,33 @@
     name: 'ShowChartTotal',
 
     computed: {
-      ...mapGetters('indicatorRateDefectsWithinSLA', ['total']),
-
-      // chartParam () {
-      //   let param = chartTotalStandParam
-
-      //   param.title.text = 'Total'
-      //   param.yAxis.title.text = 'Dentro<br>SLA'
-      //   // param.plotOptions.gauge.dataLabels.borderWidth = 0
-      //   param.plotOptions.gauge.dataLabels.useHTML = true
-      //   param.plotOptions.gauge.dataLabels.format = '<span style=font-size:9px><center>{point.y:.0f}</center>' + this.total.percWithinSLA + '%</span>'
-
-      //   if (this.total.qtyWithinSLA < this.total.qtyDefect) {
-      //     param.yAxis.max = this.total.qtyDefect
-      //     param.yAxis.plotBands = [
-      //       {from: 0, to: this.total.limitMinQty, color: '#FF3300'},
-      //       {from: this.total.limitMinQty, to: this.total.qtyDefect, color: '#00CC00'}
-      //     ]
-      //   } else {
-      //     param.yAxis.max = this.total.qtyWithinSLA
-      //     param.yAxis.plotBands = [
-      //       {from: 0, to: this.total.limitMinQty, color: '#00CC00'},
-      //       {from: this.total.limitMinQty, to: this.total.qtyWithinSLA, color: '#FF3300'}
-      //     ]
-      //   }
-
-      //   param.tooltip.pointFormat = '' +
-      //     'Dentro SLA: ' + this.total.qtyWithinSLA + ' (' + this.total.percWithinSLA + '%)<br>' +
-      //     'Limite Mínimo: ' + this.total.limitMinQty + ' (' + this.total.limitMinPerc + '%)<br>' +
-      //     'Defeito: ' + this.total.qtyDefect
-
-      //   param.series = [ { name: 'Total', colorByPoint: true, data: [ this.total.qtyWithinSLA ] } ]
-      //   return param
-      // }
+      ...mapGetters('indicatorDefectDensity', ['total']),
+      ...mapState('indicatorDefectDensity', ['limitAcceptablePerc', 'limitModeratePerc', 'limitHigh']),
 
       chartParam () {
         let param = chartTotalStandParam
 
         param.title.text = 'Total'
-        param.yAxis.title.text = 'Dentro<br>SLA'
+        param.yAxis.title.text = '%<br>Defeito'
         // param.plotOptions.gauge.dataLabels.borderWidth = 0
         param.plotOptions.gauge.dataLabels.useHTML = true
-        param.plotOptions.gauge.dataLabels.format = '<span style=font-size:9px><center>{point.y:.2f}%</center>' + this.total.qtyWithinSLA + '</span>'
+        // param.plotOptions.gauge.dataLabels.format = '<span style=font-size:9px><center>{point.y:.0f}%</center>' + this.total.qtyDefect + '/' + this.total.qtyCt + '</span>'
+        param.plotOptions.gauge.dataLabels.format = '<span style=font-size:11px><center>{point.y:.0f}%</center></span>'
 
         param.yAxis.max = 100
         param.yAxis.plotBands = [
-          {from: 0, to: this.total.limitMinPerc, color: '#FF3300'},
-          {from: this.total.limitMinPerc, to: 100, color: '#00CC00'}
+          {from: 0, to: this.limitAcceptablePerc, color: '#32CD32'},
+          {from: this.limitAcceptablePerc, to: this.limitModeratePerc, color: '#FF8C00'},
+          {from: this.limitModeratePerc, to: 100, color: '#FF4C4C'},
+          {from: this.limitHigh, to: 100, color: '#B20000'}
         ]
 
         param.tooltip.pointFormat = '' +
-          'Dentro SLA: ' + this.total.percWithinSLA + '% (' + this.total.qtyWithinSLA + ')<br>' +
-          'Limite Mínimo: ' + this.total.limitMinPerc + '% (' + this.total.limitMinQty + ')<br>' +
-          'Defeito: ' + this.total.qtyDefect
+          'Densidade: ' + this.total.density + '%<br>' +
+          'Defeito: ' + this.total.qtyDefect + '<br>' +
+          'CTs: ' + this.total.qtyCt
 
-        param.series = [ { name: 'Total', colorByPoint: true, data: [ this.total.percWithinSLA ] } ]
+        param.series = [ { name: 'Total', colorByPoint: true, data: [ this.total.density ] } ]
         return param
       }
     },

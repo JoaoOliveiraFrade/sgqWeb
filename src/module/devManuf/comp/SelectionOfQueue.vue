@@ -26,6 +26,7 @@
 
     mounted () {
       this.loadOfQueue()
+      this.setSelected([])
     }
   }
 </script>

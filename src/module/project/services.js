@@ -22,6 +22,11 @@ export default {
     return resource.save(testManufsAndSystems)
   },
 
+  loadOfDevManufFbyDevManufsAndSystems (devManufsAndSystems) {
+    let resource = Resource.resource(paths.api + '/project/ofDevManufFbyDevManufsAndSystems')
+    return resource.save(devManufsAndSystems)
+  },
+
   loadOfQueueFbyDevManufsAndSystems (testManufsAndSystems) {
     let resource = Resource.resource(paths.api + '/project/ofQueueFbyDevManufsAndSystems')
     return resource.save(testManufsAndSystems)

@@ -3,7 +3,7 @@ import { paths } from '@/environment'
 
 export default {
   load (parameter) {
-    let resource = Resource.resource(paths.api + '/indicatorAccomplishment/rateDefectsWithinSLA/fbyListDevManufSystemProject')
+    let resource = Resource.resource(paths.api + '/indicatorAccomplishmentQueue/rateDefectsWithinSLA/fbyListDevManufSystemProject')
     return resource.save(parameter)
   }
 }

@@ -7,42 +7,74 @@
     name: 'ShowChartGroupTimeline',
 
     computed: {
-      ...mapGetters('indicatorRateDefectsWithinSLA', ['groupTimeline']),
+      ...mapGetters('indicatorDefectDensity', ['groupTimeline']),
 
       chartParam () {
         let param = chartStandParam
 
         param.title.text = 'Temporal'
-        param.yAxis.title.text = '% Dentro SLA'
+        param.yAxis.title.text = '% Defeito'
 
         param.tooltip.headerFormat = ''
         param.tooltip.pointFormat = `
           <b>{point.monthYear}</b><br>
-          Dentro SLA Mês: {point.percWithinSLA:.2f}% ({point.qtyWithinSLA:.0f})<br>
-          Dentro SLA Acum: {point.percWithinSLAAcc:.2f}% ({point.qtyWithinSLAAcc:.0f})<br>
-          Limite Mínimo: {point.limitMinQty:.0f} ({point.limitMinPerc:.0f}%)<br>
-          Total Defeito: {point.qtyTotalDefect:.0f}
+          Densidade: {point.density:.2f}%<br>
+          Defeitos: {point.qtyDefect:.0f}<br>
+          CTs: {point.qtyCt:.0f}<br>
+          Aceitável: {point.limitAcceptablePerc:.0f}<br>
+          Moderada: {point.limitModeratePerc:.0f}<br>
+          Alta: {point.limitHigh:.0f}
           `
         param.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
         param.xAxis.categories = this.groupTimeline.map(i => i.monthYear)
 
-        param.colors = ['#FF3300', '#89A54E', '#4572A7']
+        // param.colors = ['#FF3300', '#89A54E', '#4572A7']
+        param.colors = ['#32CD32', '#FF8C00', '#FF0000', '#4682B4']
 
         param.series = [
           {
-            name: 'Limite Mínimo',
+            name: 'Aceitável',
             data: this.groupTimeline.map(i => (
               {
                 name: i.monthYear,
-                y: i.limitMinPerc,
-                qtyWithinSLA: i.qtyWithinSLA,
+                y: i.limitAcceptablePerc,
+                limitAcceptablePerc: i.limitAcceptablePerc,
+                limitModeratePerc: i.limitModeratePerc,
+                limitHigh: i.limitHigh,
                 monthYear: i.monthYear,
-                percWithinSLA: i.percWithinSLA,
-                qtyWithinSLAAcc: i.qtyWithinSLAAcc,
-                percWithinSLAAcc: i.percWithinSLAAcc,
-                qtyTotalDefect: i.qtyTotalDefect,
-                limitMinQty: i.limitMinQty,
-                limitMinPerc: i.limitMinPerc
+                density: i.density,
+                qtyDefect: i.qtyDefect,
+                qtyCt: i.qtyCt
+              }
+            ))
+          }, {
+            name: 'Moderada',
+            data: this.groupTimeline.map(i => (
+              {
+                name: i.monthYear,
+                y: i.limitModeratePerc,
+                limitAcceptablePerc: i.limitAcceptablePerc,
+                limitModeratePerc: i.limitModeratePerc,
+                limitHigh: i.limitHigh,
+                monthYear: i.monthYear,
+                density: i.density,
+                qtyDefect: i.qtyDefect,
+                qtyCt: i.qtyCt
+              }
+            ))
+          }, {
+            name: 'Alta',
+            data: this.groupTimeline.map(i => (
+              {
+                name: i.monthYear,
+                y: i.limitHigh,
+                limitAcceptablePerc: i.limitAcceptablePerc,
+                limitModeratePerc: i.limitModeratePerc,
+                limitHigh: i.limitHigh,
+                monthYear: i.monthYear,
+                density: i.density,
+                qtyDefect: i.qtyDefect,
+                qtyCt: i.qtyCt
               }
             ))
           }, {
@@ -50,31 +82,14 @@
             data: this.groupTimeline.map(i => (
               {
                 name: i.monthYear,
-                y: i.percWithinSLA,
+                y: i.density,
+                limitAcceptablePerc: i.limitAcceptablePerc,
+                limitModeratePerc: i.limitModeratePerc,
+                limitHigh: i.limitHigh,
                 monthYear: i.monthYear,
-                qtyWithinSLA: i.qtyWithinSLA,
-                percWithinSLA: i.percWithinSLA,
-                qtyWithinSLAAcc: i.qtyWithinSLAAcc,
-                percWithinSLAAcc: i.percWithinSLAAcc,
-                qtyTotalDefect: i.qtyTotalDefect,
-                limitMinQty: i.limitMinQty,
-                limitMinPerc: i.limitMinPerc
-              }
-            ))
-          }, {
-            name: 'Acumulado',
-            data: this.groupTimeline.map(i => (
-              {
-                name: i.monthYear,
-                y: i.percWithinSLAAcc,
-                monthYear: i.monthYear,
-                qtyWithinSLA: i.qtyWithinSLA,
-                percWithinSLA: i.percWithinSLA,
-                qtyWithinSLAAcc: i.qtyWithinSLAAcc,
-                percWithinSLAAcc: i.percWithinSLAAcc,
-                qtyTotalDefect: i.qtyTotalDefect,
-                limitMinQty: i.limitMinQty,
-                limitMinPerc: i.limitMinPerc
+                density: i.density,
+                qtyDefect: i.qtyDefect,
+                qtyCt: i.qtyCt
               }
             ))
           }

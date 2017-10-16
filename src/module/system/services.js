@@ -12,6 +12,11 @@ export default {
     return resource.save(testManufs)
   },
 
+  loadOfDevManufs (devManufs) {
+    let resource = Resource.resource(paths.api + '/system/ofDevManufs')
+    return resource.save(devManufs)
+  },
+
   loadOfQueueGroupDevManufs () {
     let resource = Resource.resource(paths.api + '/system/ofQueueGroupDevManufs')
     return resource.get()

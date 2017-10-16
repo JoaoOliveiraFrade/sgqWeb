@@ -4,33 +4,21 @@ export const groupDevManuf = ({data}) => {
     let index = result.findIndex(r => r.devManuf === d.devManuf)
     if (index > -1) {
       result[index].qtyDefect += d.qtyDefect
-      result[index].qtyWithinSLA += d.qtyWithinSLA
+      result[index].qtyCt += d.qtyCt
     } else {
       result.push({
         devManuf: d.devManuf,
 
         qtyDefect: d.qtyDefect,
-        qtyTotalDefect: 0,
-        percTotalDefect: 0,
-
-        qtyWithinSLA: d.qtyWithinSLA,
-        percWithinSLA: 0,
-        qtyTotalWithinSLA: 0,
-        percTotalDefectsWithinSLA: 0
+        qtyCt: d.qtyCt,
+        density: 0
       })
     }
   })
-  let qtyTotalDefect = result.reduce((sum, e) => sum + e.qtyDefect, 0)
-  let qtyTotalWithinSLA = result.reduce((sum, e) => sum + e.qtyWithinSLA, 0)
   result.forEach(r => {
-    r.qtyTotalDefect = qtyTotalDefect
-    r.percTotalDefect = parseFloat(parseFloat(r.qtyDefect / (qtyTotalDefect !== 0 ? qtyTotalDefect : 1) * 100).toFixed(2))
-
-    r.percWithinSLA = parseFloat(parseFloat(r.qtyWithinSLA / (r.qtyDefect ? r.qtyDefect : 1) * 100).toFixed(2))
-    r.qtyTotalWithinSLA = qtyTotalWithinSLA
-    r.percTotalDefectsWithinSLA = parseFloat(parseFloat(r.qtyWithinSLA / (qtyTotalWithinSLA !== 0 ? qtyTotalWithinSLA : 1) * 100).toFixed(2))
+    r.density = parseFloat(parseFloat(r.qtyDefect / (r.qtyCt !== 0 ? r.qtyCt : 1) * 100).toFixed(2))
   })
-  return result.filter(r => r.percWithinSLA > 0).sort((a, b) => a.percWithinSLA > b.percWithinSLA ? 1 : -1)
+  return result.filter(r => r.density > 0).sort((a, b) => a.density > b.density ? 1 : -1)
 }
 
 export const byDevManufGroupSystem = ({data}) => (devManuf) => {
@@ -41,32 +29,20 @@ export const byDevManufGroupSystem = ({data}) => (devManuf) => {
     let index = result.findIndex(r => r.system === p.system)
     if (index > -1) {
       result[index].qtyDefect += p.qtyDefect
-      result[index].qtyWithinSLA += p.qtyWithinSLA
+      result[index].qtyCt += p.qtyCt
     } else {
       result.push({
         system: p.system,
         qtyDefect: p.qtyDefect,
-        qtyTotalDefect: 0,
-        percTotalDefect: 0,
-
-        qtyWithinSLA: p.qtyWithinSLA,
-        percWithinSLA: 0,
-        qtyTotalWithinSLA: 0,
-        percTotalDefectsWithinSLA: 0
+        qtyCt: p.qtyCt,
+        density: 0
       })
     }
   })
-  let qtyTotalDefect = result.reduce((sum, e) => sum + e.qtyDefect, 0)
-  let qtyTotalWithinSLA = result.reduce((sum, e) => sum + e.qtyWithinSLA, 0)
   result.forEach(r => {
-    r.qtyTotalDefect = qtyTotalDefect
-    r.percTotalDefect = parseFloat(parseFloat(r.qtyDefect / (qtyTotalDefect !== 0 ? qtyTotalDefect : 1) * 100).toFixed(2))
-
-    r.percWithinSLA = parseFloat(parseFloat(r.qtyWithinSLA / (r.qtyDefect ? r.qtyDefect : 1) * 100).toFixed(2))
-    r.qtyTotalWithinSLA = qtyTotalWithinSLA
-    r.percTotalDefectsWithinSLA = parseFloat(parseFloat(r.qtyWithinSLA / (qtyTotalWithinSLA !== 0 ? qtyTotalWithinSLA : 1) * 100).toFixed(2))
+    r.density = parseFloat(parseFloat(r.qtyDefect / (r.qtyCt !== 0 ? r.qtyCt : 1) * 100).toFixed(2))
   })
-  return result.filter(r => r.percWithinSLA > 0).sort((a, b) => a.percWithinSLA > b.percWithinSLA ? 1 : -1)
+  return result.filter(r => r.density > 0).sort((a, b) => a.density > b.density ? 1 : -1)
 }
 
 export const filteredByChart = ({data, devManufSelected, systemSelected}) => {
@@ -79,47 +55,39 @@ export const filteredByChart = ({data, devManufSelected, systemSelected}) => {
   }
 }
 
-export const groupTimeline = ({limitMinPerc}, {filteredByChart, total}) => {
+export const groupTimeline = ({limitAcceptablePerc, limitModeratePerc, limitHigh}, {filteredByChart, total}) => {
   let result = []
   filteredByChart.filter(d => d.year !== '').forEach(d => {
     let index = result.findIndex(r => r.yearMonth === (d.year + d.month))
     if (index > -1) {
-      result[index].qtyWithinSLA += d.qtyWithinSLA
+      result[index].qtyDefect += d.qtyDefect
+      result[index].qtyCt += d.qtyCt
     } else {
       result.push({
         yearMonth: d.year + d.month,
         monthYear: d.month + '/' + d.year,
-        qtyWithinSLA: d.qtyWithinSLA,
-        percWithinSLA: 0,
-        qtyWithinSLAAcc: 0,
-        percWithinSLAAcc: 0,
-        qtyTotalDefect: total.qtyDefect,
-        limitMinPerc: limitMinPerc,
-        limitMinQty: 0
+        qtyDefect: d.qtyDefect,
+        qtyCt: d.qtyCt,
+        density: 0,
+        limitAcceptablePerc: limitAcceptablePerc,
+        limitModeratePerc: limitModeratePerc,
+        limitHigh: limitHigh
       })
     }
   })
-  let qtyWithinSLAAcc = 0
   result.forEach(r => {
-    r.percWithinSLA = parseFloat(parseFloat(r.qtyWithinSLA / (total.qtyDefect !== 0 ? total.qtyDefect : 1) * 100).toFixed(2))
-    r.limitMinQty = Math.round(total.qtyDefect * limitMinPerc / 100)
-
-    qtyWithinSLAAcc = qtyWithinSLAAcc + r.qtyWithinSLA
-    r.qtyWithinSLAAcc = qtyWithinSLAAcc
-    r.percWithinSLAAcc = parseFloat(parseFloat(qtyWithinSLAAcc / (total.qtyDefect !== 0 ? total.qtyDefect : 1) * 100).toFixed(2))
+    r.density = parseFloat(parseFloat(r.qtyDefect / (r.qtyCt !== 0 ? r.qtyCt : 1) * 100).toFixed(2))
   })
   return result.sort((a, b) => a.yearMonth > b.yearMonth ? 1 : -1)
 }
 
-export const total = ({limitMinPerc}, {filteredByChart}) => {
+export const total = ({state}, {filteredByChart}) => {
   let qtyDefect = filteredByChart.reduce((sum, e) => sum + e.qtyDefect, 0)
-  let qtyWithinSLA = filteredByChart.reduce((sum, e) => sum + e.qtyWithinSLA, 0)
+  let qtyCt = filteredByChart.reduce((sum, e) => sum + e.qtyCt, 0)
   return {
     qtyDefect,
-    qtyWithinSLA,
-    percWithinSLA: Number((qtyWithinSLA / (qtyDefect !== 0 ? qtyDefect : 1) * 100).toFixed(2)),
-    limitMinQty: Math.round(qtyDefect * limitMinPerc / 100),
-    limitMinPerc
+    qtyCt,
+    density: Number((qtyDefect / (qtyCt !== 0 ? qtyCt : 1) * 100).toFixed(2))
   }
 }
 

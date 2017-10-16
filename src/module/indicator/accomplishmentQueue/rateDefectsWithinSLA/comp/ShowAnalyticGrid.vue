@@ -56,7 +56,7 @@
             </th>
 
             <th style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
-                <font size="2" class="text-nowrap">Qte Dentro SLA
+                <font size="2" class="text-nowrap">Dentro SLA
                     <a href="#" @click.prevent="setOrder('Failed')">
                     </a>
                 </font>

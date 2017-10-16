@@ -2,27 +2,28 @@
   import { mapActions, mapState, mapGetters } from 'vuex'
 
   import oiDevManufSelection from '@/module/devManuf/comp/SelectionOfQueue.vue'
-  import oiSelectionOfQueueFbyDevManuf from '@/module/system/comp/SelectionOfQueueFbyDevManuf.vue'
+  import oiSelectionOfQueueFbyDevManufs from '@/module/system/comp/SelectionOfQueueFbyDevManufs.vue'
   import oiProjectSelectionOfDevManufsAndSystems from '@/module/project/comp/SelectionOfQueueFbyDevManufAndSystems.vue'
   import oiShowData from './comp/ShowData.vue'
 
   export default {
-    name: 'indicatorAccomplishmentMain',
+    name: 'indicatorAccomplishmentQueueMain',
 
-    components: { oiDevManufSelection, oiSelectionOfQueueFbyDevManuf, oiProjectSelectionOfDevManufsAndSystems, oiShowData },
+    components: { oiDevManufSelection, oiSelectionOfQueueFbyDevManufs, oiProjectSelectionOfDevManufsAndSystems, oiShowData },
 
     computed: {
-      ...mapState('indicatorAccomplishment', ['selectedDevManufs', 'selectedSystems', 'selectedProjects']),
-      ...mapGetters('indicatorAccomplishment', ['showData'])
+      ...mapState('indicatorAccomplishmentQueue', ['selectedDevManufs', 'selectedSystems', 'selectedProjects']),
+      ...mapGetters('indicatorAccomplishmentQueue', ['showData'])
     },
 
     methods: {
       ...mapActions(['setFeatureName']),
-      ...mapActions('indicatorAccomplishment', ['setSelectedDevManufs', 'setSelectedSystems', 'setSelectedProjects'])
+      ...mapActions('indicatorAccomplishmentQueue', ['setSelectedDevManufs', 'setSelectedSystems', 'setSelectedProjects'])
     },
 
     mounted () {
-      this.setFeatureName('Indicadores de Desempenho')
+      this.setFeatureName('Indicadores de Desempenho - Taxa Def. Dentro SLA')
+      this.setSelectedDevManufs([])
     }
   }
 </script>
@@ -38,7 +39,7 @@
     </div>
 
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
-      <oiSelectionOfQueueFbyDevManuf v-show="selectedDevManufs.length > 0"
+      <oiSelectionOfQueueFbyDevManufs v-show="selectedDevManufs.length > 0"
         :devManufs="selectedDevManufs"
         :selectedSystems="selectedSystems"
         @onConfirm="setSelectedSystems"

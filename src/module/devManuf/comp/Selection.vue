@@ -12,11 +12,11 @@
     },
 
     computed: {
-      ...mapState('DevManuf', ['data', 'selected'])
+      ...mapState('devManuf', ['data', 'selected'])
     },
 
     methods: {
-      ...mapActions('DevManuf', ['load', 'setSelected']),
+      ...mapActions('devManuf', ['load', 'setSelected']),
 
       confirm (selected) {
         this.setSelected(selected)
@@ -26,6 +26,7 @@
 
     mounted () {
       this.load()
+      this.setSelected([])
     }
   }
 </script>

@@ -1,6 +1,6 @@
 selected<script>
   import oiModal from '@/module/modal/comp/modal.vue'
-  import oiRateDefectsWithinSLAShowAnalyticGrid from '@/module/indicator/accomplishment/rateDefectsWithinSLA/comp/ShowAnalyticGrid.vue'
+  import oiRateDefectsWithinSLAShowAnalyticGrid from '@/module/indicator/accomplishmentQueue/rateDefectsWithinSLA/comp/ShowAnalyticGrid.vue'
 
   export default {
     name: 'ShowAnalytic',

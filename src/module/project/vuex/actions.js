@@ -41,6 +41,21 @@ export const loadOfTestManufsAndSystems = ({ commit }, parameter) => {
     )
 }
 
+export const loadOfDevManufFbyDevManufsAndSystems = ({ commit }, parameter) => {
+  commit(types.loading, true)
+  services.loadOfDevManufFbyDevManufsAndSystems(parameter)
+    .then(
+      r => {
+        commit(types.data, r.data)
+        commit(types.loading, false)
+      },
+      e => {
+        console.log(e)
+        commit(types.loading, false)
+      }
+    )
+}
+
 export const loadOfQueueFbyDevManufsAndSystems = ({ commit }, parameter) => {
   commit(types.loading, true)
   services.loadOfQueueFbyDevManufsAndSystems(parameter)

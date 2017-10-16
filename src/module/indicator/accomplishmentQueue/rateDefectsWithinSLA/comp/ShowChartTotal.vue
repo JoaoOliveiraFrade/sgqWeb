@@ -45,10 +45,10 @@
         let param = chartTotalStandParam
 
         param.title.text = 'Total'
-        param.yAxis.title.text = 'Dentro<br>SLA'
+        param.yAxis.title.text = '%<br>Dentro<br>SLA'
         // param.plotOptions.gauge.dataLabels.borderWidth = 0
         param.plotOptions.gauge.dataLabels.useHTML = true
-        param.plotOptions.gauge.dataLabels.format = '<span style=font-size:9px><center>{point.y:.2f}%</center>' + this.total.qtyWithinSLA + '</span>'
+        param.plotOptions.gauge.dataLabels.format = '<span style=font-size:9px><center>{point.y:.0f}%</center>' + this.total.qtyWithinSLA + '</span>'
 
         param.yAxis.max = 100
         param.yAxis.plotBands = [

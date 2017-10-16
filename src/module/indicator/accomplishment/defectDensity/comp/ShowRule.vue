@@ -20,13 +20,11 @@ selected<script>
     <oiModal id="rateDefectsWithinSLAShowRule" title="Regra">   
       <div style="margin:0; padding:10px" slot="body">
         <label class="fd-label">
-          São considerados os defeitos CLOSE e de CONSTRUÇÃO, das etapas de TI, UAT, TRG e DEV.<br>
+          Defeitos (CLOSED de CONSTRUÇÃO) divididos pelos CTs (PASSED diferentes de MASSA), multiplicado por 100.<br>
           <br>
-          No Cálculo do SLA, são computados os tempos dos status IN_PROGESS, PENDENT (PROGRESS) e REOPEN.<br>
+          São considerados somente defeitos e CTs das etapas de TI e UAT.<br>
           <br>
-          No gráfico Temporal, os defeitos são contabilizadas no mês/ano em que eles estiveram os status considerados.<br>
-          <br>
-          São desconsideradas as Fáb. de desenv. com o conteúdo: '', 'OI','LÍDER TÉCNICO', 'ÁREA DE NEGÓCIOS', 'ÁREA USUÁRIA', 'AUTOMAÇÃO', 'ENGENHARIA', 'OI (API)' e 'OI (APLICATIVO)'.<br>
+          No gráfico Temporal, os defeitos são contabilizadas no mês/ano de fechamento. Já os Cts, são contabilizadas no mês/ano da primeira execução PASSED.<br>
         </label>
       </div>
     </oiModal>

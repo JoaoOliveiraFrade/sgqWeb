@@ -1,11 +1,11 @@
 selected<script>
   import oiModal from '@/module/modal/comp/modal.vue'
-  import oiRateDefectsWithinSLAShowAnalyticGrid from '@/module/indicator/accomplishment/rateDefectsWithinSLA/comp/ShowAnalyticGrid.vue'
+  import oiDefectDensityShowAnalyticGrid from '@/module/indicator/accomplishment/defectDensity/comp/ShowAnalyticGrid.vue'
 
   export default {
     name: 'ShowAnalytic',
 
-    components: { oiModal, oiRateDefectsWithinSLAShowAnalyticGrid }
+    components: { oiModal, oiDefectDensityShowAnalyticGrid }
   }
 </script>
 
@@ -15,13 +15,13 @@ selected<script>
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
-        data-target="#rateDefectsWithinSLAShowAnalytic">
+        data-target="#defectDensityShowAnalytic">
         Analítico
     </button>
 
-    <oiModal id="rateDefectsWithinSLAShowAnalytic" title="Taxa Defeito Dentro do SLA - Analítico" size="l">   
+    <oiModal id="defectDensityShowAnalytic" title="Densidade Defeito - Analítico" size="l">   
       <div style="margin:0; padding:10px" slot="body">
-        <oiRateDefectsWithinSLAShowAnalyticGrid/>
+        <oiDefectDensityShowAnalyticGrid/>
       </div>
     </oiModal>
   </span>
