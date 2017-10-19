@@ -11,7 +11,7 @@
     components: { oiShowGridProject },
 
     computed: {
-      ...mapGetters(['grouper', 'grouperProjects'])
+      ...mapGetters(['grouper', 'grouperProjects', 'grouperProjectsTotal', 'grouperProjectsPlanned', 'grouperProjectsRealized'])
     },
 
     /*
@@ -70,7 +70,7 @@
           </div>
       </div>
       
-      <div class="col-sm-11" style="margin:0; border:0; padding:5px">
+      <div class="col-sm-8" style="margin:0; border:0; padding:5px">
         <div>
           <label class="fd-label">Nome:</label>
         </div>
@@ -78,6 +78,33 @@
           <label class="fd-content" v-html="grouper.name"/>
         </div>
       </div>
+
+      <div class="col-sm-1" style="margin:0; border:0; padding:5px">
+        <div>
+          <label class="fd-label">Previsto:</label>
+        </div>
+        <div>
+          <label class="fd-content">{{grouperProjectsPlanned}} ({{Math.round(grouperProjectsPlanned / (grouperProjectsTotal > 0 ? grouperProjectsTotal : 1) * 100)}}%)</label>
+        </div>
+      </div>
+
+      <div class="col-sm-1" style="margin:0; border:0; padding:5px">
+        <div>
+          <label class="fd-label">Realizado:</label>
+        </div>
+        <div>
+          <label class="fd-content">{{grouperProjectsRealized}} ({{Math.round(grouperProjectsRealized / (grouperProjectsTotal > 0 ? grouperProjectsTotal : 1) * 100)}}%)</label>
+        </div>
+      </div>      
+
+      <div class="col-sm-1" style="margin:0; border:0; padding:5px">
+        <div>
+          <label class="fd-label">GAP:</label>
+        </div>
+        <div>
+          <label class="fd-content">{{(grouperProjectsPlanned - grouperProjectsRealized) < 0 ? 0 : grouperProjectsPlanned - grouperProjectsRealized}}</label>
+        </div>
+      </div>      
 
       <div class="col-xs-12" style="margin:0; border:0; padding:5px" v-show="grouper.type === 'STATUS'">
         <div>
