@@ -1,28 +1,28 @@
 <script>
   import { mapActions, mapState, mapGetters } from 'vuex'
 
-  import oiDevManufSelection from '@/module/devManuf/comp/SelectionOfQueue.vue'
-  import oiSelectionOfQueueFbyDevManufs from '@/module/system/comp/SelectionOfQueueFbyDevManufs.vue'
-  import oiProjectSelectionOfDevManufsAndSystems from '@/module/project/comp/SelectionOfQueueFbyDevManufAndSystems.vue'
+  import oiDevManufSelection from '@/module/devManuf/comp/Selection.vue'
+  import oiSystemSelectionFbyDevManufs from '@/module/system/comp/SelectionFbyDevManufs.vue'
+  import oiProjectSelectionOfDevManufsAndSystems from '@/module/project/comp/SelectionOfDevManufFbyDevManufAndSystems.vue'
   import oiShowData from './comp/ShowData.vue'
 
   export default {
-    name: 'indicatorAccomplishmentQueueMain',
+    name: 'indicatorPerfDefectOfTSInTI',
 
-    components: { oiDevManufSelection, oiSelectionOfQueueFbyDevManufs, oiProjectSelectionOfDevManufsAndSystems, oiShowData },
+    components: { oiDevManufSelection, oiSystemSelectionFbyDevManufs, oiProjectSelectionOfDevManufsAndSystems, oiShowData },
 
     computed: {
-      ...mapState('indicatorAccomplishmentQueue', ['selectedDevManufs', 'selectedSystems', 'selectedProjects']),
-      ...mapGetters('indicatorAccomplishmentQueue', ['showData'])
+      ...mapState('indicatorPerfDefectOfTSInTI', ['selectedDevManufs', 'selectedSystems', 'selectedProjects']),
+      ...mapGetters('indicatorPerfDefectOfTSInTI', ['showData'])
     },
 
     methods: {
       ...mapActions(['setFeatureName']),
-      ...mapActions('indicatorAccomplishmentQueue', ['setSelectedDevManufs', 'setSelectedSystems', 'setSelectedProjects'])
+      ...mapActions('indicatorPerfDefectOfTSInTI', ['setSelectedDevManufs', 'setSelectedSystems', 'setSelectedProjects'])
     },
 
     mounted () {
-      this.setFeatureName('Ind. de Desempenho - Defeito Dentro SLA')
+      this.setFeatureName('Ind. de Desempenho - Defeito de TS em TI')
       this.setSelectedDevManufs([])
     }
   }
@@ -39,7 +39,7 @@
     </div>
 
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
-      <oiSelectionOfQueueFbyDevManufs v-show="selectedDevManufs.length > 0"
+      <oiSystemSelectionFbyDevManufs v-show="selectedDevManufs.length > 0"
         :devManufs="selectedDevManufs"
         :selectedSystems="selectedSystems"
         @onConfirm="setSelectedSystems"
@@ -55,9 +55,7 @@
       />
     </div>
 
-    <div class="row well-sm oi-well" style="padding-top: 30px" v-if="showData">
-      <oiShowData/>
-    </div>
+    <oiShowData/>
   </div> 
 </template>
 

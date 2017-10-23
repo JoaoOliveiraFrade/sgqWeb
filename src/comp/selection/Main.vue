@@ -59,7 +59,7 @@
 </script>
 
 <template>
-  <span style="margin:0; border:0; padding:0">
+  <span style="margin:0; border:0; padding-top:0">
     <label class="fd-label" v-text="title">:</label>
     <button 
         type="button"     
@@ -106,6 +106,7 @@
     border: 0; 
     padding: 0; 
     padding-left: 5px; 
+    padding-top: 1px; 
     color: gray;
   }
   hr {

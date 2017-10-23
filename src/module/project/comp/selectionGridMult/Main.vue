@@ -42,6 +42,7 @@
     border: 0; 
     padding: 0; 
     padding-left: 5px; 
+    padding-top: 1px; 
     color: gray;
   }
 </style>

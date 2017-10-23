@@ -79,10 +79,6 @@
             </ul>
         </li>
 
-        <router-link :to="{ name: 'pulledChain' }" tag="li" @click.native="$emit('collapseMenuMobile')">
-            <a class="oi-menu">Cadeia Puxada</a>
-        </router-link>
-
 
         <li class="dropdown">
             <a href="#" 
@@ -104,16 +100,23 @@
                 <li class="dropdown-submenu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-left:4px">Desempenho</a>
                     <ul class="dropdown-menu">
-                        <router-link :to="{ name: 'indicatorAccomplishmentQueue' }" tag="li">
-                            <a class="oi-menu">Taxa Def. Dentro SLA</a>
-                        </router-link>
                         <router-link :to="{ name: 'indicatorAccomplishment' }" tag="li">
                             <a class="oi-menu">Densidade Defeito</a>
+                        </router-link>
+                        <router-link :to="{ name: 'indicatorAccomplishmentQueue' }" tag="li">
+                            <a class="oi-menu">Defeito Dentro SLA</a>
+                        </router-link>
+                        <router-link :to="{ name: 'indicatorPerfDefectOfTSInTI' }" tag="li">
+                            <a class="oi-menu">Defeito de TS em TI</a>
                         </router-link>
                     </ul>
                 </li>
             </ul>
         </li>
+
+        <router-link :to="{ name: 'pulledChain' }" tag="li" @click.native="$emit('collapseMenuMobile')">
+            <a class="oi-menu">Cadeia Puxada</a>
+        </router-link>
 
         <li class="dropdown">
             <a href="#" 

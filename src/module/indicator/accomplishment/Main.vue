@@ -22,7 +22,7 @@
     },
 
     mounted () {
-      this.setFeatureName('Indicadores de Desempenho - Densidade Defeito')
+      this.setFeatureName('Ind. de Desempenho - Densidade Defeito')
       this.setSelectedDevManufs([])
     }
   }

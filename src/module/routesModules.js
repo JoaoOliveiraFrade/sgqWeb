@@ -1,44 +1,12 @@
-/*
-import { routes as home } from './home'
-import { routes as releases } from './releases'
-import { routes as project } from './project'
-import { routes as grouper } from './grouper'
-import { routes as trg } from './trg'
-import { routes as dashboard } from './dashboard'
-import { routes as defectMonitor } from './defectMonitor'
-import { routes as indicatorOfDevelopment } from './indicatorOfDevelopment'
-import { routes as bptCadastroStatus } from './bptCadastroStatus'
-import { routes as bptValidacaoPlano } from './bptValidacaoPlano'
-import { routes as bptAcompanhamentoExecucao } from './bptAcompanhamentoExecucao'
-import { routes as cadProjects } from './cadProjects'
-import { routes as auth } from './auth'
-export default [
-  ...home,
-  ...releases,
-  ...project,
-  ...grouper,
-  ...trg,
-  ...dashboard,
-  ...defectMonitor,
-  ...indicatorOfDevelopment,
-  ...bptCadastroStatus,
-  ...bptValidacaoPlano,
-  ...bptAcompanhamentoExecucao,
-  ...cadGroupers,
-  ...cadProjects,
-  ...auth
-]
-*/
-
 import { routes as projectConsult } from './projectConsult'
 import { routes as grouperConsult } from './grouperConsult'
 import { routes as cadGrouper } from './cadGrouper'
 import { routes as cadProject } from './cadProject'
-import { routes as indicatorDevelopment } from './indicator/development'
+import { routes as indicatorDev } from './indicator/dev'
 import { routes as indicatorTest } from './indicator/test'
 import { routes as indicatorAccomplishmentQueue } from './indicator/accomplishmentQueue'
 import { routes as indicatorAccomplishment } from './indicator/accomplishment'
-// import { routes as indicatorDefectDensity } from './indicator/accomplishment/defectDensity'
+import { routes as indicatorPerfDefectOfTSInTI } from './indicator/perf/defectOfTSInTI'
 import { routes as defectMonitor } from './defect/defectMonitor'
 import { routes as cep } from './cep'
 import { routes as count } from './count'
@@ -53,11 +21,11 @@ export default [
   ...grouperConsult,
   ...cadGrouper,
   ...cadProject,
-  ...indicatorDevelopment,
+  ...indicatorDev,
   ...indicatorTest,
   ...indicatorAccomplishmentQueue,
   ...indicatorAccomplishment,
-  // ...indicatorDefectDensity,
+  ...indicatorPerfDefectOfTSInTI,
   ...defectMonitor,
   ...cep,
   ...count,
