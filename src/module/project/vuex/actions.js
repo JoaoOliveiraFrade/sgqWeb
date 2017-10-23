@@ -26,12 +26,12 @@ export const load = ({ commit }) => {
 //     )
 // }
 
-export const loadOfTestManufsAndSystems = ({ commit }, parameter) => {
+export const loadFbyDevManufsAndSystems = ({ commit }, parameter) => {
   commit(types.loading, true)
-  services.loadOfTestManufsAndSystems(parameter)
+  services.loadFbyDevManufsAndSystems(parameter)
     .then(
       r => {
-        commit(types.ofTestManufsAndSystems, r.data)
+        commit(types.data, r.data)
         commit(types.loading, false)
       },
       e => {
@@ -41,12 +41,12 @@ export const loadOfTestManufsAndSystems = ({ commit }, parameter) => {
     )
 }
 
-export const loadOfDevManufFbyDevManufsAndSystems = ({ commit }, parameter) => {
+export const loadOfTestManufsAndSystems = ({ commit }, parameter) => {
   commit(types.loading, true)
-  services.loadOfDevManufFbyDevManufsAndSystems(parameter)
+  services.loadOfTestManufsAndSystems(parameter)
     .then(
       r => {
-        commit(types.data, r.data)
+        commit(types.ofTestManufsAndSystems, r.data)
         commit(types.loading, false)
       },
       e => {

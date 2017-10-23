@@ -14,7 +14,7 @@
     <div class="row well well-sm oi-well">
       <div class="col-xs-2 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
-          <label class="fd-label">Project:</label><br>
+          <label class="fd-label">Projeto:</label><br>
           <label class="fd-content">{{defect.project}}</label>
         </div>
       </div>

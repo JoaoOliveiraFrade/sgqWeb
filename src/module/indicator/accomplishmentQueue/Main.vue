@@ -3,13 +3,13 @@
 
   import oiDevManufSelection from '@/module/devManuf/comp/SelectionOfQueue.vue'
   import oiSelectionOfQueueFbyDevManufs from '@/module/system/comp/SelectionOfQueueFbyDevManufs.vue'
-  import oiProjectSelectionOfDevManufsAndSystems from '@/module/project/comp/SelectionOfQueueFbyDevManufAndSystems.vue'
+  import oiProjectSelectionFbyDevManufsAndSystems from '@/module/project/comp/SelectionOfQueueFbyDevManufAndSystems.vue'
   import oiShowData from './comp/ShowData.vue'
 
   export default {
     name: 'indicatorAccomplishmentQueueMain',
 
-    components: { oiDevManufSelection, oiSelectionOfQueueFbyDevManufs, oiProjectSelectionOfDevManufsAndSystems, oiShowData },
+    components: { oiDevManufSelection, oiSelectionOfQueueFbyDevManufs, oiProjectSelectionFbyDevManufsAndSystems, oiShowData },
 
     computed: {
       ...mapState('indicatorAccomplishmentQueue', ['selectedDevManufs', 'selectedSystems', 'selectedProjects']),
@@ -22,7 +22,7 @@
     },
 
     mounted () {
-      this.setFeatureName('Ind. de Desempenho - Defeito Dentro SLA')
+      this.setFeatureName('Ind. Desempenho - Defeito Dentro SLA')
       this.setSelectedDevManufs([])
     }
   }
@@ -47,7 +47,7 @@
     </div>
     
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
-      <oiProjectSelectionOfDevManufsAndSystems v-show="selectedSystems.length > 0"
+      <oiProjectSelectionFbyDevManufsAndSystems v-show="selectedSystems.length > 0"
         :devManufs="selectedDevManufs"
         :systems="selectedSystems"
         :selectedProjects="selectedProjects"

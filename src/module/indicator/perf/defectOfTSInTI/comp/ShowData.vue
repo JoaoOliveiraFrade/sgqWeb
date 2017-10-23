@@ -19,8 +19,8 @@
     },
 
     computed: {
-      ...mapState('indicatorPerfDefectOfTSInTI', ['selectedProjects', 'loading'])
       // ...mapState('indicatorDefectDensity', { loadingDefectDensity: state => (state.loading) })
+      ...mapState('indicatorPerfDefectOfTSInTI', ['selectedProjects', 'loading'])
     },
 
     methods: {
@@ -31,16 +31,16 @@
     watch: {
       'selectedProjects': {
         handler () {
-          console.log('watch')
+          console.log('ShowData - watch')
           this.load()
         }
       }
-    },
-
-    mounted () {
-      console.log('mounted')
-      this.load()
     }
+
+    // mounted () {
+    //   console.log('ShowData - mounted')
+    //   this.load()
+    // }
   }
 </script>
 

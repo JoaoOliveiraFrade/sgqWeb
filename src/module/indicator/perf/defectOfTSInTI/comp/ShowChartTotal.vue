@@ -25,7 +25,7 @@
           {from: 0, to: this.acceptableLimit, color: '#32CD32'},
           // {from: this.acceptableLimit, to: this.limitModeratePerc, color: '#FF8C00'},
           // {from: this.limitModeratePerc, to: 100, color: '#FF4C4C'},
-          {from: this.acceptableLimit, to: 100, color: '#FF4C4C'}
+          {from: this.acceptableLimit, to: 100, color: '#FF3300'}
         ]
 
         param.tooltip.pointFormat = '' +

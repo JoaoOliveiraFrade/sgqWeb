@@ -12,8 +12,7 @@ import { vuex as defectTrafficLight } from './defect/defectTrafficLight'
 import { vuex as defectMonitor } from './defect/defectMonitor'
 import { vuex as indicatorAccomplishmentQueue } from './indicator/accomplishmentQueue'
 import { vuex as indicatorRateDefectsWithinSLA } from './indicator/accomplishmentQueue/rateDefectsWithinSLA'
-import { vuex as indicatorAccomplishment } from './indicator/accomplishment'
-import { vuex as indicatorDefectDensity } from './indicator/accomplishment/defectDensity'
+import { vuex as indicatorPerfDefectDensity } from './indicator/perf/defectDensity'
 import { vuex as indicatorPerfDefectOfTSInTI } from './indicator/perf/defectOfTSInTI'
 import { vuex as testManuf } from './testManuf'
 import { vuex as devManuf } from './devManuf'
@@ -37,8 +36,7 @@ export default {
   indicatorTestAverangeRetestHours,
   indicatorAccomplishmentQueue,
   indicatorRateDefectsWithinSLA,
-  indicatorAccomplishment,
-  indicatorDefectDensity,
+  indicatorPerfDefectDensity,
   indicatorPerfDefectOfTSInTI,
   defectQueue,
   defectStatus,

@@ -9,7 +9,7 @@
 
     props: {
       devManufs: { type: Array, default: () => [] },
-      selectedSystems: { type: Array, default: () => [] },
+      preSelected: { type: Array, default: () => [] },
       isShowButtonSelected: { type: Boolean, default: true }
     },
 
@@ -21,7 +21,7 @@
       'devManufs': {
         handler () {
           this.loadOfDevManufs(this.devManufs)
-          this.setSelected(this.selectedSystems)
+          this.setSelected(this.preSelected)
         }
       }
     },
@@ -38,7 +38,7 @@
 
     mounted () {
       this.loadOfDevManufs(this.devManufs)
-      this.setSelected(this.selectedSystems)
+      this.setSelected(this.preSelected)
     }
   }
 </script>

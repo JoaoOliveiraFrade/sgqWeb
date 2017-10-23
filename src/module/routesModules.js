@@ -5,7 +5,7 @@ import { routes as cadProject } from './cadProject'
 import { routes as indicatorDev } from './indicator/dev'
 import { routes as indicatorTest } from './indicator/test'
 import { routes as indicatorAccomplishmentQueue } from './indicator/accomplishmentQueue'
-import { routes as indicatorAccomplishment } from './indicator/accomplishment'
+import { routes as indicatorPerfDefectDensity } from './indicator/perf/defectDensity'
 import { routes as indicatorPerfDefectOfTSInTI } from './indicator/perf/defectOfTSInTI'
 import { routes as defectMonitor } from './defect/defectMonitor'
 import { routes as cep } from './cep'
@@ -24,7 +24,7 @@ export default [
   ...indicatorDev,
   ...indicatorTest,
   ...indicatorAccomplishmentQueue,
-  ...indicatorAccomplishment,
+  ...indicatorPerfDefectDensity,
   ...indicatorPerfDefectOfTSInTI,
   ...defectMonitor,
   ...cep,

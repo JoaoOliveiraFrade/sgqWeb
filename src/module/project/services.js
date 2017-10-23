@@ -17,14 +17,14 @@ export default {
     return resource.get()
   },
 
+  loadFbyDevManufsAndSystems (devManufsAndSystems) {
+    let resource = Resource.resource(paths.api + '/project/fbyDevManufsAndSystems')
+    return resource.save(devManufsAndSystems)
+  },
+
   loadOfTestManufsAndSystems (testManufsAndSystems) {
     let resource = Resource.resource(paths.api + '/project/ofTestManufsAndSystems')
     return resource.save(testManufsAndSystems)
-  },
-
-  loadOfDevManufFbyDevManufsAndSystems (devManufsAndSystems) {
-    let resource = Resource.resource(paths.api + '/project/ofDevManufFbyDevManufsAndSystems')
-    return resource.save(devManufsAndSystems)
   },
 
   loadOfQueueFbyDevManufsAndSystems (testManufsAndSystems) {

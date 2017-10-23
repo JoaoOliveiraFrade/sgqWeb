@@ -3,13 +3,13 @@
 
   import oiDevManufSelection from '@/module/devManuf/comp/Selection.vue'
   import oiSystemSelectionFbyDevManufs from '@/module/system/comp/SelectionFbyDevManufs.vue'
-  import oiProjectSelectionOfDevManufsAndSystems from '@/module/project/comp/SelectionOfDevManufFbyDevManufAndSystems.vue'
+  import oiProjectSelectionFbyDevManufsAndSystems from '@/module/project/comp/SelectionFbyDevManufAndSystems.vue'
   import oiShowData from './comp/ShowData.vue'
 
   export default {
     name: 'indicatorPerfDefectOfTSInTI',
 
-    components: { oiDevManufSelection, oiSystemSelectionFbyDevManufs, oiProjectSelectionOfDevManufsAndSystems, oiShowData },
+    components: { oiDevManufSelection, oiSystemSelectionFbyDevManufs, oiProjectSelectionFbyDevManufsAndSystems, oiShowData },
 
     computed: {
       ...mapState('indicatorPerfDefectOfTSInTI', ['selectedDevManufs', 'selectedSystems', 'selectedProjects']),
@@ -22,8 +22,8 @@
     },
 
     mounted () {
-      this.setFeatureName('Ind. de Desempenho - Defeito de TS em TI')
-      this.setSelectedDevManufs([])
+      this.setFeatureName('Ind. Desempenho - Defeito de TS em TI')
+      // this.setSelectedDevManufs([])
     }
   }
 </script>
@@ -33,7 +33,7 @@
 
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4">
       <oiDevManufSelection
-        :isShowButtonSelected="true"
+        :preSelected="selectedDevManufs"
         @onConfirm="setSelectedDevManufs"
       />
     </div>
@@ -41,16 +41,16 @@
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
       <oiSystemSelectionFbyDevManufs v-show="selectedDevManufs.length > 0"
         :devManufs="selectedDevManufs"
-        :selectedSystems="selectedSystems"
+        :preSelected="selectedSystems"
         @onConfirm="setSelectedSystems"
       />
     </div>
     
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
-      <oiProjectSelectionOfDevManufsAndSystems v-show="selectedSystems.length > 0"
+      <oiProjectSelectionFbyDevManufsAndSystems v-show="selectedSystems.length > 0"
         :devManufs="selectedDevManufs"
         :systems="selectedSystems"
-        :selectedProjects="selectedProjects"
+        :preSelected="selectedProjects"
         @onConfirm="setSelectedProjects"
       />
     </div>

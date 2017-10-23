@@ -8,7 +8,8 @@
     components: { oiSelection },
 
     props: {
-      isShowButtonSelected: {type: Boolean}
+      isShowButtonSelected: {type: Boolean},
+      preSelected: { type: Array, default: () => [] }
     },
 
     computed: {
@@ -19,14 +20,14 @@
       ...mapActions('devManuf', ['load', 'setSelected']),
 
       confirm (selected) {
-        this.setSelected(selected)
+        this.setSelected(this.preSelected)
         this.$emit('onConfirm', selected)
       }
     },
 
     mounted () {
       this.load()
-      this.setSelected([])
+      this.setSelected(this.preSelected)
     }
   }
 </script>

@@ -4,7 +4,6 @@ import services from '../services'
 export const setSelectedDevManufs = ({ commit }, selected) => {
   commit(types.selectedDevManufs, selected)
   commit(types.selectedSystems, [])
-  commit(types.selectedProjects, [])
 }
 
 export const setSelectedSystems = ({ commit }, selected) => {
@@ -17,11 +16,9 @@ export const setSelectedProjects = ({ commit }, selected) => {
 }
 
 export const load = ({ commit, state, rootState }) => {
-  console.log('load')
   if (state.selectedDevManufs.length === 0 ||
     state.selectedSystems.length === 0 ||
     state.selectedProjects.length === 0) {
-    commit(types.data, [])
     return
   }
 

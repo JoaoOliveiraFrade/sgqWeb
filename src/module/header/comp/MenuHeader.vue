@@ -86,31 +86,85 @@
                 role="button" aria-haspopup="true" aria-expanded="false">Indicadores<span class="caret"/>&nbsp;
             </a>
             <ul class="dropdown-menu">
+
                 <li class="dropdown-submenu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-left:4px">Operacionais</a>
                     <ul class="dropdown-menu">
-                        <router-link :to="{ name: 'indicatorOfDevelopment' }" tag="li">
-                            <a class="oi-menu">Desenvolvimento</a>
-                        </router-link>
-                        <router-link :to="{ name: 'indicatorTest' }" tag="li">
-                            <a class="oi-menu">Teste</a>
-                        </router-link>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-left:4px">Desenvolvimento</a>
+                            <ul class="dropdown-menu" style="width:190px">
+                                <router-link :to="{ name: 'indicatorTest' }" tag="li">
+                                    <a class="oi-menu">Tempo Médio Defeito</a>
+                                </router-link>
+                                <router-link :to="{ name: 'indicatorTest' }" tag="li">
+                                    <a class="oi-menu">Defeito C/Class. Errada</a>
+                                </router-link>
+                                <router-link :to="{ name: 'indicatorTest' }" tag="li">
+                                    <a class="oi-menu">Defeito de TS em TI</a>
+                                </router-link>
+                                <router-link :to="{ name: 'indicatorTest' }" tag="li">
+                                    <a class="oi-menu">Defeito Reaberto</a>
+                                </router-link>
+                                <router-link :to="{ name: 'indicatorTest' }" tag="li">
+                                    <a class="oi-menu">Defeito S/Prev.Solução </a>
+                                </router-link>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-left:4px">Teste</a>
+                            <ul class="dropdown-menu" style="width:260px">
+                            <!--
+                                <router-link :to="{ name: 'indicatorOfDevelopment' }" tag="li">
+                                    <a class="oi-menu">Produtividade</a>
+                                </router-link>
+                            -->
+                                <router-link :to="{ name: 'indicatorTest' }" tag="li">
+                                    <a class="oi-menu">Taxa Rejeição Evidência</a>
+                                </router-link>
+                                <router-link :to="{ name: 'indicatorTest' }" tag="li">
+                                    <a class="oi-menu">Taxa Defefeito Improcedente</a>
+                                </router-link>
+                                <router-link :to="{ name: 'indicatorTest' }" tag="li">
+                                    <a class="oi-menu">Taxa Defefeito UAT</a>
+                                </router-link>
+                                <router-link :to="{ name: 'indicatorTest' }" tag="li">
+                                    <a class="oi-menu">Tempo Médio Resteste Defefeito</a>
+                                </router-link>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
+
                 <li class="dropdown-submenu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-left:4px">Desempenho</a>
                     <ul class="dropdown-menu">
-                        <router-link :to="{ name: 'indicatorAccomplishment' }" tag="li">
-                            <a class="oi-menu">Densidade Defeito</a>
-                        </router-link>
-                        <router-link :to="{ name: 'indicatorAccomplishmentQueue' }" tag="li">
-                            <a class="oi-menu">Defeito Dentro SLA</a>
-                        </router-link>
-                        <router-link :to="{ name: 'indicatorPerfDefectOfTSInTI' }" tag="li">
-                            <a class="oi-menu">Defeito de TS em TI</a>
-                        </router-link>
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-left:4px">Desenvolvimento</a>
+                            <ul class="dropdown-menu" style="width: 210px">
+                                <router-link :to="{ name: 'indicatorPerfDefectDensity' }" tag="li">
+                                    <a class="oi-menu">Densidade Defeito</a>
+                                </router-link>
+                                <router-link :to="{ name: 'indicatorAccomplishmentQueue' }" tag="li">
+                                    <a class="oi-menu">Defeito Dentro SLA (agente)</a>
+                                </router-link>
+                                <router-link :to="{ name: 'indicatorPerfDefectOfTSInTI' }" tag="li">
+                                    <a class="oi-menu">Defeito de TS em TI</a>
+                                </router-link>
+                                <!--
+                                <router-link :to="{ name: 'indicatorPerfDefectOfTSInTIByAgent' }" tag="li">
+                                    <a class="oi-menu">Defeito de TS em TI (agente)</a>
+                                </router-link>
+                                -->
+                            </ul>
+                        </li>
+
+                        <li class="dropdown-submenu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-left:4px">Teste</a>
+                        </li>
                     </ul>
                 </li>
+
             </ul>
         </li>
 

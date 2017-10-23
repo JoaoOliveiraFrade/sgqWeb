@@ -22,16 +22,16 @@
           % Detectável em TS: {point.percDetectableInTS:.2f}%<br>
           Qte Detectável em TS: {point.qtyDetectableInTS:.0f}<br>
           Qte Total: {point.qtyTotal:.0f}<br>
-          Limite Aceitável: {point.acceptableLimit:.0f}%
+          Limite Máx. Aceitável: {point.acceptableLimit:.0f}%
           `
         param.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
         param.xAxis.categories = this.groupTimeline.map(i => i.monthYear)
 
-        param.colors = ['#FF0000', '#4682B4']
+        param.colors = ['#FF3300', '#4682B4']
 
         param.series = [
           {
-            name: 'Limite Aceitável',
+            name: 'Limite Máx. Aceitável',
             data: this.groupTimeline.map(i => (
               {
                 name: i.monthYear,
