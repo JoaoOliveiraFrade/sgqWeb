@@ -45,14 +45,6 @@
                 </th>                                
 
                 <th style="padding: 1px; margin: 0px; border-top: 1px; text-align: center">
-                    <font size="2px">Clas.</font>
-                </th>
-
-                <th style="padding: 1px; margin: 0px; border-top: 1px; text-align: center">
-                    <font size="2px">Rel.</font>
-                </th>
-
-                <th style="padding: 1px; margin: 0px; border-top: 1px; text-align: center">
                     <font size="2px">Proj.</font>
                 </th>
 
@@ -60,10 +52,18 @@
                     <font size="2px">Nome</font>
                 </th>
 
-
                 <th style="padding: 1px; margin: 0px; border-top: 1px; text-align: center">
                     <font size="2px">Estado</font>
                 </th>
+
+                <th style="padding: 1px; margin: 0px; border-top: 1px; text-align: center">
+                    <font size="2px">Clas.</font>
+                </th>
+
+                <th style="padding: 1px; margin: 0px; border-top: 1px; text-align: center">
+                    <font size="2px">Rel.</font>
+                </th>
+
             </tr>
         </thead>
         <tbody v-for="item in dataSource">
@@ -88,14 +88,6 @@
                 </td>
 
                 <td style="padding: 1px; margin: 0px; border-top: 1px; text-align: center">
-                    <font size="2px">{{item.classification ? item.classification.substring(0,3) : ''}}</font>
-                </td>
-
-                <td style="padding: 1px; margin: 0px; border-top: 1px; text-align: center">
-                    <font size="2px">{{item.release}}</font>
-                </td>
-
-                <td style="padding: 1px; margin: 0px; border-top: 1px; text-align: center">
                     <font size="2px">{{item.subprojectDelivery}}</font>
                 </td>
 
@@ -106,6 +98,15 @@
                 <td style="padding: 1px; margin: 0px; border-top: 1px;">
                     <font size="1.5px">{{item.state}}</font>
                 </td>
+
+                <td style="padding: 1px; margin: 0px; border-top: 1px; text-align: center">
+                    <font size="2px">{{item.classification ? item.classification.substring(0,3) : ''}}</font>
+                </td>
+
+                <td style="padding: 1px; margin: 0px; border-top: 1px; text-align: center">
+                    <font size="2px">{{item.release}}</font>
+                </td>
+
             </tr>
         </tbody> 
     </table>
