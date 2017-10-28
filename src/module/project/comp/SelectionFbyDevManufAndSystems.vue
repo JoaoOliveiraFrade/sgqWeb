@@ -1,6 +1,6 @@
 <script>
   import { mapActions, mapState } from 'vuex'
-  import oiSelection from './SelectionGridMult/Main.vue'
+  import oiSelection from './multiselection/Main.vue'
 
   export default {
     name: 'ProjectSelectionFbyDevManufAndSystems',

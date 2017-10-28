@@ -67,23 +67,13 @@ export default {
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
-  getAverangeTime (project) {
-    let resource = Resource.resource(paths.api + '/project/DefectsAverangeTime{/subproject}{/delivery}')
-    return resource.get({ subproject: project.subproject, delivery: project.delivery })
-  },
-
-  getAverangeTimeBySeverity (project, severity) {
-    let resource = Resource.resource(paths.api + '/project/DefectsAverangeTime{/subproject}{/delivery}{/severity}')
-    return resource.get({ subproject: project.subproject, delivery: project.delivery, severity: severity })
-  },
-
   getReopened (project) {
     let resource = Resource.resource(paths.api + '/project/DefectsReopened{/subproject}{/delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
-  getDetectableInDev (project) {
-    let resource = Resource.resource(paths.api + '/project/DefectsDetectableInDev{/subproject}{/delivery}')
+  getdefectOfTSInTI (project) {
+    let resource = Resource.resource(paths.api + '/project/DefectsdefectOfTSInTI{/subproject}{/delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
@@ -134,18 +124,18 @@ export default {
 
   // ITERATIONS
 
-  getIterations (project) {
-    let resource = Resource.resource(paths.api + '/project/Iterations{/subproject}{/delivery}')
+  iterations (project) {
+    let resource = Resource.resource(paths.api + '/project/iterations{/subproject}{/delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
-  getIterationsActive (project) {
-    let resource = Resource.resource(paths.api + '/project/IterationsActive{/subproject}{/delivery}')
+  iterationsActive (project) {
+    let resource = Resource.resource(paths.api + '/project/iterationsActive{/subproject}{/delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
-  getIterationsSelected (project) {
-    let resource = Resource.resource(paths.api + '/project/IterationsSelected{/subproject}{/delivery}')
+  iterationsSelected (project) {
+    let resource = Resource.resource(paths.api + '/project/iterationsSelected{/subproject}{/delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
@@ -171,18 +161,13 @@ export default {
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
-  getAverangeTimeBySeverityIterations (project, severity) {
-    let resource = Resource.resource(paths.api + '/project/DefectsAverangeTimeIterations{/subproject}{/delivery}{/severity}')
-    return resource.get({ subproject: project.subproject, delivery: project.delivery, severity: severity })
-  },
-
   getReopenedIterations (project, iterations) {
     let resource = Resource.resource(paths.api + '/project/DefectsReopenedIterations{/subproject}{/delivery}')
     return resource.update({ subproject: project.subproject, delivery: project.delivery }, iterations)
   },
 
-  getDetectableInDevIterations (project, iterations) {
-    let resource = Resource.resource(paths.api + '/project/DefectsDetectableInDevIterations{/subproject}{/delivery}')
+  getdefectOfTSInTIIterations (project, iterations) {
+    let resource = Resource.resource(paths.api + '/project/DefectsdefectOfTSInTIIterations{/subproject}{/delivery}')
     return resource.update({ subproject: project.subproject, delivery: project.delivery }, iterations)
   },
 

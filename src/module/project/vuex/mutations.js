@@ -23,5 +23,33 @@ export default {
 
   [types.loading] (state, data) {
     state.loading = data
+  },
+
+  [types.selectedMonoselection] (state, data) {
+    state.selectedMonoselection = data
+  },
+
+  [types.operDevDefectDensity] (state, data) {
+    state.operDevDefectDensity = data
+  },
+  [types.operDevDefectAverangeTime] (state, data) {
+    state.operDevDefectAverangeTime = data
+  },
+  [types.operDevDefectReopened] (state, data) {
+    state.operDevDefectReopened = data
+  },
+  [types.operDevDefectOfTSInTI] (state, data) {
+    state.operDevDefectOfTSInTI = data
+  },
+
+  [types.operTestProductivity] (state, data) {
+    state.operTestProductivity = data
   }
+  // [types.perfDevDefectDensity] (state, data) {
+  //   state.perfDevDefectDensity = data
+  // }
+
+  // [types.defectAverangeTime] (state, data) {
+  //   state.defectAverangeTime = data
+  // }
 }

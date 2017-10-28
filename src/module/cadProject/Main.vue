@@ -40,16 +40,16 @@
         projectsFilteredByText: [],
 
         densityByProject: [],
-        densityTotal: {},
+        densityDefectTotal: {},
 
         averangeTimeByProject: [],
-        averangeTimeTotal: {},
+        DefectAverangeTimeTotal: {},
 
         reopenedByProject: [],
         reopenedTotal: {},
 
-        detectableInDevByProject: [],
-        detectableInDevTotal: {},
+        defectOfTSInTIByProject: [],
+        defectOfTSInTITotal: {},
 
         statusByProjectGroupDayTop5: {},
         statusByProjectGroupDayTop30: {},
@@ -137,7 +137,7 @@
         this.loadDensityData(this.project)
         this.loadAverangeTimeData(this.project)
         this.loadReopenedData(this.project)
-        this.loadDetectableInDevData(this.project)
+        this.loaddefectOfTSInTIData(this.project)
         this.loadStatus(this.project)
         this.loadDefectsStatus(this.project)
         this.loadDefectsGroupOrigin(this.project)
@@ -186,11 +186,11 @@
         /*
         servicesDensity.getByProject(project).then(resp => {
           this.densityByProject = resp.data
-          this.densityTotal = getDensityTotal(resp.data)
+          this.densityDefectTotal = getDensityDefectTotal(resp.data)
         })
         */
         services.getDensity(this.project).then(resp => {
-          this.densityTotal = resp.data
+          this.densityDefectTotal = resp.data
         })
       },
 
@@ -198,11 +198,11 @@
         /*
         servicesAverangeTime.getByProject(project).then(resp => {
           this.averangeTimeByProject = resp.data
-          this.averangeTimeTotal = getAverangeTimeTotal(resp.data, 'HIGH')
+          this.DefectAverangeTimeTotal = getDefectAverangeTimeTotal(resp.data, 'HIGH')
         })
         */
         services.getAverangeTimeBySeverity(this.project, '3-HIGH').then(resp => {
-          this.averangeTimeTotal = resp.data
+          this.DefectAverangeTimeTotal = resp.data
         })
       },
 
@@ -218,15 +218,15 @@
         })
       },
 
-      loadDetectableInDevData (project) {
+      loaddefectOfTSInTIData (project) {
         /*
-        servicesDetectableInDev.getByProject(project).then(resp => {
-          this.detectableInDevByProject = resp.data
-          this.detectableInDevTotal = getDetectableInDevTotal(resp.data, 5)
+        servicesdefectOfTSInTI.getByProject(project).then(resp => {
+          this.defectOfTSInTIByProject = resp.data
+          this.defectOfTSInTITotal = getdefectOfTSInTITotal(resp.data, 5)
         })
         */
-        services.getDetectableInDev(this.project).then(resp => {
-          this.detectableInDevTotal = resp.data
+        services.getdefectOfTSInTI(this.project).then(resp => {
+          this.defectOfTSInTITotal = resp.data
         })
       },
 
@@ -425,10 +425,10 @@
       <oiEdit 
         v-show="this.state=='edit'"
         :project="project"
-        :densityTotal="densityTotal"
-        :averangeTimeTotal="averangeTimeTotal"
+        :densityDefectTotal="densityDefectTotal"
+        :DefectAverangeTimeTotal="DefectAverangeTimeTotal"
         :reopenedTotal="reopenedTotal"
-        :detectableInDevTotal="detectableInDevTotal"
+        :defectOfTSInTITotal="defectOfTSInTITotal"
         :iterations="iterations"
         :iterationsActive="iterationsActive"
         :iterationsSelected="iterationsSelected"
@@ -437,10 +437,10 @@
       <oiView
         v-show="this.state=='show'"
         :project="project"
-        :densityTotal="densityTotal"
-        :averangeTimeTotal="averangeTimeTotal"
+        :densityDefectTotal="densityDefectTotal"
+        :DefectAverangeTimeTotal="DefectAverangeTimeTotal"
         :reopenedTotal="reopenedTotal"
-        :detectableInDevTotal="detectableInDevTotal"
+        :defectOfTSInTITotal="defectOfTSInTITotal"
         :statusByProjectGroupDayTop5="statusByProjectGroupDayTop5"
         :statusByProjectGroupDayTop30="statusByProjectGroupDayTop30"
         :statusByProjectGroupMonth="statusByProjectGroupMonth"
@@ -494,10 +494,10 @@
           <div id="xpto52" class="collapse" >
               <oiReport
                 :project="project"
-                :densityTotal="densityTotal"
-                :averangeTimeTotal="averangeTimeTotal"
+                :densityDefectTotal="densityDefectTotal"
+                :DefectAverangeTimeTotal="DefectAverangeTimeTotal"
                 :reopenedTotal="reopenedTotal"
-                :detectableInDevTotal="detectableInDevTotal"
+                :defectOfTSInTITotal="defectOfTSInTITotal"
                 :statusByProjectGroupDayTop5="statusByProjectGroupDayTop5"
                 :statusByProjectGroupDayTop30="statusByProjectGroupDayTop30"
                 :statusByProjectGroupMonth="statusByProjectGroupMonth"

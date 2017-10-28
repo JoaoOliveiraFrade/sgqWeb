@@ -1,9 +1,11 @@
 export default {
   projectFilterProperties: [
-    {name: 'subprojectDelivery'},
-    {name: 'name'},
-    {name: 'release'},
-    {name: 'classification'}
+    { name: 'trafficLight' },
+    { name: 'subprojectDelivery' },
+    { name: 'name' },
+    { name: 'state' },
+    { name: 'release' },
+    { name: 'classification' }
   ],
 
   data: [],
@@ -12,6 +14,16 @@ export default {
 
   filterTerm: '',
   selected: [],
+  loading: false,
 
-  loading: false
+  selectedMonoselection: {},
+
+  operDevDefectDensity: {},
+  operDevDefectAverangeTime: {},
+  operDevDefectReopened: {},
+  operDevDefectOfTSInTI: {},
+
+  operTestProductivity: {}
+
+  // perfDevDefectDensity: {}
 }

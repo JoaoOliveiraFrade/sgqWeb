@@ -1,15 +1,15 @@
 <script>
-  import oiSelectionGridMult from './SelectionGridMult/Main.vue'
+  import oimultiselection from './multiselection/Main.vue'
 
   export default {
     name: 'SelectionProjectByTestManufsAndSystems',
 
-    components: { oiSelectionGridMult }
+    components: { oimultiselection }
   }
 </script>
 
 <template>
-    <oiSelectionGridMult/>
+    <oimultiselection/>
 </template>
 
 <style scoped>

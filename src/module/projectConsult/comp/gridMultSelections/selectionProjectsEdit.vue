@@ -21,7 +21,7 @@
         densityTimeline: [],
         agingMedioTimeline: [],
         wrongClassifTimeline: [],
-        detectableInDevTimeline: [],
+        defectOfTSInTITimeline: [],
         reopenedTimeline: [],
         noPredictionTimeline: [],
 
@@ -92,8 +92,8 @@
         services.getWrongClassificationDefectRateByDate(this.replaceDateBegin(), this.replaceDateEnd()).then(r => {
           this.wrongClassifTimeline = r.data
         })
-        services.getDetectableInDevByDate(this.replaceDateBegin(), this.replaceDateEnd()).then(r => {
-          this.detectableInDevTimeline = r.data
+        services.getdefectOfTSInTIByDate(this.replaceDateBegin(), this.replaceDateEnd()).then(r => {
+          this.defectOfTSInTITimeline = r.data
         })
         services.getReopenedByDate(this.replaceDateBegin(), this.replaceDateEnd()).then(r => {
           this.reopenedTimeline = r.data
@@ -164,7 +164,7 @@
 
       confirmTimeline () {
         this.filterTerm = ''
-        this.$emit('onConfirmDataTimeline', this.selected, this.densityTimeline, this.agingMedioTimeline, this.wrongClassifTimeline, this.detectableInDevTimeline, this.reopenedTimeline, this.noPredictionTimeline)
+        this.$emit('onConfirmDataTimeline', this.selected, this.densityTimeline, this.agingMedioTimeline, this.wrongClassifTimeline, this.defectOfTSInTITimeline, this.reopenedTimeline, this.noPredictionTimeline)
       }
       /*
       confirmDay () {

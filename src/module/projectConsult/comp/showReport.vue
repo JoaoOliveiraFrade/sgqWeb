@@ -1,14 +1,14 @@
 <script>
-  import oiChartDensityTotal from '@/module/chart/comp/defects/densityTotal'
-  import oiChartReopenedTotal from '@/module/chart/comp/defects/reopenedTotal'
-  import oiChartAverangeTimeTotal from '@/module/chart/comp/defects/averangeTimeTotal'
-  import oiChartDetectableInDev from '@/module/chart/comp/defects/detectableInDev'
-  import oiChartExecutionProject from '@/module/chart/comp/execution/project'
-  import oiChartOpenedXClosedXCancelled from '@/module/chart/comp/defects/openedXClosedXCancelled'
-  import oiChartGroupOrigin from '@/module/chart/comp/defects/groupOrigin'
-  import oiChartCtsImpactedXDefects from '@/module/chart/comp/ctsImpactedXDefects'
-  import oiChartProductivityXDefects from '@/module/chart/comp/productivityXDefects'
-  import oiChartProductivityXDefectsGroupWeekly from '@/module/chart/comp/productivityXDefectsGroupWeekly'
+  import oiChartDensityDefectTotal from '@/comp/chart/defect/DensityDefectTotal'
+  import oiChartDefectReopenedTotal from '@/comp/chart/defect/DefectReopenedTotal'
+  import oiChartDefectAverangeTimeTotal from '@/comp/chart/defect/DefectAverangeTimeTotal'
+  import oiChartdefectOfTSInTI from '@/comp/chart/defect/DefectOfTSInTITotal'
+  import oiChartExecutionProject from '@/comp/chart/execution/project'
+  import oiChartOpenedXClosedXCancelled from '@/comp/chart/defect/openedXClosedXCancelled'
+  import oiChartGroupOrigin from '@/comp/chart/defect/groupOrigin'
+  import oiChartCtsImpactedXDefects from '@/comp/chart/mix/ctsImpactedXDefects'
+  import oiChartProductivityXDefects from '@/comp/chart/mix/productivityXDefects'
+  import oiChartProductivityXDefectsGroupWeekly from '@/comp/chart/mix/productivityXDefectsGroupWeekly'
 
   import oiGridMonitAcum from './gridMonitAcum'
   import oiGridMonitDay from './gridMonitDay'
@@ -18,10 +18,10 @@
     name: 'projectShowReport',
 
     components: {
-      oiChartDensityTotal,
-      oiChartReopenedTotal,
-      oiChartAverangeTimeTotal,
-      oiChartDetectableInDev,
+      oiChartDensityDefectTotal,
+      oiChartDefectReopenedTotal,
+      oiChartDefectAverangeTimeTotal,
+      oiChartdefectOfTSInTI,
       oiChartExecutionProject,
       oiGridMonitAcum,
       oiGridMonitDay,
@@ -35,10 +35,10 @@
 
     props: {
       project: { type: Object },
-      densityTotal: { type: Object },
-      averangeTimeTotal: { type: Object },
+      densityDefectTotal: { type: Object },
+      DefectAverangeTimeTotal: { type: Object },
       reopenedTotal: { type: Object },
-      detectableInDevTotal: { type: Object },
+      defectOfTSInTITotal: { type: Object },
       statusByProjectGroupDayTop5: { type: Object },
       statusByProjectGroupDayTop30: { type: Object },
       statusByProjectGroupMonth: { type: Object },
@@ -172,19 +172,19 @@
               <div class="row">
                   <div class="col-xs-12">
                       <div class="col-xs-6 col-md-3 oi-col">
-                        <oiChartDensityTotal :value="densityTotal"/>
+                        <oiChartDensityDefectTotal :value="densityDefectTotal"/>
                       </div>
 
                       <div class="col-xs-6 col-md-3 oi-col">
-                        <oiChartAverangeTimeTotal :value="averangeTimeTotal"/>
+                        <oiChartDefectAverangeTimeTotal :value="DefectAverangeTimeTotal"/>
                       </div>
 
                       <div class="col-xs-6 col-md-3 oi-col">
-                        <oiChartReopenedTotal :value="reopenedTotal"/>
+                        <oiChartDefectReopenedTotal :value="reopenedTotal"/>
                       </div>
 
                       <div class="col-xs-6 col-md-3 oi-col">
-                        <oiChartDetectableInDev :value="detectableInDevTotal"/>
+                        <oiChartdefectOfTSInTI :value="defectOfTSInTITotal"/>
                       </div>
                   </div>
               </div>

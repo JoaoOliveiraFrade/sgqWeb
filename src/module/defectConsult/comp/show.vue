@@ -129,7 +129,7 @@
       <div class="col-xs-4 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
           <label class="fd-label">Detectável em Desenv.:</label><br>
-          <label class="fd-content">{{defect.detectableInDev}}</label>
+          <label class="fd-content">{{defect.defectOfTSInTI}}</label>
         </div>
       </div>
     </div>
@@ -151,7 +151,7 @@
 
       <div class="col-xs-4 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
-          <label class="fd-label">Qt. Reopen:</label><br>
+          <label class="fd-label">Qte  Reopen:</label><br>
           <label class="fd-content">{{defect.qtyReopened}}</label>
         </div>
       </div>
@@ -160,7 +160,7 @@
     <div class="row well well-sm oi-well">
       <div class="col-xs-4 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
-          <label class="fd-label">Qt. Impactado:</label><br>
+          <label class="fd-label">Qte  Impactado:</label><br>
           <label class="fd-content">{{defect.qtyImpactedCTs}}</label>
         </div>
       </div>

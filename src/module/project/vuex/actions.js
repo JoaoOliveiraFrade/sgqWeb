@@ -1,6 +1,15 @@
 import * as types from './mutationsTypes'
 import services from '@/module/project/services'
 
+import servicesOperDevDefectDensity from '@/module/indicator/operDev/defectDensity/services'
+import servicesOperDevDefectAverangeTime from '@/module/indicator/operDev/defectAverangeTime/services'
+import servicesOperDevDefectReopened from '@/module/indicator/operDev/defectReopened/services'
+import servicesOperDevDefectOfTSInTI from '@/module/indicator/operDev/defectOfTSInTI/services'
+
+import servicesOperTestProductivity from '@/module/indicator/operTest/productivity/services'
+
+// import servicesPerfDefectDensity from '@/module/indicator/perfDev/defectDensity/services'
+
 export const load = ({ commit }) => {
   commit(types.loading, true)
   services.load()
@@ -73,6 +82,53 @@ export const loadOfQueueFbyDevManufsAndSystems = ({ commit }, parameter) => {
 
 export const setSelected = ({ commit }, paramenter) => {
   commit(types.selected, paramenter)
+}
+
+export const setSelectedMonoselection = ({ commit }, project) => {
+  services.getProjectsByIds(project.id.toString())
+    .then(r => {
+      commit(types.selectedMonoselection, r.data[0])
+    }
+  )
+
+  servicesOperDevDefectDensity.defectDensityFbyProject(project)
+    .then(r => {
+      commit(types.operDevDefectDensity, r.data)
+    }
+  )
+  servicesOperDevDefectAverangeTime.fbyProject(project)
+    .then(r => {
+      commit(types.operDevDefectAverangeTime, r.data)
+    }
+  )
+  servicesOperDevDefectReopened.fbyProject(project)
+    .then(r => {
+      commit(types.operDevDefectReopened, r.data)
+    }
+  )
+  servicesOperDevDefectOfTSInTI.fbyProject(project)
+    .then(r => {
+      commit(types.operDevDefectOfTSInTI, r.data)
+    }
+  )
+
+  servicesOperTestProductivity.fbyProject(project)
+    .then(r => {
+      commit(types.operTestProductivity, r.data)
+    }
+  )
+
+  // servicesOperDevDefectOfTSInTI.fbyProject(project)
+  //   .then(r => {
+  //     commit(types.operDevDefectOfTSInTI, r.data)
+  //   }
+  // )
+
+  // servicesPerfDefectDensity.defectDensityFbyProject(project)
+  //   .then(r => {
+  //     commit(types.perfDevDefectDensity, r.data)
+  //   }
+  // )
 }
 
 export const setProjectFilterTerm = ({ commit }, filterTerm) => {

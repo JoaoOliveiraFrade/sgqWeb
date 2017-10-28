@@ -42,6 +42,11 @@
                     <a class="oi-menu">Projetos</a>
                 </router-link>
 
+                <router-link :to="{ name: 'projectMonoselectionAndShow' }" tag="li" @click.native="$emit('collapseMenuMobile')">
+                    <a class="oi-menu">Projetos 2</a>
+                </router-link>
+                
+
                 <router-link :to="{ name: 'searchGrouperConsult' }" tag="li" @click.native="$emit('collapseMenuMobile')">
                     <a class="oi-menu">Agrupadores</a>
                 </router-link>

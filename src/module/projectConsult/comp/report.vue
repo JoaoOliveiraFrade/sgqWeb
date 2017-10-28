@@ -15,16 +15,16 @@
         state: '',
 
         density: [],
-        densityTotal: {},
+        densityDefectTotal: {},
 
         averangeTime: [],
-        averangeTimeTotal: {},
+        DefectAverangeTimeTotal: {},
 
         reopenedByProject: [],
         reopenedTotal: {},
 
-        detectableInDevByProject: [],
-        detectableInDevTotal: {},
+        defectOfTSInTIByProject: [],
+        defectOfTSInTITotal: {},
 
         statusByProjectGroupDayTop5: {},
         statusByProjectGroupDayTop30: {},
@@ -104,19 +104,19 @@
 
       loadData () {
         services.getDensity(this.project).then(resp => {
-          this.densityTotal = resp.data
+          this.densityDefectTotal = resp.data
         })
 
         services.getAverangeTimeBySeverity(this.project, '3-HIGH').then(resp => {
-          this.averangeTimeTotal = resp.data
+          this.DefectAverangeTimeTotal = resp.data
         })
 
         services.getReopened(this.project).then(resp => {
           this.reopenedTotal = resp.data
         })
 
-        services.getDetectableInDev(this.project).then(resp => {
-          this.detectableInDevTotal = resp.data
+        services.getdefectOfTSInTI(this.project).then(resp => {
+          this.defectOfTSInTITotal = resp.data
         })
 
         services.getStatusLastDays(this.project).then(resp => {
@@ -164,13 +164,13 @@
       loadDataIterations () {
         services.getDensityByIterations(this.project)
           .then(resp => {
-            this.densityTotal = resp.data
+            this.densityDefectTotal = resp.data
           }
         )
 
         services.getAverangeTimeBySeverityIterations(this.project, '3-HIGH')
           .then(resp => {
-            this.averangeTimeTotal = resp.data
+            this.DefectAverangeTimeTotal = resp.data
           }
         )
 
@@ -178,8 +178,8 @@
           this.reopenedTotal = resp.data
         })
 
-        services.getDetectableInDevIterations(this.project, this.iterationsFiltered).then(resp => {
-          this.detectableInDevTotal = resp.data
+        services.getdefectOfTSInTIIterations(this.project, this.iterationsFiltered).then(resp => {
+          this.defectOfTSInTITotal = resp.data
         })
 
         services.getStatusLastDaysIterations(this.project, this.iterationsFiltered).then(resp => {
@@ -227,10 +227,10 @@
     <div class="container well well-sm">
       <oiReport
         :project="project"
-        :densityTotal="densityTotal"
-        :averangeTimeTotal="averangeTimeTotal"
+        :densityDefectTotal="densityDefectTotal"
+        :DefectAverangeTimeTotal="DefectAverangeTimeTotal"
         :reopenedTotal="reopenedTotal"
-        :detectableInDevTotal="detectableInDevTotal"
+        :defectOfTSInTITotal="defectOfTSInTITotal"
         :statusByProjectGroupDayTop5="statusByProjectGroupDayTop5"
         :statusByProjectGroupDayTop30="statusByProjectGroupDayTop30"
         :statusByProjectGroupMonth="statusByProjectGroupMonth"

@@ -1,22 +1,22 @@
 <script>
-  import oiChartDensityTotal from '@/module/chart/comp/defects/densityTotal'
-  import oiChartReopenedTotal from '@/module/chart/comp/defects/reopenedTotal'
-  import oiChartAverangeTimeTotal from '@/module/chart/comp/defects/averangeTimeTotal'
-  import oiChartDetectableInDev from '@/module/chart/comp/defects/detectableInDev'
+  import oiChartDensityDefectTotal from '@/comp/chart/defect/DensityDefectTotal'
+  import oiChartDefectReopenedTotal from '@/comp/chart/defect/DefectReopenedTotal'
+  import oiChartDefectAverangeTimeTotal from '@/comp/chart/defect/DefectAverangeTimeTotal'
+  import oiChartdefectOfTSInTI from '@/comp/chart/defect/DefectOfTSInTITotal'
   import oiSelection from '@/module/selection/comp/selections.vue'
   import services from '@/module/project/services'
 
   export default {
     name: 'cadProjectsEdit',
 
-    components: { oiChartDensityTotal, oiChartReopenedTotal, oiChartAverangeTimeTotal, oiChartDetectableInDev, oiSelection },
+    components: { oiChartDensityDefectTotal, oiChartDefectReopenedTotal, oiChartDefectAverangeTimeTotal, oiChartdefectOfTSInTI, oiSelection },
 
     props: {
       project: { type: Object },
-      densityTotal: { type: Object },
-      averangeTimeTotal: { type: Object },
+      densityDefectTotal: { type: Object },
+      DefectAverangeTimeTotal: { type: Object },
       reopenedTotal: { type: Object },
-      detectableInDevTotal: { type: Object },
+      defectOfTSInTITotal: { type: Object },
       iterations: { type: Array },
       iterationsActive: { type: Array },
       iterationsSelected: { type: Array }
@@ -237,19 +237,19 @@
               -->
 
               <div class="col-xs-6 col-md-3 oi-col">
-                <oiChartDensityTotal :value="densityTotal"/>
+                <oiChartDensityDefectTotal :value="densityDefectTotal"/>
               </div>
 
               <div class="col-xs-6 col-md-3 oi-col">
-                <oiChartAverangeTimeTotal :value="averangeTimeTotal"/>
+                <oiChartDefectAverangeTimeTotal :value="DefectAverangeTimeTotal"/>
               </div>
 
               <div class="col-xs-6 col-md-3 oi-col">
-                <oiChartReopenedTotal :value="reopenedTotal"/>
+                <oiChartDefectReopenedTotal :value="reopenedTotal"/>
               </div>
 
               <div class="col-xs-6 col-md-3 oi-col">
-                <oiChartDetectableInDev :value="detectableInDevTotal"/>
+                <oiChartdefectOfTSInTI :value="defectOfTSInTITotal"/>
               </div>
 
             </div>
