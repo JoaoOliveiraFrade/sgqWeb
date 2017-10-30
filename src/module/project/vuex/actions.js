@@ -7,6 +7,9 @@ import servicesOperDevDefectReopened from '@/module/indicator/operDev/defectReop
 import servicesOperDevDefectOfTSInTI from '@/module/indicator/operDev/defectOfTSInTI/services'
 
 import servicesOperTestProductivity from '@/module/indicator/operTest/productivity/services'
+import servicesOperTestRejectionEvidence from '@/module/indicator/operTest/rejectionEvidence/services'
+import servicesOperTestDefectUnfounded from '@/module/indicator/operTest/defectUnfounded/services'
+import servicesOperTestDefectUAT from '@/module/indicator/operTest/defectUAT/services'
 
 // import servicesPerfDefectDensity from '@/module/indicator/perfDev/defectDensity/services'
 
@@ -117,6 +120,23 @@ export const setSelectedMonoselection = ({ commit }, project) => {
       commit(types.operTestProductivity, r.data)
     }
   )
+  servicesOperTestRejectionEvidence.fbyProject(project)
+    .then(r => {
+      commit(types.operTestRejectionEvidence, r.data)
+    }
+  )
+  servicesOperTestDefectUnfounded.fbyProject(project)
+    .then(r => {
+      console.log('sfsdfsdfsd')
+      commit(types.operTestDefectUnfounded, r.data)
+    }
+  )
+  servicesOperTestDefectUAT.fbyProject(project)
+  .then(r => {
+    console.log('sfsdfsdfsd')
+    commit(types.operTestDefectUAT, r.data)
+  }
+)
 
   // servicesOperDevDefectOfTSInTI.fbyProject(project)
   //   .then(r => {

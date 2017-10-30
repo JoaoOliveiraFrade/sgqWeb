@@ -8,7 +8,7 @@
   import chartStandParam from '@/comp/chart/types/drillDown'
 
   export default {
-    name: 'ShowChartGroupTestManufRateDefectUnfounded',
+    name: 'ShowChartGroupTestManufDefectUnfounded',
 
     data () {
       return {
@@ -18,11 +18,11 @@
     },
 
     computed: {
-      ...mapGetters('indicatorRateDefectUnfounded', ['groupTestManuf', 'byTestManufGroupSystem', 'chartTitle'])
+      ...mapGetters('indicatorDefectUnfounded', ['groupTestManuf', 'byTestManufGroupSystem', 'chartTitle'])
     },
 
     methods: {
-      ...mapActions('indicatorRateDefectUnfounded', ['setChartFilter']),
+      ...mapActions('indicatorDefectUnfounded', ['setChartFilter']),
 
       setChartParam () {
         this.chartParam.title.text = 'Fáb.Teste / Sistema'

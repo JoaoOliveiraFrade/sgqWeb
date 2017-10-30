@@ -1,42 +1,43 @@
 <script>
   import { mapGetters } from 'vuex'
   import Highcharts from 'highcharts'
-  import chartStandParam from '@/comp/chart/types/Total2'
+  import chartTotalStandParam from '@/comp/chart/types/Total2'
 
   export default {
     name: 'ShowChartTotal',
 
     computed: {
-      ...mapGetters('indicatorRateDefectUnfounded', ['total', 'limitMaxQty']),
+      ...mapGetters('indicatorDefectUAT', ['total']),
 
       chartParam () {
-        let param = chartStandParam
+        let param = chartTotalStandParam
+
         param.title.text = 'Total'
-        param.yAxis.title.text = 'Qte<br>Rej.'
+        param.yAxis.title.text = 'Def.<br>Uat'
         // param.plotOptions.gauge.dataLabels.borderWidth = 0
         param.plotOptions.gauge.dataLabels.useHTML = true
-        param.plotOptions.gauge.dataLabels.format = '<span style=font-size:9px><center>{point.y:.0f}</center>' + this.total.percUnfounded + '%</span>'
+        param.plotOptions.gauge.dataLabels.format = '<span style=font-size:9px><center>{point.y:.0f}</center>' + this.total.percDefectUat + '%</span>'
 
-        if (this.total.qtyUnfounded < this.total.qtyDefect) {
+        if (this.total.qtyDefectUat < this.total.qtyDefect) {
           param.yAxis.max = this.total.qtyDefect
           param.yAxis.plotBands = [
             {from: 0, to: this.total.limitMaxQty, color: '#00CC00'},
             {from: this.total.limitMaxQty, to: this.total.qtyDefect, color: '#FF3300'}
           ]
         } else {
-          param.yAxis.max = this.total.qtyUnfounded
+          param.yAxis.max = this.total.qtyDefectUat
           param.yAxis.plotBands = [
             {from: 0, to: this.total.limitMaxQty, color: '#00CC00'},
-            {from: this.total.limitMaxQty, to: this.total.qtyUnfounded, color: '#FF3300'}
+            {from: this.total.limitMaxQty, to: this.total.qtyDefectUat, color: '#FF3300'}
           ]
         }
 
         param.tooltip.pointFormat = '' +
-          'Improcente: ' + this.total.qtyUnfounded + ' (' + this.total.percUnfounded + '%)<br>' +
+          'Def. Uat: ' + this.total.qtyDefectUat + ' (' + this.total.percDefectUat + '%)<br>' +
           'Limite Máximo: ' + this.total.limitMaxQty + ' (' + this.total.limitMaxPerc + '%)<br>' +
           'Defeito: ' + this.total.qtyDefect
 
-        param.series = [ { name: 'Total', colorByPoint: true, data: [ this.total.qtyUnfounded ] } ]
+        param.series = [ { name: 'Total', colorByPoint: true, data: [ this.total.qtyDefectUat ] } ]
         return param
       }
     },

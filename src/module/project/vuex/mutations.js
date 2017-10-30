@@ -44,6 +44,15 @@ export default {
 
   [types.operTestProductivity] (state, data) {
     state.operTestProductivity = data
+  },
+  [types.operTestRejectionEvidence] (state, data) {
+    state.operTestRejectionEvidence = data
+  },
+  [types.operTestDefectUnfounded] (state, data) {
+    state.operTestDefectUnfounded = data
+  },
+  [types.operTestDefectUAT] (state, data) {
+    state.operTestDefectUAT = data
   }
   // [types.perfDevDefectDensity] (state, data) {
   //   state.perfDevDefectDensity = data

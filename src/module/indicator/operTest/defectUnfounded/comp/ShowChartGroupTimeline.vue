@@ -7,7 +7,7 @@
     name: 'ShowChartGroupTimeline',
 
     computed: {
-      ...mapGetters('indicatorRejectionEvidence', ['groupTimeline']),
+      ...mapGetters('indicatorDefectUnfounded', ['groupTimeline']),
 
       chartParam () {
         let param = chartStandParam
@@ -17,10 +17,10 @@
         param.tooltip.headerFormat = ''
         param.tooltip.pointFormat = `
           <b>{point.monthYear}</b><br>
-          Rejeições Mês: {point.rejections:.0f} ({point.rejectionsPerc:.2f}%)<br>
-          Rejeições Acum: {point.rejectionsAcc:.0f} ({point.rejectionsAccPerc:.2f}%)<br>
-          Limite Máximo: {point.maxLimit:.0f} ({point.maxLimitPerc:.2f}%)<br>
-          Total Evidências: {point.totalEvidences:.0f}
+          Improcedente Mês: {point.qtyUnfounded:.0f} ({point.percUnfounded:.2f}%)<br>
+          Improcedente Acum: {point.qtyUnfoundedAcc:.0f} ({point.percUnfoundedAcc:.2f}%)<br>
+          Limite Máximo: {point.limitMaxQty:.0f} ({point.limitMaxPerc:.0f}%)<br>
+          Total Defeito: {point.qtyTotalDefect:.0f}
           `
         param.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
         param.xAxis.categories = this.groupTimeline.map(i => i.monthYear)
@@ -33,49 +33,47 @@
             data: this.groupTimeline.map(i => (
               {
                 name: i.monthYear,
-                y: i.maxLimit,
-                rejections: i.rejections,
+                y: i.limitMaxQty,
+                qtyUnfounded: i.qtyUnfounded,
                 monthYear: i.monthYear,
-                rejectionsPerc: i.rejectionsPerc,
-                rejectionsAcc: i.rejectionsAcc,
-                rejectionsAccPerc: i.rejectionsAccPerc,
-                totalEvidences: i.totalEvidences,
-                maxLimit: i.maxLimit,
-                maxLimitPerc: i.maxLimitPerc
+                percUnfounded: i.percUnfounded,
+                qtyUnfoundedAcc: i.qtyUnfoundedAcc,
+                percUnfoundedAcc: i.percUnfoundedAcc,
+                qtyTotalDefect: i.qtyTotalDefect,
+                limitMaxQty: i.limitMaxQty,
+                limitMaxPerc: i.limitMaxPerc
               }
             ))
-          },
-          {
+          }, {
             name: 'Mês',
             data: this.groupTimeline.map(i => (
               {
                 name: i.monthYear,
-                y: i.rejections,
+                y: i.qtyUnfounded,
                 monthYear: i.monthYear,
-                rejections: i.rejections,
-                rejectionsPerc: i.rejectionsPerc,
-                rejectionsAcc: i.rejectionsAcc,
-                rejectionsAccPerc: i.rejectionsAccPerc,
-                totalEvidences: i.totalEvidences,
-                maxLimit: i.maxLimit,
-                maxLimitPerc: i.maxLimitPerc
+                qtyUnfounded: i.qtyUnfounded,
+                percUnfounded: i.percUnfounded,
+                qtyUnfoundedAcc: i.qtyUnfoundedAcc,
+                percUnfoundedAcc: i.percUnfoundedAcc,
+                qtyTotalDefect: i.qtyTotalDefect,
+                limitMaxQty: i.limitMaxQty,
+                limitMaxPerc: i.limitMaxPerc
               }
             ))
-          },
-          {
+          }, {
             name: 'Acumulado',
             data: this.groupTimeline.map(i => (
               {
                 name: i.monthYear,
-                y: i.rejectionsAcc,
+                y: i.qtyUnfoundedAcc,
                 monthYear: i.monthYear,
-                rejections: i.rejections,
-                rejectionsPerc: i.rejectionsPerc,
-                rejectionsAcc: i.rejectionsAcc,
-                rejectionsAccPerc: i.rejectionsAccPerc,
-                totalEvidences: i.totalEvidences,
-                maxLimit: i.maxLimit,
-                maxLimitPerc: i.maxLimitPerc
+                qtyUnfounded: i.qtyUnfounded,
+                percUnfounded: i.percUnfounded,
+                qtyUnfoundedAcc: i.qtyUnfoundedAcc,
+                percUnfoundedAcc: i.percUnfoundedAcc,
+                qtyTotalDefect: i.qtyTotalDefect,
+                limitMaxQty: i.limitMaxQty,
+                limitMaxPerc: i.limitMaxPerc
               }
             ))
           }

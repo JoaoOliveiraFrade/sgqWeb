@@ -34,9 +34,9 @@
         this.parameters.yAxis.plotBands = [
           {from: 0, to: this.value.productivity, color: '#00CC00'}
         ]
-        this.parameters.tooltip.pointFormat = 'Qte Total: ' + this.value.productivity + '<br>' +
-          'Qte Passed: ' + this.value.passed + '<br>' +
-          'Qte failed: ' + this.value.failed
+        this.parameters.tooltip.pointFormat = 'Total: ' + this.value.productivity + '<br>' +
+          'Passed: ' + this.value.passed + '<br>' +
+          'Failed: ' + this.value.failed
   
         this.parameters.series = [ { name: 'Produtividade', colorByPoint: true, data: [ this.value.productivity ] } ]
       }

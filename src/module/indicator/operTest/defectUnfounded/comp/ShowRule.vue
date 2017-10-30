@@ -14,19 +14,17 @@ selected<script>
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
-        data-target="#rejectionEvidenceShowRule">
+        data-target="#defectUnfoundedShowRule">
         Regra
     </button>
-    <oiModal id="rejectionEvidenceShowRule" title="Regra">   
+    <oiModal id="defectUnfoundedShowRule" title="Regra">   
       <div style="margin:0; padding:10px" slot="body">
         <label class="fd-label">
-          Quantidade de REJEIÇÕES de Evidências em relação à quantidade de CTs (que contém evidências).<br>
+          Quantidade de defeitos com status CANCELLED e origem IMPROCEDENTE em relação a quantidade total de defeitos.<br>
           <br>
-          São considerados somente os CTs de TI, com status PASSED.<br>
+          São considerados somente os defeitos de TI.<br>
           <br>
-          No gráfico Temporal, as rejeições são contabilizadas no mês/ano em que elas ocorreram.<br>
-          <br>
-          CTs com evidências, são os que contém o campo 'validação evidência' diferente de 'N/A'.
+          No gráfico Temporal, os defeitos improcedentes são contabilizadas no mês/ano mais recente em que eles foram alterados para IMPROCEDENTE.
         </label>
       </div>
     </oiModal>

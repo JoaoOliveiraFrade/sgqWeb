@@ -84,6 +84,61 @@ export const operTestProductivityTotal = ({ operTestProductivity }) => {
   return { productivity, passed, failed }
 }
 
+export const operTestRejectionEvidenceMapType = ({operTestRejectionEvidence, selectedrejectedType}) => {
+  if (selectedrejectedType === 'Técnica') {
+    return operTestRejectionEvidence.map(i => ({
+      month: i.month,
+      year: i.year,
+      testManuf: i.testManuf,
+      system: i.system,
+      subprojectDelivery: i.subprojectDelivery,
+      qtyEvidence: i.qtyEvidence,
+      qtyRejection: i.qtyRejectionTechnique
+    })).filter(f => f.qtyEvidence > 0 || f.qtyRejection > 0)
+  } else if (selectedrejectedType === 'Cliente') {
+    return operTestRejectionEvidence.map(i => ({
+      month: i.month,
+      year: i.year,
+      testManuf: i.testManuf,
+      system: i.system,
+      subprojectDelivery: i.subprojectDelivery,
+      qtyEvidence: i.qtyEvidenceClient,
+      qtyRejection: i.qtyRejectionClient
+    })).filter(f => f.qtyEvidence > 0 || f.qtyRejection > 0)
+  } else {
+    return operTestRejectionEvidence.map(i => ({
+      month: i.month,
+      year: i.year,
+      testManuf: i.testManuf,
+      system: i.system,
+      subprojectDelivery: i.subprojectDelivery,
+      qtyEvidence: i.qtyEvidence,
+      qtyRejection: i.qtyRejectionTotal
+    })).filter(f => f.qtyEvidence > 0 || f.qtyRejection > 0)
+  }
+}
+export const operTestRejectionEvidenceTotal = (state, { operTestRejectionEvidenceMapType }) => {
+  let qtyEvidence = operTestRejectionEvidenceMapType.reduce((sum, e) => sum + e.qtyEvidence, 0)
+  let qtyRejection = operTestRejectionEvidenceMapType.reduce((sum, e) => sum + e.qtyRejection, 0)
+  let percRejected = Number((qtyRejection / (qtyEvidence !== 0 ? qtyEvidence : 1) * 100).toFixed(2))
+
+  return { qtyEvidence, qtyRejection, percRejected }
+}
+
+export const operTestDefectUnfoundedTotal = ({ operTestDefectUnfounded }) => {
+  let qtyDefect = operTestDefectUnfounded.reduce((sum, e) => sum + e.qtyDefect, 0)
+  let qtyUnfounded = operTestDefectUnfounded.reduce((sum, e) => sum + e.qtyUnfounded, 0)
+  let percUnfounded = Number((qtyUnfounded / (qtyDefect !== 0 ? qtyDefect : 1) * 100).toFixed(2))
+  return { qtyDefect, qtyUnfounded, percUnfounded }
+}
+
+export const operTestDefectUATTotal = ({ operTestDefectUAT }) => {
+  let qtyDefect = operTestDefectUAT.reduce((sum, e) => sum + e.qtyDefect, 0)
+  let qtyUAT = operTestDefectUAT.reduce((sum, e) => sum + e.qtyUAT, 0)
+  let percUAT = Number((qtyUAT / (qtyDefect !== 0 ? qtyDefect : 1) * 100).toFixed(2))
+  return { qtyDefect, qtyUAT, percUAT }
+}
+
 // export const perfDevDefectDensityTotal = ({ perfDevDefectDensity }) => {
 //   let qtyDefect = perfDevDefectDensity.reduce((sum, e) => sum + e.qtyDefect, 0)
 //   let qtyCt = perfDevDefectDensity.reduce((sum, e) => sum + e.qtyCt, 0)

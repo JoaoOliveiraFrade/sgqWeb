@@ -13,6 +13,9 @@ export const operDevDefectReopened = 'operDevDefectReopened'
 export const operDevDefectOfTSInTI = 'operDevDefectOfTSInTI'
 
 export const operTestProductivity = 'operTestProductivity'
+export const operTestRejectionEvidence = 'operTestRejectionEvidence'
+export const operTestDefectUnfounded = 'operTestDefectUnfounded'
+export const operTestDefectUAT = 'operTestDefectUAT'
 
 // export const perfDevDefectDensity = 'perfDevDefectDensity'
 // export const defectAverangeTime = 'defectAverangeTime'

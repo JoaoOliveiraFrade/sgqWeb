@@ -5,7 +5,7 @@
     name: 'ShowAnalyticGrid',
 
     computed: {
-      ...mapGetters('indicatorRateDefectUnfounded', ['filteredByChart'])
+      ...mapGetters('indicatorDefectUnfounded', ['filteredByChart'])
     }
   }
 

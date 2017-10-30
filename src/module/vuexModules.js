@@ -15,9 +15,9 @@ import { vuex as project } from './project'
 // import { vuex as indicatorRateDefectsWithinSLA } from './indicator/accomplishmentQueue/rateDefectsWithinSLA'
 
 // import { vuex as indicatorOperTestProductivity } from './indicator/operTest/productivity'
-// import { vuex as indicatorOperTestRateEvidRejected } from './indicator/operTest/rateEvidRejected'
-// import { vuex as indicatorOperTestRateDefectUnfounded } from './indicator/operTest/rateDefectUnfounded'
-// import { vuex as indicatorOperTestRateDefectUat } from './indicator/operTest/rateDefectUat'
+// import { vuex as indicatoroperTestRejectionEvidence } from './indicator/operTest/rejectionEvidence'
+// import { vuex as indicatorOperTestDefectUnfounded } from './indicator/operTest/defectUnfounded'
+// import { vuex as indicatorOperTestDefectUAT } from './indicator/operTest/defectUAT'
 // import { vuex as indicatorOperTestAverangeRetestHours } from './indicator/operTest/averangeRetestHours'
 // import { vuex as indicatorOperTest } from './indicator/operTest'
 
@@ -44,9 +44,9 @@ export default {
   // indicatorRateDefectsWithinSLA,
 
   // indicatorOperTestProductivity,
-  // indicatorOperTestRateEvidRejected,
-  // indicatorOperTestRateDefectUnfounded,
-  // indicatorOperTestRateDefectUat,
+  // indicatoroperTestRejectionEvidence,
+  // indicatorOperTestDefectUnfounded,
+  // indicatorOperTestDefectUAT,
   // indicatorOperTestAverangeRetestHours,
   // indicatorOperTest,
 

@@ -6,6 +6,8 @@
   import oiChartDefectOfTSInTITotal from '@/comp/chart/defect/DefectOfTSInTITotal'
 
   import oiChartProductivityTotal from '@/comp/chart/execution/Productivity'
+  import oiChartRejectionEvidenceTotal from '@/comp/chart/test/rejectionEvidence'
+  import oiChartDefectUnfoundedTotal from '@/comp/chart/defect/defectUnfounded'
 
   export default {
     name: 'ShowData',
@@ -15,7 +17,9 @@
       oiChartDefectAverangeTimeTotal,
       oiChartDefectReopenedTotal,
       oiChartDefectOfTSInTITotal,
-      oiChartProductivityTotal
+      oiChartProductivityTotal,
+      oiChartRejectionEvidenceTotal,
+      oiChartDefectUnfoundedTotal
     },
 
     computed: {
@@ -27,7 +31,9 @@
         'operDevDefectAverangeTimeTotalHIGH',
         'operDevDefectReopenedTotal',
         'operDevDefectOfTSInTITotal',
-        'operTestProductivityTotal'
+        'operTestProductivityTotal',
+        'operTestRejectionEvidenceTotal',
+        'operTestDefectUnfoundedTotal'
       ])
     }
   }
@@ -221,6 +227,14 @@
             <div class="col-12 col-sm-6 col-md-3 oi-col">
               <oiChartProductivityTotal :value="operTestProductivityTotal"/>
             </div>
+
+            <div class="col-12 col-sm-6 col-md-3 oi-col">
+              <oiChartRejectionEvidenceTotal :value="operTestRejectionEvidenceTotal"/>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 oi-col">
+              <oiChartDefectUnfoundedTotal :value="operTestDefectUnfoundedTotal"/>
+            </div>
+            
 <!--
 
             <div class="col-12 col-sm-6 col-md-3 oi-col">

@@ -14,17 +14,19 @@ selected<script>
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
-        data-target="#RateDefectUatShowRule">
+        data-target="#rejectionEvidenceShowRule">
         Regra
     </button>
-    <oiModal id="RateDefectUatShowRule" title="Regra">   
+    <oiModal id="rejectionEvidenceShowRule" title="Regra">   
       <div style="margin:0; padding:10px" slot="body">
         <label class="fd-label">
-          Quantidade de Defeitos de UAT em relação a quantidade de Defeitos de TI e UAT.<br>
+          Quantidade de REJEIÇÕES de Evidências em relação à quantidade de CTs (que contém evidências).<br>
           <br>
-          São desconsiderados os defeitos com status CANCELLED.<br>
+          São considerados somente os CTs de TI, com status PASSED.<br>
           <br>
-          No gráfico Temporal, os defeitos de UAT são contabilizadas no mês/ano em que eles foram criados.<br>
+          No gráfico Temporal, as rejeições são contabilizadas no mês/ano em que elas ocorreram.<br>
+          <br>
+          CTs com evidências, são os que contém o campo 'validação evidência' diferente de 'N/A'.
         </label>
       </div>
     </oiModal>

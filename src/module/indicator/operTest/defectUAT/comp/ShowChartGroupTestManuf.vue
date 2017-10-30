@@ -9,7 +9,7 @@
   }
 
   export default {
-    name: 'ShowChartGroupTestManufRateDefectUat',
+    name: 'ShowChartGroupTestManufDefectUat',
 
     data () {
       return {
@@ -19,11 +19,11 @@
     },
 
     computed: {
-      ...mapGetters('indicatorRateDefectUat', ['groupTestManuf', 'byTestManufGroupSystem', 'chartTitle'])
+      ...mapGetters('indicatorDefectUAT', ['groupTestManuf', 'byTestManufGroupSystem', 'chartTitle'])
     },
 
     methods: {
-      ...mapActions('indicatorRateDefectUat', ['setChartFilter']),
+      ...mapActions('indicatorDefectUAT', ['setChartFilter']),
 
       setChartParam () {
         this.chartParam.title.text = 'Fáb.Teste / Sistema'

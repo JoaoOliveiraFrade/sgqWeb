@@ -23,7 +23,12 @@ export default {
   operDevDefectReopened: {},
   operDevDefectOfTSInTI: {},
 
-  operTestProductivity: {}
+  operTestProductivity: {},
 
+  operTestRejectionEvidence: {},
+  selectedRejectionType: 'Total',
+
+  operTestDefectUnfounded: {},
+  operTestDefectUAT: {}
   // perfDevDefectDensity: {}
 }

@@ -1,11 +1,11 @@
 selected<script>
   import oiModal from '@/module/modal/comp/modal.vue'
-  import oiRejectionEvidenceShowAnalyticGrid from '@/module/indicator/operTest/rejectionEvidence/comp/ShowAnalyticGrid.vue'
+  import oiDefectUnfoundedShowAnalyticGrid from '@/module/indicator/operTest/defectUnfounded/comp/ShowAnalyticGrid.vue'
 
   export default {
     name: 'ShowAnalytic',
 
-    components: { oiModal, oiRejectionEvidenceShowAnalyticGrid }
+    components: { oiModal, oiDefectUnfoundedShowAnalyticGrid }
   }
 </script>
 
@@ -15,13 +15,13 @@ selected<script>
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
-        data-target="#rejectionEvidenceShowAnalytic">
+        data-target="#defectUnfoundedShowAnalytic">
         Analítico
     </button>
 
-    <oiModal id="rejectionEvidenceShowAnalytic" title="Taxa Rejeição Evidência - Analítico" size="l">   
+    <oiModal id="defectUnfoundedShowAnalytic" title="Taxa Defeito Improcendente - Analítico" size="l">   
       <div style="margin:0; padding:10px" slot="body">
-        <oiRejectionEvidenceShowAnalyticGrid/>
+        <oiDefectUnfoundedShowAnalyticGrid/>
       </div>
     </oiModal>
   </span>

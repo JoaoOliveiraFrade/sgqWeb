@@ -7,7 +7,7 @@
     name: 'ShowChartGroupTimeline',
 
     computed: {
-      ...mapGetters('indicatorRateDefectUat', ['groupTimeline']),
+      ...mapGetters('indicatorDefectUAT', ['groupTimeline']),
 
       chartParam () {
         let param = chartStandParam

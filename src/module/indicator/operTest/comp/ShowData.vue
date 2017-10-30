@@ -7,25 +7,25 @@
   import oiProductivityShowChartGroupTimeline from '@/module/indicator/operTest/productivity/comp/ShowChartGroupTimeline.vue'
   import oiProductivityShowChartTotal from '@/module/indicator/operTest/productivity/comp/ShowChartTotal.vue'
 
-  import oiRateEvidRejectedShowRule from '@/module/indicator/operTest/rateEvidRejected/comp/ShowRule.vue'
-  import oiRateEvidRejectedShowAnalytic from '@/module/indicator/operTest/rateEvidRejected/comp/ShowAnalytic.vue'
-  import oiRateEvidRejectedShowAnalyticTimeline from '@/module/indicator/operTest/rateEvidRejected/comp/ShowAnalyticTimeline.vue'
-  import oiRateEvidRejectedShowChartGroupTestManuf from '@/module/indicator/operTest/rateEvidRejected/comp/ShowChartGroupTestManuf.vue'
-  import oiRateEvidRejectedShowChartGroupTimeline from '@/module/indicator/operTest/rateEvidRejected/comp/ShowChartGroupTimeline.vue'
-  import oiRateEvidRejectedShowChartTotal from '@/module/indicator/operTest/rateEvidRejected/comp/ShowChartTotal.vue'
-  import oiSelectionRejectionType from '@/module/indicator/operTest/rateEvidRejected/comp/SelectionRejectionType.vue'
+  import oiRejectionEvidenceShowRule from '@/module/indicator/operTest/rejectionEvidence/comp/ShowRule.vue'
+  import oiRejectionEvidenceShowAnalytic from '@/module/indicator/operTest/rejectionEvidence/comp/ShowAnalytic.vue'
+  import oiRejectionEvidenceShowAnalyticTimeline from '@/module/indicator/operTest/rejectionEvidence/comp/ShowAnalyticTimeline.vue'
+  import oiRejectionEvidenceShowChartGroupTestManuf from '@/module/indicator/operTest/rejectionEvidence/comp/ShowChartGroupTestManuf.vue'
+  import oiRejectionEvidenceShowChartGroupTimeline from '@/module/indicator/operTest/rejectionEvidence/comp/ShowChartGroupTimeline.vue'
+  import oiRejectionEvidenceShowChartTotal from '@/module/indicator/operTest/rejectionEvidence/comp/ShowChartTotal.vue'
+  import oiSelectionRejectionType from '@/module/indicator/operTest/rejectionEvidence/comp/SelectionRejectionType.vue'
 
-  import oiRateDefectUnfoundedShowRule from '@/module/indicator/operTest/rateDefectUnfounded/comp/ShowRule.vue'
-  import oiRateDefectUnfoundedShowAnalytic from '@/module/indicator/operTest/rateDefectUnfounded/comp/ShowAnalytic.vue'
-  import oiRateDefectUnfoundedShowChartGroupTestManuf from '@/module/indicator/operTest/rateDefectUnfounded/comp/ShowChartGroupTestManuf.vue'
-  import oiRateDefectUnfoundedShowChartGroupTimeline from '@/module/indicator/operTest/rateDefectUnfounded/comp/ShowChartGroupTimeline.vue'
-  import oiRateDefectUnfoundedShowChartTotal from '@/module/indicator/operTest/rateDefectUnfounded/comp/ShowChartTotal.vue'
+  import oiDefectUnfoundedShowRule from '@/module/indicator/operTest/defectUnfounded/comp/ShowRule.vue'
+  import oiDefectUnfoundedShowAnalytic from '@/module/indicator/operTest/defectUnfounded/comp/ShowAnalytic.vue'
+  import oiDefectUnfoundedShowChartGroupTestManuf from '@/module/indicator/operTest/defectUnfounded/comp/ShowChartGroupTestManuf.vue'
+  import oiDefectUnfoundedShowChartGroupTimeline from '@/module/indicator/operTest/defectUnfounded/comp/ShowChartGroupTimeline.vue'
+  import oiDefectUnfoundedShowChartTotal from '@/module/indicator/operTest/defectUnfounded/comp/ShowChartTotal.vue'
 
-  import oiRateDefectUatShowRule from '@/module/indicator/operTest/rateDefectUat/comp/ShowRule.vue'
-  import oiRateDefectUatShowAnalytic from '@/module/indicator/operTest/rateDefectUat/comp/ShowAnalytic.vue'
-  import oiRateDefectUatShowChartGroupTestManuf from '@/module/indicator/operTest/rateDefectUat/comp/ShowChartGroupTestManuf.vue'
-  import oiRateDefectUatShowChartGroupTimeline from '@/module/indicator/operTest/rateDefectUat/comp/ShowChartGroupTimeline.vue'
-  import oiRateDefectUatShowChartTotal from '@/module/indicator/operTest/rateDefectUat/comp/ShowChartTotal.vue'
+  import oiDefectUATShowRule from '@/module/indicator/operTest/defectUAT/comp/ShowRule.vue'
+  import oiDefectUATShowAnalytic from '@/module/indicator/operTest/defectUAT/comp/ShowAnalytic.vue'
+  import oiDefectUATShowChartGroupTestManuf from '@/module/indicator/operTest/defectUAT/comp/ShowChartGroupTestManuf.vue'
+  import oiDefectUATShowChartGroupTimeline from '@/module/indicator/operTest/defectUAT/comp/ShowChartGroupTimeline.vue'
+  import oiDefectUATShowChartTotal from '@/module/indicator/operTest/defectUAT/comp/ShowChartTotal.vue'
 
   import oiAverangeRetestHoursShowRule from '@/module/indicator/operTest/averangeRetestHours/comp/ShowRule.vue'
   import oiAverangeRetestHoursShowAnalytic from '@/module/indicator/operTest/averangeRetestHours/comp/ShowAnalytic.vue'
@@ -43,25 +43,25 @@
       oiProductivityShowChartGroupTimeline,
       oiProductivityShowChartTotal,
 
-      oiRateEvidRejectedShowRule,
-      oiRateEvidRejectedShowAnalytic,
-      oiRateEvidRejectedShowAnalyticTimeline,
-      oiRateEvidRejectedShowChartGroupTestManuf,
-      oiRateEvidRejectedShowChartGroupTimeline,
-      oiRateEvidRejectedShowChartTotal,
+      oiRejectionEvidenceShowRule,
+      oiRejectionEvidenceShowAnalytic,
+      oiRejectionEvidenceShowAnalyticTimeline,
+      oiRejectionEvidenceShowChartGroupTestManuf,
+      oiRejectionEvidenceShowChartGroupTimeline,
+      oiRejectionEvidenceShowChartTotal,
       oiSelectionRejectionType,
 
-      oiRateDefectUnfoundedShowRule,
-      oiRateDefectUnfoundedShowAnalytic,
-      oiRateDefectUnfoundedShowChartGroupTestManuf,
-      oiRateDefectUnfoundedShowChartGroupTimeline,
-      oiRateDefectUnfoundedShowChartTotal,
+      oiDefectUnfoundedShowRule,
+      oiDefectUnfoundedShowAnalytic,
+      oiDefectUnfoundedShowChartGroupTestManuf,
+      oiDefectUnfoundedShowChartGroupTimeline,
+      oiDefectUnfoundedShowChartTotal,
 
-      oiRateDefectUatShowRule,
-      oiRateDefectUatShowAnalytic,
-      oiRateDefectUatShowChartGroupTestManuf,
-      oiRateDefectUatShowChartGroupTimeline,
-      oiRateDefectUatShowChartTotal,
+      oiDefectUATShowRule,
+      oiDefectUATShowAnalytic,
+      oiDefectUATShowChartGroupTestManuf,
+      oiDefectUATShowChartGroupTimeline,
+      oiDefectUATShowChartTotal,
 
       oiAverangeRetestHoursShowRule,
       oiAverangeRetestHoursShowAnalytic,
@@ -73,28 +73,28 @@
     computed: {
       ...mapState('indicatorTest', ['selectedProjects']),
       ...mapState('indicatorProductivity', { loadingProductivity: state => (state.loading) }),
-      ...mapState('indicatorRateEvidRejected', { loadingRateEvidRejected: state => (state.loading || state.loadingTimeline) }),
-      ...mapState('indicatorRateDefectUnfounded', { loadingRateDefectUnfounded: state => (state.loading) }),
-      ...mapState('indicatorRateDefectUat', { loadingRateDefectUat: state => (state.loading) }),
+      ...mapState('indicatorRejectionEvidence', { loadingRejectionEvidence: state => (state.loading || state.loadingTimeline) }),
+      ...mapState('indicatorDefectUnfounded', { loadingDefectUnfounded: state => (state.loading) }),
+      ...mapState('indicatorDefectUAT', { loadingdefectUAT: state => (state.loading) }),
       ...mapState('indicatorTestAverangeRetestHours', { loadingAverangeRetestHours: state => (state.loading) })
     },
 
     methods: {
       ...mapActions({'loadProductivity': 'indicatorProductivity/load'}),
-      ...mapActions({'loadRateEvidRejected': 'indicatorRateEvidRejected/load'}),
-      ...mapActions({'loadRateEvidRejectedTimeline': 'indicatorRateEvidRejected/loadTimeline'}),
-      ...mapActions({'loadRateDefectUnfounded': 'indicatorRateDefectUnfounded/load'}),
-      ...mapActions({'loadRateDefectUat': 'indicatorRateDefectUat/load'}),
+      ...mapActions({'loadRejectionEvidence': 'indicatorRejectionEvidence/load'}),
+      ...mapActions({'loadRejectionEvidenceTimeline': 'indicatorRejectionEvidence/loadTimeline'}),
+      ...mapActions({'loadDefectUnfounded': 'indicatorDefectUnfounded/load'}),
+      ...mapActions({'loaddefectUAT': 'indicatorDefectUAT/load'}),
       ...mapActions({'loadAverangeRetestHours': 'indicatorTestAverangeRetestHours/load'}),
 
       load () {
         this.loadProductivity()
 
-        this.loadRateEvidRejected()
-        this.loadRateEvidRejectedTimeline()
+        this.loadRejectionEvidence()
+        this.loadRejectionEvidenceTimeline()
 
-        this.loadRateDefectUnfounded()
-        this.loadRateDefectUat()
+        this.loadDefectUnfounded()
+        this.loaddefectUAT()
         this.loadAverangeRetestHours()
       }
     },
@@ -117,9 +117,9 @@
   <div>
     <ul class="nav nav-tabs" style="margin-top:3px">
       <li class="active"><a data-toggle="tab" href="#productivity" style="padding:4px">Produtividade</a></li>
-      <li><a data-toggle="tab" href="#rateEvidRejected" style="padding:4px">Taxa Rejeição Evidência</a></li>
-      <li><a data-toggle="tab" href="#rateDefectUnfounded" style="padding:4px">Taxa Defeito Improcedente</a></li>
-      <li><a data-toggle="tab" href="#rateDefectUat" style="padding:4px">Taxa Defeito UAT</a></li>
+      <li><a data-toggle="tab" href="#rejectionEvidence" style="padding:4px">Taxa Rejeição Evidência</a></li>
+      <li><a data-toggle="tab" href="#defectUnfounded" style="padding:4px">Taxa Defeito Improcedente</a></li>
+      <li><a data-toggle="tab" href="#defectUAT" style="padding:4px">Taxa Defeito UAT</a></li>
       <li><a data-toggle="tab" href="#averangeRetestHours" style="padding:4px">Tempo Médio Reteste Defeito</a></li>
     </ul>
 
@@ -147,65 +147,65 @@
         </div>
       </div>
 
-      <div id="rateEvidRejected" class="tab-pane fade" style="padding:0; margin:0; padding-top:5px;">
-        <div class="loader" v-show="loadingRateEvidRejected" style="margin-top: 25px; margin-bottom: 25px"/>
-        <div class="row" v-show="!loadingRateEvidRejected" style="margin:0; border:0; padding:0">
-          <oiRateEvidRejectedShowRule style="text-align: left"/>
-          <oiRateEvidRejectedShowAnalytic style="text-align: left"/>
-          <oiRateEvidRejectedShowAnalyticTimeline style="text-align: left"/>
+      <div id="rejectionEvidence" class="tab-pane fade" style="padding:0; margin:0; padding-top:5px;">
+        <div class="loader" v-show="loadingRejectionEvidence" style="margin-top: 25px; margin-bottom: 25px"/>
+        <div class="row" v-show="!loadingRejectionEvidence" style="margin:0; border:0; padding:0">
+          <oiRejectionEvidenceShowRule style="text-align: left"/>
+          <oiRejectionEvidenceShowAnalytic style="text-align: left"/>
+          <oiRejectionEvidenceShowAnalyticTimeline style="text-align: left"/>
 
           <oiSelectionRejectionType/>
 
           <hr style="margin-top: 2px; height: 1px; border: 0; box-shadow: 0 7px 7px -7px #d9d9d9 inset">
 
           <div class="col-sm-4">
-            <oiRateEvidRejectedShowChartGroupTestManuf/>
+            <oiRejectionEvidenceShowChartGroupTestManuf/>
           </div>
           <div class="col-sm-4">
-            <oiRateEvidRejectedShowChartGroupTimeline/>
+            <oiRejectionEvidenceShowChartGroupTimeline/>
           </div>
           <div class="col-sm-4">
-            <oiRateEvidRejectedShowChartTotal/>
-          </div>
-        </div>
-      </div>
-
-      <div id="rateDefectUnfounded" class="tab-pane fade"style="padding:0; margin:0; padding-top:5px;">
-        <div class="loader" v-show="loadingRateDefectUnfounded" style="margin-top: 25px; margin-bottom: 25px"/>
-        <div class="row" v-show="!loadingRateDefectUnfounded" style="margin:0; border:0; padding:0">
-          <oiRateDefectUnfoundedShowRule style="text-align: left"/>
-          <oiRateDefectUnfoundedShowAnalytic style="text-align: left"/>
-
-          <hr style="margin-top: 2px; height: 1px; border: 0; box-shadow: 0 7px 7px -7px #d9d9d9 inset">
-
-          <div class="col-sm-4">
-            <oiRateDefectUnfoundedShowChartGroupTestManuf/>
-          </div>
-          <div class="col-sm-4">
-            <oiRateDefectUnfoundedShowChartGroupTimeline/>
-          </div>
-          <div class="col-sm-4">
-            <oiRateDefectUnfoundedShowChartTotal/>
+            <oiRejectionEvidenceShowChartTotal/>
           </div>
         </div>
       </div>
 
-      <div id="rateDefectUat" class="tab-pane fade"style="padding:0; margin:0; padding-top:5px;">
-        <div class="loader" v-show="loadingRateDefectUat" style="margin-top: 25px; margin-bottom: 25px"/>
-        <div class="row" v-show="!loadingRateDefectUat" style="margin:0; border:0; padding:0">
-          <oiRateDefectUatShowRule style="text-align: left"/>
-          <oiRateDefectUatShowAnalytic style="text-align: left"/>
+      <div id="defectUnfounded" class="tab-pane fade"style="padding:0; margin:0; padding-top:5px;">
+        <div class="loader" v-show="loadingDefectUnfounded" style="margin-top: 25px; margin-bottom: 25px"/>
+        <div class="row" v-show="!loadingDefectUnfounded" style="margin:0; border:0; padding:0">
+          <oiDefectUnfoundedShowRule style="text-align: left"/>
+          <oiDefectUnfoundedShowAnalytic style="text-align: left"/>
 
           <hr style="margin-top: 2px; height: 1px; border: 0; box-shadow: 0 7px 7px -7px #d9d9d9 inset">
 
           <div class="col-sm-4">
-            <oiRateDefectUatShowChartGroupTestManuf/>
+            <oiDefectUnfoundedShowChartGroupTestManuf/>
           </div>
           <div class="col-sm-4">
-            <oiRateDefectUatShowChartGroupTimeline/>
+            <oiDefectUnfoundedShowChartGroupTimeline/>
           </div>
           <div class="col-sm-4">
-            <oiRateDefectUatShowChartTotal/>
+            <oiDefectUnfoundedShowChartTotal/>
+          </div>
+        </div>
+      </div>
+
+      <div id="defectUAT" class="tab-pane fade"style="padding:0; margin:0; padding-top:5px;">
+        <div class="loader" v-show="loadingdefectUAT" style="margin-top: 25px; margin-bottom: 25px"/>
+        <div class="row" v-show="!loadingdefectUAT" style="margin:0; border:0; padding:0">
+          <oiDefectUATShowRule style="text-align: left"/>
+          <oiDefectUATShowAnalytic style="text-align: left"/>
+
+          <hr style="margin-top: 2px; height: 1px; border: 0; box-shadow: 0 7px 7px -7px #d9d9d9 inset">
+
+          <div class="col-sm-4">
+            <oiDefectUATShowChartGroupTestManuf/>
+          </div>
+          <div class="col-sm-4">
+            <oiDefectUATShowChartGroupTimeline/>
+          </div>
+          <div class="col-sm-4">
+            <oiDefectUATShowChartTotal/>
           </div>
         </div>
       </div>
