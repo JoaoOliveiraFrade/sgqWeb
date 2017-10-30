@@ -134,28 +134,21 @@ export const operTestDefectUnfoundedTotal = ({ operTestDefectUnfounded }) => {
 
 export const operTestDefectUATTotal = ({ operTestDefectUAT }) => {
   let qtyDefect = operTestDefectUAT.reduce((sum, e) => sum + e.qtyDefect, 0)
-  let qtyUAT = operTestDefectUAT.reduce((sum, e) => sum + e.qtyUAT, 0)
-  let percUAT = Number((qtyUAT / (qtyDefect !== 0 ? qtyDefect : 1) * 100).toFixed(2))
-  return { qtyDefect, qtyUAT, percUAT }
+  let qtyDefectUAT = operTestDefectUAT.reduce((sum, e) => sum + e.qtyDefectUAT, 0)
+  let percDefectUAT = Number((qtyDefectUAT / (qtyDefect !== 0 ? qtyDefect : 1) * 100).toFixed(2))
+  return { qtyDefect, qtyDefectUAT, percDefectUAT }
 }
 
-// export const perfDevDefectDensityTotal = ({ perfDevDefectDensity }) => {
-//   let qtyDefect = perfDevDefectDensity.reduce((sum, e) => sum + e.qtyDefect, 0)
-//   let qtyCt = perfDevDefectDensity.reduce((sum, e) => sum + e.qtyCt, 0)
-//   return {
-//     qtyDefect,
-//     qtyCt,
-//     density: Number((qtyDefect / (qtyCt !== 0 ? qtyCt : 1) * 100).toFixed(2))
-//   }
-// }
+export const operTestDefectAverangeRetestTimeTotal = ({ operTestDefectAverangeRetestTime }) => {
+  let qtyDefect = operTestDefectAverangeRetestTime.reduce((sum, e) => sum + e.qtyDefect, 0)
+  let qtyRetestHour = Number(operTestDefectAverangeRetestTime.reduce((sum, e) => sum + e.qtyRetestHour, 0).toFixed(2))
+  let averangeRetestHour = Number((qtyRetestHour / (qtyDefect !== 0 ? qtyDefect : 1)).toFixed(2))
+  return { qtyDefect, qtyRetestHour, averangeRetestHour }
+}
 
-// export const perfDefectDensityTotal = ({ perfDefectDensity }) => {
-//   let qtyDefect = perfDefectDensity.reduce((sum, e) => sum + e.qtyDefect, 0)
-//   let qtyCt = perfDefectDensity.reduce((sum, e) => sum + e.qtyCt, 0)
-//   return {
-//     qtyDefect,
-//     qtyCt,
-//     density: Number((qtyDefect / (qtyCt !== 0 ? qtyCt : 1) * 100).toFixed(2))
-//   }
-// }
-
+export const perfDevDefectDensityTotal = ({ perfDevDefectDensity }) => {
+  let qtyDefect = perfDevDefectDensity.reduce((sum, e) => sum + e.qtyDefect, 0)
+  let qtyCt = perfDevDefectDensity.reduce((sum, e) => sum + e.qtyCt, 0)
+  let density = Number((qtyDefect / (qtyCt !== 0 ? qtyCt : 1) * 100).toFixed(2))
+  return { qtyDefect, qtyCt, density }
+}

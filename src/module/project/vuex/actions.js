@@ -10,8 +10,9 @@ import servicesOperTestProductivity from '@/module/indicator/operTest/productivi
 import servicesOperTestRejectionEvidence from '@/module/indicator/operTest/rejectionEvidence/services'
 import servicesOperTestDefectUnfounded from '@/module/indicator/operTest/defectUnfounded/services'
 import servicesOperTestDefectUAT from '@/module/indicator/operTest/defectUAT/services'
+import servicesOperTestDefectAverangeRetestTime from '@/module/indicator/operTest/defectAverangeRetestTime/services'
 
-// import servicesPerfDefectDensity from '@/module/indicator/perfDev/defectDensity/services'
+import servicesPerfDefectDensity from '@/module/indicator/perfDev/defectDensity/services'
 
 export const load = ({ commit }) => {
   commit(types.loading, true)
@@ -127,28 +128,25 @@ export const setSelectedMonoselection = ({ commit }, project) => {
   )
   servicesOperTestDefectUnfounded.fbyProject(project)
     .then(r => {
-      console.log('sfsdfsdfsd')
       commit(types.operTestDefectUnfounded, r.data)
     }
   )
   servicesOperTestDefectUAT.fbyProject(project)
-  .then(r => {
-    console.log('sfsdfsdfsd')
-    commit(types.operTestDefectUAT, r.data)
-  }
-)
+    .then(r => {
+      commit(types.operTestDefectUAT, r.data)
+    }
+  )
+  servicesOperTestDefectAverangeRetestTime.fbyProject(project)
+    .then(r => {
+      commit(types.operTestDefectAverangeRetestTime, r.data)
+    }
+  )
 
-  // servicesOperDevDefectOfTSInTI.fbyProject(project)
-  //   .then(r => {
-  //     commit(types.operDevDefectOfTSInTI, r.data)
-  //   }
-  // )
-
-  // servicesPerfDefectDensity.defectDensityFbyProject(project)
-  //   .then(r => {
-  //     commit(types.perfDevDefectDensity, r.data)
-  //   }
-  // )
+  servicesPerfDefectDensity.defectDensityFbyProject(project)
+    .then(r => {
+      commit(types.perfDevDefectDensity, r.data)
+    }
+  )
 }
 
 export const setProjectFilterTerm = ({ commit }, filterTerm) => {

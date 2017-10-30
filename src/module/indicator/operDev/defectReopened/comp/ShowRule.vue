@@ -9,17 +9,18 @@ selected<script>
 </script>
 
 <template>
-  <span style="padding:0; margin:0">
-    <button 
+  <span>
+    <button style="padding:0px; padding-left:3px; padding-right:3px; margin-bottom:5px;"
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
-        data-target="#rateDefectsWithinSLAShowRule">
+        data-target="#defectReopenedShowRule">
         Regra
     </button>
-    <oiModal id="rateDefectsWithinSLAShowRule" title="Regra">   
+    <oiModal id="defectReopenedShowRule" title="Regra">   
       <div style="margin:0; padding:10px" slot="body">
         <label class="fd-label">
+<!--        
           Defeitos "Detectáveis em TS", divididos pelo Total de Defeitos.<br>
           <br>
           São considerados os defeitos: <br>
@@ -28,6 +29,12 @@ selected<script>
           &nbsp;&nbsp;3) De CONSTRUÇÃO.<br>
           <br>
           No gráfico Temporal, os defeitos são contabilizadas no mês/ano de fechamento.<br>
+-->
+          Qte de vezes em que os defeitos passaram pelo Status REOPEN / Qte Defeitos.<br><br>
+
+          São considerados os defeitos: <br>
+          &nbsp;&nbsp;1) Das etapas de TI e UAT.<br>
+          &nbsp;&nbsp;2) CLOSED.
         </label>
       </div>
     </oiModal>
@@ -37,5 +44,6 @@ selected<script>
 <style scoped>
   .fd-label {
     font-weight: normal;
+    text-align: left;
   }
 </style>

@@ -18,7 +18,7 @@ import { vuex as project } from './project'
 // import { vuex as indicatoroperTestRejectionEvidence } from './indicator/operTest/rejectionEvidence'
 // import { vuex as indicatorOperTestDefectUnfounded } from './indicator/operTest/defectUnfounded'
 // import { vuex as indicatorOperTestDefectUAT } from './indicator/operTest/defectUAT'
-// import { vuex as indicatorOperTestAverangeRetestHours } from './indicator/operTest/averangeRetestHours'
+// import { vuex as indicatorOperTestDefectAverangeRetestTime } from './indicator/operTest/defectAverangeRetestTime'
 // import { vuex as indicatorOperTest } from './indicator/operTest'
 
 // import { vuex as indicatorPerfDevDefectOfTSInTI } from './indicator/perfDev/defectOfTSInTI'
@@ -47,7 +47,7 @@ export default {
   // indicatoroperTestRejectionEvidence,
   // indicatorOperTestDefectUnfounded,
   // indicatorOperTestDefectUAT,
-  // indicatorOperTestAverangeRetestHours,
+  // indicatorOperTestDefectAverangeRetestTime,
   // indicatorOperTest,
 
   // indicatorPerfDefectDensity

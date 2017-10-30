@@ -10,14 +10,14 @@ export const groupTestManuf = ({data}) => {
         testManuf: i.testManuf,
         qtyDefect: i.qtyDefect,
         qtyRetestHours: i.qtyRetestHours,
-        averangeRetestHours: 0
+        defectAverangeRetestTime: 0
       })
     }
   })
   result.forEach(r => {
-    r.averangeRetestHours = parseFloat(parseFloat(r.qtyRetestHours / (r.qtyDefect !== 0 ? r.qtyDefect : 1)).toFixed(2))
+    r.defectAverangeRetestTime = parseFloat(parseFloat(r.qtyRetestHours / (r.qtyDefect !== 0 ? r.qtyDefect : 1)).toFixed(2))
   })
-  return result.filter(r => r.averangeRetestHours > 0).sort((a, b) => a.averangeRetestHours > b.averangeRetestHours ? 1 : -1)
+  return result.filter(r => r.defectAverangeRetestTime > 0).sort((a, b) => a.defectAverangeRetestTime > b.defectAverangeRetestTime ? 1 : -1)
 }
 
 export const byTestManufGroupSystem = ({data}) => (testManuf) => {
@@ -34,14 +34,14 @@ export const byTestManufGroupSystem = ({data}) => (testManuf) => {
         system: i.system,
         qtyDefect: i.qtyDefect,
         qtyRetestHours: i.qtyRetestHours,
-        averangeRetestHours: 0
+        defectAverangeRetestTime: 0
       })
     }
   })
   result.forEach(r => {
-    r.averangeRetestHours = parseFloat(parseFloat(r.qtyRetestHours / (r.qtyDefect !== 0 ? r.qtyDefect : 1)).toFixed(2))
+    r.defectAverangeRetestTime = parseFloat(parseFloat(r.qtyRetestHours / (r.qtyDefect !== 0 ? r.qtyDefect : 1)).toFixed(2))
   })
-  return result.filter(r => r.averangeRetestHours > 0).sort((a, b) => a.averangeRetestHours > b.averangeRetestHours ? 1 : -1)
+  return result.filter(r => r.defectAverangeRetestTime > 0).sort((a, b) => a.defectAverangeRetestTime > b.defectAverangeRetestTime ? 1 : -1)
 }
 
 export const filteredByChart = ({data, testManufSelected, systemSelected}) => {
@@ -67,10 +67,10 @@ export const groupTimeline = ({limitMaxQtyHours}, {filteredByChart, total}) => {
         monthYear: i.month + '/' + i.year,
         qtyDefect: i.qtyDefect,
         qtyRetestHours: i.qtyRetestHours,
-        averangeRetestHours: 0,
+        defectAverangeRetestTime: 0,
         qtyAccDefect: 0,
         qtyAccRetestHours: 0,
-        qtyAccAverangeRetestHours: 0,
+        qtyAccdefectAverangeRetestTime: 0,
         limitMaxQtyHours: limitMaxQtyHours
       })
     }
@@ -78,12 +78,12 @@ export const groupTimeline = ({limitMaxQtyHours}, {filteredByChart, total}) => {
   let qtyAccDefect = 0
   let qtyAccRetestHours = 0
   result.forEach(i => {
-    i.averangeRetestHours = parseFloat(parseFloat(i.qtyRetestHours / (i.qtyDefect !== 0 ? i.qtyDefect : 1)).toFixed(2))
+    i.defectAverangeRetestTime = parseFloat(parseFloat(i.qtyRetestHours / (i.qtyDefect !== 0 ? i.qtyDefect : 1)).toFixed(2))
     qtyAccDefect = qtyAccDefect + i.qtyDefect
     qtyAccRetestHours = qtyAccRetestHours + i.qtyRetestHours
     i.qtyAccDefect = qtyAccDefect
     i.qtyAccRetestHours = qtyAccRetestHours
-    i.qtyAccAverangeRetestHours = parseFloat(parseFloat(qtyAccRetestHours / (qtyAccDefect !== 0 ? qtyAccDefect : 1)).toFixed(2))
+    i.qtyAccdefectAverangeRetestTime = parseFloat(parseFloat(qtyAccRetestHours / (qtyAccDefect !== 0 ? qtyAccDefect : 1)).toFixed(2))
   })
   return result.sort((a, b) => a.yearMonth > b.yearMonth ? 1 : -1)
 }
@@ -94,7 +94,7 @@ export const total = (state, {filteredByChart}) => {
   return {
     qtyDefect,
     qtyRetestHours,
-    averangeRetestHours: parseFloat(parseFloat(qtyRetestHours / (qtyDefect !== 0 ? qtyDefect : 1)).toFixed(2))
+    defectAverangeRetestTime: parseFloat(parseFloat(qtyRetestHours / (qtyDefect !== 0 ? qtyDefect : 1)).toFixed(2))
   }
 }
 

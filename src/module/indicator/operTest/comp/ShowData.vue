@@ -27,11 +27,11 @@
   import oiDefectUATShowChartGroupTimeline from '@/module/indicator/operTest/defectUAT/comp/ShowChartGroupTimeline.vue'
   import oiDefectUATShowChartTotal from '@/module/indicator/operTest/defectUAT/comp/ShowChartTotal.vue'
 
-  import oiAverangeRetestHoursShowRule from '@/module/indicator/operTest/averangeRetestHours/comp/ShowRule.vue'
-  import oiAverangeRetestHoursShowAnalytic from '@/module/indicator/operTest/averangeRetestHours/comp/ShowAnalytic.vue'
-  import oiAverangeRetestHoursShowChartGroupTestManuf from '@/module/indicator/operTest/averangeRetestHours/comp/ShowChartGroupTestManuf.vue'
-  import oiAverangeRetestHoursShowChartGroupTimeline from '@/module/indicator/operTest/averangeRetestHours/comp/ShowChartGroupTimeline.vue'
-  import oiAverangeRetestHoursShowChartTotal from '@/module/indicator/operTest/averangeRetestHours/comp/ShowChartTotal.vue'
+  import oiDefectAverangeRetestTimeShowRule from '@/module/indicator/operTest/defectAverangeRetestTime/comp/ShowRule.vue'
+  import oiDefectAverangeRetestTimeShowAnalytic from '@/module/indicator/operTest/defectAverangeRetestTime/comp/ShowAnalytic.vue'
+  import oiDefectAverangeRetestTimeShowChartGroupTestManuf from '@/module/indicator/operTest/defectAverangeRetestTime/comp/ShowChartGroupTestManuf.vue'
+  import oiDefectAverangeRetestTimeShowChartGroupTimeline from '@/module/indicator/operTest/defectAverangeRetestTime/comp/ShowChartGroupTimeline.vue'
+  import oiDefectAverangeRetestTimeShowChartTotal from '@/module/indicator/operTest/defectAverangeRetestTime/comp/ShowChartTotal.vue'
 
   export default {
     name: 'ShowData',
@@ -63,11 +63,11 @@
       oiDefectUATShowChartGroupTimeline,
       oiDefectUATShowChartTotal,
 
-      oiAverangeRetestHoursShowRule,
-      oiAverangeRetestHoursShowAnalytic,
-      oiAverangeRetestHoursShowChartGroupTestManuf,
-      oiAverangeRetestHoursShowChartGroupTimeline,
-      oiAverangeRetestHoursShowChartTotal
+      oiDefectAverangeRetestTimeShowRule,
+      oiDefectAverangeRetestTimeShowAnalytic,
+      oiDefectAverangeRetestTimeShowChartGroupTestManuf,
+      oiDefectAverangeRetestTimeShowChartGroupTimeline,
+      oiDefectAverangeRetestTimeShowChartTotal
     },
 
     computed: {
@@ -76,7 +76,7 @@
       ...mapState('indicatorRejectionEvidence', { loadingRejectionEvidence: state => (state.loading || state.loadingTimeline) }),
       ...mapState('indicatorDefectUnfounded', { loadingDefectUnfounded: state => (state.loading) }),
       ...mapState('indicatorDefectUAT', { loadingdefectUAT: state => (state.loading) }),
-      ...mapState('indicatorTestAverangeRetestHours', { loadingAverangeRetestHours: state => (state.loading) })
+      ...mapState('indicatorTestDefectAverangeRetestTime', { loadingdefectAverangeRetestTime: state => (state.loading) })
     },
 
     methods: {
@@ -85,7 +85,7 @@
       ...mapActions({'loadRejectionEvidenceTimeline': 'indicatorRejectionEvidence/loadTimeline'}),
       ...mapActions({'loadDefectUnfounded': 'indicatorDefectUnfounded/load'}),
       ...mapActions({'loaddefectUAT': 'indicatorDefectUAT/load'}),
-      ...mapActions({'loadAverangeRetestHours': 'indicatorTestAverangeRetestHours/load'}),
+      ...mapActions({'loaddefectAverangeRetestTime': 'indicatorTestDefectAverangeRetestTime/load'}),
 
       load () {
         this.loadProductivity()
@@ -95,7 +95,7 @@
 
         this.loadDefectUnfounded()
         this.loaddefectUAT()
-        this.loadAverangeRetestHours()
+        this.loaddefectAverangeRetestTime()
       }
     },
 
@@ -120,7 +120,7 @@
       <li><a data-toggle="tab" href="#rejectionEvidence" style="padding:4px">Taxa Rejeição Evidência</a></li>
       <li><a data-toggle="tab" href="#defectUnfounded" style="padding:4px">Taxa Defeito Improcedente</a></li>
       <li><a data-toggle="tab" href="#defectUAT" style="padding:4px">Taxa Defeito UAT</a></li>
-      <li><a data-toggle="tab" href="#averangeRetestHours" style="padding:4px">Tempo Médio Reteste Defeito</a></li>
+      <li><a data-toggle="tab" href="#defectAverangeRetestTime" style="padding:4px">Tempo Médio Reteste Defeito</a></li>
     </ul>
 
     <div class="tab-content">
@@ -210,22 +210,22 @@
         </div>
       </div>
 
-      <div id="averangeRetestHours" class="tab-pane fade"style="padding:0; margin:0; padding-top:5px;">
-        <div class="loader" v-show="loadingAverangeRetestHours" style="margin-top: 25px; margin-bottom: 25px"/>
-        <div class="row" v-show="!loadingAverangeRetestHours" style="margin:0; border:0; padding:0">
-          <oiAverangeRetestHoursShowRule style="text-align: left"/>
-          <oiAverangeRetestHoursShowAnalytic style="text-align: left"/>
+      <div id="defectAverangeRetestTime" class="tab-pane fade"style="padding:0; margin:0; padding-top:5px;">
+        <div class="loader" v-show="loadingdefectAverangeRetestTime" style="margin-top: 25px; margin-bottom: 25px"/>
+        <div class="row" v-show="!loadingdefectAverangeRetestTime" style="margin:0; border:0; padding:0">
+          <oiDefectAverangeRetestTimeShowRule style="text-align: left"/>
+          <oiDefectAverangeRetestTimeShowAnalytic style="text-align: left"/>
 
           <hr style="margin-top: 2px; height: 1px; border: 0; box-shadow: 0 7px 7px -7px #d9d9d9 inset">
 
           <div class="col-sm-4">
-            <oiAverangeRetestHoursShowChartGroupTestManuf/>
+            <oiDefectAverangeRetestTimeShowChartGroupTestManuf/>
           </div>
           <div class="col-sm-4">
-            <oiAverangeRetestHoursShowChartGroupTimeline/>
+            <oiDefectAverangeRetestTimeShowChartGroupTimeline/>
           </div>
           <div class="col-sm-4">
-            <oiAverangeRetestHoursShowChartTotal/>
+            <oiDefectAverangeRetestTimeShowChartTotal/>
           </div>
         </div>
       </div>

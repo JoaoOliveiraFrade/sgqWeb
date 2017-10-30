@@ -16,6 +16,7 @@ export const operTestProductivity = 'operTestProductivity'
 export const operTestRejectionEvidence = 'operTestRejectionEvidence'
 export const operTestDefectUnfounded = 'operTestDefectUnfounded'
 export const operTestDefectUAT = 'operTestDefectUAT'
+export const operTestDefectAverangeRetestTime = 'operTestDefectAverangeRetestTime'
 
-// export const perfDevDefectDensity = 'perfDevDefectDensity'
+export const perfDevDefectDensity = 'perfDevDefectDensity'
 // export const defectAverangeTime = 'defectAverangeTime'

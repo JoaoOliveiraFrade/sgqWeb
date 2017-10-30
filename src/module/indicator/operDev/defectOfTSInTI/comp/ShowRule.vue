@@ -14,18 +14,22 @@ selected<script>
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
-        data-target="#productivityShowRule">
+        data-target="#defectOfTSInTIShowRule">
         Regra
     </button>
+    <oiModal id="defectOfTSInTIShowRule" title="Regra">   
+      <div style="margin:0; padding:10px" slot="body">
+        <label class="fd-label">
+          Qte de defeitos com campo “Erro Detectável Em Desenvolvimento” igual a SIM / Qte Total Defeitos.<br><br>
 
-    <oiModal id="productivityShowRule" title="Regra">   
-      <div style="margin:0; padding:10px; text-align: left" slot="body">
-        <label class="fd-label" style="font-weight: normal; text-align: left">
-          Quantidade de Execuções (PASSED + FAILED) dos CTs de TI.
+          São considerados os defeitos: <br>
+          &nbsp;&nbsp;1) Das etapas de TI e UAT.<br>
+          &nbsp;&nbsp;2) CLOSED.<br><br>
+
+          Este campo é imputado manualmente no ALM.
         </label>
       </div>
     </oiModal>
-
   </span>
 </template>
 

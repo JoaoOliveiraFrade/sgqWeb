@@ -53,10 +53,14 @@ export default {
   },
   [types.operTestDefectUAT] (state, data) {
     state.operTestDefectUAT = data
+  },
+  [types.operTestDefectAverangeRetestTime] (state, data) {
+    state.operTestDefectAverangeRetestTime = data
+  },
+
+  [types.perfDevDefectDensity] (state, data) {
+    state.perfDevDefectDensity = data
   }
-  // [types.perfDevDefectDensity] (state, data) {
-  //   state.perfDevDefectDensity = data
-  // }
 
   // [types.defectAverangeTime] (state, data) {
   //   state.defectAverangeTime = data

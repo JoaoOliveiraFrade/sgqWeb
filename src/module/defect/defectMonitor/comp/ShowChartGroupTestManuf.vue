@@ -9,7 +9,7 @@
   }
 
   export default {
-    name: 'ShowChartGroupTestManufAverangeRetestHours',
+    name: 'ShowChartGroupTestManufdefectAverangeRetestTime',
 
     data () {
       return {
@@ -19,11 +19,11 @@
     },
 
     computed: {
-      ...mapGetters('indicatorTestAverangeRetestHours', ['groupTestManuf', 'byTestManufGroupSystem', 'chartTitle'])
+      ...mapGetters('indicatorTestDefectAverangeRetestTime', ['groupTestManuf', 'byTestManufGroupSystem', 'chartTitle'])
     },
 
     methods: {
-      ...mapActions('indicatorTestAverangeRetestHours', ['setChartFilter']),
+      ...mapActions('indicatorTestDefectAverangeRetestTime', ['setChartFilter']),
 
       setChartParam () {
         this.chartParam.title.text = 'Fáb.Teste / Sistema'
@@ -32,7 +32,7 @@
         this.chartParam.tooltip.headerFormat = ''
         this.chartParam.tooltip.pointFormat = `
           <b>{point.name}</b><br>
-          Tempo Médio (h): {point.averangeRetestHours:.2f}<br>
+          Tempo Médio (h): {point.defectAverangeRetestTime:.2f}<br>
           Defeito: {point.qtyDefect:.0f}<br>
           Horas Reteste: {point.qtyRetestHours:.2f}
         `
@@ -43,10 +43,10 @@
             colorByPoint: true,
             data: this.groupTestManuf.map(i => ({
               name: i.testManuf ? i.testManuf.charAt(0).toUpperCase() + i.testManuf.slice(1).toLowerCase() : '',
-              y: i.averangeRetestHours,
+              y: i.defectAverangeRetestTime,
               qtyDefect: i.qtyDefect,
               qtyRetestHours: i.qtyRetestHours,
-              averangeRetestHours: i.averangeRetestHours,
+              defectAverangeRetestTime: i.defectAverangeRetestTime,
               drilldown: i.testManuf
             }))
           }
@@ -58,10 +58,10 @@
             id: i.testManuf,
             data: this.byTestManufGroupSystem(i.testManuf).map(s => ({
               name: s.system ? s.system.charAt(0).toUpperCase() + s.system.slice(1).toLowerCase() : '',
-              y: s.averangeRetestHours,
+              y: s.defectAverangeRetestTime,
               qtyDefect: s.qtyDefect,
               qtyRetestHours: s.qtyRetestHours,
-              averangeRetestHours: s.averangeRetestHours
+              defectAverangeRetestTime: s.defectAverangeRetestTime
             }))
           }))
         }

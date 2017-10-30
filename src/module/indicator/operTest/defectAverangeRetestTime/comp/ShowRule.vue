@@ -14,19 +14,19 @@ selected<script>
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
-        data-target="#defectUnfoundedShowRule">
+        data-target="#defectAverangeRetestTimeShowRule">
         Regra
     </button>
-    <oiModal id="defectUnfoundedShowRule" title="Regra">   
+    <oiModal id="defectAverangeRetestTimeShowRule" title="Regra">   
       <div style="margin:0; padding:10px" slot="body">
         <label class="fd-label" style="font-weight: normal; text-align: left">
-          Qte de defeitos Improcedentes / Qte total de defeitos.<br><br>
+          Qte Horas de Reteste / Qte de Defeitos.<br><br>
 
           São considerados somente os defeitos de TI.<br><br>
 
-          São considerados Improcedentes, os defeitos com Status CANCELLED e Origem igual a IMPROCEDENTE.<br><br>
+          São desconsiderados os defeitos com status CANCELLED.<br><br>
 
-          No gráfico Temporal, os defeitos improcedentes são contabilizadas no mês/ano mais recente em que eles foram alterados para Improcedente.
+          No gráfico Temporal, as horas são contabilizadas no mês/ano em que os defeitos foram criados.
         </label>
       </div>
     </oiModal>
@@ -36,6 +36,6 @@ selected<script>
 <style scoped>
   .fd-label {
     font-weight: normal;
-    text-align: left
+    text-align: left;
   }
 </style

@@ -14,10 +14,10 @@ selected<script>
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
-        data-target="#averangeRetestHoursShowRule">
+        data-target="#defectAverangeRetestTimeShowRule">
         Regra
     </button>
-    <oiModal id="averangeRetestHoursShowRule" title="Regra">   
+    <oiModal id="defectAverangeRetestTimeShowRule" title="Regra">   
       <div style="margin:0; padding:10px" slot="body">
         <label class="fd-label">
           Quantidade de Horas de Reteste de Defeitos em relação a quantidade de Defeitos.<br>

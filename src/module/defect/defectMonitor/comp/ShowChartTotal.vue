@@ -7,8 +7,8 @@
     name: 'ShowChartTotal',
 
     computed: {
-      ...mapGetters('indicatorTestAverangeRetestHours', ['total']),
-      ...mapState('indicatorTestAverangeRetestHours', ['limitMaxQtyHours']),
+      ...mapGetters('indicatorTestDefectAverangeRetestTime', ['total']),
+      ...mapState('indicatorTestDefectAverangeRetestTime', ['limitMaxQtyHours']),
 
       chartParam () {
         let param = chartTotalStandParam
@@ -17,13 +17,13 @@
         param.yAxis.title.text = 'Média<br>Horas'
         // param.plotOptions.gauge.dataLabels.borderWidth = 0
         param.plotOptions.gauge.dataLabels.useHTML = true
-        param.plotOptions.gauge.dataLabels.format = '<span style=font-size:9px><center>{point.y:.0f}</center>' + this.total.averangeRetestHours + '%</span>'
+        param.plotOptions.gauge.dataLabels.format = '<span style=font-size:9px><center>{point.y:.0f}</center>' + this.total.defectAverangeRetestTime + '%</span>'
 
-        if (this.total.averangeRetestHours > this.limitMaxQtyHours) {
-          param.yAxis.max = this.total.averangeRetestHours
+        if (this.total.defectAverangeRetestTime > this.limitMaxQtyHours) {
+          param.yAxis.max = this.total.defectAverangeRetestTime
           param.yAxis.plotBands = [
             {from: 0, to: this.limitMaxQtyHours, color: '#00CC00'},
-            {from: this.limitMaxQtyHours, to: this.total.averangeRetestHours, color: '#FF3300'}
+            {from: this.limitMaxQtyHours, to: this.total.defectAverangeRetestTime, color: '#FF3300'}
           ]
         } else {
           param.yAxis.max = this.total.limitMaxQtyHours
@@ -33,12 +33,12 @@
         }
 
         param.tooltip.pointFormat = `
-          Tempo Médio (h): ${this.total.averangeRetestHours}<br>
+          Tempo Médio (h): ${this.total.defectAverangeRetestTime}<br>
           Defeito: ${this.total.qtyDefect}<br>
           Horas Reteste: ${this.total.qtyRetestHours}<br>
           Limite Máximo (h): ${this.limitMaxQtyHours}
           `
-        param.series = [ { name: 'Total', colorByPoint: true, data: [ this.total.averangeRetestHours ] } ]
+        param.series = [ { name: 'Total', colorByPoint: true, data: [ this.total.defectAverangeRetestTime ] } ]
         return param
       }
     },

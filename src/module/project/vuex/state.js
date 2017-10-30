@@ -29,6 +29,8 @@ export default {
   selectedRejectionType: 'Total',
 
   operTestDefectUnfounded: {},
-  operTestDefectUAT: {}
-  // perfDevDefectDensity: {}
+  operTestDefectUAT: {},
+  operTestDefectAverangeRetestTime: {},
+
+  perfDevDefectDensity: {}
 }

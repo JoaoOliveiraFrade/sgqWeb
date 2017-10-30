@@ -4,13 +4,13 @@
   // const highchartsExporting = require('highcharts-exporting')
   // highchartsExporting(Highcharts)
 
-  const highchartsMore = require('highcharts-more')
-  highchartsMore(Highcharts)
+  // const highchartsMore = require('highcharts-more')
+  // highchartsMore(Highcharts)
 
   import chartParametersTotal from '@/comp/chart/types/Total'
 
   export default {
-    name: 'chartdefectOfTSInTI',
+    name: 'chartDefectUnfoundedTotal',
 
     props: {
       value: { type: Object }
@@ -31,22 +31,23 @@
     methods: {
       loadParameters () {
         let limitSupGreen = 5
-        let limitSupRed = this.value.qtyOfTSInTI < 100 ? 100 : this.value.qtyOfTSInTI
+        let limitSupRed = this.value.percUnfounded > 100 ? this.value.percUnfounded : 100
 
-        this.parameters.title.text = 'Defeito de TS em TI'
+        this.parameters.title.text = 'Defeito Improcedente'
         this.parameters.yAxis.title.text = '%<br>Defeito'
         this.parameters.plotOptions.gauge.dataLabels.format = '{point.y:.0f}%'
-        this.parameters.yAxis.max = limitSupRed
+        this.parameters.yAxis.max = (this.value.percUnfounded <= 100) ? 100 : this.value.percUnfounded
         this.parameters.yAxis.plotBands = [
-          {from: 0, to: limitSupGreen, color: '#00CC00'},
-          {from: limitSupGreen, to: limitSupRed, color: '#FF3300'}
+            {from: 0, to: limitSupGreen, color: '#00CC00'},
+            {from: limitSupGreen, to: limitSupRed, color: '#FF3300'}
         ]
-        this.parameters.tooltip.pointFormat = 'TS em TI: ' + this.value.percOfTSInTI + '%<br>' +
-          'Qte de TS em TI: ' + this.value.qtyOfTSInTI + '<br>' +
+        this.parameters.tooltip.pointFormat = 'Improcedente: ' + this.value.percUnfounded + '%<br>' +
+          'Qte Improcedente: ' + this.value.qtyUnfounded + '<br>' +
           'Qte Defeito: ' + this.value.qtyDefect + '<br>' +
           'Limite Máximo: 5%'
+          // 'Qte Referência: ' + this.value.qtyReference + ' def. (' + this.value.percentReference + '%)'
 
-        this.parameters.series = [ { name: 'Horas', colorByPoint: true, data: [ this.value.percOfTSInTI ] } ]
+        this.parameters.series = [ { name: '% Def', colorByPoint: true, data: [ this.value.percUnfounded ] } ]
       }
     }
   }

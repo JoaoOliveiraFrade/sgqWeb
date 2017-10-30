@@ -5,7 +5,7 @@
     name: 'ShowAnalyticGrid',
 
     computed: {
-      ...mapGetters('indicatorTestAverangeRetestHours', ['filteredByChart'])
+      ...mapGetters('indicatorTestDefectAverangeRetestTime', ['filteredByChart'])
     }
   }
 

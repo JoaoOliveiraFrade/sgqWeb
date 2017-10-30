@@ -9,15 +9,15 @@ selected<script>
 </script>
 
 <template>
-  <span style="padding:0; margin:0">
-    <button 
+  <span >
+    <button style="padding:0px; padding-left:3px; padding-right:3px; margin-bottom:5px;"
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
-        data-target="#rateDefectsWithinSLAShowRule">
+        data-target="#defectDensityShowRule">
         Regra
     </button>
-    <oiModal id="rateDefectsWithinSLAShowRule" title="Regra">   
+    <oiModal id="defectDensityShowRule" title="Regra">   
       <div style="margin:0; padding:10px" slot="body">
         <label class="fd-label">
           Qte de Defeitos / Qte de CTs.<br>
@@ -29,10 +29,12 @@ selected<script>
           <br>
           São considerados os CTs: <br>
           &nbsp;&nbsp;- Das etapas de TI e UAT<br>
-          &nbsp;&nbsp;- PASSED<br>
+          &nbsp;&nbsp;- Diferentes de CANCELLED e NO RUN<br>
           &nbsp;&nbsp;- Diferentes de MASSA<br>
           <br>
-          No gráfico Temporal, os defeitos são contabilizados no mês/ano de fechamento. Já os Cts, são contabilizados no mês/ano da primeira execução PASSED.<br>
+
+          Devido a necessidade de exibir este dados em uma régua de tempo, os defeitos foram totalizados no mês/ano de execução dos CTs. 
+          Com isto, são considerados somente defeitos associados a CTs.
         </label>
       </div>
     </oiModal>
@@ -42,5 +44,6 @@ selected<script>
 <style scoped>
   .fd-label {
     font-weight: normal;
+    text-align: left
   }
 </style>

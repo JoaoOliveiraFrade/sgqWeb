@@ -7,8 +7,8 @@
     name: 'ShowChartGroupTimeline',
 
     computed: {
-      ...mapGetters('indicatorTestAverangeRetestHours', ['groupTimeline']),
-      ...mapState('indicatorTestAverangeRetestHours', ['limitMaxQtyHours']),
+      ...mapGetters('indicatorTestDefectAverangeRetestTime', ['groupTimeline']),
+      ...mapState('indicatorTestDefectAverangeRetestTime', ['limitMaxQtyHours']),
 
       chartParam () {
         let param = chartStandParam
@@ -19,11 +19,11 @@
         param.tooltip.headerFormat = ''
         param.tooltip.pointFormat = `
           <b>{point.monthYear}</b><br>
-          Tempo Médio (h): {point.averangeRetestHours:.2f}<br>
+          Tempo Médio (h): {point.defectAverangeRetestTime:.2f}<br>
           Defeito: {point.qtyDefect:.0f}<br>
           Horas Reteste: {point.qtyRetestHours:.2f}<br>
           Limite Máximo (h): {point.limitMaxQtyHours:.0f}<br>
-          Tempo Médio Acum (h): {point.qtyAccAverangeRetestHours:.2f}<br>
+          Tempo Médio Acum (h): {point.qtyAccdefectAverangeRetestTime:.2f}<br>
           Defeito Acum: {point.qtyAccDefect:.0f}<br>
           Horas Reteste Acum: {point.qtyAccRetestHours:.2f}
           `
@@ -42,10 +42,10 @@
                 monthYear: i.monthYear,
                 qtyDefect: i.qtyDefect,
                 qtyRetestHours: i.qtyRetestHours,
-                averangeRetestHours: i.averangeRetestHours,
+                defectAverangeRetestTime: i.defectAverangeRetestTime,
                 qtyAccDefect: i.qtyAccDefect,
                 qtyAccRetestHours: i.qtyAccRetestHours,
-                qtyAccAverangeRetestHours: i.qtyAccAverangeRetestHours,
+                qtyAccdefectAverangeRetestTime: i.qtyAccdefectAverangeRetestTime,
                 limitMaxQtyHours: this.limitMaxQtyHours
               }
             ))
@@ -54,14 +54,14 @@
             data: this.groupTimeline.map(i => (
               {
                 name: i.monthYear,
-                y: i.averangeRetestHours,
+                y: i.defectAverangeRetestTime,
                 monthYear: i.monthYear,
                 qtyDefect: i.qtyDefect,
                 qtyRetestHours: i.qtyRetestHours,
-                averangeRetestHours: i.averangeRetestHours,
+                defectAverangeRetestTime: i.defectAverangeRetestTime,
                 qtyAccDefect: i.qtyAccDefect,
                 qtyAccRetestHours: i.qtyAccRetestHours,
-                qtyAccAverangeRetestHours: i.qtyAccAverangeRetestHours,
+                qtyAccdefectAverangeRetestTime: i.qtyAccdefectAverangeRetestTime,
                 limitMaxQtyHours: this.limitMaxQtyHours
               }
             ))
@@ -70,14 +70,14 @@
             data: this.groupTimeline.map(i => (
               {
                 name: i.monthYear,
-                y: i.qtyAccAverangeRetestHours,
+                y: i.qtyAccdefectAverangeRetestTime,
                 monthYear: i.monthYear,
                 qtyDefect: i.qtyDefect,
                 qtyRetestHours: i.qtyRetestHours,
-                averangeRetestHours: i.averangeRetestHours,
+                defectAverangeRetestTime: i.defectAverangeRetestTime,
                 qtyAccDefect: i.qtyAccDefect,
                 qtyAccRetestHours: i.qtyAccRetestHours,
-                qtyAccAverangeRetestHours: i.qtyAccAverangeRetestHours,
+                qtyAccdefectAverangeRetestTime: i.qtyAccdefectAverangeRetestTime,
                 limitMaxQtyHours: this.limitMaxQtyHours
               }
             ))

@@ -9,8 +9,8 @@ selected<script>
 </script>
 
 <template>
-  <span style="padding:0; margin:0">
-    <button 
+  <span>
+    <button style="padding:0px; padding-left:3px; padding-right:3px; margin-bottom:5px;"
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
@@ -19,8 +19,8 @@ selected<script>
     </button>
     <oiModal id="defectUATShowRule" title="Regra">   
       <div style="margin:0; padding:10px" slot="body">
-        <label class="fd-label">
-          Quantidade de Defeitos de UAT em relação a quantidade de Defeitos de TI e UAT.<br>
+        <label class="fd-label" style="font-weight: normal; text-align: left">
+          Qte Defeitos de UAT / Qte Defeitos de TI e UAT.<br>
           <br>
           São desconsiderados os defeitos com status CANCELLED.<br>
           <br>
@@ -34,5 +34,6 @@ selected<script>
 <style scoped>
   .fd-label {
     font-weight: normal;
+    text-align: left;
   }
-</style>
+</style

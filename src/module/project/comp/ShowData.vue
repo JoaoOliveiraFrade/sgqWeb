@@ -5,9 +5,24 @@
   import oiChartDefectReopenedTotal from '@/comp/chart/defect/DefectReopenedTotal'
   import oiChartDefectOfTSInTITotal from '@/comp/chart/defect/DefectOfTSInTITotal'
 
-  import oiChartProductivityTotal from '@/comp/chart/execution/Productivity'
-  import oiChartRejectionEvidenceTotal from '@/comp/chart/test/rejectionEvidence'
-  import oiChartDefectUnfoundedTotal from '@/comp/chart/defect/defectUnfounded'
+  import oiChartProductivityTotal from '@/comp/chart/execution/ProductivityTotal'
+  import oiChartRejectionEvidenceTotal from '@/comp/chart/test/rejectionEvidenceTotal'
+  import oiChartDefectUnfoundedTotal from '@/comp/chart/defect/defectUnfoundedTotal'
+  import oiChartDefectUATTotal from '@/comp/chart/defect/defectUATTotal'
+  import oiChartDefectAverangeRetestTimeTotal from '@/comp/chart/defect/DefectAverangeRetestTimeTotal'
+
+  import oiRulerOperDevDefectDensity from '@/module/indicator/operDev/defectDensity/comp/ShowRule'
+  import oiRulerOperDevDefectAverangeTime from '@/module/indicator/operDev/defectAverangeTime/comp/ShowRule'
+  import oiRulerOperDevDefectReopened from '@/module/indicator/operDev/defectReopened/comp/ShowRule'
+  import oiRulerOperDevDefectOfTSInTI from '@/module/indicator/operDev/defectOfTSInTI/comp/ShowRule'
+
+  import oiRulerOperTestProductivity from '@/module/indicator/operTest/productivity/comp/ShowRule'
+  import oiRulerOperTestRejectionEvidence from '@/module/indicator/operTest/rejectionEvidence/comp/ShowRule'
+  import oiRulerOperTestDefectUnfounded from '@/module/indicator/operTest/defectUnfounded/comp/ShowRule'
+  import oiRulerOperTestDefectUAT from '@/module/indicator/operTest/defectUAT/comp/ShowRule'
+  import oiRulerOperTestDefectAverangeRetestTime from '@/module/indicator/operTest/defectAverangeRetestTime/comp/ShowRule'
+
+  import oiRulerPerfDevDefectDensity from '@/module/indicator/perfDev/defectDensity/comp/ShowRule'
 
   export default {
     name: 'ShowData',
@@ -19,7 +34,22 @@
       oiChartDefectOfTSInTITotal,
       oiChartProductivityTotal,
       oiChartRejectionEvidenceTotal,
-      oiChartDefectUnfoundedTotal
+      oiChartDefectUnfoundedTotal,
+      oiChartDefectUATTotal,
+      oiChartDefectAverangeRetestTimeTotal,
+
+      oiRulerOperDevDefectDensity,
+      oiRulerOperDevDefectAverangeTime,
+      oiRulerOperDevDefectReopened,
+      oiRulerOperDevDefectOfTSInTI,
+
+      oiRulerOperTestProductivity,
+      oiRulerOperTestRejectionEvidence,
+      oiRulerOperTestDefectUnfounded,
+      oiRulerOperTestDefectUAT,
+      oiRulerOperTestDefectAverangeRetestTime,
+
+      oiRulerPerfDevDefectDensity
     },
 
     computed: {
@@ -33,7 +63,10 @@
         'operDevDefectOfTSInTITotal',
         'operTestProductivityTotal',
         'operTestRejectionEvidenceTotal',
-        'operTestDefectUnfoundedTotal'
+        'operTestDefectUnfoundedTotal',
+        'operTestDefectUATTotal',
+        'operTestDefectAverangeRetestTimeTotal',
+        'perfDevDefectDensityTotal'
       ])
     }
   }
@@ -204,42 +237,55 @@
           <div class="row well well-sm oi-well text-center">
             <label class="fd-label">DESENVOLVIMENTO</label><br>
 
-            <div class="col-12 col-sm-6 col-md-3 oi-col">
+            <div class="col-xs-12 col-sm-6 col-md-3 oi-col">
                 <oiChartDefectDensityTotal :value="operDevDefectDensityTotal"/>
+                <oiRulerOperDevDefectDensity/>
             </div>
-
-            <div class="col-12 col-sm-6 col-md-3 oi-col">
+            <div class="col-xs-12 col-sm-6 col-md-3 oi-col">
                 <oiChartDefectAverangeTimeTotal :value="operDevDefectAverangeTimeTotalHIGH"/>
+                <oiRulerOperDevDefectAverangeTime/>
             </div>
 
-            <div class="col-12 col-sm-6 col-md-3 oi-col">
+            <div class="col-xs-12 col-sm-6 col-md-3 oi-col">
                 <oiChartDefectReopenedTotal :value="operDevDefectReopenedTotal"/>
+                <oiRulerOperDevDefectReopened/>
             </div>
 
-            <div class="col-12 col-sm-6 col-md-3 oi-col">
+            <div class="col-xs-12 col-sm-6 col-md-3 oi-col">
                 <oiChartDefectOfTSInTITotal :value="operDevDefectOfTSInTITotal"/>
+                <oiRulerOperDevDefectOfTSInTI/>
             </div>
           </div>
 
           <div class="row well well-sm oi-well text-center">
             <label class="fd-label">TESTE</label><br>
 
-            <div class="col-12 col-sm-6 col-md-3 oi-col">
+            <div class="col-xs-12 col-sm-6 col-md-3 oi-col">
               <oiChartProductivityTotal :value="operTestProductivityTotal"/>
+              <oiRulerOperTestProductivity/>
             </div>
 
-            <div class="col-12 col-sm-6 col-md-3 oi-col">
+            <div class="col-xs-12 col-sm-6 col-md-3 oi-col">
               <oiChartRejectionEvidenceTotal :value="operTestRejectionEvidenceTotal"/>
+              <oiRulerOperTestRejectionEvidence/>
             </div>
-            <div class="col-12 col-sm-6 col-md-3 oi-col">
+
+            <div class="col-xs-12 col-sm-6 col-md-3 oi-col">
               <oiChartDefectUnfoundedTotal :value="operTestDefectUnfoundedTotal"/>
+              <oiRulerOperTestDefectUnfounded/>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-3 oi-col">
+              <oiChartDefectUATTotal :value="operTestDefectUATTotal"/>
+              <oiRulerOperTestDefectUAT/>
             </div>
             
-<!--
-
-            <div class="col-12 col-sm-6 col-md-3 oi-col">
-                <oiChartDefectAverangeTimeTotal :value="defectAverangeTimeTotalHIGH"/>
+            <div class="col-xs-12 oi-col">
+                <oiChartDefectAverangeRetestTimeTotal :value="operTestDefectAverangeRetestTimeTotal"/>
+                <oiRulerOperTestDefectAverangeRetestTime/>
             </div>
+
+<!--
             <oiChartDefectAverangeTimeTotal :value="DefectAverangeTimeTotal"/>
             <oichartDefectReopenedTotal :value="reopenedTotal"/>
             <oiChartdefectOfTSInTI :value="defectOfTSInTITotal"/>
@@ -252,11 +298,12 @@
           <div class="row well well-sm oi-well text-center">
             <label class="fd-label">DESENVOLVIMENTO</label><br>
 
-            <div class="col-12 col-sm-6 col-md-3 oi-col">
-                <!--<oiChartDefectDensityTotal :value="perfDevDefectDensityTotal"/>-->
+            <div class="col-xs-12 col-sm-6 col-md-3 oi-col">
+                <oiChartDefectDensityTotal :value="perfDevDefectDensityTotal"/>
+                <oiRulerPerfDevDefectDensity/>
             </div>
 <!--
-            <div class="col-12 col-sm-6 col-md-3 oi-col">
+            <div class="col-xs-12 col-sm-6 col-md-3 oi-col">
                 <oiChartDefectReopenedTotal :value="defectAverangeTimeTotalHIGH"/>
             </div>
             <oiChartDefectAverangeTimeTotal :value="DefectAverangeTimeTotal"/>
@@ -268,11 +315,11 @@
           <div class="row well well-sm oi-well text-center">
             <label class="fd-label">TESTE</label><br>
 <!--
-            <div class="col-12 col-sm-6 col-md-3 oi-col">
+            <div class="col-xs-12 col-sm-6 col-md-3 oi-col">
                 <oiChartDefectDensityTotal :value="defectDensityTotal"/>
             </div>
 
-            <div class="col-12 col-sm-6 col-md-3 oi-col">
+            <div class="col-xs-12 col-sm-6 col-md-3 oi-col">
                 <oiChartDefectAverangeTimeTotal :value="defectAverangeTimeTotalHIGH"/>
             </div>
             <oiChartDefectAverangeTimeTotal :value="DefectAverangeTimeTotal"/>

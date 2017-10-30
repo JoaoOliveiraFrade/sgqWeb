@@ -1,16 +1,13 @@
 <script>
   const Highcharts = require('highcharts')
 
-  // const highchartsExporting = require('highcharts-exporting')
-  // highchartsExporting(Highcharts)
-
   const highchartsMore = require('highcharts-more')
   highchartsMore(Highcharts)
 
   import chartParametersTotal from '@/comp/chart/types/Total'
 
   export default {
-    name: 'chartDefectAverangeTimeTotal',
+    name: 'chartDefectAverangeRetestTimeTotal',
 
     props: {
       value: { type: Object }
@@ -30,23 +27,22 @@
 
     methods: {
       loadParameters () {
-        let limitSupGreen = 4
-        let limitSupRed = (this.value.averangeHour > 30 ? this.value.averangeHour : 30)
+        let limitSupGreen = 5
+        let limitSupRed = this.value.averangeRetestHour > limitSupGreen ? this.value.averangeRetestHour : limitSupGreen
 
-        this.parameters.title.text = 'Tempo Médio Defeito'
-        this.parameters.yAxis.title.text = 'Hora<br>Sev.High'
-        this.parameters.plotOptions.gauge.dataLabels.format = '{point.y:.0f} h'
+        this.parameters.title.text = 'Tempo Médio Reteste'
+        this.parameters.yAxis.title.text = 'Hora<br>Reteste'
+        this.parameters.plotOptions.gauge.dataLabels.format = '{point.y:.0f}'
         this.parameters.yAxis.max = limitSupRed
         this.parameters.yAxis.plotBands = [
           {from: 0, to: limitSupGreen, color: '#00CC00'},
           {from: limitSupGreen, to: limitSupRed, color: '#FF3300'}
         ]
-        this.parameters.tooltip.pointFormat = 'Tempo Médio: ' + this.value.averangeHour + '(h)<br>' +
-          'Qte Hora: ' + this.value.qtyHour + '<br>' +
+        this.parameters.tooltip.pointFormat = 'Tempo Médio Resteste: ' + this.value.averangeRetestHour + '(h)<br>' +
           'Qte Defeito: ' + this.value.qtyDefect + '<br>' +
-          'Limite Máximo: ' + limitSupGreen + '(h)'
+          'Qte Reteste: ' + this.value.qtyRetestHour + '(h)'
   
-        this.parameters.series = [ { name: 'Horas', colorByPoint: true, data: [ this.value.averangeHour ] } ]
+        this.parameters.series = [ { name: 'Produtividade', colorByPoint: true, data: [ this.value.averangeRetestHour ] } ]
       }
     }
   }
