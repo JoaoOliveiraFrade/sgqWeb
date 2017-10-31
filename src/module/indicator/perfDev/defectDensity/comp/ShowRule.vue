@@ -14,10 +14,10 @@ selected<script>
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
-        data-target="#rateDefectsWithinSLAShowRule">
+        data-target="#defectInsideSLAShowRule">
         Regra
     </button>
-    <oiModal id="rateDefectsWithinSLAShowRule" title="Regra">   
+    <oiModal id="defectInsideSLAShowRule" title="Regra">   
       <div style="margin:0; padding:10px" slot="body">
         <label class="fd-label">
           Qte de Defeitos / Qte de CTs.<br>

@@ -1,7 +1,0 @@
-export class Task {
-  constructor () {
-    this.id = 0
-    this.name = ''
-    this.completed = false
-  }
-}

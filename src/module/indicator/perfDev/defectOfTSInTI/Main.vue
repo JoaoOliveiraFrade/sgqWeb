@@ -7,18 +7,18 @@
   import oiShowData from './comp/ShowData.vue'
 
   export default {
-    name: 'indicatorPerfDefectOfTSInTI',
+    name: 'indicatorPerfDevDefectOfTSInTI',
 
     components: { oiDevManufSelection, oiSystemSelectionFbyDevManufs, oiProjectSelectionFbyDevManufsAndSystems, oiShowData },
 
     computed: {
-      ...mapState('indicatorPerfDefectOfTSInTI', ['selectedDevManufs', 'selectedSystems', 'selectedProjects']),
-      ...mapGetters('indicatorPerfDefectOfTSInTI', ['showData'])
+      ...mapState('indicatorPerfDevDefectOfTSInTI', ['selectedDevManufs', 'selectedSystems', 'selectedProjects']),
+      ...mapGetters('indicatorPerfDevDefectOfTSInTI', ['showData'])
     },
 
     methods: {
       ...mapActions(['setFeatureName']),
-      ...mapActions('indicatorPerfDefectOfTSInTI', ['setSelectedDevManufs', 'setSelectedSystems', 'setSelectedProjects'])
+      ...mapActions('indicatorPerfDevDefectOfTSInTI', ['setSelectedDevManufs', 'setSelectedSystems', 'setSelectedProjects'])
     },
 
     mounted () {

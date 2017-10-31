@@ -1,31 +1,35 @@
 <script>
-  import { mapActions, mapState } from 'vuex'
+  import { mapState, mapActions } from 'vuex'
 
-  import oiRule from './ShowRule.vue'
+  import oiShowRule from './ShowRule.vue'
   import oiShowAnalytic from './ShowAnalytic.vue'
-  import oiShowChartGroupDevManuf from './ShowChartGroupDevManuf.vue'
-  import oiShowChartGroupTimeline from './ShowChartGroupTimeline.vue'
-  import oiShowChartTotal from './ShowChartTotal.vue'
+  // import oiShowChartGroupDevManuf from './ShowChartGroupDevManuf.vue'
+  // import oiShowChartGroupTimeline from './ShowChartGroupTimeline.vue'
+  // import oiShowChartTotal from './ShowChartTotal.vue'
+
+  // import oiDefectDensityRule from '@/module/indicator/perfDev/defectInsideSLA/defectDensity/comp/ShowRule.vue'
 
   export default {
     name: 'ShowData',
 
-    components: {
-      oiRule,
-      oiShowAnalytic,
-      oiShowChartGroupDevManuf,
-      oiShowChartGroupTimeline,
-      oiShowChartTotal
-    },
+    components: { oiShowRule, oiShowAnalytic },
+  
+    // components: {
+    //   oiShowRule,
+    //   oiShowAnalytic,
+    //   oiShowChartGroupDevManuf,
+    //   oiShowChartGroupTimeline,
+    //   oiShowChartTotal
+
+    //   // oiDefectDensityRule
+    // },
 
     computed: {
-      // ...mapState('indicatorDefectDensity', { loading: state => (state.loading) })
-      ...mapState('indicatorPerfDevDefectDensity', ['selectedProjects', 'loading'])
+      ...mapState('indicatorPerfDevDefectInsideSLA', ['selectedProjects', 'loading'])
     },
 
     methods: {
-      // ...mapActions({'loadDefectDensity': 'indicatorDefectDensity/load'}),
-      ...mapActions('indicatorPerfDevDefectDensity', ['load'])
+      ...mapActions('indicatorPerfDevDefectInsideSLA', ['load'])
     },
 
     watch: {
@@ -35,9 +39,6 @@
         }
       }
     }
-    // mounted () {
-    //   this.load()
-    // }
   }
 </script>
 
@@ -45,9 +46,10 @@
   <div v-show="selectedProjects.length > 0">
     <div class="loader" v-show="loading" style="margin-top: 50px; margin-bottom: 25px"/>
     <div class="row well col-xs-12" v-show="!loading" style="margin:0; border:0; padding:5px">
-      <oiRule style="text-align: left"/>
+      <oiShowRule style="text-align: left"/>
       <oiShowAnalytic style="text-align: left"/>
 
+<!--
       <hr style="margin-top: 2px; height: 1px; border: 0; box-shadow: 0 7px 7px -7px #d9d9d9 inset">
 
       <div class="col-sm-4">
@@ -61,7 +63,10 @@
       <div class="col-sm-4">
         <oiShowChartTotal/>
       </div>
+    
+-->  
     </div>
+
   </div>
 </template>
 

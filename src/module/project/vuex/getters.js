@@ -68,14 +68,6 @@ export const operDevDefectReopenedTotal = ({ operDevDefectReopened }) => {
   return { qtyReopened, qtyDefect, percReopened }
 }
 
-export const operDevDefectOfTSInTITotal = ({ operDevDefectOfTSInTI }) => {
-  let qtyOfTSInTI = Number(operDevDefectOfTSInTI.reduce((sum, e) => sum + e.qtyOfTSInTI, 0).toFixed(2))
-  let qtyDefect = operDevDefectOfTSInTI.reduce((sum, e) => sum + e.qtyDefect, 0)
-  let percOfTSInTI = Number((qtyOfTSInTI / (qtyDefect !== 0 ? qtyDefect : 1) * 100).toFixed(2))
-
-  return { qtyOfTSInTI, qtyDefect, percOfTSInTI }
-}
-
 export const operTestProductivityTotal = ({ operTestProductivity }) => {
   let productivity = Number(operTestProductivity.reduce((sum, e) => sum + e.productivity, 0).toFixed(2))
   let passed = operTestProductivity.reduce((sum, e) => sum + e.passed, 0)
@@ -146,9 +138,20 @@ export const operTestDefectAverangeRetestTimeTotal = ({ operTestDefectAverangeRe
   return { qtyDefect, qtyRetestHour, averangeRetestHour }
 }
 
+// Perf
+
 export const perfDevDefectDensityTotal = ({ perfDevDefectDensity }) => {
   let qtyDefect = perfDevDefectDensity.reduce((sum, e) => sum + e.qtyDefect, 0)
   let qtyCt = perfDevDefectDensity.reduce((sum, e) => sum + e.qtyCt, 0)
   let density = Number((qtyDefect / (qtyCt !== 0 ? qtyCt : 1) * 100).toFixed(2))
   return { qtyDefect, qtyCt, density }
 }
+
+export const perfDevDefectOfTSInTITotal = ({ perfDevDefectOfTSInTI }) => {
+  let qtyOfTSInTI = Number(perfDevDefectOfTSInTI.reduce((sum, e) => sum + e.qtyOfTSInTI, 0).toFixed(2))
+  let qtyDefect = perfDevDefectOfTSInTI.reduce((sum, e) => sum + e.qtyDefect, 0)
+  let percOfTSInTI = Number((qtyOfTSInTI / (qtyDefect !== 0 ? qtyDefect : 1) * 100).toFixed(2))
+
+  return { qtyOfTSInTI, qtyDefect, percOfTSInTI }
+}
+

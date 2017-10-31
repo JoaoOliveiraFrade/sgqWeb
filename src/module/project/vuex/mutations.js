@@ -38,9 +38,6 @@ export default {
   [types.operDevDefectReopened] (state, data) {
     state.operDevDefectReopened = data
   },
-  [types.operDevDefectOfTSInTI] (state, data) {
-    state.operDevDefectOfTSInTI = data
-  },
 
   [types.operTestProductivity] (state, data) {
     state.operTestProductivity = data
@@ -60,6 +57,9 @@ export default {
 
   [types.perfDevDefectDensity] (state, data) {
     state.perfDevDefectDensity = data
+  },
+  [types.perfDevDefectOfTSInTI] (state, data) {
+    state.perfDevDefectOfTSInTI = data
   }
 
   // [types.defectAverangeTime] (state, data) {

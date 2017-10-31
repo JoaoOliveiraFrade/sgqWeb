@@ -7,8 +7,8 @@
     name: 'ShowChartTotal',
 
     computed: {
-      ...mapGetters('indicatorPerfDefectOfTSInTI', ['total']),
-      ...mapState('indicatorPerfDefectOfTSInTI', ['acceptableLimit', 'limitModeratePerc', 'limitHigh']),
+      ...mapGetters('indicatorPerfDevDefectOfTSInTI', ['total']),
+      ...mapState('indicatorPerfDevDefectOfTSInTI', ['acceptableLimit', 'limitModeratePerc', 'limitHigh']),
 
       chartParam () {
         let param = chartTotalStandParam

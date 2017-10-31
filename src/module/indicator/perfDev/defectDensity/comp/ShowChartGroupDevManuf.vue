@@ -19,11 +19,11 @@
     },
 
     computed: {
-      ...mapGetters('indicatorPerfDefectDensity', ['groupDevManuf', 'byDevManufGroupSystem', 'chartTitle'])
+      ...mapGetters('indicatorPerfDevDefectDensity', ['groupDevManuf', 'byDevManufGroupSystem', 'chartTitle'])
     },
 
     methods: {
-      ...mapActions('indicatorPerfDefectDensity', ['setChartFilter']),
+      ...mapActions('indicatorPerfDevDefectDensity', ['setChartFilter']),
 
       setChartParam () {
         this.chartParam.title.text = 'Fáb.Desenv. / Sistema'

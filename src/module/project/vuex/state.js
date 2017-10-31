@@ -21,7 +21,6 @@ export default {
   operDevDefectDensity: {},
   operDevDefectAverangeTime: {},
   operDevDefectReopened: {},
-  operDevDefectOfTSInTI: {},
 
   operTestProductivity: {},
 
@@ -32,5 +31,6 @@ export default {
   operTestDefectUAT: {},
   operTestDefectAverangeRetestTime: {},
 
-  perfDevDefectDensity: {}
+  perfDevDefectDensity: {},
+  perfDevDefectOfTSInTI: {}
 }

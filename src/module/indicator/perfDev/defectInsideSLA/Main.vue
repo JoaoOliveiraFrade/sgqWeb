@@ -1,28 +1,28 @@
 <script>
   import { mapActions, mapState } from 'vuex'
 
-  import oiDevManufSelection from '@/module/devManuf/comp/Selection.vue'
-  import oiSystemSelectionFbyDevManufs from '@/module/system/comp/SelectionFbyDevManufs.vue'
-  import oiProjectSelectionFbyDevManufsAndSystems from '@/module/project/comp/SelectionFbyDevManufAndSystems.vue'
+  import oiDevManufSelection from '@/module/devManuf/comp/SelectionOfQueue.vue'
+  import oiSelectionOfAgentFbyDevManufs from '@/module/system/comp/SelectionOfAgentFbyDevManufs.vue'
+  import oiProjectSelectionFbyDevManufsAndSystems from '@/module/project/comp/SelectionOfQueueFbyDevManufAndSystems.vue'
   import oiShowData from './comp/ShowData.vue'
 
   export default {
-    name: 'indicatorPerfDevDefectDensity',
+    name: 'indicatorPerfDevDefectInsideSLAMain',
 
-    components: { oiDevManufSelection, oiSystemSelectionFbyDevManufs, oiProjectSelectionFbyDevManufsAndSystems, oiShowData },
+    components: { oiDevManufSelection, oiSelectionOfAgentFbyDevManufs, oiProjectSelectionFbyDevManufsAndSystems, oiShowData },
 
     computed: {
-      ...mapState('indicatorPerfDevDefectDensity', ['selectedDevManufs', 'selectedSystems', 'selectedProjects'])
+      ...mapState('indicatorPerfDevDefectInsideSLA', ['selectedDevManufs', 'selectedSystems', 'selectedProjects'])
       // ...mapGetters('indicatorPerfDevDefectDensity', ['showData'])
     },
 
     methods: {
       ...mapActions(['setFeatureName']),
-      ...mapActions('indicatorPerfDevDefectDensity', ['setSelectedDevManufs', 'setSelectedSystems', 'setSelectedProjects'])
+      ...mapActions('indicatorPerfDevDefectInsideSLA', ['setSelectedDevManufs', 'setSelectedSystems', 'setSelectedProjects'])
     },
 
     mounted () {
-      this.setFeatureName('Ind. Desempenho - Densidade Defeito')
+      this.setFeatureName('Ind. Desempenho - Defeito Dentro SLA')
       // this.setSelectedDevManufs([])
     }
   }
@@ -30,18 +30,17 @@
 
 <template>
   <div class="container-fluid" style="padding-top: 10px">
-
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4">
       <oiDevManufSelection
-        :preSelected="selectedDevManufs"
+        :isShowButtonSelected="true"
         @onConfirm="setSelectedDevManufs"
       />
     </div>
 
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
-      <oiSystemSelectionFbyDevManufs v-show="selectedDevManufs.length > 0"
+      <oiSelectionOfAgentFbyDevManufs v-show="selectedDevManufs.length > 0"
         :devManufs="selectedDevManufs"
-        :preSelected="selectedSystems"
+        :selectedSystems="selectedSystems"
         @onConfirm="setSelectedSystems"
       />
     </div>
@@ -50,12 +49,14 @@
       <oiProjectSelectionFbyDevManufsAndSystems v-show="selectedSystems.length > 0"
         :devManufs="selectedDevManufs"
         :systems="selectedSystems"
-        :preSelected="selectedProjects"
+        :selectedProjects="selectedProjects"
         @onConfirm="setSelectedProjects"
       />
     </div>
 
-    <oiShowData/>
+    <div class="row well-sm oi-well" style="padding-top: 30px">
+      <oiShowData/>
+    </div>
   </div> 
 </template>
 

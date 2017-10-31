@@ -10,7 +10,6 @@ export const selectedMonoselection = 'selectedMonoselection'
 export const operDevDefectDensity = 'operDevDefectDensity'
 export const operDevDefectAverangeTime = 'operDevDefectAverangeTime'
 export const operDevDefectReopened = 'operDevDefectReopened'
-export const operDevDefectOfTSInTI = 'operDevDefectOfTSInTI'
 
 export const operTestProductivity = 'operTestProductivity'
 export const operTestRejectionEvidence = 'operTestRejectionEvidence'
@@ -19,4 +18,5 @@ export const operTestDefectUAT = 'operTestDefectUAT'
 export const operTestDefectAverangeRetestTime = 'operTestDefectAverangeRetestTime'
 
 export const perfDevDefectDensity = 'perfDevDefectDensity'
+export const perfDevDefectOfTSInTI = 'perfDevDefectOfTSInTI'
 // export const defectAverangeTime = 'defectAverangeTime'

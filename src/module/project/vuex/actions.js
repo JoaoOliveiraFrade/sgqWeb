@@ -4,7 +4,6 @@ import services from '@/module/project/services'
 import servicesOperDevDefectDensity from '@/module/indicator/operDev/defectDensity/services'
 import servicesOperDevDefectAverangeTime from '@/module/indicator/operDev/defectAverangeTime/services'
 import servicesOperDevDefectReopened from '@/module/indicator/operDev/defectReopened/services'
-import servicesOperDevDefectOfTSInTI from '@/module/indicator/operDev/defectOfTSInTI/services'
 
 import servicesOperTestProductivity from '@/module/indicator/operTest/productivity/services'
 import servicesOperTestRejectionEvidence from '@/module/indicator/operTest/rejectionEvidence/services'
@@ -12,7 +11,8 @@ import servicesOperTestDefectUnfounded from '@/module/indicator/operTest/defectU
 import servicesOperTestDefectUAT from '@/module/indicator/operTest/defectUAT/services'
 import servicesOperTestDefectAverangeRetestTime from '@/module/indicator/operTest/defectAverangeRetestTime/services'
 
-import servicesPerfDefectDensity from '@/module/indicator/perfDev/defectDensity/services'
+import servicesPerfDevDefectDensity from '@/module/indicator/perfDev/defectDensity/services'
+import servicesPerfDevDefectOfTSInTI from '@/module/indicator/perfDev/defectOfTSInTI/services'
 
 export const load = ({ commit }) => {
   commit(types.loading, true)
@@ -110,11 +110,6 @@ export const setSelectedMonoselection = ({ commit }, project) => {
       commit(types.operDevDefectReopened, r.data)
     }
   )
-  servicesOperDevDefectOfTSInTI.fbyProject(project)
-    .then(r => {
-      commit(types.operDevDefectOfTSInTI, r.data)
-    }
-  )
 
   servicesOperTestProductivity.fbyProject(project)
     .then(r => {
@@ -142,9 +137,14 @@ export const setSelectedMonoselection = ({ commit }, project) => {
     }
   )
 
-  servicesPerfDefectDensity.defectDensityFbyProject(project)
+  servicesPerfDevDefectDensity.defectDensityFbyProject(project)
     .then(r => {
       commit(types.perfDevDefectDensity, r.data)
+    }
+  )
+  servicesPerfDevDefectOfTSInTI.fbyProject(project)
+    .then(r => {
+      commit(types.perfDevDefectOfTSInTI, r.data)
     }
   )
 }

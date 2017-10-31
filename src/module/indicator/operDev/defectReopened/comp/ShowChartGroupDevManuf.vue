@@ -19,11 +19,11 @@
     },
 
     computed: {
-      ...mapGetters('indicatorPerfDefectOfTSInTI', ['groupDevManuf', 'byDevManufGroupSystem', 'chartTitle'])
+      ...mapGetters('indicatorPerfDevDefectOfTSInTI', ['groupDevManuf', 'byDevManufGroupSystem', 'chartTitle'])
     },
 
     methods: {
-      ...mapActions('indicatorPerfDefectOfTSInTI', ['setChartFilter']),
+      ...mapActions('indicatorPerfDevDefectOfTSInTI', ['setChartFilter']),
 
       setChartParam () {
         this.chartParam.title.text = 'Fáb.Desenv. / Sistema'

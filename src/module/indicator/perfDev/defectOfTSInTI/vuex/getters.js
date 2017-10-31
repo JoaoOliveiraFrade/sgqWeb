@@ -3,22 +3,22 @@ export const groupDevManuf = ({data}) => {
   data.forEach(d => {
     let index = result.findIndex(r => r.devManuf === d.devManuf)
     if (index > -1) {
-      result[index].qtyDetectableInTS += d.qtyDetectableInTS
-      result[index].qtyTotal += d.qtyTotal
+      result[index].qtyOfTSInTI += d.qtyOfTSInTI
+      result[index].qtyDefect += d.qtyDefect
     } else {
       result.push({
         devManuf: d.devManuf,
 
-        qtyDetectableInTS: d.qtyDetectableInTS,
-        qtyTotal: d.qtyTotal,
-        percDetectableInTS: 0
+        qtyOfTSInTI: d.qtyOfTSInTI,
+        qtyDefect: d.qtyDefect,
+        percOfTSInTI: 0
       })
     }
   })
   result.forEach(r => {
-    r.percDetectableInTS = parseFloat(parseFloat(r.qtyDetectableInTS / (r.qtyTotal !== 0 ? r.qtyTotal : 1) * 100).toFixed(2))
+    r.percOfTSInTI = parseFloat(parseFloat(r.qtyOfTSInTI / (r.qtyDefect !== 0 ? r.qtyDefect : 1) * 100).toFixed(2))
   })
-  return result.filter(r => r.percDetectableInTS > 0).sort((a, b) => a.percDetectableInTS > b.percDetectableInTS ? 1 : -1)
+  return result.filter(r => r.percOfTSInTI > 0).sort((a, b) => a.percOfTSInTI > b.percOfTSInTI ? 1 : -1)
 }
 
 export const byDevManufGroupSystem = ({data}) => (devManuf) => {
@@ -28,21 +28,21 @@ export const byDevManufGroupSystem = ({data}) => (devManuf) => {
   byDevManuf.forEach(p => {
     let index = result.findIndex(r => r.system === p.system)
     if (index > -1) {
-      result[index].qtyDetectableInTS += p.qtyDetectableInTS
-      result[index].qtyTotal += p.qtyTotal
+      result[index].qtyOfTSInTI += p.qtyOfTSInTI
+      result[index].qtyDefect += p.qtyDefect
     } else {
       result.push({
         system: p.system,
-        qtyDetectableInTS: p.qtyDetectableInTS,
-        qtyTotal: p.qtyTotal,
-        percDetectableInTS: 0
+        qtyOfTSInTI: p.qtyOfTSInTI,
+        qtyDefect: p.qtyDefect,
+        percOfTSInTI: 0
       })
     }
   })
   result.forEach(r => {
-    r.percDetectableInTS = parseFloat(parseFloat(r.qtyDetectableInTS / (r.qtyTotal !== 0 ? r.qtyTotal : 1) * 100).toFixed(2))
+    r.percOfTSInTI = parseFloat(parseFloat(r.qtyOfTSInTI / (r.qtyDefect !== 0 ? r.qtyDefect : 1) * 100).toFixed(2))
   })
-  return result.filter(r => r.percDetectableInTS > 0).sort((a, b) => a.percDetectableInTS > b.percDetectableInTS ? 1 : -1)
+  return result.filter(r => r.percOfTSInTI > 0).sort((a, b) => a.percOfTSInTI > b.percOfTSInTI ? 1 : -1)
 }
 
 export const filteredByChart = ({data, chartSelectedDevManufs, chartSelectedSystems}) => {
@@ -60,15 +60,15 @@ export const groupTimeline = ({limitAcceptablePerc, limitModeratePerc, limitHigh
   filteredByChart.filter(d => d.year !== '').forEach(d => {
     let index = result.findIndex(r => r.yearMonth === (d.year + d.month))
     if (index > -1) {
-      result[index].qtyDetectableInTS += d.qtyDetectableInTS
-      result[index].qtyTotal += d.qtyTotal
+      result[index].qtyOfTSInTI += d.qtyOfTSInTI
+      result[index].qtyDefect += d.qtyDefect
     } else {
       result.push({
         yearMonth: d.year + d.month,
         monthYear: d.month + '/' + d.year,
-        qtyDetectableInTS: d.qtyDetectableInTS,
-        qtyTotal: d.qtyTotal,
-        percDetectableInTS: 0,
+        qtyOfTSInTI: d.qtyOfTSInTI,
+        qtyDefect: d.qtyDefect,
+        percOfTSInTI: 0,
         limitAcceptablePerc: limitAcceptablePerc,
         limitModeratePerc: limitModeratePerc,
         limitHigh: limitHigh
@@ -76,18 +76,18 @@ export const groupTimeline = ({limitAcceptablePerc, limitModeratePerc, limitHigh
     }
   })
   result.forEach(r => {
-    r.percDetectableInTS = parseFloat(parseFloat(r.qtyDetectableInTS / (r.qtyTotal !== 0 ? r.qtyTotal : 1) * 100).toFixed(2))
+    r.percOfTSInTI = parseFloat(parseFloat(r.qtyOfTSInTI / (r.qtyDefect !== 0 ? r.qtyDefect : 1) * 100).toFixed(2))
   })
   return result.sort((a, b) => a.yearMonth > b.yearMonth ? 1 : -1)
 }
 
 export const total = ({state}, {filteredByChart}) => {
-  let qtyDetectableInTS = filteredByChart.reduce((sum, e) => sum + e.qtyDetectableInTS, 0)
-  let qtyTotal = filteredByChart.reduce((sum, e) => sum + e.qtyTotal, 0)
+  let qtyOfTSInTI = filteredByChart.reduce((sum, e) => sum + e.qtyOfTSInTI, 0)
+  let qtyDefect = filteredByChart.reduce((sum, e) => sum + e.qtyDefect, 0)
   return {
-    qtyDetectableInTS,
-    qtyTotal,
-    percDetectableInTS: Number((qtyDetectableInTS / (qtyTotal !== 0 ? qtyTotal : 1) * 100).toFixed(2))
+    qtyOfTSInTI,
+    qtyDefect,
+    percOfTSInTI: Number((qtyOfTSInTI / (qtyDefect !== 0 ? qtyDefect : 1) * 100).toFixed(2))
   }
 }
 

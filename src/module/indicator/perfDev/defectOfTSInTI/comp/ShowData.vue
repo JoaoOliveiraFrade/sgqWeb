@@ -20,12 +20,12 @@
 
     computed: {
       // ...mapState('indicatorDefectDensity', { loadingDefectDensity: state => (state.loading) })
-      ...mapState('indicatorPerfDefectOfTSInTI', ['selectedProjects', 'loading'])
+      ...mapState('indicatorPerfDevDefectOfTSInTI', ['selectedProjects', 'loading'])
     },
 
     methods: {
       // ...mapActions({'loadDefectDensity': 'indicatorDefectDensity/load'}),
-      ...mapActions('indicatorPerfDefectOfTSInTI', ['load'])
+      ...mapActions('indicatorPerfDevDefectOfTSInTI', ['load'])
     },
 
     watch: {

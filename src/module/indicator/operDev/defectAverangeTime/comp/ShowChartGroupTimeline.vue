@@ -7,8 +7,8 @@
     name: 'ShowChartGroupTimeline',
 
     computed: {
-      ...mapGetters('indicatorPerfDefectOfTSInTI', ['groupTimeline']),
-      ...mapState('indicatorPerfDefectOfTSInTI', ['acceptableLimit']),
+      ...mapGetters('indicatorPerfDevDefectOfTSInTI', ['groupTimeline']),
+      ...mapState('indicatorPerfDevDefectOfTSInTI', ['acceptableLimit']),
 
       chartParam () {
         let param = chartStandParam

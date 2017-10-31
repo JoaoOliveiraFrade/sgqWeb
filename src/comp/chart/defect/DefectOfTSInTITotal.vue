@@ -42,7 +42,7 @@
           {from: limitSupGreen, to: limitSupRed, color: '#FF3300'}
         ]
         this.parameters.tooltip.pointFormat = 'TS em TI: ' + this.value.percOfTSInTI + '%<br>' +
-          'Qte de TS em TI: ' + this.value.qtyOfTSInTI + '<br>' +
+          'Qte Defeito de TS em TI: ' + this.value.qtyOfTSInTI + '<br>' +
           'Qte Defeito: ' + this.value.qtyDefect + '<br>' +
           'Limite Máximo: 5%'
 

@@ -5,7 +5,7 @@
     name: 'ShowAnalyticGrid',
 
     computed: {
-      ...mapGetters('indicatorPerfDefectOfTSInTI', ['filteredByChart'])
+      ...mapGetters('indicatorPerfDevDefectOfTSInTI', ['filteredByChart'])
     }
   }
 

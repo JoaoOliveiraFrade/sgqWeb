@@ -7,8 +7,8 @@
     name: 'ShowChartGroupTimeline',
 
     computed: {
-      ...mapGetters('indicatorPerfDefectOfTSInTI', ['groupTimeline']),
-      ...mapState('indicatorPerfDefectOfTSInTI', ['acceptableLimit']),
+      ...mapGetters('indicatorPerfDevDefectOfTSInTI', ['groupTimeline']),
+      ...mapState('indicatorPerfDevDefectOfTSInTI', ['acceptableLimit']),
 
       chartParam () {
         let param = chartStandParam
@@ -19,9 +19,9 @@
         param.tooltip.headerFormat = ''
         param.tooltip.pointFormat = `
           <b>{point.monthYear}</b><br>
-          % Detectável em TS: {point.percDetectableInTS:.2f}%<br>
-          Qte Detectável em TS: {point.qtyDetectableInTS:.0f}<br>
-          Qte Total: {point.qtyTotal:.0f}<br>
+          % Detectável em TS: {point.percOfTSInTI:.2f}%<br>
+          Qte Detectável em TS: {point.qtyOfTSInTI:.0f}<br>
+          Qte Total: {point.qtyDefect:.0f}<br>
           Limite Máx. Aceitável: {point.acceptableLimit:.0f}%
           `
         param.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
@@ -38,9 +38,9 @@
                 y: this.acceptableLimit,
                 acceptableLimit: this.acceptableLimit,
                 monthYear: i.monthYear,
-                percDetectableInTS: i.percDetectableInTS,
-                qtyDetectableInTS: i.qtyDetectableInTS,
-                qtyTotal: i.qtyTotal
+                percOfTSInTI: i.percOfTSInTI,
+                qtyOfTSInTI: i.qtyOfTSInTI,
+                qtyDefect: i.qtyDefect
               }
             ))
           }, {
@@ -48,12 +48,12 @@
             data: this.groupTimeline.map(i => (
               {
                 name: i.monthYear,
-                y: i.percDetectableInTS,
+                y: i.percOfTSInTI,
                 acceptableLimit: this.acceptableLimit,
                 monthYear: i.monthYear,
-                percDetectableInTS: i.percDetectableInTS,
-                qtyDetectableInTS: i.qtyDetectableInTS,
-                qtyTotal: i.qtyTotal
+                percOfTSInTI: i.percOfTSInTI,
+                qtyOfTSInTI: i.qtyOfTSInTI,
+                qtyDefect: i.qtyDefect
               }
             ))
           }

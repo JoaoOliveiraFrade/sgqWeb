@@ -99,42 +99,42 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-left:4px">Desenvolvimento</a>
                             <ul class="dropdown-menu" style="width:190px">
                                 <router-link :to="{ name: 'indicatorTest' }" tag="li">
+                                    <a class="oi-menu">Densidade Defeito</a>
+                                </router-link>
+                                <router-link :to="{ name: 'indicatorTest' }" tag="li">
                                     <a class="oi-menu">Tempo Médio Defeito</a>
-                                </router-link>
-                                <router-link :to="{ name: 'indicatorTest' }" tag="li">
-                                    <a class="oi-menu">Defeito C/Class. Errada</a>
-                                </router-link>
-                                <router-link :to="{ name: 'indicatorTest' }" tag="li">
-                                    <a class="oi-menu">Defeito de TS em TI</a>
                                 </router-link>
                                 <router-link :to="{ name: 'indicatorTest' }" tag="li">
                                     <a class="oi-menu">Defeito Reaberto</a>
                                 </router-link>
+                                <!--                                
+                                <router-link :to="{ name: 'indicatorTest' }" tag="li">
+                                    <a class="oi-menu">Defeito C/Class. Errada</a>
+                                </router-link>
                                 <router-link :to="{ name: 'indicatorTest' }" tag="li">
                                     <a class="oi-menu">Defeito S/Prev.Solução </a>
                                 </router-link>
+                                -->
                             </ul>
                         </li>
 
                         <li class="dropdown-submenu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-left:4px">Teste</a>
                             <ul class="dropdown-menu" style="width:260px">
-                            <!--
-                                <router-link :to="{ name: 'indicatorOfDevelopment' }" tag="li">
+                                <router-link :to="{ name: 'indicatorTest' }" tag="li">
                                     <a class="oi-menu">Produtividade</a>
                                 </router-link>
-                            -->
                                 <router-link :to="{ name: 'indicatorTest' }" tag="li">
-                                    <a class="oi-menu">Taxa Rejeição Evidência</a>
+                                    <a class="oi-menu">Rejeição Evidência</a>
                                 </router-link>
                                 <router-link :to="{ name: 'indicatorTest' }" tag="li">
-                                    <a class="oi-menu">Taxa Defefeito Improcedente</a>
+                                    <a class="oi-menu">Defefeito Improcedente</a>
                                 </router-link>
                                 <router-link :to="{ name: 'indicatorTest' }" tag="li">
-                                    <a class="oi-menu">Taxa Defefeito UAT</a>
+                                    <a class="oi-menu">Defefeito UAT</a>
                                 </router-link>
                                 <router-link :to="{ name: 'indicatorTest' }" tag="li">
-                                    <a class="oi-menu">Tempo Médio Resteste Defefeito</a>
+                                    <a class="oi-menu">Tempo Médio Resteste Defeito</a>
                                 </router-link>
                             </ul>
                         </li>
@@ -147,17 +147,17 @@
                         <li class="dropdown-submenu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-left:4px">Desenvolvimento</a>
                             <ul class="dropdown-menu" style="width: 210px">
-                                <router-link :to="{ name: 'indicatorPerfDefectDensity' }" tag="li">
+                                <router-link :to="{ name: 'indicatorPerfDevDefectDensity' }" tag="li">
                                     <a class="oi-menu">Densidade Defeito</a>
                                 </router-link>
-                                <router-link :to="{ name: 'indicatorAccomplishmentQueue' }" tag="li">
+                                <router-link :to="{ name: 'indicatorPerfDevDefectInsideSLA' }" tag="li">
                                     <a class="oi-menu">Defeito Dentro SLA (agente)</a>
                                 </router-link>
-                                <router-link :to="{ name: 'indicatorPerfDefectOfTSInTI' }" tag="li">
+                                <router-link :to="{ name: 'indicatorPerfDevDefectOfTSInTI' }" tag="li">
                                     <a class="oi-menu">Defeito de TS em TI</a>
                                 </router-link>
                                 <!--
-                                <router-link :to="{ name: 'indicatorPerfDefectOfTSInTIByAgent' }" tag="li">
+                                <router-link :to="{ name: 'indicatorPerfDevDefectOfTSInTIByAgent' }" tag="li">
                                     <a class="oi-menu">Defeito de TS em TI (agente)</a>
                                 </router-link>
                                 -->

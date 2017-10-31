@@ -10,8 +10,8 @@ selected<script>
 </script>
 
 <template>
-  <span style="padding:0; margin:0">
-    <button 
+  <span>
+    <button style="padding:0px; padding-left:3px; padding-right:3px; margin-bottom:5px;"
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
@@ -28,4 +28,8 @@ selected<script>
 </template>
 
 <style scoped>
+  .fd-label {
+    font-weight: normal;
+    text-align: left
+  }
 </style>
