@@ -9,8 +9,9 @@ import { vuex as project } from './project'
 import { vuex as indicatorOperDevDefectDensity } from './indicator/operDev/defectDensity'
 
 import { vuex as indicatorPerfDevDefectDensity } from './indicator/perfDev/defectDensity'
-import { vuex as indicatorPerfDevDefectOfTSInTI } from './indicator/perfDev/defectOfTSInTI'
 import { vuex as indicatorPerfDevDefectInsideSLA } from './indicator/perfDev/defectInsideSLA'
+import { vuex as indicatorPerfDevDefectOfTSInTI } from './indicator/perfDev/defectOfTSInTI'
+import { vuex as indicatorPerfDevDefectOfTSInTIAgent } from './indicator/perfDev/defectOfTSInTIAgent'
 
 // import { vuex as grouperConsult } from './grouperConsult'
 // import { vuex as indicatorDev } from './indicator/dev'
@@ -41,8 +42,9 @@ export default {
   indicatorOperDevDefectDensity,
 
   indicatorPerfDevDefectDensity,
+  indicatorPerfDevDefectInsideSLA,
   indicatorPerfDevDefectOfTSInTI,
-  indicatorPerfDevDefectInsideSLA
+  indicatorPerfDevDefectOfTSInTIAgent
 
   // grouperConsult,
   // indicatorDev,

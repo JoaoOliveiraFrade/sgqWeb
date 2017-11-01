@@ -156,11 +156,9 @@
                                 <router-link :to="{ name: 'indicatorPerfDevDefectOfTSInTI' }" tag="li">
                                     <a class="oi-menu">Defeito de TS em TI</a>
                                 </router-link>
-                                <!--
-                                <router-link :to="{ name: 'indicatorPerfDevDefectOfTSInTIByAgent' }" tag="li">
+                                <router-link :to="{ name: 'indicatorPerfDevDefectOfTSInTIAgent' }" tag="li">
                                     <a class="oi-menu">Defeito de TS em TI (agente)</a>
                                 </router-link>
-                                -->
                             </ul>
                         </li>
 

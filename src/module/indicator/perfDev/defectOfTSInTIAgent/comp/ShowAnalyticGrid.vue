@@ -5,7 +5,7 @@
     name: 'ShowAnalyticGrid',
 
     computed: {
-      ...mapGetters('indicatorPerfDevDefectInsideSLA', ['filteredByChart'])
+      ...mapGetters('indicatorPerfDevDefectOfTSInTIAgent', ['filteredByChart'])
     }
   }
 

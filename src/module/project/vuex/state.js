@@ -18,19 +18,19 @@ export default {
 
   selectedMonoselection: {},
 
-  operDevDefectDensity: {},
-  operDevDefectAverangeTime: {},
-  operDevDefectReopened: {},
+  operDevDefectDensity: [],
+  operDevDefectAverangeTime: [],
+  operDevDefectReopened: [],
 
-  operTestProductivity: {},
+  operTestProductivity: [],
 
-  operTestRejectionEvidence: {},
+  operTestRejectionEvidence: [],
   selectedRejectionType: 'Total',
 
-  operTestDefectUnfounded: {},
-  operTestDefectUAT: {},
-  operTestDefectAverangeRetestTime: {},
+  operTestDefectUnfounded: [],
+  operTestDefectUAT: [],
+  operTestDefectAverangeRetestTime: [],
 
-  perfDevDefectDensity: {},
-  perfDevDefectOfTSInTI: {}
+  perfDevDefectDensity: [],
+  perfDevDefectOfTSInTI: []
 }

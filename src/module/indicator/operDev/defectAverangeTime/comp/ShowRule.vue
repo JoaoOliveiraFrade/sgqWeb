@@ -35,9 +35,9 @@ selected<script>
           São consideradas as horas de todos os Status e Agentes por onde o defeito passou.<br><br>
 
           São considerados os defeitos: <br>
-          &nbsp;&nbsp;1) Das etapas de TI e UAT.<br>
-          &nbsp;&nbsp;2) CLOSED.<br>
-          &nbsp;&nbsp;3) Severidade HIGH.<br><br>
+          &nbsp;&nbsp;- Das etapas de TI e UAT.<br>
+          &nbsp;&nbsp;- CLOSED.<br>
+          &nbsp;&nbsp;- Severidade HIGH.<br><br>
 
           No cálculo do "Tempo útil", são consideradas as hora entre 9 às 18, exceto fins de semana.
         </label>

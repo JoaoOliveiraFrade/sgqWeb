@@ -14,10 +14,10 @@ selected<script>
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
-        data-target="#defectInsideSLAShowRule">
+        data-target="#defectOfTSInTIAgentShowRule">
         Regra
     </button>
-    <oiModal id="defectInsideSLAShowRule" title="Regra">   
+    <oiModal id="defectOfTSInTIAgentShowRule" title="Regra">   
       <div style="margin:0; padding:10px" slot="body">
         <label class="fd-label">
           Qte Agentes dentro do SLA / Qte total de Agentes.<br><br>

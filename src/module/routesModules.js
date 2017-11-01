@@ -1,8 +1,9 @@
 import { routes as project } from './project'
 
 import { routes as indicatorPerfDevDefectDensity } from './indicator/perfDev/defectDensity'
-import { routes as indicatorPerfDevDefectOfTSInTI } from './indicator/perfDev/defectOfTSInTI'
 import { routes as indicatorPerfDevDefectInsideSLA } from './indicator/perfDev/defectInsideSLA'
+import { routes as indicatorPerfDevDefectOfTSInTI } from './indicator/perfDev/defectOfTSInTI'
+import { routes as indicatorPerfDevDefectOfTSInTIAgent } from './indicator/perfDev/defectOfTSInTIAgent'
 
 import { routes as projectConsult } from './projectConsult'
 import { routes as grouperConsult } from './grouperConsult'
@@ -20,8 +21,9 @@ export default [
   ...project,
 
   ...indicatorPerfDevDefectDensity,
-  ...indicatorPerfDevDefectOfTSInTI,
   ...indicatorPerfDevDefectInsideSLA,
+  ...indicatorPerfDevDefectOfTSInTI,
+  ...indicatorPerfDevDefectOfTSInTIAgent,
 
   ...projectConsult,
   ...grouperConsult,

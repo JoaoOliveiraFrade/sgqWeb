@@ -11,7 +11,7 @@ selected<script>
 
 <template>
   <span style="padding:0; margin:0">
-    <button 
+    <button style="padding:0px; margin-left:2px; padding-left:3px; padding-right:3px; margin-bottom:3px;"    
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 

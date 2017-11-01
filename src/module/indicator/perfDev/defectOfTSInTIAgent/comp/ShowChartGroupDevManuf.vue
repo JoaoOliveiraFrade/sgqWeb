@@ -9,7 +9,7 @@
   }
 
   export default {
-    name: 'ShowChartGroupDevManufDefectInsideSLA',
+    name: 'ShowChartGroupDevManufdefectOfTSInTIAgent',
 
     data () {
       return {
@@ -19,11 +19,11 @@
     },
 
     computed: {
-      ...mapGetters('indicatorPerfDevDefectInsideSLA', ['groupDevManuf', 'byDevManufGroupSystem', 'chartTitle'])
+      ...mapGetters('indicatorPerfDevDefectOfTSInTIAgent', ['groupDevManuf', 'byDevManufGroupSystem', 'chartTitle'])
     },
 
     methods: {
-      ...mapActions('indicatorPerfDevDefectInsideSLA', ['setChartFilter']),
+      ...mapActions('indicatorPerfDevDefectOfTSInTIAgent', ['setChartFilter']),
 
       // setChartParam () {
       //   this.chartParam.title.text = 'Fáb.Desenv. / Sistema'

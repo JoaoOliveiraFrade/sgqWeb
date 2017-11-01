@@ -43,20 +43,15 @@ export const filteredByTerm = ({ data, filterTerm, projectFilterProperties }) =>
 export const operDevDefectDensityTotal = ({ operDevDefectDensity }) => {
   let qtyDefect = operDevDefectDensity.reduce((sum, e) => sum + e.qtyDefect, 0)
   let qtyCt = operDevDefectDensity.reduce((sum, e) => sum + e.qtyCt, 0)
-  return {
-    qtyDefect,
-    qtyCt,
-    density: Number((qtyDefect / (qtyCt !== 0 ? qtyCt : 1) * 100).toFixed(2))
-  }
+  let density = Number((qtyDefect / (qtyCt !== 0 ? qtyCt : 1) * 100).toFixed(2))
+  return { qtyDefect, qtyCt, density }
 }
 
 export const operDevDefectAverangeTimeTotalHIGH = ({ operDevDefectAverangeTime }) => {
   let high = operDevDefectAverangeTime.filter(i => i.severity === 'HIGH')
-
   let qtyDefect = high.reduce((sum, e) => sum + e.qtyDefect, 0)
   let qtyHour = Number(high.reduce((sum, e) => sum + e.qtyHour, 0).toFixed(2))
   let averangeHour = Number((qtyHour / (qtyDefect !== 0 ? qtyDefect : 1)).toFixed(2))
-
   return { qtyDefect, qtyHour, averangeHour }
 }
 
@@ -64,7 +59,6 @@ export const operDevDefectReopenedTotal = ({ operDevDefectReopened }) => {
   let qtyReopened = Number(operDevDefectReopened.reduce((sum, e) => sum + e.qtyReopened, 0).toFixed(2))
   let qtyDefect = operDevDefectReopened.reduce((sum, e) => sum + e.qtyDefect, 0)
   let percReopened = Number((qtyReopened / (qtyDefect !== 0 ? qtyDefect : 1) * 100).toFixed(2))
-
   return { qtyReopened, qtyDefect, percReopened }
 }
 
@@ -72,7 +66,6 @@ export const operTestProductivityTotal = ({ operTestProductivity }) => {
   let productivity = Number(operTestProductivity.reduce((sum, e) => sum + e.productivity, 0).toFixed(2))
   let passed = operTestProductivity.reduce((sum, e) => sum + e.passed, 0)
   let failed = operTestProductivity.reduce((sum, e) => sum + e.failed, 0)
-
   return { productivity, passed, failed }
 }
 

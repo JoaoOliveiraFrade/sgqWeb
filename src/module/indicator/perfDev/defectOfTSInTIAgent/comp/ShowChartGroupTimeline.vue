@@ -7,7 +7,7 @@
     name: 'ShowChartGroupTimeline',
 
     computed: {
-      ...mapGetters('indicatorPerfDevDefectInsideSLA', ['groupTimeline']),
+      ...mapGetters('indicatorPerfDevDefectOfTSInTIAgent', ['groupTimeline']),
 
       chartParam () {
         let param = chartStandParam

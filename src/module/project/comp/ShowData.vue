@@ -314,10 +314,10 @@
             <oiChartdefectOfTSInTI :value="defectOfTSInTITotal"/>
 -->
           </div>
+<!--
 
           <div class="row well well-sm oi-well text-center">
             <label class="fd-label">TESTE</label><br>
-<!--
             <div class="col-xs-12 col-sm-6 col-md-3 oi-col">
                 <oiChartDefectDensityTotal :value="defectDensityTotal"/>
             </div>
@@ -328,8 +328,8 @@
             <oiChartDefectAverangeTimeTotal :value="DefectAverangeTimeTotal"/>
             <oichartDefectReopenedTotal :value="reopenedTotal"/>
             <oiChartdefectOfTSInTI :value="defectOfTSInTITotal"/>
--->
           </div>         
+-->
 
         </div>
 

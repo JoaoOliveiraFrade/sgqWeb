@@ -2,7 +2,10 @@ export default function () {
   return {
     chart: {
       type: 'gauge',
-      backgroundColor: 'transparent'
+      backgroundColor: 'transparent',
+      marginTop: 20,
+      marginBottom: 0,
+      spacingBottom: 0
     },
     // title: { text: '', y: 0, style: { fontSize: 14, fontWeight: 'bold' } },
     title: {

@@ -10,7 +10,7 @@ selected<script>
 
 <template>
   <span>
-    <button style="padding:0px; padding-left:3px; padding-right:3px; margin-bottom:5px;"
+    <button style="padding:0px; margin-left:2px; padding-left:3px; padding-right:3px; margin-bottom:3px;"
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 

@@ -7,7 +7,7 @@
     name: 'ShowChartTotal',
 
     computed: {
-      ...mapGetters('indicatorPerfDevDefectInsideSLA', ['total']),
+      ...mapGetters('indicatorPerfDevDefectOfTSInTIAgent', ['total']),
 
       // chartParam () {
       //   let param = chartTotalStandParam

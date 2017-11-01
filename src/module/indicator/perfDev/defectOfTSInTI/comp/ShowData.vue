@@ -47,11 +47,12 @@
 <template>
   <div v-show="selectedProjects.length > 0">
       <div class="loader" v-show="loading" style="margin-top: 50px; margin-bottom: 25px"/>
-      <div class="row well col-xs-12" v-show="!loading" style="margin:0; border:0; padding:5px">
+      <div class="well well-sm oi-well col-xs-12" v-show="!loading" style="padding:3px">
+        
         <oiRule style="text-align: left"/>
         <oiShowAnalytic style="text-align: left"/>
 
-        <hr style="margin-top: 2px; height: 1px; border: 0; box-shadow: 0 7px 7px -7px #d9d9d9 inset">
+        <hr style="margin-top: 1px; height: 21px; border: 0; box-shadow: 0 7px 7px -7px #d9d9d9 inset">
 
         <div class="col-sm-4">
           <oiShowChartGroupDevManuf/>
