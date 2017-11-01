@@ -20,11 +20,12 @@ selected<script>
     <oiModal id="defectOfTSInTIShowRule" title="Regra">   
       <div style="margin:0; padding:10px" slot="body">
         <label class="fd-label">
-          Qte Defeito de TS Encontrado No TI / Qte Total Defeito.<br><br>
+          Qte Defeito de TS encontrado em TI / Qte Total Defeito.<br><br>
 
           São considerados os defeitos: <br>
           &nbsp;&nbsp;- Das etapas de TI e UAT.<br>
-          &nbsp;&nbsp;- CLOSED.<br><br>
+          &nbsp;&nbsp;- CLOSED.<br>
+          &nbsp;&nbsp;- CONSTRUÇÃO.<br><br>
 
           Os Defeitos de TS são identificados pelo campo “Erro Detectável Em Desenvolvimento” igual a SIM.
           Este campo é imputado manualmente no ALM.<br><br>

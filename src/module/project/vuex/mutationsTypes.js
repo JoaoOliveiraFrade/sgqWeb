@@ -1,6 +1,6 @@
 export const data = 'data'
-export const ofTestManufsAndSystems = 'ofTestManufsAndSystems'
-export const ofDevManufsAndSystems = 'ofDevManufsAndSystems'
+export const fromTestManufsAndSystems = 'fromTestManufsAndSystems'
+export const fromDevManufsAndSystems = 'fromDevManufsAndSystems'
 export const filterTerm = 'filterTerm'
 export const selected = 'selected'
 export const loading = 'loading'

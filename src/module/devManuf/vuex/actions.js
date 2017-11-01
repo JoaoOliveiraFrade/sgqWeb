@@ -11,8 +11,8 @@ export const load = ({ commit }) => {
     )
 }
 
-export const loadOfQueue = ({ commit }) => {
-  services.loadOfQueue()
+export const loadFromAgent = ({ commit }) => {
+  services.loadFromAgent()
     .then(
       r => {
         commit(types.data, r.data)

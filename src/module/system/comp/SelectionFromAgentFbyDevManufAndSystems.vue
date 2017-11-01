@@ -3,32 +3,32 @@
   import oiSelection from './multiselection/Main.vue'
 
   export default {
-    name: 'ProjectSelectionOfTestManufsAndSystems',
+    name: 'SystemSelectionFromAgentFbyDevManufAndSystems',
 
     components: { oiSelection },
 
     props: {
-      testManufs: { type: Array, default: () => [] },
+      devManufs: { type: Array, default: () => [] },
       systems: { type: Array, default: () => [] },
       selectedProjects: { type: Array, default: () => [] },
       isShowButtonSelected: { type: Boolean, default: true }
     },
 
     computed: {
-      ...mapState('project', ['ofTestManufsAndSystems', 'selected'])
+      ...mapState('project', ['fromDevManufsAndSystems', 'selected'])
     },
 
     watch: {
       'systems': {
         handler () {
-          this.loadOfTestManufsAndSystems({ testManufs: this.testManufs.map(i => i.id), systems: this.systems.map(i => i.id) })
+          this.loadFromAgentFbyDevManufsAndSystems({ devManufs: this.devManufs.map(i => i.id), systems: this.systems.map(i => i.id) })
           this.setSelected(this.selectedProjects)
         }
       }
     },
 
     methods: {
-      ...mapActions('project', ['loadOfTestManufsAndSystems', 'setSelected']),
+      ...mapActions('project', ['loadFromAgentFbyDevManufsAndSystems', 'setSelected']),
 
       confirm (selected) {
         this.setSelected(selected)
@@ -37,7 +37,7 @@
     },
 
     mounted () {
-      this.loadOfTestManufsAndSystems({ testManufs: this.testManufs.map(i => i.id), systems: this.systems.map(i => i.id) })
+      this.loadFromAgentFbyDevManufsAndSystems({ devManufs: this.devManufs.map(i => i.id), systems: this.systems.map(i => i.id) })
       this.setSelected(this.selectedProjects)
     }
   }
@@ -46,7 +46,7 @@
 <template>
   <span>
     <oiSelection
-      :projects="ofTestManufsAndSystems"
+      :projects="fromDevManufsAndSystems"
       :selected="selected"
       @onConfirm="confirm"        
     />

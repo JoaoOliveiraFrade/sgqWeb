@@ -3,7 +3,7 @@
   import oiSelection from '@/comp/selection/Main.vue'
 
   export default {
-    name: 'SystemSelectionOfQueueFbyDevManuf',
+    name: 'SystemSelectionFromAgentFbyDevManuf',
 
     components: { oiSelection },
 
@@ -15,11 +15,11 @@
 
     computed: {
       ...mapState('system', ['selected']),
-      ...mapGetters('system', ['ofQueueFbyDevManufs'])
+      ...mapGetters('system', ['FromAgentFbyDevManufs'])
     },
 
     methods: {
-      ...mapActions('system', ['loadOfQueueGroupDevManufs', 'setDevManufs', 'setSelected']),
+      ...mapActions('system', ['loadFromAgentGroupDevManufs', 'setDevManufs', 'setSelected']),
 
       confirm (selected) {
         this.setSelected(selected)
@@ -41,7 +41,7 @@
     },
 
     mounted () {
-      this.loadOfQueueGroupDevManufs()
+      this.loadFromAgentGroupDevManufs()
       this.setDevManufs(this.devManufs)
       this.setSelected(this.selectedSystems)
     }
@@ -52,7 +52,7 @@
   <span>
     <oiSelection
       title="Sistema (agente)"               
-      :data="ofQueueFbyDevManufs"
+      :data="FromAgentFbyDevManufs"
       :selected="selected"
       :isShowButtonSelected="isShowButtonSelected"
       gender="male"

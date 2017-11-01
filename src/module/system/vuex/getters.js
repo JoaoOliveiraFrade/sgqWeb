@@ -1,5 +1,5 @@
-export const ofQueueFbyDevManufs = ({ devManufs, ofQueueGroupDevManufs }) => {
-  const list = ofQueueGroupDevManufs.filter((el) => {
+export const FromAgentFbyDevManufs = ({ devManufs, ofAgentGroupDevManufs }) => {
+  const list = ofAgentGroupDevManufs.filter((el) => {
     return devManufs.some((f) => f.id === el.devManuf)
   })
   .map(m => m.system)

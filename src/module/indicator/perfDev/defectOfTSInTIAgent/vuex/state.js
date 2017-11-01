@@ -2,8 +2,7 @@ export default {
   selectedDevManufs: [],
   selectedSystems: [],
   selectedProjects: [],
-
-  limitMinPerc: 80,
+  acceptableLimit: 3,
   data: [],
   loading: false,
   chartSelectedDevManufs: '',

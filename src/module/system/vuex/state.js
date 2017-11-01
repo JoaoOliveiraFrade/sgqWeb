@@ -1,9 +1,9 @@
 export default {
   data: [],
-  ofTestManufs: [],
+  dataFbyTestManufs: [],
   selected: [],
 
   devManufs: [],
 
-  ofQueueGroupDevManufs: []
+  ofAgentGroupDevManufs: []
 }

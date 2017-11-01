@@ -7,8 +7,8 @@ export default {
     return resource.get()
   },
 
-  loadOfQueue () {
-    let resource = Resource.resource(paths.api + '/devManuf/allOfQueue')
+  loadFromAgent () {
+    let resource = Resource.resource(paths.api + '/devManuf/allFromAgent')
     return resource.get()
   }
 }

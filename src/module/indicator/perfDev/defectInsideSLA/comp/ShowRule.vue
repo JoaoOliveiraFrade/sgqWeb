@@ -32,7 +32,7 @@ selected<script>
 
           No gráfico Temporal, os defeitos são contabilizadas no mês/ano em que eles estiveram no status considerados.<br><br>
 
-          São desconsideradas as Fáb. de desenv. com o conteúdo: '', 'OI','LÍDER TÉCNICO', 'ÁREA DE NEGÓCIOS', 'ÁREA USUÁRIA', 'AUTOMAÇÃO', 'ENGENHARIA', 'OI (API)' e 'OI (APLICATIVO)'.
+          São desconsideradas as de Fáb.Desenv. com o conteúdo: '', 'OI','LÍDER TÉCNICO', 'ÁREA DE NEGÓCIOS', 'ÁREA USUÁRIA', 'AUTOMAÇÃO', 'ENGENHARIA', 'OI (API)' e 'OI (APLICATIVO)'.
         </label>
       </div>
     </oiModal>

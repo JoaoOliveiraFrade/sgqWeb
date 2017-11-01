@@ -7,15 +7,16 @@ export default {
   [types.selected] (state, parameter) {
     state.selected = parameter
   },
-  [types.ofTestManufs] (state, parameter) {
-    state.ofTestManufs = parameter
+
+  [types.dataFbyTestManufs] (state, parameter) {
+    state.dataFbyTestManufs = parameter
   },
 
   [types.devManufs] (state, parameter) {
     state.devManufs = parameter
   },
 
-  [types.ofQueueGroupDevManufs] (state, parameter) {
-    state.ofQueueGroupDevManufs = parameter
+  [types.ofAgentGroupDevManufs] (state, parameter) {
+    state.ofAgentGroupDevManufs = parameter
   }
 }

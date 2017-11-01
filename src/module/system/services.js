@@ -7,18 +7,23 @@ export default {
     return resource.get()
   },
 
-  loadOfTestManufs (testManufs) {
-    let resource = Resource.resource(paths.api + '/system/ofTestManufs')
+  loadFbyTestManufs (testManufs) {
+    let resource = Resource.resource(paths.api + '/system/fromTestManufs')
     return resource.save(testManufs)
   },
 
-  loadOfDevManufs (devManufs) {
-    let resource = Resource.resource(paths.api + '/system/ofDevManufs')
+  loadFbyDevManufs (devManufs) {
+    let resource = Resource.resource(paths.api + '/system/fromDevManufs')
     return resource.save(devManufs)
   },
 
-  loadOfQueueGroupDevManufs () {
-    let resource = Resource.resource(paths.api + '/system/ofQueueGroupDevManufs')
-    return resource.get()
+  loadFromAgentFbyDevManufs (devManufs) {
+    let resource = Resource.resource(paths.api + '/system/fromAgentFbyDevManufs')
+    return resource.save(devManufs)
   }
+
+  // loadFromAgentGroupDevManufs () {
+  //   let resource = Resource.resource(paths.api + '/system/OfAgentGroupDevManufs')
+  //   return resource.get()
+  // }
 }

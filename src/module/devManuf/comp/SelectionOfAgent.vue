@@ -3,12 +3,12 @@
   import oiSelection from '@/comp/selection/Main.vue'
 
   export default {
-    name: 'DevManufSelectionOfQueue',
+    name: 'DevManufSelectionOfAgent',
 
     components: { oiSelection },
 
     props: {
-      isShowButtonselectedOfQueue: {type: Boolean}
+      isShowButtonselectedOfAgent: {type: Boolean}
     },
 
     computed: {
@@ -16,7 +16,7 @@
     },
 
     methods: {
-      ...mapActions('devManuf', ['loadOfQueue', 'setSelected']),
+      ...mapActions('devManuf', ['loadFromAgent', 'setSelected']),
 
       confirm (selected) {
         this.setSelected(selected)
@@ -25,7 +25,7 @@
     },
 
     mounted () {
-      this.loadOfQueue()
+      this.loadFromAgent()
       this.setSelected([])
     }
   }

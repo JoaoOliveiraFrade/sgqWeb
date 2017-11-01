@@ -11,18 +11,18 @@ export const load = ({ commit }) => {
     )
 }
 
-export const loadOfTestManufs = ({ commit }, selectedTestManufs) => {
-  services.loadOfTestManufs(selectedTestManufs.map(i => i.id))
+export const loadFbyTestManufs = ({ commit }, selectedTestManufs) => {
+  services.loadFromTestManufs(selectedTestManufs.map(i => i.id))
     .then(
       r => {
-        commit(types.ofTestManufs, r.data)
+        commit(types.fromTestManufs, r.data)
       },
       e => console.log(e)
     )
 }
 
-export const loadOfDevManufs = ({ commit }, selectedDevManufs) => {
-  services.loadOfDevManufs(selectedDevManufs.map(i => i.id))
+export const loadFromDevManufs = ({ commit }, selectedDevManufs) => {
+  services.loadFromDevManufs(selectedDevManufs.map(i => i.id))
     .then(
       r => {
         commit(types.data, r.data)
@@ -31,11 +31,26 @@ export const loadOfDevManufs = ({ commit }, selectedDevManufs) => {
     )
 }
 
-export const loadOfQueueGroupDevManufs = ({ commit }) => {
-  services.loadOfQueueGroupDevManufs()
+export const loadFromAgentFbyDevManufs = ({ commit }, parameter) => {
+  commit(types.loading, true)
+  services.loadFromAgentFbyDevManufs(parameter)
     .then(
       r => {
-        commit(types.ofQueueGroupDevManufs, r.data)
+        commit(types.dataFromTestManufs, r.data)
+        commit(types.loading, false)
+      },
+      e => {
+        console.log(e)
+        commit(types.loading, false)
+      }
+    )
+}
+
+export const loadFromAgentGroupDevManufs = ({ commit }) => {
+  services.loadFromAgentGroupDevManufs()
+    .then(
+      r => {
+        commit(types.ofAgentGroupDevManufs, r.data)
       },
       e => console.log(e)
     )

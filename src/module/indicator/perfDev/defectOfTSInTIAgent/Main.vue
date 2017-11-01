@@ -1,15 +1,19 @@
 <script>
   import { mapActions, mapState } from 'vuex'
 
-  import oiDevManufSelection from '@/module/devManuf/comp/SelectionOfQueue.vue'
-  import oiSelectionOfAgentFbyDevManufs from '@/module/system/comp/SelectionOfAgentFbyDevManufs.vue'
-  import oiProjectSelectionFbyDevManufsAndSystems from '@/module/project/comp/SelectionOfQueueFbyDevManufAndSystems.vue'
-  import oiShowData from './comp/ShowData.vue'
+  import oiDevManufSelection from '@/module/devManuf/comp/SelectionOfAgent.vue'
+  
+  import oiSystemMultiselectionFromAgentFbyDevManuf from '@/module/system/comp/MultiselectionFromAgentFbyDevManuf.vue'
+  
+  // import oiSelectionFromAgentFbyDevManufs from '@/module/system/comp/SelectionFromAgentFbyDevManufs.vue'
+  // import oiProjectSelectionFbyDevManufsAndSystems from '@/module/project/comp/SelectionFromAgentFbyDevManufAndSystems.vue'
+  // import oiShowData from './comp/ShowData.vue'
 
   export default {
-    name: 'indicatorPerfDevDefectOfTSInTIAgentMain',
+    name: 'indicatorPerfDevDefectFromTSInTIAgentMain',
 
-    components: { oiDevManufSelection, oiSelectionOfAgentFbyDevManufs, oiProjectSelectionFbyDevManufsAndSystems, oiShowData },
+    components: { oiDevManufSelection, oiSystemMultiselectionFromAgentFbyDevManuf },
+    // components: { oiDevManufSelection, oiSelectionFromAgentFbyDevManufs, oiProjectSelectionFbyDevManufsAndSystems, oiShowData },
 
     computed: {
       ...mapState('indicatorPerfDevDefectOfTSInTIAgent', ['selectedDevManufs', 'selectedSystems', 'selectedProjects'])
@@ -37,8 +41,19 @@
       />
     </div>
 
+<!--v-show="selectedDevManufs.length > 0"-->
+
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
-      <oiSelectionOfAgentFbyDevManufs v-show="selectedDevManufs.length > 0"
+      <oiSystemMultiselectionFromAgentFbyDevManuf 
+        :devManufs="selectedDevManufs"
+        :selectedSystems="selectedSystems"
+        @onConfirm="setSelectedSystems"
+      />
+    </div>
+
+<!--
+    <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
+      <oiSelectionFromAgentFbyDevManufs v-show="selectedDevManufs.length > 0"
         :devManufs="selectedDevManufs"
         :selectedSystems="selectedSystems"
         @onConfirm="setSelectedSystems"
@@ -57,6 +72,7 @@
     <div class="row well-sm oi-well" style="padding-top: 30px">
       <oiShowData/>
     </div>
+-->    
   </div> 
 </template>
 

@@ -54,12 +54,12 @@ export const loadFbyDevManufsAndSystems = ({ commit }, parameter) => {
     )
 }
 
-export const loadOfTestManufsAndSystems = ({ commit }, parameter) => {
+export const loadFromTestManufsAndSystems = ({ commit }, parameter) => {
   commit(types.loading, true)
-  services.loadOfTestManufsAndSystems(parameter)
+  services.loadFromTestManufsAndSystems(parameter)
     .then(
       r => {
-        commit(types.ofTestManufsAndSystems, r.data)
+        commit(types.fromTestManufsAndSystems, r.data)
         commit(types.loading, false)
       },
       e => {
@@ -69,12 +69,12 @@ export const loadOfTestManufsAndSystems = ({ commit }, parameter) => {
     )
 }
 
-export const loadOfQueueFbyDevManufsAndSystems = ({ commit }, parameter) => {
+export const loadFromAgentFbyDevManufsAndSystems = ({ commit }, parameter) => {
   commit(types.loading, true)
-  services.loadOfQueueFbyDevManufsAndSystems(parameter)
+  services.loadFromAgentFbyDevManufsAndSystems(parameter)
     .then(
       r => {
-        commit(types.ofDevManufsAndSystems, r.data)
+        commit(types.fromDevManufsAndSystems, r.data)
         commit(types.loading, false)
       },
       e => {
@@ -167,8 +167,8 @@ export const setProjectFilterTerm = ({ commit }, filterTerm) => {
 //   commit(types.devManufs, paramenter)
 // }
 
-// export const loadOfQueueGroupDevManufsAndSystems = ({ commit, dispatch }) => {
-//   services.loadOfQueueGroupDevManufsAndSystems()
+// export const loadFromAgentGroupDevManufsAndSystems = ({ commit, dispatch }) => {
+//   services.loadFromAgentGroupDevManufsAndSystems()
 //     .then(
 //       r => {
 //         commit(types.listSubprojectDelivery, r.data)

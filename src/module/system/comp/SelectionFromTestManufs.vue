@@ -3,31 +3,31 @@
   import oiSelection from '@/comp/selection/Main.vue'
 
   export default {
-    name: 'SystemSelectionfromDevManufs',
+    name: 'SystemSelectionFromTestManufs',
 
     components: { oiSelection },
 
     props: {
-      devManufs: { type: Array, default: () => [] },
-      preSelected: { type: Array, default: () => [] },
+      testManufs: { type: Array, default: () => [] },
+      selectedSystems: { type: Array, default: () => [] },
       isShowButtonSelected: { type: Boolean, default: true }
     },
 
     computed: {
-      ...mapState('system', ['data', 'selected'])
+      ...mapState('system', ['fromTestManufs', 'selected'])
     },
 
     watch: {
-      'devManufs': {
+      'testManufs': {
         handler () {
-          this.loadfromDevManufs(this.devManufs)
-          this.setSelected(this.preSelected)
+          this.loadFromTestManufs(this.testManufs)
+          this.setSelected(this.selectedSystems)
         }
       }
     },
 
     methods: {
-      ...mapActions('system', ['loadfromDevManufs']),
+      ...mapActions('system', ['loadFromTestManufs']),
       ...mapActions('system', ['setSelected']),
 
       confirm (selected) {
@@ -37,8 +37,8 @@
     },
 
     mounted () {
-      this.loadfromDevManufs(this.devManufs)
-      this.setSelected(this.preSelected)
+      this.loadFromTestManufs(this.testManufs)
+      this.setSelected(this.selectedSystems)
     }
   }
 </script>
@@ -47,7 +47,7 @@
   <span>
     <oiSelection
       title="Sistema"               
-      :data="data"
+      :data="fromTestManufs"
       :selected="selected"
       :isShowButtonSelected="isShowButtonSelected"
       gender="male"

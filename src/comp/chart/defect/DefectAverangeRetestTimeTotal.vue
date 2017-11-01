@@ -30,7 +30,7 @@
         let limitSupGreen = 5
         let limitSupRed = this.value.averangeRetestHour > limitSupGreen ? this.value.averangeRetestHour : limitSupGreen
 
-        this.parameters.title.text = 'Tempo Médio Reteste Def.'
+        this.parameters.title.text = 'Tempo Médio On Retest'
         this.parameters.yAxis.title.text = 'Hora<br>Reteste'
         this.parameters.plotOptions.gauge.dataLabels.format = '{point.y:.0f}'
         this.parameters.yAxis.max = limitSupRed

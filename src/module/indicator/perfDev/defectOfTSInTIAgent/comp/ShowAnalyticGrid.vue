@@ -41,29 +41,22 @@
                 </font>
             </th>
 
-            <th style="padding: 1px; margin: 0px; border-top: 1px; text-align: center">
-                <font size="2" class="text-nowrap">Severidade
-                    <a href="#" @click.prevent="setOrder('project')">
-                    </a>
-                </font>
-            </th>
-
             <th style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
-                <font size="2" class="text-nowrap">Qte Defeito
+                <font size="2" class="text-nowrap">Qte Detectável em TS
                     <a href="#" @click.prevent="setOrder('Passed')">
                     </a>
                 </font>
             </th>
 
             <th style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
-                <font size="2" class="text-nowrap">Dentro SLA
+                <font size="2" class="text-nowrap">Qte Total
                     <a href="#" @click.prevent="setOrder('Failed')">
                     </a>
                 </font>
             </th>
 
             <th style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
-                <font size="2" class="text-nowrap">% Dentro SLA
+                <font size="2" class="text-nowrap">% Detectável em TS
                     <a href="#" @click.prevent="setOrder('Failed')">
                     </a>
                 </font>
@@ -76,6 +69,7 @@
             <td style="padding: 1px; margin: 0px; border-top: 1px; text-align: center">
                 <font size="2">{{item.month + (item.month ? '/' : '') + item.year}}</font>
             </td style="padding:0">
+
             <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">
                 <font size="2">{{item.devManuf}}</font>
             </td style="padding:0">
@@ -88,8 +82,8 @@
                 <font size="2">{{item.subprojectDelivery}}</font>
             </td style="padding:0">
 
-            <td style="padding: 1px; margin: 0px; border-top: 1px; text-align: center">
-                <font size="2">{{item.severity}}</font>
+            <td style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
+                <font size="2">{{item.qtyOfTSInTI}}</font>
             </td style="padding:0">
 
             <td style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
@@ -97,11 +91,7 @@
             </td style="padding:0">
 
             <td style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
-                <font size="2">{{item.qtyInsideSLA}}</font>
-            </td style="padding:0">
-
-            <td style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
-                <font size="2">{{item.percInsideSLA}}</font>
+                <font size="2">{{item.percOfTSInTI}}</font>
             </td style="padding:0">
         </tr>
     </tbody> 

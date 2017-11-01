@@ -5,12 +5,12 @@ export default {
     state.data = parameter
   },
 
-  [types.ofTestManufsAndSystems] (state, data) {
-    state.ofTestManufsAndSystems = data
+  [types.fromTestManufsAndSystems] (state, data) {
+    state.fromTestManufsAndSystems = data
   },
 
-  [types.ofDevManufsAndSystems] (state, data) {
-    state.ofDevManufsAndSystems = data
+  [types.fromDevManufsAndSystems] (state, data) {
+    state.fromDevManufsAndSystems = data
   },
 
   [types.filterTerm] (state, data) {

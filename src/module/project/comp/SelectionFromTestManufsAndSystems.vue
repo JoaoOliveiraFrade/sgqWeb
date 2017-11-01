@@ -1,0 +1,63 @@
+<script>
+  import { mapActions, mapState } from 'vuex'
+  import oiSelection from './multiselection/Main.vue'
+
+  export default {
+    name: 'ProjectSelectionFromTestManufsAndSystems',
+
+    components: { oiSelection },
+
+    props: {
+      testManufs: { type: Array, default: () => [] },
+      systems: { type: Array, default: () => [] },
+      selectedProjects: { type: Array, default: () => [] },
+      isShowButtonSelected: { type: Boolean, default: true }
+    },
+
+    computed: {
+      ...mapState('project', ['fromTestManufsAndSystems', 'selected'])
+    },
+
+    watch: {
+      'systems': {
+        handler () {
+          this.loadFromTestManufsAndSystems({ testManufs: this.testManufs.map(i => i.id), systems: this.systems.map(i => i.id) })
+          this.setSelected(this.selectedProjects)
+        }
+      }
+    },
+
+    methods: {
+      ...mapActions('project', ['loadFromTestManufsAndSystems', 'setSelected']),
+
+      confirm (selected) {
+        this.setSelected(selected)
+        this.$emit('onConfirm', selected)
+      }
+    },
+
+    mounted () {
+      this.loadFromTestManufsAndSystems({ testManufs: this.testManufs.map(i => i.id), systems: this.systems.map(i => i.id) })
+      this.setSelected(this.selectedProjects)
+    }
+  }
+</script>
+
+<template>
+  <span>
+    <oiSelection
+      :projects="fromTestManufsAndSystems"
+      :selected="selected"
+      @onConfirm="confirm"        
+    />
+  </span>
+</template>
+
+<style scoped>
+  .fd-label {
+    margin: 0; 
+    border: 0; 
+    padding: 0; 
+    color: gray;
+  }
+</style>

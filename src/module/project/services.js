@@ -22,13 +22,13 @@ export default {
     return resource.save(devManufsAndSystems)
   },
 
-  loadOfTestManufsAndSystems (testManufsAndSystems) {
-    let resource = Resource.resource(paths.api + '/project/ofTestManufsAndSystems')
+  loadFromTestManufsAndSystems (testManufsAndSystems) {
+    let resource = Resource.resource(paths.api + '/project/fromTestManufsAndSystems')
     return resource.save(testManufsAndSystems)
   },
 
-  loadOfQueueFbyDevManufsAndSystems (testManufsAndSystems) {
-    let resource = Resource.resource(paths.api + '/project/ofQueueFbyDevManufsAndSystems')
+  loadFromAgentFbyDevManufsAndSystems (testManufsAndSystems) {
+    let resource = Resource.resource(paths.api + '/project/FromAgentFbyDevManufsAndSystems')
     return resource.save(testManufsAndSystems)
   },
 

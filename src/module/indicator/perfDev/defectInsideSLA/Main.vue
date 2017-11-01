@@ -1,15 +1,15 @@
 <script>
   import { mapActions, mapState } from 'vuex'
 
-  import oiDevManufSelection from '@/module/devManuf/comp/SelectionOfQueue.vue'
-  import oiSelectionOfAgentFbyDevManufs from '@/module/system/comp/SelectionOfAgentFbyDevManufs.vue'
-  import oiProjectSelectionFbyDevManufsAndSystems from '@/module/project/comp/SelectionOfQueueFbyDevManufAndSystems.vue'
+  import oiDevManufSelection from '@/module/devManuf/comp/SelectionOfAgent.vue'
+  import oiSelectionFromAgentFbyDevManufs from '@/module/system/comp/SelectionFromAgentFbyDevManufs.vue'
+  import oiProjectSelectionFbyDevManufsAndSystems from '@/module/project/comp/SelectionFromAgentFbyDevManufAndSystems.vue'
   import oiShowData from './comp/ShowData.vue'
 
   export default {
     name: 'indicatorPerfDevDefectInsideSLAMain',
 
-    components: { oiDevManufSelection, oiSelectionOfAgentFbyDevManufs, oiProjectSelectionFbyDevManufsAndSystems, oiShowData },
+    components: { oiDevManufSelection, oiSelectionFromAgentFbyDevManufs, oiProjectSelectionFbyDevManufsAndSystems, oiShowData },
 
     computed: {
       ...mapState('indicatorPerfDevDefectInsideSLA', ['selectedDevManufs', 'selectedSystems', 'selectedProjects'])
@@ -38,7 +38,7 @@
     </div>
 
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
-      <oiSelectionOfAgentFbyDevManufs v-show="selectedDevManufs.length > 0"
+      <oiSelectionFromAgentFbyDevManufs v-show="selectedDevManufs.length > 0"
         :devManufs="selectedDevManufs"
         :selectedSystems="selectedSystems"
         @onConfirm="setSelectedSystems"

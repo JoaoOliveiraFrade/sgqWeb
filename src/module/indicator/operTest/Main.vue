@@ -2,14 +2,14 @@
   import { mapActions, mapState, mapGetters } from 'vuex'
 
   import oiTestManufSelection from '@/module/testManuf/comp/Selection.vue'
-  import oiSystemSelectionOfTestManufs from '@/module/system/comp/SelectionOfTestManufs.vue'
-  import oiProjectSelectionOfTestManufsAndSystems from '@/module/project/comp/SelectionOfTestManufsAndSystems.vue'
+  import oiSystemSelectionFromTestManufs from '@/module/system/comp/SelectionFromTestManufs.vue'
+  import oiProjectSelectionFromTestManufsAndSystems from '@/module/project/comp/SelectionFromTestManufsAndSystems.vue'
   import oiShowData from './comp/ShowData.vue'
 
   export default {
     name: 'indicatorTestMain',
 
-    components: { oiTestManufSelection, oiSystemSelectionOfTestManufs, oiProjectSelectionOfTestManufsAndSystems, oiShowData },
+    components: { oiTestManufSelection, oiSystemSelectionFromTestManufs, oiProjectSelectionFromTestManufsAndSystems, oiShowData },
 
     computed: {
       ...mapState('indicatorTest', ['selectedTestManufs', 'selectedSystems', 'selectedProjects']),
@@ -38,7 +38,7 @@
     </div>
 
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
-      <oiSystemSelectionOfTestManufs v-show="selectedTestManufs.length > 0"
+      <oiSystemSelectionFromTestManufs v-show="selectedTestManufs.length > 0"
         :testManufs="selectedTestManufs"
         :selectedSystems="selectedSystems"
         @onConfirm="setSelectedSystems"
@@ -46,7 +46,7 @@
     </div>
     
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
-      <oiProjectSelectionOfTestManufsAndSystems v-show="selectedSystems.length > 0"
+      <oiProjectSelectionFromTestManufsAndSystems v-show="selectedSystems.length > 0"
         :testManufs="selectedTestManufs"
         :systems="selectedSystems"
         :selectedProjects="selectedProjects"

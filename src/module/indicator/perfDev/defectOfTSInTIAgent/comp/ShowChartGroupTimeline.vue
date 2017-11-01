@@ -1,5 +1,5 @@
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapState } from 'vuex'
   import Highcharts from 'highcharts'
   import chartStandParam from '@/comp/chart/types/timeline2'
 
@@ -8,41 +8,39 @@
 
     computed: {
       ...mapGetters('indicatorPerfDevDefectOfTSInTIAgent', ['groupTimeline']),
+      ...mapState('indicatorPerfDevDefectOfTSInTIAgent', ['acceptableLimit']),
 
       chartParam () {
         let param = chartStandParam
 
         param.title.text = 'Temporal'
-        param.yAxis.title.text = '% Dentro SLA'
+        param.yAxis.title.text = '% Defeito'
 
         param.tooltip.headerFormat = ''
         param.tooltip.pointFormat = `
           <b>{point.monthYear}</b><br>
-          Dentro SLA Mês: {point.percWithinSLA:.2f}% ({point.qtyInsideSLA:.0f})<br>
-          Dentro SLA Acum: {point.percWithinSLAAcc:.2f}% ({point.qtyInsideSLAAcc:.0f})<br>
-          Limite Mínimo: {point.limitMinQty:.0f} ({point.limitMinPerc:.0f}%)<br>
-          Total Defeito: {point.qtyTotalDefect:.0f}
+          % Detectável em TS: {point.percOfTSInTI:.2f}%<br>
+          Qte Detectável em TS: {point.qtyOfTSInTI:.0f}<br>
+          Qte Total Defeito: {point.qtyDefect:.0f}<br>
+          Limite Máx. Aceitável: {point.acceptableLimit:.0f}%
           `
         param.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
         param.xAxis.categories = this.groupTimeline.map(i => i.monthYear)
 
-        param.colors = ['#FF3300', '#89A54E', '#4572A7']
+        param.colors = ['#FF3300', '#4682B4']
 
         param.series = [
           {
-            name: 'Limite Mínimo',
+            name: 'Limite Máx. Aceitável',
             data: this.groupTimeline.map(i => (
               {
                 name: i.monthYear,
-                y: i.limitMinPerc,
-                qtyInsideSLA: i.qtyInsideSLA,
+                y: this.acceptableLimit,
+                acceptableLimit: this.acceptableLimit,
                 monthYear: i.monthYear,
-                percWithinSLA: i.percWithinSLA,
-                qtyInsideSLAAcc: i.qtyInsideSLAAcc,
-                percWithinSLAAcc: i.percWithinSLAAcc,
-                qtyTotalDefect: i.qtyTotalDefect,
-                limitMinQty: i.limitMinQty,
-                limitMinPerc: i.limitMinPerc
+                percOfTSInTI: i.percOfTSInTI,
+                qtyOfTSInTI: i.qtyOfTSInTI,
+                qtyDefect: i.qtyDefect
               }
             ))
           }, {
@@ -50,31 +48,12 @@
             data: this.groupTimeline.map(i => (
               {
                 name: i.monthYear,
-                y: i.percWithinSLA,
+                y: i.percOfTSInTI,
+                acceptableLimit: this.acceptableLimit,
                 monthYear: i.monthYear,
-                qtyInsideSLA: i.qtyInsideSLA,
-                percWithinSLA: i.percWithinSLA,
-                qtyInsideSLAAcc: i.qtyInsideSLAAcc,
-                percWithinSLAAcc: i.percWithinSLAAcc,
-                qtyTotalDefect: i.qtyTotalDefect,
-                limitMinQty: i.limitMinQty,
-                limitMinPerc: i.limitMinPerc
-              }
-            ))
-          }, {
-            name: 'Acumulado',
-            data: this.groupTimeline.map(i => (
-              {
-                name: i.monthYear,
-                y: i.percWithinSLAAcc,
-                monthYear: i.monthYear,
-                qtyInsideSLA: i.qtyInsideSLA,
-                percWithinSLA: i.percWithinSLA,
-                qtyInsideSLAAcc: i.qtyInsideSLAAcc,
-                percWithinSLAAcc: i.percWithinSLAAcc,
-                qtyTotalDefect: i.qtyTotalDefect,
-                limitMinQty: i.limitMinQty,
-                limitMinPerc: i.limitMinPerc
+                percOfTSInTI: i.percOfTSInTI,
+                qtyOfTSInTI: i.qtyOfTSInTI,
+                qtyDefect: i.qtyDefect
               }
             ))
           }

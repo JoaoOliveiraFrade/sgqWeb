@@ -3,7 +3,7 @@
   import oiSelection from './multiselection/Main.vue'
 
   export default {
-    name: 'ProjectSelectionOfQueueFbyDevManufAndSystems',
+    name: 'ProjectSelectionFromAgentFbyDevManufAndSystems',
 
     components: { oiSelection },
 
@@ -15,20 +15,20 @@
     },
 
     computed: {
-      ...mapState('project', ['ofDevManufsAndSystems', 'selected'])
+      ...mapState('project', ['fromDevManufsAndSystems', 'selected'])
     },
 
     watch: {
       'systems': {
         handler () {
-          this.loadOfQueueFbyDevManufsAndSystems({ devManufs: this.devManufs.map(i => i.id), systems: this.systems.map(i => i.id) })
+          this.loadFromAgentFbyDevManufsAndSystems({ devManufs: this.devManufs.map(i => i.id), systems: this.systems.map(i => i.id) })
           this.setSelected(this.selectedProjects)
         }
       }
     },
 
     methods: {
-      ...mapActions('project', ['loadOfQueueFbyDevManufsAndSystems', 'setSelected']),
+      ...mapActions('project', ['loadFromAgentFbyDevManufsAndSystems', 'setSelected']),
 
       confirm (selected) {
         this.setSelected(selected)
@@ -37,7 +37,7 @@
     },
 
     mounted () {
-      this.loadOfQueueFbyDevManufsAndSystems({ devManufs: this.devManufs.map(i => i.id), systems: this.systems.map(i => i.id) })
+      this.loadFromAgentFbyDevManufsAndSystems({ devManufs: this.devManufs.map(i => i.id), systems: this.systems.map(i => i.id) })
       this.setSelected(this.selectedProjects)
     }
   }
@@ -46,7 +46,7 @@
 <template>
   <span>
     <oiSelection
-      :projects="ofDevManufsAndSystems"
+      :projects="fromDevManufsAndSystems"
       :selected="selected"
       @onConfirm="confirm"        
     />
