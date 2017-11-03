@@ -2,16 +2,17 @@ import { vuex as auth } from './auth'
 
 import { vuex as devManuf } from './devManuf'
 import { vuex as testManuf } from './testManuf'
-import { vuex as system } from './system'
+import { vuex as system } from './system/system'
+import { vuex as systemFromAgent } from './system/systemFromAgent'
 
 import { vuex as project } from './project'
 
-import { vuex as indicatorOperDevDefectDensity } from './indicator/operDev/defectDensity'
+import { vuex as indOperDevDefectDensity } from './indicator/operational/dev/defectDensity'
 
-import { vuex as indicatorPerfDevDefectDensity } from './indicator/perfDev/defectDensity'
-import { vuex as indicatorPerfDevDefectInsideSLA } from './indicator/perfDev/defectInsideSLA'
-import { vuex as indicatorPerfDevDefectOfTSInTI } from './indicator/perfDev/defectOfTSInTI'
-import { vuex as indicatorPerfDevDefectOfTSInTIAgent } from './indicator/perfDev/defectOfTSInTIAgent'
+import { vuex as indPerfDevDefectDensity } from './indicator/performance/dev/defectDensity'
+import { vuex as indPerfDevDefectInsideSLA } from './indicator/performance/dev/defectInsideSLA'
+import { vuex as indPerfDevDefectOfTSInTI } from './indicator/performance/dev/defectOfTSInTI'
+import { vuex as indPerfDevDefectOfTSInTIAgent } from './indicator/performance/dev/defectOfTSInTIAgent'
 
 // import { vuex as grouperConsult } from './grouperConsult'
 // import { vuex as indicatorDev } from './indicator/dev'
@@ -19,14 +20,14 @@ import { vuex as indicatorPerfDevDefectOfTSInTIAgent } from './indicator/perfDev
 // import { vuex as defectStatus } from './defect/defectStatus'
 // import { vuex as defectTrafficLight } from './defect/defectTrafficLight'
 // import { vuex as defectMonitor } from './defect/defectMonitor'
-// import { vuex as indicatorDefectInsideSLA } from './indicator/perfDev/DefectInsideSLA'
+// import { vuex as indicatorDefectInsideSLA } from './indicator/performance/dev/DefectInsideSLA'
 
-// import { vuex as indicatorOperTestProductivity } from './indicator/operTest/productivity'
-// import { vuex as indicatoroperTestRejectionEvidence } from './indicator/operTest/rejectionEvidence'
-// import { vuex as indicatorOperTestDefectUnfounded } from './indicator/operTest/defectUnfounded'
-// import { vuex as indicatorOperTestDefectUAT } from './indicator/operTest/defectUAT'
-// import { vuex as indicatorOperTestDefectAverangeRetestTime } from './indicator/operTest/defectAverangeRetestTime'
-// import { vuex as indicatorOperTest } from './indicator/operTest'
+// import { vuex as indOperTestProductivity } from './indicator/operational/test/productivity'
+// import { vuex as indOperTestRejectionEvidence } from './indicator/operational/test/rejectionEvidence'
+// import { vuex as indOperTestDefectUnfounded } from './indicator/operational/test/defectUnfounded'
+// import { vuex as indOperTestDefectUAT } from './indicator/operational/test/defectUAT'
+// import { vuex as indOperTestDefectAverangeRetestTime } from './indicator/operational/test/defectAverangeRetestTime'
+// import { vuex as indOperTest } from './indicator/operational/test'
 
 // import { vuex as pulledChain } from './pulledChain'
 
@@ -36,27 +37,28 @@ export default {
   devManuf,
   testManuf,
   system,
+  systemFromAgent,
 
   project,
 
-  indicatorOperDevDefectDensity,
+  indOperDevDefectDensity,
 
-  indicatorPerfDevDefectDensity,
-  indicatorPerfDevDefectInsideSLA,
-  indicatorPerfDevDefectOfTSInTI,
-  indicatorPerfDevDefectOfTSInTIAgent
+  indPerfDevDefectDensity,
+  indPerfDevDefectInsideSLA,
+  indPerfDevDefectOfTSInTI,
+  indPerfDevDefectOfTSInTIAgent
 
   // grouperConsult,
   // indicatorDev,
 
   // indicatorDefectInsideSLA,
 
-  // indicatorOperTestProductivity,
-  // indicatoroperTestRejectionEvidence,
-  // indicatorOperTestDefectUnfounded,
-  // indicatorOperTestDefectUAT,
-  // indicatorOperTestDefectAverangeRetestTime,
-  // indicatorOperTest,
+  // indOperTestProductivity,
+  // indOperTestRejectionEvidence,
+  // indOperTestDefectUnfounded,
+  // indOperTestDefectUAT,
+  // indOperTestDefectAverangeRetestTime,
+  // indOperTest,
 
   // defectQueue,
   // defectStatus,

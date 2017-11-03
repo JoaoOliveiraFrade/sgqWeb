@@ -147,16 +147,16 @@
                         <li class="dropdown-submenu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-left:4px">Desenvolvimento</a>
                             <ul class="dropdown-menu" style="width: 210px">
-                                <router-link :to="{ name: 'indicatorPerfDevDefectDensity' }" tag="li">
+                                <router-link :to="{ name: 'indPerfDevDefectDensity' }" tag="li">
                                     <a class="oi-menu">Densidade Defeito</a>
                                 </router-link>
-                                <router-link :to="{ name: 'indicatorPerfDevDefectInsideSLA' }" tag="li">
+                                <router-link :to="{ name: 'indPerfDevDefectInsideSLA' }" tag="li">
                                     <a class="oi-menu">Defeito Dentro SLA (agente)</a>
                                 </router-link>
-                                <router-link :to="{ name: 'indicatorPerfDevDefectOfTSInTI' }" tag="li">
+                                <router-link :to="{ name: 'indPerfDevDefectOfTSInTI' }" tag="li">
                                     <a class="oi-menu">Defeito de TS em TI</a>
                                 </router-link>
-                                <router-link :to="{ name: 'indicatorPerfDevDefectOfTSInTIAgent' }" tag="li">
+                                <router-link :to="{ name: 'indPerfDevDefectOfTSInTIAgent' }" tag="li">
                                     <a class="oi-menu">Defeito de TS em TI (agente)</a>
                                 </router-link>
                             </ul>

@@ -11,18 +11,18 @@
   import oiChartDefectUATTotal from '@/comp/chart/defect/defectUATTotal'
   import oiChartDefectAverangeRetestTimeTotal from '@/comp/chart/defect/DefectAverangeRetestTimeTotal'
 
-  import oiRulerOperDevDefectDensity from '@/module/indicator/operDev/defectDensity/comp/ShowRule'
-  import oiRulerOperDevDefectAverangeTime from '@/module/indicator/operDev/defectAverangeTime/comp/ShowRule'
-  import oiRulerOperDevDefectReopened from '@/module/indicator/operDev/defectReopened/comp/ShowRule'
+  import oiRulerOperDevDefectDensity from '@/module/indicator/operational/dev/defectDensity/comp/ShowRule'
+  import oiRulerOperDevDefectAverangeTime from '@/module/indicator/operational/dev/defectAverangeTime/comp/ShowRule'
+  import oiRulerOperDevDefectReopened from '@/module/indicator/operational/dev/defectReopened/comp/ShowRule'
 
-  import oiRulerOperTestProductivity from '@/module/indicator/operTest/productivity/comp/ShowRule'
-  import oiRulerOperTestRejectionEvidence from '@/module/indicator/operTest/rejectionEvidence/comp/ShowRule'
-  import oiRulerOperTestDefectUnfounded from '@/module/indicator/operTest/defectUnfounded/comp/ShowRule'
-  import oiRulerOperTestDefectUAT from '@/module/indicator/operTest/defectUAT/comp/ShowRule'
-  import oiRulerOperTestDefectAverangeRetestTime from '@/module/indicator/operTest/defectAverangeRetestTime/comp/ShowRule'
+  import oiRulerOperTestProductivity from '@/module/indicator/operational/test/productivity/comp/ShowRule'
+  import oiRulerOperTestRejectionEvidence from '@/module/indicator/operational/test/rejectionEvidence/comp/ShowRule'
+  import oiRulerOperTestDefectUnfounded from '@/module/indicator/operational/test/defectUnfounded/comp/ShowRule'
+  import oiRulerOperTestDefectUAT from '@/module/indicator/operational/test/defectUAT/comp/ShowRule'
+  import oiRulerOperTestDefectAverangeRetestTime from '@/module/indicator/operational/test/defectAverangeRetestTime/comp/ShowRule'
 
-  import oiRulerPerfDevDefectDensity from '@/module/indicator/perfDev/defectDensity/comp/ShowRule'
-  import oiRulerPerfDevDefectOfTSInTI from '@/module/indicator/perfDev/defectOfTSInTI/comp/ShowRule'
+  import oiRulerPerfDevDefectDensity from '@/module/indicator/performance/dev/defectDensity/comp/ShowRule'
+  import oiRulerPerfDevDefectOfTSInTI from '@/module/indicator/performance/dev/defectOfTSInTI/comp/ShowRule'
 
   export default {
     name: 'ShowData',

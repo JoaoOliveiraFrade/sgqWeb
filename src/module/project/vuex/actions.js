@@ -1,18 +1,18 @@
 import * as types from './mutationsTypes'
 import services from '@/module/project/services'
 
-import servicesOperDevDefectDensity from '@/module/indicator/operDev/defectDensity/services'
-import servicesOperDevDefectAverangeTime from '@/module/indicator/operDev/defectAverangeTime/services'
-import servicesOperDevDefectReopened from '@/module/indicator/operDev/defectReopened/services'
+import servicesOperDevDefectDensity from '@/module/indicator/operational/dev/defectDensity/services'
+import servicesOperDevDefectAverangeTime from '@/module/indicator/operational/dev/defectAverangeTime/services'
+import servicesOperDevDefectReopened from '@/module/indicator/operational/dev/defectReopened/services'
 
-import servicesOperTestProductivity from '@/module/indicator/operTest/productivity/services'
-import servicesOperTestRejectionEvidence from '@/module/indicator/operTest/rejectionEvidence/services'
-import servicesOperTestDefectUnfounded from '@/module/indicator/operTest/defectUnfounded/services'
-import servicesOperTestDefectUAT from '@/module/indicator/operTest/defectUAT/services'
-import servicesOperTestDefectAverangeRetestTime from '@/module/indicator/operTest/defectAverangeRetestTime/services'
+import servicesOperTestProductivity from '@/module/indicator/operational/test/productivity/services'
+import servicesOperTestRejectionEvidence from '@/module/indicator/operational/test/rejectionEvidence/services'
+import servicesOperTestDefectUnfounded from '@/module/indicator/operational/test/defectUnfounded/services'
+import servicesOperTestDefectUAT from '@/module/indicator/operational/test/defectUAT/services'
+import servicesOperTestDefectAverangeRetestTime from '@/module/indicator/operational/test/defectAverangeRetestTime/services'
 
-import servicesPerfDevDefectDensity from '@/module/indicator/perfDev/defectDensity/services'
-import servicesPerfDevDefectOfTSInTI from '@/module/indicator/perfDev/defectOfTSInTI/services'
+import servicesPerfDevDefectDensity from '@/module/indicator/performance/dev/defectDensity/services'
+import servicesPerfDevDefectOfTSInTI from '@/module/indicator/performance/dev/defectOfTSInTI/services'
 
 export const load = ({ commit }) => {
   commit(types.loading, true)

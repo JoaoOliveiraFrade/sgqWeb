@@ -20,7 +20,7 @@
       ...mapActions('devManuf', ['load', 'setSelected']),
 
       confirm (selected) {
-        this.setSelected(this.preSelected)
+        this.setSelected(this.selected)
         this.$emit('onConfirm', selected)
       }
     },
