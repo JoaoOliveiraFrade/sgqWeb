@@ -1,9 +1,12 @@
 export default {
-  data: [],
-  dataFbyTestManufs: [],
-  selected: [],
+  dataFromCTAndDefec: [],
+  dataFromCTAndDefectGbyDevManuf: [],
+  dataFromCTAndDefectGbyTestManuf: [],
 
-  devManufs: [],
-
-  ofAgentGroupDevManufs: []
+  dataFromAgent: [],
+  dataFromAgentGbyDevManuf: [],
+  dataFromAgentGbyTestManuf: [],
+  
+  filterDevManufs: [],
+  selected: []
 }

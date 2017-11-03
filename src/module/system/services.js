@@ -2,28 +2,33 @@ import Resource from '@/http/vueResource'
 import { paths } from '@/environment'
 
 export default {
-  load () {
-    let resource = Resource.resource(paths.api + '/system/all')
+  fromCTAndDefec () {
+    let resource = Resource.resource(paths.api + '/system/fromCTAndDefec')
     return resource.get()
   },
 
-  loadFbyTestManufs (testManufs) {
-    let resource = Resource.resource(paths.api + '/system/fromTestManufs')
-    return resource.save(testManufs)
+  fromCTAndDefectGbyDevManuf () {
+    let resource = Resource.resource(paths.api + '/system/fromCTAndDefectGbyDevManuf')
+    return resource.get()
   },
 
-  loadFbyDevManufs (devManufs) {
-    let resource = Resource.resource(paths.api + '/system/fromDevManufs')
-    return resource.save(devManufs)
+  fromCTAndDefectGbyTestManuf () {
+    let resource = Resource.resource(paths.api + '/system/fromCTAndDefectGbyTestManuf')
+    return resource.get()
   },
 
-  loadFromAgentFbyDevManufs (devManufs) {
-    let resource = Resource.resource(paths.api + '/system/fromAgentFbyDevManufs')
-    return resource.save(devManufs)
+  fromAgent () {
+    let resource = Resource.resource(paths.api + '/system/fromAgent')
+    return resource.sagetve()
+  },
+
+  fromAgentGbyDevManuf () {
+    let resource = Resource.resource(paths.api + '/system/fromAgentGbyDevManuf')
+    return resource.get()
+  },
+
+  fromAgentGbyTestManuf (devManufs) {
+    let resource = Resource.resource(paths.api + '/system/fromAgentGbyTestManuf')
+    return resource.get()
   }
-
-  // loadFromAgentGroupDevManufs () {
-  //   let resource = Resource.resource(paths.api + '/system/OfAgentGroupDevManufs')
-  //   return resource.get()
-  // }
 }
