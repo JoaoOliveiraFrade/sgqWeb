@@ -1,8 +1,8 @@
 <script>
   import jQuery from 'jquery'
-  import oiBrand from './comp/BrandHeader.vue'
-  import oiButtonMobile from './comp/ButtonMobileHeader.vue'
-  import oiMenu from './comp/MenuHeader.vue'
+  import oiBrand from './BrandHeader.vue'
+  import oiButtonMobile from './ButtonMobileHeader.vue'
+  import oiMenu from './MenuHeader.vue'
   import { mapGetters } from 'vuex'
 
   export default {

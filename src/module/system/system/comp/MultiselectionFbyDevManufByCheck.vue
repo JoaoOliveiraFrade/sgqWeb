@@ -3,7 +3,7 @@
   import oiSelection from '@/comp/selection/Main.vue'
 
   export default {
-    name: 'SystemMonoSelectionFbyDevManuf',
+    name: 'SystemMultiselectionFbyDevManufByCheck',
 
     components: { oiSelection },
 
@@ -14,7 +14,7 @@
     },
 
     computed: {
-      ...mapState('system', ['data', 'selected']),
+      ...mapState('system', ['selected']),
       ...mapGetters('system', ['getDataFbyDevManuf'])
     },
 
@@ -34,20 +34,12 @@
     },
 
     watch: {
-      'preSelected': {
+      'filterDevManuf': {
         handler () {
           this.setSelected(this.preSelected)
         }
       }
     }
-    // watch: {
-    //   'filterDevManuf': {
-    //     handler () {
-    //       this.loadDataGbyDevManuf()
-    //       this.setSelected(this.preSelected)
-    //     }
-    //   }
-    // }
   }
 </script>
 

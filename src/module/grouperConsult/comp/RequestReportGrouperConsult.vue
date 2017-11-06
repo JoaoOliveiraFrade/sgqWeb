@@ -5,7 +5,7 @@
   // import ServicesGrouper from '@/module/grouperConsult/services'
   // import oiShowGridProject from '@/module/project/comp/ShowGridProject.vue'
   import { mapGetters } from 'vuex'
-  import oiModal from '@/module/modal/comp/Modalx.vue'
+  import oiModal from '@/comp/modal/Modalx.vue'
   import { paths } from '@/environment'
   import Toastr from 'toastr'
 

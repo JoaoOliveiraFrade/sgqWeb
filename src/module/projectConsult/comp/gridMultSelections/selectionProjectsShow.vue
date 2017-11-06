@@ -1,5 +1,5 @@
 <script>
-  import oiModal from '@/module/modal/comp/Modalx.vue'
+  import oiModal from '@/comp/modal/Modalx.vue'
 
   export default {
     name: 'selectionProjectsShow',

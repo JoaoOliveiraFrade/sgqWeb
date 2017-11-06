@@ -28,9 +28,9 @@ export const loadDataGbyDevManuf = ({ commit }) => {
     }
   )
 }
-export const setFilterDevManuf = ({ commit }, paramenter) => {
-  commit(types.filterDevManuf, paramenter)
-}
+// export const setFilterDevManuf = ({ commit }, paramenter) => {
+//   commit(types.filterDevManuf, paramenter)
+// }
 
 export const loadDataGbyTestManuf = ({ commit }) => {
   services.dataGbyTestManuf()
@@ -45,9 +45,9 @@ export const loadDataGbyTestManuf = ({ commit }) => {
     }
   )
 }
-export const setFilterTestManuf = ({ commit }, paramenter) => {
-  commit(types.filterTestManuf, paramenter)
-}
+// export const setFilterTestManuf = ({ commit }, paramenter) => {
+//   commit(types.filterTestManuf, paramenter)
+// }
 
 export const setSelected = ({ commit }, paramenter) => {
   commit(types.selected, paramenter)

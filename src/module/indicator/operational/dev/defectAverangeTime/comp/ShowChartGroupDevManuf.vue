@@ -19,11 +19,11 @@
     },
 
     computed: {
-      ...mapGetters('indPerfDevDefectOfTSInTI', ['groupDevManuf', 'byDevManufGroupSystem', 'chartTitle'])
+      ...mapGetters('indOperDevDefectAverangeTime', ['groupDevManuf', 'byDevManufGroupSystem', 'chartTitle'])
     },
 
     methods: {
-      ...mapActions('indPerfDevDefectOfTSInTI', ['setChartFilter']),
+      ...mapActions('indOperDevDefectAverangeTime', ['setChartFilter']),
 
       setChartParam () {
         this.chartParam.title.text = 'Fáb.Desenv. / Sistema'
@@ -32,24 +32,24 @@
         this.chartParam.tooltip.headerFormat = ''
         this.chartParam.tooltip.pointFormat = `
           <b>{point.name}</b><br>
-          % Detectável em TS: {point.y:.2f}%<br>
-          Qte Detectável em TS: {point.qtyDetectableInTS:.0f}<br>
-          Qte Total: {point.qtyTotal:.0f}<br>
+          Tempo Médio (h): {point.y:.2f}%<br>
+          Qte Horas: {point.qtyHour:.0f}<br>
+          Qte Defeitos: {point.qtyDefect:.0f}<br>
         `
-        this.chartParam.series.name = '% Detectável em TS'
+        this.chartParam.series.name = 'Tempo Médio (h)'
         this.chartParam.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
 
         this.chartParam.series = [
           {
-            name: '% Detectável em TS',
+            name: 'Tempo Médio (h)',
             colorByPoint: true,
             data: this.groupDevManuf.map(i => ({
               name: i.devManuf ? i.devManuf.charAt(0).toUpperCase() + i.devManuf.slice(1).toLowerCase() : '',
               drilldown: i.devManuf,
-              y: i.percDetectableInTS,
-              qtyDetectableInTS: i.qtyDetectableInTS,
-              qtyTotal: i.qtyTotal,
-              percDetectableInTS: i.percDetectableInTS
+              y: i.averangeHour,
+              qtyHour: i.qtyHour,
+              qtyDefect: i.qtyDefect,
+              averangeHour: i.averangeHour
             }))
           }
         ]
@@ -60,10 +60,10 @@
             id: i.devManuf,
             data: this.byDevManufGroupSystem(i.devManuf).map(s => ({
               name: s.system ? s.system.charAt(0).toUpperCase() + s.system.slice(1).toLowerCase() : '',
-              y: s.percDetectableInTS,
-              qtyDetectableInTS: i.qtyDetectableInTS,
-              qtyTotal: s.qtyTotal,
-              percDetectableInTS: s.percDetectableInTS
+              y: s.averangeHour,
+              qtyHour: i.qtyHour,
+              qtyDefect: s.qtyDefect,
+              averangeHour: s.averangeHour
             }))
           }))
         }

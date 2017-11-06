@@ -4,7 +4,7 @@
   import oiDevManufSelection from '@/module/devManuf/comp/Selection.vue'
   import oiMultiselectionFbyDevManufByCheck from '@/module/system/system/comp/MultiselectionFbyDevManufByCheck.vue'
   import oiProjectMonoSelectionFbyDevManufAndSystems from '@/module/project/comp/SelectionFbyDevManufAndSystems.vue'
-  import oiShowData from './comp/ShowData.vue'
+  import oiShowData from './ShowData.vue'
 
   export default {
     name: 'indPerfDevDefectOfTSInTI',

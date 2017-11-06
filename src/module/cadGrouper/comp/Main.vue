@@ -1,16 +1,16 @@
 <script>
   import { mapActions } from 'vuex'
   import ServicesProject from '@/module/project/services'
-  import ServicesCadgroupers from './services'
+  import ServicesCadgroupers from '../services'
   import ServicesProjectXgrouper from '@/module/projectXgrouper/services'
   
   // import grouper from 'src/models/grouper'
   import Toastr from 'toastr'
 
-  import oiGrid from './comp/grid.vue'
-  import oiShow from './comp/show_.vue'
-  import oiEdit from './comp/edit.vue'
-  import oiNew from './comp/new.vue'
+  import oiGrid from './grid.vue'
+  import oiShow from './show_.vue'
+  import oiEdit from './edit.vue'
+  import oiNew from './new.vue'
 
   export default {
     name: 'cadgroupersMain',

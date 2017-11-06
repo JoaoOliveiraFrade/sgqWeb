@@ -69,13 +69,13 @@ export const byDevManufGroupSystem = ({data}) => (devManuf) => {
   return result.filter(r => r.percWithinSLA > 0).sort((a, b) => a.percWithinSLA > b.percWithinSLA ? 1 : -1)
 }
 
-export const filteredByChart = ({data, chartSelectedDevManufs, chartSelectedSystems}) => {
-  if (chartSelectedDevManufs === '' && chartSelectedSystems === '') {
+export const filteredByChart = ({data, chartSelectedDevManuf, chartSelectedSystem}) => {
+  if (chartSelectedDevManuf === '' && chartSelectedSystem === '') {
     return data
-  } else if (chartSelectedSystems === '') {
-    return data.filter(i => i.devManuf === chartSelectedDevManufs)
+  } else if (chartSelectedSystem === '') {
+    return data.filter(i => i.devManuf === chartSelectedDevManuf)
   } else {
-    return data.filter(i => i.devManuf === chartSelectedDevManufs && i.system === chartSelectedSystems)
+    return data.filter(i => i.devManuf === chartSelectedDevManuf && i.system === chartSelectedSystem)
   }
 }
 
@@ -123,12 +123,12 @@ export const total = ({limitMinPerc}, {filteredByChart}) => {
   }
 }
 
-export const chartTitle = ({chartSelectedDevManufs, chartSelectedSystems}) => {
-  if (chartSelectedDevManufs === '' && chartSelectedSystems === '') {
+export const chartTitle = ({chartSelectedDevManuf, chartSelectedSystem}) => {
+  if (chartSelectedDevManuf === '' && chartSelectedSystem === '') {
     return 'Fáb.Desenv. / Sistema'
-  } else if (chartSelectedSystems === '') {
-    return (chartSelectedDevManufs ? chartSelectedDevManufs.charAt(0).toUpperCase() + chartSelectedDevManufs.slice(1).toLowerCase() : 'Fáb.Desenv.') + ' / Sistema'
+  } else if (chartSelectedSystem === '') {
+    return (chartSelectedDevManuf ? chartSelectedDevManuf.charAt(0).toUpperCase() + chartSelectedDevManuf.slice(1).toLowerCase() : 'Fáb.Desenv.') + ' / Sistema'
   } else {
-    return (chartSelectedDevManufs ? chartSelectedDevManufs.charAt(0).toUpperCase() + chartSelectedDevManufs.slice(1).toLowerCase() : 'Fáb.Desenv.') + ' / ' + (chartSelectedSystems ? chartSelectedSystems.charAt(0).toUpperCase() + chartSelectedSystems.slice(1).toLowerCase() : '')
+    return (chartSelectedDevManuf ? chartSelectedDevManuf.charAt(0).toUpperCase() + chartSelectedDevManuf.slice(1).toLowerCase() : 'Fáb.Desenv.') + ' / ' + (chartSelectedSystem ? chartSelectedSystem.charAt(0).toUpperCase() + chartSelectedSystem.slice(1).toLowerCase() : '')
   }
 }

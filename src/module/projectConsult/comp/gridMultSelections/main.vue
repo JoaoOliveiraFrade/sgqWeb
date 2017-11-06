@@ -11,37 +11,37 @@
     props: {
       selectedTestManufs: {type: Array},
 
-      selectedSystems: {type: Array},
-      selectedSystemsUpdated: {type: Boolean},
+      selectedSystem: {type: Array},
+      selectedSystemUpdated: {type: Boolean},
 
       selected: {type: Array},
 
-      selectedProjectsUpdated: {type: Boolean},
+      selectedProjectUpdated: {type: Boolean},
       isShowButtonSelected: {type: Boolean}
     },
 
     data () {
       return {
-        selectedSystemsUpdated_: this.selectedSystemsUpdated,
+        selectedSystemUpdated_: this.selectedSystemUpdated,
 
         selected_: this.selected,
-        selectedProjectsUpdated_: this.selectedProjectsUpdated,
+        selectedProjectUpdated_: this.selectedProjectUpdated,
         projects: [],
         filteredProjects: []
       }
     },
 
     updated () {
-      if (this.selectedSystemsUpdated || this.selectedSystemsUpdated_) {
-        this.selectedSystemsUpdated_ = false
-        this.$emit('setSelectedSystemsUpdated', this.selectedSystemsUpdated_)
+      if (this.selectedSystemUpdated || this.selectedSystemUpdated_) {
+        this.selectedSystemUpdated_ = false
+        this.$emit('setSelectedSystemUpdated', this.selectedSystemUpdated_)
         this.loadProjects()
       }
     },
 
     methods: {
       loadProjects () {
-        projetcServices.getByTestManufsAndSystems(this.selectedTestManufs, this.selectedSystems).then(resp => {
+        projetcServices.getByTestManufsAndSystems(this.selectedTestManufs, this.selectedSystem).then(resp => {
           this.projects = resp.data
           this.filteredProjects = resp.data
         })
@@ -51,18 +51,18 @@
         // this.filterTerm = ''
         // this.filteredByTerm = this.dataSource
         this.selected_ = this.projects.map(e => e.id)
-        this.selectedProjectsUpdated_ = true
+        this.selectedProjectUpdated_ = true
       },
       unSelectAllProjects () {
         // this.filteredByTerm = this.dataSource
         this.selected_ = []
-        this.selectedProjectsUpdated_ = true
-        this.$emit('setSelectedSystemsUpdated', this.selectedSystemsUpdated_)
+        this.selectedProjectUpdated_ = true
+        this.$emit('setSelectedSystemUpdated', this.selectedSystemUpdated_)
 
         // this.filterTerm = ''
       },
-      setSelectedProjectsUpdated (value) {
-        this.selectedProjectsUpdated_ = value
+      setSelectedProjectUpdated (value) {
+        this.selectedProjectUpdated_ = value
       },
       confirmProjects () {
         this.$emit('onSelection', this.selected_)
@@ -73,7 +73,7 @@
 
 <template>
   <span>
-    <pre v-show="false">{{selectedSystems}}</pre>
+    <pre v-show="false">{{selectedSystem}}</pre>
 
     <div class="col-xs-12" style="margin:0; border:0; padding:0">
       <label>Projetos:</label>
@@ -107,8 +107,8 @@
     <oiGrid
       :projects="projects"
       :selected="selected_"
-      :selectedProjectsUpdated="selectedProjectsUpdated_"
-      @setSelectedProjectsUpdated="setSelectedProjectsUpdated"
+      :selectedProjectUpdated="selectedProjectUpdated_"
+      @setSelectedProjectUpdated="setSelectedProjectUpdated"
     />
   </span>            
 </template>

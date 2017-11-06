@@ -8,6 +8,7 @@ import { vuex as systemFromAgent } from './system/systemFromAgent'
 import { vuex as project } from './project'
 
 import { vuex as indOperDevDefectDensity } from './indicator/operational/dev/defectDensity'
+import { vuex as indOperDevDefectAverangeTime } from './indicator/operational/dev/defectAverangeTime'
 
 import { vuex as indPerfDevDefectDensity } from './indicator/performance/dev/defectDensity'
 import { vuex as indPerfDevDefectInsideSLA } from './indicator/performance/dev/defectInsideSLA'
@@ -42,6 +43,7 @@ export default {
   project,
 
   indOperDevDefectDensity,
+  indOperDevDefectAverangeTime,
 
   indPerfDevDefectDensity,
   indPerfDevDefectInsideSLA,

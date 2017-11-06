@@ -1,5 +1,5 @@
 <script>
-  import oiModal from '@/module/modal/comp/Modalx.vue'
+  import oiModal from '@/comp/modal/Modalx.vue'
 
   export default {
     name: 'projectGridMultSelectionsGrid',
@@ -9,13 +9,13 @@
     props: {
       projects: {type: Array},
       selected: {type: Array},
-      selectedProjectsUpdated: {type: Boolean}
+      selectedProjectUpdated: {type: Boolean}
     },
 
     data () {
       return {
         selected_: this.selected,
-        selectedProjectsUpdated_: this.selectedProjectsUpdated
+        selectedProjectUpdated_: this.selectedProjectUpdated
       }
     },
 
@@ -28,11 +28,11 @@
     },
 
     updated () {
-      if (this.selectedProjectsUpdated || this.selectedProjectsUpdated_) {
+      if (this.selectedProjectUpdated || this.selectedProjectUpdated_) {
         console.log('projectGridMultSelectionsGrid - updated - true')
 
-        this.selectedProjectsUpdated_ = false
-        this.$emit('setSelectedProjectsUpdated', this.selectedProjectsUpdated_)
+        this.selectedProjectUpdated_ = false
+        this.$emit('setSelectedProjectUpdated', this.selectedProjectUpdated_)
 
         this.selected_ = this.selected
       } else {
@@ -46,8 +46,8 @@
 <template>
   <span>
     <pre v-show="false">{{projects}}</pre>
-    <pre v-show="false">{{selectedProjectsUpdated}}</pre>
-    <pre v-show="false">{{selectedProjectsUpdated_}}</pre>
+    <pre v-show="false">{{selectedProjectUpdated}}</pre>
+    <pre v-show="false">{{selectedProjectUpdated_}}</pre>
   
     <span v-show="false">{{selected}}</span>
     <span v-show="false">{{selected_}}</span>

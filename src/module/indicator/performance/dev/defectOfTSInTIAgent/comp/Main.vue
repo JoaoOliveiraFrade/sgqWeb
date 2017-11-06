@@ -16,18 +16,18 @@
     // components: { oiDevManufSelection, oiSelectionFromAgentFbyDevManufs, oiProjectMonoSelectionFbyDevManufAndSystems, oiShowData },
 
     computed: {
-      ...mapState('indPerfDevDefectOfTSInTIAgent', ['selectedDevManufs', 'selectedSystems', 'selectedProjects'])
+      ...mapState('indPerfDevDefectOfTSInTIAgent', ['selectedDevManuf', 'selectedSystem', 'selectedProject'])
       // ...mapGetters('indPerfDevDefectDensity', ['showData'])
     },
 
     methods: {
       ...mapActions(['setFeatureName']),
-      ...mapActions('indPerfDevDefectOfTSInTIAgent', ['setSelectedDevManufs', 'setSelectedSystems', 'setSelectedProjects'])
+      ...mapActions('indPerfDevDefectOfTSInTIAgent', ['setSelectedDevManuf', 'setSelectedSystem', 'setSelectedProject'])
     },
 
     mounted () {
-      this.setFeatureName('Ind. Desempenho - Defeito de TS em TI (agente)')
-      // this.setSelectedDevManufs([])
+      this.setFeatureName('Ind.Desemp.Des - Defeito de TS em TI (agente)')
+      // this.setSelectedDevManuf([])
     }
   }
 </script>
@@ -37,35 +37,35 @@
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4">
       <oiDevManufSelection
         :isShowButtonSelected="true"
-        @onConfirm="setSelectedDevManufs"
+        @onConfirm="setSelectedDevManuf"
       />
     </div>
 
-<!--v-show="selectedDevManufs.length > 0"-->
+<!--v-show="selectedDevManuf.length > 0"-->
 
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
       <oiSystemMultiselectionFbyDevManuf 
-        :devManufs="selectedDevManufs"
-        :selectedSystems="selectedSystems"
-        @onConfirm="setSelectedSystems"
+        :devManufs="selectedDevManuf"
+        :selectedSystem="selectedSystem"
+        @onConfirm="setSelectedSystem"
       />
     </div>
 
 <!--
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
-      <oiSelectionFromAgentFbyDevManufs v-show="selectedDevManufs.length > 0"
-        :devManufs="selectedDevManufs"
-        :selectedSystems="selectedSystems"
-        @onConfirm="setSelectedSystems"
+      <oiSelectionFromAgentFbyDevManufs v-show="selectedDevManuf.length > 0"
+        :devManufs="selectedDevManuf"
+        :selectedSystem="selectedSystem"
+        @onConfirm="setSelectedSystem"
       />
     </div>
     
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
-      <oiProjectMonoSelectionFbyDevManufAndSystems v-show="selectedSystems.length > 0"
-        :devManufs="selectedDevManufs"
-        :systems="selectedSystems"
-        :selectedProjects="selectedProjects"
-        @onConfirm="setSelectedProjects"
+      <oiProjectMonoSelectionFbyDevManufAndSystems v-show="selectedSystem.length > 0"
+        :devManufs="selectedDevManuf"
+        :systems="selectedSystem"
+        :selectedProject="selectedProject"
+        @onConfirm="setSelectedProject"
       />
     </div>
 

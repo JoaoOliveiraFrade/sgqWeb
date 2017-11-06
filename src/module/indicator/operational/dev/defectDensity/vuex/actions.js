@@ -1,34 +1,34 @@
 import * as types from './mutationsTypes'
 import services from '../services'
 
-export const setSelectedDevManufs = ({ commit }, selected) => {
-  commit(types.selectedDevManufs, selected)
-  commit(types.selectedSystems, [])
+export const setSelectedDevManuf = ({ commit }, selected) => {
+  commit(types.selectedDevManuf, selected)
+  commit(types.selectedSystem, [])
 }
 
-export const setSelectedSystems = ({ commit }, selected) => {
-  commit(types.selectedSystems, selected)
-  commit(types.selectedProjects, [])
+export const setSelectedSystem = ({ commit }, selected) => {
+  commit(types.selectedSystem, selected)
+  commit(types.selectedProject, [])
 }
 
-export const setSelectedProjects = ({ commit }, selected) => {
-  commit(types.selectedProjects, selected)
+export const setSelectedProject = ({ commit }, selected) => {
+  commit(types.selectedProject, selected)
 }
 
-export const load = ({ commit, state, rootState }) => {
-  if (state.selectedDevManufs.length === 0 ||
-    state.selectedSystems.length === 0 ||
-    state.selectedProjects.length === 0) {
+export const loadData = ({ commit, state, rootState }) => {
+  if (state.selectedDevManuf.length === 0 ||
+    state.selectedSystem.length === 0 ||
+    state.selectedProject.length === 0) {
     return
   }
 
   commit(types.loading, true)
 
   return new Promise((resolve, reject) => {
-    services.load({
-      selectedDevManufs: state.selectedDevManufs.map(i => i.id),
-      selectedSystems: state.selectedSystems.map(i => i.id),
-      selectedProjects: state.selectedProjects.map(i => i.subproject + i.delivery)
+    services.data({
+      selectedDevManuf: state.selectedDevManuf.map(i => i.id),
+      selectedSystem: state.selectedSystem.map(i => i.id),
+      selectedProject: state.selectedProject.map(i => i.subproject + i.delivery)
     })
     .then(
       r => {
@@ -47,13 +47,13 @@ export const load = ({ commit, state, rootState }) => {
 
 export const setChartFilter = ({ state, commit }, item) => {
   if (item === '') {
-    commit(types.chartSelectedDevManufs, '')
-    commit(types.chartSelectedSystems, '')
+    commit(types.chartSelectedDevManuf, '')
+    commit(types.chartSelectedSystem, '')
   } else {
-    if (state.chartSelectedDevManufs === '') {
-      commit(types.chartSelectedDevManufs, item)
+    if (state.chartSelectedDevManuf === '') {
+      commit(types.chartSelectedDevManuf, item)
     } else {
-      commit(types.chartSelectedSystems, item)
+      commit(types.chartSelectedSystem, item)
     }
   }
 }

@@ -18,5 +18,5 @@ export const setSelected = ({ commit }, paramenter) => {
 // export const setSelectedTestManufs = ({ commit, dispatch }, selectedTestManufs) => {
 //   commit(types.selectedTestManufs, selectedTestManufs)
 //   dispatch('loadSystemsByTestManufs', selectedTestManufs)
-//   dispatch('setSelectedSystems', [])
+//   dispatch('setSelectedSystem', [])
 // }

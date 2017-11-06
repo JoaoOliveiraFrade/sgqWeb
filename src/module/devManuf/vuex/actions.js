@@ -1,8 +1,8 @@
 import * as types from './mutationsTypes'
 import services from '../services'
 
-export const load = ({ commit }) => {
-  services.load()
+export const loadData = ({ commit }) => {
+  services.data()
     .then(
       r => {
         commit(types.data, r.data)
@@ -11,8 +11,8 @@ export const load = ({ commit }) => {
     )
 }
 
-export const loadFromAgent = ({ commit }) => {
-  services.loadFromAgent()
+export const loadDataFromAgent = ({ commit }) => {
+  services.dataFromAgent()
     .then(
       r => {
         commit(types.data, r.data)

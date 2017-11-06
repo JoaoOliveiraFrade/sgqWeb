@@ -33,7 +33,7 @@
         this.chartParam.tooltip.pointFormat = `
           <b>{point.name}</b><br>
           % Detectável em TS: {point.y:.2f}%<br>
-          Qte Detectável em TS: {point.qtyDetectableInTS:.0f}<br>
+          Qte Detectável em TS: {point.qtyOfTSInTI:.0f}<br>
           Qte Total: {point.qtyTotal:.0f}<br>
         `
         this.chartParam.series.name = '% Detectável em TS'
@@ -46,10 +46,10 @@
             data: this.groupDevManuf.map(i => ({
               name: i.devManuf ? i.devManuf.charAt(0).toUpperCase() + i.devManuf.slice(1).toLowerCase() : '',
               drilldown: i.devManuf,
-              y: i.percDetectableInTS,
-              qtyDetectableInTS: i.qtyDetectableInTS,
+              y: i.percOfTSInTI,
+              qtyOfTSInTI: i.qtyOfTSInTI,
               qtyTotal: i.qtyTotal,
-              percDetectableInTS: i.percDetectableInTS
+              percOfTSInTI: i.percOfTSInTI
             }))
           }
         ]
@@ -60,10 +60,10 @@
             id: i.devManuf,
             data: this.byDevManufGroupSystem(i.devManuf).map(s => ({
               name: s.system ? s.system.charAt(0).toUpperCase() + s.system.slice(1).toLowerCase() : '',
-              y: s.percDetectableInTS,
-              qtyDetectableInTS: i.qtyDetectableInTS,
+              y: s.percOfTSInTI,
+              qtyOfTSInTI: i.qtyOfTSInTI,
               qtyTotal: s.qtyTotal,
-              percDetectableInTS: s.percDetectableInTS
+              percOfTSInTI: s.percOfTSInTI
             }))
           }))
         }

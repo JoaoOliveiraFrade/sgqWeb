@@ -25,7 +25,7 @@
     // },
 
     computed: {
-      ...mapState('indPerfDevDefectInsideSLA', ['selectedProjects', 'loading'])
+      ...mapState('indPerfDevDefectInsideSLA', ['selectedProject', 'loading'])
     },
 
     methods: {
@@ -33,7 +33,7 @@
     },
 
     watch: {
-      'selectedProjects': {
+      'selectedProject': {
         handler () {
           this.load()
         }
@@ -43,7 +43,7 @@
 </script>
 
 <template>
-  <div v-show="selectedProjects.length > 0">
+  <div v-show="selectedProject.length > 0">
     <div class="loader" v-show="loading" style="margin-top: 50px; margin-bottom: 25px"/>
     <div class="well well-sm oi-well col-xs-12" v-show="!loading" style="padding:3px">
       

@@ -19,8 +19,8 @@
         param.tooltip.headerFormat = ''
         param.tooltip.pointFormat = `
           <b>{point.monthYear}</b><br>
-          % Detectável em TS: {point.percDetectableInTS:.2f}%<br>
-          Qte Detectável em TS: {point.qtyDetectableInTS:.0f}<br>
+          % Detectável em TS: {point.percOfTSInTI:.2f}%<br>
+          Qte Detectável em TS: {point.qtyOfTSInTI:.0f}<br>
           Qte Total: {point.qtyTotal:.0f}<br>
           Limite Máx. Aceitável: {point.acceptableLimit:.0f}%
           `
@@ -38,8 +38,8 @@
                 y: this.acceptableLimit,
                 acceptableLimit: this.acceptableLimit,
                 monthYear: i.monthYear,
-                percDetectableInTS: i.percDetectableInTS,
-                qtyDetectableInTS: i.qtyDetectableInTS,
+                percOfTSInTI: i.percOfTSInTI,
+                qtyOfTSInTI: i.qtyOfTSInTI,
                 qtyTotal: i.qtyTotal
               }
             ))
@@ -48,11 +48,11 @@
             data: this.groupTimeline.map(i => (
               {
                 name: i.monthYear,
-                y: i.percDetectableInTS,
+                y: i.percOfTSInTI,
                 acceptableLimit: this.acceptableLimit,
                 monthYear: i.monthYear,
-                percDetectableInTS: i.percDetectableInTS,
-                qtyDetectableInTS: i.qtyDetectableInTS,
+                percOfTSInTI: i.percOfTSInTI,
+                qtyOfTSInTI: i.qtyOfTSInTI,
                 qtyTotal: i.qtyTotal
               }
             ))

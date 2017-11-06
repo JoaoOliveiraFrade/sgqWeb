@@ -2,13 +2,13 @@ import Resource from '@/http/vueResource'
 import { paths } from '@/environment'
 
 export default {
-  load () {
-    let resource = Resource.resource(paths.api + '/devManuf/all')
+  data () {
+    let resource = Resource.resource(paths.api + '/devManuf/data')
     return resource.get()
   },
 
-  loadFromAgent () {
-    let resource = Resource.resource(paths.api + '/devManuf/allFromAgent')
+  dataFromAgent () {
+    let resource = Resource.resource(paths.api + '/devManuf/dataFromAgent')
     return resource.get()
   }
 }

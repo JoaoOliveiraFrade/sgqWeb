@@ -17,7 +17,7 @@
     },
 
     methods: {
-      ...mapActions('devManuf', ['load', 'setSelected']),
+      ...mapActions('devManuf', ['loadData', 'setSelected']),
 
       confirm (selected) {
         this.setSelected(this.selected)
@@ -26,7 +26,7 @@
     },
 
     mounted () {
-      this.load()
+      this.loadData()
       this.setSelected(this.preSelected)
     }
   }

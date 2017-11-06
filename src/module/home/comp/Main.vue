@@ -22,10 +22,10 @@
     <br>
     <div class="row">
         <div class="col-xs-12 col-md-6">
-            <img style="height:auto; width:70%" src="../../asset/image/objetivo.png">
+            <img style="height:auto; width:70%" src="../../../asset/image/objetivo.png">
         </div>
         <div class="col-xs-12 col-md-6">
-            <img style="height:auto; width:70%" src="../../asset/image/Arquitetura.png">
+            <img style="height:auto; width:70%" src="../../../asset/image/Arquitetura.png">
         </div>
     </div> 
   </div>

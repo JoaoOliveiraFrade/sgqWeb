@@ -1,36 +1,33 @@
 <script>
-  import { mapActions, mapState, mapGetters } from 'vuex'
+  import { mapActions, mapState } from 'vuex'
 
   import oiDevManufSelection from '@/module/devManuf/comp/Selection.vue'
   import oiMultiselectionFbyDevManufByCheck from '@/module/system/system/comp/MultiselectionFbyDevManufByCheck.vue'
   import oiProjectMonoSelectionFbyDevManufAndSystems from '@/module/project/comp/SelectionFbyDevManufAndSystems.vue'
-  import oiShowData from './comp/ShowData.vue'
+  import oiShowData from './ShowData.vue'
 
   export default {
-    name: 'indPerfDevDefectOfTSInTI',
+    name: 'indOperDevDefectAverangeTime',
 
     components: { oiDevManufSelection, oiMultiselectionFbyDevManufByCheck, oiProjectMonoSelectionFbyDevManufAndSystems, oiShowData },
 
     computed: {
-      ...mapState('indPerfDevDefectOfTSInTI', ['selectedDevManuf', 'selectedSystem', 'selectedProject']),
-      ...mapGetters('indPerfDevDefectOfTSInTI', ['showData'])
+      ...mapState('indOperDevDefectAverangeTime', ['selectedDevManuf', 'selectedSystem', 'selectedProject'])
     },
 
     methods: {
       ...mapActions(['setFeatureName']),
-      ...mapActions('indPerfDevDefectOfTSInTI', ['setSelectedDevManuf', 'setSelectedSystem', 'setSelectedProject'])
+      ...mapActions('indOperDevDefectAverangeTime', ['setSelectedDevManuf', 'setSelectedSystem', 'setSelectedProject'])
     },
 
     mounted () {
-      this.setFeatureName('Ind.Desemp.Des - Defeito de TS em TI')
-      // this.setSelectedDevManuf([])
+      this.setFeatureName('Ind.Desemp.Des - Tempo Médio Defeito')
     }
   }
 </script>
 
 <template>
   <div class="container-fluid" style="padding-top: 10px">
-
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4">
       <oiDevManufSelection
         :preSelected="selectedDevManuf"
@@ -75,3 +72,8 @@
     border: 0;
   }
 </style>
+indOperDev/defectAverangeTime/dataFbyProject
+
+http://localhost:55286/indPerfDev/defectOfTSInTI/dataFbyProject/PRJ00000450/ENTREGA00000702
+
+http://localhost:55286/indPerfDev/defectAverangeTime/dataFbyProject/PRJ00000450/ENTREGA00000702

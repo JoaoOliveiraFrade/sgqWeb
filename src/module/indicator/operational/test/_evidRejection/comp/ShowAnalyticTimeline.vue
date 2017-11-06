@@ -1,5 +1,5 @@
 selected<script>
-  import oiModal from '@/module/modal/comp/modal.vue'
+  import oiModal from '@/comp/modal/Modal2.vue'
   import oiRejectionEvidenceShowAnalyticGridTimeline from '@/module/indicator/operational/test/rejectionEvidence/comp/ShowAnalyticGridTimeline.vue'
 
   export default {

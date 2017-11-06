@@ -1,14 +1,14 @@
 import * as types from './mutationsTypes'
 
 export default {
-  [types.selectedDevManufs] (state, parameter) {
-    state.selectedDevManufs = parameter
+  [types.selectedDevManuf] (state, parameter) {
+    state.selectedDevManuf = parameter
   },
-  [types.selectedSystems] (state, parameter) {
-    state.selectedSystems = parameter
+  [types.selectedSystem] (state, parameter) {
+    state.selectedSystem = parameter
   },
-  [types.selectedProjects] (state, parameter) {
-    state.selectedProjects = parameter
+  [types.selectedProject] (state, parameter) {
+    state.selectedProject = parameter
   },
 
   [types.data] (state, parameter) {
@@ -19,10 +19,10 @@ export default {
     state.loading = parameter
   },
 
-  [types.chartSelectedDevManufs] (state, parameter) {
-    state.chartSelectedDevManufs = parameter
+  [types.chartSelectedDevManuf] (state, parameter) {
+    state.chartSelectedDevManuf = parameter
   },
-  [types.chartSelectedSystems] (state, parameter) {
-    state.chartSelectedSystems = parameter
+  [types.chartSelectedSystem] (state, parameter) {
+    state.chartSelectedSystem = parameter
   }
 }

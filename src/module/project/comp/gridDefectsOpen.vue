@@ -1,5 +1,5 @@
 <script>
-  import oiModal from '@/module/modal/comp/modal'
+  import oiModal from '@/comp/modal/Modal2.vue'
   import oiDefectShow from '@/module/defectConsult/comp/show'
   import serviceDefectDetail from '@/service/defectDetail'
 

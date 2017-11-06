@@ -1,8 +1,8 @@
-export const selectedDevManufs = 'selectedDevManufs'
-export const selectedSystems = 'selectedSystems'
-export const selectedProjects = 'selectedProjects'
+export const selectedDevManuf = 'selectedDevManuf'
+export const selectedSystem = 'selectedSystem'
+export const selectedProject = 'selectedProject'
 
 export const data = 'data'
 export const loading = 'loading'
-export const chartSelectedDevManufs = 'chartSelectedDevManufs'
-export const chartSelectedSystems = 'chartSelectedSystems'
+export const chartSelectedDevManuf = 'chartSelectedDevManuf'
+export const chartSelectedSystem = 'chartSelectedSystem'

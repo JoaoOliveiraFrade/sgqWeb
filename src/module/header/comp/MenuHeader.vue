@@ -98,10 +98,10 @@
                         <li class="dropdown-submenu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-left:4px">Desenvolvimento</a>
                             <ul class="dropdown-menu" style="width:190px">
-                                <router-link :to="{ name: 'indicatorTest' }" tag="li">
+                                <router-link :to="{ name: 'indOperDevDefectDensity' }" tag="li">
                                     <a class="oi-menu">Densidade Defeito</a>
                                 </router-link>
-                                <router-link :to="{ name: 'indicatorTest' }" tag="li">
+                                <router-link :to="{ name: 'indOperDevDefectAverangeTime' }" tag="li">
                                     <a class="oi-menu">Tempo Médio Defeito</a>
                                 </router-link>
                                 <router-link :to="{ name: 'indicatorTest' }" tag="li">

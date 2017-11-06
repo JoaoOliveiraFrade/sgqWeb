@@ -20,29 +20,29 @@
 
     computed: {
       // ...mapState('indicatorDefectDensity', { loading: state => (state.loading) })
-      ...mapState('indPerfDevDefectDensity', ['selectedProjects', 'loading'])
+      ...mapState('indPerfDevDefectDensity', ['selectedProject', 'loading'])
     },
 
     methods: {
       // ...mapActions({'loadDefectDensity': 'indicatorDefectDensity/load'}),
-      ...mapActions('indPerfDevDefectDensity', ['load'])
+      ...mapActions('indPerfDevDefectDensity', ['loadData'])
     },
 
     watch: {
-      'selectedProjects': {
+      'selectedProject': {
         handler () {
-          this.load()
+          this.loadData()
         }
       }
     }
     // mounted () {
-    //   this.load()
+    //   this.loadData()
     // }
   }
 </script>
 
 <template>
-  <div v-show="selectedProjects.length > 0">
+  <div v-show="selectedProject.length > 0">
     <div class="loader" v-show="loading" style="margin-top: 50px; margin-bottom: 25px"/>
     <div class="well well-sm oi-well col-xs-12" v-show="!loading" style="padding:3px">
       

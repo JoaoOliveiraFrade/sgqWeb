@@ -20,18 +20,16 @@
 <template>
     <div class="modal" :id="id" >
         <div class="modal-dialog" :style="size==='l' ? 'max-width: 95%; width: auto !important;' : ''">
-            <div class="modal-content" style="background-color: #f8f8ff">
-                <div class="modal-header" style="text-align: left;">
-                    <a class='oi-icon' href="#"
+            <div class="modal-content" style="margin:0; border:0; padding:0; background-color: #f8f8ff">
+                <div class="modal-header">
+                    <a href="#"
                         data-toggle="tooltip" 
                         data-dismiss="modal"
                         title="Fechar">
-                        <i class='glyphicon glyphicon-remove-circle' ></i>
+                        <i class='glyphicon glyphicon-remove-circle'></i>
                     </a>                        
-            
-                    <label class="fd-label" >{{title}}</label>
-                    
                     <hr class="col-xs-12">
+                    <label class="fd-label" >{{title}}</label>
                 </div>
                 <div class="modal-body">
                     <slot name="body"></slot>
@@ -43,35 +41,32 @@
         </div>
     </div>      
 </template>
-<!--
 
-
-      <showSelections slot="body"
-          :title="title"
-          :dataSource="itemsSelected_"
-      ></showSelections> 
-
--->
 <style scoped>
+  .modal-header {
+    margin:0;
+    border:0;
+    padding:0;
+    text-align: left
+  }
+
     .fd-label {
-        margin: 0; margin-left:5px; margin-top:0.5px;
+        margin: 0;
         border: 0; 
-        padding: 0; 
+        padding: 0; padding-top:3.5px; padding-left:2px;
         font-size: medium;
         white-space: normal;
         vertical-align: top;
+        color: #E95420;
     }
-    .oi-icon {
-        margin: 0; margin-left:5px;
-        border: 0;
-        padding: 0; 
-        font-size: large;
+    .glyphicon {
+        margin:0;
+        border:0;
+        padding:0;
+        padding-top:4px;
+        margin-left:6px;
+        font-size: 20px;        
     }    
-    .modal-header {
-        margin:0px; margin-top: 3px;
-        border:0px;
-        padding:0px;
-    }
     .modal-body, .modal-footer {
         margin:0px;
         border:0px;

@@ -1,5 +1,5 @@
 <script>
-  import oiLoginAuth from './comp/Login.vue'
+  import oiLoginAuth from './Login.vue'
 
   export default {
     name: 'Main',

@@ -2,28 +2,28 @@
   import { mapActions, mapState, mapGetters } from 'vuex'
 
   import oiDevManufSelection from '@/module/devManuf/comp/Selection.vue'
-  import oiSystemMonoSelectionFbyDevManuf from '@/module/system/system/comp/MonoSelectionFbyDevManuf.vue'
+  import oiMultiselectionFbyDevManufByCheck from '@/module/system/system/comp/MultiselectionFbyDevManufByCheck.vue'
   import oiProjectMonoSelectionFbyDevManufAndSystems from '@/module/project/comp/SelectionFbyDevManufAndSystems.vue'
   import oiShowData from './comp/ShowData.vue'
 
   export default {
     name: 'indPerfDevDefectOfTSInTI',
 
-    components: { oiDevManufSelection, oiSystemMonoSelectionFbyDevManuf, oiProjectMonoSelectionFbyDevManufAndSystems, oiShowData },
+    components: { oiDevManufSelection, oiMultiselectionFbyDevManufByCheck, oiProjectMonoSelectionFbyDevManufAndSystems, oiShowData },
 
     computed: {
-      ...mapState('indPerfDevDefectOfTSInTI', ['selectedDevManufs', 'selectedSystems', 'selectedProjects']),
+      ...mapState('indPerfDevDefectOfTSInTI', ['selectedDevManuf', 'selectedSystem', 'selectedProject']),
       ...mapGetters('indPerfDevDefectOfTSInTI', ['showData'])
     },
 
     methods: {
       ...mapActions(['setFeatureName']),
-      ...mapActions('indPerfDevDefectOfTSInTI', ['setSelectedDevManufs', 'setSelectedSystems', 'setSelectedProjects'])
+      ...mapActions('indPerfDevDefectOfTSInTI', ['setSelectedDevManuf', 'setSelectedSystem', 'setSelectedProject'])
     },
 
     mounted () {
-      this.setFeatureName('Ind. Desempenho - Defeito de TS em TI')
-      // this.setSelectedDevManufs([])
+      this.setFeatureName('Ind.Desemp.Des - Defeito de TS em TI')
+      // this.setSelectedDevManuf([])
     }
   }
 </script>
@@ -33,25 +33,25 @@
 
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4">
       <oiDevManufSelection
-        :preSelected="selectedDevManufs"
-        @onConfirm="setSelectedDevManufs"
+        :preSelected="selectedDevManuf"
+        @onConfirm="setSelectedDevManuf"
       />
     </div>
 
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
-      <oiSystemMonoSelectionFbyDevManuf v-show="selectedDevManufs.length > 0"
-        :devManufs="selectedDevManufs"
-        :preSelected="selectedSystems"
-        @onConfirm="setSelectedSystems"
+      <oiMultiselectionFbyDevManufByCheck v-show="selectedDevManuf.length > 0"
+        :devManufs="selectedDevManuf"
+        :preSelected="selectedSystem"
+        @onConfirm="setSelectedSystem"
       />
     </div>
     
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
-      <oiProjectMonoSelectionFbyDevManufAndSystems v-show="selectedSystems.length > 0"
-        :devManufs="selectedDevManufs"
-        :systems="selectedSystems"
-        :preSelected="selectedProjects"
-        @onConfirm="setSelectedProjects"
+      <oiProjectMonoSelectionFbyDevManufAndSystems v-show="selectedSystem.length > 0"
+        :devManufs="selectedDevManuf"
+        :systems="selectedSystem"
+        :preSelected="selectedProject"
+        @onConfirm="setSelectedProject"
       />
     </div>
 

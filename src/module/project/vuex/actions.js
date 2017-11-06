@@ -153,10 +153,10 @@ export const setProjectFilterTerm = ({ commit }, filterTerm) => {
   commit(types.filterTerm, filterTerm)
 }
 
-// export const setSelectedProjects = ({ commit }, selectedProjects) => {
-//   commit(types.selected, selectedProjects)
+// export const setSelectedProject = ({ commit }, selectedProject) => {
+//   commit(types.selected, selectedProject)
 
-//   if (selectedProjects.length > 0) {
+//   if (selectedProject.length > 0) {
 //     commit(types.projectConfirmed, true)
 //   } else {
 //     commit(types.projectConfirmed, false)

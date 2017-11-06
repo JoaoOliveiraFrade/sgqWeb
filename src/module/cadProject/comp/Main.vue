@@ -1,15 +1,15 @@
 <script>
   import { mapActions } from 'vuex'
-  import oiModal from '@/module/modal/comp/modal_.vue'
+  import oiModal from '@/comp/modal/Modal_.vue'
   import oiReport from '@/module/project/comp/showReport.vue'
   import { paths } from '@/environment'
   
   import Toastr from 'toastr'
 
-  import oiGrid from './comp/grid.vue'
-  import oiEdit from './comp/edit.vue'
+  import oiGrid from './grid.vue'
+  import oiEdit from './edit.vue'
   import oiView from '@/module/project/comp/view.vue'
-  import services from './services'
+  import services from '../services'
   import services2 from '@/module/project/services'
   
   import getStatusTrans from '@/lib/getStatusTrans'

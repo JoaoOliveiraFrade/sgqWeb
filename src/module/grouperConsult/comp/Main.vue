@@ -1,6 +1,6 @@
 <script>
   import { mapActions } from 'vuex'
-  import oiSelectionGridGrouperConsult from './comp/SelectionGridGrouperConsult.vue'
+  import oiSelectionGridGrouperConsult from './SelectionGridGrouperConsult.vue'
 
   export default {
     name: 'groupersMain',

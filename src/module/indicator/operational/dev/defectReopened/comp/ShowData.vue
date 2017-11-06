@@ -20,7 +20,7 @@
 
     computed: {
       // ...mapState('indicatorDefectDensity', { loadingDefectDensity: state => (state.loading) })
-      ...mapState('indPerfDevDefectOfTSInTI', ['selectedProjects', 'loading'])
+      ...mapState('indPerfDevDefectOfTSInTI', ['selectedProject', 'loading'])
     },
 
     methods: {
@@ -29,9 +29,8 @@
     },
 
     watch: {
-      'selectedProjects': {
+      'selectedProject': {
         handler () {
-          console.log('ShowData - watch')
           this.load()
         }
       }
@@ -45,7 +44,7 @@
 </script>
 
 <template>
-  <div v-show="selectedProjects.length > 0">
+  <div v-show="selectedProject.length > 0">
       <div class="loader" v-show="loading" style="margin-top: 50px; margin-bottom: 25px"/>
       <div class="row well col-xs-12" v-show="!loading" style="margin:0; border:0; padding:5px">
         <oiRule style="text-align: left"/>

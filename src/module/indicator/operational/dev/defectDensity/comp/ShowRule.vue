@@ -1,5 +1,5 @@
 selected<script>
-  import oiModal from '@/module/modal/comp/modal.vue'
+  import oiModal from '@/comp/modal/Modal2.vue'
 
   export default {
     name: 'ShowRule',
@@ -9,8 +9,8 @@ selected<script>
 </script>
 
 <template>
-  <span >
-    <button style="padding:0px; padding-left:3px; padding-right:3px; margin-bottom:5px;"
+  <span>
+    <button style="padding:0px; margin-left:2px; padding-left:3px; padding-right:3px; margin-bottom:3px;"
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
@@ -33,8 +33,8 @@ selected<script>
           &nbsp;&nbsp;- Diferentes de MASSA<br>
           <br>
 
-          Devido a necessidade de exibir este dados em uma régua de tempo, os defeitos foram totalizados no mês/ano de execução dos CTs. 
-          Com isto, são considerados somente defeitos associados a CTs.
+          Devido a necessidade de exibir este dados em uma régua de tempo, os defeitos foram totalizados no mês/ano da última execução de seu CT associado.
+          Com isto, são considerados somente defeitos que tenham associação com CT.
         </label>
       </div>
     </oiModal>
@@ -44,6 +44,7 @@ selected<script>
 <style scoped>
   .fd-label {
     font-weight: normal;
-    text-align: left
+    text-align: left;
+    color: gray;
   }
 </style>

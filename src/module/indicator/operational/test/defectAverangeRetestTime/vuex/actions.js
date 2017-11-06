@@ -2,7 +2,7 @@ import * as types from './mutationsTypes'
 import services from '../services'
 
 export const load = ({ commit, state, rootState }) => {
-  if (rootState.indicatorTest.selectedTestManufs.length === 0 || rootState.indicatorTest.selectedSystems.length === 0 || rootState.indicatorTest.selectedProjects.length === 0) {
+  if (rootState.indicatorTest.selectedTestManufs.length === 0 || rootState.indicatorTest.selectedSystem.length === 0 || rootState.indicatorTest.selectedProject.length === 0) {
     return
   }
 
@@ -11,8 +11,8 @@ export const load = ({ commit, state, rootState }) => {
   return new Promise((resolve, reject) => {
     services.load({
       selectedTestManufs: rootState.indicatorTest.selectedTestManufs.map(i => i.id),
-      selectedSystems: rootState.indicatorTest.selectedSystems.map(i => i.id),
-      selectedProjects: rootState.indicatorTest.selectedProjects.map(i => i.subproject + i.delivery)
+      selectedSystem: rootState.indicatorTest.selectedSystem.map(i => i.id),
+      selectedProject: rootState.indicatorTest.selectedProject.map(i => i.subproject + i.delivery)
     })
     .then(
       r => {

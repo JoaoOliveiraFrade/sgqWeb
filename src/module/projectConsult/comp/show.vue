@@ -9,7 +9,7 @@
   // import oiChartCtsImpactedXDefects from '@/comp/chart/mix/ctsImpactedXDefects'
   // import oiChartProductivityXDefects from '@/comp/chart/mix/productivityXDefects'
   // import oiChartProductivityXDefectsGroupWeekly from '@/comp/chart/mix/productivityXDefectsGroupWeekly'
-  // import oiModal from '@/module/modal/comp/Modalx.vue'
+  // import oiModal from '@/comp/modal/Modalx.vue'
 
   // import oiGridMonitAcum from './gridMonitAcum'
   // import oiGridMonitDay from './gridMonitDay'

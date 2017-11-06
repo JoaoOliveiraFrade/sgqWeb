@@ -7,8 +7,8 @@
     name: 'ShowChartTotal',
 
     computed: {
-      ...mapGetters('indPerfDevDefectOfTSInTI', ['total']),
-      ...mapState('indPerfDevDefectOfTSInTI', ['acceptableLimit', 'limitModeratePerc', 'limitHigh']),
+      ...mapGetters('indOperDevDefectAverangeTime', ['total']),
+      ...mapState('indOperDevDefectAverangeTime', ['acceptableLimit', 'limitModeratePerc', 'limitHigh']),
 
       chartParam () {
         let param = chartTotalStandParam
@@ -17,7 +17,7 @@
         param.yAxis.title.text = '%<br>Detectável<br>em TS'
         // param.plotOptions.gauge.dataLabels.borderWidth = 0
         param.plotOptions.gauge.dataLabels.useHTML = true
-        // param.plotOptions.gauge.dataLabels.format = '<span style=font-size:9px><center>{point.y:.0f}%</center>' + this.total.qtyDetectableInTS + '/' + this.total.qtyTotal + '</span>'
+        // param.plotOptions.gauge.dataLabels.format = '<span style=font-size:9px><center>{point.y:.0f}%</center>' + this.total.qtyHour + '/' + this.total.qtyDefect + '</span>'
         param.plotOptions.gauge.dataLabels.format = '<span style=font-size:11px><center>{point.y:.0f}%</center></span>'
 
         param.yAxis.max = 100
@@ -29,11 +29,11 @@
         ]
 
         param.tooltip.pointFormat = '' +
-          '% Detectável em TS: ' + this.total.percDetectableInTS + '%<br>' +
-          'Qte Detectável em TS: ' + this.total.qtyDetectableInTS + '<br>' +
-          'Qte Total: ' + this.total.qtyTotal
+          'Tempo Médio (h): ' + this.total.averangeHour + '%<br>' +
+          'Qte Horas: ' + this.total.qtyHour + '<br>' +
+          'Qte Defeitos: ' + this.total.qtyDefect
 
-        param.series = [ { name: 'Total', colorByPoint: true, data: [ this.total.percDetectableInTS ] } ]
+        param.series = [ { name: 'Total', colorByPoint: true, data: [ this.total.averangeHour ] } ]
         return param
       }
     },

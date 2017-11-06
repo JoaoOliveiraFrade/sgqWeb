@@ -16,7 +16,7 @@
     },
 
     methods: {
-      ...mapActions('devManuf', ['loadFromAgent', 'setSelected']),
+      ...mapActions('devManuf', ['loadDataFromAgent', 'setSelected']),
 
       confirm (selected) {
         this.setSelected(selected)

@@ -19,51 +19,45 @@
     },
 
     computed: {
-      // ...mapState('indicatorDefectDensity', { loadingDefectDensity: state => (state.loading) })
-      ...mapState('indPerfDevDefectOfTSInTI', ['selectedProjects', 'loading'])
+      ...mapState('indOperDevDefectAverangeTime', ['selectedProject', 'loading'])
     },
 
     methods: {
-      // ...mapActions({'loadDefectDensity': 'indicatorDefectDensity/load'}),
-      ...mapActions('indPerfDevDefectOfTSInTI', ['load'])
+      ...mapActions('indOperDevDefectAverangeTime', ['loadData'])
     },
 
     watch: {
-      'selectedProjects': {
+      'selectedProject': {
         handler () {
-          console.log('ShowData - watch')
-          this.load()
+          this.loadData()
         }
       }
     }
-
-    // mounted () {
-    //   console.log('ShowData - mounted')
-    //   this.load()
-    // }
   }
 </script>
 
 <template>
-  <div v-show="selectedProjects.length > 0">
-      <div class="loader" v-show="loading" style="margin-top: 50px; margin-bottom: 25px"/>
-      <div class="row well col-xs-12" v-show="!loading" style="margin:0; border:0; padding:5px">
-        <oiRule style="text-align: left"/>
-        <oiShowAnalytic style="text-align: left"/>
+  <div v-show="selectedProject.length > 0">
+    <div class="loader" v-show="loading" style="margin-top: 50px; margin-bottom: 25px"/>
+    <div class="well well-sm oi-well col-xs-12" v-show="!loading" style="padding:3px">
+      
+      <oiRule style="text-align: left"/>
+      <oiShowAnalytic style="text-align: left"/>
 
-        <hr style="margin-top: 2px; height: 1px; border: 0; box-shadow: 0 7px 7px -7px #d9d9d9 inset">
+      <hr style="margin-top:1px; height: 2px; border: 0; box-shadow: 0 7px 7px -7px #d9d9d9 inset">
 
-        <div class="col-sm-4">
-          <oiShowChartGroupDevManuf/>
-        </div>
-        <div class="col-sm-4">
-          <oiShowChartGroupTimeline/>
-        </div>
-        
-        <div class="col-sm-4">
-          <oiShowChartTotal/>
-        </div>
+      <div class="col-sm-4">
+        <oiShowChartGroupDevManuf/>
       </div>
+
+      <div class="col-sm-4">
+        <oiShowChartGroupTimeline/>
+      </div>
+      
+      <div class="col-sm-4">
+        <oiShowChartTotal/>
+      </div>
+    </div>
   </div>
 </template>
 

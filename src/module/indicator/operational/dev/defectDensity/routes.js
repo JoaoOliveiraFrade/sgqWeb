@@ -1,5 +1,5 @@
-// import oiMain from './Main.vue'
+import oiMain from './comp/Main.vue'
 
 export default [
-  // { path: '/indicator/performance/dev/defectDensity', name: 'indicatorDevDefectDensity', component: oiMain }
+  { path: '/indicator/operational/dev/defectDensity', name: 'indOperDevDefectDensity', component: oiMain }
 ]

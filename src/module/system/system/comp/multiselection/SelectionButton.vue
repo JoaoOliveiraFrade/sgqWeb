@@ -1,5 +1,5 @@
 <script>
-  import oiModal from '@/module/modal/comp/modal.vue'
+  import oiModal from '@/comp/modal/Modal2.vue'
   import oiSelectionGrid from './SelectionGrid.vue'
 
   export default {

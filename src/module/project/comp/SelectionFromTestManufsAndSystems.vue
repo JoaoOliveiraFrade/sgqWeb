@@ -10,7 +10,7 @@
     props: {
       testManufs: { type: Array, default: () => [] },
       systems: { type: Array, default: () => [] },
-      selectedProjects: { type: Array, default: () => [] },
+      selectedProject: { type: Array, default: () => [] },
       isShowButtonSelected: { type: Boolean, default: true }
     },
 
@@ -22,7 +22,7 @@
       'systems': {
         handler () {
           this.loadFromTestManufsAndSystems({ testManufs: this.testManufs.map(i => i.id), systems: this.systems.map(i => i.id) })
-          this.setSelected(this.selectedProjects)
+          this.setSelected(this.selectedProject)
         }
       }
     },
@@ -38,7 +38,7 @@
 
     mounted () {
       this.loadFromTestManufsAndSystems({ testManufs: this.testManufs.map(i => i.id), systems: this.systems.map(i => i.id) })
-      this.setSelected(this.selectedProjects)
+      this.setSelected(this.selectedProject)
     }
   }
 </script>

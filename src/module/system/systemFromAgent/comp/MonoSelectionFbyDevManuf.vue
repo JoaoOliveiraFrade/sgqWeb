@@ -3,7 +3,7 @@
   import oiSelection from '@/comp/selection/Main.vue'
 
   export default {
-    name: 'SystemMonoSelectionFbyDevManuf',
+    name: 'SystemMultiselectionFbyDevManufByCheck',
 
     components: { oiSelection },
 

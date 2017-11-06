@@ -30,8 +30,8 @@ chartDensityDevManuf<script>
   import oiAverageTimeShowRule from './comp/rules/AverageTimeShowRule.vue'
   import oiAverageTimeShowAnalytical from './comp/analytics/AverageTimeShowAnalytical.vue'
   import oiShowAnalytical from './comp/analytics/showAnalytical.vue'
-  // import oiModal from '@/module/modal/comp/Modalx.vue'
-  import oiModal from '@/module/modal/comp/modal.vue'
+  // import oiModal from '@/comp/modal/Modalx.vue'
+  import oiModal from '@/comp/modal/Modal2.vue'
 
   import { paths } from '@/environment'
 
@@ -1695,7 +1695,7 @@ chartDensityDevManuf<script>
         )
       },
 
-      newSelectedProjects () {
+      newSelectedProject () {
         this.projectsConfirmed = false
       },
       enterInEdit () {
@@ -2741,7 +2741,7 @@ chartDensityDevManuf<script>
         :messageTimeline="messageTimeline"
         @onConfirmData="confirmProjects"
         @onConfirmDataTimeline="confirmProjectsTimeline"
-        @onNewSelected="newSelectedProjects"
+        @onNewSelected="newSelectedProject"
         @onEnterInEdit="enterInEdit">
       </oiSelectionProjects>
     </div>    

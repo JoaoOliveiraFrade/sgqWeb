@@ -7,8 +7,8 @@
     name: 'ShowChartTotal',
 
     computed: {
-      ...mapGetters('indicatorDevDefectDensity', ['total']),
-      ...mapState('indicatorDevDefectDensity', ['limitAcceptablePerc', 'limitModeratePerc', 'limitHigh']),
+      ...mapGetters('indOperDevDefectDensity', ['total']),
+      ...mapState('indOperDevDefectDensity', ['limitAcceptablePerc', 'limitModeratePerc', 'limitHigh']),
 
       chartParam () {
         let param = chartTotalStandParam

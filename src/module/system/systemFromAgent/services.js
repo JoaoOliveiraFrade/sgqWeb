@@ -2,18 +2,18 @@ import Resource from '@/http/vueResource'
 import { paths } from '@/environment'
 
 export default {
-  fromAgent () {
-    let resource = Resource.resource(paths.api + '/systemFromAgent/all')
+  data () {
+    let resource = Resource.resource(paths.api + '/systemFromAgent/data')
     return resource.sagetve()
   },
 
-  fromAgentGbyDevManuf () {
-    let resource = Resource.resource(paths.api + '/systemFromAgent/gbyDevManuf')
+  dataGbyDevManuf () {
+    let resource = Resource.resource(paths.api + '/systemFromAgent/dataGbyDevManuf')
     return resource.get()
   },
 
-  fromAgentGbyTestManuf (devManufs) {
-    let resource = Resource.resource(paths.api + '/systemFromAgent/gbyTestManuf')
+  dataGbyTestManuf (devManufs) {
+    let resource = Resource.resource(paths.api + '/systemFromAgent/dataGbyTestManuf')
     return resource.get()
   }
 }

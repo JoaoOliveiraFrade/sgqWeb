@@ -4,7 +4,7 @@
   import oiTestManufSelection from '@/module/testManuf/comp/Selection.vue'
   import oiSystemSelectionFromTestManufs from '@/module/system/system/comp/SelectionFromTestManufs.vue'
   import oiProjectSelectionFromTestManufsAndSystems from '@/module/project/comp/SelectionFromTestManufsAndSystems.vue'
-  import oiShowData from './comp/ShowData.vue'
+  import oiShowData from './ShowData.vue'
 
   export default {
     name: 'indicatorTestMain',
@@ -12,13 +12,13 @@
     components: { oiTestManufSelection, oiSystemSelectionFromTestManufs, oiProjectSelectionFromTestManufsAndSystems, oiShowData },
 
     computed: {
-      ...mapState('indicatorTest', ['selectedTestManufs', 'selectedSystems', 'selectedProjects']),
+      ...mapState('indicatorTest', ['selectedTestManufs', 'selectedSystem', 'selectedProject']),
       ...mapGetters('indicatorTest', ['showData'])
     },
 
     methods: {
       ...mapActions(['setFeatureName']),
-      ...mapActions('indicatorTest', ['setSelectedTestManufs', 'setSelectedSystems', 'setSelectedProjects'])
+      ...mapActions('indicatorTest', ['setSelectedTestManufs', 'setSelectedSystem', 'setSelectedProject'])
     },
 
     mounted () {
@@ -40,17 +40,17 @@
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
       <oiSystemSelectionFromTestManufs v-show="selectedTestManufs.length > 0"
         :testManufs="selectedTestManufs"
-        :selectedSystems="selectedSystems"
-        @onConfirm="setSelectedSystems"
+        :selectedSystem="selectedSystem"
+        @onConfirm="setSelectedSystem"
       />
     </div>
     
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
-      <oiProjectSelectionFromTestManufsAndSystems v-show="selectedSystems.length > 0"
+      <oiProjectSelectionFromTestManufsAndSystems v-show="selectedSystem.length > 0"
         :testManufs="selectedTestManufs"
-        :systems="selectedSystems"
-        :selectedProjects="selectedProjects"
-        @onConfirm="setSelectedProjects"
+        :systems="selectedSystem"
+        :selectedProject="selectedProject"
+        @onConfirm="setSelectedProject"
       />
     </div>
 

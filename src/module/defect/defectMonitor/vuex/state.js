@@ -1,5 +1,5 @@
 export default {
-  selectedProjects: []
+  selectedProject: []
   // limitMaxQtyHours: 5,
   // data: [],
   // loading: false,

@@ -1,7 +1,7 @@
 <script>
   import { mapActions, mapState } from 'vuex'
-  import oiShowGrid from './comp/ShowGrid.vue'
-  import oiShowButtonChartCFD from './comp/ShowButtonChartCFD.vue'
+  import oiShowGrid from './ShowGrid.vue'
+  import oiShowButtonChartCFD from './ShowButtonChartCFD.vue'
   
   export default {
     name: 'pulledChainMain',

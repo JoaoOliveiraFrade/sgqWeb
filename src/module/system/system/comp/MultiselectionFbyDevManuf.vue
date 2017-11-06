@@ -9,7 +9,7 @@
 
     props: {
       devManufs: { type: Array, default: () => [] },
-      selectedSystems: { type: Array, default: () => [] },
+      selectedSystem: { type: Array, default: () => [] },
       isShowButtonSelected: { type: Boolean, default: true }
     },
 
@@ -21,7 +21,7 @@
       'devManufs': {
         handler () {
           this.loadFromAgentFbyDevManufs({ devManufs: this.devManufs.map(i => i.id) })
-          this.setSelected(this.selectedSystems)
+          this.setSelected(this.selectedSystem)
         }
       }
     },
@@ -37,7 +37,7 @@
 
     mounted () {
       this.loadFromAgentFbyDevManufs({ devManufs: this.devManufs.map(i => i.id) })
-      this.setSelected(this.selectedSystems)
+      this.setSelected(this.selectedSystem)
     }
   }
 </script>

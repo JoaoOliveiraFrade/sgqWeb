@@ -9,7 +9,7 @@
 
     props: {
       testManufs: { type: Array, default: () => [] },
-      selectedSystems: { type: Array, default: () => [] },
+      selectedSystem: { type: Array, default: () => [] },
       isShowButtonSelected: { type: Boolean, default: true }
     },
 
@@ -21,7 +21,7 @@
       'testManufs': {
         handler () {
           this.loadFromTestManufs(this.testManufs)
-          this.setSelected(this.selectedSystems)
+          this.setSelected(this.selectedSystem)
         }
       }
     },
@@ -38,7 +38,7 @@
 
     mounted () {
       this.loadFromTestManufs(this.testManufs)
-      this.setSelected(this.selectedSystems)
+      this.setSelected(this.selectedSystem)
     }
   }
 </script>

@@ -1,4 +1,4 @@
-import oiMain from './Main.vue'
+import oiMain from './comp/Main.vue'
 // import oiViewModel from './comp/viewModel.vue'
 import oiReport from './comp/report.vue'
 // import oiViewModel2 from './comp/viewModel2.vue'

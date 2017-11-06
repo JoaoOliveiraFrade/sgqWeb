@@ -1,6 +1,6 @@
 <script>
   import { mapState } from 'vuex'
-  import oiModal from '@/module/modal/comp/modal.vue'
+  import oiModal from '@/comp/modal/Modal2.vue'
   import oiShowSelected from '../ShowSelected.vue'
 
   export default {

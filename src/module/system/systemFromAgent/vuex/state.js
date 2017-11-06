@@ -4,10 +4,10 @@ export default {
   data: [],
 
   dataGbyDevManuf: [],
-  filterDevManuf: [],
+  // filterDevManuf: [],
 
   dataGbyTestManuf: [],
-  filterTestManuf: [],
+  // filterTestManuf: [],
 
   selected: []
 }

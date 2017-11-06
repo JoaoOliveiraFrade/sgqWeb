@@ -1,4 +1,4 @@
-import oiMain from './Main.vue'
+import oiMain from './comp/Main.vue'
 import oiShowByIdGrouperConsult from './comp/ShowByIdGrouperConsult.vue'
 import oiReportByIdGrouperConsult from './comp/ReportByIdGrouperConsult.vue'
 import oiRequestReportGrouperConsult from './comp/RequestReportGrouperConsult.vue'

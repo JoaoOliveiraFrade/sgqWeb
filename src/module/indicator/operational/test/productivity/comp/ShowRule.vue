@@ -1,5 +1,5 @@
 selected<script>
-  import oiModal from '@/module/modal/comp/modal.vue'
+  import oiModal from '@/comp/modal/Modal2.vue'
 
   export default {
     name: 'ShowRule',
@@ -14,18 +14,30 @@ selected<script>
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
-        data-target="#productivityShowRule">
+        data-target="#defectReopenedShowRule">
         Regra
     </button>
+    <oiModal id="defectReopenedShowRule" title="Regra">   
+      <div style="margin:0; padding:10px" slot="body">
+        <label class="fd-label">
+<!--        
+          Defeitos "Detectáveis em TS", divididos pelo Total de Defeitos.<br>
+          <br>
+          São considerados os defeitos: <br>
+          &nbsp;&nbsp;1) Das etapas de TI e UAT.<br>
+          &nbsp;&nbsp;2) CLOSED.<br>
+          &nbsp;&nbsp;3) De CONSTRUÇÃO.<br>
+          <br>
+          No gráfico Temporal, os defeitos são contabilizadas no mês/ano de fechamento.<br>
+-->
+          Qte de vezes em que os defeitos passaram pelo Status REOPEN / Qte Defeitos.<br><br>
 
-    <oiModal id="productivityShowRule" title="Regra">   
-      <div style="margin:0; padding:10px; text-align: left" slot="body">
-        <label class="fd-label" style="font-weight: normal; text-align: left">
-          Quantidade de Execuções (PASSED + FAILED) dos CTs de TI.
+          São considerados os defeitos: <br>
+          &nbsp;&nbsp;1) Das etapas de TI e UAT.<br>
+          &nbsp;&nbsp;2) CLOSED.
         </label>
       </div>
     </oiModal>
-
   </span>
 </template>
 

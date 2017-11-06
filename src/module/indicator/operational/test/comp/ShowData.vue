@@ -71,7 +71,7 @@
     },
 
     computed: {
-      ...mapState('indicatorTest', ['selectedProjects']),
+      ...mapState('indicatorTest', ['selectedProject']),
       ...mapState('indicatorProductivity', { loadingProductivity: state => (state.loading) }),
       ...mapState('indicatorRejectionEvidence', { loadingRejectionEvidence: state => (state.loading || state.loadingTimeline) }),
       ...mapState('indicatorDefectUnfounded', { loadingDefectUnfounded: state => (state.loading) }),
@@ -100,7 +100,7 @@
     },
 
     watch: {
-      'selectedProjects': {
+      'selectedProject': {
         handler () {
           this.load()
         }

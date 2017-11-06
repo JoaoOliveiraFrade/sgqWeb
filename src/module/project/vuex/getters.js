@@ -6,7 +6,7 @@ export const projectsByTestManufsAndSystems = ({ projectsByTestManufsAndSystems 
 
 export const projectsLoading = ({ projectsLoading }) => projectsLoading
 
-export const selectedProjects = ({ selectedProjects }) => selectedProjects
+export const selectedProject = ({ selectedProject }) => selectedProject
 
 export const projectsFilteredByTerm = ({ projectFilterProperties, projectFilterTerm }) => projects => {
   if (projectFilterTerm !== '') {

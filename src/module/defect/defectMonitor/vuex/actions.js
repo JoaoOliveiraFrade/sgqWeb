@@ -1,11 +1,11 @@
 import * as types from './mutationsTypes'
 // import services from '../services'
 
-export const setSelectedProjects = ({ commit }, selected) => {
-  commit(types.setSelectedProjects, selected)
+export const setSelectedProject = ({ commit }, selected) => {
+  commit(types.setSelectedProject, selected)
 }
 // export const load = ({ commit, state, rootState }) => {
-//   if (rootState.testManuf.selectedTestManufs.length === 0 || rootState.system.selectedSystems.length === 0 || rootState.project.selectedProjects.length === 0) {
+//   if (rootState.testManuf.selectedTestManufs.length === 0 || rootState.system.selectedSystem.length === 0 || rootState.project.selectedProject.length === 0) {
 //     return
 //   }
 
@@ -14,8 +14,8 @@ export const setSelectedProjects = ({ commit }, selected) => {
 //   return new Promise((resolve, reject) => {
 //     services.getByListTestManufSystemProject({
 //       selectedTestManufs: rootState.testManuf.selectedTestManufs,
-//       selectedSystems: rootState.system.selectedSystems,
-//       selectedProjects: rootState.project.selectedProjects.map(i => i.subproject + i.delivery)
+//       selectedSystem: rootState.system.selectedSystem,
+//       selectedProject: rootState.project.selectedProject.map(i => i.subproject + i.delivery)
 //     })
 //     .then(
 //       r => {

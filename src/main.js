@@ -46,7 +46,7 @@ Vue.directive('focus', {
   }
 })
 
-import App from './App'
+import App from './comp/App'
 
 /* eslint-disable no-new */
 

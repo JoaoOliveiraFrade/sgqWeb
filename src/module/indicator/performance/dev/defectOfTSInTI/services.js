@@ -3,10 +3,10 @@ import { paths } from '@/environment'
 
 export default {
   data (parameter) {
-    let resource = Resource.resource(paths.api + '/indPerfDev/defectOfTSInTI/fbyListDevManufSystemProject')
+    let resource = Resource.resource(paths.api + '/indPerfDev/defectOfTSInTI/data')
     return resource.save(parameter)
   },
-  datadataFbyProject (project) {
+  dataFbyProject (project) {
     let resource = Resource.resource(paths.api + '/indPerfDev/defectOfTSInTI/dataFbyProject/{subproject}/{delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   }

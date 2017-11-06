@@ -1,3 +1,3 @@
 export const selectedTestManufs = 'selectedTestManufs'
-export const selectedSystems = 'selectedSystems'
-export const selectedProjects = 'selectedProjects'
+export const selectedSystem = 'selectedSystem'
+export const selectedProject = 'selectedProject'

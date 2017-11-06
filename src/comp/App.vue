@@ -1,5 +1,5 @@
 <script>
-  import oiHeader from '@/module/header/Main.vue'
+  import oiHeader from '@/module/header/comp/Main.vue'
   // import { mapState, mapActions } from 'vuex'
   // import store from './vuex'
 

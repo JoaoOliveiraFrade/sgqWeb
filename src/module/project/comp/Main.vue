@@ -2,7 +2,7 @@
   import { mapActions } from 'vuex'
   import oiGrid from './comp/grid.vue'
   import oiViewModel from './comp/viewModel.vue'
-  import services from './services'
+  import services from '../services'
 
   export default {
     name: 'projectConsultationMain',

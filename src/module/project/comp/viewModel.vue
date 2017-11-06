@@ -1,7 +1,7 @@
 <script>
   import oiView from './view.vue'
   import oiReport from './showReport.vue'
-  import oiModal from '@/module/modal/comp/modal_.vue'
+  import oiModal from '@/comp/modal/Modal_.vue'
   import { paths } from '@/environment'
   // import oiShowReport from 'components/project/showReport.vue'
   // import { paths } from '@/environment'

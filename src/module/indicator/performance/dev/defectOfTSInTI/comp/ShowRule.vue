@@ -1,5 +1,5 @@
 selected<script>
-  import oiModal from '@/module/modal/comp/modal.vue'
+  import oiModal from '@/comp/modal/Modal2.vue'
 
   export default {
     name: 'ShowRule',

@@ -1,32 +1,31 @@
 <script>
-  import { mapActions, mapState, mapGetters } from 'vuex'
+  import { mapActions, mapState } from 'vuex'
 
   import oiDevManufSelection from '@/module/devManuf/comp/Selection.vue'
   import oiMultiselectionFbyDevManufByCheck from '@/module/system/system/comp/MultiselectionFbyDevManufByCheck.vue'
   import oiProjectMonoSelectionFbyDevManufAndSystems from '@/module/project/comp/SelectionFbyDevManufAndSystems.vue'
-  import oiShowData from './comp/ShowData.vue'
+  import oiShowData from './ShowData.vue'
 
   export default {
-    name: 'indPerfDevDefectOfTSInTI',
+    name: 'indOperDevDefectDensity',
 
     components: { oiDevManufSelection, oiMultiselectionFbyDevManufByCheck, oiProjectMonoSelectionFbyDevManufAndSystems, oiShowData },
 
     computed: {
-      ...mapState('indPerfDevDefectOfTSInTI', ['selectedDevManuf', 'selectedSystem', 'selectedProject']),
-      ...mapGetters('indPerfDevDefectOfTSInTI', ['showData'])
+      ...mapState('indOperDevDefectDensity', ['selectedDevManuf', 'selectedSystem', 'selectedProject'])
     },
 
     methods: {
       ...mapActions(['setFeatureName']),
-      ...mapActions('indPerfDevDefectOfTSInTI', ['setSelectedDevManuf', 'setSelectedSystem', 'setSelectedProject'])
+      ...mapActions('indOperDevDefectDensity', ['setSelectedDevManuf', 'setSelectedSystem', 'setSelectedProject'])
     },
 
     mounted () {
-      this.setFeatureName('Ind.Desemp.Des - Defeito de TS em TI')
-      // this.setSelectedDevManuf([])
+      this.setFeatureName('Ind.Oper.Des - Densidade Defeito')
     }
   }
 </script>
+
 
 <template>
   <div class="container-fluid" style="padding-top: 10px">
@@ -56,6 +55,7 @@
     </div>
 
     <oiShowData/>
+
   </div> 
 </template>
 

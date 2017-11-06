@@ -4,10 +4,10 @@ export default {
   [types.selectedTestManufs] (state, parameter) {
     state.selectedTestManufs = parameter
   },
-  [types.selectedSystems] (state, parameter) {
-    state.selectedSystems = parameter
+  [types.selectedSystem] (state, parameter) {
+    state.selectedSystem = parameter
   },
-  [types.selectedProjects] (state, parameter) {
-    state.selectedProjects = parameter
+  [types.selectedProject] (state, parameter) {
+    state.selectedProject = parameter
   }
 }

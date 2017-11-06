@@ -3,15 +3,15 @@ import * as types from './mutationsTypes'
 
 export const setSelectedTestManufs = ({ commit }, selected) => {
   commit(types.selectedTestManufs, selected)
-  commit(types.selectedSystems, [])
-  commit(types.selectedProjects, [])
+  commit(types.selectedSystem, [])
+  commit(types.selectedProject, [])
 }
 
-export const setSelectedSystems = ({ commit }, selected) => {
-  commit(types.selectedSystems, selected)
-  commit(types.selectedProjects, [])
+export const setSelectedSystem = ({ commit }, selected) => {
+  commit(types.selectedSystem, selected)
+  commit(types.selectedProject, [])
 }
 
-export const setSelectedProjects = ({ commit }, selected) => {
-  commit(types.selectedProjects, selected)
+export const setSelectedProject = ({ commit }, selected) => {
+  commit(types.selectedProject, selected)
 }

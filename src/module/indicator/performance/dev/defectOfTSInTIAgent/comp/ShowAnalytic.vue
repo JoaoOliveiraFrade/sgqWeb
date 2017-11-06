@@ -1,5 +1,5 @@
 selected<script>
-  import oiModal from '@/module/modal/comp/modal.vue'
+  import oiModal from '@/comp/modal/Modal2.vue'
   import oiDefectOfTSInTIAgentShowAnalyticGrid from '@/module/indicator/performance/dev/defectOfTSInTIAgent/comp/ShowAnalyticGrid.vue'
 
   export default {

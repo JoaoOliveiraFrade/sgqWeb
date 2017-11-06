@@ -1,6 +1,6 @@
 <script>
   export default {
-    name: 'modal_',
+    name: 'Modal_',
 
     props: ['id'],
 

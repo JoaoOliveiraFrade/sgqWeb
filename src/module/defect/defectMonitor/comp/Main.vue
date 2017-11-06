@@ -19,18 +19,18 @@
     },
 
     computed: {
-      // ...mapState(['selectedTestManufs', 'selectedSystems', 'projectConfirmed'])
+      // ...mapState(['selectedTestManufs', 'selectedSystem', 'projectConfirmed'])
       ...mapState('project', ['data']),
-      ...mapState('defectMonitor', ['selectedProjects'])
+      ...mapState('defectMonitor', ['selectedProject'])
     },
 
     methods: {
       ...mapActions('project', ['load']),
-      ...mapActions('defectMonitor', ['setSelectedProjects']),
+      ...mapActions('defectMonitor', ['setSelectedProject']),
       ...mapActions(['setFeatureName']),
 
       confirmSelection (parameter) {
-        this.setSelectedProjects(parameter)
+        this.setSelectedProject(parameter)
       }
     },
 
@@ -58,7 +58,7 @@
     <div class="row well well-sm oi-well col-12 col-sm-6 col-md-3">
       <oiSelectionProject 
         :projects="data" 
-        :selected="selectedProjects"
+        :selected="selectedProject"
         @confirmSelection="confirmSelection"
       />
     </div>
@@ -70,7 +70,7 @@
       />
     </div>
 
-    <div class="row well well-sm oi-well col-12 col-sm-6 col-md-3" v-if="selectedSystems.length > 0">
+    <div class="row well well-sm oi-well col-12 col-sm-6 col-md-3" v-if="selectedSystem.length > 0">
       <oiSelectionProject/>
     </div>
 

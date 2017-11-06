@@ -17,7 +17,7 @@
         param.yAxis.title.text = '%<br>Detectável<br>em TS'
         // param.plotOptions.gauge.dataLabels.borderWidth = 0
         param.plotOptions.gauge.dataLabels.useHTML = true
-        // param.plotOptions.gauge.dataLabels.format = '<span style=font-size:9px><center>{point.y:.0f}%</center>' + this.total.qtyDetectableInTS + '/' + this.total.qtyTotal + '</span>'
+        // param.plotOptions.gauge.dataLabels.format = '<span style=font-size:9px><center>{point.y:.0f}%</center>' + this.total.qtyOfTSInTI + '/' + this.total.qtyTotal + '</span>'
         param.plotOptions.gauge.dataLabels.format = '<span style=font-size:11px><center>{point.y:.0f}%</center></span>'
 
         param.yAxis.max = 100
@@ -29,11 +29,11 @@
         ]
 
         param.tooltip.pointFormat = '' +
-          '% Detectável em TS: ' + this.total.percDetectableInTS + '%<br>' +
-          'Qte Detectável em TS: ' + this.total.qtyDetectableInTS + '<br>' +
+          '% Detectável em TS: ' + this.total.percOfTSInTI + '%<br>' +
+          'Qte Detectável em TS: ' + this.total.qtyOfTSInTI + '<br>' +
           'Qte Total: ' + this.total.qtyTotal
 
-        param.series = [ { name: 'Total', colorByPoint: true, data: [ this.total.percDetectableInTS ] } ]
+        param.series = [ { name: 'Total', colorByPoint: true, data: [ this.total.percOfTSInTI ] } ]
         return param
       }
     },

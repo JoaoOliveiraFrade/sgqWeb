@@ -1,1 +1,1 @@
-export const setSelectedProjects = 'setSelectedProjects'
+export const setSelectedProject = 'setSelectedProject'

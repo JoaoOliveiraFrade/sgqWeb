@@ -1,11 +1,11 @@
 export default {
-  selectedDevManufs: [],
-  selectedSystems: [],
-  selectedProjects: [],
+  selectedDevManuf: [],
+  selectedSystem: [],
+  selectedProject: [],
 
   limitMinPerc: 80,
   data: [],
   loading: false,
-  chartSelectedDevManufs: '',
-  chartSelectedSystems: ''
+  chartSelectedDevManuf: '',
+  chartSelectedSystem: ''
 }

@@ -5,7 +5,7 @@
     name: 'ShowAnalyticGrid',
 
     computed: {
-      ...mapGetters('indicatorDevDefectDensity', ['filteredByChart'])
+      ...mapGetters('indOperDevDefectDensity', ['filteredByChart'])
     }
   }
 

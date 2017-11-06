@@ -5,7 +5,7 @@
     name: 'ShowAnalyticGrid',
 
     computed: {
-      ...mapGetters('indPerfDevDefectOfTSInTI', ['filteredByChart'])
+      ...mapGetters('indOperDevDefectAverangeTime', ['filteredByChart'])
     }
   }
 
@@ -42,21 +42,21 @@
             </th>
 
             <th style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
-                <font size="2" class="text-nowrap">Qte Detectável em TS
+                <font size="2" class="text-nowrap">Qte Horas
                     <a href="#" @click.prevent="setOrder('Passed')">
                     </a>
                 </font>
             </th>
 
             <th style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
-                <font size="2" class="text-nowrap">Qte Total
+                <font size="2" class="text-nowrap">Qte Defeitos
                     <a href="#" @click.prevent="setOrder('Failed')">
                     </a>
                 </font>
             </th>
 
             <th style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
-                <font size="2" class="text-nowrap">% Detectável em TS
+                <font size="2" class="text-nowrap">Tempo Médio (h)
                     <a href="#" @click.prevent="setOrder('Failed')">
                     </a>
                 </font>
@@ -83,15 +83,15 @@
             </td style="padding:0">
 
             <td style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
-                <font size="2">{{item.qtyDetectableInTS}}</font>
+                <font size="2">{{item.qtyHour}}</font>
             </td style="padding:0">
 
             <td style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
-                <font size="2">{{item.qtyTotal}}</font>
+                <font size="2">{{item.qtyDefect}}</font>
             </td style="padding:0">
 
             <td style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">
-                <font size="2">{{item.percDetectableInTS}}</font>
+                <font size="2">{{item.averangeHour}}</font>
             </td style="padding:0">
         </tr>
     </tbody> 

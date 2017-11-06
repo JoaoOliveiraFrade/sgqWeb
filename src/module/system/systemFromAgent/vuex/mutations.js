@@ -12,16 +12,16 @@ export default {
   [types.dataGbyDevManuf] (state, parameter) {
     state.dataGbyDevManuf = parameter
   },
-  [types.filterDevManuf] (state, parameter) {
-    state.filterDevManuf = parameter
-  },
+  // [types.filterDevManuf] (state, parameter) {
+  //   state.filterDevManuf = parameter
+  // },
 
   [types.dataGbyTestManuf] (state, parameter) {
     state.dataGbyTestManuf = parameter
   },
-  [types.filterTestManuf] (state, parameter) {
-    state.filterTestManuf = parameter
-  },
+  // [types.filterTestManuf] (state, parameter) {
+  //   state.filterTestManuf = parameter
+  // },
 
   [types.selected] (state, parameter) {
     state.selected = parameter

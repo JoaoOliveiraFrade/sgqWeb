@@ -48,7 +48,7 @@ selected<script>
     },
 
     methods: {
-      ...mapActions('project', ['setProjectFilterTerm', 'setSelectedProjects']),
+      ...mapActions('project', ['setProjectFilterTerm', 'setSelectedProject']),
 
       selectAll: function () {
         this.selected_ = this.filteredByTerm

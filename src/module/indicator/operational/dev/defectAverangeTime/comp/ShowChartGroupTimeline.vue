@@ -7,8 +7,8 @@
     name: 'ShowChartGroupTimeline',
 
     computed: {
-      ...mapGetters('indPerfDevDefectOfTSInTI', ['groupTimeline']),
-      ...mapState('indPerfDevDefectOfTSInTI', ['acceptableLimit']),
+      ...mapGetters('indOperDevDefectAverangeTime', ['groupTimeline']),
+      ...mapState('indOperDevDefectAverangeTime', ['acceptableLimit']),
 
       chartParam () {
         let param = chartStandParam
@@ -19,9 +19,9 @@
         param.tooltip.headerFormat = ''
         param.tooltip.pointFormat = `
           <b>{point.monthYear}</b><br>
-          % Detectável em TS: {point.percDetectableInTS:.2f}%<br>
-          Qte Detectável em TS: {point.qtyDetectableInTS:.0f}<br>
-          Qte Total: {point.qtyTotal:.0f}<br>
+          Tempo Médio (h): {point.averangeHour:.2f}%<br>
+          Qte Horas: {point.qtyHour:.0f}<br>
+          Qte Defeitos: {point.qtyDefect:.0f}<br>
           Limite Máx. Aceitável: {point.acceptableLimit:.0f}%
           `
         param.plotOptions.bar.dataLabels.format = '{point.y:.0f}'
@@ -38,9 +38,9 @@
                 y: this.acceptableLimit,
                 acceptableLimit: this.acceptableLimit,
                 monthYear: i.monthYear,
-                percDetectableInTS: i.percDetectableInTS,
-                qtyDetectableInTS: i.qtyDetectableInTS,
-                qtyTotal: i.qtyTotal
+                averangeHour: i.averangeHour,
+                qtyHour: i.qtyHour,
+                qtyDefect: i.qtyDefect
               }
             ))
           }, {
@@ -48,12 +48,12 @@
             data: this.groupTimeline.map(i => (
               {
                 name: i.monthYear,
-                y: i.percDetectableInTS,
+                y: i.averangeHour,
                 acceptableLimit: this.acceptableLimit,
                 monthYear: i.monthYear,
-                percDetectableInTS: i.percDetectableInTS,
-                qtyDetectableInTS: i.qtyDetectableInTS,
-                qtyTotal: i.qtyTotal
+                averangeHour: i.averangeHour,
+                qtyHour: i.qtyHour,
+                qtyDefect: i.qtyDefect
               }
             ))
           }
