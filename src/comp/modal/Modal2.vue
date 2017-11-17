@@ -14,13 +14,13 @@
       }
     }
   }
-
 </script>
 
 <template>
     <div class="modal" :id="id" >
         <div class="modal-dialog" :style="size==='l' ? 'max-width: 95%; width: auto !important;' : ''">
             <div class="modal-content" style="margin:0; border:0; padding:0; background-color: #f8f8ff">
+
                 <div class="modal-header">
                     <a href="#"
                         data-toggle="tooltip" 
@@ -31,12 +31,15 @@
                     <hr class="col-xs-12">
                     <label class="fd-label" >{{title}}</label>
                 </div>
+
                 <div class="modal-body">
                     <slot name="body"></slot>
                 </div>
+                
                 <div class="modal-footer">
                     <slot name="footer"></slot>
                 </div>
+                
             </div>
         </div>
     </div>      

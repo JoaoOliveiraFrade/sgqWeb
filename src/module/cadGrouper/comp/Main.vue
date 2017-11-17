@@ -1,6 +1,6 @@
 <script>
   import { mapActions } from 'vuex'
-  import ServicesProject from '@/module/project/services'
+  import ServicesProject from '@/module/project/project/services'
   import ServicesCadgroupers from '../services'
   import ServicesProjectXgrouper from '@/module/projectXgrouper/services'
   
@@ -22,8 +22,8 @@
         state: 'search',
 
         filterProperties: [
-            {name: 'name'},
-            {name: 'executiveSummary'}
+          {name: 'name'},
+          {name: 'executiveSummary'}
         ],
 
         item: {
@@ -82,14 +82,12 @@
         ServicesProjectXgrouper.getByGrouper(item.id).then(pg => {
           if (pg.data.length !== 0) {
             let ids = pg.data.map(i => (i.project)).join()
-            ServicesProject.getProjectsByIds(ids)
-              .then(r => {
-                this.itemFull = {
-                  grouper: item,
-                  projects: r.data
-                }
+            ServicesProject.getProjectsByIds(ids).then(r => {
+              this.itemFull = {
+                grouper: item,
+                projects: r.data
               }
-            )
+            })
           } else {
             this.itemFull = {
               grouper: item,

@@ -5,7 +5,8 @@ import { vuex as testManuf } from './testManuf'
 import { vuex as system } from './system/system'
 import { vuex as systemFromAgent } from './system/systemFromAgent'
 
-import { vuex as project } from './project'
+import { vuex as project } from './project/project'
+import { vuex as projectBiti } from './project/biti'
 
 import { vuex as indOperDevDefectDensity } from './indicator/operational/dev/defectDensity'
 import { vuex as indOperDevDefectAverangeTime } from './indicator/operational/dev/defectAverangeTime'
@@ -41,6 +42,7 @@ export default {
   systemFromAgent,
 
   project,
+  projectBiti,
 
   indOperDevDefectDensity,
   indOperDevDefectAverangeTime,

@@ -1,11 +1,12 @@
 <script>
-  import { mapActions, mapState } from 'vuex'
+  import { mapActions, mapState, mapGetters } from 'vuex'
 
   import oiRule from './ShowRule.vue'
   import oiShowAnalytic from './ShowAnalytic.vue'
   import oiShowChartGroupDevManuf from './ShowChartGroupDevManuf.vue'
   import oiShowChartGroupTimeline from './ShowChartGroupTimeline.vue'
   import oiShowChartTotal from './ShowChartTotal.vue'
+  // import oiShowChartTotal from '@/comp/chart/defect/DefectAverangeTimeTotal.vue'
 
   export default {
     name: 'ShowData',
@@ -23,7 +24,8 @@
     },
 
     methods: {
-      ...mapActions('indOperDevDefectAverangeTime', ['loadData'])
+      ...mapActions('indOperDevDefectAverangeTime', ['loadData']),
+      ...mapGetters('indOperDevDefectAverangeTime', ['total'])
     },
 
     watch: {

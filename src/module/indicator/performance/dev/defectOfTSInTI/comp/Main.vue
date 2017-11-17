@@ -1,9 +1,9 @@
 <script>
-  import { mapActions, mapState, mapGetters } from 'vuex'
+  import { mapActions, mapState } from 'vuex'
 
   import oiDevManufSelection from '@/module/devManuf/comp/Selection.vue'
   import oiMultiselectionFbyDevManufByCheck from '@/module/system/system/comp/MultiselectionFbyDevManufByCheck.vue'
-  import oiProjectMonoSelectionFbyDevManufAndSystems from '@/module/project/comp/SelectionFbyDevManufAndSystems.vue'
+  import oiProjectMonoSelectionFbyDevManufAndSystems from '@/module/project/project/comp/SelectionFbyDevManufAndSystems.vue'
   import oiShowData from './ShowData.vue'
 
   export default {
@@ -12,8 +12,8 @@
     components: { oiDevManufSelection, oiMultiselectionFbyDevManufByCheck, oiProjectMonoSelectionFbyDevManufAndSystems, oiShowData },
 
     computed: {
-      ...mapState('indPerfDevDefectOfTSInTI', ['selectedDevManuf', 'selectedSystem', 'selectedProject']),
-      ...mapGetters('indPerfDevDefectOfTSInTI', ['showData'])
+      ...mapState('indPerfDevDefectOfTSInTI', ['selectedDevManuf', 'selectedSystem', 'selectedProject'])
+      // ...mapGetters('indPerfDevDefectOfTSInTI', ['showData'])
     },
 
     methods: {

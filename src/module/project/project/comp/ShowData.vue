@@ -110,9 +110,9 @@
               <div class="col-xs-12 col-sm-1 text-left">
                   <label class="fd-label">&nbspFarol</label>
                   <div class="text-left" style="padding-bottom:3px">
-                    <img alt="Farol Verde" src="../../../asset/image/verde-sm.png"  v-show="selectedMonoselection.trafficLight === 'VERDE'">
-                    <img alt="Farol Amarelo" src="../../../asset/image/amarelo-sm.png" v-show="selectedMonoselection.trafficLight === 'AMARELO'">
-                    <img alt="Farol Vermelho" src="../../../asset/image/vermelho-sm.png" v-show="selectedMonoselection.trafficLight === 'VERMELHO'">
+                    <img alt="Farol Verde" src="../../../../asset/image/verde-sm.png"  v-show="selectedMonoselection.trafficLight === 'VERDE'">
+                    <img alt="Farol Amarelo" src="../../../../asset/image/amarelo-sm.png" v-show="selectedMonoselection.trafficLight === 'AMARELO'">
+                    <img alt="Farol Vermelho" src="../../../../asset/image/vermelho-sm.png" v-show="selectedMonoselection.trafficLight === 'VERMELHO'">
                   </div>
               </div>
 

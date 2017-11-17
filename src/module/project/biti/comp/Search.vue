@@ -1,27 +1,23 @@
 <script>
-  import { mapActions, mapState } from 'vuex'
+  import { mapActions } from 'vuex'
 
-  import oiMonoselection from '@/module/project/comp/monoselection/Main.vue'
+  // import oiMonoselection from './monoselection/Main.vue'
+  import oiMonoselection from './Monoselection.vue'
+
   import oiShowSelected from './ShowSelected.vue'
   import oiShowData from './ShowData.vue'
 
   export default {
-    name: 'monoselectionAndShow',
+    name: 'projectBitiSearch',
 
     components: { oiMonoselection, oiShowSelected, oiShowData },
 
-    computed: {
-      ...mapState('project', ['selectedMonoselection'])
-    },
-
     methods: {
-      ...mapActions(['setFeatureName']),
-      ...mapActions('project', ['load'])
+      ...mapActions(['setFeatureName'])
     },
 
     mounted () {
-      this.setFeatureName('Projeto - Pesq/Exibição')
-      this.load()
+      this.setFeatureName('Projeto BITI - Pesquisa')
     }
   }
 </script>
@@ -29,10 +25,8 @@
 <template>
   <div class="container-fluid" style="padding-top: 10px">
 
-    <div class="row well well-sm oi-well" >
-      <oiMonoselection/> 
-    </div>
-
+    <oiMonoselection/> 
+<!--
     <div class="row well well-sm" style="margin:0; padding:0; padding-left:5px">
       <oiShowSelected/>
     </div>
@@ -40,7 +34,7 @@
     <div class="row well well-sm" style="margin:0; padding:0; padding-left:5px">
       <oiShowData/>
     </div>
-
+-->
   </div> 
 </template>
 

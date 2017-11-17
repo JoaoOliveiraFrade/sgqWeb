@@ -1,4 +1,4 @@
-selected<script>
+<script>
   import { mapActions } from 'vuex'
   import oiModal from '@/comp/modal/Modal2.vue'
   import oiShowChartCFD from './ShowChartCFD.vue'

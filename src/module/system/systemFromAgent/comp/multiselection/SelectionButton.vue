@@ -8,7 +8,7 @@
     components: { oiModal, oiSelectionGrid },
 
     props: {
-      projects: { type: Array },
+      systems: { type: Array },
       selected: { type: Array }
     },
 
@@ -33,12 +33,12 @@
             type="button"     
             class="btn btn-xs"
             data-toggle="modal" 
-            data-target="#modalSelectionProject">Seleção
+            data-target="#modalSelectionSystem">Seleção
         </button>        
-        <oiModal id="modalSelectionProject" ref="vuemodal" title="Seleção de Projeto" size="l">
+        <oiModal id="modalSelectionSystem" ref="vuemodal" title="Seleção de Sistema" size="l">
             <oiSelectionGrid 
                 slot="body"
-                :projects="projects"
+                :systems="systems"
                 :selected="selected"
                 @onConfirm="confirm"
             />

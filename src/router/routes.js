@@ -1,7 +1,7 @@
 import { routesModules } from '../module'
 
 const routesCore = [
-    { path: '/', name: 'root', redirect: '/home' }
+  { path: '/', name: 'root', redirect: '/home' }
 ]
 
 export default [ ...routesCore, ...routesModules ]
@@ -20,4 +20,3 @@ export default [
   { path: '/counter', name: 'counter', component: MainCounter }
 ]
 */
-

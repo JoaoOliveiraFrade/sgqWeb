@@ -10,7 +10,7 @@ export const tryLogon = ({ commit }, user) => {
         resolve()
       },
       e => {
-        reject()
+        reject(e)
       })
   })
 }

@@ -1,4 +1,5 @@
-import { routes as project } from './project'
+import { routes as project } from './project/project'
+import { routes as projectBiti } from './project/biti'
 
 import { routes as indOperDevDefectDensity } from './indicator/operational/dev/defectDensity'
 import { routes as indOperDevDefectAverangeTime } from './indicator/operational/dev/defectAverangeTime'
@@ -21,6 +22,7 @@ import { routes as pulledChain } from './pulledChain'
 
 export default [
   ...project,
+  ...projectBiti,
 
   ...indOperDevDefectDensity,
   ...indOperDevDefectAverangeTime,

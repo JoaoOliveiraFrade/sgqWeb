@@ -8,4 +8,3 @@ export const filteredByText = 'filteredByText'
 export const filterTerm = 'filterTerm'
 export const selected = 'selected'
 export const update = 'update'
-

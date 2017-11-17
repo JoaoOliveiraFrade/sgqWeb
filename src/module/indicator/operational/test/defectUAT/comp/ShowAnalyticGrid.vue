@@ -8,7 +8,6 @@
       ...mapGetters('indicatorDefectUAT', ['filteredByChart'])
     }
   }
-
 </script>
 
 <template>

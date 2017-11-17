@@ -130,16 +130,16 @@
         this.$emit('onConfirmIterations', this.iterationsSelected)
       }
 
-        /*
-        const _this = this
-        this.systemsFiltered = this.systems.filter(e => _this.devManufacturersSelected.indexOf(e.devManufacturing) > -1)
-        this.systemsSelected = []
+      /*
+      const _this = this
+      this.systemsFiltered = this.systems.filter(e => _this.devManufacturersSelected.indexOf(e.devManufacturing) > -1)
+      this.systemsSelected = []
 
-        this.projectsFiltered = []
-        this.projectsSelected = []
+      this.projectsFiltered = []
+      this.projectsSelected = []
 
-        this.selectDevManufConfirmed = true
-        */
+      this.selectDevManufConfirmed = true
+      */
     }
   }
 </script>

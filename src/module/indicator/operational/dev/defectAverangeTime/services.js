@@ -3,7 +3,6 @@ import { paths } from '@/environment'
 
 export default {
   data (parameter) {
-    console.log(parameter)
     let resource = Resource.resource(paths.api + '/indOperDev/defectAverangeTime/data')
     return resource.save(parameter)
   },

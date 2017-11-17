@@ -4,7 +4,7 @@
   import oiChartDefectAverangeTimeTotal from '@/comp/chart/defect/DefectAverangeTimeTotal'
   import oiChartdefectOfTSInTI from '@/comp/chart/defect/DefectOfTSInTITotal'
   import oiSelection from '@/module/selection/comp/selections.vue'
-  import services from '@/module/project/services'
+  import services from '@/module/project/project/services'
 
   export default {
     name: 'cadProjectsEdit',
@@ -58,49 +58,41 @@
       },
 
       loadIterations () {
-        services.getIterations(this.project)
-          .then(resp => {
-            this.iterations = resp.data
-          }
-        )
+        services.getIterations(this.project).then(resp => {
+          this.iterations = resp.data
+        })
       },
 
       loadIterationsActive () {
-        services.getIterationsActive(this.project)
-          .then(resp => {
-            this.iterationsActive = resp.data
-            /*
-            if (this.iterationsSelected.length === 1) {
-              if (this.iterationsSelected[0] === '') {
-                this.iterationsSelected = []
-              }
+        services.getIterationsActive(this.project).then(resp => {
+          this.iterationsActive = resp.data
+          /*
+          if (this.iterationsSelected.length === 1) {
+            if (this.iterationsSelected[0] === '') {
+              this.iterationsSelected = []
             }
-            */
           }
-        )
+          */
+        })
       },
 
       loadIterationsSelected () {
-        services.getIterationsSelected(this.project)
-          .then(resp => {
-            this.iterationsSelected = resp.data
-          }
-        )
+        services.getIterationsSelected(this.project).then(resp => {
+          this.iterationsSelected = resp.data
+        })
       },
 
       ConfirmIterations (iterationsActive) {
         if (this.iterationsActive !== iterationsActive) {
           this.iterationsActive = iterationsActive
           this.iterationsSelected = iterationsActive
-          services.updateIterationsActive({ projectId: this.project.id, iterations: this.iterationsActive })
-            .then(resp => {
-              if (iterationsActive.length > 0) {
-                this.loadDataIterations()
-              } else {
-                this.loadData()
-              }
+          services.updateIterationsActive({ projectId: this.project.id, iterations: this.iterationsActive }).then(resp => {
+            if (iterationsActive.length > 0) {
+              this.loadDataIterations()
+            } else {
+              this.loadData()
             }
-          )
+          })
 
           services.updateIterationsSelected({ projectId: this.project.id, iterations: this.iterationsActive })
         }

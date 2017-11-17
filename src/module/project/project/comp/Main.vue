@@ -137,7 +137,7 @@
     <div class="container-fluid well well-sm">
       <div class="row well well-sm oi-well">
         <input type="text"
-            placeholder="Informe os filtros. Na pesq. por farol, digite a cor 'verd' ou 'amar' ou 'verm'. Ex: multip+verd+2017."
+            placeholder="Informe os filtros! Na pesq. de farol, digite a cor 'verd', 'amar' ou 'verm'. Ex: verd+multip+2017."
             v-model="projectFilterTerm"
             @keyup="filterProjects"/>
       </div>

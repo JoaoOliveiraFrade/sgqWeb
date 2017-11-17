@@ -26,7 +26,7 @@ export const setSelectedProject = ({ commit }, selected) => {
 //       e => {
 //         console.log(e)
 //         commit(types.loading, false)
-//         reject()
+//         reject(e)
 //       }
 //     )
 //   })

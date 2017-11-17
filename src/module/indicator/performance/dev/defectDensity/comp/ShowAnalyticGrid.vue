@@ -8,7 +8,6 @@
       ...mapGetters('indPerfDevDefectDensity', ['filteredByChart'])
     }
   }
-
 </script>
 
 <template>

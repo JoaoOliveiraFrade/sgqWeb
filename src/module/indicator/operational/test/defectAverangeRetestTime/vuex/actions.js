@@ -23,7 +23,7 @@ export const load = ({ commit, state, rootState }) => {
       e => {
         console.log(e)
         commit(types.loading, false)
-        reject()
+        reject(e)
       }
     )
   })

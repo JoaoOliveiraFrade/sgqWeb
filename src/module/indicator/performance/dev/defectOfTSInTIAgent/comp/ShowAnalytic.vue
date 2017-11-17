@@ -1,4 +1,4 @@
-selected<script>
+<script>
   import oiModal from '@/comp/modal/Modal2.vue'
   import oiDefectOfTSInTIAgentShowAnalyticGrid from '@/module/indicator/performance/dev/defectOfTSInTIAgent/comp/ShowAnalyticGrid.vue'
 

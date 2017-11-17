@@ -1,4 +1,6 @@
 <script>
+  import chartParametersTotal from '@/comp/chart/types/total'
+
   const Highcharts = require('highcharts')
 
   // const highchartsExporting = require('highcharts-exporting')
@@ -6,8 +8,6 @@
 
   // const highchartsMore = require('highcharts-more')
   // highchartsMore(Highcharts)
-
-  import chartParametersTotal from '@/comp/chart/types/Total'
 
   export default {
     name: 'chartDefectReopenedTotal',
@@ -38,8 +38,8 @@
         this.parameters.plotOptions.gauge.dataLabels.format = '{point.y:.0f}%'
         this.parameters.yAxis.max = (this.value.percDefectUAT <= 100) ? 100 : this.value.percDefectUAT
         this.parameters.yAxis.plotBands = [
-            {from: 0, to: limitSupGreen, color: '#00CC00'},
-            {from: limitSupGreen, to: limitSupRed, color: '#FF3300'}
+          {from: 0, to: limitSupGreen, color: '#00CC00'},
+          {from: limitSupGreen, to: limitSupRed, color: '#FF3300'}
         ]
         this.parameters.tooltip.pointFormat = 'Improcedente: ' + this.value.percDefectUAT + '%<br>' +
           'Qte Defeito UAT: ' + this.value.qtyDefectUAT + '<br>' +

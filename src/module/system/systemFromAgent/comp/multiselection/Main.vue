@@ -22,7 +22,7 @@
 
 <template>
   <span style="margin:0; border:0; padding:0">
-    <label class="fd-label">Projeto:</label>
+    <label class="fd-label">Sistema (agente):</label>
     <oiSelectionButton 
       :systems="systems" 
       :selected="selected"

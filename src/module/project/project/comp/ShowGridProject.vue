@@ -90,9 +90,9 @@
             
                 <td class="text-center" style="padding: 1px; padding-top:4px; margin: 0px; border-top: 1px; padding:1px; font-size:11px">
                     <div class="text-center" style="padding:0;">
-                        <img alt="Farol Verde" src="../../../asset/image/verde-sm.png" v-show="item.trafficLight === 'VERDE'" style="padding:0; margin:0; border:0">
-                        <img alt="Farol Amarelo" src="../../../asset/image/amarelo-sm.png" v-show="item.trafficLight === 'AMARELO'" style="padding:0; margin:0; border:0">
-                        <img alt="Farol Vermelho" src="../../../asset/image/vermelho-sm.png" v-show="item.trafficLight === 'VERMELHO'" style="padding:0; margin:0; border:0">
+                        <img alt="Farol Verde" src="../../../../asset/image/verde-sm.png" v-show="item.trafficLight === 'VERDE'" style="padding:0; margin:0; border:0">
+                        <img alt="Farol Amarelo" src="../../../../asset/image/amarelo-sm.png" v-show="item.trafficLight === 'AMARELO'" style="padding:0; margin:0; border:0">
+                        <img alt="Farol Vermelho" src="../../../../asset/image/vermelho-sm.png" v-show="item.trafficLight === 'VERMELHO'" style="padding:0; margin:0; border:0">
                     </div>
                 </td>
 

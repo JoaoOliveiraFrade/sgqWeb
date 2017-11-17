@@ -29,8 +29,7 @@ export const loadData = ({ commit, state }) => {
       selectedDevManuf: state.selectedDevManuf.map(i => i.id),
       selectedSystem: state.selectedSystem.map(i => i.id),
       selectedProject: state.selectedProject.map(i => i.subproject + i.delivery)
-    })
-    .then(
+    }).then(
       r => {
         commit(types.data, r.data)
         commit(types.loading, false)
@@ -39,7 +38,7 @@ export const loadData = ({ commit, state }) => {
       e => {
         console.log(e)
         commit(types.loading, false)
-        reject()
+        reject(e)
       }
     )
   })

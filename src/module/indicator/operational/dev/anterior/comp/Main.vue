@@ -22,7 +22,7 @@ chartDensityDevManuf<script>
   
   import OptionsDrillDown from '@/comp/chart/types/drillDown'
   import OptionsTimeline from '@/comp/chart/types/timeline'
-  import OptionsTotal from '@/comp/chart/types/Total'
+  import OptionsTotal from '@/comp/chart/types/total'
 
   import oiDensityShowRule from './comp/rules/DensityShowRule.vue'
   import oiDensityShowAnalytic from './comp/analytics/DensityShowAnalytic.vue'

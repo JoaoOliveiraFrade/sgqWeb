@@ -1,5 +1,5 @@
 <script>
-  import servicesProject from '@/module/project/services'
+  import servicesProject from '@/module/project/project/services'
   import servicesCadProjectsXgroupers from '@/module/cadProjectsXgroupers/services'
   import oiProjectGridAssociation from './projectGridAssociation.vue'
   import oiProjectGridDissociation from './projectGridDissociation.vue'
@@ -31,39 +31,33 @@
     updated () {
       if (this.lastItem !== this.item.grouper.id) {
         this.lastItem = this.item.grouper.id
-        servicesProject.getProjects()
-          .then(resp => {
-            this.projects = resp.data.filter(i =>
-              this.item.projects.findIndex(o => o.id === i.id) === -1
-            )
-          }
-        )
+        servicesProject.getProjects().then(resp => {
+          this.projects = resp.data.filter(i =>
+            this.item.projects.findIndex(o => o.id === i.id) === -1
+          )
+        })
       }
     },
 
     methods: {
       association (project) {
-        servicesCadProjectsXgroupers.create(this.item.grouper.id, project.id, project.subproject, project.delivery)
-          .then(resp => {
-            // apaga da lista geral de projetos
-            let index = this.projects.findIndex(o => o.id === project.id)
-            this.projects.splice(index, 1)
+        servicesCadProjectsXgroupers.create(this.item.grouper.id, project.id, project.subproject, project.delivery).then(resp => {
+          // apaga da lista geral de projetos
+          let index = this.projects.findIndex(o => o.id === project.id)
+          this.projects.splice(index, 1)
 
-            // insere na lista de projetos associados
-            this.item.projects.push(project)
-          }
-        )
+          // insere na lista de projetos associados
+          this.item.projects.push(project)
+        })
       },
 
       dissociation (project) {
-        servicesCadProjectsXgroupers.delete(this.item.grouper.id, project.id)
-          .then(resp => {
-            let index = this.item.projects.findIndex(o => o.id === project.id)
-            this.item.projects.splice(index, 1)
+        servicesCadProjectsXgroupers.delete(this.item.grouper.id, project.id).then(resp => {
+          let index = this.item.projects.findIndex(o => o.id === project.id)
+          this.item.projects.splice(index, 1)
 
-            this.projects.push(project)
-          }
-        )
+          this.projects.push(project)
+        })
       }
     }
 

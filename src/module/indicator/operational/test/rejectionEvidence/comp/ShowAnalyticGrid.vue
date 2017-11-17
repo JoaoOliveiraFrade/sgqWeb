@@ -8,7 +8,6 @@
       ...mapGetters('indicatorRejectionEvidence', ['filteredByChart'])
     }
   }
-
 </script>
 
 <template>

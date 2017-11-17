@@ -15,7 +15,7 @@ export const setSelectedProject = ({ commit }, selected) => {
   commit(types.selectedProject, selected)
 }
 
-export const load = ({ commit, state, rootState }) => {
+export const loadData = ({ commit, state, rootState }) => {
   if (state.selectedDevManuf.length === 0 ||
     state.selectedSystem.length === 0 ||
     state.selectedProject.length === 0) {
@@ -25,12 +25,11 @@ export const load = ({ commit, state, rootState }) => {
   commit(types.loading, true)
 
   return new Promise((resolve, reject) => {
-    services.load({
+    services.data({
       selectedDevManuf: rootState.indPerfDevDefectOfTSInTIAgent.selectedDevManuf.map(i => i.id),
       selectedSystem: rootState.indPerfDevDefectOfTSInTIAgent.selectedSystem.map(i => i.id),
       selectedProject: rootState.indPerfDevDefectOfTSInTIAgent.selectedProject.map(i => i.subproject + i.delivery)
-    })
-    .then(
+    }).then(
       r => {
         commit(types.data, r.data)
         commit(types.loading, false)
@@ -39,7 +38,7 @@ export const load = ({ commit, state, rootState }) => {
       e => {
         console.log(e)
         commit(types.loading, false)
-        reject()
+        reject(e)
       }
     )
   })

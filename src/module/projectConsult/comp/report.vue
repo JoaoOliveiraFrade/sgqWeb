@@ -162,17 +162,13 @@
       },
 
       loadDataIterations () {
-        services.getDensityByIterations(this.project)
-          .then(resp => {
-            this.densityDefectTotal = resp.data
-          }
-        )
+        services.getDensityByIterations(this.project).then(resp => {
+          this.densityDefectTotal = resp.data
+        })
 
-        services.getAverangeTimeBySeverityIterations(this.project, '3-HIGH')
-          .then(resp => {
-            this.DefectAverangeTimeTotal = resp.data
-          }
-        )
+        services.getAverangeTimeBySeverityIterations(this.project, '3-HIGH').then(resp => {
+          this.DefectAverangeTimeTotal = resp.data
+        })
 
         services.getReopenedIterations(this.project, this.iterationsFiltered).then(resp => {
           this.reopenedTotal = resp.data

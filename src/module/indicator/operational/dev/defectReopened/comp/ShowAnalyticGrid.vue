@@ -8,7 +8,6 @@
       ...mapGetters('indPerfDevDefectOfTSInTI', ['filteredByChart'])
     }
   }
-
 </script>
 
 <template>

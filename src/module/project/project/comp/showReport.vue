@@ -97,9 +97,9 @@
         <div class="col-xs-1">
             <label class="fd-label">Farol &nbsp</label>
             <div class="text-center" style="padding-bottom:5px">
-              <img alt="Farol Verde" src="../../../asset/image/verde.png"  v-show="project.trafficLight === 'VERDE'">
-              <img alt="Farol Amarelo" src="../../../asset/image/amarelo.png" v-show="project.trafficLight === 'AMARELO'">
-              <img alt="Farol Vermelho" src="../../../asset/image/vermelho.png" v-show="project.trafficLight === 'VERMELHO'">
+              <img alt="Farol Verde" src="../../../../asset/image/verde.png"  v-show="project.trafficLight === 'VERDE'">
+              <img alt="Farol Amarelo" src="../../../../asset/image/amarelo.png" v-show="project.trafficLight === 'AMARELO'">
+              <img alt="Farol Vermelho" src="../../../../asset/image/vermelho.png" v-show="project.trafficLight === 'VERMELHO'">
             </div>
         </div>
 

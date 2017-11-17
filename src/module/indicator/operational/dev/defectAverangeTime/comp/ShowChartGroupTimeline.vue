@@ -19,7 +19,7 @@
         param.tooltip.headerFormat = ''
         param.tooltip.pointFormat = `
           <b>{point.monthYear}</b><br>
-          Tempo Médio (h): {point.averangeHour:.2f}%<br>
+          Tempo Médio: {point.averangeHour:.2f} (h)<br>
           Qte Horas: {point.qtyHour:.0f}<br>
           Qte Defeitos: {point.qtyDefect:.0f}<br>
           Limite Máx. Aceitável: {point.acceptableLimit:.0f}%

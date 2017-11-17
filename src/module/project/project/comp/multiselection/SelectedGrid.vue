@@ -6,7 +6,6 @@
       selected: { type: Array }
     }
   }
-
 </script>
 
 <template>

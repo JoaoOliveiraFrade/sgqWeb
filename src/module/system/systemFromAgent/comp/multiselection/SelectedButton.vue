@@ -21,7 +21,7 @@
             data-toggle="modal" 
             data-target="#modalSelectedButton">Selecionado
         </button>
-        <oiModal id="modalSelectedButton" title="Projeto Selecionado" size="l">
+        <oiModal id="modalSelectedButton" title="Sistema Selecionado" size="l">
           <oiSelectedGrid :selected="selected" slot="body"/>
         </oiModal>
     </span>

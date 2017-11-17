@@ -1,13 +1,13 @@
-selected<script>
+<script>
   import { mapState, mapActions } from 'vuex'
 
   export default {
     name: 'SelectionGrid',
 
     props: {
-      projects: { type: Array, default: [] },
+      systems: { type: Array, default: [] },
       selected: { type: Array, default: [] }
-      // projectsLoading: { type: Boolean, default: false }
+      // systemsLoading: { type: Boolean, default: false }
     },
 
     data () {
@@ -19,22 +19,22 @@ selected<script>
     },
 
     computed: {
-      ...mapState('project', ['projectFilterProperties']),
-      ...mapState('project', ['loading']),
+      ...mapState('systemFromAgent', ['systemFilterProperties']),
+      ...mapState('systemFromAgent', ['loading']),
 
       filteredByTerm () {
         if (this.filterTerm !== '') {
           let words = this.filterTerm.split('+')
 
-          return this.projects.filter(item => {
+          return this.systems.filter(item => {
             return words.every(word => {
-              return this.projectFilterProperties.some(filterProperty => {
+              return this.systemFilterProperties.some(filterProperty => {
                 return item[filterProperty.name].toLowerCase().indexOf(word.toLowerCase()) > -1
               })
             })
           })
         } else {
-          return this.projects
+          return this.systems
         }
       }
     },
@@ -48,7 +48,7 @@ selected<script>
     },
 
     methods: {
-      ...mapActions('project', ['setProjectFilterTerm', 'setSelectedProject']),
+      ...mapActions('systemFromAgent', ['setFilterTerm', 'setSelected']),
 
       selectAll: function () {
         this.selected_ = this.filteredByTerm
@@ -60,7 +60,7 @@ selected<script>
         this.isUpdate = true
       },
 
-      selectProject: function () {
+      selectsystem: function () {
         this.isUpdate = true
       },
 
@@ -109,9 +109,9 @@ selected<script>
           autofocus v-focus
           class="form-control" 
           style="margin: 0; padding-left: 3px; height: 25px"
-          placeholder="Informe os filtros. Na pesq. por farol, digite a cor 'verd' ou 'amar' ou 'verm'. Ex: multip+verd+2017."
+          placeholder="Informe os filtros! Na pesq. de farol, digite a cor 'verd', 'amar' ou 'verm'. Ex: verd+multip+2017."
           v-model="filterTerm"
-          @keyup="setProjectFilterTerm(filterTerm)"
+          @keyup="setFilterTerm(filterTerm)"
       />    
       
       <table class="table table-condensed table-striped table-hover table-bordered" style="margin-bottom:5px; padding-bottom:0; margin-top:3px">
@@ -121,15 +121,12 @@ selected<script>
                   <font size="2px"></font>
                 </th>                                
 
-                <th style="padding: 1px; margin: 0px; border-top: 1px; text-align: center; width: 25px;">
-                </th>                                
-
-                <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: center">
-                    <font size="2" class="text-nowrap">Proj.
-                        <a href="#" @click.prevent="setOrder('project')">
+                <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: left">
+                    <font size="2" class="text-nowrap">Torre
+                        <a href="#" @click.prevent="setOrder('tower')">
                         </a>
                     </font>
-                </th>
+                </th style="padding:0">
 
                 <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">
                     <font size="2" class="text-nowrap">Nome
@@ -138,64 +135,28 @@ selected<script>
                     </font>
                 </th>
 
-                <th style="padding: 1px; margin: 0px; border-top: 1px">
-                    <font size="2px">Estado</font>
-                </th>
-                
-                <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: center">
-                    <font size="2" class="text-nowrap">Clas.
-                        <a href="#" @click.prevent="setOrder('classification')">
-                        </a>
-                    </font>
-                </th style="padding:0">
-
-                <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: center">
-                    <font size="2" class="text-nowrap">Rel.
-                        <a href="#" @click.prevent="setOrder('release')">
-                        </a>
-                    </font>
-                </th>
             </tr>
         </thead>
 
-        <tbody v-for="project in filteredByTerm">
+        <tbody v-for="system in filteredByTerm">
             <tr>
                 <td style="padding: 1px; margin: 0px; border-top: 1px; text-align: center; width: 25px; border-radius: 3px;">
                     <input
                         type="checkbox" 
-                        :value="project" 
+                        :value="system" 
                         v-model="selected_"
-                        @click="selectProject"
+                        @click="selectsystem"
                     />
                 </td>
 
-                <td style="padding: 1px; margin: 0px; border-top: 1px; text-align: center">
-                    <div class="text-center" style="padding:0;">
-                        <img alt="Farol Verde" src="../../../../../asset/image/verde.png" v-show="project.trafficLight === 'VERDE'" style="padding:0; margin:0; border:0">
-                        <img alt="Farol Amarelo" src="../../../../../asset/image/amarelo.png" v-show="project.trafficLight === 'AMARELO'" style="padding:0; margin:0; border:0">
-                        <img alt="Farol Vermelho" src="../../../../../asset/image/vermelho.png" v-show="project.trafficLight === 'VERMELHO'" style="padding:0; margin:0; border:0">
-                    </div>
-                </td>
-
-                <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: center">
-                    <font size="2px">{{project.subprojectDelivery}}</font>
+                <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: left">
+                    <font size="2px">{{system.tower}}</font>
                 </td>
 
                 <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">
-                    <font size="2px">{{project.name}}</font>
+                    <font size="2px">{{system.name}}</font>
                 </td>
 
-                <td style="padding: 1px; margin: 0px; border-top: 1px;">
-                    <font size="2px">{{project.state}}</font>
-                </td>
-
-                <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: center">
-                    <font size="2px">{{project.classification}}</font>
-                </td>
-
-                <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: center">
-                    <font size="2px">{{project.release}}</font>
-                </td>
             </tr>
         </tbody> 
       </table>

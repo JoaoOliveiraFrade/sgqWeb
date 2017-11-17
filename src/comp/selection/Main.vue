@@ -54,7 +54,6 @@
         this.$emit('onConfirm', selected)
       }
     }
-
   }
 </script>
 

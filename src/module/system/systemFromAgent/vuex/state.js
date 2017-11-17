@@ -1,4 +1,11 @@
 export default {
+  systemFilterProperties: [
+    { name: 'name' },
+    { name: 'tower' }
+  ],
+
+  filterTerm: '',
+
   loading: false,
 
   data: [],

@@ -1,6 +1,6 @@
 <script>
   import ServicesProjectXgrouper from '@/module/projectXgrouper/services'
-  import ServicesProject from '@/module/project/services'
+  import ServicesProject from '@/module/project/project/services'
   import ServicesGrouper from '../services'
   import oiShow from './show_.vue'
 

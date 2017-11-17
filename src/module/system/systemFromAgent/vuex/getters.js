@@ -1,13 +1,10 @@
 export const getDataFbyDevManuf = ({ dataGbyDevManuf }) => filterDevManuf => {
-  const result = dataGbyDevManuf.filter((el) => {
-    filterDevManuf.some((d) => d.id === el.devManuf)
-  })
+  const result = dataGbyDevManuf.filter(el => filterDevManuf.some(f => f.id === el.devManuf))
 
-  const resultUnique = result.filter((el, index, arr) =>
-    arr.findIndex((i) => i.system === el.system && i.tower === el.tower) === index
-  ).map(m => ({system: m.system, tower: m.tower}))
-
-  return resultUnique
+  const unique = result.filter((el, index, arr) =>
+    arr.findIndex(i => i.id === el.id) === index
+  ).map(m => ({ id: m.id, name: m.name, tower: m.tower }))
+  return unique.filter(r => r.tower + r.name > '').sort((a, b) => a.tower + a.name > b.tower + b.name ? 1 : -1)
 }
 
 // export const getDataFbyDevManuf = ({ dataGbyDevManuf, filterDevManuf }) => {

@@ -1,4 +1,4 @@
-selected<script>
+<script>
   import oiModal from '@/comp/modal/Modal2.vue'
 
   export default {
@@ -40,6 +40,7 @@ selected<script>
 <style scoped>
   .fd-label {
     font-weight: normal;
-    text-align: left
+    text-align: left;
+    color: gray;
   }
 </style>

@@ -1,16 +1,16 @@
 <script>
   import { mapActions } from 'vuex'
   import oiModal from '@/comp/modal/Modal_.vue'
-  import oiReport from '@/module/project/comp/showReport.vue'
+  import oiReport from '@/module/project/project/comp/showReport.vue'
   import { paths } from '@/environment'
   
   import Toastr from 'toastr'
 
   import oiGrid from './grid.vue'
   import oiEdit from './edit.vue'
-  import oiView from '@/module/project/comp/view.vue'
+  import oiView from '@/module/project/project/comp/view.vue'
   import services from '../services'
-  import services2 from '@/module/project/services'
+  import services2 from '@/module/project/project/services'
   
   import getStatusTrans from '@/lib/getStatusTrans'
 
@@ -26,12 +26,12 @@
         state: 'search',
 
         filterProperties: [
-            {name: 'subprojectDelivery'},
-            {name: 'name'},
-            {name: 'classification'},
-            {name: 'release'},
-            {name: 'state'},
-            {name: 'trafficLight'}
+          {name: 'subprojectDelivery'},
+          {name: 'name'},
+          {name: 'classification'},
+          {name: 'release'},
+          {name: 'state'},
+          {name: 'trafficLight'}
         ],
 
         projectFilterTerm: '',
@@ -327,32 +327,26 @@
       },
 
       loadIterations (project) {
-        services2.getIterations(project)
-          .then(resp => {
-            this.iterations = resp.data
-          }
-        )
+        services2.getIterations(project).then(resp => {
+          this.iterations = resp.data
+        })
       },
 
       loadIterationsActive (project) {
-        services2.getIterationsActive(project)
-          .then(resp => {
-            this.iterationsActive = resp.data
-            if (this.iterationsActive.length === 1) {
-              if (this.iterationsActive[0] === '') {
-                this.iterationsActive = []
-              }
+        services2.getIterationsActive(project).then(resp => {
+          this.iterationsActive = resp.data
+          if (this.iterationsActive.length === 1) {
+            if (this.iterationsActive[0] === '') {
+              this.iterationsActive = []
             }
           }
-        )
+        })
       },
 
       loadIterationsSelected (project) {
-        services2.getIterationsSelected(project)
-          .then(resp => {
-            this.iterationsSelected = resp.data
-          }
-        )
+        services2.getIterationsSelected(project).then(resp => {
+          this.iterationsSelected = resp.data
+        })
       }
 
     }

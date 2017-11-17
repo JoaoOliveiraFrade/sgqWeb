@@ -1,4 +1,4 @@
-import * as types from './mutationsTypes'
+import * as types from './mutationsTypes.js'
 
 export default {
   [types.setFeatureName] (state, name) {

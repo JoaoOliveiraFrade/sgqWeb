@@ -1,5 +1,5 @@
 import * as types from './mutationsTypes'
-import services from '@/module/project/services'
+import services from '@/module/project/project/services'
 
 import servicesOperDevDefectDensity from '@/module/indicator/operational/dev/defectDensity/services'
 import servicesOperDevDefectAverangeTime from '@/module/indicator/operational/dev/defectAverangeTime/services'
@@ -89,64 +89,42 @@ export const setSelected = ({ commit }, paramenter) => {
 }
 
 export const setSelectedMonoselection = ({ commit }, project) => {
-  services.getProjectsByIds(project.id.toString())
-    .then(r => {
-      commit(types.selectedMonoselection, r.data[0])
-    }
-  )
+  services.getProjectsByIds(project.id.toString()).then(r => {
+    commit(types.selectedMonoselection, r.data[0])
+  })
 
-  servicesOperDevDefectDensity.defectDensityFbyProject(project)
-    .then(r => {
-      commit(types.operDevDefectDensity, r.data)
-    }
-  )
-  servicesOperDevDefectAverangeTime.fbyProject(project)
-    .then(r => {
-      commit(types.operDevDefectAverangeTime, r.data)
-    }
-  )
-  servicesOperDevDefectReopened.fbyProject(project)
-    .then(r => {
-      commit(types.operDevDefectReopened, r.data)
-    }
-  )
+  servicesOperDevDefectDensity.defectDensityFbyProject(project).then(r => {
+    commit(types.operDevDefectDensity, r.data)
+  })
+  servicesOperDevDefectAverangeTime.fbyProject(project).then(r => {
+    commit(types.operDevDefectAverangeTime, r.data)
+  })
+  servicesOperDevDefectReopened.fbyProject(project).then(r => {
+    commit(types.operDevDefectReopened, r.data)
+  })
 
-  servicesOperTestProductivity.fbyProject(project)
-    .then(r => {
-      commit(types.operTestProductivity, r.data)
-    }
-  )
-  servicesOperTestRejectionEvidence.fbyProject(project)
-    .then(r => {
-      commit(types.operTestRejectionEvidence, r.data)
-    }
-  )
-  servicesOperTestDefectUnfounded.fbyProject(project)
-    .then(r => {
-      commit(types.operTestDefectUnfounded, r.data)
-    }
-  )
-  servicesOperTestDefectUAT.fbyProject(project)
-    .then(r => {
-      commit(types.operTestDefectUAT, r.data)
-    }
-  )
-  servicesOperTestDefectAverangeRetestTime.fbyProject(project)
-    .then(r => {
-      commit(types.operTestDefectAverangeRetestTime, r.data)
-    }
-  )
+  servicesOperTestProductivity.fbyProject(project).then(r => {
+    commit(types.operTestProductivity, r.data)
+  })
+  servicesOperTestRejectionEvidence.fbyProject(project).then(r => {
+    commit(types.operTestRejectionEvidence, r.data)
+  })
+  servicesOperTestDefectUnfounded.fbyProject(project).then(r => {
+    commit(types.operTestDefectUnfounded, r.data)
+  })
+  servicesOperTestDefectUAT.fbyProject(project).then(r => {
+    commit(types.operTestDefectUAT, r.data)
+  })
+  servicesOperTestDefectAverangeRetestTime.fbyProject(project).then(r => {
+    commit(types.operTestDefectAverangeRetestTime, r.data)
+  })
 
-  servicesPerfDevDefectDensity.defectDensityFbyProject(project)
-    .then(r => {
-      commit(types.perfDevDefectDensity, r.data)
-    }
-  )
-  servicesPerfDevDefectOfTSInTI.fbyProject(project)
-    .then(r => {
-      commit(types.perfDevDefectOfTSInTI, r.data)
-    }
-  )
+  servicesPerfDevDefectDensity.defectDensityFbyProject(project).then(r => {
+    commit(types.perfDevDefectDensity, r.data)
+  })
+  servicesPerfDevDefectOfTSInTI.fbyProject(project).then(r => {
+    commit(types.perfDevDefectOfTSInTI, r.data)
+  })
 }
 
 export const setProjectFilterTerm = ({ commit }, filterTerm) => {

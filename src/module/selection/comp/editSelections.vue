@@ -9,7 +9,6 @@
         itemsSelected: {type: Array},
         gender: { type: String },
         onStart: {type: Function}
-       // onConfirm: {type: Function}
       },
 
       data () {

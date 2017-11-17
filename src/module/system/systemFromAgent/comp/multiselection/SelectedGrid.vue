@@ -6,7 +6,6 @@
       selected: { type: Array }
     }
   }
-
 </script>
 
 <template>
@@ -16,7 +15,7 @@
           <tr>
               <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: center">
                   <font size="2" class="text-nowrap">Proj.
-                      <a href="#" @click.prevent="setOrder('project')">
+                      <a href="#" @click.prevent="setOrder('system')">
                       </a>
                   </font>
               </th>
@@ -29,14 +28,14 @@
           </tr>
       </thead>
 
-      <tbody v-for="project in selected">
+      <tbody v-for="system in selected">
           <tr style="padding:0">
               <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: center">
-                  <font size="2">{{project.subprojectDelivery}}</font>
+                  <font size="2">{{system.subsystemDelivery}}</font>
               </td style="padding:0">
 
               <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">
-                  <font size="2">{{project.name}}</font>
+                  <font size="2">{{system.name}}</font>
               </td style="padding:0">
           </tr>
       </tbody> 

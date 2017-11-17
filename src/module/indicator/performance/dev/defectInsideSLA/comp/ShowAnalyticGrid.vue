@@ -8,7 +8,6 @@
       ...mapGetters('indPerfDevDefectInsideSLA', ['filteredByChart'])
     }
   }
-
 </script>
 
 <template>

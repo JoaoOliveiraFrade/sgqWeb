@@ -32,7 +32,7 @@
         this.chartParam.tooltip.headerFormat = ''
         this.chartParam.tooltip.pointFormat = `
           <b>{point.name}</b><br>
-          Tempo Médio (h): {point.y:.2f}%<br>
+          Tempo Médio: {point.y:.2f} (h)<br>
           Qte Horas: {point.qtyHour:.0f}<br>
           Qte Defeitos: {point.qtyDefect:.0f}<br>
         `

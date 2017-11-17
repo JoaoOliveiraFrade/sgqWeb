@@ -1,4 +1,6 @@
 <script>
+  import chartParametersTotal from '@/comp/chart/types/total'
+
   const Highcharts = require('highcharts')
 
   // const highchartsExporting = require('highcharts-exporting')
@@ -6,8 +8,6 @@
 
   const highchartsMore = require('highcharts-more')
   highchartsMore(Highcharts)
-
-  import chartParametersTotal from '@/comp/chart/types/Total'
 
   export default {
     name: 'chartdefectOfTSInTI',

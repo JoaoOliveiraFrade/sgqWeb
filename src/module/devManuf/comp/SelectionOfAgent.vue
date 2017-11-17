@@ -8,7 +8,8 @@
     components: { oiSelection },
 
     props: {
-      isShowButtonselectedOfAgent: {type: Boolean}
+      isShowButtonSelected: {type: Boolean},
+      preSelected: { type: Array, default: () => [] }
     },
 
     computed: {
@@ -25,8 +26,8 @@
     },
 
     mounted () {
-      this.loadFromAgent()
-      this.setSelected([])
+      this.loadDataFromAgent()
+      this.setSelected(this.preSelected)
     }
   }
 </script>

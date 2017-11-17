@@ -26,7 +26,7 @@ var webpackConfig = merge(baseWebpackConfig, {
   },
   plugins: [
     new webpack.ProvidePlugin({
-      $: 'jquery/dist/jquery.js',
+      // $: 'jquery/dist/jquery.js',
       jQuery: 'jquery/dist/jquery.js',
       "window.jQuery": "jquery/dist/jquery.js"      
     }),    

@@ -4,7 +4,7 @@
   import oiSelectionDefectQueue from '@/module/defect/defectQueue/comp/Selection.vue'
   import oiSelectionDefectStatus from '@/module/defect/defectStatus/comp/Selection.vue'
   import oiSelectionDefectTrafficLight from '@/module/defect/defectTrafficLight/comp/Selection.vue'
-  import oiSelectionProject from '@/module/project/comp/multiselection/Main.vue'
+  import oiSelectionProject from '@/module/project/project/comp/multiselection/Main.vue'
 
   // import oiShowData from './comp/ShowData.vue'
 

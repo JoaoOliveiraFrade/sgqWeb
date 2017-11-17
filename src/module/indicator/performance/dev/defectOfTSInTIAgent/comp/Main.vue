@@ -3,21 +3,19 @@
 
   import oiDevManufSelection from '@/module/devManuf/comp/SelectionOfAgent.vue'
   
-  import oiSystemMultiselectionFbyDevManuf from '@/module/system/systemFromAgent/comp/MultiselectionFbyDevManuf.vue'
+  // import oiSystemMultiselectionFbyDevManufByCheck from '@/module/system/systemFromAgent/comp/MultiselectionFbyDevManufByCheck.vue'
+  import oiSystemMultiselectionFbyDevManufByGrid from '@/module/system/systemFromAgent/comp/MultiselectionFbyDevManufByGrid.vue'
   
-  // import oiSelectionFromAgentFbyDevManufs from '@/module/system/systemFromAgent/comp/SelectionFromAgentFbyDevManufs.vue'
-  // import oiProjectMonoSelectionFbyDevManufAndSystems from '@/module/project/comp/SelectionFromAgentFbyDevManufAndSystems.vue'
-  // import oiShowData from './comp/ShowData.vue'
+  import oiProjectMonoSelectionFbyDevManufAndSystems from '@/module/project/project/comp/SelectionFromAgentFbyDevManufAndSystems.vue'
+  import oiShowData from './ShowData.vue'
 
   export default {
     name: 'indPerfDevDefectFromTSInTIAgentMain',
 
-    components: { oiDevManufSelection, oiSystemMultiselectionFbyDevManuf },
-    // components: { oiDevManufSelection, oiSelectionFromAgentFbyDevManufs, oiProjectMonoSelectionFbyDevManufAndSystems, oiShowData },
+    components: { oiDevManufSelection, oiSystemMultiselectionFbyDevManufByGrid, oiProjectMonoSelectionFbyDevManufAndSystems, oiShowData },
 
     computed: {
       ...mapState('indPerfDevDefectOfTSInTIAgent', ['selectedDevManuf', 'selectedSystem', 'selectedProject'])
-      // ...mapGetters('indPerfDevDefectDensity', ['showData'])
     },
 
     methods: {
@@ -27,52 +25,48 @@
 
     mounted () {
       this.setFeatureName('Ind.Desemp.Des - Defeito de TS em TI (agente)')
-      // this.setSelectedDevManuf([])
     }
   }
 </script>
 
 <template>
   <div class="container-fluid" style="padding-top: 10px">
+
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4">
       <oiDevManufSelection
-        :isShowButtonSelected="true"
+        :preSelected="selectedDevManuf"
         @onConfirm="setSelectedDevManuf"
-      />
-    </div>
-
-<!--v-show="selectedDevManuf.length > 0"-->
-
-    <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
-      <oiSystemMultiselectionFbyDevManuf 
-        :devManufs="selectedDevManuf"
-        :selectedSystem="selectedSystem"
-        @onConfirm="setSelectedSystem"
-      />
+      />      
     </div>
 
 <!--
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
-      <oiSelectionFromAgentFbyDevManufs v-show="selectedDevManuf.length > 0"
-        :devManufs="selectedDevManuf"
-        :selectedSystem="selectedSystem"
+      <oiSystemMultiselectionFbyDevManufByCheck v-show="selectedDevManuf.length > 0"
+        :filterDevManuf="selectedDevManuf"
+        :preSelected="selectedSystem"
         @onConfirm="setSelectedSystem"
       />
     </div>
-    
+-->
+
+    <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
+      <oiSystemMultiselectionFbyDevManufByGrid v-show="selectedDevManuf.length > 0"
+        :filterDevManuf="selectedDevManuf"
+        :preSelected="selectedSystem"
+        @onConfirm="setSelectedSystem"
+      />
+    </div>
+
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
       <oiProjectMonoSelectionFbyDevManufAndSystems v-show="selectedSystem.length > 0"
         :devManufs="selectedDevManuf"
         :systems="selectedSystem"
-        :selectedProject="selectedProject"
+        :preSelected="selectedProject"
         @onConfirm="setSelectedProject"
-      />
+      />      
     </div>
 
-    <div class="row well-sm oi-well" style="padding-top: 30px">
-      <oiShowData/>
-    </div>
--->    
+    <oiShowData/>
   </div> 
 </template>
 

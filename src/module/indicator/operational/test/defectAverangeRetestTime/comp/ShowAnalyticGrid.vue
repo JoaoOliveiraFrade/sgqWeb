@@ -8,7 +8,6 @@
       ...mapGetters('indicatorTestDefectAverangeRetestTime', ['filteredByChart'])
     }
   }
-
 </script>
 
 <template>

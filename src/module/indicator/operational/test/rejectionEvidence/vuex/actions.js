@@ -23,7 +23,7 @@ export const load = ({ commit, state, rootState }) => {
       e => {
         console.log(e)
         commit(types.loading, false)
-        reject()
+        reject(e)
       }
     )
   })
@@ -51,7 +51,7 @@ export const loadTimeline = ({ commit, state, rootState }) => {
       e => {
         console.log(e)
         commit(types.loadingTimeline, false)
-        reject()
+        reject(e)
       }
     )
   })

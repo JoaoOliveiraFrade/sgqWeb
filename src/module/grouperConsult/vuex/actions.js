@@ -1,7 +1,7 @@
 import * as types from './mutationsTypes'
 import services from '../services'
 import ServicesProjectXgrouper from '@/module/projectXgrouper/services'
-import ServicesProject from '@/module/project/services'
+import ServicesProject from '@/module/project/project/services'
 // import Toastr from 'toastr'
 
 export const loadGroupers = ({ commit }) => {
@@ -24,15 +24,12 @@ export const setGrouper = ({ commit }, grouperId) => {
       if (pg.data.length !== 0) {
         let projectsIds = pg.data.map(i => (i.project)).join()
 
-        ServicesProject.getProjectsByIds(projectsIds)
-          .then(r => {
-            commit(types.grouperProjects, r.data)
-          }
-        )
+        ServicesProject.getProjectsByIds(projectsIds).then(r => {
+          commit(types.grouperProjects, r.data)
+        })
       } else {
         commit(types.grouperProjects, [])
       }
     })
   })
 }
-

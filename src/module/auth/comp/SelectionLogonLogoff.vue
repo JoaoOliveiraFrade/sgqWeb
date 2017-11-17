@@ -15,7 +15,7 @@
     },
 
     computed: {
-      ...mapGetters(['isLogged'])
+      ...mapGetters('auth', ['isLogged'])
     },
 
     methods: {

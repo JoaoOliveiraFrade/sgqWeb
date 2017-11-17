@@ -8,7 +8,6 @@
       ...mapGetters('indicatorRejectionEvidence', ['dataTimelineBySelectedRejectionType'])
     }
   }
-
 </script>
 
 <template>

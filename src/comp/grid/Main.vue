@@ -1,0 +1,267 @@
+<script>
+  import oiSelection from '@/comp/selectionGrid/Main.vue'
+
+  export default {
+    name: 'Grid',
+
+    props: {
+      data: Array,
+      filterTermMessage: { type: String, default: '' },
+      selectionType: { type: String, default: 'none' },
+      columns: Array
+    },
+
+    components: { oiSelection },
+
+    data () {
+      let sortOrders = {}
+      this.columns.forEach(column => {
+        sortOrders[column.id] = 0
+      })
+
+      let selectedOptions = {}
+      this.columns.forEach(column => {
+        selectedOptions[column.id] = column.filterOptions
+      })
+
+      return ({
+        filterTerm: '',
+        sortColumnName: '',
+        sortOrders,
+        selectedOptions
+      })
+    },
+
+    computed: {
+      filteredData () {
+        let data = this.data
+
+        if (this.filterTerm) {
+          data = data.filter(row => {
+            return Object.keys(row).some(key => {
+              return String(row[key]).toLowerCase().indexOf(this.filterTerm) > -1
+            })
+          })
+        }
+
+        let filterColumns = this.columns.filter(column => this.selectedOptions[column.id].length !== 0 && column.filterOptions.length !== this.selectedOptions[column.id].length)
+
+        if (filterColumns.length > 0) {
+          data = data.filter(item => {
+            return filterColumns.every(filterColumn => {
+              return this.selectedOptions[filterColumn.id].findIndex(e => e.id === item[filterColumn.id]) > -1
+            })
+          })
+        }
+
+        if (this.sortColumnName) {
+          data = data.slice().sort((a, b) => {
+            a = a[this.sortColumnName]
+            b = b[this.sortColumnName]
+            return (a === b ? 0 : a > b ? 1 : -1) * this.sortOrders[this.sortColumnName]
+          })
+        }
+        return data
+      }
+    },
+
+    filters: {
+      capitalize (str) {
+        return str.charAt(0).toUpperCase() + str.slice(1)
+      }
+    },
+
+    methods: {
+      setSortColumn (column) {
+        console.log(column)
+        this.sortColumnName = column.id
+        this.sortOrders[column.id] = this.sortOrders[column.id] === 0 ? 1 : this.sortOrders[column.id] * -1
+      },
+
+      sortIcon (column) {
+        if (this.sortColumnName === '' || column.id !== this.sortColumnName) {
+          return 'glyphicon-sort'
+        } else if (this.sortOrders[column.id] > 0) {
+          return 'glyphicon-sort-by-attributes'
+        } else {
+          return 'glyphicon-sort-by-attributes-alt'
+        }
+      },
+
+      yesNoImage (data) {
+        return '<img alt="Farol Vermelho" src="../../asset/image/vermelho-sm.png" class="img">'
+        // if (data === 'SIM') {
+        //   return '<img src="../../asset/image/verde.png" class="img">'
+        // } else {
+        //   return '<img src="../../asset/image/vermelho.png" class="img">'
+        // }
+      }
+    }
+  }
+</script>
+
+<template>
+  <div>
+
+    <div class="row">
+
+      <div class="col-sm-8">
+
+        <input type="text" class="form-control" 
+          style="margin: 0; padding-left: 3px; height: 25px"
+          autofocus v-focus
+          v-model="filterTerm"
+          v-show="filterTermMessage != ''"
+          :placeholder="filterTermMessage"
+        />    
+
+      </div>
+
+      <div class="col-sm-4">
+
+        <select class="form-control" 
+          style="margin: 0; padding-left: 3px; height: 25px"
+          v-select2="selected_college_class_id">
+            <option value="" disabled selected>Choose a class</option>
+            <option v-for="column in columns" 
+              :value="column.id">{{ column.name.replace(/-<br>/g, '') }}
+            </option>
+        </select>
+
+      </div>
+
+    </div>
+
+
+    <!-- @keyup="setProjectFilterTerm(filterTerm)" -->
+
+    <table class="table table-condensed table-striped table-hover table-bordered">
+      <thead>
+
+        <tr>
+          <th style="padding: 0px 2px;" v-show="selectionType !== 'none'"/>
+
+          <!-- :class="{ active: sortColumnName == column.id }" -->
+          <th v-for="column in columns"
+            v-show="column.show"
+            :style="'padding: 0px 2px; font-size: 12px; vertical-align: middle; white-space: nowrap; text-align:' + column.alignHeader">
+
+            <span style="white-space: normal" v-html="column.name"/>
+
+          </th>
+        </tr>
+
+        <tr>
+          <th style="padding: 0px 1px;" v-show="selectionType !== 'none'"/>
+
+          <!-- :class="{ active: sortColumnName == column.id }" -->
+          <th v-for="column in columns"
+            v-show="column.show"
+            :style="'padding: 0px 1px; font-size: 12px; vertical-align: middle; white-space: nowrap; text-align:' + column.alignHeader">
+
+            <a title="Ordenar"
+              v-show="column.sort"
+              @click.provide="setSortColumn(column)">
+
+              <i :class="'glyphicon ' + sortIcon(column)" style="font-size: 12px;"/>
+            </a>
+
+            <oiSelection v-show="column.filterOptions.length > 0"
+              :title="column.id"
+              :data="column.filterOptions"
+              :selected="selectedOptions[column.id]"
+              @onConfirm="selected => selectedOptions[column.id] = selected"
+            />
+
+          </th>
+
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr v-for="row in filteredData">
+
+          <td style="padding: 0px 2px; vertical-align: middle; width: 1px" v-show="selectionType !== 'none'">
+            <a href="#"
+              style="padding: 0px; margin: 0px; border-top: 1px"
+              data-toggle="tooltip"
+              data-dismiss="modal"
+              title="Selecionar" 
+              @click="$emit('setSelected', row)">
+
+              <i class='glyphicon glyphicon-list-alt' style="font-size: 14px"></i>
+            </a>
+          </td>
+<!--
+          <td v-for="column in columns"
+            v-show="column.show"
+            :style="'padding: 0px 2px; vertical-align: middle; font-size: 12px; text-align:' + column.align + (column.minWidth === '' ? '' : '; min-width: ' + column.minWidth)"
+            v-html="!column.yesNoImage ? row[column.id] : '<img src=\'./vermelho.png>'"
+            >
+          </td>
+	--,'<span style=''color:red''>' + hasGMUD + '</span>' as hasGMUD
+-->            
+          <td v-for="column in columns"
+            v-show="column.show"
+            style="padding: 0px 2px; vertical-align: middle; font-size: 12px;"
+            :style="('text-align:' + column.align) + 
+              (column.minWidth === '' ? '' : ';min-width:' + column.minWidth) + 
+              (row[column.id] === 'SIM' ? ';color:green' : (row[column.id] === 'NÃO' ? ';color:red' : ''))"
+            v-html="row[column.id]">
+          </td>
+
+        </tr>
+      </tbody>
+
+    </table>
+
+  </div>
+</template>
+
+<style scoped>
+  a:hover, a:visited, a:link, a:active
+  {
+      text-decoration: none;
+      cursor: pointer;
+  }
+  img {
+    margin-top: 8px; 
+    border: 0; 
+    padding: 0;
+    height: 18px;
+    width: 18px;
+  }  
+
+  table {
+    border-collapse: separate;
+    border-radius: 5px;
+    border: 1px solid #d9d9d9;
+
+    margin-top: 3px;
+    margin-bottom: 0px;
+  }
+
+  .th {
+    padding: 2px;
+    margin: 0px;
+    border-top: 1px;
+    text-align: center
+  }
+
+  .loader {
+      margin: auto;
+      width: 50%;
+      border: 16px solid #f3f3f3; /* Light grey */
+      border-top: 16px solid #3498db; /* Blue */
+      border-bottom: 16px solid #3498db;
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      animation: spin 2s linear infinite;
+  }
+
+  @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+  }  
+</style>

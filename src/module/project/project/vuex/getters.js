@@ -147,4 +147,3 @@ export const perfDevDefectOfTSInTITotal = ({ perfDevDefectOfTSInTI }) => {
 
   return { qtyOfTSInTI, qtyDefect, percOfTSInTI }
 }
-

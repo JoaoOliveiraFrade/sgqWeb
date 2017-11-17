@@ -132,16 +132,16 @@
         this.$emit('onConfirmIterations', this.iterationsSelected)
       }
 
-        /*
-        const _this = this
-        this.systemsFiltered = this.systems.filter(e => _this.devManufacturersSelected.indexOf(e.devManufacturing) > -1)
-        this.systemsSelected = []
+      /*
+      const _this = this
+      this.systemsFiltered = this.systems.filter(e => _this.devManufacturersSelected.indexOf(e.devManufacturing) > -1)
+      this.systemsSelected = []
 
-        this.projectsFiltered = []
-        this.projectsSelected = []
+      this.projectsFiltered = []
+      this.projectsSelected = []
 
-        this.selectDevManufConfirmed = true
-        */
+      this.selectDevManufConfirmed = true
+      */
     }
   }
 </script>
@@ -180,9 +180,9 @@
               <div class="col-12 col-sm-1 text-left">
                   <label class="fd-label">Farol &nbsp</label>
                   <div class="text-left" style="padding-bottom:5px">
-                    <img alt="Farol Verde" src="../../../asset/image/verde-sm.png"  v-show="project.trafficLight === 'VERDE'">
-                    <img alt="Farol Amarelo" src="../../../asset/image/amarelo-sm.png" v-show="project.trafficLight === 'AMARELO'">
-                    <img alt="Farol Vermelho" src="../../../asset/image/vermelho-sm.png" v-show="project.trafficLight === 'VERMELHO'">
+                    <img alt="Farol Verde" src="../../../../asset/image/verde-sm.png"  v-show="project.trafficLight === 'VERDE'">
+                    <img alt="Farol Amarelo" src="../../../../asset/image/amarelo-sm.png" v-show="project.trafficLight === 'AMARELO'">
+                    <img alt="Farol Vermelho" src="../../../../asset/image/vermelho-sm.png" v-show="project.trafficLight === 'VERMELHO'">
                   </div>
               </div>
 

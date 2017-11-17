@@ -8,7 +8,6 @@
       ...mapGetters('indicatorProductivity', ['filteredByChart'])
     }
   }
-
 </script>
 
 <template>

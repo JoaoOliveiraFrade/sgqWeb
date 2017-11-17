@@ -29,8 +29,7 @@ export const load = ({ commit, state, rootState }) => {
       selectedDevManuf: rootState.indPerfDevDefectInsideSLA.selectedDevManuf.map(i => i.id),
       selectedSystem: rootState.indPerfDevDefectInsideSLA.selectedSystem.map(i => i.id),
       selectedProject: rootState.indPerfDevDefectInsideSLA.selectedProject.map(i => i.subproject + i.delivery)
-    })
-    .then(
+    }).then(
       r => {
         commit(types.data, r.data)
         commit(types.loading, false)
@@ -39,7 +38,7 @@ export const load = ({ commit, state, rootState }) => {
       e => {
         console.log(e)
         commit(types.loading, false)
-        reject()
+        reject(e)
       }
     )
   })

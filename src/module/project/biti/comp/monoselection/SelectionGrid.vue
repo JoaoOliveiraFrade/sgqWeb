@@ -1,19 +1,20 @@
-selected<script>
-  import { mapGetters, mapActions } from 'vuex'
+<script>
+  import { mapState, mapGetters, mapActions } from 'vuex'
 
   export default {
     name: 'SelectionGrid',
 
     computed: {
-      ...mapGetters('project', ['filteredByTerm'])
+      ...mapState('projectBiti', ['filterTerm']),
+      ...mapGetters('projectBiti', ['dataFilteredByTerm'])
     },
 
     methods: {
-      ...mapActions('project', ['setProjectFilterTerm', 'setSelectedMonoselection']),
+      ...mapActions('projectBiti', ['setFilterTerm', 'setSelected'])
 
-      selectProject: function () {
-        // this.$emit('onConfirm', this.selected_)
-      }
+    //   selectProject: function () {
+    //     // this.$emit('onConfirm', this.selected_)
+    //   }
     }
   }
 </script>
@@ -28,11 +29,12 @@ selected<script>
     <div>
       
       <input type="text"
-          autofocus v-focus
-          class="form-control" 
-          style="margin: 0; padding-left: 3px; height: 25px"
-          placeholder="Informe os filtros. Na pesq. por farol, digite a cor 'verd' ou 'amar' ou 'verm'. Ex: multip+verd+2017."
-          @keyup="setProjectFilterTerm(filterTerm)"
+        autofocus v-focus
+        class="form-control" 
+        style="margin: 0; padding-left: 3px; height: 25px"
+        placeholder="Informe os filtros! Na pesq. de farol, digite a cor 'verd', 'amar' ou 'verm'. Ex: verd+multip+2017."
+        :value="filterTerm"
+        @keyup="setFilterTerm($event.target.value)"          
       />    
       
       <table class="table table-condensed table-striped table-hover table-bordered" style="margin-bottom:5px; padding-bottom:0; margin-top:3px">
@@ -40,9 +42,6 @@ selected<script>
             <tr>
                 <th style="padding: 1px; margin: 0px; border-top: 1px; text-align: center; width: 25px;">
                   <font size="2px"></font>
-                </th>                                
-
-                <th style="padding: 1px; margin: 0px; border-top: 1px; text-align: center; width: 25px;">
                 </th>                                
 
                 <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: center">
@@ -69,17 +68,10 @@ selected<script>
                         </a>
                     </font>
                 </th style="padding:0">
-
-                <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: center">
-                    <font size="2" class="text-nowrap">Rel.
-                        <a href="#" @click.prevent="setOrder('release')">
-                        </a>
-                    </font>
-                </th>
             </tr>
         </thead>
 
-        <tbody v-for="project in filteredByTerm">
+        <tbody v-for="item in dataFilteredByTerm">
             <tr>
                 <td style="padding: 1px; margin: 0px; border-top: 1px; text-align: center; width: 25px; border-radius: 3px;">
                   <a class="btn"
@@ -87,38 +79,26 @@ selected<script>
                     data-toggle="tooltip"
                     data-dismiss="modal"
                     title="Selecionar" 
-                    @click="setSelectedMonoselection(project)"
+                    @click="setSelected(item)"
                   >
                     <i class='glyphicon glyphicon-list-alt'></i>
                   </a>
                 </td>                
 
-                <td style="padding: 1px; margin: 0px; border-top: 1px; text-align: center">
-                    <div class="text-center" style="padding:0;">
-                        <img alt="Farol Verde" src="../../../../asset/image/verde.png" v-show="project.trafficLight === 'VERDE'" style="padding:0; margin:0; border:0">
-                        <img alt="Farol Amarelo" src="../../../../asset/image/amarelo.png" v-show="project.trafficLight === 'AMARELO'" style="padding:0; margin:0; border:0">
-                        <img alt="Farol Vermelho" src="../../../../asset/image/vermelho.png" v-show="project.trafficLight === 'VERMELHO'" style="padding:0; margin:0; border:0">
-                    </div>
-                </td>
-
                 <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: center">
-                    <font size="2px">{{project.subprojectDelivery}}</font>
+                    <font size="2px">{{item.subprojectDelivery}}</font>
                 </td>
 
                 <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">
-                    <font size="2px">{{project.name}}</font>
+                    <font size="2px">{{item.name}}</font>
                 </td>
 
                 <td style="padding: 1px; margin: 0px; border-top: 1px;">
-                    <font size="2px">{{project.state}}</font>
+                    <font size="2px">{{item.state}}</font>
                 </td>
 
                 <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: center">
-                    <font size="2px">{{project.classification}}</font>
-                </td>
-
-                <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: center">
-                    <font size="2px">{{project.release}}</font>
+                    <font size="2px">{{item.classification}}</font>
                 </td>
             </tr>
         </tbody> 

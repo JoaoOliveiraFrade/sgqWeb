@@ -1,6 +1,10 @@
 import * as types from './mutationsTypes'
 
 export default {
+  [types.filterTerm] (state, data) {
+    state.filterTerm = data
+  },
+
   [types.loading] (state, data) {
     state.loading = data
   },

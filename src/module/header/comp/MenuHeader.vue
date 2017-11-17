@@ -12,7 +12,7 @@
       }
     },
     methods: {
-      ...mapActions(['logOff']),
+      ...mapActions('auth', ['logOff']),
 
       localLogoff () {
         this.logOff()
@@ -21,7 +21,7 @@
       }
     },
     computed: {
-      ...mapGetters(['isLogged', 'currentUser'])
+      ...mapGetters('auth', ['isLogged', 'currentUser'])
     }
   }
 </script>
@@ -38,18 +38,22 @@
                 role="button" aria-haspopup="true" aria-expanded="false">Consultas<span class="caret"/>&nbsp;
             </a>
             <ul class="dropdown-menu">
-                <router-link :to="{ name: 'projectConsult' }" tag="li" @click.native="$emit('collapseMenuMobile')">
-                    <a class="oi-menu">Projetos</a>
-                </router-link>
-
                 <router-link :to="{ name: 'projectMonoselectionAndShow' }" tag="li" @click.native="$emit('collapseMenuMobile')">
-                    <a class="oi-menu">Projetos 2</a>
+                    <a class="oi-menu">Projeto 2</a>
                 </router-link>
                 
+                <router-link :to="{ name: 'projectBitiSearch' }" tag="li" @click.native="$emit('collapseMenuMobile')">
+                    <a class="oi-menu">Projeto BITI</a>
+                </router-link>
+
+                <router-link :to="{ name: 'projectConsult' }" tag="li" @click.native="$emit('collapseMenuMobile')">
+                    <a class="oi-menu">Projeto</a>
+                </router-link>
 
                 <router-link :to="{ name: 'searchGrouperConsult' }" tag="li" @click.native="$emit('collapseMenuMobile')">
-                    <a class="oi-menu">Agrupadores</a>
+                    <a class="oi-menu">Agrupador</a>
                 </router-link>
+
                 <!--
                 'fullscreen=yes, titlebar=no, toolbar=no, location=no, channelmode=0no, status=no, menubar=no, scrollbars=yes, resizable=yes'
                 -->
@@ -60,7 +64,7 @@
                         onclick="window.open('http://sgq.intranet/Mobile_Status_TRG_Menu.aspx', 
                             'newwindow', ''
                         ); 
-                        return false;">TRGs
+                        return false;">TRG
                     </a>
                 </li>
                 <li>
@@ -69,7 +73,7 @@
                         onclick="window.open('http://sgq.intranet/Mobile_Status_Release_Menu.aspx', 
                             'newwindow', ''
                         );
-                        return false">Releases
+                        return false">Release
                     </a>
                 </li>
                 <li>

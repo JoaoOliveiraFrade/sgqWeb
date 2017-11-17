@@ -1,4 +1,6 @@
 <script>
+  import chartParametersTimeline from '@/comp/chart/types/timeline'
+
   const Highcharts = require('highcharts')
 
   const highchartsMore = require('highcharts-more')
@@ -15,8 +17,6 @@
 
   const highchartsNoData = require('highcharts-no-data-to-display')
   highchartsNoData(Highcharts)
-
-  import chartParametersTimeline from '@/comp/chart/types/timeline'
 
   export default {
     name: 'chartExecutionProject',

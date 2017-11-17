@@ -14,12 +14,12 @@
         project: {},
 
         filterProperties: [
-            {name: 'subprojectDelivery'},
-            {name: 'name'},
-            {name: 'classification'},
-            {name: 'release'},
-            {name: 'state'},
-            {name: 'trafficLight'}
+          {name: 'subprojectDelivery'},
+          {name: 'name'},
+          {name: 'classification'},
+          {name: 'release'},
+          {name: 'state'},
+          {name: 'trafficLight'}
         ],
         projectFilterTerm: '',
 
@@ -82,7 +82,7 @@
           autofocus v-focus
           class="form-control" 
           style="margin: 0; padding-left: 3px; height: 25px"
-          placeholder="Informe os filtros. Na pesq. por farol, digite a cor 'verd' ou 'amar' ou 'verm'. Ex: multip+verd+2017."
+          placeholder="Informe os filtros! Na pesq. de farol, digite a cor 'verd', 'amar' ou 'verm'. Ex: verd+multip+2017."
           v-model="projectFilterTerm"
           @keyup="filterProjects"
       />

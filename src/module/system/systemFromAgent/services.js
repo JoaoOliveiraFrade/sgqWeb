@@ -4,7 +4,7 @@ import { paths } from '@/environment'
 export default {
   data () {
     let resource = Resource.resource(paths.api + '/systemFromAgent/data')
-    return resource.sagetve()
+    return resource.get()
   },
 
   dataGbyDevManuf () {

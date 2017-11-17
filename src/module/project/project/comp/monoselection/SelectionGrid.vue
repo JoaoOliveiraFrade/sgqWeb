@@ -1,72 +1,18 @@
-selected<script>
-  import { mapState, mapActions } from 'vuex'
+<script>
+  import { mapGetters, mapActions } from 'vuex'
 
   export default {
     name: 'SelectionGrid',
 
-    props: {
-      projects: { type: Array, default: [] },
-      selected: { type: Array, default: [] }
-      // projectsLoading: { type: Boolean, default: false }
-    },
-
-    data () {
-      return {
-        filterTerm: '',
-        selected_: this.selected,
-        isUpdate: false
-      }
-    },
-
     computed: {
-      ...mapState('project', ['projectFilterProperties']),
-      ...mapState('project', ['loading']),
-
-      filteredByTerm () {
-        if (this.filterTerm !== '') {
-          let words = this.filterTerm.split('+')
-
-          return this.projects.filter(item => {
-            return words.every(word => {
-              return this.projectFilterProperties.some(filterProperty => {
-                return item[filterProperty.name].toLowerCase().indexOf(word.toLowerCase()) > -1
-              })
-            })
-          })
-        } else {
-          return this.projects
-        }
-      }
-    },
-
-    watch: {
-      'selected': {
-        handler () {
-          this.selected_ = this.selected
-        }
-      }
+      ...mapGetters('project', ['filteredByTerm'])
     },
 
     methods: {
-      ...mapActions('project', ['setProjectFilterTerm', 'setSelectedProject']),
-
-      selectAll: function () {
-        this.selected_ = this.filteredByTerm
-        this.isUpdate = true
-      },
-
-      unSelectAll: function () {
-        this.selected_ = []
-        this.isUpdate = true
-      },
+      ...mapActions('project', ['setProjectFilterTerm', 'setSelectedMonoselection']),
 
       selectProject: function () {
-        this.isUpdate = true
-      },
-
-      confirm: function () {
-        this.$emit('onConfirm', this.selected_)
-        this.isUpdate = false
+        // this.$emit('onConfirm', this.selected_)
       }
     }
   }
@@ -74,43 +20,18 @@ selected<script>
 
 <template>
   <span>
+    <!--
     <div class="loader" v-show="loading" style="margin-top: 25px;margin-bottom: 25px"></div>    
     <div v-show="!loading">
-      <div class="col-xs-12" style="margin:0; border:0; padding:0; padding-bottom: 3px">
-        <span style="white-space:nowrap; padding:0">
-          <!--  v-show="dataSource.length > 0" -->
-          <button 
-            type="button" 
-            class="btn btn-xs" 
-            @click="selectAll">Todos
-          </button>
-
-          <!--  v-show="selected.length > 0" -->
-          <button 
-            type="button" 
-            class="btn btn-xs" 
-            @click="unSelectAll">Nenhum
-          </button>
-
-          <button 
-              type="button" 
-              class="btn btn-primary btn-xs" 
-              data-dismiss="modal"
-              v-show="isUpdate"
-              @click="confirm">Confirmar
-          </button>
-
-          <slot/>
-          
-        </span>    
-      </div>
+    -->
+    
+    <div>
       
       <input type="text"
           autofocus v-focus
           class="form-control" 
           style="margin: 0; padding-left: 3px; height: 25px"
-          placeholder="Informe os filtros. Na pesq. por farol, digite a cor 'verd' ou 'amar' ou 'verm'. Ex: multip+verd+2017."
-          v-model="filterTerm"
+          placeholder="Informe os filtros! Na pesq. de farol, digite a cor 'verd', 'amar' ou 'verm'. Ex: verd+multip+2017."
           @keyup="setProjectFilterTerm(filterTerm)"
       />    
       
@@ -161,19 +82,22 @@ selected<script>
         <tbody v-for="project in filteredByTerm">
             <tr>
                 <td style="padding: 1px; margin: 0px; border-top: 1px; text-align: center; width: 25px; border-radius: 3px;">
-                    <input
-                        type="checkbox" 
-                        :value="project" 
-                        v-model="selected_"
-                        @click="selectProject"
-                    />
-                </td>
+                  <a class="btn"
+                    style="padding: 0px; margin: 0px; border-top: 1px"
+                    data-toggle="tooltip"
+                    data-dismiss="modal"
+                    title="Selecionar" 
+                    @click="setSelectedMonoselection(project)"
+                  >
+                    <i class='glyphicon glyphicon-list-alt'></i>
+                  </a>
+                </td>                
 
                 <td style="padding: 1px; margin: 0px; border-top: 1px; text-align: center">
                     <div class="text-center" style="padding:0;">
-                        <img alt="Farol Verde" src="../../../../asset/image/verde.png" v-show="project.trafficLight === 'VERDE'" style="padding:0; margin:0; border:0">
-                        <img alt="Farol Amarelo" src="../../../../asset/image/amarelo.png" v-show="project.trafficLight === 'AMARELO'" style="padding:0; margin:0; border:0">
-                        <img alt="Farol Vermelho" src="../../../../asset/image/vermelho.png" v-show="project.trafficLight === 'VERMELHO'" style="padding:0; margin:0; border:0">
+                        <img alt="Farol Verde" src="../../../../../asset/image/verde.png" v-show="project.trafficLight === 'VERDE'" style="padding:0; margin:0; border:0">
+                        <img alt="Farol Amarelo" src="../../../../../asset/image/amarelo.png" v-show="project.trafficLight === 'AMARELO'" style="padding:0; margin:0; border:0">
+                        <img alt="Farol Vermelho" src="../../../../../asset/image/vermelho.png" v-show="project.trafficLight === 'VERMELHO'" style="padding:0; margin:0; border:0">
                     </div>
                 </td>
 
@@ -200,6 +124,7 @@ selected<script>
         </tbody> 
       </table>
     </div>
+    
   </span>            
 </template>
 

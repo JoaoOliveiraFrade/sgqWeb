@@ -29,13 +29,13 @@
     },
 
     methods: {
-      ...mapActions('indPerfDevDefectOfTSInTIAgent', ['load'])
+      ...mapActions('indPerfDevDefectOfTSInTIAgent', ['loadData'])
     },
 
     watch: {
       'selectedProject': {
         handler () {
-          this.load()
+          this.loadData()
         }
       }
     }
@@ -46,12 +46,11 @@
   <div v-show="selectedProject.length > 0">
     <div class="loader" v-show="loading" style="margin-top: 50px; margin-bottom: 25px"/>
     <div class="well well-sm oi-well col-xs-12" v-show="!loading" style="padding:3px">
-      
+    
       <oiShowRule style="text-align: left"/>
-      <oiShowAnalytic style="text-align: left"/>
+      <oiShowAnalytic style="text-align: left"/>      
 
-      <hr style="margin-top: 1px; height: 2px; border: 0; box-shadow: 0 7px 7px -7px #d9d9d9 inset">
-
+      <hr style="margin-top: 1px; height: 21px; border: 0; box-shadow: 0 7px 7px -7px #d9d9d9 inset">
       <div class="col-sm-4">
         <oiShowChartGroupDevManuf/>
       </div>
@@ -63,7 +62,6 @@
       <div class="col-sm-4">
         <oiShowChartTotal/>
       </div>
-    
     </div>
 
   </div>

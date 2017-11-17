@@ -2,10 +2,11 @@
   import { mapGetters, mapActions } from 'vuex'
   import Highcharts from 'highcharts'
   import HighchartsDrilldown from 'highcharts-drilldown'
+  import chartStandParam from '@/comp/chart/types/drillDown'
+
   if (!Highcharts.Chart.prototype.addSeriesAsDrilldown) {
     HighchartsDrilldown(Highcharts)
   }
-  import chartStandParam from '@/comp/chart/types/drillDown'
 
   export default {
     name: 'ShowChartGroupTestManufDefectUnfounded',

@@ -1,4 +1,6 @@
 <script>
+  import chartParameters from '@/comp/chart/types/pie'
+
   const Highcharts = require('highcharts')
 
   // const highchartsMore = require('highcharts-more')
@@ -15,8 +17,6 @@
 
   const highchartsNoData = require('highcharts-no-data-to-display')
   highchartsNoData(Highcharts)
-
-  import chartParameters from '@/comp/chart/types/pie'
 
   export default {
     name: 'chartGroupOrigin',
