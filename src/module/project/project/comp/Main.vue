@@ -29,7 +29,7 @@
     },
 
     mounted () {
-      this.setFeatureName('Consulta de projeto')
+      this.setFeatureName('Projeto')
       this.loadInitialData()
     },
 

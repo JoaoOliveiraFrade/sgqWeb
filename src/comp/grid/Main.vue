@@ -20,15 +20,16 @@
       })
 
       let selectedOptions = {}
-      this.columns.forEach(column => {
-        selectedOptions[column.id] = column.filterOptions
+      this.columns.forEach(c => {
+        selectedOptions[c.id] = []
       })
 
       return ({
         filterTerm: '',
         sortColumnName: '',
         sortOrders,
-        selectedOptions
+        selectedOptions,
+        selectedColumns: this.columns.filter(c => c.visible).map(c => c.id)
       })
     },
 
@@ -72,10 +73,10 @@
     },
 
     methods: {
-      setSortColumn (column) {
-        console.log(column)
-        this.sortColumnName = column.id
-        this.sortOrders[column.id] = this.sortOrders[column.id] === 0 ? 1 : this.sortOrders[column.id] * -1
+      setSelectedColumns () {
+        this.columns.forEach(c => {
+          c.visible = (this.selectedColumns.indexOf(c.id) > -1)
+        })
       },
 
       sortIcon (column) {
@@ -95,6 +96,20 @@
         // } else {
         //   return '<img src="../../asset/image/vermelho.png" class="img">'
         // }
+      },
+
+      xxxx () {
+
+      }
+    },
+
+    watch: {
+      'columns': {
+        handler () {
+          this.columns.forEach(c => {
+            this.selectedOptions[c.id] = c.filterOptions
+          })
+        }
       }
     }
   }
@@ -116,18 +131,26 @@
         />    
 
       </div>
-
+<!--
+        v-select2="selected_college_class_id"> 
+        :value="column.id">{{ column.name.replace('-<br>', '') }}
+        <option value="" disabled selected>Choose a class</option>
+            {{ column.name.replaceAll('br>', '').replaceAll('-<','').replaceAll('<', ' ') }}
+-->
       <div class="col-sm-4">
+        <select multiple
+          class="form-control"
+          style="margin: 0; padding-left: 3px"
+          v-model="selectedColumns"
+          @change="setSelectedColumns"
+          >
 
-        <select class="form-control" 
-          style="margin: 0; padding-left: 3px; height: 25px"
-          v-select2="selected_college_class_id">
-            <option value="" disabled selected>Choose a class</option>
-            <option v-for="column in columns" 
-              :value="column.id">{{ column.name.replace(/-<br>/g, '') }}
-            </option>
+          <option v-for="column in columns" 
+            :value="column.id">
+            {{ column.name.replaceAll('br>', '').replaceAll('-<','').replaceAll('<', ' ') }}
+          </option>
+
         </select>
-
       </div>
 
     </div>
@@ -143,7 +166,7 @@
 
           <!-- :class="{ active: sortColumnName == column.id }" -->
           <th v-for="column in columns"
-            v-show="column.show"
+            v-show="column.visible"
             :style="'padding: 0px 2px; font-size: 12px; vertical-align: middle; white-space: nowrap; text-align:' + column.alignHeader">
 
             <span style="white-space: normal" v-html="column.name"/>
@@ -152,11 +175,11 @@
         </tr>
 
         <tr>
-          <th style="padding: 0px 1px;" v-show="selectionType !== 'none'"/>
+          <th style="padding: 0px 1px" v-show="selectionType !== 'none'"/>
 
           <!-- :class="{ active: sortColumnName == column.id }" -->
           <th v-for="column in columns"
-            v-show="column.show"
+            v-show="column.visible"
             :style="'padding: 0px 1px; font-size: 12px; vertical-align: middle; white-space: nowrap; text-align:' + column.alignHeader">
 
             <a title="Ordenar"
@@ -181,9 +204,8 @@
       <tbody>
         <tr v-for="row in filteredData">
 
-          <td style="padding: 0px 2px; vertical-align: middle; width: 1px" v-show="selectionType !== 'none'">
+          <td style="padding: 0px 2px; padding-right:3px; vertical-align: middle; width: 1px" v-show="selectionType !== 'none'">
             <a href="#"
-              style="padding: 0px; margin: 0px; border-top: 1px"
               data-toggle="tooltip"
               data-dismiss="modal"
               title="Selecionar" 
@@ -194,7 +216,7 @@
           </td>
 <!--
           <td v-for="column in columns"
-            v-show="column.show"
+            v-show="column.visible"
             :style="'padding: 0px 2px; vertical-align: middle; font-size: 12px; text-align:' + column.align + (column.minWidth === '' ? '' : '; min-width: ' + column.minWidth)"
             v-html="!column.yesNoImage ? row[column.id] : '<img src=\'./vermelho.png>'"
             >
@@ -202,7 +224,7 @@
 	--,'<span style=''color:red''>' + hasGMUD + '</span>' as hasGMUD
 -->            
           <td v-for="column in columns"
-            v-show="column.show"
+            v-show="column.visible"
             style="padding: 0px 2px; vertical-align: middle; font-size: 12px;"
             :style="('text-align:' + column.align) + 
               (column.minWidth === '' ? '' : ';min-width:' + column.minWidth) + 
@@ -224,6 +246,7 @@
       text-decoration: none;
       cursor: pointer;
   }
+
   img {
     margin-top: 8px; 
     border: 0; 

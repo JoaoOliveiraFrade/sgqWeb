@@ -1,23 +1,28 @@
 <script>
-  import { mapActions } from 'vuex'
+  import { mapActions, mapState } from 'vuex'
 
-  // import oiMonoselection from './monoselection/Main.vue'
+  // import oiMonoselection from '@/module/project/project/comp/monoselection/Main.vue'
   import oiMonoselection from './Monoselection.vue'
-
   import oiShowSelected from './ShowSelected.vue'
   import oiShowData from './ShowData.vue'
 
   export default {
-    name: 'projectBitiSearch',
+    name: 'Search',
 
     components: { oiMonoselection, oiShowSelected, oiShowData },
 
+    computed: {
+      ...mapState('biti', ['selectedMonoselection'])
+    },
+
     methods: {
-      ...mapActions(['setFeatureName'])
+      ...mapActions(['setFeatureName']),
+      ...mapActions('project', ['load'])
     },
 
     mounted () {
-      this.setFeatureName('Projeto BITI - Pesquisa')
+      this.setFeatureName('BITI')
+      this.load()
     }
   }
 </script>
@@ -25,7 +30,9 @@
 <template>
   <div class="container-fluid" style="padding-top: 10px">
 
-    <oiMonoselection/> 
+    <div>
+      <oiMonoselection/> 
+    </div>
 <!--
     <div class="row well well-sm" style="margin:0; padding:0; padding-left:5px">
       <oiShowSelected/>

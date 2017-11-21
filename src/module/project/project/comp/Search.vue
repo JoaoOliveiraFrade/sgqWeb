@@ -6,7 +6,7 @@
   import oiShowData from './ShowData.vue'
 
   export default {
-    name: 'monoselectionAndShow',
+    name: 'Search',
 
     components: { oiMonoselection, oiShowSelected, oiShowData },
 
@@ -20,7 +20,7 @@
     },
 
     mounted () {
-      this.setFeatureName('Projeto - Pesq/Exibição')
+      this.setFeatureName('Projeto')
       this.load()
     }
   }

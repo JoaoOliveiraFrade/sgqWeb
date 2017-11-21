@@ -38,12 +38,12 @@
                 role="button" aria-haspopup="true" aria-expanded="false">Consultas<span class="caret"/>&nbsp;
             </a>
             <ul class="dropdown-menu">
-                <router-link :to="{ name: 'projectMonoselectionAndShow' }" tag="li" @click.native="$emit('collapseMenuMobile')">
+                <router-link :to="{ name: 'projectSearch' }" tag="li" @click.native="$emit('collapseMenuMobile')">
                     <a class="oi-menu">Projeto 2</a>
                 </router-link>
                 
-                <router-link :to="{ name: 'projectBitiSearch' }" tag="li" @click.native="$emit('collapseMenuMobile')">
-                    <a class="oi-menu">Projeto BITI</a>
+                <router-link :to="{ name: 'bitiSearch' }" tag="li" @click.native="$emit('collapseMenuMobile')">
+                    <a class="oi-menu">BITI</a>
                 </router-link>
 
                 <router-link :to="{ name: 'projectConsult' }" tag="li" @click.native="$emit('collapseMenuMobile')">

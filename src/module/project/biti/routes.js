@@ -1,5 +1,5 @@
-import oiProjectBitiSearch from './comp/Search.vue'
+import oibitiSearch from './comp/Search.vue'
 
 export default [
-  { path: '/project/biti/search', name: 'projectBitiSearch', component: oiProjectBitiSearch }
+  { path: '/project/biti/search', name: 'bitiSearch', component: oibitiSearch }
 ]

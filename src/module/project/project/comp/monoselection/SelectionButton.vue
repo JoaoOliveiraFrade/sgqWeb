@@ -29,7 +29,7 @@
             data-toggle="modal" 
             data-target="#modalSelectionProjectx">Seleção
         </button>
-        <oiModal id="modalSelectionProjectx" ref="vuemodal" title="Seleção de Projeto" size="l">
+        <oiModal id="modalSelectionProjectx" ref="vuemodal" title="Seleção" size="l">
             <oiSelectionGrid slot="body"/>
         </oiModal>    
     </span>
