@@ -1,8 +1,5 @@
 <script>
   import oiSelection from '@/comp/selectionGrid/Main.vue'
-  // import 'select2/dist/css/select2.css'
-  // import 'select2/dist/js/select2.js'
-  // import jQuery from 'jquery/dist/jquery.js'
   import vSelect from 'vue-select'
 
   export default {
