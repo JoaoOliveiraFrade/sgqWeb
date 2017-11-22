@@ -1,5 +1,9 @@
 <script>
   import oiSelection from '@/comp/selectionGrid/Main.vue'
+  // import 'select2/dist/css/select2.css'
+  // import 'select2/dist/js/select2.js'
+  // import jQuery from 'jquery/dist/jquery.js'
+  import vSelect from 'vue-select'
 
   export default {
     name: 'Grid',
@@ -11,7 +15,7 @@
       columns: Array
     },
 
-    components: { oiSelection },
+    components: { oiSelection, vSelect },
 
     data () {
       let sortOrders = {}
@@ -29,7 +33,11 @@
         sortColumnName: '',
         sortOrders,
         selectedOptions,
-        selectedColumns: this.columns.filter(c => c.visible).map(c => c.id)
+        selectedColumns: this.columns.filter(c => c.visible).map(c => c.id),
+        options: this.columns.filter(c => c.visible).map(c => ({
+          value: c.id,
+          label: c.name.replaceAll('br>', '').replaceAll('-<', '').replaceAll('<', ' ')
+        }))
       })
     },
 
@@ -117,41 +125,47 @@
 
 <template>
   <div>
+    <div class="row" style="padding: 0px 15px">
 
-    <div class="row">
+      <input type="text" class="form-control" 
+        style="margin: 0; padding-left: 3px; height: 25px"
+        autofocus v-focus
+        v-model="filterTerm"
+        v-show="filterTermMessage != ''"
+        :placeholder="filterTermMessage"
+      />    
 
-      <div class="col-sm-8">
-
-        <input type="text" class="form-control" 
-          style="margin: 0; padding-left: 3px; height: 25px"
-          autofocus v-focus
-          v-model="filterTerm"
-          v-show="filterTermMessage != ''"
-          :placeholder="filterTermMessage"
-        />    
-
-      </div>
+    </div>
 <!--
         v-select2="selected_college_class_id"> 
         :value="column.id">{{ column.name.replace('-<br>', '') }}
         <option value="" disabled selected>Choose a class</option>
             {{ column.name.replaceAll('br>', '').replaceAll('-<','').replaceAll('<', ' ') }}
--->
       <div class="col-sm-4">
-        <select multiple
+        <v-selec multiple 
+          ref="sfsdfdsdf"
           class="form-control"
           style="margin: 0; padding-left: 3px"
           v-model="selectedColumns"
-          @change="setSelectedColumns"
-          >
+          @change="setSelectedColumns">
 
-          <option v-for="column in columns" 
+          <option v-for="(column, index) in columns" :key="index"
             :value="column.id">
             {{ column.name.replaceAll('br>', '').replaceAll('-<','').replaceAll('<', ' ') }}
           </option>
 
-        </select>
+        </v-selec>
       </div>
+-->
+
+    <div class="row" style="padding: 0px 15px">
+
+      <v-select multiple 
+        v-model="selectedColumns" 
+        :options="options"
+        @change="setSelectedColumns"
+        >
+      </v-select>
 
     </div>
 
@@ -165,7 +179,7 @@
           <th style="padding: 0px 2px;" v-show="selectionType !== 'none'"/>
 
           <!-- :class="{ active: sortColumnName == column.id }" -->
-          <th v-for="column in columns"
+          <th v-for="(column, index) in columns" :key="index"
             v-show="column.visible"
             :style="'padding: 0px 2px; font-size: 12px; vertical-align: middle; white-space: nowrap; text-align:' + column.alignHeader">
 
@@ -178,18 +192,19 @@
           <th style="padding: 0px 1px" v-show="selectionType !== 'none'"/>
 
           <!-- :class="{ active: sortColumnName == column.id }" -->
-          <th v-for="column in columns"
+          <th v-for="(column, index) in columns" :key="index"
             v-show="column.visible"
             :style="'padding: 0px 1px; font-size: 12px; vertical-align: middle; white-space: nowrap; text-align:' + column.alignHeader">
 
             <a title="Ordenar"
               v-show="column.sort"
-              @click.provide="setSortColumn(column)">
+              @click="setSortColumn(column)">
 
               <i :class="'glyphicon ' + sortIcon(column)" style="font-size: 12px;"/>
             </a>
 
-            <oiSelection v-show="column.filterOptions.length > 0"
+            <oiSelection
+              v-show="column.filterOptions.length > 0"
               :title="column.id"
               :data="column.filterOptions"
               :selected="selectedOptions[column.id]"
@@ -202,7 +217,7 @@
       </thead>
 
       <tbody>
-        <tr v-for="row in filteredData">
+        <tr v-for="(row,index) in filteredData" :key="index">
 
           <td style="padding: 0px 2px; padding-right:3px; vertical-align: middle; width: 1px" v-show="selectionType !== 'none'">
             <a href="#"
@@ -223,7 +238,7 @@
           </td>
 	--,'<span style=''color:red''>' + hasGMUD + '</span>' as hasGMUD
 -->            
-          <td v-for="column in columns"
+          <td v-for="(column, index) in columns" :key="index"
             v-show="column.visible"
             style="padding: 0px 2px; vertical-align: middle; font-size: 12px;"
             :style="('text-align:' + column.align) + 
