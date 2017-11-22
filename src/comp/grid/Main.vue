@@ -28,15 +28,26 @@
         selectedOptions[c.id] = []
       })
 
+      let columnNames = {}
+      this.columns.forEach(c => {
+        columnNames[c.id] = c.name.replaceAll('br>', '').replaceAll('-<', '').replaceAll('<', ' ')
+      })
+
       return ({
         filterTerm: '',
         sortColumnName: '',
         sortOrders,
         selectedOptions,
-        selectedColumns: this.columns.filter(c => c.visible).map(c => c.id),
-        options: this.columns.filter(c => c.visible).map(c => ({
+        // selectedColumns: this.columns.filter(c => c.visible).map(c => columnNames[c.id]),
+
+        optionsColumns: this.columns.map(c => ({
           value: c.id,
-          label: c.name.replaceAll('br>', '').replaceAll('-<', '').replaceAll('<', ' ')
+          label: columnNames[c.id]
+        })),
+
+        selectedColumns: this.columns.filter(c => c.visible).map(c => ({
+          value: c.id,
+          label: columnNames[c.id]
         }))
       })
     },
@@ -83,7 +94,8 @@
     methods: {
       setSelectedColumns () {
         this.columns.forEach(c => {
-          c.visible = (this.selectedColumns.indexOf(c.id) > -1)
+          console.log(c.id + ': ' + c.visible + ' - ' + (this.selectedColumns.findIndex(o => o.value === c.id) > -1))
+          c.visible = (this.selectedColumns.findIndex(o => o.value === c.id) > -1)
         })
       },
 
@@ -104,10 +116,6 @@
         // } else {
         //   return '<img src="../../asset/image/vermelho.png" class="img">'
         // }
-      },
-
-      xxxx () {
-
       }
     },
 
@@ -136,8 +144,25 @@
       />    
 
     </div>
+
+    <div class="row" style="padding: 0px 15px">
+
+      <v-select multiple
+        style="font-size: 12px"
+        placeholder="Informe as colunas para exibição"
+        :searchable="true"
+        :options="optionsColumns"
+        :value="selectedColumns" 
+        :onChange="setSelectedColumns"
+        >
+      </v-select>
+
+    </div>
+    
 <!--
-        v-select2="selected_college_class_id"> 
+        v-model="selectedColumns" 
+  
+          v-select2="selected_college_class_id"> 
         :value="column.id">{{ column.name.replace('-<br>', '') }}
         <option value="" disabled selected>Choose a class</option>
             {{ column.name.replaceAll('br>', '').replaceAll('-<','').replaceAll('<', ' ') }}
@@ -157,18 +182,6 @@
         </v-selec>
       </div>
 -->
-
-    <div class="row" style="padding: 0px 15px">
-
-      <v-select multiple 
-        v-model="selectedColumns" 
-        :options="options"
-        @change="setSelectedColumns"
-        >
-      </v-select>
-
-    </div>
-
 
     <!-- @keyup="setProjectFilterTerm(filterTerm)" -->
 
