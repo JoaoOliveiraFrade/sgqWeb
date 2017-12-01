@@ -20,7 +20,7 @@
     <oiModal id="defectOfTSInTIShowRule" title="Regra">   
       <div style="margin:0; padding:10px" slot="body">
         <label class="fd-label">
-          Qte Defeito de TS encontrado em TI / Qte Total Defeito.<br><br>
+          <b>Qte Defeito de TS encontrado em TI / Qte Total Defeito.</b><br><br>
 
           São considerados os defeitos: <br>
           &nbsp;&nbsp;- Das etapas de TI e UAT.<br>

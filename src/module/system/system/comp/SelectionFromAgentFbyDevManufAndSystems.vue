@@ -15,7 +15,7 @@
     },
 
     computed: {
-      ...mapState('project', ['fromDevManufsAndSystems', 'selected'])
+      ...mapState('testProj', ['fromDevManufsAndSystems', 'selected'])
     },
 
     watch: {
@@ -28,7 +28,7 @@
     },
 
     methods: {
-      ...mapActions('project', ['loadFromAgentFbyDevManufsAndSystems', 'setSelected']),
+      ...mapActions('testProj', ['loadFromAgentFbyDevManufsAndSystems', 'setSelected']),
 
       confirm (selected) {
         this.setSelected(selected)

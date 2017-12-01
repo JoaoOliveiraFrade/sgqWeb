@@ -6,9 +6,10 @@
     name: 'Grid',
 
     props: {
-      data: Array,
       filterTermMessage: { type: String, default: '' },
       selectionType: { type: String, default: 'none' },
+      useColumnNameWithBreak: { type: Boolean, default: true },
+      data: Array,
       columns: Array
     },
 
@@ -30,22 +31,24 @@
         columnNames[c.id] = c.name.replaceAll('br>', '').replaceAll('-<', '').replaceAll('<', ' ')
       })
 
+      let optionsColumns = this.columns.map(c => ({
+        value: c.id,
+        label: columnNames[c.id]
+      }))
+
+      let selectedColumns = this.columns.filter(c => c.visible).map(c => ({
+        value: c.id,
+        label: columnNames[c.id]
+      }))
+
       return ({
+        columns_: this.columns,
         filterTerm: '',
         sortColumnName: '',
         sortOrders,
         selectedOptions,
-        // selectedColumns: this.columns.filter(c => c.visible).map(c => columnNames[c.id]),
-
-        optionsColumns: this.columns.map(c => ({
-          value: c.id,
-          label: columnNames[c.id]
-        })),
-
-        selectedColumns: this.columns.filter(c => c.visible).map(c => ({
-          value: c.id,
-          label: columnNames[c.id]
-        }))
+        optionsColumns,
+        selectedColumns
       })
     },
 
@@ -61,7 +64,7 @@
           })
         }
 
-        let filterColumns = this.columns.filter(column => this.selectedOptions[column.id].length !== 0 && column.filterOptions.length !== this.selectedOptions[column.id].length)
+        let filterColumns = this.columns_.filter(column => this.selectedOptions[column.id].length !== 0 && column.filterOptions.length !== this.selectedOptions[column.id].length)
 
         if (filterColumns.length > 0) {
           data = data.filter(item => {
@@ -78,6 +81,7 @@
             return (a === b ? 0 : a > b ? 1 : -1) * this.sortOrders[this.sortColumnName]
           })
         }
+
         return data
       }
     },
@@ -89,10 +93,20 @@
     },
 
     methods: {
+      setSortColumn (column) {
+        this.sortColumnName = column.id
+        this.sortOrders[column.id] = this.sortOrders[column.id] === 0 ? 1 : this.sortOrders[column.id] * -1
+      },
+
+      // setSelectedColumns () {
+      //   this.columns.forEach(c => {
+      //   c.visible = (this.selectedColumns.indexOf(c.id) > -1)
+      // }),
+
       setSelectedColumns () {
-        this.columns.forEach(c => {
-          console.log(c.id + ': ' + c.visible + ' - ' + (this.selectedColumns.findIndex(o => o.value === c.id) > -1))
+        this.columns_.forEach((c, index) => {
           c.visible = (this.selectedColumns.findIndex(o => o.value === c.id) > -1)
+          this.$set(this.columns_, index, c)
         })
       },
 
@@ -119,7 +133,9 @@
     watch: {
       'columns': {
         handler () {
-          this.columns.forEach(c => {
+          console.log('watch')
+          this.columns_ = this.columns
+          this.columns_.forEach(c => {
             this.selectedOptions[c.id] = c.filterOptions
           })
         }
@@ -129,11 +145,12 @@
 </script>
 
 <template>
-  <div>
+  <span>
+
     <div class="row" style="padding: 0px 15px">
 
       <input type="text" class="form-control" 
-        style="margin: 0; padding-left: 3px; height: 25px"
+        style="margin: 0; padding-left: 3px; width: 100%; height: 25px"
         autofocus v-focus
         v-model="filterTerm"
         v-show="filterTermMessage != ''"
@@ -151,58 +168,30 @@
         :options="optionsColumns"
         :value="selectedColumns" 
         :onChange="setSelectedColumns"
-        >
-      </v-select>
+      />
 
     </div>
     
-<!--
-        v-model="selectedColumns" 
-  
-          v-select2="selected_college_class_id"> 
-        :value="column.id">{{ column.name.replace('-<br>', '') }}
-        <option value="" disabled selected>Choose a class</option>
-            {{ column.name.replaceAll('br>', '').replaceAll('-<','').replaceAll('<', ' ') }}
-      <div class="col-sm-4">
-        <v-selec multiple 
-          ref="sfsdfdsdf"
-          class="form-control"
-          style="margin: 0; padding-left: 3px"
-          v-model="selectedColumns"
-          @change="setSelectedColumns">
-
-          <option v-for="(column, index) in columns" :key="index"
-            :value="column.id">
-            {{ column.name.replaceAll('br>', '').replaceAll('-<','').replaceAll('<', ' ') }}
-          </option>
-
-        </v-selec>
-      </div>
--->
-
-    <!-- @keyup="setProjectFilterTerm(filterTerm)" -->
-
     <table class="table table-condensed table-striped table-hover table-bordered">
+
       <thead>
 
         <tr>
           <th style="padding: 0px 2px;" v-show="selectionType !== 'none'"/>
 
-          <!-- :class="{ active: sortColumnName == column.id }" -->
-          <th v-for="(column, index) in columns" :key="index"
+          <th v-for="column in columns_"
             v-show="column.visible"
             :style="'padding: 0px 2px; font-size: 12px; vertical-align: middle; white-space: nowrap; text-align:' + column.alignHeader">
 
             <span style="white-space: normal" v-html="column.name"/>
-
           </th>
         </tr>
 
         <tr>
+        
           <th style="padding: 0px 1px" v-show="selectionType !== 'none'"/>
 
-          <!-- :class="{ active: sortColumnName == column.id }" -->
-          <th v-for="(column, index) in columns" :key="index"
+          <th v-for="(column, index) in columns_" :key="index"
             v-show="column.visible"
             :style="'padding: 0px 1px; font-size: 12px; vertical-align: middle; white-space: nowrap; text-align:' + column.alignHeader">
 
@@ -213,24 +202,22 @@
               <i :class="'glyphicon ' + sortIcon(column)" style="font-size: 12px;"/>
             </a>
 
-            <oiSelection
-              v-show="column.filterOptions.length > 0"
+            <oiSelection v-show="column.filterOptions.length > 0"
               :title="column.id"
               :data="column.filterOptions"
               :selected="selectedOptions[column.id]"
               @onConfirm="selected => selectedOptions[column.id] = selected"
             />
-
           </th>
 
         </tr>
       </thead>
 
       <tbody>
-        <tr v-for="(row,index) in filteredData" :key="index">
+        <tr v-for="(row, index) in filteredData" :key="index">
 
           <td style="padding: 0px 2px; padding-right:3px; vertical-align: middle; width: 1px" v-show="selectionType !== 'none'">
-            <a href="#"
+            <a
               data-toggle="tooltip"
               data-dismiss="modal"
               title="Selecionar" 
@@ -239,16 +226,8 @@
               <i class='glyphicon glyphicon-list-alt' style="font-size: 14px"></i>
             </a>
           </td>
-<!--
-          <td v-for="column in columns"
-            v-show="column.visible"
-            :style="'padding: 0px 2px; vertical-align: middle; font-size: 12px; text-align:' + column.align + (column.minWidth === '' ? '' : '; min-width: ' + column.minWidth)"
-            v-html="!column.yesNoImage ? row[column.id] : '<img src=\'./vermelho.png>'"
-            >
-          </td>
-	--,'<span style=''color:red''>' + hasGMUD + '</span>' as hasGMUD
--->            
-          <td v-for="(column, index) in columns" :key="index"
+
+          <td v-for="(column, index) in columns_" :key="index"
             v-show="column.visible"
             style="padding: 0px 2px; vertical-align: middle; font-size: 12px;"
             :style="('text-align:' + column.align) + 
@@ -262,7 +241,9 @@
 
     </table>
 
-  </div>
+    <!--<label>Encontrados: {{ data.length }}</label>-->
+
+  </span>
 </template>
 
 <style scoped>
@@ -300,8 +281,8 @@
       margin: auto;
       width: 50%;
       border: 16px solid #f3f3f3; /* Light grey */
-      border-top: 16px solid #3498db; /* Blue */
-      border-bottom: 16px solid #3498db;
+      border-top: 16px solid #e95420; /* Blue */
+      border-bottom: 16px solid #e95420;
       border-radius: 50%;
       width: 120px;
       height: 120px;

@@ -6,7 +6,7 @@
   // import oiSystemMultiselectionFbyDevManufByCheck from '@/module/system/systemFromAgent/comp/MultiselectionFbyDevManufByCheck.vue'
   import oiSystemMultiselectionFbyDevManufByGrid from '@/module/system/systemFromAgent/comp/MultiselectionFbyDevManufByGrid.vue'
   
-  import oiProjectMonoSelectionFbyDevManufAndSystems from '@/module/project/project/comp/SelectionFromAgentFbyDevManufAndSystems.vue'
+  import oiProjectMonoSelectionFbyDevManufAndSystems from '@/module/project/test/comp/SelectionFromAgentFbyDevManufAndSystems.vue'
   import oiShowData from './ShowData.vue'
 
   export default {

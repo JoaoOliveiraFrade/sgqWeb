@@ -1,5 +1,7 @@
 <script>
   import oiHeader from '@/module/header/comp/Main.vue'
+  // import jQuery from 'jquery/dist/jquery.js'
+  // import { Base64 } from '@/lib/base64'
   // import oiGrid from '@/comp/grid/main.vue'
   // import { mapState, mapActions } from 'vuex'
   // import store from './vuex'
@@ -8,51 +10,6 @@
   export default {
     name: 'App',
     components: { oiHeader }
-/*
-    data () {
-      return {
-        columns: [{
-          name: 'name',
-          alignHeader: 'center',
-          align: 'left',
-          filterOptions: [
-            { id: 'aaa', name: 'aaa' },
-            { id: 'bbbb', name: 'bbbb' }
-          ]
-        }, {
-          name: 'power',
-          alignHeader: 'center',
-          align: 'center',
-          filterOptions: [
-            { id: 80, name: 80 },
-            { id: 7, name: 7 },
-            { id: 100, name: 100 },
-            { id: 10, name: 10 },
-            { id: 51, name: 51 }
-          ]
-        }],
-
-        gridData: [
-          { name: 'aaa', power: 80 },
-          { name: 'aaa', power: 51 },
-          { name: 'aaa', power: 10 },
-          { name: 'aaa', power: 2 },
-          { name: 'aaa', power: 80 },
-          { name: 'aaa', power: 9 },
-          { name: 'bbbb', power: 51 },
-          { name: 'bbbb', power: 51 },
-          { name: 'bbbb', power: 80 },
-          { name: 'bbbb', power: 100 },
-          { name: 'bbbb', power: 39 }
-        ]
-      }
-    },
-    methods: {
-      setSelected (parameter) {
-        console.log(parameter)
-      }
-    }
-*/
   }
 </script>
 
@@ -70,7 +27,9 @@
       />
     </div>
 -->
+
     <router-view/>
+
   </div>
 </template>
 

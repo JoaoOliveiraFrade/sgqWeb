@@ -19,8 +19,8 @@
     </button>
     <oiModal id="defectUnfoundedShowRule" title="Regra">   
       <div style="margin:0; padding:10px" slot="body">
-        <label class="fd-label" style="font-weight: normal; text-align: left">
-          Qte de defeitos Improcedentes / Qte total de defeitos.<br><br>
+        <label class="fd-label">
+          <b>Qte de defeito Improcedente / Qte total de defeito.</b><br><br>
 
           São considerados somente os defeitos de TI.<br><br>
 
@@ -36,6 +36,7 @@
 <style scoped>
   .fd-label {
     font-weight: normal;
-    text-align: left
+    text-align: left;
+    color: gray;
   }
-</style
+</style>

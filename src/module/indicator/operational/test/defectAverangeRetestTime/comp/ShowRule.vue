@@ -19,8 +19,8 @@
     </button>
     <oiModal id="defectAverangeRetestTimeShowRule" title="Regra">   
       <div style="margin:0; padding:10px" slot="body">
-        <label class="fd-label" style="font-weight: normal; text-align: left">
-          Qte Horas de Reteste / Qte de Defeitos.<br><br>
+        <label class="fd-label">
+          <b>Qte Hora de Reteste / Qte de Defeito.</b><br><br>
 
           São considerados somente os defeitos de TI.<br><br>
 
@@ -37,5 +37,6 @@
   .fd-label {
     font-weight: normal;
     text-align: left;
+    color: gray;
   }
-</style
+</style>

@@ -3,7 +3,7 @@
 
   import oiDevManufSelection from '@/module/devManuf/comp/Selection.vue'
   import oiMultiselectionFbyDevManufByCheck from '@/module/system/system/comp/MultiselectionFbyDevManufByCheck.vue'
-  import oiProjectMonoSelectionFbyDevManufAndSystems from '@/module/project/project/comp/SelectionFbyDevManufAndSystems.vue'
+  import oiProjectMonoSelectionFbyDevManufAndSystems from '@/module/project/test/comp/SelectionFbyDevManufAndSystems.vue'
   import oiShowData from './ShowData.vue'
 
   export default {

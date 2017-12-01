@@ -5,16 +5,26 @@ import { vuex as testManuf } from './testManuf'
 import { vuex as system } from './system/system'
 import { vuex as systemFromAgent } from './system/systemFromAgent'
 
-import { vuex as project } from './project/project'
-import { vuex as projectBiti } from './project/biti'
+import { vuex as testProj } from './project/test'
+import { vuex as testPlan } from './project/test/module/testPlan'
+import { vuex as execution } from './project/test/module/execution'
+
+import { vuex as bitiProj } from './project/biti'
 
 import { vuex as indOperDevDefectDensity } from './indicator/operational/dev/defectDensity'
 import { vuex as indOperDevDefectAverangeTime } from './indicator/operational/dev/defectAverangeTime'
 
-import { vuex as indPerfDevDefectDensity } from './indicator/performance/dev/defectDensity'
-import { vuex as indPerfDevDefectInsideSLA } from './indicator/performance/dev/defectInsideSLA'
-import { vuex as indPerfDevDefectOfTSInTI } from './indicator/performance/dev/defectOfTSInTI'
-import { vuex as indPerfDevDefectOfTSInTIAgent } from './indicator/performance/dev/defectOfTSInTIAgent'
+import { vuex as indOperTestProductivity } from './indicator/operational/test/productivity'
+// import { vuex as indOperTestRejectionEvidence } from './indicator/operational/test/rejectionEvidence'
+// import { vuex as indOperTestDefectUnfounded } from './indicator/operational/test/defectUnfounded'
+// import { vuex as indOperTestDefectUAT } from './indicator/operational/test/defectUAT'
+// import { vuex as indOperTestDefectAverangeRetestTime } from './indicator/operational/test/defectAverangeRetestTime'
+// import { vuex as indOperTest } from './indicator/operational/test'
+
+// import { vuex as indPerfDevDefectDensity } from './indicator/performance/dev/defectDensity'
+// import { vuex as indPerfDevDefectInsideSLA } from './indicator/performance/dev/defectInsideSLA'
+// import { vuex as indPerfDevDefectOfTSInTI } from './indicator/performance/dev/defectOfTSInTI'
+// import { vuex as indPerfDevDefectOfTSInTIAgent } from './indicator/performance/dev/defectOfTSInTIAgent'
 
 // import { vuex as grouperConsult } from './grouperConsult'
 // import { vuex as indicatorDev } from './indicator/dev'
@@ -24,14 +34,7 @@ import { vuex as indPerfDevDefectOfTSInTIAgent } from './indicator/performance/d
 // import { vuex as defectMonitor } from './defect/defectMonitor'
 // import { vuex as indicatorDefectInsideSLA } from './indicator/performance/dev/DefectInsideSLA'
 
-// import { vuex as indOperTestProductivity } from './indicator/operational/test/productivity'
-// import { vuex as indOperTestRejectionEvidence } from './indicator/operational/test/rejectionEvidence'
-// import { vuex as indOperTestDefectUnfounded } from './indicator/operational/test/defectUnfounded'
-// import { vuex as indOperTestDefectUAT } from './indicator/operational/test/defectUAT'
-// import { vuex as indOperTestDefectAverangeRetestTime } from './indicator/operational/test/defectAverangeRetestTime'
-// import { vuex as indOperTest } from './indicator/operational/test'
-
-// import { vuex as pulledChain } from './pulledChain'
+import { vuex as pulledChain } from './pulledChain'
 
 export default {
   auth,
@@ -41,28 +44,31 @@ export default {
   system,
   systemFromAgent,
 
-  project,
-  projectBiti,
+  testProj,
+  testPlan,
+  execution,
+
+  bitiProj,
 
   indOperDevDefectDensity,
   indOperDevDefectAverangeTime,
 
-  indPerfDevDefectDensity,
-  indPerfDevDefectInsideSLA,
-  indPerfDevDefectOfTSInTI,
-  indPerfDevDefectOfTSInTIAgent
-
-  // grouperConsult,
-  // indicatorDev,
-
-  // indicatorDefectInsideSLA,
-
-  // indOperTestProductivity,
+  indOperTestProductivity,
   // indOperTestRejectionEvidence,
   // indOperTestDefectUnfounded,
   // indOperTestDefectUAT,
   // indOperTestDefectAverangeRetestTime,
   // indOperTest,
+
+  // indPerfDevDefectDensity,
+  // indPerfDevDefectInsideSLA,
+  // indPerfDevDefectOfTSInTI,
+  // indPerfDevDefectOfTSInTIAgent,
+
+  // grouperConsult,
+  // indicatorDev,
+
+  // indicatorDefectInsideSLA,
 
   // defectQueue,
   // defectStatus,
@@ -72,5 +78,5 @@ export default {
   // count,
   // task,
   // brewery,
-  // pulledChain
+  pulledChain
 }

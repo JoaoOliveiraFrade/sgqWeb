@@ -4,7 +4,7 @@
   import oiSelectionDefectQueue from '@/module/defect/defectQueue/comp/Selection.vue'
   import oiSelectionDefectStatus from '@/module/defect/defectStatus/comp/Selection.vue'
   import oiSelectionDefectTrafficLight from '@/module/defect/defectTrafficLight/comp/Selection.vue'
-  import oiSelectionProject from '@/module/project/project/comp/multiselection/Main.vue'
+  import oiSelectionProject from '@/module/project/test/comp/multiselection/Main.vue'
 
   // import oiShowData from './comp/ShowData.vue'
 
@@ -20,12 +20,12 @@
 
     computed: {
       // ...mapState(['selectedTestManufs', 'selectedSystem', 'projectConfirmed'])
-      ...mapState('project', ['data']),
+      ...mapState('testProj', ['data']),
       ...mapState('defectMonitor', ['selectedProject'])
     },
 
     methods: {
-      ...mapActions('project', ['load']),
+      ...mapActions('testProj', ['load']),
       ...mapActions('defectMonitor', ['setSelectedProject']),
       ...mapActions(['setFeatureName']),
 

@@ -1,5 +1,5 @@
 <script>
-  import servicesProject from '@/module/project/project/services'
+  import servicesProject from '@/module/project/test/services'
   import servicesCadProjectsXgroupers from '@/module/cadProjectsXgroupers/services'
   import oiProjectGridAssociation from './projectGridAssociation.vue'
   import oiProjectGridDissociation from './projectGridDissociation.vue'

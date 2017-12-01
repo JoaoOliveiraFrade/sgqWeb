@@ -20,7 +20,6 @@ import 'froala-editor/css/froala_editor.pkgd.min.css'
 import 'font-awesome/css/font-awesome.css'
 import 'froala-editor/css/froala_style.min.css'
 import VueFroala from 'vue-froala-wysiwyg'
-
 import VueResource from 'vue-resource'
 
 import App from './comp/App'

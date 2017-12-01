@@ -1,7 +1,7 @@
 // import * as types from './mutationsTypes'
 // import services from '../services'
 // import ServicesProjectXgrouper from '@/module/projectXgrouper/services'
-// import ServicesProject from '@/module/project/project/services'
+// import ServicesProject from '@/module/project/test/services'
 // // import Toastr from 'toastr'
 
 // export const loadGroupers = (context) => {

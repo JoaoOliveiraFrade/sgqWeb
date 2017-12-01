@@ -36,6 +36,14 @@
         } else {
           return true
         }
+      },
+
+      nome () {
+        return 'modalSelectionGrid' + this.title.replaceAll(' ', '').replaceAll('.', '').replaceAll('(', '').replaceAll(')', '')
+      },
+
+      hasFilter (item) {
+        return this.selected.length !== 0 && this.selected.length !== this.data.length
       }
 
       // selectedText () {
@@ -59,14 +67,14 @@
 <template>
   <span style="margin:0; border:0; padding-top:0">
 
-    <a href="#" 
+    <a
       data-toggle="modal"
       :data-target="'#modalSelectionGrid' +  title.replaceAll(' ', '').replaceAll('.', '').replaceAll('(', '').replaceAll(')', '')"
-      ><i class="glyphicon glyphicon glyphicon-filter" title="Filtrar" />
+      ><i class="glyphicon glyphicon glyphicon-filter" title="Filtrar" :style="hasFilter ? 'color: green' : ''"/>
     </a>
-        
+
     <oiModal
-      :id="'modalSelectionGrid' +  title.replaceAll(' ', '').replaceAll('.', '').replaceAll('(', '').replaceAll(')', '')" 
+      :id="nome"
       :title="'Seleção de ' + title" 
       size="l">
 
@@ -79,7 +87,7 @@
       </oiEdit> 
 
     </oiModal>
-    
+   
   </span>
 </template>
 
@@ -87,6 +95,7 @@
   a:hover, a:visited, a:link, a:active
   {
       text-decoration: none;
+      cursor: pointer;      
       font-size: 12px;
   }
 

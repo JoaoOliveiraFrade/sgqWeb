@@ -30,7 +30,7 @@
           <br>
           No gráfico Temporal, os defeitos são contabilizadas no mês/ano de fechamento.<br>
 -->
-          Qte de horas úteis / qte de defeitos.<br><br>
+          <b>Qte de hora útil / Qte de defeito.</b><br><br>
 
           São consideradas as horas de todos os Status e Agentes por onde o defeito passou.<br><br>
 
@@ -39,7 +39,7 @@
           &nbsp;&nbsp;- CLOSED.<br>
           &nbsp;&nbsp;- Severidade HIGH.<br><br>
 
-          No cálculo do "Tempo útil", são consideradas as hora entre 9 às 18, exceto fins de semana.
+          No cálculo da "Qte de Hora útil", são consideradas as hora entre 9 às 18, exceto fins de semana.
         </label>
       </div>
     </oiModal>

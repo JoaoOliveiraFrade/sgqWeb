@@ -20,7 +20,7 @@
     <oiModal id="rejectionEvidenceShowRule" title="Regra">   
       <div style="margin:0; padding:10px" slot="body">
         <label class="fd-label">
-          Qte de Rejeições de Evidências / Qte de CTs.<br><br>
+          <b>Qte de Rejeição de Evidência / Qte de CT.</b><br><br>
 
           São considerados os CTs: <br>
           &nbsp;&nbsp;- Da etapa de TI.<br>
@@ -29,10 +29,9 @@
 
           CTs com evidências, são os que contém o campo "Validação Evidência" diferente de N/A.<br><br>
 
-          São consideradas as rejeições Técnicas e as de Clientes.<br><br>
+          São consideradas as rejeições Técnicas e de Cliente.<br><br>
 
           No gráfico Temporal, as rejeições são contabilizadas no mês/ano em que elas ocorreram.
-
         </label>
       </div>
     </oiModal>
@@ -42,6 +41,7 @@
 <style scoped>
   .fd-label {
     font-weight: normal;
-    text-align: left
+    text-align: left;
+    color: gray;
   }
 </style>

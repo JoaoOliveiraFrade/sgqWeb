@@ -13,8 +13,7 @@ export const load = ({ commit, state, rootState }) => {
       selectedTestManufs: rootState.indicatorTest.selectedTestManufs.map(i => i.id),
       selectedSystem: rootState.indicatorTest.selectedSystem.map(i => i.id),
       selectedProject: rootState.indicatorTest.selectedProject.map(i => i.subproject + i.delivery)
-    })
-    .then(
+    }).then(
       r => {
         commit(types.data, r.data)
         commit(types.loading, false)

@@ -1,4 +1,5 @@
 <script>
+  // import jQuery from 'jquery/dist/jquery.js'
   export default {
     name: 'Modal',
 
@@ -17,12 +18,12 @@
 </script>
 
 <template>
-    <div class="modal" :id="id" >
+    <div class="modal" :id="id">
         <div class="modal-dialog" :style="size==='l' ? 'max-width: 95%; width: auto !important;' : ''">
             <div class="modal-content" style="margin:0; border:0; padding:0; background-color: #f8f8ff">
 
                 <div class="modal-header">
-                    <a href="#"
+                    <a
                         data-toggle="tooltip" 
                         data-dismiss="modal"
                         title="Fechar">
@@ -46,6 +47,11 @@
 </template>
 
 <style scoped>
+  a:hover, a:visited, a:link, a:active
+  {
+      text-decoration: none;
+      cursor: pointer;      
+  }
   .modal-header {
     margin:0;
     border:0;

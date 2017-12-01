@@ -20,17 +20,7 @@
     <oiModal id="defectReopenedShowRule" title="Regra">   
       <div style="margin:0; padding:10px" slot="body">
         <label class="fd-label">
-<!--        
-          Defeitos "Detectáveis em TS", divididos pelo Total de Defeitos.<br>
-          <br>
-          São considerados os defeitos: <br>
-          &nbsp;&nbsp;1) Das etapas de TI e UAT.<br>
-          &nbsp;&nbsp;2) CLOSED.<br>
-          &nbsp;&nbsp;3) De CONSTRUÇÃO.<br>
-          <br>
-          No gráfico Temporal, os defeitos são contabilizadas no mês/ano de fechamento.<br>
--->
-          Qte de vezes em que os defeitos passaram pelo Status REOPEN / Qte Defeitos.<br><br>
+          <b>Qte de vezes em que o defeito passou pelo Status REOPEN / Qte de Defeito.</b><br><br>
 
           São considerados os defeitos: <br>
           &nbsp;&nbsp;1) Das etapas de TI e UAT.<br>
@@ -45,5 +35,6 @@
   .fd-label {
     font-weight: normal;
     text-align: left;
+    color: gray;
   }
 </style>

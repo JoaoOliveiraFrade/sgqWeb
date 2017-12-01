@@ -12,7 +12,13 @@
       this.setFeatureName('Home')
     },
     methods: {
-      ...mapActions(['setFeatureName'])
+      ...mapActions(['setFeatureName']),
+      show () {
+        this.$modal.show('hello-world')
+      },
+      hide () {
+        this.$modal.hide('hello-world')
+      }
     }
   }
 </script>

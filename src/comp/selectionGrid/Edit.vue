@@ -79,6 +79,7 @@
         v-on:click="confirm()">Confirmar
     </button>
 
+
     <hr class="col-xs-12">
 
     <div class="row well-sm reset">

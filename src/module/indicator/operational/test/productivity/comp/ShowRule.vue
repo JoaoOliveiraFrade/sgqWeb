@@ -14,27 +14,17 @@
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
-        data-target="#defectReopenedShowRule">
+        data-target="#productivityShowRule">
         Regra
     </button>
-    <oiModal id="defectReopenedShowRule" title="Regra">   
+    <oiModal id="productivityShowRule" title="Regra">   
       <div style="margin:0; padding:10px" slot="body">
         <label class="fd-label">
-<!--        
-          Defeitos "Detectáveis em TS", divididos pelo Total de Defeitos.<br>
-          <br>
-          São considerados os defeitos: <br>
-          &nbsp;&nbsp;1) Das etapas de TI e UAT.<br>
-          &nbsp;&nbsp;2) CLOSED.<br>
-          &nbsp;&nbsp;3) De CONSTRUÇÃO.<br>
-          <br>
-          No gráfico Temporal, os defeitos são contabilizadas no mês/ano de fechamento.<br>
--->
-          Qte de vezes em que os defeitos passaram pelo Status REOPEN / Qte Defeitos.<br><br>
+          <b>Qte de Execução (PASSED + FAILED).</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
 
-          São considerados os defeitos: <br>
-          &nbsp;&nbsp;1) Das etapas de TI e UAT.<br>
-          &nbsp;&nbsp;2) CLOSED.
+          São considerados os CTs:<br>
+          &nbsp;&nbsp;1) Das etapas de TI.<br>
+          &nbsp;&nbsp;2) Com Status 'PASSED' e 'FAILED'.
         </label>
       </div>
     </oiModal>
@@ -44,6 +34,7 @@
 <style scoped>
   .fd-label {
     font-weight: normal;
-    text-align: left
+    text-align: left;
+    color: gray;
   }
 </style>

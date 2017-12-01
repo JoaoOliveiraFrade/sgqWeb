@@ -19,12 +19,12 @@
     </button>
     <oiModal id="defectUATShowRule" title="Regra">   
       <div style="margin:0; padding:10px" slot="body">
-        <label class="fd-label" style="font-weight: normal; text-align: left">
-          Qte Defeitos de UAT / Qte Defeitos de TI e UAT.<br>
-          <br>
-          São desconsiderados os defeitos com status CANCELLED.<br>
-          <br>
-          No gráfico Temporal, os defeitos de UAT são contabilizadas no mês/ano em que eles foram criados.<br>
+        <label class="fd-label">
+          <b>Qte Defeito de UAT / Qte Defeito de TI e UAT.</b><br><br>
+
+          São desconsiderados os defeitos com status CANCELLED.<br><br>
+
+          No gráfico Temporal, os defeitos de UAT são contabilizadas no mês/ano em que eles foram criados.
         </label>
       </div>
     </oiModal>
@@ -35,5 +35,6 @@
   .fd-label {
     font-weight: normal;
     text-align: left;
+    color: gray;
   }
-</style
+</style>

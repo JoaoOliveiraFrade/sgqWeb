@@ -4,7 +4,7 @@
   import oiChartDefectAverangeTimeTotal from '@/comp/chart/defect/DefectAverangeTimeTotal'
   import oiChartdefectOfTSInTI from '@/comp/chart/defect/DefectOfTSInTITotal'
   import oiSelection from '@/module/selection/comp/selections.vue'
-  import services from '@/module/project/project/services'
+  import services from '@/module/project/test/services'
 
   export default {
     name: 'cadProjectsEdit',
