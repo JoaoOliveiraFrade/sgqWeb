@@ -10,8 +10,8 @@
     components: { oiModal, oiGrid },
 
     computed: {
-      ...mapState('biti', ['data', 'selected', 'loading']),
-      ...mapGetters('biti', [
+      ...mapState('bitiProj', ['data', 'selected', 'loading']),
+      ...mapGetters('bitiProj', [
         'distinctState',
         'distinctClassification',
         'distinctUN',
@@ -294,7 +294,7 @@
     },
 
     methods: {
-      ...mapActions('biti', ['loadData', 'setSelected'])
+      ...mapActions('bitiProj', ['loadData', 'setSelected'])
     },
 
     mounted () {

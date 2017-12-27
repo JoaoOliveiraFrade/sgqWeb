@@ -32,3 +32,33 @@ export const loadDataGroupMonth = ({ commit }, project) => {
       }
     )
 }
+
+export const loadDataProductivityXDefects = ({ commit }, project) => {
+  commit(types.loading, true)
+  services.productivityXDefects(project)
+    .then(
+      r => {
+        commit(types.productivityXDefects, r.data)
+        commit(types.loading, false)
+      },
+      e => {
+        console.log(e)
+        commit(types.loading, false)
+      }
+    )
+}
+
+export const loadDataProductivityXDefectsGroupWeekly = ({ commit }, project) => {
+  commit(types.loading, true)
+  services.productivityXDefectsGroupWeekly(project)
+    .then(
+      r => {
+        commit(types.productivityXDefectsGroupWeekly, r.data)
+        commit(types.loading, false)
+      },
+      e => {
+        console.log(e)
+        commit(types.loading, false)
+      }
+    )
+}

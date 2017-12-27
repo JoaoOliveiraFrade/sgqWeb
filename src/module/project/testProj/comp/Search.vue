@@ -1,7 +1,7 @@
 <script>
   import { mapActions, mapState } from 'vuex'
 
-  import oiMonoselection from '@/module/project/test/comp/monoselection/Main.vue'
+  import oiMonoselection from '@/module/project/testProj/comp/monoselection/Main.vue'
   import oiShowSelected from './ShowSelected.vue'
   import oiShowData from './ShowData.vue'
 

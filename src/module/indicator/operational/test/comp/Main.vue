@@ -3,7 +3,7 @@
 
   import oiTestManufSelection from '@/module/testManuf/comp/Selection.vue'
   import oiSystemSelectionFromTestManufs from '@/module/system/system/comp/SelectionFromTestManufs.vue'
-  import oiProjectSelectionFromTestManufsAndSystems from '@/module/project/test/comp/SelectionFromTestManufsAndSystems.vue'
+  import oiProjectSelectionFromTestManufsAndSystems from '@/module/project/testProj/comp/SelectionFromTestManufsAndSystems.vue'
   import oiShowData from './ShowData.vue'
 
   export default {

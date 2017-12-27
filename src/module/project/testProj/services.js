@@ -13,47 +13,47 @@ export default {
   // },
 
   load () {
-    let resource = Resource.resource(paths.api + '/project/all')
+    let resource = Resource.resource(paths.api + '/project/testProj/all')
     return resource.get()
   },
 
   loadFbyDevManufsAndSystems (devManufsAndSystems) {
-    let resource = Resource.resource(paths.api + '/project/fbyDevManufsAndSystems')
+    let resource = Resource.resource(paths.api + '/project/testProj/fbyDevManufsAndSystems')
     return resource.save(devManufsAndSystems)
   },
 
   loadFromTestManufsAndSystems (testManufsAndSystems) {
-    let resource = Resource.resource(paths.api + '/project/fromTestManufsAndSystems')
+    let resource = Resource.resource(paths.api + '/project/testProj/fromTestManufsAndSystems')
     return resource.save(testManufsAndSystems)
   },
 
   loadFromAgentFbyDevManufsAndSystems (testManufsAndSystems) {
-    let resource = Resource.resource(paths.api + '/project/FromAgentFbyDevManufsAndSystems')
+    let resource = Resource.resource(paths.api + '/project/testProj/FromAgentFbyDevManufsAndSystems')
     return resource.save(testManufsAndSystems)
   },
 
   loadFbySubprojectDelivery (projects) {
-    let resource = Resource.resource(paths.api + '/project/loadFbySubprojectDelivery')
+    let resource = Resource.resource(paths.api + '/project/testProj/loadFbySubprojectDelivery')
     return resource.save(projects)
   },
 
   getProjects () {
-    let resource = Resource.resource(paths.api + '/project/all')
+    let resource = Resource.resource(paths.api + '/project/testProj/all')
     return resource.get()
   },
 
   getProjectsByIds (ids) {
-    let resource = Resource.resource(paths.api + '/project/byIds/{ids}')
+    let resource = Resource.resource(paths.api + '/project/testProj/byIds/{ids}')
     return resource.get({ids: ids})
   },
 
   getProjectBySubEnt (subproject, delivery) {
-    let resource = Resource.resource(paths.api + '/project/bySubprojectDelivery{/subproject}{/delivery}')
+    let resource = Resource.resource(paths.api + '/project/testProj/bySubprojectDelivery{/subproject}{/delivery}')
     return resource.get({ subproject: subproject, delivery: delivery })
   },
 
   getProject (project) {
-    let resource = Resource.resource(paths.api + '/project/bySubprojectDelivery{/subproject}{/delivery}')
+    let resource = Resource.resource(paths.api + '/project/testProj/bySubprojectDelivery{/subproject}{/delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
@@ -63,116 +63,116 @@ export default {
   },
 
   getDensity (project) {
-    let resource = Resource.resource(paths.api + '/project/DefectsDensity{/subproject}{/delivery}')
+    let resource = Resource.resource(paths.api + '/project/testProj/DefectsDensity{/subproject}{/delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
   getReopened (project) {
-    let resource = Resource.resource(paths.api + '/project/DefectsReopened{/subproject}{/delivery}')
+    let resource = Resource.resource(paths.api + '/project/testProj/DefectsReopened{/subproject}{/delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
   getdefectOfTSInTI (project) {
-    let resource = Resource.resource(paths.api + '/project/DefectsdefectOfTSInTI{/subproject}{/delivery}')
+    let resource = Resource.resource(paths.api + '/project/testProj/DefectsdefectOfTSInTI{/subproject}{/delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
   getDefectsStatus (project) {
-    let resource = Resource.resource(paths.api + '/project/DefectsStatus{/subproject}{/delivery}')
+    let resource = Resource.resource(paths.api + '/project/testProj/DefectsStatus{/subproject}{/delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
   getDefectsGroupOrigin (project) {
-    let resource = Resource.resource(paths.api + '/project/DefectsGroupOrigin{/subproject}{/delivery}')
+    let resource = Resource.resource(paths.api + '/project/testProj/DefectsGroupOrigin{/subproject}{/delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
   getCTsImpactedXDefects (project) {
-    let resource = Resource.resource(paths.api + '/project/CtsImpactedXDefects{/subproject}{/delivery}')
+    let resource = Resource.resource(paths.api + '/project/testProj/CtsImpactedXDefects{/subproject}{/delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
   getDefectsOpenInDevManuf (project) {
-    let resource = Resource.resource(paths.api + '/project/DefectsOpenInDevManuf{/subproject}{/delivery}')
+    let resource = Resource.resource(paths.api + '/project/testProj/DefectsOpenInDevManuf{/subproject}{/delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
   getDefectsOpenInTestManuf (project) {
-    let resource = Resource.resource(paths.api + '/project/DefectsOpenInTestManuf{/subproject}{/delivery}')
+    let resource = Resource.resource(paths.api + '/project/testProj/DefectsOpenInTestManuf{/subproject}{/delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
   // ITERATIONS
 
   iterations (project) {
-    let resource = Resource.resource(paths.api + '/project/iterations{/subproject}{/delivery}')
+    let resource = Resource.resource(paths.api + '/project/testProj/iterations{/subproject}{/delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
   iterationsActive (project) {
-    let resource = Resource.resource(paths.api + '/project/iterationsActive{/subproject}{/delivery}')
+    let resource = Resource.resource(paths.api + '/project/testProj/iterationsActive{/subproject}{/delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
   iterationsSelected (project) {
-    let resource = Resource.resource(paths.api + '/project/iterationsSelected{/subproject}{/delivery}')
+    let resource = Resource.resource(paths.api + '/project/testProj/iterationsSelected{/subproject}{/delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
   updateIterationsActive (item) {
-    let resource = Resource.resource(paths.api + '/project/UpdateIterationsActive{/id}')
+    let resource = Resource.resource(paths.api + '/project/testProj/UpdateIterationsActive{/id}')
     return resource.update({ id: item.projectId }, item.iterations)
   },
 
   updateIterationsSelected (item) {
-    let resource = Resource.resource(paths.api + '/project/UpdateIterationsSelected{/id}')
+    let resource = Resource.resource(paths.api + '/project/testProj/UpdateIterationsSelected{/id}')
     return resource.update({ id: item.projectId }, item.iterations)
   },
 
   ClearIterations (projectId) {
-    let resource = Resource.resource(paths.api + '/project/ClearIterations{/id}')
+    let resource = Resource.resource(paths.api + '/project/testProj/ClearIterations{/id}')
     return resource.get({id: projectId})
   },
 
   // --------
 
   getDensityByIterations (project) {
-    let resource = Resource.resource(paths.api + '/project/DefectsDensityByProjectIterations{/subproject}{/delivery}')
+    let resource = Resource.resource(paths.api + '/project/testProj/DefectsDensityByProjectIterations{/subproject}{/delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
   getReopenedIterations (project, iterations) {
-    let resource = Resource.resource(paths.api + '/project/DefectsReopenedIterations{/subproject}{/delivery}')
+    let resource = Resource.resource(paths.api + '/project/testProj/DefectsReopenedIterations{/subproject}{/delivery}')
     return resource.update({ subproject: project.subproject, delivery: project.delivery }, iterations)
   },
 
   getdefectOfTSInTIIterations (project, iterations) {
-    let resource = Resource.resource(paths.api + '/project/DefectsdefectOfTSInTIIterations{/subproject}{/delivery}')
+    let resource = Resource.resource(paths.api + '/project/testProj/DefectsdefectOfTSInTIIterations{/subproject}{/delivery}')
     return resource.update({ subproject: project.subproject, delivery: project.delivery }, iterations)
   },
 
   getDefectsStatusIterations (project, iterations) {
-    let resource = Resource.resource(paths.api + '/project/DefectsStatusIterations{/subproject}{/delivery}')
+    let resource = Resource.resource(paths.api + '/project/testProj/DefectsStatusIterations{/subproject}{/delivery}')
     return resource.update({ subproject: project.subproject, delivery: project.delivery }, iterations)
   },
 
   getDefectsGroupOriginIterations (project, iterations) {
-    let resource = Resource.resource(paths.api + '/project/DefectsGroupOriginIterations{/subproject}{/delivery}')
+    let resource = Resource.resource(paths.api + '/project/testProj/DefectsGroupOriginIterations{/subproject}{/delivery}')
     return resource.update({ subproject: project.subproject, delivery: project.delivery }, iterations)
   },
 
   getCTsImpactedXDefectsIterations (project, iterations) {
-    let resource = Resource.resource(paths.api + '/project/CtsImpactedXDefectsIterations{/subproject}{/delivery}')
+    let resource = Resource.resource(paths.api + '/project/testProj/CtsImpactedXDefectsIterations{/subproject}{/delivery}')
     return resource.update({ subproject: project.subproject, delivery: project.delivery }, iterations)
   },
 
   getDefectsOpenInDevManufIterations (project, iterations) {
-    let resource = Resource.resource(paths.api + '/project/DefectsOpenInDevManufIterations{/subproject}{/delivery}')
+    let resource = Resource.resource(paths.api + '/project/testProj/DefectsOpenInDevManufIterations{/subproject}{/delivery}')
     return resource.update({ subproject: project.subproject, delivery: project.delivery }, iterations)
   },
 
   getDefectsOpenInTestManufIterations (project, iterations) {
-    let resource = Resource.resource(paths.api + '/project/DefectsOpenInTestManufIterations{/subproject}{/delivery}')
+    let resource = Resource.resource(paths.api + '/project/testProj/DefectsOpenInTestManufIterations{/subproject}{/delivery}')
     return resource.update({ subproject: project.subproject, delivery: project.delivery }, iterations)
   }
 }

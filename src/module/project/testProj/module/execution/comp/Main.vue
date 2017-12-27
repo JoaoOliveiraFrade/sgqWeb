@@ -4,27 +4,23 @@
   // import oiModal from '@/comp/modal/Modal2.vue'
   import oiAccumulatedGrid from './AccumulatedGrid.vue'
   import oiDailyGrid from './DailyGrid.vue'
-  import oiChartCurvaS from '@/comp/chart/execution/project'
-  // import oiChartProductivityXDefects from '@/comp/chart/mix/productivityXDefects'
-  // import oiChartProductivityXDefectsGroupWeekly from '@/comp/chart/mix/productivityXDefectsGroupWeekly'
+  import oiChartCurvaS from '@/comp/chart/execution/CurvaS'
+  import oiChartProductivityXDefects from '@/comp/chart/mix/productivityXDefects'
+  import oiChartProductivityXDefectsGroupWeekly from '@/comp/chart/mix/productivityXDefectsGroupWeekly'
 
   export default {
     name: 'execution',
     visible: true,
 
-    components: { oiAccumulatedGrid, oiDailyGrid, oiChartCurvaS },
+    components: { oiAccumulatedGrid, oiDailyGrid, oiChartCurvaS, oiChartProductivityXDefects, oiChartProductivityXDefectsGroupWeekly },
 
     computed: {
       ...mapState('testProj', ['selectedMonoselection']),
-      ...mapState('execution', ['loading', 'last05Days', 'last30Days', 'groupMonth'])
+      ...mapState('execution', ['loading', 'last05Days', 'last30Days', 'groupMonth', 'productivityXDefects', 'productivityXDefectsGroupWeekly'])
     },
 
     methods: {
-      ...mapActions('execution', ['loadDataLastDays', 'loadDataGroupMonth'])
-    },
-
-    mounted () {
-      console.log('execution - mounted')
+      ...mapActions('execution', ['loadDataLastDays', 'loadDataGroupMonth', 'loadDataProductivityXDefects', 'loadDataProductivityXDefectsGroupWeekly'])
     },
 
     watch: {
@@ -32,6 +28,8 @@
         handler () {
           this.loadDataLastDays(this.selectedMonoselection)
           this.loadDataGroupMonth(this.selectedMonoselection)
+          this.loadDataProductivityXDefects(this.selectedMonoselection)
+          this.loadDataProductivityXDefectsGroupWeekly(this.selectedMonoselection)
         }
       }
     }
@@ -61,20 +59,19 @@
             <oiChartCurvaS :dataSource="last30Days" title="Curva S dos últimos dias"/>
         </div>
 
-<!--        
         <div class="col-xs-12 col-md-6 text-center" style="padding-top:10px">
             <oiChartProductivityXDefects
-              title = "Produtividade X Defeitos Abertos" 
+              title = "Produtiv. X Def. Abertos - Dia" 
               :dataSource="productivityXDefects" 
             />
         </div>
+
         <div class="col-xs-12 col-md-6 text-center" style="padding-top:10px">
             <oiChartProductivityXDefectsGroupWeekly
-              title = "Produtividade X Defeitos Abertos, Semanal" 
+              title = "Produtiv. X Def. Abertos - Semana" 
               :dataSource="productivityXDefectsGroupWeekly" 
             />
         </div>
--->
 
       </div>
 

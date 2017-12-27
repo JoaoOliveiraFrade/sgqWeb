@@ -1,5 +1,5 @@
 import * as types from './mutationsTypes'
-import services from '@/module/project/test/services'
+import services from '@/module/project/testProj/services'
 
 import servicesOperDevDefectDensity from '@/module/indicator/operational/dev/defectDensity/services'
 import servicesOperDevDefectAverangeTime from '@/module/indicator/operational/dev/defectAverangeTime/services'

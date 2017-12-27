@@ -1,7 +1,7 @@
 <script>
   import { mapActions, mapState } from 'vuex'
 
-  // import oiMonoselection from '@/module/project/test/comp/monoselection/Main.vue'
+  // import oiMonoselection from '@/module/project/testProj/comp/monoselection/Main.vue'
   import oiMonoselection from './Monoselection.vue'
   import oiShowSelected from './ShowSelected.vue'
   import oiShowData from './ShowData.vue'
@@ -12,17 +12,17 @@
     components: { oiMonoselection, oiShowSelected, oiShowData },
 
     computed: {
-      ...mapState('biti', ['selectedMonoselection', 'searchStatus'])
+      ...mapState('bitiProj', ['selectedMonoselection', 'searchStatus'])
     },
 
     methods: {
       ...mapActions(['setFeatureName']),
-      ...mapActions('biti', ['load', 'setSearchStatus'])
+      ...mapActions('bitiProj', ['loadData', 'setSearchStatus'])
     },
 
     mounted () {
       this.setFeatureName('Projeto - BITI')
-      this.load()
+      this.loadData()
     }
   }
 </script>

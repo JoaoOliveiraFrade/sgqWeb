@@ -1,5 +1,5 @@
 <script>
-  import chartParameters from '@/comp/chart/types/timelineMultipleAxis'
+  import initialParameter from '@/comp/chart/types/timelineMultipleAxis'
 
   const Highcharts = require('highcharts')
 
@@ -10,7 +10,7 @@
   highchartsNoData(Highcharts)
 
   export default {
-    name: 'productivityXDefects',
+    name: 'chartMixProductivityXDefects',
 
     props: {
       dataSource: { type: Array },
@@ -19,25 +19,20 @@
 
     data () {
       return {
-        parameters: chartParameters(),
-        chart: undefined
+        parameter: initialParameter(),
+        chart: null
       }
     },
 
-    updated () {
-      this.loadParameters()
-      this.chart = Highcharts.chart(this.$el, this.parameters)
-    },
-
     methods: {
-      loadParameters () {
-        this.parameters.title.text = this.title
-        this.parameters.yAxis[0].title.text = 'Produtividade / Realizado'
-        this.parameters.yAxis[1].title.text = 'Defeitos'
+      setParameter () {
+        this.parameter.title.text = this.title
+        this.parameter.yAxis[0].title.text = 'Produt./ Realiz.'
+        this.parameter.yAxis[1].title.text = 'Defeitos'
 
-        this.parameters.xAxis.categories = this.dataSource.map(i => i.date)
+        this.parameter.xAxis.categories = this.dataSource.map(i => i.date)
 
-        this.parameters.series = [
+        this.parameter.series = [
           {
             name: 'Produtividade',
             type: 'column',
@@ -72,15 +67,28 @@
           }
         ]
       }
+    },
+
+    // updated () {
+    //   this.setParameter()
+    //   this.chart = Highcharts.chart(this.$el, this.parameter)
+    // },
+
+    watch: {
+      'dataSource': {
+        handler () {
+          console.log('chartMixProductivityXDefects - dataSource - watch')
+          this.setParameter()
+          this.chart = Highcharts.chart(this.$el, this.parameter)
+        }
+      }
     }
   }
 </script>
 
 <template>
   <!--<div style="width:1000px; height:400px; margin:0 auto">-->
-  <div style="width:450px; height:250px; margin:0 auto">
-    {{dataSource}}
-  </div>
+  <div style="width:450px; height:250px; margin:0 auto"/>
 </template>
 
 <style>

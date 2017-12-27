@@ -1,6 +1,6 @@
 <script>
   import { mapActions } from 'vuex'
-  import ServicesProject from '@/module/project/test/services'
+  import ServicesProject from '@/module/project/testProj/services'
   import ServicesCadgroupers from '../services'
   import ServicesProjectXgrouper from '@/module/projectXgrouper/services'
   

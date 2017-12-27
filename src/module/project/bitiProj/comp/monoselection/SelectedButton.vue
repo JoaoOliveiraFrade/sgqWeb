@@ -9,7 +9,7 @@
     components: { oiModal, oiShowSelected },
 
     computed: {
-      ...mapState('biti', ['selected'])
+      ...mapState('bitiProj', ['selected'])
     }
   }
 </script>

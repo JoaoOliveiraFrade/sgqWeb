@@ -1,9 +1,9 @@
 <script>
   import { mapActions, mapGetters } from 'vuex'
   // import ServicesProjectXgrouper from '@/module/projectXgrouper/services'
-  // import ServicesProject from '@/module/project/test/services'
+  // import ServicesProject from '@/module/project/testProj/services'
   // import ServicesGrouper from '@/module/grouperConsult/services'
-  import oiShowGridProject from '@/module/project/test/comp/ShowGridProject.vue'
+  import oiShowGridProject from '@/module/project/testProj/comp/ShowGridProject.vue'
 
   export default {
     name: 'ShowGrouperConsult',

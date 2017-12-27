@@ -1,7 +1,7 @@
 <script>
   // import ServicesProjectXgrouper from 'src/module/ProjectXgrouper/services'
   // import oiProjectGridShow from 'src/comp/project/gridShow.vue'
-  import oiProjectGridShow from '@/module/project/test/comp/gridShow.vue'
+  import oiProjectGridShow from '@/module/project/testProj/comp/gridShow.vue'
 
   export default {
     name: 'grouperShow_c',

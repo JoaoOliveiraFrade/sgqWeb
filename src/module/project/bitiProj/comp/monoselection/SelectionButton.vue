@@ -9,7 +9,7 @@
     components: { oiModal, oiSelectionGrid },
 
     computed: {
-      ...mapState('biti', ['selected'])
+      ...mapState('bitiProj', ['selected'])
     },
 
     mounted () {

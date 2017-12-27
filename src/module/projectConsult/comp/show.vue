@@ -3,7 +3,7 @@
   // import oichartDefectReopenedTotal from '@/comp/chart/defect/DefectReopenedTotal'
   // import oiChartDefectAverangeTimeTotal from '@/comp/chart/defect/DefectAverangeTimeTotal'
   // import oiChartdefectOfTSInTI from '@/comp/chart/defect/DefectOfTSInTITotal'
-  // import oiChartExecutionProject from '@/comp/chart/execution/project'
+  // import oiChartExecutionProject from '@/comp/chart/execution/CurvaS'
   // import oiChartOpenedXClosedXCancelled from '@/comp/chart/defect/openedXClosedXCancelled'
   // import oiChartGroupOrigin from '@/comp/chart/defect/groupOrigin'
   // import oiChartCtsImpactedXDefects from '@/comp/chart/mix/ctsImpactedXDefects'

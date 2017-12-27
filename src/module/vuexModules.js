@@ -5,11 +5,11 @@ import { vuex as testManuf } from './testManuf'
 import { vuex as system } from './system/system'
 import { vuex as systemFromAgent } from './system/systemFromAgent'
 
-import { vuex as testProj } from './project/test'
-import { vuex as testPlan } from './project/test/module/testPlan'
-import { vuex as execution } from './project/test/module/execution'
+import { vuex as testProj } from './project/testProj'
+import { vuex as testPlan } from './project/testProj/module/testPlan'
+import { vuex as execution } from './project/testProj/module/execution'
 
-import { vuex as bitiProj } from './project/biti'
+import { vuex as bitiProj } from './project/bitiProj'
 
 import { vuex as indOperDevDefectDensity } from './indicator/operational/dev/defectDensity'
 import { vuex as indOperDevDefectAverangeTime } from './indicator/operational/dev/defectAverangeTime'

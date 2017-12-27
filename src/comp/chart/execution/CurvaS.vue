@@ -19,7 +19,7 @@
   highchartsNoData(Highcharts)
 
   export default {
-    name: 'chartExecutionProject',
+    name: 'chartExecutionCurvaS',
 
     props: {
       dataSource: { type: Object },
@@ -28,14 +28,8 @@
 
     data () {
       return {
-        parameters: chartParametersTimeline(),
-        chart: undefined
+        parameters: chartParametersTimeline()
       }
-    },
-
-    updated () {
-      this.loadParameters()
-      this.chart = Highcharts.chart(this.$el, this.parameters)
     },
 
     methods: {
@@ -84,7 +78,21 @@
             }))
           }
         ]
+      },
+
+      drawChart () {
+        Highcharts.chart(this.$el, this.parameters)
       }
+    },
+
+    mounted () {
+      this.loadParameters()
+      this.drawChart()
+    },
+
+    updated () {
+      this.loadParameters()
+      this.drawChart()
     }
   }
 </script>

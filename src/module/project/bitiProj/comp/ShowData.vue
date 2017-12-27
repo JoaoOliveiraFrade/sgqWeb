@@ -5,9 +5,9 @@
     name: 'ShowData',
 
     computed: {
-      ...mapState('biti', ['selected'])
-      // ...mapGetters('biti', ['devDefectDensityTotal', 'PerfDevDefectDensityTotal', 'defectAverangeTimeTotalHIGH'])
-      // ...mapGetters('biti', ['operDevDefectDensityTotal', 'operDevDefectAverangeTimeTotalHIGH', 'operDevDefectReopenedTotal', 'perfDevDefectDensityTotal'])
+      ...mapState('bitiProj', ['selected'])
+      // ...mapGetters('bitiProj', ['devDefectDensityTotal', 'PerfDevDefectDensityTotal', 'defectAverangeTimeTotalHIGH'])
+      // ...mapGetters('bitiProj', ['operDevDefectDensityTotal', 'operDevDefectAverangeTimeTotalHIGH', 'operDevDefectReopenedTotal', 'perfDevDefectDensityTotal'])
       // ...mapGetters('testProj', [])
 
     }

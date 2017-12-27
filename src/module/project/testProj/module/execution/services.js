@@ -12,13 +12,13 @@ export default {
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
-  getProductivityXDefects (project) {
-    let resource = Resource.resource(paths.api + '/project/testProj/execution/ProductivityXDefects/{subproject}/{delivery}')
+  productivityXDefects (project) {
+    let resource = Resource.resource(paths.api + '/project/testProj/execution/productivityXDefects/{subproject}/{delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
-  getProductivityXDefectsGroupWeekly (project) {
-    let resource = Resource.resource(paths.api + '/project/testProj/execution/ProductivityXDefectsGroupWeekly/{subproject}/{delivery}')
+  productivityXDefectsGroupWeekly (project) {
+    let resource = Resource.resource(paths.api + '/project/testProj/execution/productivityXDefectsGroupWeekly/{subproject}/{delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 

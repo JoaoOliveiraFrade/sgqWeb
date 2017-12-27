@@ -10,7 +10,7 @@
     components: { oiShowButton, oiEditButton },
 
     computed: {
-      ...mapGetters(['currentUserProfiles']),
+      ...mapGetters('auth', ['currentUserProfiles']),
       ...mapGetters('pulledChain', ['filteredByTerm']),
 
       currentUserCanEdit () {

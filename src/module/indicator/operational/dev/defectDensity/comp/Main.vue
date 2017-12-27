@@ -2,14 +2,14 @@
   import { mapActions, mapState } from 'vuex'
 
   import oiDevManufSelection from '@/module/devManuf/comp/Selection.vue'
-  import oiMultiselectionFbyDevManufByCheck from '@/module/system/system/comp/MultiselectionFbyDevManufByCheck.vue'
-  import oiProjectMonoSelectionFbyDevManufAndSystems from '@/module/project/test/comp/SelectionFbyDevManufAndSystems.vue'
+  import oiSystemMultiselectionFbyDevManufByCheck from '@/module/system/system/comp/MultiselectionFbyDevManufByCheck.vue'
+  import oiProjectMonoSelectionFbyDevManufAndSystems from '@/module/project/testProj/comp/SelectionFbyDevManufAndSystems.vue'
   import oiShowData from './ShowData.vue'
 
   export default {
     name: 'indOperDevDefectDensity',
 
-    components: { oiDevManufSelection, oiMultiselectionFbyDevManufByCheck, oiProjectMonoSelectionFbyDevManufAndSystems, oiShowData },
+    components: { oiDevManufSelection, oiSystemMultiselectionFbyDevManufByCheck, oiProjectMonoSelectionFbyDevManufAndSystems, oiShowData },
 
     computed: {
       ...mapState('indOperDevDefectDensity', ['selectedDevManuf', 'selectedSystem', 'selectedProject'])
@@ -38,7 +38,7 @@
     </div>
 
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4" >
-      <oiMultiselectionFbyDevManufByCheck v-show="selectedDevManuf.length > 0"
+      <oiSystemMultiselectionFbyDevManufByCheck v-show="selectedDevManuf.length > 0"
         :filterDevManuf="selectedDevManuf"
         :preSelected="selectedSystem"
         @onConfirm="setSelectedSystem"

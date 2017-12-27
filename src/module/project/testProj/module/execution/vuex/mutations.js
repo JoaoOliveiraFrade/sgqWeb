@@ -15,5 +15,13 @@ export default {
 
   [types.groupMonth] (state, parameter) {
     state.groupMonth = parameter
+  },
+
+  [types.productivityXDefects] (state, parameter) {
+    state.productivityXDefects = parameter
+  },
+
+  [types.productivityXDefectsGroupWeekly] (state, parameter) {
+    state.productivityXDefectsGroupWeekly = parameter
   }
 }

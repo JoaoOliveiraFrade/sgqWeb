@@ -1,5 +1,5 @@
-import { routes as testProj } from './project/test'
-import { routes as bitiProj } from './project/biti'
+import { routes as testProj } from './project/testProj'
+import { routes as bitiProj } from './project/bitiProj'
 
 import { routes as indOperDevDefectDensity } from './indicator/operational/dev/defectDensity'
 import { routes as indOperDevDefectAverangeTime } from './indicator/operational/dev/defectAverangeTime'

@@ -5,12 +5,12 @@
     name: 'SelectionGrid',
 
     computed: {
-      ...mapState('biti', ['filterTerm']),
-      ...mapGetters('biti', ['dataFilteredByTerm'])
+      ...mapState('bitiProj', ['filterTerm']),
+      ...mapGetters('bitiProj', ['dataFilteredByTerm'])
     },
 
     methods: {
-      ...mapActions('biti', ['setFilterTerm', 'setSelected'])
+      ...mapActions('bitiProj', ['setFilterTerm', 'setSelected'])
 
     //   selectProject: function () {
     //     // this.$emit('onConfirm', this.selected_)

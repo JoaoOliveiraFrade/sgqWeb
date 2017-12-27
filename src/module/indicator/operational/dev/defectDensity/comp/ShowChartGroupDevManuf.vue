@@ -2,7 +2,7 @@
   import { mapGetters, mapActions } from 'vuex'
   import Highcharts from 'highcharts'
   import HighchartsDrilldown from 'highcharts-drilldown'
-  import chartStandParam from '@/comp/chart/types/drillDown'
+  import initialParameter from '@/comp/chart/types/drillDown'
 
   if (!Highcharts.Chart.prototype.addSeriesAsDrilldown) {
     HighchartsDrilldown(Highcharts)
@@ -13,7 +13,7 @@
 
     data () {
       return {
-        chartParam: chartStandParam(),
+        chartParam: initialParameter(),
         chart: null
       }
     },
