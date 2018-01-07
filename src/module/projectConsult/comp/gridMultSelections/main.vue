@@ -17,7 +17,7 @@
       selected: {type: Array},
 
       selectedProjectUpdated: {type: Boolean},
-      isShowButtonSelected: {type: Boolean}
+      showButtonSelected: {type: Boolean}
     },
 
     data () {

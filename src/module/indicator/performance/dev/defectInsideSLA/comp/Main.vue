@@ -32,7 +32,7 @@
   <div class="container-fluid" style="padding-top: 10px">
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4">
       <oiDevManufSelection
-        :isShowButtonSelected="true"
+        :showButtonSelected="true"
         @onConfirm="setSelectedDevManuf"
       />
     </div>

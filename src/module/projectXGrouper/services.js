@@ -10,8 +10,8 @@ export default {
   },
 
   // Read
-  getAll () {
-    let resource = Resource.resource(paths.api + '/ProjectXGrouper/All')
+  getData () {
+    let resource = Resource.resource(paths.api + '/ProjectXGrouper/data')
     return resource.get()
   },
 

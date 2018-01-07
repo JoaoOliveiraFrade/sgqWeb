@@ -32,7 +32,7 @@
 
     <div class="row well well-sm oi-well col-12 col-sm-4 col-md-4">
       <oiTestManufSelection
-        :isShowButtonSelected="true"
+        :showButtonSelected="true"
         @onConfirm="setSelectedTestManufs"
       />
     </div>

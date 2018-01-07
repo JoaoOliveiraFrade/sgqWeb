@@ -11,7 +11,7 @@
       title: { type: String, required: true },
       data: { type: Array, required: true },
       selected: { type: Array, default: [] },
-      // isShowButtonSelected: { type: Boolean, default: true },
+      // showButtonSelected: { type: Boolean, default: true },
       gender: { type: String, default: 'female' }
     },
 

@@ -2707,7 +2707,7 @@ chartDensityDevManuf<script>
         title="Fáb. Desenv"               
         :dataSource="devManufacturers"
         :itemsSelected="devManufacturersSelected"
-        :isShowButtonSelected="true"
+        :showButtonSelected="true"
         @onChangeSelected="confirmDevManuf"
       />
     </div>
@@ -2723,7 +2723,7 @@ chartDensityDevManuf<script>
         title="Sistemas"               
         :dataSource="systemsFiltered"
         :itemsSelected="systemsSelected"
-        :isShowButtonSelected="true"
+        :showButtonSelected="true"
         @onChangeSelected="confirmSystems"
       />
     </div>

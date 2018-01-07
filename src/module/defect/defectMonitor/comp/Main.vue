@@ -19,14 +19,13 @@
     },
 
     computed: {
-      // ...mapState(['selectedTestManufs', 'selectedSystem', 'projectConfirmed'])
       ...mapState('testProj', ['data']),
       ...mapState('defectMonitor', ['selectedProject'])
     },
 
     methods: {
       ...mapActions('testProj', ['load']),
-      ...mapActions('defectMonitor', ['setSelectedProject']),
+      ...mapActions('defectMonitor', ['setSelectedDefectQueue', 'setSelectedDefectStatus', 'setSelectedDefectTrafficLight', 'setSelectedProject']),
       ...mapActions(['setFeatureName']),
 
       confirmSelection (parameter) {
@@ -44,36 +43,32 @@
 <template>
   <div class="container-fluid" style="padding-top: 10px">
     <div class="row well well-sm oi-well col-12 col-sm-6 col-md-3">
-      <oiSelectionDefectQueue/>
+      <oiSelectionDefectQueue
+        @onConfirm="setSelectedDefectQueue"
+      />
     </div>
 
     <div class="row well well-sm oi-well col-12 col-sm-6 col-md-3">
-      <oiSelectionDefectStatus/>
+      <oiSelectionDefectStatus
+        @onConfirm="setSelectedDefectStatus"
+      />
     </div>
 
     <div class="row well well-sm oi-well col-12 col-sm-6 col-md-3">
-      <oiSelectionDefectTrafficLight/>
+      <oiSelectionDefectTrafficLight
+        @onConfirm="setSelectedDefectTrafficLight"
+      />
     </div>
 
     <div class="row well well-sm oi-well col-12 col-sm-6 col-md-3">
       <oiSelectionProject 
         :projects="data" 
         :selected="selectedProject"
-        @confirmSelection="confirmSelection"
+        @onConfirm="setSelectedProject"
       />
     </div>
 
     <!--
-    <div class="row well well-sm oi-well col-12 col-sm-6 col-md-3" v-if="selectedTestManufs.length > 0">
-      <oiSelectionSystem
-        :isShowButtonSelected="true"
-      />
-    </div>
-
-    <div class="row well well-sm oi-well col-12 col-sm-6 col-md-3" v-if="selectedSystem.length > 0">
-      <oiSelectionProject/>
-    </div>
-
     <div class="row well well-sm oi-well col-12 col-sm-6 col-md-3">
       <oiShowData v-show="projectConfirmed"/>
     </div>

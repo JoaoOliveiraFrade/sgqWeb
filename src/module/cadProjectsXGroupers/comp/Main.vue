@@ -34,7 +34,7 @@
 
     methods: {
       loadData () {
-        Services.getAll().then(resp => {
+        services.getData().then(resp => {
           this.items = resp.data
           this.itemsFilteredByText = resp.data
         })

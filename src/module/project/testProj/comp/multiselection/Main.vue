@@ -1,4 +1,5 @@
 <script>
+  import { mapActions } from 'vuex'
   import oiSelectionButton from './SelectionButton.vue'
   import oiSelectedButton from './SelectedButton.vue'
 
@@ -13,8 +14,13 @@
     },
 
     methods: {
-      confirm (parameter) {
-        this.$emit('onConfirm', parameter)
+      ...mapActions('testProj', ['setSelected']),
+
+      confirm (selected) {
+        console.log('=> main')
+        console.log(selected)
+        this.setSelected(selected)
+        this.$emit('onConfirm', selected)
       }
     }
   }

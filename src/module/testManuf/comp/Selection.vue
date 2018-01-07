@@ -8,7 +8,7 @@
     components: { oiSelection },
 
     props: {
-      isShowButtonSelected: {type: Boolean}
+      showButtonSelected: {type: Boolean}
     },
 
     computed: {

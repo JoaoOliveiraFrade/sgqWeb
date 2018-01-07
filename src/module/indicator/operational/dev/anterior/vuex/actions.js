@@ -5,7 +5,7 @@
 // // import Toastr from 'toastr'
 
 // export const loadGroupers = (context) => {
-//   services.getAll().then(r => {
+//   services.getData().then(r => {
 //     // Toastr.success('Agrupadores carregados!', '', { timeOut: 2000 })
 //     context.commit(types.setGroupers, r.data)
 //   })

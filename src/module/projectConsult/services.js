@@ -4,7 +4,7 @@ import { paths } from '@/environment'
 // const currentProfile = JSON.parse(window.localStorage.getItem('current-profile'))
 
 export default {
-  // getAll () {
+  // getData () {
   //   let resource = Resource.resource(paths.api + '/Projects{/id}')
   //   return resource.get({})
   // },
@@ -15,7 +15,7 @@ export default {
   // },
 
   getProjects () {
-    let resource = Resource.resource(paths.api + '/project/testProj/All')
+    let resource = Resource.resource(paths.api + '/project/testProj/data')
     return resource.get()
   },
 

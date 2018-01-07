@@ -5,7 +5,7 @@ import ServicesProject from '@/module/project/testProj/services'
 // import Toastr from 'toastr'
 
 export const loadGroupers = ({ commit }) => {
-  services.getAll().then(r => {
+  services.getData().then(r => {
     // Toastr.success('Agrupadores carregados!', '', { timeOut: 2000 })
     commit(types.groupers, r.data)
   })

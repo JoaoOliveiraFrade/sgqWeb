@@ -8,7 +8,7 @@
     components: { oiSelection },
 
     props: {
-      isShowButtonSelected: { type: Boolean, default: true }
+      showButtonSelected: { type: Boolean, default: true }
     },
 
     computed: {
@@ -16,7 +16,12 @@
     },
 
     methods: {
-      ...mapActions('defectQueue', ['load', 'setSelected'])
+      ...mapActions('defectQueue', ['load', 'setSelected']),
+
+      confirm (selected) {
+        this.setSelected(selected)
+        this.$emit('onConfirm', selected)
+      }
     },
 
     mounted () {
@@ -31,8 +36,8 @@
       title="Fila Defeito"               
       :data="data"
       :selected="selected"
-      :isShowButtonSelected="isShowButtonSelected"
-      @onSelect="setSelected"        
+      :showButtonSelected="showButtonSelected"
+      @onConfirm="confirm"        
     />
   </span>
 </template>

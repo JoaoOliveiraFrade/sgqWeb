@@ -10,7 +10,7 @@ export default {
   },
 
   // Read
-  getAll () {
+  getData () {
     let resource = Resource.resource(paths.api + '/Groupers')
     return resource.get()
   },

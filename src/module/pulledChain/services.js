@@ -3,7 +3,7 @@ import { paths } from '@/environment'
 
 export default {
   load () {
-    let resource = Resource.resource(paths.api + '/PulledChain/All')
+    let resource = Resource.resource(paths.api + '/PulledChain/data')
     return resource.get()
   },
   loadDataChartCFD () {

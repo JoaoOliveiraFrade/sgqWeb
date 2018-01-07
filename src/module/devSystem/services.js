@@ -2,8 +2,8 @@ import Resource from '@/http/vueResource'
 import { paths } from '@/environment'
 
 export default {
-  getAll () {
-    let resource = Resource.resource(paths.apiDefault + '/DevSystem/All')
+  getData () {
+    let resource = Resource.resource(paths.apiDefault + '/DevSystem/data')
     return resource.get()
   },
   getByDevManufs (devManufs) {

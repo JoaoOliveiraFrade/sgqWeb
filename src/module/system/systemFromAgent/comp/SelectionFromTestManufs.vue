@@ -10,7 +10,7 @@
     props: {
       testManufs: { type: Array, default: () => [] },
       selectedSystem: { type: Array, default: () => [] },
-      isShowButtonSelected: { type: Boolean, default: true }
+      showButtonSelected: { type: Boolean, default: true }
     },
 
     computed: {
@@ -49,7 +49,7 @@
       title="Sistema"               
       :data="fromTestManufs"
       :selected="selected"
-      :isShowButtonSelected="isShowButtonSelected"
+      :showButtonSelected="showButtonSelected"
       gender="male"
       @onConfirm="confirm"
     />

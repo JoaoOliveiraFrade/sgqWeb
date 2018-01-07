@@ -12,7 +12,7 @@
       title: { type: String, required: true },
       data: { type: Array, required: true },
       selected: { type: Array, default: [] },
-      isShowButtonSelected: { type: Boolean, default: true },
+      showButtonSelected: { type: Boolean, default: true },
       gender: { type: String, default: 'female' }
     },
 
@@ -79,7 +79,7 @@
 
     <button 
         type="button"
-        v-show="hasSelected && isShowButtonSelected"
+        v-show="hasSelected && showButtonSelected"
         class="btn btn-xs"
         data-toggle="modal" 
         :data-target="'#modalShow' + title.replaceAll(' ', '').replaceAll('.', '').replaceAll('(', '').replaceAll(')', '')">
@@ -93,7 +93,7 @@
     </oiModal>
 
     <oiShow
-        v-show="hasSelected && !isShowButtonSelected"
+        v-show="hasSelected && !showButtonSelected"
         :data="selected_">
     </oiShow>     
   </span>

@@ -13,7 +13,7 @@
       title: { type: String },
       dataSource: { type: Array },
       itemsSelected: { type: Array },
-      isShowButtonSelected: { type: Boolean },
+      showButtonSelected: { type: Boolean },
       gender: { type: String }
     },
 
@@ -92,7 +92,7 @@
     <!-- SHOW -->
     <button 
         type="button"
-        v-show="hasItemsSelected && isShowButtonSelected"
+        v-show="hasItemsSelected && showButtonSelected"
         class="btn btn-xs"
         data-toggle="modal" 
         :data-target="'#modalShow' + idChild"
@@ -108,7 +108,7 @@
     </oiModal>
 
     <showSelections
-        v-show="hasItemsSelected && !isShowButtonSelected"
+        v-show="hasItemsSelected && !showButtonSelected"
         :dataSource="itemsSelected_">
     </showSelections>     
     

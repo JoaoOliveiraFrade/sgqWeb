@@ -2,7 +2,7 @@ import Resource from '@/http/vueResource'
 import { paths } from '@/environment'
 
 export default {
-  // getAll () {
+  // getData () {
   //   let resource = Resource.resource(paths.api + '/Projects{/id}')
   //   return resource.get({})
   // },
@@ -12,8 +12,8 @@ export default {
   //   return resource.get({id: id})
   // },
 
-  getAll () {
-    let resource = Resource.resource(paths.api + '/project/testProj/All')
+  getData () {
+    let resource = Resource.resource(paths.api + '/project/testProj/data')
     return resource.get()
   },
 

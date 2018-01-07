@@ -3,7 +3,7 @@ import { paths } from '@/environment'
 
 export default {
   load () {
-    let resource = Resource.resource(paths.api + '/testManuf/all')
+    let resource = Resource.resource(paths.api + '/testManuf/data')
     return resource.get()
   }
 }

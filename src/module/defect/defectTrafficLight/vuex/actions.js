@@ -2,10 +2,9 @@ import * as types from './mutationsTypes'
 import services from '../services'
 
 export const load = ({ commit }) => {
-  services.getAll()
+  services.getData()
     .then(
       r => {
-        console.log(r.data)
         commit(types.data, r.data)
       },
       e => console.log(e)
@@ -15,4 +14,3 @@ export const load = ({ commit }) => {
 export const setSelected = ({ commit }, paramenter) => {
   commit(types.selected, paramenter)
 }
-

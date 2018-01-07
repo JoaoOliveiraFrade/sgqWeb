@@ -8,7 +8,7 @@
     components: { oiSelection },
 
     props: {
-      isShowButtonSelected: { type: Boolean, default: true }
+      showButtonSelected: { type: Boolean, default: true }
     },
 
     computed: {
@@ -16,7 +16,12 @@
     },
 
     methods: {
-      ...mapActions('defectTrafficLight', ['load', 'setSelected'])
+      ...mapActions('defectTrafficLight', ['load', 'setSelected']),
+
+      confirm (selected) {
+        this.setSelected(selected)
+        this.$emit('onConfirm', selected)
+      }
     },
 
     mounted () {
@@ -31,9 +36,9 @@
       title="Farol Defeito"               
       :data="data"
       :selected="selected"
-      :isShowButtonSelected="isShowButtonSelected"
+      :showButtonSelected="showButtonSelected"
       gender="male"
-      @onSelect="setSelected"        
+      @onConfirm="confirm"        
     />
   </span>
 </template>

@@ -2,7 +2,7 @@ import * as types from './mutationsTypes'
 import services from '@/module/devSystem/services'
 
 export const loadDevSystems = ({ commit }, selectedDevManuf) => {
-  services.getAll()
+  services.getData()
     .then(
       r => {
         commit(types.setDevSystems, r.data)

@@ -28,10 +28,10 @@ import { vuex as indOperTestProductivity } from './indicator/operational/test/pr
 
 // import { vuex as grouperConsult } from './grouperConsult'
 // import { vuex as indicatorDev } from './indicator/dev'
-// import { vuex as defectQueue } from './defect/defectQueue'
-// import { vuex as defectStatus } from './defect/defectStatus'
-// import { vuex as defectTrafficLight } from './defect/defectTrafficLight'
-// import { vuex as defectMonitor } from './defect/defectMonitor'
+import { vuex as defectQueue } from './defect/defectQueue'
+import { vuex as defectStatus } from './defect/defectStatus'
+import { vuex as defectTrafficLight } from './defect/defectTrafficLight'
+import { vuex as defectMonitor } from './defect/defectMonitor'
 // import { vuex as indicatorDefectInsideSLA } from './indicator/performance/dev/DefectInsideSLA'
 
 import { vuex as pulledChain } from './pulledChain'
@@ -70,10 +70,10 @@ export default {
 
   // indicatorDefectInsideSLA,
 
-  // defectQueue,
-  // defectStatus,
-  // defectTrafficLight,
-  // defectMonitor,
+  defectQueue,
+  defectStatus,
+  defectTrafficLight,
+  defectMonitor,
   // cep,
   // count,
   // task,

@@ -11,7 +11,7 @@
       devManufs: { type: Array, default: () => [] },
       systems: { type: Array, default: () => [] },
       selectedProject: { type: Array, default: () => [] },
-      isShowButtonSelected: { type: Boolean, default: true }
+      showButtonSelected: { type: Boolean, default: true }
     },
 
     computed: {

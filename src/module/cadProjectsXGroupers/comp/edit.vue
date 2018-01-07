@@ -261,7 +261,7 @@
                   title="Iterations Ativos"
                   :dataSource="iterations"
                   :itemsSelected="iterationsActive"
-                  :isShowButtonSelected="false"
+                  :showButtonSelected="false"
                   @onChangeSelected="ConfirmIterations"
                 />                              
               </div>    

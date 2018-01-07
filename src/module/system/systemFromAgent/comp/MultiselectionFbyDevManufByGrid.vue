@@ -10,7 +10,7 @@
     props: {
       filterDevManuf: { type: Array, default: () => [] },
       preSelected: { type: Array, default: () => [] },
-      isShowButtonSelected: { type: Boolean, default: true }
+      showButtonSelected: { type: Boolean, default: true }
     },
 
     computed: {

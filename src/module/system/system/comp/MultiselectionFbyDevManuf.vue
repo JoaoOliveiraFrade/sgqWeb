@@ -10,7 +10,7 @@
     props: {
       devManufs: { type: Array, default: () => [] },
       selectedSystem: { type: Array, default: () => [] },
-      isShowButtonSelected: { type: Boolean, default: true }
+      showButtonSelected: { type: Boolean, default: true }
     },
 
     computed: {

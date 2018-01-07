@@ -10,7 +10,7 @@
     props: {
       filterDevManuf: { type: Array, default: () => [] },
       preSelected: { type: Array, default: () => [] },
-      isShowButtonSelected: { type: Boolean, default: true }
+      showButtonSelected: { type: Boolean, default: true }
     },
 
     computed: {
@@ -49,7 +49,7 @@
       title="Sistema (agente)"               
       :data="getDataFbyDevManuf(filterDevManuf)"
       :selected="selected"
-      :isShowButtonSelected="isShowButtonSelected"
+      :showButtonSelected="showButtonSelected"
       gender="male"
       @onConfirm="confirm"
     />

@@ -8,7 +8,7 @@
     components: { oiSelection },
 
     props: {
-      isShowButtonSelected: {type: Boolean}
+      showButtonSelected: {type: Boolean}
     },
 
     methods: {
@@ -30,7 +30,7 @@
       gender="male"
       :dataSource="systemsByDevManufs"
       :itemsSelected="selectedDevSystems"
-      :isShowButtonSelected="isShowButtonSelected"
+      :showButtonSelected="showButtonSelected"
       @onChangeSelected="setSelectedDevSystems"
     />
   </span>
