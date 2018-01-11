@@ -4,7 +4,7 @@
   import oiModal from '@/comp/modal/Modal2.vue'
 
   export default {
-    name: 'testPlan',
+    name: 'Monoselection',
     visible: true,
 
     components: { oiModal, oiGrid },
@@ -153,7 +153,7 @@
     },
 
     methods: {
-      ...mapActions('testPlan', ['loadData'])
+      ...mapActions('testPlan', ['loadData', 'setSelected'])
     },
 
     mounted () {
@@ -177,6 +177,8 @@
         filterTermMessage="Informe os filtros!"
         :data="data"
         :columns="columns"
+        selectionType="mono"
+        @setSelected="setSelected"
       />
 
       <!--  

@@ -14,5 +14,5 @@ export default {
 
   selected: {},
 
-  searchStatus: 'quest'
+  searchStatus: 'search'
 }

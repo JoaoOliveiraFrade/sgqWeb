@@ -12,12 +12,12 @@
     components: { oiMonoselection, oiShowSelected, oiShowData },
 
     computed: {
-      ...mapState('bitiProj', ['selectedMonoselection', 'searchStatus'])
+      ...mapState('testPlan', ['selectedMonoselection', 'searchStatus'])
     },
 
     methods: {
       ...mapActions(['setFeatureName']),
-      ...mapActions('bitiProj', ['loadData', 'setSearchStatus'])
+      ...mapActions('testPlan', ['loadData', 'setSearchStatus'])
     },
 
     mounted () {
@@ -36,14 +36,14 @@
       <oiMonoselection /> 
     </div>
     
-    <span v-show="searchStatus === 'show'">
+    <span v-show="searchStatus === 'show'" style="display: block; text-align: left">
 
-      <div class="row well well-sm" style="margin:0; padding: 0; padding-left:5px; padding-top:5px">
-        <a title="Pesquisa" 
+      <!--<div class="row well well-sm" style="margin:0; padding: 0; padding-left:5px; padding-top:5px">-->
+        <a title="Pesquisa"
           @click="setSearchStatus('search')">
           <i class="glyphicon glyphicon-search" style="font-size: 20px;"/>
         </a>
-      </div>
+      <!--</div>-->
       
       <div class="row well well-sm" style="margin:0; padding:0; padding-left:5px">
         <oiShowSelected />

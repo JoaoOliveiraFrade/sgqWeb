@@ -1,4 +1,8 @@
 export default {
   loading: false,
-  data: []
+  data: [],
+
+  selected: {},
+
+  searchStatus: 'search'
 }

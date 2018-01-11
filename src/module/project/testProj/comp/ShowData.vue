@@ -24,7 +24,7 @@
   import oiRulerPerfDevDefectDensity from '@/module/indicator/performance/dev/defectDensity/comp/ShowRule'
   import oiRulerPerfDevDefectOfTSInTI from '@/module/indicator/performance/dev/defectOfTSInTI/comp/ShowRule'
 
-  import oiTestPlan from '../module/testPlan/comp/Main'
+  import oiTestPlanSearch from '../module/testPlan/comp/Search'
   import oiExecution from '../module/execution/comp/Main'
 
   export default {
@@ -53,7 +53,7 @@
 
       oiRulerPerfDevDefectDensity,
       oiRulerPerfDevDefectOfTSInTI,
-      oiTestPlan,
+      oiTestPlanSearch,
       oiExecution
     },
 
@@ -344,8 +344,8 @@
 -->
 
         <div id="testPlane" class="tab-pane fade" style="padding:5px; margin:0; text-align: center">
-          <oiTestPlan>
-          </oiTestPlan>
+          <oiTestPlanSearch>
+          </oiTestPlanSearch>
         </div>
 
       </div>

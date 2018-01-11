@@ -15,3 +15,12 @@ export const loadData = ({ commit }, project) => {
       }
     )
 }
+
+export const setSelected = ({ commit }, paramenter) => {
+  commit(types.selected, paramenter)
+  commit(types.searchStatus, 'show')
+}
+
+export const setSearchStatus = ({ commit }, paramenter) => {
+  commit(types.searchStatus, paramenter)
+}

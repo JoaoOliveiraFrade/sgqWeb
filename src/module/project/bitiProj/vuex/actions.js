@@ -16,13 +16,13 @@ export const loadData = ({ commit }) => {
     )
 }
 
+export const setFilterTerm = ({ commit }, paramenter) => {
+  commit(types.filterTerm, paramenter)
+}
+
 export const setSelected = ({ commit }, paramenter) => {
   commit(types.selected, paramenter)
   commit(types.searchStatus, 'show')
-}
-
-export const setFilterTerm = ({ commit }, paramenter) => {
-  commit(types.filterTerm, paramenter)
 }
 
 export const setSearchStatus = ({ commit }, paramenter) => {
