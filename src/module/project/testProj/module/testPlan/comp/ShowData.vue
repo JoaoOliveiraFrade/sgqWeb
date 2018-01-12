@@ -13,12 +13,22 @@
       columns () {
         return [
           {
+            id: 'order',
+            name: 'ordem',
+            alignHeader: 'center',
+            align: 'center',
+            visible: true,
+            sort: true,
+            minWidth: '',
+            yesNoImage: false,
+            filterOptions: []
+          }, {
             id: 'name',
             name: 'Nome',
             alignHeader: 'center',
             align: 'left',
             visible: true,
-            sort: false,
+            sort: true,
             minWidth: '',
             yesNoImage: false,
             filterOptions: []
@@ -29,12 +39,23 @@
             align: 'left',
             minWidth: '',
             visible: true,
-            sort: false,
+            sort: true,
             yesNoImage: false,
             filterOptions: []
           }, {
+            id: 'parameters',
+            name: 'Parametros',
+            alignHeader: 'center',
+            align: 'left',
+            minWidth: '',
+            visible: true,
+            sort: false,
+            yesNoImage: false,
+            html: true,
+            filterOptions: []
+          }, {
             id: 'expectedResult',
-            name: 'Res. Esperado',
+            name: 'Resultado Esperado',
             alignHeader: 'center',
             align: 'left',
             minWidth: '',
@@ -51,13 +72,14 @@
 
 <template>
 
-    <div v-show="Object.keys(selected).length > 0">
+    <!--<div v-show="Object.keys(selected).length > 0">-->
+    <span>
       <oiGrid slot="body"
-        filterTermMessage=""
+        filterTermMessage="Informe o filtro!"
         :data="steps"
         :columns="columns"
       />
-    </div>
+    </span>
 
 </template>
 

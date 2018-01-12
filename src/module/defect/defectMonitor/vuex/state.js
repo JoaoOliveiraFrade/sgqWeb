@@ -2,10 +2,11 @@ export default {
   selectedDefectQueue: [],
   selectedDefectStatus: [],
   selectedDefectTrafficLight: [],
-  selectedProject: []
+  selectedProject: [],
+
+  data: [],
+  loading: false
   // limitMaxQtyHours: 5,
-  // data: [],
-  // loading: false,
   // testManufSelected: '',
   // systemSelected: ''
 }

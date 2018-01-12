@@ -8,7 +8,7 @@ export default {
   },
 
   steps (ct) {
-    let resource = Resource.resource(paths.api + '/project/testProj/testPlan/steps/{subproject}/{delivery}/{test}')
-    return resource.get({ subproject: ct.subproject, delivery: ct.delivery, test: ct.test })
+    let resource = Resource.resource(paths.api + '/project/testProj/testPlan/step/{subproject}/{delivery}/{test}/{ct}')
+    return resource.get(ct)
   }
 }

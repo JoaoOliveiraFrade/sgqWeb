@@ -22,7 +22,8 @@ export const setSelected = ({ commit }, paramenter) => {
   services.steps({
     subproject: paramenter.subproject,
     delivery: paramenter.delivery,
-    test: paramenter.test })
+    test: paramenter.test,
+    ct: paramenter.ct })
     .then(
       r => {
         commit(types.steps, r.data)

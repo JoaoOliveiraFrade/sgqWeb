@@ -4,6 +4,6 @@ export default {
 
   selected: {},
   steps: [],
-  
+
   searchStatus: 'search'
 }
