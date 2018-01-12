@@ -13,6 +13,10 @@ export default {
     state.selected = parameter
   },
 
+  [types.steps] (state, parameter) {
+    state.steps = parameter
+  },
+
   [types.searchStatus] (state, parameter) {
     state.searchStatus = parameter
   }

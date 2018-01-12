@@ -3,6 +3,7 @@ export default {
   data: [],
 
   selected: {},
-
+  steps: [],
+  
   searchStatus: 'search'
 }

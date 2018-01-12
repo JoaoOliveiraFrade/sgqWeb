@@ -18,6 +18,20 @@ export const loadData = ({ commit }, project) => {
 
 export const setSelected = ({ commit }, paramenter) => {
   commit(types.selected, paramenter)
+
+  services.steps({
+    subproject: paramenter.subproject,
+    delivery: paramenter.delivery,
+    test: paramenter.test })
+    .then(
+      r => {
+        commit(types.steps, r.data)
+      },
+      e => {
+        console.log(e)
+      }
+    )
+
   commit(types.searchStatus, 'show')
 }
 
