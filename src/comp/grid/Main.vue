@@ -9,6 +9,7 @@
       filterTermMessage: { type: String, default: '' },
       selectionType: { type: String, default: 'none' },
       useColumnNameWithBreak: { type: Boolean, default: true },
+      trafficLight: { type: Boolean, default: false },
       data: Array,
       columns: Array
     },
@@ -133,7 +134,6 @@
     watch: {
       'columns': {
         handler () {
-          console.log('watch')
           this.columns_ = this.columns
           this.columns_.forEach(c => {
             this.selectedOptions[c.id] = c.filterOptions
@@ -178,6 +178,7 @@
 
         <tr>
           <th style="padding: 0px 2px;" v-show="selectionType !== 'none'"/>
+          <th style="padding: 0px 2px;" v-show="trafficLight"/>
 
           <th v-for="column in columns_"
             v-show="column.visible"
@@ -190,6 +191,7 @@
         <tr>
         
           <th style="padding: 0px 1px" v-show="selectionType !== 'none'"/>
+          <th style="padding: 0px 2px;" v-show="trafficLight"/>
 
           <th v-for="(column, index) in columns_" :key="index"
             v-show="column.visible"
@@ -226,6 +228,19 @@
               <i class='glyphicon glyphicon-list-alt' style="font-size: 14px"></i>
             </a>
           </td>
+
+          <td style="padding: 1px; width: 1px" v-show="trafficLight">
+            <img alt="Farol Verde" src="../../asset/image/verde.png" v-show="row.trafficLight === 'VERDE'" style="padding-bottom:2px; margin:0; border:0">
+            <img alt="Farol Amarelo" src="../../asset/image/amarelo.png" v-show="row.trafficLight === 'AMARELO'" style="padding-bottom:2px; margin:0; border:0">
+            <img alt="Farol Vermelho" src="../../asset/image/vermelho.png" v-show="row.trafficLight === 'VERMELHO'" style="padding-bottom:2px; margin:0; border:0">
+            <img alt="Farol Vermelho" src="../../asset/image/roxo.png" v-show="row.trafficLight === 'ROXO'" style="padding-bottom:2px; margin:0; border:0">
+          </td>
+          <!--
+          <td style="padding: 1px; margin: 0px; border-top: 1px; text-align: center">
+              <div class="text-center" style="padding:0;">
+              </div>
+          </td>
+          -->
 
           <td v-for="(column, index) in columns_" :key="index"
             v-show="column.visible"

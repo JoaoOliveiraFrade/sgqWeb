@@ -3,7 +3,7 @@ import { paths } from '@/environment'
 
 export default {
   getData () {
-    let resource = Resource.resource(paths.api + '/defectTrafficLight/data')
+    let resource = Resource.resource(paths.api + '/defect/defectTrafficLight/data')
     return resource.get()
   }
 }

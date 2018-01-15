@@ -11,6 +11,7 @@
   import 'babel-polyfill'
 
   import services from '../services'
+  import servicesDefect from '@/module/defect/services'
 
   // import getDensityDefectTotal from '@/lib/getDensityDefectTotal'
   // import getDefectAverangeTimeTotal from '@/lib/getDefectAverangeTimeTotal'
@@ -102,8 +103,8 @@
         services.getProjectBySubEnt(this.project.subproject, this.project.delivery).then(resp => {
           this.project = resp.data
 
-          let subprojectDelivery = this.project.subprojectDelivery.split(' ')
-          this.email.subject = '[Status Projeto] SubPrj: ' + subprojectDelivery[0] + ', Ent: ' + subprojectDelivery[1] + ', Nome: ' + this.project.name
+          let project = this.project.subDel.split(' ')
+          this.email.subject = '[Status Projeto] SubPrj: ' + project[0] + ', Ent: ' + project[1] + ', Nome: ' + this.project.name
 
           if (this.project.IterationsActive !== null) {
             this.iterationsActive = this.project.IterationsActive.split("','")
@@ -169,11 +170,11 @@
           this.statusByProjectGroupMonth = getStatusTrans(resp.data)
         })
 
-        services.getDefectsStatus(this.project).then(resp => {
+        servicesDefect.defectsStatus(this.project).then(resp => {
           this.defectStatus = resp.data
         })
 
-        services.getDefectsGroupOrigin(this.project).then(resp => {
+        servicesDefect.defectsGroupOrigin(this.project).then(resp => {
           this.defectGroupOrigin = resp.data
         })
 
@@ -181,11 +182,11 @@
           this.ctsImpactedXDefects = resp.data
         })
 
-        services.getDefectsOpenInDevManuf(this.project).then(resp => {
+        servicesDefect.defectsOpenInDevManuf(this.project).then(resp => {
           this.defectsOpenInDevManuf = resp.data
         })
 
-        services.getDefectsOpenInTestManuf(this.project).then(resp => {
+        servicesDefect.defectsOpenInTestManuf(this.project).then(resp => {
           this.defectsOpenInTestManuf = resp.data
         })
 
@@ -224,11 +225,11 @@
           this.statusByProjectGroupMonth = getStatusTrans(resp.data)
         })
 
-        services.getDefectsStatusIterations(this.project, this.iterationsFiltered).then(resp => {
+        servicesDefect.defectsStatusIterations(this.project, this.iterationsFiltered).then(resp => {
           this.defectStatus = resp.data
         })
 
-        services.getDefectsGroupOriginIterations(this.project, this.iterationsFiltered).then(resp => {
+        servicesDefect.defectsGroupOriginIterations(this.project, this.iterationsFiltered).then(resp => {
           this.defectGroupOrigin = resp.data
         })
 
@@ -236,11 +237,11 @@
           this.ctsImpactedXDefects = resp.data
         })
 
-        services.getDefectsOpenInDevManufIterations(this.project, this.iterationsFiltered).then(resp => {
+        servicesDefect.defectsOpenInDevManufIterations(this.project, this.iterationsFiltered).then(resp => {
           this.defectsOpenInDevManuf = resp.data
         })
 
-        services.getDefectsOpenInTestManufIterations(this.project, this.iterationsFiltered).then(resp => {
+        servicesDefect.defectsOpenInTestManufIterations(this.project, this.iterationsFiltered).then(resp => {
           this.defectsOpenInTestManuf = resp.data
         })
 

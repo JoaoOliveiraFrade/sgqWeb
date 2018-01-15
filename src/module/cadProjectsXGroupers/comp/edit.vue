@@ -38,13 +38,13 @@
           }
         },
 
-        subprojectDelivery: ''
+        project: ''
       }
     },
 
     updated () {
-      if (this.subprojectDelivery !== this.project.subprojectDelivery) {
-        this.subprojectDelivery = this.project.subprojectDelivery
+      if (this.project !== this.project.subDel) {
+        this.project = this.project.subDel
         this.loadIterations()
         this.loadIterationsActive()
         this.loadIterationsSelected()
@@ -118,7 +118,7 @@
       <div class="col-xs-12 col-md-6 oi-col">
         <div>
           <label class="fd-label">Projeto:</label>
-          <label class="fd-content">{{project.subprojectDelivery}}</label>
+          <label class="fd-content">{{project.subDel}}</label>
         </div>
       </div>
       <div class="col-xs-12 col-md-6 oi-col">

@@ -32,8 +32,8 @@ export default {
     return resource.save(testManufsAndSystems)
   },
 
-  loadFbySubprojectDelivery (projects) {
-    let resource = Resource.resource(paths.api + '/project/testProj/loadFbySubprojectDelivery')
+  loadFbyproject (projects) {
+    let resource = Resource.resource(paths.api + '/project/testProj/loadFbyproject')
     return resource.save(projects)
   },
 
@@ -48,12 +48,12 @@ export default {
   },
 
   getProjectBySubEnt (subproject, delivery) {
-    let resource = Resource.resource(paths.api + '/project/testProj/bySubprojectDelivery{/subproject}{/delivery}')
+    let resource = Resource.resource(paths.api + '/project/testProj/byproject{/subproject}{/delivery}')
     return resource.get({ subproject: subproject, delivery: delivery })
   },
 
   getProject (project) {
-    let resource = Resource.resource(paths.api + '/project/testProj/bySubprojectDelivery{/subproject}{/delivery}')
+    let resource = Resource.resource(paths.api + '/project/testProj/byproject{/subproject}{/delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
@@ -77,28 +77,8 @@ export default {
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
-  getDefectsStatus (project) {
-    let resource = Resource.resource(paths.api + '/project/testProj/DefectsStatus{/subproject}{/delivery}')
-    return resource.get({ subproject: project.subproject, delivery: project.delivery })
-  },
-
-  getDefectsGroupOrigin (project) {
-    let resource = Resource.resource(paths.api + '/project/testProj/DefectsGroupOrigin{/subproject}{/delivery}')
-    return resource.get({ subproject: project.subproject, delivery: project.delivery })
-  },
-
   getCTsImpactedXDefects (project) {
     let resource = Resource.resource(paths.api + '/project/testProj/CtsImpactedXDefects{/subproject}{/delivery}')
-    return resource.get({ subproject: project.subproject, delivery: project.delivery })
-  },
-
-  getDefectsOpenInDevManuf (project) {
-    let resource = Resource.resource(paths.api + '/project/testProj/DefectsOpenInDevManuf{/subproject}{/delivery}')
-    return resource.get({ subproject: project.subproject, delivery: project.delivery })
-  },
-
-  getDefectsOpenInTestManuf (project) {
-    let resource = Resource.resource(paths.api + '/project/testProj/DefectsOpenInTestManuf{/subproject}{/delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
@@ -151,28 +131,8 @@ export default {
     return resource.update({ subproject: project.subproject, delivery: project.delivery }, iterations)
   },
 
-  getDefectsStatusIterations (project, iterations) {
-    let resource = Resource.resource(paths.api + '/project/testProj/DefectsStatusIterations{/subproject}{/delivery}')
-    return resource.update({ subproject: project.subproject, delivery: project.delivery }, iterations)
-  },
-
-  getDefectsGroupOriginIterations (project, iterations) {
-    let resource = Resource.resource(paths.api + '/project/testProj/DefectsGroupOriginIterations{/subproject}{/delivery}')
-    return resource.update({ subproject: project.subproject, delivery: project.delivery }, iterations)
-  },
-
   getCTsImpactedXDefectsIterations (project, iterations) {
     let resource = Resource.resource(paths.api + '/project/testProj/CtsImpactedXDefectsIterations{/subproject}{/delivery}')
-    return resource.update({ subproject: project.subproject, delivery: project.delivery }, iterations)
-  },
-
-  getDefectsOpenInDevManufIterations (project, iterations) {
-    let resource = Resource.resource(paths.api + '/project/testProj/DefectsOpenInDevManufIterations{/subproject}{/delivery}')
-    return resource.update({ subproject: project.subproject, delivery: project.delivery }, iterations)
-  },
-
-  getDefectsOpenInTestManufIterations (project, iterations) {
-    let resource = Resource.resource(paths.api + '/project/testProj/DefectsOpenInTestManufIterations{/subproject}{/delivery}')
     return resource.update({ subproject: project.subproject, delivery: project.delivery }, iterations)
   }
 }

@@ -75,7 +75,7 @@
             </td style="padding:0">
 
             <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: center">
-                <font size="2">{{item.subprojectDelivery}}</font>
+                <font size="2">{{item.project}}</font>
             </td style="padding:0">
 
             <td style="padding: 1px; margin: 0px; border-top: 1px; padding-right: 5px; text-align: right">

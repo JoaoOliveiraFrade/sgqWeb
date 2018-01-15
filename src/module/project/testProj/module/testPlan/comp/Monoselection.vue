@@ -156,10 +156,6 @@
       ...mapActions('testPlan', ['loadData', 'setSelected'])
     },
 
-    mounted () {
-      console.log('testPlan - mounted')
-    },
-
     watch: {
       'selectedMonoselection': {
         handler () {

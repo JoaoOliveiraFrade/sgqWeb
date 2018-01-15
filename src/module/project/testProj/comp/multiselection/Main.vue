@@ -17,8 +17,6 @@
       ...mapActions('testProj', ['setSelected']),
 
       confirm (selected) {
-        console.log('=> main')
-        console.log(selected)
         this.setSelected(selected)
         this.$emit('onConfirm', selected)
       }

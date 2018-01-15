@@ -29,7 +29,7 @@
             :data-target="'#modalEdit' + project.id">
             <span class="glyphicon glyphicon glyphicon-pencil icon"></span>
         </a>
-        <oiModal :id="'modalEdit' + project.id" :title="'[Projeto] ' + project.subprojectDelivery + ' - ' + project.name" size="l">
+        <oiModal :id="'modalEdit' + project.id" :title="'[Projeto] ' + project.subDel + ' - ' + project.name" size="l">
             <oiEdit slot="body"/>
         </oiModal>        
     </span>

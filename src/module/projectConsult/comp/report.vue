@@ -1,6 +1,7 @@
 <script>
   import oiReport from './showReport.vue'
   import services from '../services'
+  import servicesDefect from '@/module/defect/services'
   import getStatusTrans from '@/lib/getStatusTrans'
 
   export default {
@@ -128,11 +129,11 @@
           this.statusByProjectGroupMonth = getStatusTrans(resp.data)
         })
 
-        services.getDefectsStatus(this.project).then(resp => {
+        servicesDefect.defectsStatus(this.project).then(resp => {
           this.defectStatus = resp.data
         })
 
-        services.getDefectsGroupOrigin(this.project).then(resp => {
+        servicesDefect.defectsGroupOrigin(this.project).then(resp => {
           this.defectGroupOrigin = resp.data
         })
 
@@ -140,11 +141,11 @@
           this.ctsImpactedXDefects = resp.data
         })
 
-        services.getDefectsOpenInDevManuf(this.project).then(resp => {
+        servicesDefect.defectsOpenInDevManuf(this.project).then(resp => {
           this.defectsOpenInDevManuf = resp.data
         })
 
-        services.getDefectsOpenInTestManuf(this.project).then(resp => {
+        servicesDefect.defectsOpenInTestManuf(this.project).then(resp => {
           this.defectsOpenInTestManuf = resp.data
         })
 
@@ -187,11 +188,11 @@
           this.statusByProjectGroupMonth = getStatusTrans(resp.data)
         })
 
-        services.getDefectsStatusIterations(this.project, this.iterationsFiltered).then(resp => {
+        servicesDefect.defectsStatusIterations(this.project, this.iterationsFiltered).then(resp => {
           this.defectStatus = resp.data
         })
 
-        services.getDefectsGroupOriginIterations(this.project, this.iterationsFiltered).then(resp => {
+        servicesDefect.defectsGroupOriginIterations(this.project, this.iterationsFiltered).then(resp => {
           this.defectGroupOrigin = resp.data
         })
 
@@ -199,11 +200,11 @@
           this.ctsImpactedXDefects = resp.data
         })
 
-        services.getDefectsOpenInDevManufIterations(this.project, this.iterationsFiltered).then(resp => {
+        servicesDefect.DefectsOpenInDevManufIterations(this.project, this.iterationsFiltered).then(resp => {
           this.defectsOpenInDevManuf = resp.data
         })
 
-        services.getDefectsOpenInTestManufIterations(this.project, this.iterationsFiltered).then(resp => {
+        servicesDefect.defectsOpenInTestManufIterations(this.project, this.iterationsFiltered).then(resp => {
           this.defectsOpenInTestManuf = resp.data
         })
 

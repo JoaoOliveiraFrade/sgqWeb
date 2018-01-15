@@ -76,7 +76,7 @@ export const operTestRejectionEvidenceMapType = ({operTestRejectionEvidence, sel
       year: i.year,
       testManuf: i.testManuf,
       system: i.system,
-      subprojectDelivery: i.subprojectDelivery,
+      project: i.project,
       qtyEvidence: i.qtyEvidence,
       qtyRejection: i.qtyRejectionTechnique
     })).filter(f => f.qtyEvidence > 0 || f.qtyRejection > 0)
@@ -86,7 +86,7 @@ export const operTestRejectionEvidenceMapType = ({operTestRejectionEvidence, sel
       year: i.year,
       testManuf: i.testManuf,
       system: i.system,
-      subprojectDelivery: i.subprojectDelivery,
+      project: i.project,
       qtyEvidence: i.qtyEvidenceClient,
       qtyRejection: i.qtyRejectionClient
     })).filter(f => f.qtyEvidence > 0 || f.qtyRejection > 0)
@@ -96,7 +96,7 @@ export const operTestRejectionEvidenceMapType = ({operTestRejectionEvidence, sel
       year: i.year,
       testManuf: i.testManuf,
       system: i.system,
-      subprojectDelivery: i.subprojectDelivery,
+      project: i.project,
       qtyEvidence: i.qtyEvidence,
       qtyRejection: i.qtyRejectionTotal
     })).filter(f => f.qtyEvidence > 0 || f.qtyRejection > 0)

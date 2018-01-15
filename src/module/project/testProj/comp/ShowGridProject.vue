@@ -97,7 +97,7 @@
                 </td>
 
                 <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; padding:1px; font-size:11px">
-                    {{item.subprojectDelivery}}
+                    {{item.project}}
                 </td>
 
                 <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; padding:1px; font-size:11px">

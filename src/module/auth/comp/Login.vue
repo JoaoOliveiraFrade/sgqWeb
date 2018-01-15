@@ -22,7 +22,7 @@
     },
 
     methods: {
-      ...mapActions(['tryLogon', 'tryLoadProfiles']),
+      ...mapActions('auth', ['tryLogon', 'tryLoadProfiles']),
 
       logon () {
         this.tryLogon({...this.user})
@@ -44,7 +44,7 @@
     },
 
     computed: {
-      ...mapGetters(['currentUser']),
+      ...mapGetters('auth', ['currentUser']),
 
       isUserValid () {
         return this.user.login !== '' && this.user.cpf !== ''

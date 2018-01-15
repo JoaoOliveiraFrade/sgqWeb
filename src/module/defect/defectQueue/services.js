@@ -3,7 +3,7 @@ import { paths } from '@/environment'
 
 export default {
   getData () {
-    let resource = Resource.resource(paths.api + '/defectQueue/data')
+    let resource = Resource.resource(paths.api + '/defect/defectQueue/data')
     return resource.get()
   }
 }

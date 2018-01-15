@@ -1616,16 +1616,16 @@ chartDensityDevManuf<script>
             e => { console.log(e) }
           )
       },
-      loadJsonProjects () {
-        let _this = this
-        _this.$http.get(paths.api + '/projects')
-          .then(
-              r => {
-                _this.projects = r.data
-              },
-              e => { console.log(e) }
-          )
-      },
+      // loadJsonProjects () {
+      //   let _this = this
+      //   _this.$http.get(paths.api + '/projects')
+      //     .then(
+      //         r => {
+      //           _this.projects = r.data
+      //         },
+      //         e => { console.log(e) }
+      //     )
+      // },
       loadJsonDensity () {
         let _this = this
         _this.$http.get(paths.api + '/defectsDensity')

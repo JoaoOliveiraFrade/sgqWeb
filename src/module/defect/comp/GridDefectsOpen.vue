@@ -1,10 +1,10 @@
 <script>
   import oiModal from '@/comp/modal/Modal2.vue'
-  import oiDefectShow from '@/module/defectConsult/comp/show'
-  import serviceDefectDetail from '@/service/defectDetail'
+  import oiDefectShow from '@/module/defect/comp/ShowData'
+  import serviceDefect from '@/module/defect/services'
 
   export default {
-    name: 'gridDefectsOpen',
+    name: 'GridDefectsOpen',
 
     components: { oiModal, oiDefectShow },
 
@@ -24,7 +24,7 @@
     methods: {
       onSelectDefect (defectSelected) {
         this.selectedDefect = defectSelected
-        serviceDefectDetail.getByDefect(this.project, this.selectedDefect).then(resp => {
+        serviceDefect.defectDetail(this.project, this.selectedDefect).then(resp => {
           this.selectedDefectDetail = resp.data
         })
 
@@ -83,7 +83,7 @@
                 </td>
 
                 <td class="text-center" style="padding:0">
-                    <font size="2px">{{defect.defect}}</font>
+                    <font size="2px">{{defect.id}}</font>
                 </td>
 
                 <td class="text-center" style="padding:0">
@@ -91,7 +91,7 @@
                 </td>
 
                 <td class="text-center" style="padding:0">
-                    <font size="1.5px">{{defect.forwardedTo}}</font>
+                    <font size="1.5px">{{defect.queue}}</font>
                 </td>
 
                 <td class="text-center" style="padding:0">
@@ -99,7 +99,7 @@
                 </td>
 
                 <td class="text-center" style="padding:0">
-                    <font size="1.5px">{{defect.agingDisplay}}</font>
+                    <font size="1.5px">{{defect.agingFormat}}</font>
                 </td>
 
                 <td class="text-center" style="padding:0">

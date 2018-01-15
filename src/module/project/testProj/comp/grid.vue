@@ -96,7 +96,7 @@
                 </td>
 
                 <td class="text-center" style="padding:1px">
-                    <font size="2px">{{item.subprojectDelivery}}</font>
+                    <font size="2px">{{item.project}}</font>
                 </td>
 
                 <td class="text-left" style="padding:1px">

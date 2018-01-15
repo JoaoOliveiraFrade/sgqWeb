@@ -14,7 +14,7 @@
         project: {},
 
         filterProperties: [
-          {name: 'subprojectDelivery'},
+          {name: 'project'},
           {name: 'name'},
           {name: 'classification'},
           {name: 'release'},

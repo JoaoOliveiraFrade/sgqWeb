@@ -3,7 +3,7 @@ export const dataBySelectedRejectionType = ({data, selectedRejectionType}) => {
     return data.map(i => ({
       testManuf: i.testManuf,
       system: i.system,
-      subprojectDelivery: i.subprojectDelivery,
+      project: i.project,
       evidences: i.evidences,
       rejections: i.rejectionsTechnique
     })).filter(f => f.evidences > 0 || f.rejections > 0)
@@ -11,7 +11,7 @@ export const dataBySelectedRejectionType = ({data, selectedRejectionType}) => {
     return data.map(i => ({
       testManuf: i.testManuf,
       system: i.system,
-      subprojectDelivery: i.subprojectDelivery,
+      project: i.project,
       evidences: i.evidencesClient,
       rejections: i.rejectionsClient
     })).filter(f => f.evidences > 0 || f.rejections > 0)
@@ -19,7 +19,7 @@ export const dataBySelectedRejectionType = ({data, selectedRejectionType}) => {
     return data.map(i => ({
       testManuf: i.testManuf,
       system: i.system,
-      subprojectDelivery: i.subprojectDelivery,
+      project: i.project,
       evidences: i.evidences,
       rejections: i.rejectionsTotal
     })).filter(f => f.evidences > 0 || f.rejections > 0)
@@ -137,7 +137,7 @@ export const dataTimelineBySelectedRejectionType = ({dataTimeline, selectedRejec
       monthYear: i.month + '/' + i.year,
       testManuf: i.testManuf,
       system: i.system,
-      subprojectDelivery: i.subprojectDelivery,
+      project: i.project,
       rejections: i.rejectionsTechnique
     })).filter(f => f.rejections > 0)
   } else if (selectedRejectionType === 'Cliente') {
@@ -148,7 +148,7 @@ export const dataTimelineBySelectedRejectionType = ({dataTimeline, selectedRejec
       monthYear: i.month + '/' + i.year,
       testManuf: i.testManuf,
       system: i.system,
-      subprojectDelivery: i.subprojectDelivery,
+      project: i.project,
       rejections: i.rejectionsClient
     })).filter(f => f.rejections > 0)
   } else {
@@ -159,7 +159,7 @@ export const dataTimelineBySelectedRejectionType = ({dataTimeline, selectedRejec
       monthYear: i.month + '/' + i.year,
       testManuf: i.testManuf,
       system: i.system,
-      subprojectDelivery: i.subprojectDelivery,
+      project: i.project,
       rejections: i.rejectionsTotal
     })).filter(f => f.rejections > 0)
   }

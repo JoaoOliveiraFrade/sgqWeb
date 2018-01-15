@@ -97,7 +97,7 @@
             </td style="padding:0">
 
             <td style="padding:0">
-                <font size="2">{{project.subprojectDelivery}}</font>
+                <font size="2">{{project.subDel}}</font>
             </td style="padding:0">
 
             <td style="padding:0">

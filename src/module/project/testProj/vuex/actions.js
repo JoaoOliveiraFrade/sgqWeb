@@ -148,8 +148,8 @@ export const setProjectFilterTerm = ({ commit }, filterTerm) => {
 //   services.loadFromAgentGroupDevManufsAndSystems()
 //     .then(
 //       r => {
-//         commit(types.listSubprojectDelivery, r.data)
-//         dispatch('loadFbySubprojectDelivery')
+//         commit(types.listproject, r.data)
+//         dispatch('loadFbyproject')
 //       },
 //       e => {
 //         console.log(e)
@@ -157,9 +157,9 @@ export const setProjectFilterTerm = ({ commit }, filterTerm) => {
 //     )
 // }
 
-// export const loadFbySubprojectDelivery = ({ commit, state }) => {
+// export const loadFbyproject = ({ commit, state }) => {
 //   commit(types.loading, true)
-//   services.loadFbySubprojectDelivery(state.listSubprojectDelivery)
+//   services.loadFbyproject(state.listproject)
 //     .then(
 //       r => {
 //         commit(types.data, r.data)

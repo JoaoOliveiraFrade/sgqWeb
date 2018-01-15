@@ -10,6 +10,7 @@
   import oiEdit from './edit.vue'
   import oiView from '@/module/project/testProj/comp/view.vue'
   import services from '../services'
+  import servicesDefect from '@/module/defect/services'
   import services2 from '@/module/project/testProj/services'
   
   import getStatusTrans from '@/lib/getStatusTrans'
@@ -26,7 +27,7 @@
         state: 'search',
 
         filterProperties: [
-          {name: 'subprojectDelivery'},
+          {name: 'subDel'},
           {name: 'name'},
           {name: 'classification'},
           {name: 'release'},
@@ -148,8 +149,8 @@
         this.loadProductivityXDefects(this.project)
         this.loadProductivityXDefectsGroupWeekly(this.project)
 
-        let subprojectDelivery = this.project.subprojectDelivery.split(' ')
-        this.email.subject = '[Status Projeto] SubPrj: ' + subprojectDelivery[0] + ', Ent: ' + subprojectDelivery[1] + ', Nome: ' + this.project.name
+        let subDel = this.project.subDel.split(' ')
+        this.email.subject = '[Status Projeto] SubPrj: ' + subDel[0] + ', Ent: ' + subDel[1] + ', Nome: ' + this.subDel.name
       },
 
       showItem () {
@@ -255,7 +256,7 @@
           this.defectStatus = resp.data
         })
         */
-        services.getDefectsStatus(this.project).then(resp => {
+        servicesDefect.defectsStatus(this.project).then(resp => {
           this.defectStatus = resp.data
         })
       },
@@ -266,7 +267,7 @@
           this.defectGroupOrigin = resp.data
         })
         */
-        services.getDefectsGroupOrigin(this.project).then(resp => {
+        servicesDefect.defectsGroupOrigin(this.project).then(resp => {
           this.defectGroupOrigin = resp.data
         })
       },
@@ -277,7 +278,7 @@
           this.defectsOpenInTestManuf = resp.data
         })
         */
-        services.getDefectsOpenInTestManuf(this.project).then(resp => {
+        servicesDefect.defectsOpenInTestManuf(this.project).then(resp => {
           this.defectsOpenInTestManuf = resp.data
         })
       },
@@ -288,7 +289,7 @@
           this.defectsOpenInDevManuf = resp.data
         })
         */
-        services.getDefectsOpenInDevManuf(this.project).then(resp => {
+        servicesDefect.defectsOpenInDevManuf(this.project).then(resp => {
           this.defectsOpenInDevManuf = resp.data
         })
       },

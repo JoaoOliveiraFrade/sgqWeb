@@ -64,7 +64,7 @@
             </td>
 
             <td rowspan=3 style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
-                {{item.subprojectDelivery}}
+                {{item.project}}
             </td>
 
             <td rowspan=3 style="text-align: left; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">

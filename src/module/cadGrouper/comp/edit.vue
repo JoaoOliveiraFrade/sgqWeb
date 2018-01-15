@@ -23,7 +23,7 @@
           }
         },
         lastItem: undefined,
-        subprojectDelivery: '',
+        project: '',
         projects: []
       }
     },

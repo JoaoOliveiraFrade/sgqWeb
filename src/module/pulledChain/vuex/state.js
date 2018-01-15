@@ -1,6 +1,6 @@
 export default {
   filterProperties: [
-    { name: 'subprojectDelivery' },
+    { name: 'subDel' },
     { name: 'state' },
     { name: 'RT' },
     { name: 'UN' },

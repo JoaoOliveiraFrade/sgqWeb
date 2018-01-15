@@ -3,6 +3,9 @@ import { paths } from '@/environment'
 
 export default {
   data (parameter) {
+    console.log('==============================================')
+    console.log(parameter)
+    console.log('==============================================')
     let resource = Resource.resource(paths.api + '/indOperDev/defectDensity/data')
     return resource.save(parameter)
   },

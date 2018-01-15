@@ -178,7 +178,7 @@
                 </td>
 
                 <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: center">
-                    <font size="2px">{{project.subprojectDelivery}}</font>
+                    <font size="2px">{{project.subDel}}</font>
                 </td>
 
                 <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">

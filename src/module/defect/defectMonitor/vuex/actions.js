@@ -1,5 +1,6 @@
 import * as types from './mutationsTypes'
-// import services from '../services'
+import services from '../services'
+import servicesDefect from '@/module/defect/services'
 
 export const setSelectedDefectQueue = ({ commit }, selected) => {
   commit(types.selectedDefectQueue, selected)
@@ -17,33 +18,57 @@ export const setSelectedProject = ({ commit }, selected) => {
   commit(types.selectedProject, selected)
 }
 
-// export const load = ({ commit, state, rootState }) => {
-//   if (rootState.testManuf.selectedTestManufs.length === 0 || rootState.system.selectedSystem.length === 0 || rootState.project.selectedProject.length === 0) {
-//     return
-//   }
+export const loadData = ({ commit, state }) => {
+  // if (state.selectedDefectQueue.length === 0 || state.selectedDefectStatus.length === 0 || state.selectedDefectTrafficLight.length === 0 || state.selectedProject.length === 0) {
+  //   return
+  // }
 
-//   commit(types.loading, true)
+  commit(types.loading, true)
 
-//   return new Promise((resolve, reject) => {
-//     services.getByListTestManufSystemProject({
-//       selectedTestManufs: rootState.testManuf.selectedTestManufs,
-//       selectedSystem: rootState.system.selectedSystem,
-//       selectedProject: rootState.project.selectedProject.map(i => i.subproject + i.delivery)
-//     })
-//     .then(
-//       r => {
-//         commit(types.data, r.data)
-//         commit(types.loading, false)
-//         resolve()
-//       },
-//       e => {
-//         console.log(e)
-//         commit(types.loading, false)
-//         reject(e)
-//       }
-//     )
-//   })
-// }
+  return new Promise((resolve, reject) => {
+    services.fbyQueueStatusTrafficLightProject({
+      selectedDefectQueue: state.selectedDefectQueue.map(i => i.id),
+      selectedDefectStatus: state.selectedDefectStatus.map(i => i.id),
+      selectedDefectTrafficLight: state.selectedDefectTrafficLight.map(i => i.id),
+      selectedProject: state.selectedProject.map(i => i.subproject + i.delivery)
+    }).then(
+      r => {
+        commit(types.data, r.data)
+        commit(types.loading, false)
+        resolve()
+      },
+      e => {
+        console.log(e)
+        commit(types.loading, false)
+        reject(e)
+      }
+    )
+  })
+}
+
+export const setSelectedDefect = ({ commit }, parameter) => {
+  commit(types.selectedDefect, parameter)
+
+  console.log(parameter)
+  commit(types.loading, true)
+  servicesDefect.defectDetail({ subproject: parameter.subproject, delivery: parameter.delivery }, { id: parameter.id })
+    .then(
+      r => {
+        commit(types.selectedDefectDetail, r.data)
+        commit(types.loading, false)
+      },
+      e => {
+        commit(types.loading, false)
+        console.log(e)
+      }
+    )
+
+  commit(types.status, 'showDetail')
+}
+
+export const setStatus = ({ commit }, parameter) => {
+  commit(types.status, parameter)
+}
 
 // export const setChartFilter = ({ state, commit }, item) => {
 //   if (item === '') {

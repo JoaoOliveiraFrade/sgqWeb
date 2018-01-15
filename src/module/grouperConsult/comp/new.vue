@@ -18,7 +18,7 @@
           }
         },
         lastItem: undefined,
-        subprojectDelivery: '',
+        project: '',
         projects: []
       }
     },
@@ -40,8 +40,8 @@
 
     /*
     updated () {
-      if (this.subprojectDelivery !== this.item.subprojectDelivery) {
-        this.subprojectDelivery = this.item.subprojectDelivery
+      if (this.project !== this.item.project) {
+        this.project = this.item.project
         this.loadIterations()
         this.loadIterationsActive()
         this.loadIterationsSelected()

@@ -1,6 +1,6 @@
 export default {
   filterProperties: [
-    { name: 'subprojectDelivery' },
+    { name: 'project' },
     { name: 'name' },
     { name: 'state' },
     { name: 'classification' }

@@ -1,6 +1,6 @@
 <script>
   export default {
-    name: 'defectConsultMain',
+    name: 'defectMain',
 
     components: { oiGrid, oiViewModel },
 

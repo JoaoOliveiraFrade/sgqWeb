@@ -29,7 +29,7 @@
             :data-target="'#modalShow' + project.id">
             <span class="glyphicon glyphicon glyphicon glyphicon-list-alt icon"></span>
         </a>
-        <oiModal :id="'modalShow' + project.id" :title="'[Projeto] ' + project.subprojectDelivery + ' - ' + project.name" size="l">
+        <oiModal :id="'modalShow' + project.id" :title="'[Projeto] ' + project.subDel + ' - ' + project.name" size="l">
             <oiShow slot="body"/>
         </oiModal>
     </span>

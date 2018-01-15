@@ -19,7 +19,7 @@
 
   import oiGridMonitAcum from './gridMonitAcum'
   import oiGridMonitDay from './gridMonitDay'
-  import oiGridDefectsOpen from './gridDefectsOpen'
+  import oiGridDefectsOpen from '@/module/defect/comp/GridDefectsOpen'
   
   // import html2canvas from 'html2canvas'
   // import domtoimage from 'dom-to-image'

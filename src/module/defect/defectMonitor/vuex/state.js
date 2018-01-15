@@ -5,7 +5,10 @@ export default {
   selectedProject: [],
 
   data: [],
-  loading: false
+  loading: false,
+  selectedDefect: {},
+  selectedDefectDetail: {},
+  status: 'show'
   // limitMaxQtyHours: 5,
   // testManufSelected: '',
   // systemSelected: ''

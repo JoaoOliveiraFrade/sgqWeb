@@ -29,8 +29,8 @@
       columns () {
         return [
           {
-            id: 'subprojectDelivery',
-            name: 'Sub.Ent',
+            id: 'subDel',
+            name: 'Proj.',
             alignHeader: 'center',
             align: 'center',
             visible: true,

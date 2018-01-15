@@ -13,7 +13,7 @@
 
   import oiGridMonitAcum from './gridMonitAcum'
   import oiGridMonitDay from './gridMonitDay'
-  import oiGridDefectsOpen from './gridDefectsOpen'
+  import oiGridDefectsOpen from '@/module/defect/comp/GridDefectsOpen'
 
   // import HttpService from '@/http/HttpService'
 
@@ -104,7 +104,7 @@
 
 <template>
   <div id="projects">
-    SHOW: {{project.subprojectDelivery}}
+    SHOW: {{project.subDel}}
     <a href="#" @click="emailCurrentPage">Mail this page!</a>   <br>
 
     <a href='mailto:email@email.com?subject=Software&body=see attachment&attachment="d:/Cargas.txt"'>sdfds</a>
@@ -113,7 +113,7 @@
       <div class="col-xs-12 col-md-6" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
           <label class="fd-label">Projeto:</label>
-          <label class="fd-content">{{project.subprojectDelivery}}</label>
+          <label class="fd-content">{{project.subDel}}</label>
         </div>
       </div>
       <div class="col-xs-12 col-md-6" style="margin:0; border:0; padding:0; padding-left:5px">

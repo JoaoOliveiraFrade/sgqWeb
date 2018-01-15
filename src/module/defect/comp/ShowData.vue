@@ -1,6 +1,6 @@
 <script>
   export default {
-    name: 'projectShow',
+    name: 'DefectShowData',
 
     props: {
       project: { type: Object },
@@ -15,7 +15,7 @@
       <div class="col-xs-2 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
           <label class="fd-label">Projeto:</label><br>
-          <label class="fd-content">{{defect.project}}</label>
+          <label class="fd-content">{{defect.subDel}}</label>
         </div>
       </div>
 
@@ -90,8 +90,8 @@
 
       <div class="col-xs-4 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
-          <label class="fd-label">Encaminhado Para:</label><br>
-          <label class="fd-content">{{defect.forwardedTo}}</label>
+          <label class="fd-label">Fila:</label><br>
+          <label class="fd-content">{{defect.queue}}</label>
         </div>
       </div>
     </div>
@@ -107,7 +107,7 @@
       <div class="col-xs-4 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
           <label class="fd-label">Origem:</label><br>
-          <label class="fd-content">{{defect.source}}</label>
+          <label class="fd-content">{{defect.origin}}</label>
         </div>
       </div>
 
@@ -175,7 +175,7 @@
       <div class="col-xs-4 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
           <label class="fd-label">Aging:</label><br>
-          <label class="fd-content">{{defect.agingDisplay}}</label>
+          <label class="fd-content">{{defect.agingFormat}}</label>
         </div>
       </div>
     </div>
