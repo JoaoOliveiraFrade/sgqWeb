@@ -229,12 +229,13 @@
             </a>
           </td>
 
-          <td style="padding: 1px; width: 1px" v-show="trafficLight">
-            <img alt="Farol Verde" src="../../asset/image/verde.png" v-show="row.trafficLight === 'VERDE'" style="padding-bottom:2px; margin:0; border:0">
-            <img alt="Farol Amarelo" src="../../asset/image/amarelo.png" v-show="row.trafficLight === 'AMARELO'" style="padding-bottom:2px; margin:0; border:0">
-            <img alt="Farol Vermelho" src="../../asset/image/vermelho.png" v-show="row.trafficLight === 'VERMELHO'" style="padding-bottom:2px; margin:0; border:0">
-            <img alt="Farol Vermelho" src="../../asset/image/roxo.png" v-show="row.trafficLight === 'ROXO'" style="padding-bottom:2px; margin:0; border:0">
+          <td style="padding: 0px 2px; padding-right:3px; vertical-align: middle; width: 1px" v-show="trafficLight">
+            <img alt="Farol Verde" src="../../asset/image/verde.png" v-show="row.trafficLight === 'VERDE'" style="vertical-align: middle; padding-bottom:2px; margin:0; border:0">
+            <img alt="Farol Amarelo" src="../../asset/image/amarelo.png" v-show="row.trafficLight === 'AMARELO'" style="vertical-align: middle; padding-bottom:2px; margin:0; border:0">
+            <img alt="Farol Vermelho" src="../../asset/image/vermelho.png" v-show="row.trafficLight === 'VERMELHO'" style="vertical-align: middle; padding-bottom:2px; margin:0; border:0">
+            <img alt="Farol Vermelho" src="../../asset/image/roxo.png" v-show="row.trafficLight === 'ROXO'" style="vertical-align: middle; padding-bottom:2px; margin:0; border:0">
           </td>
+          
           <!--
           <td style="padding: 1px; margin: 0px; border-top: 1px; text-align: center">
               <div class="text-center" style="padding:0;">

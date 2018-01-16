@@ -41,18 +41,16 @@
                 <li class="dropdown-submenu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-left:4px">Projeto</a>
                     <ul class="dropdown-menu" style="width:190px">
+
                         <router-link :to="{ name: 'testProjSearch' }" tag="li" @click.native="$emit('collapseMenuMobile')">
                             <a class="oi-menu">Teste</a>
                         </router-link>
+
                         <router-link :to="{ name: 'bitiProjSearch' }" tag="li" @click.native="$emit('collapseMenuMobile')">
                             <a class="oi-menu">BITI</a>
                         </router-link>
                     </ul>
                 </li>
-
-                <router-link :to="{ name: 'projectConsult' }" tag="li" @click.native="$emit('collapseMenuMobile')">
-                    <a class="oi-menu">Projeto</a>
-                </router-link>
 
                 <router-link :to="{ name: 'searchGrouperConsult' }" tag="li" @click.native="$emit('collapseMenuMobile')">
                     <a class="oi-menu">Agrupador</a>
@@ -91,7 +89,6 @@
                 </li>
             </ul>
         </li>
-
 
         <li class="dropdown">
             <a href="#" 
@@ -179,10 +176,15 @@
             </ul>
         </li>
 
+        <router-link :to="{ name: 'defectMonitor' }" tag="li" @click.native="$emit('collapseMenuMobile')">
+            <a class="oi-menu">Monit.Defeito</a>
+        </router-link>
+
         <router-link :to="{ name: 'pulledChain' }" tag="li" @click.native="$emit('collapseMenuMobile')">
             <a class="oi-menu">Cadeia Puxada</a>
         </router-link>
 
+        <!--
         <li class="dropdown">
             <a href="#" 
                 class="dropdown-toggle oi-menu" data-toggle="dropdown" 
@@ -203,6 +205,7 @@
                 </router-link>
             </ul>
         </li>
+        -->
 
 
 

@@ -48,9 +48,9 @@ export const loadData = ({ commit, state }) => {
 
 export const setSelectedDefect = ({ commit }, parameter) => {
   commit(types.selectedDefect, parameter)
-
-  console.log(parameter)
+  commit(types.status, 'showDetail')
   commit(types.loading, true)
+
   servicesDefect.defectDetail({ subproject: parameter.subproject, delivery: parameter.delivery }, { id: parameter.id })
     .then(
       r => {
@@ -63,7 +63,17 @@ export const setSelectedDefect = ({ commit }, parameter) => {
       }
     )
 
-  commit(types.status, 'showDetail')
+  servicesDefect.defectTime(parameter.subproject, parameter.delivery, parameter.id)
+    .then(
+      r => {
+        commit(types.selectedDefectTime, r.data)
+        commit(types.loading, false)
+      },
+      e => {
+        commit(types.loading, false)
+        console.log(e)
+      }
+    )
 }
 
 export const setStatus = ({ commit }, parameter) => {

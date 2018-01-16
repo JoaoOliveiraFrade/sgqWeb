@@ -8,6 +8,7 @@ export default {
   loading: false,
   selectedDefect: {},
   selectedDefectDetail: {},
+  selectedDefectTime: [],
   status: 'show'
   // limitMaxQtyHours: 5,
   // testManufSelected: '',

@@ -35,5 +35,9 @@ export default {
 
   [types.selectedDefectDetail] (state, parameter) {
     state.selectedDefectDetail = parameter
+  },
+
+  [types.selectedDefectTime] (state, parameter) {
+    state.selectedDefectTime = parameter
   }
 }

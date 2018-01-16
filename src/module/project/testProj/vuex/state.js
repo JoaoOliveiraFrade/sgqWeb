@@ -1,7 +1,7 @@
 export default {
   projectFilterProperties: [
     { name: 'trafficLight' },
-    { name: 'project' },
+    { name: 'subDel' },
     { name: 'name' },
     { name: 'state' },
     { name: 'release' },

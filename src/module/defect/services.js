@@ -10,12 +10,14 @@ export default {
 
   // getByDefect (project, defect) {
   defectDetail (project, defect) {
-    console.log(project)
-    console.log(defect)
     let resource = Resource.resource(paths.api + '/defect/defectDetail{/subproject}{/delivery}{/defect}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery, defect: defect.id })
   },
 
+  defectTime (subproject, delivery, defect) {
+    let resource = Resource.resource(paths.api + '/defect/defectTime{/subproject}{/delivery}{/defect}')
+    return resource.get({ subproject: subproject, delivery: delivery, defect: defect })
+  },
   // ===========================================
 
   defectsOpenInDevManuf (project) {
