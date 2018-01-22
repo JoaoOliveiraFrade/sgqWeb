@@ -1,6 +1,10 @@
 <script>
+  import oiShowDefectTime from './ShowDefectTime.vue'
+
   export default {
     name: 'DefectShowData',
+
+    components: { oiShowDefectTime },
 
     props: {
       project: { type: Object },
@@ -181,6 +185,10 @@
     </div>
 
     <div class="col-xs-12 text-left" style="margin:0; border:0; padding:0; padding-left:5px; margin-bottom: 10px">
+      <oiShowDefectTime/>
+    </div>
+
+    <div class="col-xs-12 text-left" style="margin:0; border:0; padding:0; padding-left:5px; margin-bottom: 10px">
       <a class="btn btn-primary btn-xs" 
         role="button" 
         data-toggle="collapse" 
@@ -196,6 +204,7 @@
         </div>
       </div>
     </div>
+
 
   </div>    
 </template>

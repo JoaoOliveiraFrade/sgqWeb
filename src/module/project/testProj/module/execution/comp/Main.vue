@@ -40,7 +40,6 @@
   <span>
       <div class="loader" v-show="loading" slot="body"/>
       <div v-show="!loading">
-
         <div id="Acumulado" class="col-xs-12 col-lg-6 text-center" style="padding-top:10px">
             <label class="fd-label">Acumulado</label>
             <oiAccumulatedGrid :dataSource="last05Days"/>
@@ -54,11 +53,12 @@
         <div class="col-xs-12 col-md-6 text-center" style="padding-top:10px">
             <oiChartCurvaS :dataSource="groupMonth" title="Curva S"/>
         </div>
-
+        
+<!--
         <div class="col-xs-12 col-md-6 text-center" style="padding-top:10px">
             <oiChartCurvaS :dataSource="last30Days" title="Curva S dos últimos dias"/>
         </div>
-
+-->
         <div class="col-xs-12 col-md-6 text-center" style="padding-top:10px">
             <oiChartProductivityXDefects
               title = "Produtiv. X Def. Abertos - Dia" 

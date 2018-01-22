@@ -8,6 +8,7 @@
     props: {
       filterTermMessage: { type: String, default: '' },
       selectionType: { type: String, default: 'none' },
+      selectionField: { type: Boolean, default: true },
       useColumnNameWithBreak: { type: Boolean, default: true },
       trafficLight: { type: Boolean, default: false },
       data: Array,
@@ -161,7 +162,7 @@
 
     <div class="row" style="padding: 0px 15px">
 
-      <v-select multiple
+      <v-select multiple v-show="selectionField"
         style="font-size: 12px"
         placeholder="Informe as colunas para exibição"
         :searchable="true"

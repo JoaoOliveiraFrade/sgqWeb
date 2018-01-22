@@ -56,10 +56,15 @@
                     <a class="oi-menu">Agrupador</a>
                 </router-link>
 
+                <router-link :to="{ name: 'trg' }" tag="li" @click.native="$emit('collapseMenuMobile')">
+                    <a class="oi-menu">TRG</a>
+                </router-link>
+
                 <!--
                 'fullscreen=yes, titlebar=no, toolbar=no, location=no, channelmode=0no, status=no, menubar=no, scrollbars=yes, resizable=yes'
                 -->
 
+                <!--
                 <li>
                     <a class="oi-menu" @click="$emit('collapseMenuMobile')"
                         href="#"
@@ -69,6 +74,7 @@
                         return false;">TRG
                     </a>
                 </li>
+                -->
                 <li>
                     <a class="oi-menu" @click="$emit('collapseMenuMobile')" style="height:20px;margin:0;padding-top:0px;" 
                         href="#"

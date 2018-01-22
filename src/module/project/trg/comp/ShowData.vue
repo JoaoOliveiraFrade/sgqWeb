@@ -24,8 +24,8 @@
   import oiRulerPerfDevDefectDensity from '@/module/indicator/performance/dev/defectDensity/comp/ShowRule'
   import oiRulerPerfDevDefectOfTSInTI from '@/module/indicator/performance/dev/defectOfTSInTI/comp/ShowRule'
 
-  import oiTestPlanSearch from '../module/testPlan/comp/Search'
-  import oiExecution from '../module/execution/comp/Main'
+  // import oiTestPlanSearch from '../module/testPlan/comp/Search'
+  // import oiExecution from '../module/execution/comp/Main'
 
   export default {
     name: 'ShowData',
@@ -52,9 +52,9 @@
       oiRulerOperTestDefectAverangeRetestTime,
 
       oiRulerPerfDevDefectDensity,
-      oiRulerPerfDevDefectOfTSInTI,
-      oiTestPlanSearch,
-      oiExecution
+      oiRulerPerfDevDefectOfTSInTI
+      // oiTestPlanSearch,
+      // oiExecution
     },
 
     computed: {
@@ -327,7 +327,6 @@
           
         </div>
 <!--
-
           <div class="row well well-sm oi-well text-center">
             <label class="fd-label">TESTE</label><br>
             <div class="col-xs-12 col-sm-6 col-md-3 oi-col">
@@ -343,11 +342,12 @@
           </div>         
 -->
 
+<!--
         <div id="testPlane" class="tab-pane fade" style="padding:5px; margin:0; text-align: center">
           <oiTestPlanSearch>
           </oiTestPlanSearch>
         </div>
-
+-->
       </div>
     </div>
 </template>

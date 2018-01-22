@@ -34,6 +34,8 @@
 
     methods: {
       loadParameters () {
+        if (this.dataSource.rows === undefined) return
+
         this.parameters.title.text = this.title
         this.parameters.yAxis.title.text = 'Qte CTs'
         /*

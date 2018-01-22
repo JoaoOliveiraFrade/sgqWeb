@@ -1,0 +1,5 @@
+export const data = 'data'
+export const loading = 'loading'
+export const filterTerm = 'filterTerm'
+export const selected = 'selected'
+export const selectedMonoselection = 'selectedMonoselection'

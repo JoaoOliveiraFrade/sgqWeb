@@ -5,6 +5,10 @@ import { vuex as testManuf } from './testManuf'
 import { vuex as system } from './system/system'
 import { vuex as systemFromAgent } from './system/systemFromAgent'
 
+import { vuex as release } from './release'
+
+import { vuex as trg } from './project/trg'
+
 import { vuex as testProj } from './project/testProj'
 import { vuex as testPlan } from './project/testProj/module/testPlan'
 import { vuex as execution } from './project/testProj/module/execution'
@@ -43,6 +47,10 @@ export default {
   testManuf,
   system,
   systemFromAgent,
+
+  release,
+
+  trg,
 
   testProj,
   testPlan,
