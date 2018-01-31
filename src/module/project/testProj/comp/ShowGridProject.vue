@@ -35,7 +35,7 @@
                 </th>                                
 
                 <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">
-                    <font size="2px">Proj.</font>
+                    <font size="2px">Sub/Ent</font>
                 </th>
 
                 <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">
@@ -97,7 +97,7 @@
                 </td>
 
                 <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; padding:1px; font-size:11px">
-                    {{item.project}}
+                    {{item.subDel}}
                 </td>
 
                 <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; padding:1px; font-size:11px">
@@ -109,7 +109,7 @@
                 </td>
 
                 <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; padding:1px; font-size:11px">
-                    {{item.N3}}
+                    {{item.N4}}
                 </td>
 
                 <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; padding:1px; font-size:11px">

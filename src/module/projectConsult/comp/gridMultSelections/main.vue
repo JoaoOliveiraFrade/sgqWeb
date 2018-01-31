@@ -76,7 +76,7 @@
     <pre v-show="false">{{selectedSystem}}</pre>
 
     <div class="col-xs-12" style="margin:0; border:0; padding:0">
-      <label>Projetos:</label>
+      <label>Entregas:</label>
       <span style="white-space:nowrap; padding:0">
         <!--  v-show="dataSource.length > 0" -->
         <button 

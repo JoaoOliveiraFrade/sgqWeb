@@ -1,7 +1,7 @@
 import vueResource from '@/http/vueResource'
 import { paths } from '@/environment'
 
-const resource = vueResource.resource(paths.api + '/ctsImpactedXDefects{/subproject}{/delivery}')
+const resource = vueResource.resource(paths.api + '/ctImpactedXDefects{/subproject}{/delivery}')
 
 export default {
   getByProject (project) {

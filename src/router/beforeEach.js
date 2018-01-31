@@ -20,7 +20,9 @@
 
 import store from '@/vuex'
 
-const isLogged = () => store.getters.isLogged
+const isLogged = () => store.state.auth.token !== ''
+// const isLogged = () => store.getters.auth.isLogged
+
 // const isAuthRoute = route => route.path.indexOf('/auth') !== -1
 // const isTaskRoute = route => route.path.indexOf('/task') !== -1
 const isCadProjectRoute = route => route.path.indexOf('/cadProject') !== -1

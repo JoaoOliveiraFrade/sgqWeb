@@ -14,6 +14,8 @@ import servicesOperTestDefectAverangeRetestTime from '@/module/indicator/operati
 import servicesPerfDevDefectDensity from '@/module/indicator/performance/dev/defectDensity/services'
 import servicesPerfDevDefectOfTSInTI from '@/module/indicator/performance/dev/defectOfTSInTI/services'
 
+// import servicesDefect from '@/module/defect/services'
+
 export const load = ({ commit }) => {
   commit(types.loading, true)
   services.load()
@@ -88,7 +90,7 @@ export const setSelected = ({ commit }, paramenter) => {
   commit(types.selected, paramenter)
 }
 
-export const setSelectedMonoselection = ({ commit }, project) => {
+export const setSelectedMonoselection = ({ commit, dispatch }, project) => {
   services.getProjectsByIds(project.id.toString()).then(r => {
     commit(types.selectedMonoselection, r.data[0])
   })
@@ -124,6 +126,31 @@ export const setSelectedMonoselection = ({ commit }, project) => {
   servicesPerfDevDefectOfTSInTI.dataFbyProject(project).then(r => {
     commit(types.perfDevDefectOfTSInTI, r.data)
   })
+
+  dispatch('testProjDefect/loadDefectStatus', project, { root: true })
+  dispatch('testProjDefect/loadDefectGroupOrigin', project, { root: true })
+  dispatch('testProjDefect/loadCtImpactedXDefects', project, { root: true })
+  dispatch('testProjDefect/loadDefectsOpen', project, { root: true })
+
+  // servicesDefect.defectStatus(project).then(r => {
+  //   commit(types.defectStatus, r.data)
+  // })
+
+  // servicesDefect.defectGroupOrigin(project).then(r => {
+  //   commit(types.defectGroupOrigin, r.data)
+  // })
+
+  // services.ctImpactedXDefects(project).then(r => {
+  //   commit(types.ctImpactedXDefects, r.data)
+  // })
+
+  // servicesDefect.defectsOpenInTestManuf(project).then(r => {
+  //   commit(types.defectsOpenInTestManuf, r.data)
+  // })
+
+  // servicesDefect.defectsOpenInDevManuf(project).then(r => {
+  //   commit(types.defectsOpenInDevManuf, r.data)
+  // })
 }
 
 export const setProjectFilterTerm = ({ commit }, filterTerm) => {

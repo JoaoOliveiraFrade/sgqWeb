@@ -20,7 +20,7 @@
     },
 
     mounted () {
-      this.setFeatureName('Projeto - Teste')
+      this.setFeatureName('Entrega - Teste')
       this.load()
     }
   }

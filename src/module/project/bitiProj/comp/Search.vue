@@ -21,7 +21,7 @@
     },
 
     mounted () {
-      this.setFeatureName('Projeto - BITI')
+      this.setFeatureName('Entrega - Clarity')
       this.loadData()
     }
   }

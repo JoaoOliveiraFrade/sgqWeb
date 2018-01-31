@@ -96,7 +96,7 @@
   <span>
       <div class="col-xs-12">
     <div v-show="FilterSelected != 'projects'" >
-        <label>Projetos:</label>
+        <label>Entregas:</label>
         <button 
             type="button" 
             class="btn btn-xs"
@@ -112,7 +112,7 @@
 
         <oiModal id="showModalProjectsSelected">
             <div class="row well-sm" style="margin-bottom:3px">
-                <h4 style="margin-top:0; text-align:center"><strong>Projetos Selecionados</strong></h4>
+                <h4 style="margin-top:0; text-align:center"><strong>Entregas Selecionadas</strong></h4>
                 <template v-for="item in itemsSelected" track-by="$index">
                     <label :for=item style="margin-left:10px; font-size:10px; line-height:0">{{item}}</label>
                 </template>
@@ -121,7 +121,7 @@
     </div>  
 
     <div v-show="FilterSelected === 'projects'">
-        <label>Projetos:</label>&nbsp;
+        <label>Entregas:</label>&nbsp;
 
         <span style="white-space:nowrap; padding:0">
             <button 
@@ -193,7 +193,7 @@
                   </th style="padding:0">
 
                   <th style="padding:0">
-                      <font size="2" class="text-nowrap">Projeto
+                      <font size="2" class="text-nowrap">Entrega
                           <a href="#" @click.prevent="setOrder('project')">
                           </a>
                       </font>

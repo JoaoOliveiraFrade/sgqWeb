@@ -77,8 +77,8 @@ export default {
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
-  getCTsImpactedXDefects (project) {
-    let resource = Resource.resource(paths.api + '/project/testProj/CtsImpactedXDefects{/subproject}{/delivery}')
+  ctImpactedXDefects (project) {
+    let resource = Resource.resource(paths.api + '/project/testProj/CtImpactedXDefects{/subproject}{/delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
@@ -131,8 +131,8 @@ export default {
     return resource.update({ subproject: project.subproject, delivery: project.delivery }, iterations)
   },
 
-  getCTsImpactedXDefectsIterations (project, iterations) {
-    let resource = Resource.resource(paths.api + '/project/testProj/CtsImpactedXDefectsIterations{/subproject}{/delivery}')
+  getCtImpactedXDefectsIterations (project, iterations) {
+    let resource = Resource.resource(paths.api + '/project/testProj/CtImpactedXDefectsIterations{/subproject}{/delivery}')
     return resource.update({ subproject: project.subproject, delivery: project.delivery }, iterations)
   }
 }

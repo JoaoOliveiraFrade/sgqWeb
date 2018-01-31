@@ -5,14 +5,14 @@
   // import ServicesGrouper from '@/module/grouperConsult/services'
   // import oiShowGridProject from '@/module/project/testProj/comp/ShowGridProject.vue'
   import { mapGetters } from 'vuex'
-  import oiModal from '@/comp/modal/Modalx.vue'
+  // import oiModal from '@/genComp/modal/Modalx.vue'
   import { paths } from '@/environment'
   import Toastr from 'toastr'
 
   export default {
     name: 'RequestReportGrouperConsult',
 
-    components: { oiModal },
+    // components: { oiModal },
 
     data () {
       return {
@@ -71,130 +71,141 @@
 </script>
 
 <template>
-  <oiModal id="showReport">
-    <div style="margin:0; border:0; padding:0" slot="header">
-      <div class="col-xs-1" style="padding:0; margin:0; border:0">
-        <a class="btn btn-primary btn-xs"   
-          role="button"
-          data-dismiss="modal"
-          @click="closeModalShowReport">
-          Fechar
-        </a> 
-      </div>
-    
-      <div class="col-xs-10" style="text-align: center">
-        <label class="fd-label">{{email.subject}}</label>
-      </div>
-      
-      <hr class="col-xs-12" >
-    </div>
-
-
-    <div class="text-center" style="padding: 0; padding-left: 15px; padding-right: 15px" slot="body">
-      <div class="form-group" style="text-align: left">
-          E-mail de destino:
-        <input type="email" autofocus v-focus
-          class="form-control" 
-          placeholder="email de destino" 
-          v-model="email.to">
-      </div>
-
-      <div class="form-group" style="text-align: left; margin-bottom: 3px;">
-          Assunto do e-mail:
-          <textarea class="form-control" rows="2" id="subject" placeholder="título da menssagem" v-model="email.subject"></textarea>
-      </div>
-
-      <div style="white-space: nowrap; padding: 0px; margin: 0px; border: 0px">
-        <div class="col-sm-1">
-          <label style="text-align: left; font-weight: normal">
-            Formato: 
-          </label>
-        </div>
-        <div class="col-sm-1">
-          <label style="text-align: center; font-weight: normal; font-size:10px">
-            <input type="radio" value="HTML" v-model="emailType">&nbsp;HTML
-          </label>
-        </div>
-        <div class="col-sm-1">
-          <label style="text-align: center; font-weight: normal; font-size:10px">
-            <input type="radio" value="Imagem" v-model="emailType">&nbsp;Imagem
-          </label>
-        </div>
-        <div class="col-sm-6">
-          <a class="btn btn-primary btn-xs" id="alert-target"
-            role="button"
-            :disabled="!(email.to != '' && email.subject != '')"
-            @click="sendReportByEmail">
-            Enviar
-          </a>            
-        </div>
-      </div>
-
-      </div
-    </div>
-  </oiModal>
-  <!--
-  <div class="container-fluid well well-sm">
-    <div class="row">
-      <div class="col-xs-12 text-left">
-        <a class="btn btn-xs my-tool-tip oi-icon"
-          @click="requestReport"
-          data-toggle="modal"
-          data-target="#showReport"
-          title="Report Por Email">
-          <span class="glyphicon glyphicon-envelope"></span>
-        </a>
-        <a class="btn btn-xs my-tool-tip oi-icon"
-          @click="grouperSearch"
-          data-toggle="tooltip" 
-          title="Pesquisar">
-          <span class="glyphicon glyphicon-search"></span>
-        </a>
-      </div>
-    </div>
-
-    <div class="col-xs-12 well well-sm oi-well">
-      <div class="col-sm-1" style="margin:0; border:0; padding:5px" v-show="grouper.type === 'STATUS'">
-          <label class="fd-label">Farol:</label>
-          <div class="text-left" style="padding-bottom:5px">
-            <img alt="Farol Verde" src="../../../asset/image/verde-sm.png"  v-show="grouper.trafficLight === 'VERDE'">
-            <img alt="Farol Amarelo" src="../../../asset/image/amarelo-sm.png" v-show="grouper.trafficLight === 'AMARELO'">
-            <img alt="Farol Vermelho" src="../../../asset/image/vermelho-sm.png" v-show="grouper.trafficLight === 'VERMELHO'">
+  <div class="container-fluid" style="padding-top: 10px">
+    <div class="row well well-sm oi-well" >
+      <!--<oiModal id="showReport">-->
+        <!--slot="header"-->
+        <div style="margin:0; border:0; padding:0" >
+          <div class="col-xs-1" style="padding:0; margin:0; border:0">
+            <a class="btn btn-primary btn-xs"   
+              role="button"
+              data-dismiss="modal"
+              @click="closeModalShowReport">
+              Fechar
+            </a> 
           </div>
-      </div>
+        
+          <div class="col-xs-10" style="text-align: center">
+            <label class="fd-label">{{email.subject}}</label>
+          </div>
+          
+          <hr class="col-xs-12" >
+        </div>
+
+        <!--slot="body"-->
+        <div class="text-center" style="padding: 0; padding-left: 15px; padding-right: 15px" >
+
+          <div class="form-group" style="text-align: left">
+              E-mail de destino:
+            <input type="email" autofocus v-focus
+              class="form-control" 
+              placeholder="email de destino" 
+              v-model="email.to">
+          </div>
+
+          <div class="form-group" style="text-align: left; margin-bottom: 3px;">
+              Assunto do e-mail:
+              <textarea class="form-control" rows="2" id="subject" placeholder="título da menssagem" v-model="email.subject"></textarea>
+          </div>
+
+          <div style="white-space: nowrap; padding: 0px; margin: 0px; border: 0px">
+            <div class="col-sm-1">
+              <label style="text-align: left; font-weight: normal">
+                Formato: 
+              </label>
+            </div>
+
+            <div class="col-sm-1">
+              <label style="text-align: center; font-weight: normal; font-size:10px">
+                <input type="radio" value="HTML" v-model="emailType">&nbsp;HTML
+              </label>
+            </div>
+
+            <div class="col-sm-1">
+              <label style="text-align: center; font-weight: normal; font-size:10px">
+                <input type="radio" value="Imagem" v-model="emailType">&nbsp;Imagem
+              </label>
+            </div>
+
+            <div class="col-sm-6">
+              <a class="btn btn-primary btn-xs" id="alert-target"
+                role="button"
+                :disabled="!(email.to != '' && email.subject != '')"
+                @click="sendReportByEmail">
+                Enviar
+              </a>            
+            </div>
+          </div>
+
+        </div>
+
+      <!--</oiModal>-->
       
-      <div class="col-sm-11" style="margin:0; border:0; padding:5px">
-        <div>
-          <label class="fd-label">Nome:</label>
+      <!--
+      <div class="container-fluid well well-sm">
+        <div class="row">
+          <div class="col-xs-12 text-left">
+            <a class="btn btn-xs my-tool-tip oi-icon"
+              @click="requestReport"
+              data-toggle="modal"
+              data-target="#showReport"
+              title="Report Por Email">
+              <span class="glyphicon glyphicon-envelope"></span>
+            </a>
+            <a class="btn btn-xs my-tool-tip oi-icon"
+              @click="grouperSearch"
+              data-toggle="tooltip" 
+              title="Pesquisar">
+              <span class="glyphicon glyphicon-search"></span>
+            </a>
+          </div>
         </div>
-        <div>
-          <label 
-            class="fd-content" 
-            v-html="grouper.name"
-          />
-        </div>
-      </div>
 
-      <div class="col-xs-12" style="margin:0; border:0; padding:5px" v-show="grouper.type === 'STATUS'">
-        <div>
-          <label class="fd-label">Resumo Executivo Agrupador:</label>
-        </div>
-        <div>
-          <label 
-            class="fd-content" 
-            v-html="grouper.executiveSummary ? grouper.executiveSummary : 'Sem dados!'"
-          />
-        </div>
-      </div>
+        <div class="col-xs-12 well well-sm oi-well">
+          <div class="col-sm-1" style="margin:0; border:0; padding:5px" v-show="grouper.type === 'STATUS'">
+              <label class="fd-label">Farol:</label>
+              <div class="text-left" style="padding-bottom:5px">
+                <img alt="Farol Verde" src="../../../asset/image/verde-sm.png"  v-show="grouper.trafficLight === 'VERDE'">
+                <img alt="Farol Amarelo" src="../../../asset/image/amarelo-sm.png" v-show="grouper.trafficLight === 'AMARELO'">
+                <img alt="Farol Vermelho" src="../../../asset/image/vermelho-sm.png" v-show="grouper.trafficLight === 'VERMELHO'">
+              </div>
+          </div>
+          
+          <div class="col-sm-11" style="margin:0; border:0; padding:5px">
+            <div>
+              <label class="fd-label">Nome:</label>
+            </div>
+            <div>
+              <label 
+                class="fd-content" 
+                v-html="grouper.name"
+              />
+            </div>
+          </div>
 
-      <div class="col-xs-12" style="margin:0; border:0; padding:5px">
-        <oiShowGridProject
-          :items="projects"
-        />
+          <div class="col-xs-12" style="margin:0; border:0; padding:5px" v-show="grouper.type === 'STATUS'">
+            <div>
+              <label class="fd-label">Resumo Executivo Agrupador:</label>
+            </div>
+            <div>
+              <label 
+                class="fd-content" 
+                v-html="grouper.executiveSummary ? grouper.executiveSummary : 'Sem dados!'"
+              />
+            </div>
+          </div>
+
+          <div class="col-xs-12" style="margin:0; border:0; padding:5px">
+            <oiShowGridProject
+              :items="projects"
+            />
+          </div>
+        </div>
       </div>
+      -->
     </div>
   </div>
--->    
+
 </template>
 
 <style scoped>

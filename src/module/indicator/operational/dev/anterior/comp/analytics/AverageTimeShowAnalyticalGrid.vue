@@ -19,7 +19,7 @@
                 </font>
             </th>
             <th style="padding: 1px; margin: 0px; border-top: 1px; text-align: center">
-                <font size="2" class="text-nowrap">Projeto
+                <font size="2" class="text-nowrap">Entrega
                 </font>
             </th>
             <th style="padding: 1px; margin: 0px; border-top: 1px; text-align: center">

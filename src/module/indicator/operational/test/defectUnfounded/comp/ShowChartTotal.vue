@@ -1,7 +1,7 @@
 <script>
   import { mapGetters } from 'vuex'
   import Highcharts from 'highcharts'
-  import chartStandParam from '@/comp/chart/types/Total2'
+  import chartStandParam from '@/genComp/chart/types/Total2'
 
   export default {
     name: 'ShowChartTotal',

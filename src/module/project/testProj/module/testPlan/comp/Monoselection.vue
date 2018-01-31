@@ -1,7 +1,7 @@
 <script>
   import { mapState, mapGetters, mapActions } from 'vuex'
-  import oiGrid from '@/comp/grid/main.vue'
-  import oiModal from '@/comp/modal/Modal2.vue'
+  import oiGrid from '@/genComp/grid/main.vue'
+  import oiModal from '@/genComp/modal/Modal2.vue'
 
   export default {
     name: 'Monoselection',

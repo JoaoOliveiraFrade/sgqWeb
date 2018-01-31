@@ -1,9 +1,10 @@
 import * as types from './mutationsTypes'
 import services from '../services'
-import servicesDefect from '@/module/defect/services'
+import defectServices from '@/module/defect/services'
 
-export const setSelectedDefectQueue = ({ commit }, selected) => {
+export const setSelectedDefectQueue = ({ commit, dispatch }, selected) => {
   commit(types.selectedDefectQueue, selected)
+  // dispatch('defectMonitor/loadData', null, { root: true })
 }
 
 export const setSelectedDefectStatus = ({ commit }, selected) => {
@@ -48,13 +49,13 @@ export const loadData = ({ commit, state }) => {
 
 export const setSelectedDefect = ({ commit }, parameter) => {
   commit(types.selectedDefect, parameter)
-  commit(types.status, 'showDetail')
   commit(types.loading, true)
 
-  servicesDefect.defectDetail({ subproject: parameter.subproject, delivery: parameter.delivery }, { id: parameter.id })
+  defectServices.defectDetail(parameter)
     .then(
       r => {
         commit(types.selectedDefectDetail, r.data)
+        commit(types.status, 'showDetail')
         commit(types.loading, false)
       },
       e => {
@@ -63,7 +64,7 @@ export const setSelectedDefect = ({ commit }, parameter) => {
       }
     )
 
-  servicesDefect.defectTime(parameter.subproject, parameter.delivery, parameter.id)
+  defectServices.defectTime(parameter)
     .then(
       r => {
         commit(types.selectedDefectTime, r.data)

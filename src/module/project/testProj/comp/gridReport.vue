@@ -24,7 +24,7 @@
                 </th>                                
 
                 <th class="text-center" style="padding:1px">
-                    Proj.
+                    Sub/Ent
                 </th>
 
                 <th class="text-center" style="padding:1px">

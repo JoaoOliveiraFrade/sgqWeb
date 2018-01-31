@@ -6,7 +6,7 @@
   import oiShowChartGroupDevManuf from './ShowChartGroupDevManuf.vue'
   import oiShowChartGroupTimeline from './ShowChartGroupTimeline.vue'
   import oiShowChartTotal from './ShowChartTotal.vue'
-  // import oiShowChartTotal from '@/comp/chart/defect/DefectAverangeTimeTotal.vue'
+  // import oiShowChartTotal from '@/genComp/chart/defect/DefectAverangeTimeTotal.vue'
 
   export default {
     name: 'ShowData',

@@ -13,8 +13,8 @@
   <span v-show="Object.keys(selectedMonoselection).length > 0">
     <div class="col-xs-12	col-sm-2 col-md-2	col-lg-1">
       <div>
-        <label class="fd-label">Projeto:</label>
-        <label class="fd-content">{{selectedMonoselection.project}}</label>
+        <label class="fd-label">Sub/Ent:</label>
+        <label class="fd-content">{{selectedMonoselection.subDel}}</label>
       </div>
     </div>
 

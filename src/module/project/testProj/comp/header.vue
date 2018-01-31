@@ -11,7 +11,7 @@
     <div id="cabecalho" class="row well well-sm oi-well" >
       <div class="col-xs-12 col-md-6" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
-          <label class="fd-label">Projeto:</label>
+          <label class="fd-label">Sub/Ent:</label>
           <label class="fd-content">{{project.subDel}}</label>
         </div>
       </div>

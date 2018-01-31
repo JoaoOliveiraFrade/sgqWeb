@@ -1,5 +1,5 @@
 <script>
-  import oiModal from '@/comp/modal/Modalx.vue'
+  import oiModal from '@/genComp/modal/Modalx.vue'
   import services from '../services'
 
   export default {
@@ -184,9 +184,9 @@
 
 <template>
   <span>
-    <!-- SELEÇÃO DE PROJETOS  -->
+    <!-- SELEÇÃO DE ENTREGA  -->
     <div class="col-xs-12" style="margin:0; border:0; padding:0">
-        <label>Projetos:</label>
+        <label>Entregas:</label>
         <span style="white-space:nowrap; padding:0">
             <button 
                 type="button" 
@@ -285,7 +285,7 @@
                   </th style="padding:0">
 
                   <th style="padding:0">
-                      <font size="2" class="text-nowrap">Proj.
+                      <font size="2" class="text-nowrap">Sub/Ent
                           <a href="#" @click.prevent="setOrder('project')">
                           </a>
                       </font>

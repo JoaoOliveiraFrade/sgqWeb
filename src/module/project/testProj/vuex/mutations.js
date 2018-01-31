@@ -5,63 +5,78 @@ export default {
     state.data = parameter
   },
 
-  [types.fromTestManufsAndSystems] (state, data) {
-    state.fromTestManufsAndSystems = data
+  [types.fromTestManufsAndSystems] (state, parameter) {
+    state.fromTestManufsAndSystems = parameter
   },
 
-  [types.fromDevManufsAndSystems] (state, data) {
-    state.fromDevManufsAndSystems = data
+  [types.fromDevManufsAndSystems] (state, parameter) {
+    state.fromDevManufsAndSystems = parameter
   },
 
-  [types.filterTerm] (state, data) {
-    state.filterTerm = data
+  [types.filterTerm] (state, parameter) {
+    state.filterTerm = parameter
   },
 
-  [types.selected] (state, data) {
-    state.selected = data
+  [types.selected] (state, parameter) {
+    state.selected = parameter
   },
 
-  [types.loading] (state, data) {
-    state.loading = data
+  [types.loading] (state, parameter) {
+    state.loading = parameter
   },
 
-  [types.selectedMonoselection] (state, data) {
-    state.selectedMonoselection = data
+  [types.selectedMonoselection] (state, parameter) {
+    state.selectedMonoselection = parameter
   },
 
-  [types.operDevDefectDensity] (state, data) {
-    state.operDevDefectDensity = data
+  [types.operDevDefectDensity] (state, parameter) {
+    state.operDevDefectDensity = parameter
   },
-  [types.operDevDefectAverangeTime] (state, data) {
-    state.operDevDefectAverangeTime = data
+  [types.operDevDefectAverangeTime] (state, parameter) {
+    state.operDevDefectAverangeTime = parameter
   },
-  [types.operDevDefectReopened] (state, data) {
-    state.operDevDefectReopened = data
-  },
-
-  [types.operTestProductivity] (state, data) {
-    state.operTestProductivity = data
-  },
-  [types.operTestRejectionEvidence] (state, data) {
-    state.operTestRejectionEvidence = data
-  },
-  [types.operTestDefectUnfounded] (state, data) {
-    state.operTestDefectUnfounded = data
-  },
-  [types.operTestDefectUAT] (state, data) {
-    state.operTestDefectUAT = data
-  },
-  [types.operTestDefectAverangeRetestTime] (state, data) {
-    state.operTestDefectAverangeRetestTime = data
+  [types.operDevDefectReopened] (state, parameter) {
+    state.operDevDefectReopened = parameter
   },
 
-  [types.perfDevDefectDensity] (state, data) {
-    state.perfDevDefectDensity = data
+  [types.operTestProductivity] (state, parameter) {
+    state.operTestProductivity = parameter
   },
-  [types.perfDevDefectOfTSInTI] (state, data) {
-    state.perfDevDefectOfTSInTI = data
+  [types.operTestRejectionEvidence] (state, parameter) {
+    state.operTestRejectionEvidence = parameter
+  },
+  [types.operTestDefectUnfounded] (state, parameter) {
+    state.operTestDefectUnfounded = parameter
+  },
+  [types.operTestDefectUAT] (state, parameter) {
+    state.operTestDefectUAT = parameter
+  },
+  [types.operTestDefectAverangeRetestTime] (state, parameter) {
+    state.operTestDefectAverangeRetestTime = parameter
+  },
+
+  [types.perfDevDefectDensity] (state, parameter) {
+    state.perfDevDefectDensity = parameter
+  },
+  [types.perfDevDefectOfTSInTI] (state, parameter) {
+    state.perfDevDefectOfTSInTI = parameter
+  },
+
+  [types.defectStatus] (state, parameter) {
+    state.defectStatus = parameter
+  },
+  [types.defectGroupOrigin] (state, parameter) {
+    state.defectGroupOrigin = parameter
+  },
+  [types.ctImpactedXDefects] (state, parameter) {
+    state.ctImpactedXDefects = parameter
+  },
+  [types.defectsOpenInTestManuf] (state, parameter) {
+    state.defectsOpenInTestManuf = parameter
+  },
+  [types.defectsOpenInDevManuf] (state, parameter) {
+    state.defectsOpenInDevManuf = parameter
   }
-
   // [types.defectAverangeTime] (state, data) {
   //   state.defectAverangeTime = data
   // }

@@ -22,7 +22,7 @@ import 'froala-editor/css/froala_style.min.css'
 import VueFroala from 'vue-froala-wysiwyg'
 import VueResource from 'vue-resource'
 
-import App from './comp/App'
+import App from './App'
 
 /* eslint-disable */
 if (!String.prototype.replaceAll) {

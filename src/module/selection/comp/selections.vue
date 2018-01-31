@@ -1,5 +1,5 @@
 <script>
-  import oiModal from '@/comp/modal/Modal2.vue'
+  import oiModal from '@/genComp/modal/Modal2.vue'
   import showSelections from '@/module/selection/comp/showSelections.vue'
   import editSelections from '@/module/selection/comp/editSelections.vue'
 

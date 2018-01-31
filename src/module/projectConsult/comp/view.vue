@@ -4,20 +4,20 @@
   // import { paths } from '@/environment'
   import { paths } from '@/environment'
 
-  import oiChartDensityDefectTotal from '@/comp/chart/defect/DensityDefectTotal'
-  import oichartDefectReopenedTotal from '@/comp/chart/defect/DefectReopenedTotal'
-  import oiChartDefectAverangeTimeTotal from '@/comp/chart/defect/DefectAverangeTimeTotal'
-  import oiChartdefectOfTSInTI from '@/comp/chart/defect/DefectOfTSInTITotal'
-  import oiChartExecutionProject from '@/comp/chart/execution/CurvaS'
-  import oiChartOpenedXClosedXCancelled from '@/comp/chart/defect/openedXClosedXCancelled'
-  import oiChartGroupOrigin from '@/comp/chart/defect/groupOrigin'
-  import oiChartCtsImpactedXDefects from '@/comp/chart/mix/ctsImpactedXDefects'
-  import oiChartProductivityXDefects from '@/comp/chart/mix/productivityXDefects'
-  import oiChartProductivityXDefectsGroupWeekly from '@/comp/chart/mix/productivityXDefectsGroupWeekly'
+  import oiChartDensityDefectTotal from '@/genComp/chart/defect/DensityDefectTotal'
+  import oichartDefectReopenedTotal from '@/genComp/chart/defect/DefectReopenedTotal'
+  import oiChartDefectAverangeTimeTotal from '@/genComp/chart/defect/DefectAverangeTimeTotal'
+  import oiChartdefectOfTSInTI from '@/genComp/chart/defect/DefectOfTSInTITotal'
+  import oiChartExecutionProject from '@/genComp/chart/execution/CurvaS'
+  import oiChartOpenedXClosedXCancelled from '@/genComp/chart/defect/openedXClosedXCancelled'
+  import oiChartGroupOrigin from '@/genComp/chart/defect/groupOrigin'
+  import oiChartCtImpactedXDefects from '@/genComp/chart/mix/ctImpactedXDefects'
+  import oiChartProductivityXDefects from '@/genComp/chart/mix/productivityXDefects'
+  import oiChartProductivityXDefectsGroupWeekly from '@/genComp/chart/mix/productivityXDefectsGroupWeekly'
 
   import oiGridMonitAcum from './gridMonitAcum'
   import oiGridMonitDay from './gridMonitDay'
-  import oiGridDefectsOpen from '@/module/defect/comp/GridDefectsOpen'
+  import oiShowGridDefect from '@/module/defect/comp/ShowGrid'
   
   // import html2canvas from 'html2canvas'
   // import domtoimage from 'dom-to-image'
@@ -40,8 +40,8 @@
       oiGridMonitDay,
       oiChartOpenedXClosedXCancelled,
       oiChartGroupOrigin,
-      oiGridDefectsOpen,
-      oiChartCtsImpactedXDefects,
+      oiShowGridDefect,
+      oiChartCtImpactedXDefects,
       oiChartProductivityXDefects,
       oiChartProductivityXDefectsGroupWeekly
     },
@@ -61,7 +61,7 @@
       defectGroupOrigin: { type: Array },
       defectsOpenInTestManuf: { type: Array },
       defectsOpenInDevManuf: { type: Array },
-      ctsImpactedXDefects: { type: Array },
+      ctImpactedXDefects: { type: Array },
       productivityXDefects: { type: Array },
       productivityXDefectsGroupWeekly: { type: Array },
       iterations: { type: Array },
@@ -294,15 +294,15 @@
           </div>
 
           <div class="col-xs-12 col-lg-4 text-center" style="margin:0; border:0; padding:0; padding-top:15px">
-            <oiChartCtsImpactedXDefects 
+            <oiChartCtImpactedXDefects 
               title = "CTs Impactados X Defeitos Abertos" 
-              :dataSource="ctsImpactedXDefects" 
+              :dataSource="ctImpactedXDefects" 
             />
           </div>
 
           <div id="defectsOpenInTestManuf" class="col-xs-12 col-lg-6 text-center" style="padding-top:10px" v-show="defectsOpenInTestManuf.length > 0">
             <label class="fd-label">Aberto na Fáb. Teste</label>
-            <oiGridDefectsOpen 
+            <oiShowGridDefect 
               :project="project"
               :defects="defectsOpenInTestManuf"
               id="sfafafasdfasfs1"
@@ -312,7 +312,7 @@
 
           <div class="col-xs-12 col-lg-6 text-center" style="padding-top:10px" v-show="defectsOpenInDevManuf.length > 0">
             <label class="fd-label">Aberto na Fáb. Desenv.</label>
-            <oiGridDefectsOpen 
+            <oiShowGridDefect 
               :project="project"
               :defects="defectsOpenInDevManuf"
               id="sfafafasdfasfs2"

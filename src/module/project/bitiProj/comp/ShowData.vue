@@ -89,7 +89,7 @@
 
           <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 well well-sm oi-well">
             <div>
-              <label class="fd-label">Gerente Projeto:</label>
+              <label class="fd-label">Gerente Sub/Ent:</label>
             </div>
             <div>
               <label class="fd-content">{{ selected.projectManager }}</label>

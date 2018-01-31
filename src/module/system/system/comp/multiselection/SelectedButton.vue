@@ -1,5 +1,5 @@
 <script>
-  import oiModal from '@/comp/modal/Modal2.vue'
+  import oiModal from '@/genComp/modal/Modal2.vue'
   import oiSelectedGrid from './SelectedGrid.vue'
 
   export default {
@@ -21,7 +21,7 @@
             data-toggle="modal" 
             data-target="#modalSelectedButton">Selecionado
         </button>
-        <oiModal id="modalSelectedButton" title="Projeto Selecionado" size="l">
+        <oiModal id="modalSelectedButton" title="Entrega Selecionada" size="l">
           <oiSelectedGrid :selected="selected" slot="body"/>
         </oiModal>
     </span>

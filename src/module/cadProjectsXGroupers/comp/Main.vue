@@ -121,7 +121,7 @@
             @click="saveItem(item)"
             data-toggle="tooltip" 
             title="Gravar">
-            <span class='glyphicon glyphicon-save'></span>
+            <span class='glyphicon glyphicon-floppy-disk'></span>
           </a>
 
           <a class="btn btn-xs my-tool-tip oi-icon"

@@ -1,7 +1,9 @@
 import { routes as testProj } from './project/testProj'
 import { routes as bitiProj } from './project/bitiProj'
 
-import { routes as trg } from './project/trg'
+import { routes as trg } from './trg'
+
+import { routes as release } from './release'
 
 import { routes as indOperDevDefectDensity } from './indicator/operational/dev/defectDensity'
 import { routes as indOperDevDefectAverangeTime } from './indicator/operational/dev/defectAverangeTime'
@@ -27,6 +29,8 @@ export default [
   ...bitiProj,
 
   ...trg,
+
+  ...release,
 
   ...indOperDevDefectDensity,
   ...indOperDevDefectAverangeTime,

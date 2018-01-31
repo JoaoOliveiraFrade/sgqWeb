@@ -1,5 +1,5 @@
 <script>
-  import oiModal from '@/comp/modal/Modal2.vue'
+  import oiModal from '@/genComp/modal/Modal2.vue'
 
   export default {
     name: 'ShowRule',
@@ -28,7 +28,7 @@
           &nbsp;&nbsp;- CONSTRUÇÃO.<br>
           &nbsp;&nbsp;- Status IN_PROGESS, PENDENT (PROGRESS) e REOPEN.<br><br>
 
-          As Fáb. Desenvolvimento e Sistemas, são calculados a partir do Agente, Campo "Encaminhado Para".<br><br>
+          As Fáb. Desenvolvimento e Sistemas, são calculados a partir do Agente, Campo "Encaminhado Para" (fila ou agente).<br><br>
 
           No gráfico Temporal, os defeitos são contabilizadas no mês/ano em que eles estiveram no status considerados.<br><br>
 

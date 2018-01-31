@@ -19,4 +19,11 @@ export const operTestDefectAverangeRetestTime = 'operTestDefectAverangeRetestTim
 
 export const perfDevDefectDensity = 'perfDevDefectDensity'
 export const perfDevDefectOfTSInTI = 'perfDevDefectOfTSInTI'
+
+export const defectStatus = 'defectStatus'
+export const defectGroupOrigin = 'defectGroupOrigin'
+export const ctImpactedXDefects = 'ctImpactedXDefects'
+export const defectsOpenInTestManuf = 'defectsOpenInTestManuf'
+export const defectsOpenInDevManuf = 'defectsOpenInDevManuf'
+
 // export const defectAverangeTime = 'defectAverangeTime'

@@ -32,5 +32,11 @@ export default {
   operTestDefectAverangeRetestTime: [],
 
   perfDevDefectDensity: [],
-  perfDevDefectOfTSInTI: []
+  perfDevDefectOfTSInTI: [],
+
+  defectStatus: [],
+  defectGroupOrigin: [],
+  ctImpactedXDefects: [],
+  defectsOpenInTestManuf: [],
+  defectsOpenInDevManuf: []
 }

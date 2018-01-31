@@ -1,5 +1,5 @@
 <script>
-  import oiModal from '@/comp/modal/Modalx.vue'
+  import oiModal from '@/genComp/modal/Modalx.vue'
 
   export default {
     name: 'selectionProjectsShow',
@@ -59,7 +59,7 @@
     <!-- BOTÔES SELEÇÃO E SELECIONADOS  -->
     <div class="col-xs-12 oi-col" style="margin:0; border:0; padding:0">
         <div>
-            <label>Projetos:</label>
+            <label>Entregas:</label>
 
             <button 
                 type="button" 
@@ -77,7 +77,7 @@
             <label class="message" v-html="message"/>
 
             <oiModal id="showModalProjectsSelected">
-                <h4 style="margin-top:0; text-align:center"><b>Projetos Selecionados</b></h4>
+                <h4 style="margin-top:0; text-align:center"><b>Entregas Selecionadas</b></h4>
                 <div class="row well well-sm oi-well">
                     <template v-for="item in dataSource" track-by="$index">
                         <label :for=item style="margin-left:10px; font-size:10px; line-height:0">{{item}}</label>

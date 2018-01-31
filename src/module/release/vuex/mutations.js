@@ -9,8 +9,16 @@ export default {
     state.data = parameter
   },
 
-  [types.selected] (state, parameter) {
-    state.selected = parameter
+  [types.filterTerm] (state, parameter) {
+    state.filterTerm = parameter
+  },
+
+  [types.monoSelected] (state, parameter) {
+    state.monoSelected = parameter
+  },
+
+  [types.multiSelected] (state, parameter) {
+    state.multiSelected = parameter
   },
 
   [types.searchStatus] (state, parameter) {

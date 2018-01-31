@@ -1,5 +1,5 @@
 <script>
-  import oiModal from '@/comp/modal/Modal2.vue'
+  import oiModal from '@/genComp/modal/Modal2.vue'
   import oiDefectInsideSLAShowAnalyticGrid from '@/module/indicator/performance/dev/DefectInsideSLA/comp/ShowAnalyticGrid.vue'
 
   export default {

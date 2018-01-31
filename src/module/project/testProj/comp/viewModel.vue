@@ -1,7 +1,7 @@
 <script>
   import oiView from './view.vue'
   import oiReport from './showReport.vue'
-  import oiModal from '@/comp/modal/Modal_.vue'
+  import oiModal from '@/genComp/modal/Modal_.vue'
   import { paths } from '@/environment'
   // import oiShowReport from 'components/project/showReport.vue'
   // import { paths } from '@/environment'
@@ -51,7 +51,7 @@
         defectGroupOrigin: [],
         defectsOpenInTestManuf: [],
         defectsOpenInDevManuf: [],
-        ctsImpactedXDefects: [],
+        ctImpactedXDefects: [],
         productivityXDefects: [],
         productivityXDefectsGroupWeekly: [],
 
@@ -104,7 +104,7 @@
           this.project = resp.data
 
           let project = this.project.subDel.split(' ')
-          this.email.subject = '[Status Projeto] SubPrj: ' + project[0] + ', Ent: ' + project[1] + ', Nome: ' + this.project.name
+          this.email.subject = '[Status Entrega] SubPrj: ' + project[0] + ', Ent: ' + project[1] + ', Nome: ' + this.project.name
 
           if (this.project.IterationsActive !== null) {
             this.iterationsActive = this.project.IterationsActive.split("','")
@@ -170,16 +170,16 @@
           this.statusByProjectGroupMonth = getStatusTrans(resp.data)
         })
 
-        servicesDefect.defectsStatus(this.project).then(resp => {
+        servicesDefect.defectStatus(this.project).then(resp => {
           this.defectStatus = resp.data
         })
 
-        servicesDefect.defectsGroupOrigin(this.project).then(resp => {
+        servicesDefect.defectGroupOrigin(this.project).then(resp => {
           this.defectGroupOrigin = resp.data
         })
 
-        services.getCTsImpactedXDefects(this.project).then(resp => {
-          this.ctsImpactedXDefects = resp.data
+        services.getCtImpactedXDefects(this.project).then(resp => {
+          this.ctImpactedXDefects = resp.data
         })
 
         servicesDefect.defectsOpenInDevManuf(this.project).then(resp => {
@@ -225,16 +225,16 @@
           this.statusByProjectGroupMonth = getStatusTrans(resp.data)
         })
 
-        servicesDefect.defectsStatusIterations(this.project, this.iterationsFiltered).then(resp => {
+        servicesDefect.defectStatusIterations(this.project, this.iterationsFiltered).then(resp => {
           this.defectStatus = resp.data
         })
 
-        servicesDefect.defectsGroupOriginIterations(this.project, this.iterationsFiltered).then(resp => {
+        servicesDefect.defectGroupOriginIterations(this.project, this.iterationsFiltered).then(resp => {
           this.defectGroupOrigin = resp.data
         })
 
-        services.getCTsImpactedXDefectsIterations(this.project, this.iterationsFiltered).then(resp => {
-          this.ctsImpactedXDefects = resp.data
+        services.getCtImpactedXDefectsIterations(this.project, this.iterationsFiltered).then(resp => {
+          this.ctImpactedXDefects = resp.data
         })
 
         servicesDefect.defectsOpenInDevManufIterations(this.project, this.iterationsFiltered).then(resp => {
@@ -332,7 +332,7 @@
       :defectGroupOrigin="defectGroupOrigin"
       :defectsOpenInTestManuf="defectsOpenInTestManuf"
       :defectsOpenInDevManuf="defectsOpenInDevManuf"
-      :ctsImpactedXDefects="ctsImpactedXDefects"
+      :ctImpactedXDefects="ctImpactedXDefects"
       :productivityXDefects="productivityXDefects"
       :productivityXDefectsGroupWeekly="productivityXDefectsGroupWeekly"
       :iterations="iterations"
@@ -393,7 +393,7 @@
               :defectGroupOrigin="defectGroupOrigin"
               :defectsOpenInTestManuf="defectsOpenInTestManuf"
               :defectsOpenInDevManuf="defectsOpenInDevManuf"
-              :ctsImpactedXDefects="ctsImpactedXDefects"
+              :ctImpactedXDefects="ctImpactedXDefects"
               :productivityXDefects="productivityXDefects"
               :productivityXDefectsGroupWeekly="productivityXDefectsGroupWeekly"
             />

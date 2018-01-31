@@ -20,9 +20,9 @@ chartDensityDevManuf<script>
   import oiSelection from '@/module/selection/comp/selections.vue'
   import oiSelectionProjects from './comp/selectionProjects.vue'
   
-  import OptionsDrillDown from '@/comp/chart/types/drillDown'
-  import OptionsTimeline from '@/comp/chart/types/timeline'
-  import OptionsTotal from '@/comp/chart/types/total'
+  import OptionsDrillDown from '@/genComp/chart/types/drillDown'
+  import OptionsTimeline from '@/genComp/chart/types/timeline'
+  import OptionsTotal from '@/genComp/chart/types/total'
 
   import oiDensityShowRule from './comp/rules/DensityShowRule.vue'
   import oiDensityShowAnalytic from './comp/analytics/DensityShowAnalytic.vue'
@@ -30,8 +30,8 @@ chartDensityDevManuf<script>
   import oiAverageTimeShowRule from './comp/rules/AverageTimeShowRule.vue'
   import oiAverageTimeShowAnalytical from './comp/analytics/AverageTimeShowAnalytical.vue'
   import oiShowAnalytical from './comp/analytics/showAnalytical.vue'
-  // import oiModal from '@/comp/modal/Modalx.vue'
-  import oiModal from '@/comp/modal/Modal2.vue'
+  // import oiModal from '@/genComp/modal/Modalx.vue'
+  import oiModal from '@/genComp/modal/Modal2.vue'
 
   import { paths } from '@/environment'
 
@@ -1722,9 +1722,9 @@ chartDensityDevManuf<script>
         let _this = this
         _this.projectsFiltered = []
         _this.projects.forEach(proj => {
-          if (_this.devManufacturersSelected.indexOf(proj.devManufacturing) > -1 &&
-              _this.systemsSelected.indexOf(proj.system) > -1 &&
-              _this.projectsFiltered.findIndex(projectFiltered => projectFiltered.id === proj.id) === -1) {
+          if (_this.devManufacturersSelected.indexOf(Sub/EntdevManufacturing) > -1 &&
+              _this.systemsSelected.indexOf(Entr.system) > -1 &&
+              _this.projectsFiltered.findIndex(projectFiltered => projectFiltered.id === Entr.id) === -1) {
             _this.projectsFiltered.push(proj)
           }
         })
@@ -2728,7 +2728,7 @@ chartDensityDevManuf<script>
       />
     </div>
 
-    <!-- FILTRO DE PROJETOS -->
+    <!-- FILTRO DE ENTREGA -->
     <div id="projects"
       class="row well well-sm oi-well" 
       style="margin-bottom:3px" 

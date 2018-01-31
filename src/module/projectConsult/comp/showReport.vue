@@ -1,18 +1,18 @@
 <script>
-  import oiChartDensityDefectTotal from '@/comp/chart/defect/DensityDefectTotal'
-  import oiChartDefectReopenedTotal from '@/comp/chart/defect/DefectReopenedTotal'
-  import oiChartDefectAverangeTimeTotal from '@/comp/chart/defect/DefectAverangeTimeTotal'
-  import oiChartdefectOfTSInTI from '@/comp/chart/defect/DefectOfTSInTITotal'
-  import oiChartExecutionProject from '@/comp/chart/execution/CurvaS'
-  import oiChartOpenedXClosedXCancelled from '@/comp/chart/defect/openedXClosedXCancelled'
-  import oiChartGroupOrigin from '@/comp/chart/defect/groupOrigin'
-  import oiChartCtsImpactedXDefects from '@/comp/chart/mix/ctsImpactedXDefects'
-  import oiChartProductivityXDefects from '@/comp/chart/mix/productivityXDefects'
-  import oiChartProductivityXDefectsGroupWeekly from '@/comp/chart/mix/productivityXDefectsGroupWeekly'
+  import oiChartDensityDefectTotal from '@/genComp/chart/defect/DensityDefectTotal'
+  import oiChartDefectReopenedTotal from '@/genComp/chart/defect/DefectReopenedTotal'
+  import oiChartDefectAverangeTimeTotal from '@/genComp/chart/defect/DefectAverangeTimeTotal'
+  import oiChartdefectOfTSInTI from '@/genComp/chart/defect/DefectOfTSInTITotal'
+  import oiChartExecutionProject from '@/genComp/chart/execution/CurvaS'
+  import oiChartOpenedXClosedXCancelled from '@/genComp/chart/defect/openedXClosedXCancelled'
+  import oiChartGroupOrigin from '@/genComp/chart/defect/groupOrigin'
+  import oiChartCtImpactedXDefects from '@/genComp/chart/mix/ctImpactedXDefects'
+  import oiChartProductivityXDefects from '@/genComp/chart/mix/productivityXDefects'
+  import oiChartProductivityXDefectsGroupWeekly from '@/genComp/chart/mix/productivityXDefectsGroupWeekly'
 
   import oiGridMonitAcum from './gridMonitAcum'
   import oiGridMonitDay from './gridMonitDay'
-  import oiGridDefectsOpen from '@/module/defect/comp/GridDefectsOpen'
+  import oiShowGridDefect from '@/module/defect/comp/ShowGrid'
 
   export default {
     name: 'projectShowReport',
@@ -27,8 +27,8 @@
       oiGridMonitDay,
       oiChartOpenedXClosedXCancelled,
       oiChartGroupOrigin,
-      oiGridDefectsOpen,
-      oiChartCtsImpactedXDefects,
+      oiShowGridDefect,
+      oiChartCtImpactedXDefects,
       oiChartProductivityXDefects,
       oiChartProductivityXDefectsGroupWeekly
     },
@@ -46,7 +46,7 @@
       defectGroupOrigin: { type: Array },
       defectsOpenInTestManuf: { type: Array },
       defectsOpenInDevManuf: { type: Array },
-      ctsImpactedXDefects: { type: Array },
+      ctImpactedXDefects: { type: Array },
       productivityXDefects: { type: Array },
       productivityXDefectsGroupWeekly: { type: Array }
     }
@@ -58,7 +58,7 @@
       <div id="cabecalho" class="row well well-sm oi-well" >
           <div class="col-xs-12 col-md-6" style="margin:0; border:0; padding:0; padding-left:5px">
             <div>
-              <label class="fd-label">Projeto:</label>
+              <label class="fd-label">Sub/Ent:</label>
               <label class="fd-content">{{project.subDel}}</label>
             </div>
           </div>

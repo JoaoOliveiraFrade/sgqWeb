@@ -1,8 +1,8 @@
 <script>
-  import oiChartDensityDefectTotal from '@/comp/chart/defect/DensityDefectTotal'
-  import oiChartDefectReopenedTotal from '@/comp/chart/defect/DefectReopenedTotal'
-  import oiChartDefectAverangeTimeTotal from '@/comp/chart/defect/DefectAverangeTimeTotal'
-  import oiChartdefectOfTSInTI from '@/comp/chart/defect/DefectOfTSInTITotal'
+  import oiChartDensityDefectTotal from '@/genComp/chart/defect/DensityDefectTotal'
+  import oiChartDefectReopenedTotal from '@/genComp/chart/defect/DefectReopenedTotal'
+  import oiChartDefectAverangeTimeTotal from '@/genComp/chart/defect/DefectAverangeTimeTotal'
+  import oiChartdefectOfTSInTI from '@/genComp/chart/defect/DefectOfTSInTITotal'
   import oiSelection from '@/module/selection/comp/selections.vue'
   import services from '@/module/project/testProj/services'
 
@@ -109,7 +109,7 @@
     <div id="cabecalho" class="row well well-sm oi-well" >
       <div class="col-xs-12 col-md-6 oi-col">
         <div>
-          <label class="fd-label">Projeto:</label>
+          <label class="fd-label">Sub/Ent:</label>
           <label class="fd-content">{{project.subDel}}</label>
         </div>
       </div>

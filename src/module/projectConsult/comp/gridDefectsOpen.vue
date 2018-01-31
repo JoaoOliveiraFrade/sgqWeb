@@ -1,10 +1,10 @@
 <script>
-  import oiModal from '@/comp/modal/Modal2.vue'
+  import oiModal from '@/genComp/modal/Modal2.vue'
   import oiDefectShow from '@/module/defect/comp/ShowData'
-  import serviceDefect from '@/module/defect/service'
+  import defectServices from '@/module/defect/services'
 
   export default {
-    name: 'GridDefectsOpen',
+    name: 'ShowGridDefect',
 
     components: { oiModal, oiDefectShow },
 
@@ -24,7 +24,7 @@
     methods: {
       onSelectDefect (defectSelected) {
         this.selectedDefect = defectSelected
-        serviceDefect.defectDetail(this.project, this.selectedDefect).then(resp => {
+        defectServices.defectDetail(defectSelected).then(resp => s{
           this.selectedDefectDetail = resp.data
         })
 
@@ -52,7 +52,7 @@
                 </td>
 
                 <td class="text-center" style="padding:0">
-                    <font size="2px">Encam.Para</font>
+                    <font size="2px">Fila</font>
                 </td>
 
                 <td class="text-center" style="padding:0">

@@ -17,8 +17,13 @@ export const loadData = ({ commit }) => {
     )
 }
 
-export const setSelected = ({ commit }, paramenter) => {
-  commit(types.selected, paramenter)
+export const setMonoSelected = ({ commit }, paramenter) => {
+  commit(types.monoSelected, paramenter)
+  commit(types.searchStatus, 'show')
+}
+
+export const setMultiSelected = ({ commit }, paramenter) => {
+  commit(types.multiSelected, paramenter)
   commit(types.searchStatus, 'show')
 }
 

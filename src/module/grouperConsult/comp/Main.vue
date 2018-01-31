@@ -14,6 +14,7 @@
     },
 
     methods: {
+      // ...mapActions('grouperConsult', ['setFeatureName', 'loadGroupers', 'setFilterTerm'])
       ...mapActions(['setFeatureName', 'loadGroupers', 'setFilterTerm'])
     },
 

@@ -1,8 +1,17 @@
 export default {
+  filterProperties: [
+    { name: 'id' },
+    { name: 'name' },
+    { name: 'month' },
+    { name: 'year' }
+  ],
+
   loading: false,
   data: [],
+  filterTerm: '',
 
-  selected: {},
+  monoSelected: {},
+  multiSelected: [],
 
   searchStatus: 'search'
 }

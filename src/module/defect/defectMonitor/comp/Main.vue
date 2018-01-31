@@ -6,7 +6,7 @@
   import oiSelectionDefectTrafficLight from '@/module/defect/defectTrafficLight/comp/Selection.vue'
   import oiSelectionProject from '@/module/project/testProj/comp/multiselection/Main.vue'
   import oiShowData from './ShowData.vue'
-  import oiShowDefectDetail from '@/module/defect/comp/ShowData.vue'
+  import oiShowDefectDetail from '@/genComp/defect/ShowDetail.vue'
 
   export default {
     name: 'defectMonitor',
@@ -29,7 +29,8 @@
         'selectedProject',
         'loading',
         'status',
-        'selectedDefectDetail'
+        'selectedDefectDetail',
+        'selectedDefectTime'
       ])
     },
 
@@ -116,23 +117,30 @@
       />
     </div>
 
-    <div class="loader" v-show="loading" style="margin-top: 35px;margin-bottom: 25px"></div>
-      <div v-show="!loading" class="row well well-sm oi-well col-xs-12">
+    <!--
+    <div class="loader" v-show="loading" style="margin-top: 35px;margin-bottom: 25px">
+    </div>
+    -->
 
-        <oiShowData v-show="status === 'show'"/>
+    <!--<div v-show="!loading" class="row well well-sm oi-well col-xs-12">-->
+    <div class="row well well-sm oi-well col-xs-12">
 
-        <span v-show="status === 'showDetail'" style="display: block; text-align: left">
+      <oiShowData v-show="status === 'show'"/>
 
-          <a title="Voltar para a lista de defeitos"
-            @click="setStatus('show')">
-            <i class="glyphicon glyphicon glyphicon-arrow-left" style="font-size: 20px;"/>
-          </a>
+      <span v-show="status === 'showDetail'" style="display: block; text-align: left">
 
-          <oiShowDefectDetail :defect="selectedDefectDetail"/>
+        <a title="Voltar para a lista de defeitos"
+          @click="setStatus('show')">
+          <i class="glyphicon glyphicon glyphicon-arrow-left" style="font-size: 20px;"/>
+        </a>
 
-        </span>        
+        <oiShowDefectDetail 
+          :defect="selectedDefectDetail"
+          :defectTime="selectedDefectTime"
+        />
 
-      </div>
+      </span>        
+
     </div>
 
   </div> 

@@ -1,5 +1,5 @@
 <script>
-  import oiModal from '@/comp/modal/Modal2.vue'
+  import oiModal from '@/genComp/modal/Modal2.vue'
 
   export default {
     name: 'ShowRule',
@@ -30,7 +30,7 @@
           Os Defeitos de TS são identificados pelo campo “Erro Detectável Em Desenvolvimento” igual a SIM.
           Este campo é imputado manualmente no ALM.<br><br>
 
-          Os campos "Fáb.Desenv." e "Sistema", são calculados a partir do campo "Encaminhado Para" (agente).<br><br>
+          Os campos "Fáb.Desenv." e "Sistema", são calculados a partir do campo "Encaminhado Para" (fila ou agente).<br><br>
 
           São desconsideradas as de Fáb.Desenv. com o conteúdo: '', 'OI','LÍDER TÉCNICO', 'ÁREA DE NEGÓCIOS', 'ÁREA USUÁRIA', 'AUTOMAÇÃO', 'ENGENHARIA', 'OI (API)' e 'OI (APLICATIVO)'.<br><br>
 

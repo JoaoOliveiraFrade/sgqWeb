@@ -28,7 +28,7 @@
                 </font>
             </th>
             <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: center">
-                <font size="2" class="text-nowrap">Proj.
+                <font size="2" class="text-nowrap">Sub/Ent
                     <a href="#" @click.prevent="setOrder('project')">
                     </a>
                 </font>

@@ -1,6 +1,6 @@
 <script>
   import { mapState } from 'vuex'
-  import oiModal from '@/comp/modal/Modal2.vue'
+  import oiModal from '@/genComp/modal/Modal2.vue'
   import oiSelectionGrid from './SelectionGrid.vue'
 
   export default {
@@ -21,18 +21,20 @@
 </script>
 
 <template>
-    <span style="margin:0; border:0; padding:0">
-        <button style="margin-top:2px"
-            type="button"     
-            ref="buttonModal"
-            class="btn btn-xs"
-            data-toggle="modal" 
-            data-target="#modalSelectionProjectx">Seleção
-        </button>
-        <oiModal id="modalSelectionProjectx" ref="vuemodal" title="Seleção" size="l">
-            <oiSelectionGrid slot="body"/>
-        </oiModal>    
-    </span>
+  <span style="margin:0; border:0; padding:0">
+    <button style="margin-top:2px" class="btn btn-xs"
+        ref="buttonModal"
+        data-toggle="modal" 
+        data-target="#modalSelectionProjectx"
+        >
+        <span class="glyphicon glyphicon-search"></span>
+        Seleção
+    </button>
+    
+    <oiModal id="modalSelectionProjectx" ref="vuemodal" title="Seleção" size="l">
+        <oiSelectionGrid slot="body"/>
+    </oiModal>    
+  </span>
 </template>
 
 <style scoped>

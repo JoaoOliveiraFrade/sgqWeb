@@ -9,14 +9,14 @@ export default {
   },
 
   // getByDefect (project, defect) {
-  defectDetail (project, defect) {
-    let resource = Resource.resource(paths.api + '/defect/defectDetail{/subproject}{/delivery}{/defect}')
-    return resource.get({ subproject: project.subproject, delivery: project.delivery, defect: defect.id })
+  defectDetail (defect) {
+    let resource = Resource.resource(paths.api + '/defect/defectDetail')
+    return resource.save(defect)
   },
 
-  defectTime (subproject, delivery, defect) {
-    let resource = Resource.resource(paths.api + '/defect/defectTime{/subproject}{/delivery}{/defect}')
-    return resource.get({ subproject: subproject, delivery: delivery, defect: defect })
+  defectTime (defect) {
+    let resource = Resource.resource(paths.api + '/defect/defectTime')
+    return resource.save(defect)
   },
   // ===========================================
 
@@ -30,13 +30,13 @@ export default {
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
-  defectsStatus (project) {
-    let resource = Resource.resource(paths.api + '/defect/defectsStatus{/subproject}{/delivery}')
+  defectStatus (project) {
+    let resource = Resource.resource(paths.api + '/defect/defectStatus{/subproject}{/delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
-  getDefectsGroupOrigin (project) {
-    let resource = Resource.resource(paths.api + '/defect/DefectsGroupOrigin{/subproject}{/delivery}')
+  defectGroupOrigin (project) {
+    let resource = Resource.resource(paths.api + '/defect/defectGroupOrigin{/subproject}{/delivery}')
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
@@ -52,13 +52,13 @@ export default {
     return resource.update({ subproject: project.subproject, delivery: project.delivery }, iterations)
   },
 
-  defectsStatusIterations (project, iterations) {
-    let resource = Resource.resource(paths.api + '/defect/defectsStatusIterations{/subproject}{/delivery}')
+  defectStatusIterations (project, iterations) {
+    let resource = Resource.resource(paths.api + '/defect/defectStatusIterations{/subproject}{/delivery}')
     return resource.update({ subproject: project.subproject, delivery: project.delivery }, iterations)
   },
 
-  getDefectsGroupOriginIterations (project, iterations) {
-    let resource = Resource.resource(paths.api + '/defect/DefectsGroupOriginIterations{/subproject}{/delivery}')
+  getdefectGroupOriginIterations (project, iterations) {
+    let resource = Resource.resource(paths.api + '/defect/defectGroupOriginIterations{/subproject}{/delivery}')
     return resource.update({ subproject: project.subproject, delivery: project.delivery }, iterations)
   }
 }

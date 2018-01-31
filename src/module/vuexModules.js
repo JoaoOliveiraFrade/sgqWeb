@@ -7,9 +7,13 @@ import { vuex as systemFromAgent } from './system/systemFromAgent'
 
 import { vuex as release } from './release'
 
-import { vuex as trg } from './project/trg'
+import { vuex as trg } from './trg'
+import { vuex as trgExecution } from './trg/module/trgExecution'
+import { vuex as trgDefect } from './trg/module/trgDefect'
 
 import { vuex as testProj } from './project/testProj'
+import { vuex as testProjDefect } from './project/testProj/module/testProjDefect'
+
 import { vuex as testPlan } from './project/testProj/module/testPlan'
 import { vuex as execution } from './project/testProj/module/execution'
 
@@ -30,8 +34,11 @@ import { vuex as indOperTestProductivity } from './indicator/operational/test/pr
 // import { vuex as indPerfDevDefectOfTSInTI } from './indicator/performance/dev/defectOfTSInTI'
 // import { vuex as indPerfDevDefectOfTSInTIAgent } from './indicator/performance/dev/defectOfTSInTIAgent'
 
-// import { vuex as grouperConsult } from './grouperConsult'
+import { vuex as grouperConsult } from './grouperConsult'
 // import { vuex as indicatorDev } from './indicator/dev'
+
+import { vuex as defect } from './defect'
+
 import { vuex as defectQueue } from './defect/defectQueue'
 import { vuex as defectStatus } from './defect/defectStatus'
 import { vuex as defectTrafficLight } from './defect/defectTrafficLight'
@@ -51,8 +58,11 @@ export default {
   release,
 
   trg,
+  trgExecution,
+  trgDefect,
 
   testProj,
+  testProjDefect,
   testPlan,
   execution,
 
@@ -73,11 +83,12 @@ export default {
   // indPerfDevDefectOfTSInTI,
   // indPerfDevDefectOfTSInTIAgent,
 
-  // grouperConsult,
+  grouperConsult,
   // indicatorDev,
 
   // indicatorDefectInsideSLA,
 
+  defect,
   defectQueue,
   defectStatus,
   defectTrafficLight,

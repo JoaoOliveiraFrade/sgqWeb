@@ -1,19 +1,19 @@
 <script>
-  import oiChartDensityDefectTotal from '@/comp/chart/defect/DensityDefectTotal'
-  import oichartDefectReopenedTotal from '@/comp/chart/defect/DefectReopenedTotal'
-  import oiChartDefectAverangeTimeTotal from '@/comp/chart/defect/DefectAverangeTimeTotal'
-  import oiChartdefectOfTSInTI from '@/comp/chart/defect/DefectOfTSInTITotal'
-  import oiChartExecutionProject from '@/comp/chart/execution/CurvaS'
-  import oiChartOpenedXClosedXCancelled from '@/comp/chart/defect/openedXClosedXCancelled'
-  import oiChartGroupOrigin from '@/comp/chart/defect/groupOrigin'
-  import oiChartCtsImpactedXDefects from '@/comp/chart/mix/ctsImpactedXDefects'
-  import oiChartProductivityXDefects from '@/comp/chart/mix/productivityXDefects'
-  import oiChartProductivityXDefectsGroupWeekly from '@/comp/chart/mix/productivityXDefectsGroupWeekly'
-  import oiModal from '@/comp/modal/Modalx.vue'
+  import oiChartDensityDefectTotal from '@/genComp/chart/defect/DensityDefectTotal'
+  import oichartDefectReopenedTotal from '@/genComp/chart/defect/DefectReopenedTotal'
+  import oiChartDefectAverangeTimeTotal from '@/genComp/chart/defect/DefectAverangeTimeTotal'
+  import oiChartdefectOfTSInTI from '@/genComp/chart/defect/DefectOfTSInTITotal'
+  import oiChartExecutionProject from '@/genComp/chart/execution/CurvaS'
+  import oiChartOpenedXClosedXCancelled from '@/genComp/chart/defect/openedXClosedXCancelled'
+  import oiChartGroupOrigin from '@/genComp/chart/defect/groupOrigin'
+  import oiChartCtImpactedXDefects from '@/genComp/chart/mix/ctImpactedXDefects'
+  import oiChartProductivityXDefects from '@/genComp/chart/mix/productivityXDefects'
+  import oiChartProductivityXDefectsGroupWeekly from '@/genComp/chart/mix/productivityXDefectsGroupWeekly'
+  import oiModal from '@/genComp/modal/Modalx.vue'
 
   import oiGridMonitAcum from './gridMonitAcum'
   import oiGridMonitDay from './gridMonitDay'
-  import oiGridDefectsOpen from '@/module/defect/comp/GridDefectsOpen'
+  import oiShowGridDefect from '@/module/defect/comp/ShowGrid'
 
   // import HttpService from '@/http/HttpService'
 
@@ -30,8 +30,8 @@
       oiGridMonitDay,
       oiChartOpenedXClosedXCancelled,
       oiChartGroupOrigin,
-      oiGridDefectsOpen,
-      oiChartCtsImpactedXDefects,
+      oiShowGridDefect,
+      oiChartCtImpactedXDefects,
       oiChartProductivityXDefects,
       oiChartProductivityXDefectsGroupWeekly,
       oiModal
@@ -52,7 +52,7 @@
       defectGroupOrigin: { type: Array },
       defectsOpenInTestManuf: { type: Array },
       defectsOpenInDevManuf: { type: Array },
-      ctsImpactedXDefects: { type: Array },
+      ctImpactedXDefects: { type: Array },
       productivityXDefects: { type: Array },
       productivityXDefectsGroupWeekly: { type: Array }
     },
@@ -112,7 +112,7 @@
     <div id="cabecalho" class="row well well-sm oi-well" >
       <div class="col-xs-12 col-md-6" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
-          <label class="fd-label">Projeto:</label>
+          <label class="fd-label">Sub/Ent:</label>
           <label class="fd-content">{{project.subDel}}</label>
         </div>
       </div>
@@ -381,18 +381,18 @@
                   </div>
 
                   <div class="col-xs-12 col-lg-4 text-center" style="margin:0; border:0; padding:0; padding-top:15px">
-                      <oiChartCtsImpactedXDefects 
+                      <oiChartCtImpactedXDefects 
                         title = "CTs Impactados X Defeitos Abertos" 
-                        :dataSource="ctsImpactedXDefects" 
+                        :dataSource="ctImpactedXDefects" 
                       />
                       <button 
                           type="button" 
                           style="margin-top:3px"
                           class="btn btn-xs"
                           data-toggle="modal" 
-                          data-target="#definitionctsImpactedXDefects">Definição
+                          data-target="#definitionctImpactedXDefects">Definição
                       </button>
-                      <oiModal id="definitionctsImpactedXDefects">
+                      <oiModal id="definitionctImpactedXDefects">
                           <h4 style="margin-top:0; text-align:center"><strong>Gráfico de acompanhamento de Execução (CTs Impactados X Defeitos Abertos").</strong></h4>
                           <p style="text-align:left">
                              <b> CTs Impact. </b> = Soma dos valores preenchidos no campo 'Qtd CTs Impactados' naquele período.
@@ -417,7 +417,7 @@
 
                   <div class="col-xs-12 col-lg-6 text-center" style="padding-top:10px" v-show="defectsOpenInTestManuf.length > 0">
                     <label class="fd-label">Aberto na Fáb. Teste</label>
-                    <oiGridDefectsOpen 
+                    <oiShowGridDefect 
                       :defects="defectsOpenInTestManuf"
                       id="xpto1"
                       @onSelectDefect="selectDefect"
@@ -426,7 +426,7 @@
 
                   <div class="col-xs-12 col-lg-6 text-center" style="padding-top:10px" v-show="defectsOpenInDevManuf.length > 0">
                     <label class="fd-label">Aberto na Fáb. Desenv.</label>
-                    <oiGridDefectsOpen 
+                    <oiShowGridDefect 
                       :defects="defectsOpenInDevManuf"
                       id="xpto2"
                       @onSelectDefect="selectDefect"

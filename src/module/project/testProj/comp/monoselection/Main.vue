@@ -1,4 +1,5 @@
 <script>
+  // import { mapGetters } from 'vuex'
   import oiSelectionButton from './SelectionButton.vue'
   import oiSelectedButton from './SelectedButton.vue'
 
@@ -6,6 +7,10 @@
     name: 'Selection',
 
     components: { oiSelectionButton, oiSelectedButton }
+
+    // computed: {
+    //   ...mapGetters('auth', ['isLogged'])
+    // }
   }
 </script>
 
@@ -16,6 +21,17 @@
     <oiSelectionButton/>
 
     <oiSelectedButton/>
+
+    <!--v-show="this.state === 'show'" -->
+    <button style="margin-top:2px" class="btn btn-xs"
+        @click="editItem"
+        data-toggle="tooltip" 
+        title="Editar"          
+        >
+        <span class="glyphicon glyphicon-pencil"></span>
+        Editar
+    </button>
+    
   </span>
 </template>
 

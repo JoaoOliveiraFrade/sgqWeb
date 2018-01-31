@@ -1,5 +1,5 @@
 <script>
-  import oiModal from '@/comp/modal/Modal2.vue'
+  import oiModal from '@/genComp/modal/Modal2.vue'
   import oiDefectAverangeRetestTimeShowAnalyticGrid from '@/module/indicator/operational/test/defectAverangeRetestTime/comp/ShowAnalyticGrid.vue'
 
   export default {

@@ -54,7 +54,7 @@
                 </th>
 
                 <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">
-                    <font size="2px">Proj.</font>
+                    <font size="2px">Sub/Ent</font>
                 </th>
 
                 <th style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">
@@ -103,7 +103,7 @@
                 </td>
 
                 <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">
-                    <font size="2px">{{item.project}}</font>
+                    <font size="2px">{{item.subDel}}</font>
                 </td>
 
                 <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px;">

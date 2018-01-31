@@ -5,6 +5,7 @@
     name: 'SelectionGridGrouperConsult',
 
     computed: {
+      // ...mapGetters('grouperConsult', ['filteredByTerm'])
       ...mapGetters(['filteredByTerm'])
     },
 

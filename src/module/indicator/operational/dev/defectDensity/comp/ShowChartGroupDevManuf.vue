@@ -2,7 +2,7 @@
   import { mapGetters, mapActions } from 'vuex'
   import Highcharts from 'highcharts'
   import HighchartsDrilldown from 'highcharts-drilldown'
-  import initialParameter from '@/comp/chart/types/drillDown'
+  import initialParameter from '@/genComp/chart/types/drillDown'
 
   if (!Highcharts.Chart.prototype.addSeriesAsDrilldown) {
     HighchartsDrilldown(Highcharts)

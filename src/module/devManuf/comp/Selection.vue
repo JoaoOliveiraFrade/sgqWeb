@@ -1,6 +1,6 @@
 <script>
   import { mapActions, mapState } from 'vuex'
-  import oiSelection from '@/comp/selection/Main.vue'
+  import oiSelection from '@/genComp/selection/Main.vue'
 
   export default {
     name: 'DevManufSelection',

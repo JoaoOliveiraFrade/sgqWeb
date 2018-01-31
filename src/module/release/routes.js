@@ -1,5 +1,5 @@
-// import oiSearch from './comp/Search.vue'
+import oiSearch from './comp/Search.vue'
 
 export default [
-  // { path: '/projectConsultation', name: 'projectConsultation', component: oiMain },
+  { path: '/release/managementVision', name: 'managementVisionRelease', component: oiSearch }
 ]

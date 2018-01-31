@@ -1,6 +1,6 @@
 <script>
   import { mapState } from 'vuex'
-  import oiModal from '@/comp/modal/Modal2.vue'
+  import oiModal from '@/genComp/modal/Modal2.vue'
   import oiShowSelected from '../ShowSelected.vue'
 
   export default {
@@ -16,11 +16,13 @@
 
 <template>
   <span style="margin:0; border:0; padding:0" v-show="Object.keys(selectedMonoselection).length > 0">
-      <button style="margin-top:2px"
-          type="button"
-          class="btn btn-xs"
+  
+      <button style="margin-top:2px" class="btn btn-xs"
           data-toggle="modal" 
-          data-target="#modalSelectedButton">Selecionado
+          data-target="#modalSelectedButton"
+          >
+          <span class="glyphicon glyphicon-hand-up"></span>
+          Selecionado
       </button>
 
       <oiModal id="modalSelectedButton" title="Projeto Selecionado" size="l">

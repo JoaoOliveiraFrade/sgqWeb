@@ -19,7 +19,7 @@ export default {
                     </font>
                 </th>
                 <th style="padding:0px">
-                    <font size="2" class="text-nowrap">Projeto
+                    <font size="2" class="text-nowrap">Entrega
                     </font>
                 </th>
                 <th style="padding:0px">

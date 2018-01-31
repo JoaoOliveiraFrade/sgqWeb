@@ -1,15 +1,15 @@
 <script>
   import { mapState, mapGetters } from 'vuex'
-  import oiChartDefectDensityTotal from '@/comp/chart/defect/DensityDefectTotal'
-  import oiChartDefectOfTSInTITotal from '@/comp/chart/defect/DefectOfTSInTITotal'
-  import oiChartDefectAverangeTimeTotal from '@/comp/chart/defect/DefectAverangeTimeTotal'
-  import oiChartDefectReopenedTotal from '@/comp/chart/defect/DefectReopenedTotal'
+  import oiChartDefectDensityTotal from '@/genComp/chart/defect/DensityDefectTotal'
+  import oiChartDefectOfTSInTITotal from '@/genComp/chart/defect/DefectOfTSInTITotal'
+  import oiChartDefectAverangeTimeTotal from '@/genComp/chart/defect/DefectAverangeTimeTotal'
+  import oiChartDefectReopenedTotal from '@/genComp/chart/defect/DefectReopenedTotal'
 
-  import oiChartProductivityTotal from '@/comp/chart/execution/ProductivityTotal'
-  import oiChartRejectionEvidenceTotal from '@/comp/chart/test/rejectionEvidenceTotal'
-  import oiChartDefectUnfoundedTotal from '@/comp/chart/defect/defectUnfoundedTotal'
-  import oiChartDefectUATTotal from '@/comp/chart/defect/defectUATTotal'
-  import oiChartDefectAverangeRetestTimeTotal from '@/comp/chart/defect/DefectAverangeRetestTimeTotal'
+  import oiChartProductivityTotal from '@/genComp/chart/execution/ProductivityTotal'
+  import oiChartRejectionEvidenceTotal from '@/genComp/chart/test/rejectionEvidenceTotal'
+  import oiChartDefectUnfoundedTotal from '@/genComp/chart/defect/defectUnfoundedTotal'
+  import oiChartDefectUATTotal from '@/genComp/chart/defect/defectUATTotal'
+  import oiChartDefectAverangeRetestTimeTotal from '@/genComp/chart/defect/DefectAverangeRetestTimeTotal'
 
   import oiRulerOperDevDefectDensity from '@/module/indicator/operational/dev/defectDensity/comp/ShowRule'
   import oiRulerOperDevDefectAverangeTime from '@/module/indicator/operational/dev/defectAverangeTime/comp/ShowRule'
@@ -26,6 +26,10 @@
 
   import oiTestPlanSearch from '../module/testPlan/comp/Search'
   import oiExecution from '../module/execution/comp/Main'
+  import oiChartOpenedXClosedXCancelled from '@/genComp/chart/defect/openedXClosedXCancelled'
+  import oiChartGroupOrigin from '@/genComp/chart/defect/groupOrigin'
+  import oiChartCtImpactedXDefects from '@/genComp/chart/mix/ctImpactedXDefects'
+  import oiShowGridDefect from '@/module/defect/comp/ShowGrid'
 
   export default {
     name: 'ShowData',
@@ -54,11 +58,17 @@
       oiRulerPerfDevDefectDensity,
       oiRulerPerfDevDefectOfTSInTI,
       oiTestPlanSearch,
-      oiExecution
+      oiExecution,
+      oiChartOpenedXClosedXCancelled,
+      oiChartGroupOrigin,
+      oiChartCtImpactedXDefects,
+      oiShowGridDefect
     },
 
     computed: {
       ...mapState('testProj', ['selectedMonoselection']),
+      ...mapState('testProjDefect', ['defectStatus', 'defectGroupOrigin', 'ctImpactedXDefects']),
+      ...mapGetters('testProjDefect', ['defectsOpenInTestManuf', 'defectsOpenInDevManuf']),
       // ...mapGetters('testProj', ['devDefectDensityTotal', 'PerfDevDefectDensityTotal', 'defectAverangeTimeTotalHIGH'])
       // ...mapGetters('testProj', ['operDevDefectDensityTotal', 'operDevDefectAverangeTimeTotalHIGH', 'operDevDefectReopenedTotal', 'perfDevDefectDensityTotal'])
       ...mapGetters('testProj', [
@@ -88,7 +98,7 @@
         <li><a data-toggle="tab" href="#execution" style="padding: 4px">Execução</a></li>
         <li><a data-toggle="tab" href="#defect" style="padding: 4px">Defeito</a></li>
         <li><a data-toggle="tab" href="#operacionalIndicator" style="padding: 4px">Ind. Operacional</a></li>
-        <li><a data-toggle="tab" href="#performanceIndicator" style="padding: 4px">Ind. Desempenho</a></li>
+        <!--<li><a data-toggle="tab" href="#performanceIndicator" style="padding: 4px">Ind. Desempenho</a></li>-->
         <li><a data-toggle="tab" href="#testPlane" style="padding: 4px">Plano Teste</a></li>
       </ul>
 
@@ -164,43 +174,9 @@
 
         <div id="execution" class="tab-pane fade">
           <oiExecution/>
-<!--
-            <div id="Acumulado" class="col-xs-12 col-lg-6 text-center" style="padding-top:10px">
-                <label class="fd-label">Acumulado</label>
-                <oiGridMonitAcum :dataSource="statusByProjectGroupDayTop5"/>
-            </div>
-
-            <div class="col-xs-12 col-lg-6 text-center" style="padding-top:10px">
-                <label class="fd-label">Diário</label>
-                <oiGridMonitDay :dataSource="statusByProjectGroupDayTop5"/>
-            </div>
-
-            <div class="col-xs-12 col-md-6 text-center" style="padding-top:10px">
-                <oiChartExecutionProject :dataSource="statusByProjectGroupMonth" title="Curva S"/>
-            </div>
-
-            <div class="col-xs-12 col-md-6 text-center" style="padding-top:10px">
-                <oiChartExecutionProject :dataSource="statusByProjectGroupDayTop30" title="Curva S dos últimos dias"/>
-            </div>
-
-            <div class="col-xs-12 col-md-6 text-center" style="padding-top:10px">
-                <oiChartProductivityXDefects
-                  title = "Produtividade X Defeitos Abertos" 
-                  :dataSource="productivityXDefects" 
-                />
-            </div>
-            
-            <div class="col-xs-12 col-md-6 text-center" style="padding-top:10px">
-                <oiChartProductivityXDefectsGroupWeekly
-                  title = "Produtividade X Defeitos Abertos, Semanal" 
-                  :dataSource="productivityXDefectsGroupWeekly" 
-                />
-            </div>
--->            
         </div>  
 
         <div id="defect" class="tab-pane fade">
-<!--        
           <div class="col-xs-12 col-md-6 col-lg-4 text-center" style="margin:0; border:0; padding:0; padding-top:10px">
             <oiChartOpenedXClosedXCancelled 
               title = "Abertos X Fechados X Cancelados" 
@@ -216,15 +192,15 @@
           </div>
 
           <div class="col-xs-12 col-lg-4 text-center" style="margin:0; border:0; padding:0; padding-top:15px">
-            <oiChartCtsImpactedXDefects 
+            <oiChartCtImpactedXDefects 
               title = "CTs Impactados X Defeitos Abertos" 
-              :dataSource="ctsImpactedXDefects" 
+              :dataSource="ctImpactedXDefects" 
             />
           </div>
 
           <div id="defectsOpenInTestManuf" class="col-xs-12 col-lg-6 text-center" style="padding-top:10px" v-show="defectsOpenInTestManuf.length > 0">
             <label class="fd-label">Aberto na Fáb. Teste</label>
-            <oiGridDefectsOpen 
+            <oiShowGridDefect 
               :project="project"
               :defects="defectsOpenInTestManuf"
               id="xpto1"
@@ -234,14 +210,13 @@
 
           <div class="col-xs-12 col-lg-6 text-center" style="padding-top:10px" v-show="defectsOpenInDevManuf.length > 0">
             <label class="fd-label">Aberto na Fáb. Desenv.</label>
-            <oiGridDefectsOpen 
+            <oiShowGridDefect 
               :project="project"
               :defects="defectsOpenInDevManuf"
               id="xpto2"
               @onSelectDefect="selectDefect"
             />
           </div>
--->
         </div>
         
         <div id="operacionalIndicator" class="tab-pane fade">
@@ -292,14 +267,15 @@
                 <oiRulerOperTestDefectAverangeRetestTime/>
             </div>
 
-<!--
+            <!--
             <oiChartDefectAverangeTimeTotal :value="DefectAverangeTimeTotal"/>
             <oichartDefectReopenedTotal :value="reopenedTotal"/>
             <oiChartdefectOfTSInTI :value="defectOfTSInTITotal"/>
--->
+            -->
           </div>
         </div>
 
+        <!--
         <div id="performanceIndicator" class="tab-pane fade">
 
           <div class="row well well-sm oi-well text-center">
@@ -315,18 +291,14 @@
                 <oiRulerPerfDevDefectOfTSInTI/>
             </div>
 
-<!--
             <div class="col-xs-12 col-sm-6 col-md-3 oi-col">
                 <oiChartDefectReopenedTotal :value="defectAverangeTimeTotalHIGH"/>
             </div>
             <oiChartDefectAverangeTimeTotal :value="DefectAverangeTimeTotal"/>
             <oichartDefectReopenedTotal :value="reopenedTotal"/>
             <oiChartdefectOfTSInTI :value="defectOfTSInTITotal"/>
--->
           </div>
           
-        </div>
-<!--
 
           <div class="row well well-sm oi-well text-center">
             <label class="fd-label">TESTE</label><br>
@@ -341,11 +313,12 @@
             <oichartDefectReopenedTotal :value="reopenedTotal"/>
             <oiChartdefectOfTSInTI :value="defectOfTSInTITotal"/>
           </div>         
--->
+        </div>
+        -->
+
 
         <div id="testPlane" class="tab-pane fade" style="padding:5px; margin:0; text-align: center">
-          <oiTestPlanSearch>
-          </oiTestPlanSearch>
+          <oiTestPlanSearch/>
         </div>
 
       </div>

@@ -30,7 +30,7 @@
     },
 
     mounted () {
-      this.setFeatureName('Consulta de projeto')
+      this.setFeatureName('Consulta de Entrega')
       this.loadInitialData()
     },
 

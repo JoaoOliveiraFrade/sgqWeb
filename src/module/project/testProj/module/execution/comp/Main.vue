@@ -1,12 +1,12 @@
 <script>
   import { mapState, mapActions } from 'vuex'
-  // import oiGrid from '@/comp/grid/main.vue'
-  // import oiModal from '@/comp/modal/Modal2.vue'
+  // import oiGrid from '@/genComp/grid/main.vue'
+  // import oiModal from '@/genComp/modal/Modal2.vue'
   import oiAccumulatedGrid from './AccumulatedGrid.vue'
   import oiDailyGrid from './DailyGrid.vue'
-  import oiChartCurvaS from '@/comp/chart/execution/CurvaS'
-  import oiChartProductivityXDefects from '@/comp/chart/mix/productivityXDefects'
-  import oiChartProductivityXDefectsGroupWeekly from '@/comp/chart/mix/productivityXDefectsGroupWeekly'
+  import oiChartCurvaS from '@/genComp/chart/execution/CurvaS'
+  import oiChartProductivityXDefects from '@/genComp/chart/mix/productivityXDefects'
+  import oiChartProductivityXDefectsGroupWeekly from '@/genComp/chart/mix/productivityXDefectsGroupWeekly'
 
   export default {
     name: 'execution',
@@ -54,11 +54,10 @@
             <oiChartCurvaS :dataSource="groupMonth" title="Curva S"/>
         </div>
         
-<!--
         <div class="col-xs-12 col-md-6 text-center" style="padding-top:10px">
             <oiChartCurvaS :dataSource="last30Days" title="Curva S dos últimos dias"/>
         </div>
--->
+
         <div class="col-xs-12 col-md-6 text-center" style="padding-top:10px">
             <oiChartProductivityXDefects
               title = "Produtiv. X Def. Abertos - Dia" 

@@ -34,7 +34,7 @@
         <tr>
             <th style="vertical-align: middle"></th>
             <th style="vertical-align: middle">Prior.</th>                                
-            <th style="vertical-align: middle">Proj.</th>
+            <th style="vertical-align: middle">Sub/Ent</th>
             <th style="vertical-align: middle">Estado</th>
             <th style="vertical-align: middle">RT</th>
             <th style="vertical-align: middle">UN</th>
@@ -64,7 +64,7 @@
             </td>
 
             <td rowspan=3 style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">
-                {{item.project}}
+                {{item.subDel}}
             </td>
 
             <td rowspan=3 style="text-align: left; padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; vertical-align: middle">

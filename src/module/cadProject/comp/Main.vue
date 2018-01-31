@@ -1,6 +1,6 @@
 <script>
   import { mapActions } from 'vuex'
-  import oiModal from '@/comp/modal/Modal_.vue'
+  import oiModal from '@/genComp/modal/Modal_.vue'
   import oiReport from '@/module/project/testProj/comp/showReport.vue'
   import { paths } from '@/environment'
   
@@ -60,7 +60,7 @@
         defectGroupOrigin: [],
         defectsOpenInTestManuf: [],
         defectsOpenInDevManuf: [],
-        ctsImpactedXDefects: [],
+        ctImpactedXDefects: [],
         productivityXDefects: [],
         productivityXDefectsGroupWeekly: [],
         iterations: [],
@@ -77,7 +77,7 @@
     },
 
     created () {
-      this.setFeatureName('Cadastro Projetos')
+      this.setFeatureName('Cadastro Entregas')
       this.loadData()
     },
 
@@ -140,17 +140,17 @@
         this.loadReopenedData(this.project)
         this.loaddefectOfTSInTIData(this.project)
         this.loadStatus(this.project)
-        this.loadDefectsStatus(this.project)
-        this.loadDefectsGroupOrigin(this.project)
-        this.loadCtsImpactedXDefects(this.project)
+        this.loaddefectStatus(this.project)
+        this.loaddefectGroupOrigin(this.project)
+        this.loadCtImpactedXDefects(this.project)
         this.loadDefectsOpenInTestManuf(this.project)
         this.loadDefectsOpenInDevManuf(this.project)
-        this.loadCtsImpactedXDefects(this.project)
+        this.loadCtImpactedXDefects(this.project)
         this.loadProductivityXDefects(this.project)
         this.loadProductivityXDefectsGroupWeekly(this.project)
 
         let subDel = this.project.subDel.split(' ')
-        this.email.subject = '[Status Projeto] SubPrj: ' + subDel[0] + ', Ent: ' + subDel[1] + ', Nome: ' + this.subDel.name
+        this.email.subject = '[Status Entrega] SubPrj: ' + subDel[0] + ', Ent: ' + subDel[1] + ', Nome: ' + this.subDel.name
       },
 
       showItem () {
@@ -250,24 +250,24 @@
         })
       },
 
-      loadDefectsStatus (project) {
+      loaddefectStatus (project) {
         /*
-        servicesDefectsStatus.getByProject(project).then(resp => {
+        servicesdefectStatus.getByProject(project).then(resp => {
           this.defectStatus = resp.data
         })
         */
-        servicesDefect.defectsStatus(this.project).then(resp => {
+        servicesDefect.defectStatus(this.project).then(resp => {
           this.defectStatus = resp.data
         })
       },
 
-      loadDefectsGroupOrigin (project) {
+      loaddefectGroupOrigin (project) {
         /*
-        servicesDefectsGroupOrigin.getByProject(project).then(resp => {
+        servicesdefectGroupOrigin.getByProject(project).then(resp => {
           this.defectGroupOrigin = resp.data
         })
         */
-        servicesDefect.defectsGroupOrigin(this.project).then(resp => {
+        servicesDefect.defectGroupOrigin(this.project).then(resp => {
           this.defectGroupOrigin = resp.data
         })
       },
@@ -294,14 +294,14 @@
         })
       },
 
-      loadCtsImpactedXDefects (project) {
+      loadCtImpactedXDefects (project) {
         /*
-        servicesCtsImpactedXDefects.getByProject(project).then(resp => {
-          this.ctsImpactedXDefects = resp.data
+        servicesCtImpactedXDefects.getByProject(project).then(resp => {
+          this.ctImpactedXDefects = resp.data
         })
         */
-        services.getCTsImpactedXDefects(this.project).then(resp => {
-          this.ctsImpactedXDefects = resp.data
+        services.getCtImpactedXDefects(this.project).then(resp => {
+          this.ctImpactedXDefects = resp.data
         })
       },
 
@@ -387,7 +387,7 @@
           @click="saveItem(project)"
           data-toggle="tooltip" 
           title="Gravar">
-          <span class='glyphicon glyphicon-save'></span>
+          <span class='glyphicon glyphicon-floppy-disk'></span>
         </a>
 
         <a class="btn btn-xs my-tool-tip oi-icon"
@@ -443,7 +443,7 @@
         :defectGroupOrigin="defectGroupOrigin"
         :defectsOpenInTestManuf="defectsOpenInTestManuf"
         :defectsOpenInDevManuf="defectsOpenInDevManuf"
-        :ctsImpactedXDefects="ctsImpactedXDefects"
+        :ctImpactedXDefects="ctImpactedXDefects"
         :productivityXDefects="productivityXDefects"
         :productivityXDefectsGroupWeekly="productivityXDefectsGroupWeekly"
         :iterations="iterations"
@@ -500,7 +500,7 @@
                 :defectGroupOrigin="defectGroupOrigin"
                 :defectsOpenInTestManuf="defectsOpenInTestManuf"
                 :defectsOpenInDevManuf="defectsOpenInDevManuf"
-                :ctsImpactedXDefects="ctsImpactedXDefects"
+                :ctImpactedXDefects="ctImpactedXDefects"
                 :productivityXDefects="productivityXDefects"
                 :productivityXDefectsGroupWeekly="productivityXDefectsGroupWeekly"
               />

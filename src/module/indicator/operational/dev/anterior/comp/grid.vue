@@ -53,7 +53,7 @@
                 </th style="padding:0">
 
                 <th style="padding:0">
-                    <font size="2" class="text-nowrap">Proj.
+                    <font size="2" class="text-nowrap">Sub/Ent
                         <a href="#" @click.prevent="setOrder('project')">
                         </a>
                     </font>

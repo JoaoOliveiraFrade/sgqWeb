@@ -1,6 +1,6 @@
 <script>
   import { mapState } from 'vuex'
-  import oiModal from '@/comp/modal/Modal2.vue'
+  import oiModal from '@/genComp/modal/Modal2.vue'
   import oiShowSelected from '../ShowSelected.vue'
 
   export default {
@@ -20,10 +20,10 @@
           type="button"
           class="btn btn-xs"
           data-toggle="modal" 
-          data-target="#modalSelectedButton">Selecionado
+          data-target="#modalSelectedButton">Selecionada
       </button>
 
-      <oiModal id="modalSelectedButton" title="Projeto Selecionado" size="l">
+      <oiModal id="modalSelectedButton" title="Entrega Selecionada" size="l">
         <oiShowSelected slot="body"/>
       </oiModal>
   </span>

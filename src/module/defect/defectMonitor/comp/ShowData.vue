@@ -1,6 +1,6 @@
 <script>
   import { mapState, mapActions } from 'vuex'
-  import oiGrid from '@/comp/grid/main.vue'
+  import oiGrid from '@/genComp/grid/main.vue'
 
   export default {
     name: 'ShowData',
@@ -15,7 +15,7 @@
           {
             id: 'provider', name: 'Fornecedor', alignHeader: 'center', align: 'left', visible: true, sort: true, minWidth: '', yesNoImage: false, filterOptions: []
           }, {
-            id: 'subDel', name: 'Proj.', alignHeader: 'center', align: 'center', visible: true, sort: true, minWidth: '', yesNoImage: false, filterOptions: []
+            id: 'subDel', name: 'Sub/Ent', alignHeader: 'center', align: 'center', visible: true, sort: true, minWidth: '', yesNoImage: false, filterOptions: []
           }, {
             id: 'id', name: 'Def.', alignHeader: 'center', align: 'center', minWidth: '', visible: true, sort: true, yesNoImage: false, filterOptions: []
           }, {

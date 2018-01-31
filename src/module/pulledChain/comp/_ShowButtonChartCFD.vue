@@ -1,5 +1,5 @@
 <script>
-  import oiModal from '@/comp/modal/Modalx.vue'
+  import oiModal from '@/genComp/modal/Modalx.vue'
   import oiShow from './Show.vue'
   import { mapActions } from 'vuex'
 
@@ -40,7 +40,7 @@
                 </div>
 
                 <div class="col-xs-10" style="margin:0; border:0; padding:0; text-align: center">
-                    <label class="fd-label">[Projeto] {{project.subDel}} - {{project.name}}</label>
+                    <label class="fd-label">[Entrega] {{project.subDel}} - {{project.name}}</label>
                 </div>
 
                 <hr class="col-xs-12">

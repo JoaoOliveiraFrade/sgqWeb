@@ -1,7 +1,7 @@
 <script>
   import { mapGetters, mapState } from 'vuex'
   import Highcharts from 'highcharts'
-  import chartStandParam from '@/comp/chart/types/timeline2'
+  import chartStandParam from '@/genComp/chart/types/timeline2'
 
   export default {
     name: 'ShowChartGroupTimeline',

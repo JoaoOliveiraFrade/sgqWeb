@@ -42,11 +42,11 @@
     methods: {
       association (project) {
         servicesCadProjectsXgroupers.create(this.item.grouper.id, project.id, project.subproject, project.delivery).then(resp => {
-          // apaga da lista geral de projetos
+          // apaga da lista geral de entregas
           let index = this.projects.findIndex(o => o.id === project.id)
           this.projects.splice(index, 1)
 
-          // insere na lista de projetos associados
+          // insere na lista de entregas associados
           this.item.projects.push(project)
         })
       },
@@ -90,8 +90,8 @@
       <div class="row well-sm oi-well">
           <ul class="nav nav-tabs" style="margin-top:2px">
             <li><a data-toggle="tab" href="#executiveSummary" style="padding: 3px 5px 3px 5px" v-show="item.grouper.type === 'STATUS'">Resumo Executivo</a></li>
-            <li><a data-toggle="tab" href="#ProjectsToSelect" style="padding: 3px 5px 3px 5px">Associação de Projetos</a></li>
-            <li><a data-toggle="tab" href="#ProjectsAssociated" style="padding: 3px 5px 3px 5px">Projetos Associados</a></li>
+            <li><a data-toggle="tab" href="#ProjectsToSelect" style="padding: 3px 5px 3px 5px">Associação de Entregas</a></li>
+            <li><a data-toggle="tab" href="#ProjectsAssociated" style="padding: 3px 5px 3px 5px">Entregas Associadas</a></li>
           </ul>
 
           <div class="tab-content">

@@ -114,7 +114,7 @@
                 data-dismiss="modal"
                 @click.prevent="save"
                 title="Salvar">
-                <span class='glyphicon glyphicon-save'></span>
+                <span class='glyphicon glyphicon-floppy-disk'></span>
             </a> 
         </div>
     
@@ -205,7 +205,7 @@
 
             <div class="col-xs-6 col-md-3 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
                 <div>
-                    <label class="fd-label">Estado Entrega:</label><br>
+                    <label class="fd-label">Estado Sub/Ent:</label><br>
                     <label class="fd-content">{{selected_.deliveryState}}</label>
                 </div>
             </div>

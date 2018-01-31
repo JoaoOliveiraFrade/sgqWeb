@@ -34,7 +34,7 @@
                 </th>
 
                 <th class="text-center" style="padding:0">
-                    <font size="2px">Proj.</font>
+                    <font size="2px">Sub/Ent</font>
                 </th>
 
                 <th class="text-center" style="padding:0">

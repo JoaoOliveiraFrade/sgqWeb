@@ -57,7 +57,7 @@
       </div>
 
       <div class="col-xs-12" style="margin:0; border:0; padding:5px">
-        <label class="fd-label">Projetos:</label>
+        <label class="fd-label">Entregas:</label>
         <oiProjectGridShow
           :items="item.projects"
         />

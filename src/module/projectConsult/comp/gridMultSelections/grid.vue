@@ -1,5 +1,5 @@
 <script>
-  import oiModal from '@/comp/modal/Modalx.vue'
+  import oiModal from '@/genComp/modal/Modalx.vue'
 
   export default {
     name: 'projectGridMultSelectionsGrid',
@@ -70,7 +70,7 @@
             </th style="padding:0">
 
             <th style="padding:0">
-                <font size="2" class="text-nowrap">Proj.
+                <font size="2" class="text-nowrap">Sub/Ent
                     <a href="#" @click.prevent="setOrder('project')">
                     </a>
                 </font>

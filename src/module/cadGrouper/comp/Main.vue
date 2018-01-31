@@ -49,7 +49,7 @@
     methods: {
       ...mapActions(['setFeatureName']),
       loadData () {
-        ServicesCadgroupers.getAll().then(resp => {
+        ServicesCadgroupers.getData().then(resp => {
           this.items = resp.data
           this.itemsFilteredByText = resp.data
         })
@@ -173,7 +173,7 @@
           @click="saveItem"
           data-toggle="tooltip" 
           title="Gravar">
-          <span class='glyphicon glyphicon-save'></span>
+          <span class='glyphicon glyphicon-floppy-disk'></span>
         </a>
 
         <a class="btn btn-xs my-tool-tip oi-icon" 
@@ -181,7 +181,7 @@
           @click="newItem"
           data-toggle="tooltip" 
           title="Gravar">
-          <span class='glyphicon glyphicon-save'></span>
+          <span class='glyphicon glyphicon-floppy-disk'></span>
         </a>
 
         <a class="btn btn-xs my-tool-tip oi-icon"

@@ -1,39 +1,40 @@
 <script>
-  import oiShowDefectTime from './ShowDefectTime.vue'
+  import { mapState } from 'vuex'
+  import oiShowDefectTime from './ShowTime.vue'
 
   export default {
     name: 'DefectShowData',
 
     components: { oiShowDefectTime },
 
-    props: {
-      project: { type: Object },
-      defect: { type: Object }
+    computed: {
+      ...mapState('defect', 'selectedDefectDetail', 'selectedDefectTime')
     }
   }
 </script>
 
 <template>
   <div id="cabecalho" >
+  <pre>{{selectedDefectDetail}}</pre>
     <div class="row well well-sm oi-well">
       <div class="col-xs-2 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
-          <label class="fd-label">Projeto:</label><br>
-          <label class="fd-content">{{defect.subDel}}</label>
+          <label class="fd-label">Sub/Ent:</label><br>
+          <label class="fd-content">{{selectedDefectDetail.subDel}}</label>
         </div>
       </div>
 
       <div class="col-xs-2 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
           <label class="fd-label">Número:</label><br>
-          <label class="fd-content">{{defect.id}}</label>
+          <label class="fd-content">{{selectedDefectDetail.id}}</label>
         </div>
       </div>
 
       <div class="col-xs-8 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
           <label class="fd-label">Nome:</label><br>
-          <label class="fd-content">{{defect.name}}</label>
+          <label class="fd-content">{{selectedDefectDetail.name}}</label>
         </div>
       </div>
     </div>
@@ -42,14 +43,14 @@
       <div class="col-xs-2 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
           <label class="fd-label">CT:</label><br>
-          <label class="fd-content">{{defect.CT}}</label>
+          <label class="fd-content">{{selectedDefectDetail.CT}}</label>
         </div>
       </div>
 
       <div class="col-xs-10 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
           <label class="fd-label">Nome CT:</label><br>
-          <label class="fd-content">{{defect.ctName}}</label>
+          <label class="fd-content">{{selectedDefectDetail.ctName}}</label>
         </div>
       </div>
     </div>
@@ -58,21 +59,21 @@
       <div class="col-xs-4 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
           <label class="fd-label">Ciclo:</label><br>
-          <label class="fd-content">{{defect.cycle}}</label>
+          <label class="fd-content">{{selectedDefectDetail.cycle}}</label>
         </div>
       </div>
 
       <div class="col-xs-4 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
           <label class="fd-label">Sistema CT:</label><br>
-          <label class="fd-content">{{defect.ctSystem}}</label>
+          <label class="fd-content">{{selectedDefectDetail.ctSystem}}</label>
         </div>
       </div>
 
       <div class="col-xs-4 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
           <label class="fd-label">Sistema Defeito:</label><br>
-          <label class="fd-content">{{defect.defectSystem}}</label>
+          <label class="fd-content">{{selectedDefectDetail.defectSystem}}</label>
         </div>
       </div>
     </div>
@@ -81,21 +82,21 @@
       <div class="col-xs-4 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
           <label class="fd-label">Fab.Desenv:</label><br>
-          <label class="fd-content">{{defect.devManuf}}</label>
+          <label class="fd-content">{{selectedDefectDetail.devManuf}}</label>
         </div>
       </div>
 
       <div class="col-xs-4 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
           <label class="fd-label">Fab.Teste:</label><br>
-          <label class="fd-content">{{defect.testManuf}}</label>
+          <label class="fd-content">{{selectedDefectDetail.testManuf}}</label>
         </div>
       </div>
 
       <div class="col-xs-4 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
           <label class="fd-label">Fila:</label><br>
-          <label class="fd-content">{{defect.queue}}</label>
+          <label class="fd-content">{{selectedDefectDetail.queue}}</label>
         </div>
       </div>
     </div>
@@ -104,21 +105,21 @@
       <div class="col-xs-4 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
           <label class="fd-label">Severidade:</label><br>
-          <label class="fd-content">{{defect.severity}}</label>
+          <label class="fd-content">{{selectedDefectDetail.severity}}</label>
         </div>
       </div>
 
       <div class="col-xs-4 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
           <label class="fd-label">Origem:</label><br>
-          <label class="fd-content">{{defect.origin}}</label>
+          <label class="fd-content">{{selectedDefectDetail.origin}}</label>
         </div>
       </div>
 
       <div class="col-xs-4 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
           <label class="fd-label">Status:</label><br>
-          <label class="fd-content">{{defect.status}}</label>
+          <label class="fd-content">{{selectedDefectDetail.status}}</label>
         </div>
       </div>
     </div>
@@ -127,13 +128,13 @@
       <div class="col-xs-8 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
           <label class="fd-label">Natureza:</label>
-          <label class="fd-content">{{defect.nature}}</label>
+          <label class="fd-content">{{selectedDefectDetail.nature}}</label>
         </div>
       </div>
       <div class="col-xs-4 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
           <label class="fd-label">Detectável em Desenv.:</label><br>
-          <label class="fd-content">{{defect.defectOfTSInTI}}</label>
+          <label class="fd-content">{{selectedDefectDetail.defectOfTSInTI}}</label>
         </div>
       </div>
     </div>
@@ -142,21 +143,21 @@
       <div class="col-xs-4 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
           <label class="fd-label">Abertura:</label><br>
-          <label class="fd-content">{{defect.dtOpening}}</label>
+          <label class="fd-content">{{selectedDefectDetail.dtOpening}}</label>
         </div>
       </div>
 
       <div class="col-xs-4 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
           <label class="fd-label">Prev. Solução:</label><br>
-          <label class="fd-content">{{defect.dtForecastingSolution}}</label>
+          <label class="fd-content">{{selectedDefectDetail.dtForecastingSolution}}</label>
         </div>
       </div>
 
       <div class="col-xs-4 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
           <label class="fd-label">Qte  Reopen:</label><br>
-          <label class="fd-content">{{defect.qtyReopened}}</label>
+          <label class="fd-content">{{selectedDefectDetail.qtyReopened}}</label>
         </div>
       </div>
     </div>
@@ -165,21 +166,21 @@
       <div class="col-xs-4 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
           <label class="fd-label">Qte  Impactado:</label><br>
-          <label class="fd-content">{{defect.qtyImpactedCTs}}</label>
+          <label class="fd-content">{{selectedDefectDetail.qtyImpactedCTs}}</label>
         </div>
       </div>
 
       <div class="col-xs-4 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
           <label class="fd-label">Ping Pong:</label><br>
-          <label class="fd-content">{{defect.qtyPingPong}}</label>
+          <label class="fd-content">{{selectedDefectDetail.qtyPingPong}}</label>
         </div>
       </div>
 
       <div class="col-xs-4 text-left" style="margin:0; border:0; padding:0; padding-left:5px">
         <div>
           <label class="fd-label">Aging:</label><br>
-          <label class="fd-content">{{defect.agingFormat}}</label>
+          <label class="fd-content">{{selectedDefectDetail.agingFormat}}</label>
         </div>
       </div>
     </div>
@@ -200,7 +201,7 @@
       </a>
       <div id="Comments" class="collapse" >
         <div class="well">
-            <label class="fd-content" v-html="defect.Comments"></label>
+            <label class="fd-content" v-html="selectedDefectDetail.Comments"></label>
         </div>
       </div>
     </div>
