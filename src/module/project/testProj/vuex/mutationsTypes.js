@@ -5,6 +5,8 @@ export const filterTerm = 'filterTerm'
 export const selected = 'selected'
 export const loading = 'loading'
 
+export const state = 'state'
+
 export const selectedMonoselection = 'selectedMonoselection'
 
 export const operDevDefectDensity = 'operDevDefectDensity'

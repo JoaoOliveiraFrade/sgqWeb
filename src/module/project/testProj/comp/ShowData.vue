@@ -200,21 +200,21 @@
 
           <div id="defectsOpenInTestManuf" class="col-xs-12 col-lg-6 text-center" style="padding-top:10px" v-show="defectsOpenInTestManuf.length > 0">
             <label class="fd-label">Aberto na Fáb. Teste</label>
+            <!--:project="project"-->
+            <!--@onSelectDefect="selectDefect"-->
             <oiShowGridDefect 
-              :project="project"
               :defects="defectsOpenInTestManuf"
               id="xpto1"
-              @onSelectDefect="selectDefect"
             />
           </div>
 
           <div class="col-xs-12 col-lg-6 text-center" style="padding-top:10px" v-show="defectsOpenInDevManuf.length > 0">
             <label class="fd-label">Aberto na Fáb. Desenv.</label>
+            <!--:project="project"-->
+            <!--@onSelectDefect="selectDefect"-->
             <oiShowGridDefect 
-              :project="project"
               :defects="defectsOpenInDevManuf"
               id="xpto2"
-              @onSelectDefect="selectDefect"
             />
           </div>
         </div>

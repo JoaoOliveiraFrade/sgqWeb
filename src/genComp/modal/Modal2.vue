@@ -11,6 +11,7 @@
 
     methods: {
       close () {
+        console.log('close1')
         this.$emit('onClose')
       }
     }
@@ -23,7 +24,7 @@
             <div class="modal-content" style="margin:0; border:0; padding:0; background-color: #f8f8ff">
 
                 <div class="modal-header">
-                    <a
+                    <a @click="close"
                         data-toggle="tooltip" 
                         data-dismiss="modal"
                         title="Fechar">

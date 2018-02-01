@@ -1,25 +1,10 @@
 <script>
-  import oiChartDensityDefectTotal from '@/genComp/chart/defect/DensityDefectTotal'
-  import oiChartDefectReopenedTotal from '@/genComp/chart/defect/DefectReopenedTotal'
-  import oiChartDefectAverangeTimeTotal from '@/genComp/chart/defect/DefectAverangeTimeTotal'
-  import oiChartdefectOfTSInTI from '@/genComp/chart/defect/DefectOfTSInTITotal'
-  import oiSelection from '@/module/selection/comp/selections.vue'
-  import services from '@/module/project/testProj/services'
+  import { mapState } from 'vuex'
 
   export default {
-    name: 'cadProjectsEdit',
+    name: 'ShowData',
 
-    components: { oiChartDensityDefectTotal, oiChartDefectReopenedTotal, oiChartDefectAverangeTimeTotal, oiChartdefectOfTSInTI, oiSelection },
-
-    props: {
-      project: { type: Object },
-      densityDefectTotal: { type: Object },
-      DefectAverangeTimeTotal: { type: Object },
-      reopenedTotal: { type: Object },
-      defectOfTSInTITotal: { type: Object },
-      iterations: { type: Array },
-      iterationsActive: { type: Array },
-      iterationsSelected: { type: Array }
+    components: {
     },
 
     data () {
@@ -42,105 +27,22 @@
       }
     },
 
-    updated () {
-      if (this.project !== this.project.subDel) {
-        this.project = this.project.subDel
-        this.loadIterations()
-        this.loadIterationsActive()
-        this.loadIterationsSelected()
-      }
-    },
-
-    methods: {
-      color (item) {
-        let index = this.colors.findIndex(i => i.portugues === item)
-        return (index > -1) ? this.colors[index].ingles : ''
-      },
-
-      loadIterations () {
-        services.getIterations(this.project).then(resp => {
-          this.iterations = resp.data
-        })
-      },
-
-      loadIterationsActive () {
-        services.getIterationsActive(this.project).then(resp => {
-          this.iterationsActive = resp.data
-          /*
-          if (this.iterationsSelected.length === 1) {
-            if (this.iterationsSelected[0] === '') {
-              this.iterationsSelected = []
-            }
-          }
-          */
-        })
-      },
-
-      loadIterationsSelected () {
-        services.getIterationsSelected(this.project).then(resp => {
-          this.iterationsSelected = resp.data
-        })
-      },
-
-      ConfirmIterations (iterationsActive) {
-        if (this.iterationsActive !== iterationsActive) {
-          this.iterationsActive = iterationsActive
-          this.iterationsSelected = iterationsActive
-          services.updateIterationsActive({ projectId: this.project.id, iterations: this.iterationsActive }).then(resp => {
-            if (iterationsActive.length > 0) {
-              this.loadDataIterations()
-            } else {
-              this.loadData()
-            }
-          })
-
-          services.updateIterationsSelected({ projectId: this.project.id, iterations: this.iterationsActive })
-        }
-      }
-
+    computed: {
+      ...mapState('testProj', ['selectedMonoselection'])
     }
-
   }
 </script>
 
 <template>
-  <div id="cadProjectsEdit">
-    
-    <div id="cabecalho" class="row well well-sm oi-well" >
-      <div class="col-xs-12 col-md-6 oi-col">
-        <div>
-          <label class="fd-label">Sub/Ent:</label>
-          <label class="fd-content">{{project.subDel}}</label>
-        </div>
-      </div>
-      <div class="col-xs-12 col-md-6 oi-col">
-        <div>
-          <label class="fd-label">Nome:</label>
-          <label class="fd-content">{{project.name}}</label>
-        </div>
-      </div>
-      <div class="col-xs-12 col-md-6 oi-col">
-        <div>
-          <label class="fd-label">GP:</label>
-          <label class="fd-content">{{project.GP}}</label>
-        </div>
-      </div>
-      <div class="col-xs-12 col-md-6 oi-col">
-        <div>
-          <label class="fd-label">N3:</label>
-          <label class="fd-content">{{project.N3}}</label>
-        </div>
-      </div>
-    </div> 
+    <div v-show="Object.keys(selectedMonoselection).length > 0" class="row well well-sm oi-well">
 
-    <div id="abas" class="row well well-sm oi-well" >
       <div class="row well-sm oi-well">
           <ul class="nav nav-tabs" style="margin-top:2px">
             <li class="active">
               <a data-toggle="tab" href="#trafficLight" style="padding: 3px 5px 3px 5px">Farol
-                <img alt="Farol Verde" src="../../../asset/image/verde-sm.png"  v-show="project.trafficLight === 'VERDE'">
-                <img alt="Farol Amarelo" src="../../../asset/image/amarelo-sm.png" height="17" width="17" v-show="project.trafficLight === 'AMARELO'">
-                <img alt="Farol Vermelho" src="../../../asset/image/vermelho-sm.png" height="17" width="17" v-show="project.trafficLight === 'VERMELHO'">
+                <img alt="Farol Verde" src="../../../../asset/image/verde-sm.png"  v-show="selectedMonoselection.trafficLight === 'VERDE'">
+                <img alt="Farol Amarelo" src="../../../../asset/image/amarelo-sm.png" height="17" width="17" v-show="selectedMonoselection.trafficLight === 'AMARELO'">
+                <img alt="Farol Vermelho" src="../../../../asset/image/vermelho-sm.png" height="17" width="17" v-show="selectedMonoselection.trafficLight === 'VERMELHO'">
               </a>
             </li>
             <li><a data-toggle="tab" href="#informative" style="padding: 3px 5px 3px 5px">Resumo Executivo</a></li>
@@ -152,13 +54,13 @@
           <div class="tab-content">
             <div id="trafficLight" class="tab-pane fade in active" style="padding:0; margin:0; text-align: center">
                 <div class="col-xs-12 oi-col">
-                    <input type="radio" id="green" value="VERDE" v-model="project.trafficLight">
+                    <input type="radio" id="green" value="VERDE" v-model="selectedMonoselection.trafficLight">
                     <label for="green">Verde</label>
 
-                    <input type="radio" id="yellow" value="AMARELO" v-model="project.trafficLight">
+                    <input type="radio" id="yellow" value="AMARELO" v-model="selectedMonoselection.trafficLight">
                     <label for="yellow">Amarelo</label>
 
-                    <input type="radio" id="red" value="VERMELHO" v-model="project.trafficLight">
+                    <input type="radio" id="red" value="VERMELHO" v-model="selectedMonoselection.trafficLight">
                     <label for="red">Vermelho</label>
                 </div>
 
@@ -167,11 +69,11 @@
                     <!--
                     <textarea id="opiniao"
                       rows="5" name="opiniao" 
-                      v-model="project.rootCause"
+                      v-model="selectedMonoselection.rootCause"
                       wrap="hard">
                     </textarea>
                     -->
-                    <froala :tag="'textarea'" :config="config" v-model="project.rootCause"></froala>
+                    <froala :tag="'textarea'" :config="config" v-model="selectedMonoselection.rootCause"></froala>
                 </div>
 
                 <div class="col-xs-12 oi-col">
@@ -179,11 +81,11 @@
                     <!--
                     <textarea id="opiniao"
                       rows="5" name="opiniao" 
-                      v-model="project.actionPlan"
+                      v-model="selectedMonoselection.actionPlan"
                       wrap="hard"> 
                     </textarea>
                     -->
-                    <froala :tag="'textarea'" :config="config" v-model="project.actionPlan"></froala>
+                    <froala :tag="'textarea'" :config="config" v-model="selectedMonoselection.actionPlan"></froala>
                 </div>
             </div>
 
@@ -192,11 +94,11 @@
                   <!--
                   <textarea id="opiniao" 
                     rows="10" name="opiniao" 
-                    v-model="project.informative"
+                    v-model="selectedMonoselection.informative"
                     wrap="hard">
                   </textarea>
                   -->
-                  <froala :tag="'textarea'" :config="config" v-model="project.informative"></froala>
+                  <froala :tag="'textarea'" :config="config" v-model="selectedMonoselection.informative"></froala>
               </div>
             </div>
 
@@ -205,11 +107,11 @@
                   <!--
                   <textarea id="opiniao"
                     rows="10" name="opiniao" 
-                    v-model="project.attentionPoints"
+                    v-model="selectedMonoselection.attentionPoints"
                     wrap="hard">
                   </textarea>
                   -->
-                  <froala :tag="'textarea'" :config="config" v-model="project.attentionPoints"></froala>
+                  <froala :tag="'textarea'" :config="config" v-model="selectedMonoselection.attentionPoints"></froala>
               </div>
             </div>
 
@@ -219,7 +121,7 @@
                   <label class="fd-label">Pontos de Atenção</label>
                   <textarea id="opiniao"
                     rows="5" name="opiniao" 
-                    v-model="project.attentionPointsOfindicator"
+                    v-model="selectedMonoselection.attentionPointsOfindicator"
                     wrap="hard">
                   </textarea>
               </div>
@@ -228,6 +130,7 @@
               </div>
               -->
 
+              <!--
               <div class="col-xs-6 col-md-3 oi-col">
                 <oiChartDensityDefectTotal :value="densityDefectTotal"/>
               </div>
@@ -243,10 +146,12 @@
               <div class="col-xs-6 col-md-3 oi-col">
                 <oiChartdefectOfTSInTI :value="defectOfTSInTITotal"/>
               </div>
+              -->
 
             </div>
             <div id="iterationsActive" class="tab-pane fade in" style="padding:0; margin:0; text-align: center">
               <div class="col-xs-12 text-left" style="margin:5px; border:0; padding:0; padding-top:10px">
+                <!--
                 <oiSelection
                   idChild="iterations"
                   title="Iterations Ativos"
@@ -254,17 +159,15 @@
                   :itemsSelected="iterationsActive"
                   :showButtonSelected="false"
                   @onChangeSelected="ConfirmIterations"
-                />                              
+                />  
+                -->                            
               </div>    
             </div>
                 
           </div>
       </div>  
-    </div> 
 
-    
-     
-  </div>  
+    </div>
 </template>
 
 <style scoped>

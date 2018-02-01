@@ -16,6 +16,8 @@ export default {
   selected: [],
   loading: false,
 
+  state: 'search',
+
   selectedMonoselection: {},
 
   operDevDefectDensity: [],

@@ -25,6 +25,10 @@ export default {
     state.loading = parameter
   },
 
+  [types.state] (state, parameter) {
+    state.state = parameter
+  },
+
   [types.selectedMonoselection] (state, parameter) {
     state.selectedMonoselection = parameter
   },

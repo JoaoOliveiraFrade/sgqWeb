@@ -20,9 +20,12 @@ import 'froala-editor/css/froala_editor.pkgd.min.css'
 import 'font-awesome/css/font-awesome.css'
 import 'froala-editor/css/froala_style.min.css'
 import VueFroala from 'vue-froala-wysiwyg'
-import VueResource from 'vue-resource'
 
+import VueResource from 'vue-resource'
 import App from './App'
+
+Vue.use(VueFroala)
+Vue.use(VueResource)
 
 /* eslint-disable */
 if (!String.prototype.replaceAll) {
@@ -45,8 +48,6 @@ if (!String.prototype.replaceAll) {
 
 Vue.config.productionTip = false
 
-Vue.use(VueFroala)
-
 // // ag-grid
 // // =============================================================
 // import '../node_modules/ag-grid/dist/styles/ag-grid.css'
@@ -59,8 +60,6 @@ Vue.use(VueFroala)
 // =============================================================
 // import { ClientTable } from 'vue-tables-2'
 // Vue.use(ClientTable, {}, false, require('../node_modules/vue-tables-2/compiled/template.js')('client'))
-
-Vue.use(VueResource)
 
 Vue.directive('focus', {
   inserted: function (el) {

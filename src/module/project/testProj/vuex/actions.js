@@ -90,9 +90,15 @@ export const setSelected = ({ commit }, paramenter) => {
   commit(types.selected, paramenter)
 }
 
+export const setState = ({ commit }, paramenter) => {
+  console.log('setState')
+  commit(types.state, paramenter)
+}
+
 export const setSelectedMonoselection = ({ commit, dispatch }, project) => {
   services.getProjectsByIds(project.id.toString()).then(r => {
     commit(types.selectedMonoselection, r.data[0])
+    commit(types.state, 'show')
   })
 
   servicesOperDevDefectDensity.dataFbyProject(project).then(r => {

@@ -23,15 +23,16 @@
 <template>
   <span style="margin:0; border:0; padding:0">
     <button style="margin-top:2px" class="btn btn-xs"
+        title="Seleção"
         ref="buttonModal"
         data-toggle="modal" 
-        data-target="#modalSelectionProjectx"
+        data-target="#modalSelectionProject"
         >
         <span class="glyphicon glyphicon-search"></span>
         Seleção
     </button>
     
-    <oiModal id="modalSelectionProjectx" ref="vuemodal" title="Seleção" size="l">
+    <oiModal id="modalSelectionProject" title="Seleção" size="l">
         <oiSelectionGrid slot="body"/>
     </oiModal>    
   </span>

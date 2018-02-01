@@ -1,5 +1,5 @@
 export default {
   user: {},
   currentUserProfiles: [],
-  token: ''
+  token: '1'
 }

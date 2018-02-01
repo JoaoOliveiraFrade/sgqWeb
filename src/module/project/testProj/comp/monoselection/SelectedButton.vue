@@ -17,17 +17,19 @@
 <template>
   <span style="margin:0; border:0; padding:0" v-show="Object.keys(selectedMonoselection).length > 0">
   
-      <button style="margin-top:2px" class="btn btn-xs"
-          data-toggle="modal" 
-          data-target="#modalSelectedButton"
-          >
-          <span class="glyphicon glyphicon-hand-up"></span>
-          Selecionado
-      </button>
+    <button style="margin-top:2px" class="btn btn-xs"
+      title="Selecionado"
+      data-toggle="modal"
+      data-target="#modalSelectedButton"
+      >
+      <span class="glyphicon glyphicon-hand-up"></span>
+      Selecionado
+    </button>
 
-      <oiModal id="modalSelectedButton" title="Projeto Selecionado" size="l">
-        <oiShowSelected slot="body"/>
-      </oiModal>
+    <oiModal id="modalSelectedButton" title="Projeto Selecionado" size="l">
+      <oiShowSelected slot="body"/>
+    </oiModal>
+
   </span>
 </template>
 
