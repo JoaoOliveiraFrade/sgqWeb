@@ -21,9 +21,10 @@
 
 <template>
   <span style="margin:0; border:0; padding:0" v-show="Object.keys(selectedMonoselection).length > 0">
-  
+
+      <!--v-show="isLogged && state !== 'edit'"-->
       <button style="margin-top:2px" class="btn btn-xs"
-        v-show="isLogged && state !== 'edit'"    
+        v-show="isLogged"
         data-toggle="modal"
         data-target="#modalEditionProject"
         title="Editar"
@@ -32,8 +33,7 @@
         <span class="glyphicon glyphicon-pencil"></span>
         Editar
       </button>     
-
-      <oiModal 
+      <oiModal
         id="modalEditionProject" 
         title="Edição de Entrega"
         size="l"
@@ -41,6 +41,7 @@
         >
         <oiEditData slot="body"/>
       </oiModal>
+
   </span>
 </template>
 

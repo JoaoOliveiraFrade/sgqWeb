@@ -20,6 +20,8 @@ export default {
 
   selectedMonoselection: {},
 
+  iterations: [],
+
   operDevDefectDensity: [],
   operDevDefectAverangeTime: [],
   operDevDefectReopened: [],

@@ -21,9 +21,8 @@
     <oiSelectionButton/>
 
     <oiSelectedButton/>
-   
-    <oiEditionButton/>
 
+    <oiEditionButton/>
   </span>
 </template>
 

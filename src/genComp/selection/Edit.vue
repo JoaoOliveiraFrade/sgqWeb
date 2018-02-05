@@ -36,7 +36,7 @@
 
       methods: {
         selectAll: function () {
-          this.selected_ = this.data
+          this.selected_ = this.data.map(e => e.id)
           this.isUpdate = true
         },
 
@@ -82,11 +82,12 @@
         <hr class="col-xs-12">
 
         <div class="row well-sm reset">
-          <div class="col-xs-12 col-sm-6 col-lg-4" v-for="item in data" track-by="$index" style="padding:0">
+          <div class="col-xs-12 col-sm-6 col-lg-4" v-for="(item, index) in data" :key="index" style="padding:0">
+
             <div class="col-xs-1">
               <input style="margin-top:4px"
                 type="checkbox" 
-                :value=item
+                :value=item.id
                 v-model="selected_"
                 @click="update" 
               />

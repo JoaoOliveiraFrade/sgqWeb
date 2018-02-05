@@ -11,8 +11,8 @@ import servicesOperTestDefectUnfounded from '@/module/indicator/operational/test
 import servicesOperTestDefectUAT from '@/module/indicator/operational/test/defectUAT/services'
 import servicesOperTestDefectAverangeRetestTime from '@/module/indicator/operational/test/defectAverangeRetestTime/services'
 
-import servicesPerfDevDefectDensity from '@/module/indicator/performance/dev/defectDensity/services'
-import servicesPerfDevDefectOfTSInTI from '@/module/indicator/performance/dev/defectOfTSInTI/services'
+// import servicesPerfDevDefectDensity from '@/module/indicator/performance/dev/defectDensity/services'
+// import servicesPerfDevDefectOfTSInTI from '@/module/indicator/performance/dev/defectOfTSInTI/services'
 
 // import servicesDefect from '@/module/defect/services'
 
@@ -101,6 +101,21 @@ export const setSelectedMonoselection = ({ commit, dispatch }, project) => {
     commit(types.state, 'show')
   })
 
+  services.loadIterations(project).then(r => {
+    commit(types.iterations, r.data)
+  })
+  services.loadIterationsActive(project).then(r => {
+    if (r.data.length === 1) {
+      if (r.data[0] === '') {
+        r.data = []
+      }
+    }
+    commit(types.iterationsActive, r.data)
+  })
+  services.loadIterationsSelected(project).then(r => {
+    commit(types.iterationsSelected, r.data)
+  })
+
   servicesOperDevDefectDensity.dataFbyProject(project).then(r => {
     commit(types.operDevDefectDensity, r.data)
   })
@@ -126,12 +141,12 @@ export const setSelectedMonoselection = ({ commit, dispatch }, project) => {
     commit(types.operTestDefectAverangeRetestTime, r.data)
   })
 
-  servicesPerfDevDefectDensity.dataFbyProject(project).then(r => {
-    commit(types.perfDevDefectDensity, r.data)
-  })
-  servicesPerfDevDefectOfTSInTI.dataFbyProject(project).then(r => {
-    commit(types.perfDevDefectOfTSInTI, r.data)
-  })
+  // servicesPerfDevDefectDensity.dataFbyProject(project).then(r => {
+  //   commit(types.perfDevDefectDensity, r.data)
+  // })
+  // servicesPerfDevDefectOfTSInTI.dataFbyProject(project).then(r => {
+  //   commit(types.perfDevDefectOfTSInTI, r.data)
+  // })
 
   dispatch('testProjDefect/loadDefectStatus', project, { root: true })
   dispatch('testProjDefect/loadDefectGroupOrigin', project, { root: true })
@@ -162,6 +177,18 @@ export const setSelectedMonoselection = ({ commit, dispatch }, project) => {
 export const setProjectFilterTerm = ({ commit }, filterTerm) => {
   commit(types.filterTerm, filterTerm)
 }
+
+// export const setIterationsActive = ({ commit, state }, iterationsActive) => {
+//   services.updateIterationsActive(state.selectedMonoselection, iterationsActive).then(r => {
+//     commit(types.iterationsActive, iterationsActive)
+//   })
+// }
+
+// export const setIterationsSelected = ({ commit, state }, iterationsSelected) => {
+//   services.updateIterationsSelected(state.selectedMonoselection, iterationsSelected).then(r => {
+//     commit(types.iterationsSelected, iterationsSelected)
+//   })
+// }
 
 // export const setSelectedProject = ({ commit }, selectedProject) => {
 //   commit(types.selected, selectedProject)

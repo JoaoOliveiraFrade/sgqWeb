@@ -8,6 +8,7 @@ export const loading = 'loading'
 export const state = 'state'
 
 export const selectedMonoselection = 'selectedMonoselection'
+export const iterations = 'iterations'
 
 export const operDevDefectDensity = 'operDevDefectDensity'
 export const operDevDefectAverangeTime = 'operDevDefectAverangeTime'

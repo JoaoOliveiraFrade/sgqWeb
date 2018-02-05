@@ -12,8 +12,8 @@ export default {
   //   return resource.get({id: id})
   // },
 
-  load () {
-    let resource = Resource.resource(paths.api + '/project/testProj/data')
+  loadData () {
+    let resource = Resource.resource(paths.api + '/project/testProj/loadData')
     return resource.get()
   },
 
@@ -82,37 +82,42 @@ export default {
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
+  // updateTestProj (project) {
+  //   let resource = Resource.resource(paths.api + '/project/testProj/updateIterationsActive')
+  //   return resource.update({ subproject: project.subproject, delivery: project.delivery, iterations: iterations.map(i => i.id) })
+  // },
+
   // ITERATIONS
 
-  iterations (project) {
-    let resource = Resource.resource(paths.api + '/project/testProj/iterations{/subproject}{/delivery}')
-    return resource.get({ subproject: project.subproject, delivery: project.delivery })
+  loadIterations (project) {
+    let resource = Resource.resource(paths.api + '/project/testProj/loadIterations')
+    return resource.save({ subproject: project.subproject, delivery: project.delivery })
   },
 
-  iterationsActive (project) {
-    let resource = Resource.resource(paths.api + '/project/testProj/iterationsActive{/subproject}{/delivery}')
-    return resource.get({ subproject: project.subproject, delivery: project.delivery })
+  loadIterationsActive (project) {
+    let resource = Resource.resource(paths.api + '/project/testProj/loadIterationsActive')
+    return resource.save({ subproject: project.subproject, delivery: project.delivery })
   },
 
-  iterationsSelected (project) {
-    let resource = Resource.resource(paths.api + '/project/testProj/iterationsSelected{/subproject}{/delivery}')
-    return resource.get({ subproject: project.subproject, delivery: project.delivery })
+  loadIterationsSelected (project) {
+    let resource = Resource.resource(paths.api + '/project/testProj/loadIterationsSelected')
+    return resource.save({ subproject: project.subproject, delivery: project.delivery })
   },
 
-  updateIterationsActive (item) {
-    let resource = Resource.resource(paths.api + '/project/testProj/UpdateIterationsActive{/id}')
-    return resource.update({ id: item.projectId }, item.iterations)
-  },
+  // updateIterationsActive (project, iterations) {
+  //   let resource = Resource.resource(paths.api + '/project/testProj/updateIterationsActive')
+  //   return resource.update({ subproject: project.subproject, delivery: project.delivery, iterations: iterations.map(i => i.id) })
+  // },
 
-  updateIterationsSelected (item) {
-    let resource = Resource.resource(paths.api + '/project/testProj/UpdateIterationsSelected{/id}')
-    return resource.update({ id: item.projectId }, item.iterations)
-  },
+  // updateIterationsSelected (project, iterations) {
+  //   let resource = Resource.resource(paths.api + '/project/testProj/UpdateIterationsSelected')
+  //   return resource.update({ subproject: project.subproject, delivery: project.delivery, iterations: iterations.map(i => i.id) })
+  // },
 
-  ClearIterations (projectId) {
-    let resource = Resource.resource(paths.api + '/project/testProj/ClearIterations{/id}')
-    return resource.get({id: projectId})
-  },
+  // ClearIterations (projectId) {
+  //   let resource = Resource.resource(paths.api + '/project/testProj/ClearIterations{/id}')
+  //   return resource.get({id: projectId})
+  // },
 
   // --------
 

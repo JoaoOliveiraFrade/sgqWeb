@@ -61,31 +61,41 @@
   <span style="margin:0; border:0; padding-top:0">
     <label class="fd-label" v-text="title">:</label>
     <button 
-        type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
         :data-target="'#modalEdit' +  title.replaceAll(' ', '').replaceAll('.', '').replaceAll('(', '').replaceAll(')', '')">
         Seleção
     </button>
-    <oiModal :id="'modalEdit' +  title.replaceAll(' ', '').replaceAll('.', '').replaceAll('(', '').replaceAll(')', '')" :title="'Seleção de ' + title" size="l">
+    <!--:id="'modalEditxxx' +  title.replaceAll(' ', '').replaceAll('.', '').replaceAll('(', '').replaceAll(')', '')"-->
+    <oiModal 
+      :id="'modalEdit' + title.replaceAll(' ', '').replaceAll('.', '').replaceAll('(', '').replaceAll(')', '')" 
+      :title="'Seleção de ' + title" 
+      size="l">
+
       <oiEdit slot="body"
           :title="title"
           :data="data"
           :selected="selected_"
           :gender="gender"
           @onConfirm="confirm">
-      </oiEdit> 
+      </oiEdit>
+
     </oiModal>
 
-    <button 
-        type="button"
-        v-show="hasSelected && showButtonSelected"
-        class="btn btn-xs"
-        data-toggle="modal" 
-        :data-target="'#modalShow' + title.replaceAll(' ', '').replaceAll('.', '').replaceAll('(', '').replaceAll(')', '')">
+    <button id="modalEditxxxIterationsAtivos"
+      type="button"
+      v-show="hasSelected && showButtonSelected"
+      class="btn btn-xs"
+      data-toggle="modal" 
+      :data-target="'#modalShowx' + title.replaceAll(' ', '').replaceAll('.', '').replaceAll('(', '').replaceAll(')', '')"
+      >
       {{selectedText}}
     </button>
-    <oiModal :id="'modalShow' +  title.replaceAll(' ', '').replaceAll('.', '').replaceAll('(', '').replaceAll(')', '')" :title="title + ' ' + selectedText" size="l">
+    <oiModal 
+      :id="'modalShowx' +  title.replaceAll(' ', '').replaceAll('.', '').replaceAll('(', '').replaceAll(')', '')" 
+      :title="title + ' ' + selectedText" 
+      size="l"
+      >
       <oiShow slot="body"
           :title="title"
           :data="selected_"
@@ -93,9 +103,10 @@
     </oiModal>
 
     <oiShow
-        v-show="hasSelected && !showButtonSelected"
-        :data="selected_">
-    </oiShow>     
+      v-show="hasSelected && !showButtonSelected"
+      :data="selected_">
+    </oiShow>
+
   </span>
 </template>
 

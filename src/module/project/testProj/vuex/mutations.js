@@ -33,6 +33,10 @@ export default {
     state.selectedMonoselection = parameter
   },
 
+  [types.iterations] (state, parameter) {
+    state.iterations = parameter
+  },
+
   [types.operDevDefectDensity] (state, parameter) {
     state.operDevDefectDensity = parameter
   },

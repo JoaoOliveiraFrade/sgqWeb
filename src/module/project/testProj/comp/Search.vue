@@ -40,7 +40,6 @@
     <div class="row well well-sm" style="margin:0; padding:0; padding-left:5px">
       <oiShowData/>
     </div>
-
   </div> 
 </template>
 
