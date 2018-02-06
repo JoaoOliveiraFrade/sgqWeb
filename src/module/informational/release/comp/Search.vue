@@ -1,45 +1,58 @@
 <script>
-  import { mapActions } from 'vuex'
-  import oiSelectionGridGrouperConsult from './SelectionGridGrouperConsult.vue'
+  import { mapActions, mapState } from 'vuex'
+  import oiMonoSelection from './MonoSelection.vue'
+  import oiShowSelected from './ShowSelected.vue'
 
   export default {
-    name: 'informationalReleaseSearch',
+    name: 'Search',
 
-    components: { oiSelectionGridGrouperConsult },
+    components: { oiMonoSelection, oiShowSelected },
 
-    data () {
-      return {
-        filterTerm: ''
-      }
+    computed: {
+      ...mapState('informationalRelease', ['state'])
     },
 
     methods: {
-      // ...mapActions('grouperConsult', ['setFeatureName', 'loadGroupers', 'setFilterTerm'])
-      ...mapActions(['setFeatureName', 'loadGroupers', 'setFilterTerm'])
+      ...mapActions(['setFeatureName']),
+      ...mapActions('informationalRelease', ['setState'])
     },
 
     mounted () {
       this.setFeatureName('Informacional - Release')
-      this.loadGroupers()
     }
   }
 </script>
 
 <template>
   <div class="container-fluid" style="padding-top: 10px">
-    <input type="text"
-      autofocus v-focus
-      class="form-control" 
-      style="margin: 0; padding-left: 3px; height: 25px"
-      v-model="filterTerm"
-      @keyup="setFilterTerm(filterTerm)"
-      placeholder="Informe o filtro!"
-    />
-    
-    <oiSelectionGridGrouperConsult 
+
+    <oiMonoSelection v-show="state === 'search'"
       style="padding-top: 2px;"
     />
+
+    <span v-show="state !== 'search'">
+
+      <div class="row well well-sm" style="margin:0; padding:3px; padding-left:5px">
+
+        <button style="margin-top:2px" class="btn btn-xs"
+            title="Seleção"
+            @click="setState('search')">
+            <span class="glyphicon glyphicon-search"></span> Seleção
+        </button>
+
+      </div>
+
+      <div class="row well well-sm" style="margin:0; padding:0; padding-left:5px">
+
+        <oiShowSelected/>
+
+      </div>
+
+    </span>
+    
+    
   </div>
+
 </template>
 
 <style scoped>

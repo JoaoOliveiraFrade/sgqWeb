@@ -89,7 +89,7 @@
     <tbody v-for="project in projects">
         <tr style="padding:0">
             <td style="padding:0">
-                <font size="2">{{project.release}}</font>
+                <font size="2">{{project.currentRelease}}</font>
             </td style="padding:0">
 
             <td style="padding:0">

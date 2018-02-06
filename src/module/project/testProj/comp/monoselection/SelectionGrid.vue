@@ -85,15 +85,17 @@
         <tbody v-for="project in filteredByTerm">
             <tr>
                 <td style="padding: 1px; margin: 0px; border-top: 1px; text-align: center; width: 25px; border-radius: 3px;">
+
                   <a class="btn"
                     style="padding: 0px; margin: 0px; border-top: 1px"
                     data-toggle="tooltip"
                     data-dismiss="modal"
                     title="Selecionar" 
-                    @click="setSelectedMonoselection(project)"
-                  >
+                    @click="setSelectedMonoselection(project)">
+
                     <i class='glyphicon glyphicon-list-alt'></i>
                   </a>
+                  
                 </td>                
 
                 <td style="padding: 1px; margin: 0px; border-top: 1px; text-align: center">
@@ -121,7 +123,7 @@
                 </td>
 
                 <td style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; text-align: center">
-                    <font size="2px">{{project.release}}</font>
+                    <font size="2px">{{project.currentRelease}}</font>
                 </td>
             </tr>
         </tbody> 

@@ -36,6 +36,12 @@ export default {
   [types.iterations] (state, parameter) {
     state.iterations = parameter
   },
+  [types.iterationsActive] (state, parameter) {
+    state.iterationsActive = parameter
+  },
+  [types.iterationsSelected] (state, parameter) {
+    state.iterationsSelected = parameter
+  },
 
   [types.operDevDefectDensity] (state, parameter) {
     state.operDevDefectDensity = parameter
@@ -84,7 +90,15 @@ export default {
   },
   [types.defectsOpenInDevManuf] (state, parameter) {
     state.defectsOpenInDevManuf = parameter
+  },
+
+  [types.testStatus] (state, parameter) {
+    state.testStatus = parameter
+  },
+  [types.releasesLossReason] (state, parameter) {
+    state.releasesLossReason = parameter
   }
+
   // [types.defectAverangeTime] (state, data) {
   //   state.defectAverangeTime = data
   // }

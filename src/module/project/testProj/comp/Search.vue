@@ -16,12 +16,12 @@
 
     methods: {
       ...mapActions(['setFeatureName']),
-      ...mapActions('testProj', ['load'])
+      ...mapActions('testProj', ['loadData'])
     },
 
     mounted () {
       this.setFeatureName('Entrega - Teste')
-      this.load()
+      this.loadData()
     }
   }
 </script>
@@ -36,11 +36,12 @@
     <div class="row well well-sm" style="margin:0; padding:0; padding-left:5px">
       <oiShowSelected/>
     </div>
-
+    
     <div class="row well well-sm" style="margin:0; padding:0; padding-left:5px">
       <oiShowData/>
     </div>
   </div> 
+  
 </template>
 
 <style scoped>

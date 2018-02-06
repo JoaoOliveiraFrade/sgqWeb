@@ -28,17 +28,16 @@
         data-toggle="modal"
         data-target="#modalEditionProject"
         title="Editar"
-        @click="setState('edit')"
-        >
-        <span class="glyphicon glyphicon-pencil"></span>
-        Editar
-      </button>     
-      <oiModal
-        id="modalEditionProject" 
+        @click="setState('edit')">
+
+        <span class="glyphicon glyphicon-pencil"></span> Editar
+      </button>
+
+      <oiModal id="modalEditionProject" 
         title="Edição de Entrega"
         size="l"
-        @onClose="setState('show')"
-        >
+        @onClose="setState('show')">
+
         <oiEditData slot="body"/>
       </oiModal>
 

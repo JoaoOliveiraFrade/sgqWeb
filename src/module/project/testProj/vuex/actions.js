@@ -16,9 +16,9 @@ import servicesOperTestDefectAverangeRetestTime from '@/module/indicator/operati
 
 // import servicesDefect from '@/module/defect/services'
 
-export const load = ({ commit }) => {
+export const loadData = ({ commit }) => {
   commit(types.loading, true)
-  services.load()
+  services.loadData()
     .then(
       r => {
         commit(types.data, r.data)
@@ -98,23 +98,31 @@ export const setState = ({ commit }, paramenter) => {
 export const setSelectedMonoselection = ({ commit, dispatch }, project) => {
   services.getProjectsByIds(project.id.toString()).then(r => {
     commit(types.selectedMonoselection, r.data[0])
+
+    if (r.data[0].iterationsActive !== null) {
+      let x1 = r.data[0].iterationsActive
+      let x2 = x1.substring(1)
+      let x3 = x2.substring(0, x1.length - 2)
+      commit(types.iterationsActive, x3.split("','"))
+    }
+
     commit(types.state, 'show')
   })
 
   services.loadIterations(project).then(r => {
     commit(types.iterations, r.data)
   })
-  services.loadIterationsActive(project).then(r => {
-    if (r.data.length === 1) {
-      if (r.data[0] === '') {
-        r.data = []
-      }
-    }
-    commit(types.iterationsActive, r.data)
-  })
-  services.loadIterationsSelected(project).then(r => {
-    commit(types.iterationsSelected, r.data)
-  })
+  // services.loadIterationsActive(project).then(r => {
+  //   if (r.data.length === 1) {
+  //     if (r.data[0] === '') {
+  //       r.data = []
+  //     }
+  //   }
+  //   commit(types.iterationsActive, r.data)
+  // })
+  // services.loadIterationsSelected(project).then(r => {
+  //   commit(types.iterationsSelected, r.data)
+  // })
 
   servicesOperDevDefectDensity.dataFbyProject(project).then(r => {
     commit(types.operDevDefectDensity, r.data)
@@ -178,17 +186,44 @@ export const setProjectFilterTerm = ({ commit }, filterTerm) => {
   commit(types.filterTerm, filterTerm)
 }
 
-// export const setIterationsActive = ({ commit, state }, iterationsActive) => {
-//   services.updateIterationsActive(state.selectedMonoselection, iterationsActive).then(r => {
-//     commit(types.iterationsActive, iterationsActive)
-//   })
-// }
+export const setIterationsActive = ({ commit, state }, iterationsActive) => {
+  commit(types.iterationsActive, iterationsActive)
+  // services.updateIterationsActive(state.selectedMonoselection, iterationsActive).then(r => {
+  //   commit(types.iterationsActive, iterationsActive)
+  // })
+}
 
-// export const setIterationsSelected = ({ commit, state }, iterationsSelected) => {
-//   services.updateIterationsSelected(state.selectedMonoselection, iterationsSelected).then(r => {
-//     commit(types.iterationsSelected, iterationsSelected)
-//   })
-// }
+export const setIterationsSelected = ({ commit, state }, iterationsSelected) => {
+  commit(types.iterationsSelected, iterationsSelected)
+  // services.updateIterationsSelected(state.selectedMonoselection, iterationsSelected).then(r => {
+  //   commit(types.iterationsSelected, iterationsSelected)
+  // })
+}
+
+export const updateSelectedMonoselection = ({ commit, state }, iterationsSelected) => {
+  services.update(state.selectedMonoselection).then(r => {
+  })
+}
+
+export const tryUpdateSelectedMonoselection = ({ commit, state }) => {
+  // console.log('action - tryUpdateSelectedMonoselection')
+  // return new Promise((resolve, reject) => {
+  //   services.update(state.selectedMonoselection)
+  //     .then(d => {
+  //       console.log('action - tryUpdateSelectedMonoselection - ok')
+  //       resolve()
+  //     },
+  //     e => {
+  //       console.log('action - tryUpdateSelectedMonoselection - probl')
+  //       reject(e)
+  //     })
+  // })
+  console.log('action - tryUpdateSelectedMonoselection')
+  console.log(state.selectedMonoselection)
+  services.updateTestProj(state.selectedMonoselection).then(r => {
+    console.log('action - tryUpdateSelectedMonoselection - ok')
+  })
+}
 
 // export const setSelectedProject = ({ commit }, selectedProject) => {
 //   commit(types.selected, selectedProject)
@@ -231,3 +266,27 @@ export const setProjectFilterTerm = ({ commit }, filterTerm) => {
 //       }
 //     )
 // }
+
+export const loadTestStatus = ({ commit }) => {
+  services.loadTestStatus()
+    .then(
+      r => {
+        commit(types.testStatus, r.data)
+      },
+      e => {
+        console.log(e)
+      }
+    )
+}
+
+export const loadReleasesLossReason = ({ commit }) => {
+  services.loadReleasesLossReason()
+    .then(
+      r => {
+        commit(types.releasesLossReason, r.data)
+      },
+      e => {
+        console.log(e)
+      }
+    )
+}

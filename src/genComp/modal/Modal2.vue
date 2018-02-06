@@ -19,7 +19,7 @@
 </script>
 
 <template>
-    <div class="modal fade" :id="id">
+    <div class="modal fade" :id="id" :ref="id">
         <div class="modal-dialog" :style="size==='l' ? 'max-width: 95%; width: auto !important;' : ''">
             <div class="modal-content" style="margin:0; border:0; padding:0; background-color: #f8f8ff">
 

@@ -4,7 +4,7 @@ export default {
     { name: 'subDel' },
     { name: 'name' },
     { name: 'state' },
-    { name: 'release' },
+    { name: 'currentRelease' },
     { name: 'classification' }
   ],
 
@@ -21,6 +21,8 @@ export default {
   selectedMonoselection: {},
 
   iterations: [],
+  iterationsActive: [],
+  iterationsSelected: [],
 
   operDevDefectDensity: [],
   operDevDefectAverangeTime: [],
@@ -42,5 +44,8 @@ export default {
   defectGroupOrigin: [],
   ctImpactedXDefects: [],
   defectsOpenInTestManuf: [],
-  defectsOpenInDevManuf: []
+  defectsOpenInDevManuf: [],
+
+  testStatus: [],
+  releasesLossReason: []
 }

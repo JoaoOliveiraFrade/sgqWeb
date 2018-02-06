@@ -10,13 +10,13 @@ export default {
   },
 
   // Read
-  getData () {
-    let resource = Resource.resource(paths.api + '/groupers')
+  loadData () {
+    let resource = Resource.resource(paths.api + '/informational/release/loadData')
     return resource.get()
   },
 
-  get (id) {
-    let resource = Resource.resource(paths.api + '/grouper/{id}')
+  loadById (id) {
+    let resource = Resource.resource(paths.api + '//informational/release/loadById/{id}')
     return resource.get({id: id})
   },
 

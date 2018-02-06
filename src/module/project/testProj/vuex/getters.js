@@ -27,7 +27,6 @@ export const projectsFilteredByTerm = ({ projectFilterProperties, projectFilterT
 export const filteredByTerm = ({ data, filterTerm, projectFilterProperties }) => {
   if (filterTerm !== '') {
     let words = filterTerm.split('+')
-
     return data.filter(item => {
       return words.every(word => {
         return projectFilterProperties.some(filterProperty => {

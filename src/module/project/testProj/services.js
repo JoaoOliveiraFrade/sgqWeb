@@ -82,10 +82,10 @@ export default {
     return resource.get({ subproject: project.subproject, delivery: project.delivery })
   },
 
-  // updateTestProj (project) {
-  //   let resource = Resource.resource(paths.api + '/project/testProj/updateIterationsActive')
-  //   return resource.update({ subproject: project.subproject, delivery: project.delivery, iterations: iterations.map(i => i.id) })
-  // },
+  updateTestProj (project) {
+    let resource = Resource.resource(paths.api + '/project/testProj/update')
+    return resource.update(project)
+  },
 
   // ITERATIONS
 
@@ -139,5 +139,16 @@ export default {
   getCtImpactedXDefectsIterations (project, iterations) {
     let resource = Resource.resource(paths.api + '/project/testProj/CtImpactedXDefectsIterations{/subproject}{/delivery}')
     return resource.update({ subproject: project.subproject, delivery: project.delivery }, iterations)
+  },
+
+  loadTestStatus () {
+    let resource = Resource.resource(paths.api + '/project/testProj/loadTestStatus')
+    return resource.get()
+  },
+
+  loadReleasesLossReason () {
+    let resource = Resource.resource(paths.api + '/project/testProj/loadReleasesLossReason')
+    return resource.get()
   }
+
 }

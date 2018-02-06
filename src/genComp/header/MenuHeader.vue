@@ -182,8 +182,8 @@
                 role="button" aria-haspopup="true" aria-expanded="false">Informacional<span class="caret"/>&nbsp;
             </a>
             <ul class="dropdown-menu" style="width:210px">
-                <router-link :to="{ name: 'managementVisionRelease' }" tag="li">
-                    <a class="oi-menu">Visão Gerencial de Release</a>
+                <router-link :to="{ name: 'informationalReleaseSearch' }" tag="li" @click.native="$emit('collapseMenuMobile')">
+                    <a class="oi-menu">Release</a>
                 </router-link>
             </ul>
         </li>

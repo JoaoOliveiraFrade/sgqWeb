@@ -93,33 +93,19 @@
     <div v-show="Object.keys(selectedMonoselection).length > 0">
 
       <ul class="nav nav-tabs" style="margin-top:3px">
-        <li class="active"><a data-toggle="tab" href="#Iteration" style="padding: 4px">Fitros</a></li>
-        <li><a data-toggle="tab" href="#overview" style="padding: 4px">Visão Geral</a></li>
+        <li class="active"><a data-toggle="tab" href="#overview" style="padding: 4px">Visão Geral</a></li>
         <li><a data-toggle="tab" href="#execution" style="padding: 4px">Execução</a></li>
         <li><a data-toggle="tab" href="#defect" style="padding: 4px">Defeito</a></li>
         <li><a data-toggle="tab" href="#operacionalIndicator" style="padding: 4px">Ind. Operacional</a></li>
         <!--<li><a data-toggle="tab" href="#performanceIndicator" style="padding: 4px">Ind. Desempenho</a></li>-->
         <li><a data-toggle="tab" href="#testPlane" style="padding: 4px">Plano Teste</a></li>
+        <li><a data-toggle="tab" href="#releasex" style="padding: 3px 5px 3px 5px">Release</a></li>
+        <li><a data-toggle="tab" href="#filtersx" style="padding: 4px">Fitros</a></li>
       </ul>
 
       <div class="tab-content">
 
-        <div id="Iteration" class="tab-pane fade in active">
-          <div class="col-xs-12 text-left" style="margin:5px; border:0; padding:0; padding-top:10px">
-          <!--
-            <oiSelection
-              idChild="iterationsFiltered"
-              title="Iterations"
-              :dataSource="iterationsActiveFull"
-              :itemsSelected="iterationsFiltered"
-              :showButtonSelected="false"
-              @onChangeSelected="confirmIterations"
-            />                      
-          -->
-          </div>              
-        </div>
-
-        <div id="overview" class="tab-pane fade" style="padding:5px; margin:0; text-align: center">
+        <div id="overview" class="tab-pane fade in active" style="padding:5px; margin:0; text-align: center">
 
           <div class="row well" style="margin:0px; padding:0px">
 
@@ -319,6 +305,62 @@
 
         <div id="testPlane" class="tab-pane fade" style="padding:5px; margin:0; text-align: center">
           <oiTestPlanSearch/>
+        </div>
+
+
+        <div id="releasex" class="tab-pane fade" style="padding:0; margin:0; text-align: center">
+
+          <div class="col-xs-12 col-sm-5 text-left">
+            <div>
+              <label class="fd-label">Release Atual</label>
+            </div>
+            <div>
+              <label class="fd-content" v-html="selectedMonoselection.currentRelease ? selectedMonoselection.currentRelease : 'Sem dados!'"></label>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-5 text-left">
+            <div>
+              <label class="fd-label">Release Clarity</label>
+            </div>
+            <div>
+              <label class="fd-content" v-html="selectedMonoselection.clarityRelease ? selectedMonoselection.clarityRelease : 'Sem dados!'"></label>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-5 text-left">
+            <div>
+              <label class="fd-label">Status na Release</label>
+            </div>
+            <div>
+              <label class="fd-content" v-html="selectedMonoselection.testStatus ? selectedMonoselection.testStatus : 'Sem dados!'"></label>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-5 text-left" v-show="selectedMonoselection.testStatus === 'PERDA RELEASE'">
+            <div>
+              <label class="fd-label">Motivo da Perda de Release</label>
+            </div>
+            <div>
+              <label class="fd-content" v-html="selectedMonoselection.lossReleaseReason ? selectedMonoselection.lossReleaseReason : 'Sem dados!'"></label>
+            </div>
+          </div>
+
+        </div>
+
+        <div id="filtersx" class="tab-pane fade">
+          <div class="col-xs-12 text-left" style="margin:5px; border:0; padding:0; padding-top:10px">
+          <!--
+            <oiSelection
+              idChild="iterationsFiltered"
+              title="Iterations"
+              :dataSource="iterationsActiveFull"
+              :itemsSelected="iterationsFiltered"
+              :showButtonSelected="false"
+              @onChangeSelected="confirmIterations"
+            />                      
+          -->
+          </div>              
         </div>
 
       </div>

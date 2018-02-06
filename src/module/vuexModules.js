@@ -6,6 +6,7 @@ import { vuex as system } from './system/system'
 import { vuex as systemFromAgent } from './system/systemFromAgent'
 
 import { vuex as release } from './release'
+import { vuex as informationalRelease } from './informational/release'
 
 import { vuex as trg } from './trg'
 import { vuex as trgExecution } from './trg/module/trgExecution'
@@ -56,6 +57,7 @@ export default {
   systemFromAgent,
 
   release,
+  informationalRelease,
 
   trg,
   trgExecution,
