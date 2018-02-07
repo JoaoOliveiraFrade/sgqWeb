@@ -35,7 +35,7 @@
         <li class="dropdown">
             <a href="#" 
                 class="dropdown-toggle oi-menu" data-toggle="dropdown" 
-                role="button" aria-haspopup="true" aria-expanded="false">Consultas<span class="caret"/>&nbsp;
+                role="button" aria-haspopup="true" aria-expanded="false">Operacional<span class="caret"/>&nbsp;
             </a>
             <ul class="dropdown-menu">
                 <li class="dropdown-submenu">
@@ -59,6 +59,11 @@
                 <router-link :to="{ name: 'trg' }" tag="li" @click.native="$emit('collapseMenuMobile')">
                     <a class="oi-menu">TRG</a>
                 </router-link>
+
+                <router-link :to="{ name: 'defectMonitor' }" tag="li" @click.native="$emit('collapseMenuMobile')">
+                    <a class="oi-menu">Monitor Defeito</a>
+                </router-link>
+                
 
                 <li class="dropdown-submenu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-left:4px">Ind. Oper.</a>
@@ -187,10 +192,6 @@
                 </router-link>
             </ul>
         </li>
-
-        <router-link :to="{ name: 'defectMonitor' }" tag="li" @click.native="$emit('collapseMenuMobile')">
-            <a class="oi-menu">Monit.Defeito</a>
-        </router-link>
 
         <router-link :to="{ name: 'pulledChain' }" tag="li" @click.native="$emit('collapseMenuMobile')">
             <a class="oi-menu">Cadeia Puxada</a>

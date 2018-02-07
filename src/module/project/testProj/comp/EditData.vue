@@ -102,6 +102,7 @@
           <div class="tab-content">
           
             <div id="trafficLight" class="tab-pane fade in active" style="padding:0; margin:0; text-align: left">
+
                 <div class="col-xs-12 oi-col">
                     <input type="radio" id="green" value="VERDE" v-model="selectedMonoselection.trafficLight">
                     <label for="green">Verde</label>
@@ -141,44 +142,38 @@
 
             <div id="release" class="tab-pane fade in" style="padding:0; margin:0; text-align: center">
 
+              <!--
+              <option disabled value="">Please select one</option>
+              <select v-model="selectedMonoselection.testStatus">
+                <option 
+                  v-for="i in testStatus"
+                  :value="i.name">
+                  {{i.name}}
+                </option>
+              </select>
+              -->
+              
               <div class="col-xs-12 col-sm-5 text-left">
                 <div>
-                  <label class="fd-label">Release Atual</label>
+                  <label class="fd-label">Sobe Desligado:</label>
                 </div>
                 <div>
-                  <label class="fd-content" v-html="selectedMonoselection.currentRelease ? selectedMonoselection.currentRelease : 'Sem dados!'"></label>
+                  <input type="checkbox" v-model="selectedMonoselection.deployOff">                  
                 </div>
               </div>
 
               <div class="col-xs-12 col-sm-5 text-left">
                 <div>
-                  <label class="fd-label">Release Clarity</label>
+                  <label class="fd-label">Perdeu Release:</label>
                 </div>
                 <div>
-                  <label class="fd-content" v-html="selectedMonoselection.clarityRelease ? selectedMonoselection.clarityRelease : 'Sem dados!'"></label>
-                </div>
-              </div>
-
-              <div class="col-xs-12 col-sm-5 text-left">
-                <div>
-                  <label class="fd-label">Status na Release</label>
-                </div>
-                <div>
-                  <select v-model="selectedMonoselection.testStatus">
-                    <!--<option disabled value="">Please select one</option>-->
-                    <option 
-                      v-for="i in testStatus"
-                      :value="i.name">
-                      {{i.name}}
-                    </option>
-                  </select>
-                  
+                  <input type="checkbox" v-model="selectedMonoselection.lossRelease">                  
                 </div>
               </div>
 
-              <div class="col-xs-12 col-sm-5 text-left" v-show="selectedMonoselection.testStatus === 'PERDA RELEASE'">
+              <div class="col-xs-12 col-sm-5 text-left" v-show="selectedMonoselection.lossRelease">
                 <div>
-                  <label class="fd-label">Motivo da Perda de Release</label>
+                  <label class="fd-label">Motivo da Perda de Release:</label>
                 </div>
                 <div>
                   <select v-model="selectedMonoselection.lossReleaseReason">

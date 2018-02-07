@@ -312,7 +312,7 @@
 
           <div class="col-xs-12 col-sm-5 text-left">
             <div>
-              <label class="fd-label">Release Atual</label>
+              <label class="fd-label">Release Atual:</label>
             </div>
             <div>
               <label class="fd-content" v-html="selectedMonoselection.currentRelease ? selectedMonoselection.currentRelease : 'Sem dados!'"></label>
@@ -321,7 +321,7 @@
 
           <div class="col-xs-12 col-sm-5 text-left">
             <div>
-              <label class="fd-label">Release Clarity</label>
+              <label class="fd-label">Release Clarity:</label>
             </div>
             <div>
               <label class="fd-content" v-html="selectedMonoselection.clarityRelease ? selectedMonoselection.clarityRelease : 'Sem dados!'"></label>
@@ -330,16 +330,34 @@
 
           <div class="col-xs-12 col-sm-5 text-left">
             <div>
-              <label class="fd-label">Status na Release</label>
+              <label class="fd-label">Status na Release:</label>
             </div>
             <div>
               <label class="fd-content" v-html="selectedMonoselection.testStatus ? selectedMonoselection.testStatus : 'Sem dados!'"></label>
             </div>
           </div>
 
-          <div class="col-xs-12 col-sm-5 text-left" v-show="selectedMonoselection.testStatus === 'PERDA RELEASE'">
+          <div class="col-xs-12 col-sm-5 text-left">
             <div>
-              <label class="fd-label">Motivo da Perda de Release</label>
+              <label class="fd-label">Sobe Desligado:</label>
+            </div>
+            <div>
+              <label class="fd-content" v-html="selectedMonoselection.deployOff ? 'SIM' : 'NÃO'"></label>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-5 text-left">
+            <div>
+              <label class="fd-label">Perdeu Release:</label>
+            </div>
+            <div>
+              <label class="fd-content" v-html="selectedMonoselection.lossRelease ? 'SIM' : 'NÃO'"></label>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-5 text-left" v-show="selectedMonoselection.lossRelease">
+            <div>
+              <label class="fd-label">Motivo da Perda de Release:</label>
             </div>
             <div>
               <label class="fd-content" v-html="selectedMonoselection.lossReleaseReason ? selectedMonoselection.lossReleaseReason : 'Sem dados!'"></label>

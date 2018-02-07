@@ -2,7 +2,7 @@
   import oiModal from '@/genComp/modal/Modal2.vue'
 
   export default {
-    name: 'ShowRule',
+    name: 'ShowRuleDeploysOff',
 
     components: { oiModal }
   }
@@ -15,17 +15,14 @@
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
-        data-target="#defectDensityShowRule">
+        data-target="#ShowRuleDeploysOff">
         Regra
     </button>
 
-    <oiModal id="defectDensityShowRule" title="Regra">   
+    <oiModal id="ShowRuleDeploysOff" title="Regra">   
       <div style="margin:0; padding:10px" slot="body">
         <label class="fd-label">
-          <b>Qte de entregas com os testes finalizados, em relação a quantidade de entregas candidatadas.</b><br><br>
-          Área VERDE, ref. as entregas c/testes em andamento, c/risco Baixo<br>
-          Área AMARELO, ref. as entregas c/testes em andamento, c/risco Médio<br>
-          Área VERMELHO, ref. as entregas c/testes em andamento, c/risco Alto
+          <b>Qte de entregas que Sobem Desligadas em relação à quantidade de entregas candidatadas.</b><br><br>
         </label>
       </div>
     </oiModal>

@@ -24,7 +24,7 @@
 
     methods: {
       loadParameters () {
-        this.parameters.title.text = 'Entr. C/Teste Finalizado'
+        this.parameters.title.text = 'Com Teste Finalizado'
         this.parameters.yAxis.title.text = 'Qte<br>Entrega'
         this.parameters.plotOptions.gauge.dataLabels.format = '{point.y:.0f}'
         this.parameters.yAxis.max = this.value.candidate
@@ -35,9 +35,9 @@
         let l42 = l32 + this.value.highRiskProgress
 
         this.parameters.yAxis.plotBands = [
-          {from: 0, to: l12, color: '#5F9EA0'},
-          {from: l12, to: l22, color: '#00CC00'},
-          {from: l22, to: l32, color: '#FFFF0D'}, // FF9E0D
+          {from: 0, to: l12, color: '#00CC00'}, // 5F9EA0 azul
+          {from: l12, to: l22, color: '#FFD700'},
+          {from: l22, to: l32, color: '#FF9E0D'}, // FF9E0D
           {from: l32, to: l42, color: '#FF3300'}
         ]
 
@@ -52,7 +52,7 @@
           'Em Médio - Risco Médio: ' + this.value.mediumRiskProgress + ' (' + averageMediumRiskProgress + '%)<br>' +
           'Em Alto - Risco Alto: ' + this.value.highRiskProgress + ' (' + averageHighRiskProgress + '%)'
 
-        this.parameters.series = [ { name: 'densidade', colorByPoint: true, data: [ this.value.testCompleted ] } ]
+        this.parameters.series = [ { name: 'testCompleted', colorByPoint: true, data: [ this.value.testCompleted ] } ]
       },
       drawChart () {
         Highcharts.chart(this.$el, this.parameters)

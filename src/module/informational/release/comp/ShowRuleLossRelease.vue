@@ -2,7 +2,7 @@
   import oiModal from '@/genComp/modal/Modal2.vue'
 
   export default {
-    name: 'ShowRuleTestCompleted',
+    name: 'ShowRuleLossRelease',
 
     components: { oiModal }
   }
@@ -15,18 +15,14 @@
         type="button"     
         class="btn btn-xs"
         data-toggle="modal" 
-        data-target="#ShowRuleTestCompleted">
+        data-target="#ShowRuleLossRelease">
         Regra
     </button>
 
-    <oiModal id="ShowRuleTestCompleted" title="Regra">   
+    <oiModal id="ShowRuleLossRelease" title="Regra">   
       <div style="margin:0; padding:10px" slot="body">
         <label class="fd-label">
-          <b>Qte de entregas com testes finalizados em relação à quantidade de entregas candidatadas.</b><br><br>
-          <b>Na área com entregas c/testes em andamento:</b><br>
-          &nbsp;&nbsp;-&nbsp;<b style="color:#FFD700">AMARELO</b>: Risco Baixo<br>
-          &nbsp;&nbsp;-&nbsp;<b style="color:#FF9E0D">LARANJA</b>: Risco Médio<br>
-          &nbsp;&nbsp;-&nbsp;<b style="color:#FF3300">VERMELHO</b>: Risco Alto
+          <b>Qte de entregas que Perderam Release em relação à quantidade de entregas candidatadas.</b><br><br>
         </label>
       </div>
     </oiModal>
