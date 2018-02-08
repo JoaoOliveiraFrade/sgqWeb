@@ -37,15 +37,12 @@
       },
 
       save () {
-        // console.log('save')
         // this.tryUpdateSelectedMonoselection()
         //   .then(() => {
-        //     console.log('success')
         //     Toastr.success('Dados gravados!')
         //     this.state = 'search'
         //   },
         //   e => {
-        //     console.log('error')
         //     Toastr.error('Não foi Possível salvar os dados!', '', { timeOut: 1000 })
         //   })
         this.tryUpdateSelectedMonoselection()

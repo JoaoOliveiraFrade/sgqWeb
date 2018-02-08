@@ -2,6 +2,7 @@
   import { mapState } from 'vuex'
   import oiModal from '@/genComp/modal/Modal2.vue'
   import oiSelectionGrid from './SelectionGrid.vue'
+  // import oiSelectionButton from '@/genComp/button/SelectionButton.vue'
 
   export default {
     name: 'SelectionButton',
@@ -31,6 +32,8 @@
 
         <span class="glyphicon glyphicon-search"></span> Seleção
     </button>
+
+    <!--<oiSelectionButton/>-->
     
     <oiModal id="modalSelectionProject" 
       title="Seleção de Entrega" size="l">

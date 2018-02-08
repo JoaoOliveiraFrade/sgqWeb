@@ -1,11 +1,13 @@
 <script>
   import { mapGetters, mapActions } from 'vuex'
-  import oiSelectionLogonLogoff from '@/module/auth/comp/SelectionLogonLogoff.vue'
+  // import oiSelectionLogonLogoff from '@/module/auth/comp/SelectionLogonLogoff.vue'
   
+  import oiButton from '@/module/auth/comp/button.vue'
+
   export default {
     name: 'MenuHeader',
 
-    components: { oiSelectionLogonLogoff },
+    components: { oiButton },
 
     data () {
       return {
@@ -52,7 +54,7 @@
                     </ul>
                 </li>
 
-                <router-link :to="{ name: 'searchGrouperConsult' }" tag="li" @click.native="$emit('collapseMenuMobile')">
+                <router-link :to="{ name: 'groupSearch' }" tag="li" @click.native="$emit('collapseMenuMobile')">
                     <a class="oi-menu">Agrupador</a>
                 </router-link>
 
@@ -329,7 +331,8 @@
         <li class="dropdown">
             <oiSelectionLogonLogoff v-show="!isLogged"/>
         </li>
-
+        
+        <!--
         <li class="dropdown" v-show="isLogged">
           <a href="#" 
             style="margin:0;padding:0;border:0"
@@ -341,18 +344,21 @@
             <span class="glyphicon glyphicon-user"/> <label v-show="isLogged">{{currentUser.name}}</label> <span class="caret"/>
           </a>
 
-
           <ul class="dropdown-menu">
             <li >
               <a class="oi-menu" @click="localLogoff">Logoff</a>
             </li>
-            <!--
-            <router-link v-show="!isLogged" :to="{ name: 'auth' }" tag="li">
-              <a class="oi-menu">Entrar</a>
-            </router-link>
-            -->
           </ul>
-        </li>        
+        </li>
+        -->
+        <!--
+        <router-link v-show="!isLogged" :to="{ name: 'auth' }" tag="li">
+            <a class="oi-menu">Entrar</a>
+        </router-link>
+        -->
+
+        <oiButton/>
+        
     </ul>
 </template>
 

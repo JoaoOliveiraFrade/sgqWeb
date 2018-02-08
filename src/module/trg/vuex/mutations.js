@@ -9,15 +9,15 @@ export default {
     state.loading = parameter
   },
 
-  [types.selectedRelease] (state, data) {
-    state.selectedRelease = data
+  [types.selectedRelease] (state, parameter) {
+    state.selectedRelease = parameter
   },
 
-  [types.systems] (state, data) {
-    state.systems = data
+  [types.systems] (state, parameter) {
+    state.systems = parameter
   },
 
-  [types.systemsMultiSelected] (state, data) {
-    state.systemsMultiSelected = data
+  [types.selectedSystems] (state, parameter) {
+    state.selectedSystems = parameter
   }
 }

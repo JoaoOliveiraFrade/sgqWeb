@@ -15,7 +15,7 @@ import { routes as indPerfDevDefectOfTSInTI } from './indicator/performance/dev/
 import { routes as indPerfDevDefectOfTSInTIAgent } from './indicator/performance/dev/defectOfTSInTIAgent'
 
 import { routes as projectConsult } from './projectConsult'
-import { routes as grouperConsult } from './grouperConsult'
+import { routes as grouper } from './grouper'
 import { routes as cadGrouper } from './cadGrouper'
 import { routes as cadProject } from './cadProject'
 // import { routes as indicatorDev } from './indicator/dev'
@@ -44,8 +44,11 @@ export default [
   ...indPerfDevDefectOfTSInTIAgent,
 
   ...projectConsult,
-  ...grouperConsult,
+
+  ...grouper,
+
   ...cadGrouper,
+
   ...cadProject,
   // ...indicatorDev,
   ...indOperTest,

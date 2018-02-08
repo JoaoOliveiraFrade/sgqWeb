@@ -1,3 +1,3 @@
-export const user = 'auth/user'
-export const token = 'auth/token'
-export const currentUserProfiles = 'auth/currentUserProfiles'
+export const user = 'user'
+export const token = 'token'
+export const currentUserProfiles = 'currentUserProfiles'

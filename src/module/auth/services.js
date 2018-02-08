@@ -9,23 +9,23 @@ import Resource from '@/http/vueResource'
 import { paths } from '@/environment'
 
 export default {
-  getUsers () {
-    let resource = Resource.resource(paths.api + '/auth/users')
+  loadUsers () {
+    let resource = Resource.resource(paths.api + '/auth/loadUsers')
     return resource.get()
   },
 
-  getUserByCpf (user) {
-    let resource = Resource.resource(paths.api + '/auth/userByCpf')
+  loadUserByCpf (user) {
+    let resource = Resource.resource(paths.api + '/auth/loadUserByCpf')
     return resource.save(user)
   },
 
-  getUserByPassword (login, password) {
-    let resource = Resource.resource(paths.api + '/auth/userBypassword/{/login}{/password}')
+  loadUserByLogin (login, password) {
+    let resource = Resource.resource(paths.api + '/auth/loadUserByLogin/{/login}{/password}')
     return resource.get({ login: login, password: password })
   },
 
-  getProfilesByUser (userId) {
-    let resource = Resource.resource(paths.api + '/auth/profilesByUser/{/userId}')
+  loadProfilesByUserId (userId) {
+    let resource = Resource.resource(paths.api + '/auth/loadProfilesByUserId/{/userId}')
     return resource.get({ userId })
   }
 }

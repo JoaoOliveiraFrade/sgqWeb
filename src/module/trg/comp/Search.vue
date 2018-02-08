@@ -67,8 +67,10 @@
 -->
 
     <div class="row well well-sm" style="margin:0; padding:0; padding-left:5px">
-      <oiShowData v-show="viewState"/>
+      <!--<oiShowData v-show="viewState"/>-->
+      <oiShowData/>
     </div>
+
   </div>
 </template>
 

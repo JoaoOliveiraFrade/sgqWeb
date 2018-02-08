@@ -62,6 +62,9 @@
                     <font size="2px">Ping Pong</font>
                 </td>
 
+                <td class="text-center" style="padding:0">
+                    <font size="2px">Sistema TRG</font>
+                </td>
             </tr>
         </thead>
         <tbody v-for="defect in defects">
@@ -100,6 +103,11 @@
                 <td class="text-center" style="padding:0">
                     <font size="1.5px">{{defect.pingPong}}</font>
                 </td>
+
+                <td class="text-center" style="padding:0">
+                    <font size="1.5px">{{defect.trgSystem}}</font>
+                </td>
+                
             </tr>
 
 

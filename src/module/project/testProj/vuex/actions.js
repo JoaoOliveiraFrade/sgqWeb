@@ -91,7 +91,6 @@ export const setSelected = ({ commit }, paramenter) => {
 }
 
 export const setState = ({ commit }, paramenter) => {
-  console.log('setState')
   commit(types.state, paramenter)
 }
 
@@ -206,22 +205,17 @@ export const updateSelectedMonoselection = ({ commit, state }, iterationsSelecte
 }
 
 export const tryUpdateSelectedMonoselection = ({ commit, state }) => {
-  // console.log('action - tryUpdateSelectedMonoselection')
   // return new Promise((resolve, reject) => {
   //   services.update(state.selectedMonoselection)
   //     .then(d => {
-  //       console.log('action - tryUpdateSelectedMonoselection - ok')
   //       resolve()
   //     },
   //     e => {
-  //       console.log('action - tryUpdateSelectedMonoselection - probl')
   //       reject(e)
   //     })
   // })
-  console.log('action - tryUpdateSelectedMonoselection')
   console.log(state.selectedMonoselection)
   services.updateTestProj(state.selectedMonoselection).then(r => {
-    console.log('action - tryUpdateSelectedMonoselection - ok')
   })
 }
 

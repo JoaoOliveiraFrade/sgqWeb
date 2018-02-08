@@ -1,8 +1,8 @@
 export default {
-  viewState: false,
+  viewState: 'hide',
   loading: false,
   selectedRelease: {},
 
   systems: [],
-  systemsMultiSelected: []
+  selectedSystems: []
 }

@@ -89,7 +89,6 @@
     // watch: {
     //   'dataSource': {
     //     handler () {
-    //       console.log('chartMixProductivityXDefectsGroupWeekly - dataSource - watch')
     //       this.setParameter()
     //       this.chart = Highcharts.chart(this.$el, this.parameter)
     //     }

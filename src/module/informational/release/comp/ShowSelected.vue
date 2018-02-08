@@ -1,13 +1,26 @@
 <script>
-  import { mapState } from 'vuex'
+  import { mapState, mapGetters } from 'vuex'
+
+  import oiCandidate from '@/genComp/chart/release/Candidate'
+  import oiShowRuleCandidate from './rules/ShowRuleCandidate'
+
   import oiTestCompleted from '@/genComp/chart/release/TestCompleted'
-  import oiShowRuleTestCompleted from './ShowRuleTestCompleted'
+  import oiShowRuleTestCompleted from './rules/ShowRuleTestCompleted'
+
+  import oiTestProgressLowRisk from '@/genComp/chart/release/TestProgressLowRisk'
+  import oiShowRuleTestProgressLowRisk from './rules/ShowRuleTestProgressLowRisk'
+
+  import oiTestProgressMediumRisk from '@/genComp/chart/release/TestProgressMediumRisk'
+  import oiShowRuleTestProgressMediumRisk from './rules/ShowRuleTestProgressMediumRisk'
+
+  import oiTestProgressHighRisk from '@/genComp/chart/release/TestProgressHighRisk'
+  import oiShowRuleTestProgressHighRisk from './rules/ShowRuleTestProgressHighRisk'
 
   import oiDeployOff from '@/genComp/chart/release/DeployOff'
-  import oiShowRuleDeploysOff from './ShowRuleDeploysOff'
+  import oiShowRuleDeploysOff from './rules/ShowRuleDeploysOff'
 
   import oiLossRelease from '@/genComp/chart/release/LossRelease'
-  import oiShowRuleLossRelease from './ShowRuleLossRelease'
+  import oiShowRuleLossRelease from './rules/ShowRuleLossRelease'
 
   import oiMacroSchedule from '@/genComp/chart/release/MacroSchedule'
 
@@ -15,17 +28,33 @@
     name: 'ShowSelected',
 
     components: {
+      oiCandidate,
+      oiShowRuleCandidate,
+
       oiTestCompleted,
       oiShowRuleTestCompleted,
+
+      oiTestProgressLowRisk,
+      oiShowRuleTestProgressLowRisk,
+
+      oiTestProgressMediumRisk,
+      oiShowRuleTestProgressMediumRisk,
+
+      oiTestProgressHighRisk,
+      oiShowRuleTestProgressHighRisk,
+
       oiDeployOff,
       oiShowRuleDeploysOff,
+
       oiLossRelease,
       oiShowRuleLossRelease,
+
       oiMacroSchedule
     },
 
     computed: {
-      ...mapState('informationalRelease', ['selectedMonoselection'])
+      ...mapState('informationalRelease', ['selectedMonoselection', 'grouperProjects']),
+      ...mapGetters('informationalRelease', ['qtyTestCompleted', 'qtyLowRiskProgress', 'qtyMediumRiskProgress', 'qtyHighRiskProgress', 'qtyDeployOff', 'qtyLossRelease'])
     }
   }
 </script>
@@ -74,7 +103,7 @@
     </div>
 
     <div class="row well well-sm" style="margin:0; padding:0; padding-left:5px">
-      
+      <!--
       <ul class="nav nav-tabs" style="margin-top:3px">
         <li class="active"><a data-toggle="tab" href="#overview" style="padding: 4px">Visão Geral</a></li>
         <li><a data-toggle="tab" href="#macroSchedule" style="padding: 4px">Macro Cronograma</a></li>
@@ -84,38 +113,72 @@
       <div class="tab-content">
 
         <div id="overview" class="tab-pane fade in active" style="padding:5px; margin:0; text-align: center">
-          <div class="col-xs-12 col-sm-6 col-md-4 oi-col" style="text-align: center;">
-              <oiTestCompleted :value="{ candidate: 46, testCompleted: 22, lowRiskProgress: 7, mediumRiskProgress : 8, highRiskProgress: 9 }"/>
-              <oiShowRuleTestCompleted/>
-          </div>
-
-          <div class="col-xs-12 col-sm-6 col-md-4 oi-col" style="text-align: center;">
-              <oiDeployOff :value="{ candidate: 46, deployOff: 3 }"/>
-              <oiShowRuleDeploysOff/>
-          </div>
-
-          <div class="col-xs-12 col-sm-6 col-md-4 oi-col" style="text-align: center;">
-              <oiLossRelease :value="{ candidate: 46, lossRelease: 13 }"/>
-              <oiShowRuleLossRelease/>
-          </div>
         </div>  
 
         <div id="macroSchedule" class="tab-pane fade">
-          <div class="col-xs-12 col-sm-6 col-md-4 oi-col" style="text-align: center;">
-              <oiMacroSchedule :value="{ candidate: 46, lossRelease: 13 }"/>
-          </div>
-        </div>  
+        </div>
 
         <div id="executiveSummaryRelease" class="tab-pane fade">
-          <div>
-            <label class="fd-label">Resumo Executivo Agrupador:</label>
-          </div>
-          <div>
-            <label class="fd-content" v-html="selectedMonoselection.executiveSummary ? selectedMonoselection.executiveSummary : 'Sem dados!'"/>
-          </div>
-        </div>  
+        </div>
 
       </div>
+      -->
+
+      <div class="col-xs-12 well well-sm oi-well">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 oi-col" style="text-align: center;">
+            <oiCandidate :value="{ candidate: grouperProjects.length }"/>
+            <oiShowRuleCandidate/>
+        </div>
+      
+        <div class="col-xs-12 col-sm-6 col-md-4 oi-col" style="text-align: center;">
+            <oiTestCompleted :value="{ candidate: grouperProjects.length, testCompleted: qtyTestCompleted, lowRiskProgress: qtyLowRiskProgress, mediumRiskProgress: qtyMediumRiskProgress, highRiskProgress: qtyHighRiskProgress }"/>
+            <oiShowRuleTestCompleted/>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-4 oi-col" style="text-align: center;">
+            <oiTestProgressLowRisk :value="{ candidate: grouperProjects.length, lowRiskProgress: qtyLowRiskProgress }"/>
+            <oiShowRuleTestProgressLowRisk/>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-4 oi-col" style="text-align: center;">
+            <oiTestProgressMediumRisk :value="{ candidate: grouperProjects.length, mediumRiskProgress: qtyMediumRiskProgress }"/>
+            <oiShowRuleTestProgressMediumRisk/>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-4 oi-col" style="text-align: center;">
+            <oiTestProgressHighRisk :value="{ candidate: grouperProjects.length, highRiskProgress: qtyHighRiskProgress }"/>
+            <oiShowRuleTestProgressHighRisk/>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-4 oi-col" style="text-align: center;">
+            <oiDeployOff :value="{ candidate: grouperProjects.length, deployOff: qtyDeployOff }"/>
+            <oiShowRuleDeploysOff/>
+        </div>
+
+        <div class="col-xs-12 oi-col" style="text-align: center;">
+            <oiLossRelease :value="{ candidate: grouperProjects.length, lossRelease: qtyLossRelease }"/>
+            <oiShowRuleLossRelease/>
+        </div>
+      </div>
+      </div>
+
+      <span>
+        <div class="col-xs-12 oi-col" style="text-align: center;">
+            <oiMacroSchedule :value="{ x: 'sdfsd' }"/>
+        </div>
+      </span>
+
+      <span>
+      
+        <div>
+          <label class="fd-label">Resumo Executivo Agrupador:</label>
+        </div>
+        <div>
+          <label class="fd-content" v-html="selectedMonoselection.executiveSummary ? selectedMonoselection.executiveSummary : 'Sem dados!'"/>
+        </div>
+
+      </span>
 
     </div> 
 
@@ -187,7 +250,7 @@
   .fd-content {
     margin: 0; 
     border: 0; 
-    padding: 3px; 
+    padding: qtyDeployOffpx; 
     text-align: left;
     font-weight: normal;
   }

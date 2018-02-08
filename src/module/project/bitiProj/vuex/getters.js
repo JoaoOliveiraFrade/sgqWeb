@@ -44,21 +44,39 @@ export const distinctCategory = (state, { dataFilteredByTerm }) => {
     arr.findIndex(i => i.category === el.category) === index
   ).map(m => ({ id: m.category, name: m.category })).sort((a, b) => a.name > b.name ? 1 : -1)
 }
-export const distinctProjectManager = (state, { dataFilteredByTerm }) => {
+
+export const distinctGP = (state, { dataFilteredByTerm }) => {
   return dataFilteredByTerm.filter((el, index, arr) =>
-    arr.findIndex(i => i.projectManager === el.projectManager) === index
-  ).map(m => ({ id: m.projectManager, name: m.projectManager })).sort((a, b) => a.name > b.name ? 1 : -1)
+    arr.findIndex(i => i.GP === el.GP) === index
+  ).map(m => ({ id: m.GP, name: m.GP })).sort((a, b) => a.name > b.name ? 1 : -1)
 }
-export const distinctTechnicalLeader = (state, { dataFilteredByTerm }) => {
+export const distinctGpN4 = (state, { dataFilteredByTerm }) => {
   return dataFilteredByTerm.filter((el, index, arr) =>
-    arr.findIndex(i => i.technicalLeader === el.technicalLeader) === index
-  ).map(m => ({ id: m.technicalLeader, name: m.technicalLeader })).sort((a, b) => a.name > b.name ? 1 : -1)
+    arr.findIndex(i => i.GP_N4 === el.GP_N4) === index
+  ).map(m => ({ id: m.GP_N4, name: m.GP_N4 })).sort((a, b) => a.name > b.name ? 1 : -1)
 }
-export const distinctLTManager = (state, { dataFilteredByTerm }) => {
+export const distinctGpN3 = (state, { dataFilteredByTerm }) => {
   return dataFilteredByTerm.filter((el, index, arr) =>
-    arr.findIndex(i => i.LTManager === el.LTManager) === index
-  ).map(m => ({ id: m.LTManager, name: m.LTManager })).sort((a, b) => a.name > b.name ? 1 : -1)
+    arr.findIndex(i => i.GP_N3 === el.GP_N3) === index
+  ).map(m => ({ id: m.GP_N3, name: m.GP_N3 })).sort((a, b) => a.name > b.name ? 1 : -1)
 }
+
+export const distinctLT = (state, { dataFilteredByTerm }) => {
+  return dataFilteredByTerm.filter((el, index, arr) =>
+    arr.findIndex(i => i.LT === el.LT) === index
+  ).map(m => ({ id: m.LT, name: m.LT })).sort((a, b) => a.name > b.name ? 1 : -1)
+}
+export const distinctLtN4 = (state, { dataFilteredByTerm }) => {
+  return dataFilteredByTerm.filter((el, index, arr) =>
+    arr.findIndex(i => i.LT_N4 === el.LT_N4) === index
+  ).map(m => ({ id: m.LT_N4, name: m.LT_N4 })).sort((a, b) => a.name > b.name ? 1 : -1)
+}
+export const distinctLtN3 = (state, { dataFilteredByTerm }) => {
+  return dataFilteredByTerm.filter((el, index, arr) =>
+    arr.findIndex(i => i.LT_N4 === el.LT_N4) === index
+  ).map(m => ({ id: m.LT_N4, name: m.LT_N4 })).sort((a, b) => a.name > b.name ? 1 : -1)
+}
+
 export const distinctPMO = (state, { dataFilteredByTerm }) => {
   return dataFilteredByTerm.filter((el, index, arr) =>
     arr.findIndex(i => i.PMO === el.PMO) === index

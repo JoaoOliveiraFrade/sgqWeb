@@ -19,25 +19,13 @@
       }
     },
 
-    created () {
-      console.log('projectGridMultSelectionsGrid - created')
-    },
-
-    mounted () {
-      console.log('projectGridMultSelectionsGrid - mounted')
-    },
-
     updated () {
       if (this.selectedProjectUpdated || this.selectedProjectUpdated_) {
-        console.log('projectGridMultSelectionsGrid - updated - true')
 
         this.selectedProjectUpdated_ = false
         this.$emit('setSelectedProjectUpdated', this.selectedProjectUpdated_)
 
         this.selected_ = this.selected
-      } else {
-        console.log('projectGridMultSelectionsGrid - updated - false')
-      }
     }
   }
 

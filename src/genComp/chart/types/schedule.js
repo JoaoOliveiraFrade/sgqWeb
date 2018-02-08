@@ -1,27 +1,33 @@
 export default function () {
   return {
     chart: {
-      type: 'xrange'
+      type: 'xrange',
+      backgroundColor: 'transparent'
     },
+
     title: {
       text: ''
     },
+
     credits: { enabled: false },
     exporting: { enabled: false },
     legend: { enabled: false },
+
     xAxis: {
       type: 'datetime'
     },
+
     yAxis: {
       title: {
-        text: 'Etapas da Release'
+        text: ''
       },
       categories: ['TI e UAT', 'TRG', 'PRD', 'Estabilização'],
       reversed: true
     },
+
     series: [
       {
-        name: 'Project 1',
+        name: 'sdfdsfasdasdfdas',
         // pointPadding: 0,
         // groupPadding: 0,
         borderColor: 'gray',

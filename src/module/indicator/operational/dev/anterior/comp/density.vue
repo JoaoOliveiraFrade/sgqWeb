@@ -108,39 +108,6 @@
     },
 
     // this.processDensity()
-
-    beforeCreate () {
-      console.log('density - beforeCreate')
-    },
-
-    created () {
-      console.log('density - created')
-    },
-
-    beforeMount () {
-      console.log('density - beforeMount')
-    },
-
-    mounted () {
-      console.log('density - mounted')
-    },
-
-    beforeUpdate () {
-      console.log('density - beforeUpdate')
-    },
-
-    updated () {
-      console.log('density - updated')
-    },
-
-    beforeDestroy () {
-      console.log('density - beforeDestroy')
-    },
-
-    destroyed () {
-      console.log('density - beforeUpdate')
-    }
-
   }
   
 </script>

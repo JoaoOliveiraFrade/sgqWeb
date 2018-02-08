@@ -102,7 +102,6 @@
       saveItem (project) {
         /* updateProject(project)
           .then(data => {
-            console.log(data)
           }) */
 
         services.update(project).then(r => {

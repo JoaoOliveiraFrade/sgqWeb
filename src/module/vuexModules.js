@@ -35,7 +35,7 @@ import { vuex as indOperTestProductivity } from './indicator/operational/test/pr
 // import { vuex as indPerfDevDefectOfTSInTI } from './indicator/performance/dev/defectOfTSInTI'
 // import { vuex as indPerfDevDefectOfTSInTIAgent } from './indicator/performance/dev/defectOfTSInTIAgent'
 
-import { vuex as grouperConsult } from './grouperConsult'
+import { vuex as grouper } from './grouper'
 // import { vuex as indicatorDev } from './indicator/dev'
 
 import { vuex as defect } from './defect'
@@ -85,7 +85,7 @@ export default {
   // indPerfDevDefectOfTSInTI,
   // indPerfDevDefectOfTSInTIAgent,
 
-  grouperConsult,
+  grouper,
   // indicatorDev,
 
   // indicatorDefectInsideSLA,

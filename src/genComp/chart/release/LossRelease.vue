@@ -24,9 +24,14 @@
 
     methods: {
       loadParameters () {
+        let averagelossRelease = Math.floor(this.value.lossRelease / this.value.candidate * 100)
+
         this.parameters.title.text = 'Perdeu Release'
         this.parameters.yAxis.title.text = 'Qte<br>Entrega'
-        this.parameters.plotOptions.gauge.dataLabels.format = '{point.y:.0f}'
+
+        this.parameters.plotOptions.gauge.dataLabels.useHTML = true
+        this.parameters.plotOptions.gauge.dataLabels.format = '<center>{point.y:.0f}<br>' + averagelossRelease + '%</center>'
+
         this.parameters.yAxis.max = this.value.candidate
 
         this.parameters.yAxis.plotBands = [
@@ -34,10 +39,8 @@
           {from: this.value.lossRelease, to: this.value.candidate, color: '#00CC00'}
         ]
 
-        let averagelossRelease = Math.floor(this.value.lossRelease / this.value.candidate * 100)
-
         this.parameters.tooltip.pointFormat = 'Candidatada: ' + this.value.candidate + '<br>' +
-          'Sobre Desligado: ' + this.value.lossRelease + ' (' + averagelossRelease + '%)'
+          'Perdeu Release: ' + this.value.lossRelease + ' (' + averagelossRelease + '%)'
 
         this.parameters.series = [ { name: 'lossRelease', colorByPoint: true, data: [ this.value.lossRelease ] } ]
       },

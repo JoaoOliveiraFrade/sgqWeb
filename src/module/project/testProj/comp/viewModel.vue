@@ -73,7 +73,6 @@
     mounted () {
       this.project.subproject = this.$route.params.subproject
       this.project.delivery = this.$route.params.delivery
-      console.log('mounted mounted mounted mounted mounted mounted mounted mounted mounted')
       this.loadProject()
     },
 
@@ -81,7 +80,6 @@
       '$route' (to, from) {
         this.project.subproject = this.$route.params.subproject
         this.project.delivery = this.$route.params.delivery
-        console.log('watch watch watch watch watch watch watch watch watch')
         this.loadProject()
       }
     },

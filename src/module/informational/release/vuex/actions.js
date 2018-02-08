@@ -1,8 +1,8 @@
 import * as types from './mutationsTypes'
 import services from '../services'
-// import ServicesProjectXgrouper from '@/module/projectXgrouper/services'
-// import ServicesProject from '@/module/project/testProj/services'
-// import Toastr from 'toastr'
+import ServicesProjectXgrouper from '@/module/projectXgrouper/services'
+import ServicesProject from '@/module/project/testProj/services'
+import Toastr from 'toastr'
 
 export const loadData = ({ commit }) => {
   services.loadData().then(r => {
@@ -41,25 +41,19 @@ export const setSelectedMonoselection = ({ commit }, parameter) => {
 
   commit(types.state, 'show')
 
-  // Toastr.success('Agrupador selecionado!', '', { timeOut: 1000 })
+  Toastr.success('Agrupador selecionado!', '', { timeOut: 1000 })
 
-  // services.get(grouperId).then(r => {
-  //   let grouper = r.data
+  ServicesProjectXgrouper.getByGrouper(parameter.id).then(pg => {
+    if (pg.data.length !== 0) {
+      let projectsIds = pg.data.map(i => (i.project)).join()
 
-  //   commit(types.grouper, grouper)
-
-  //   ServicesProjectXgrouper.getByGrouper(grouper.id).then(pg => {
-  //     if (pg.data.length !== 0) {
-  //       let projectsIds = pg.data.map(i => (i.project)).join()
-
-  //       ServicesProject.getProjectsByIds(projectsIds).then(r => {
-  //         commit(types.grouperProjects, r.data)
-  //       })
-  //     } else {
-  //       commit(types.grouperProjects, [])
-  //     }
-  //   })
-  // })
+      ServicesProject.getProjectsByIds(projectsIds).then(r => {
+        commit(types.grouperProjects, r.data)
+      })
+    } else {
+      commit(types.grouperProjects, [])
+    }
+  })
 }
 
 export const setState = ({ commit }, paramenter) => {

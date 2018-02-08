@@ -69,7 +69,7 @@
     },
 
     computed: {
-      ...mapState('trg', ['systemsMultiSelected']),
+      ...mapState('trg', ['selectedSystems', 'viewState']),
       ...mapState('trgDefect', ['defectStatus', 'defectGroupOrigin', 'ctImpactedXDefects', '']),
       ...mapGetters('trgDefect', ['defectsOpenInTestManuf', 'defectsOpenInDevManuf'])
       // ...mapGetters('trg', ['trgProject', 'defectsOpenInTestManuf', 'defectsOpenInDevManuf'])
@@ -101,14 +101,11 @@
 
 <template>
   
-    <div> <!-- v-show="Object.keys(systemsMultiSelected).length > 0">-->
+    <div v-show="viewState === 'show'"> <!-- v-show="Object.keys(selectedSystems).length > 0">-->
 
       <ul class="nav nav-tabs" style="margin-top:3px">
         <li class="active"><a data-toggle="tab" href="#execution" style="padding: 4px">Execução</a></li>
         <li><a data-toggle="tab" href="#defect" style="padding: 4px">Defeito</a></li>
-        <!--<li><a data-toggle="tab" href="#operacionalIndicator" style="padding: 4px">Ind. Operacional</a></li>-->
-        <!--<li><a data-toggle="tab" href="#performanceIndicator" style="padding: 4px">Ind. Desempenho</a></li>-->
-        <!--<li><a data-toggle="tab" href="#testPlane" style="padding: 4px">Plano Teste</a></li>-->
       </ul>
 
       <div class="tab-content">

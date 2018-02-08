@@ -11,7 +11,6 @@
 
     methods: {
       close () {
-        console.log('close1')
         this.$emit('onClose')
       }
     }

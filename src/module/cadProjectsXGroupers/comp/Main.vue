@@ -62,8 +62,6 @@
       },
 
       selectItem (item, state) {
-        let xx = new Group(item)
-        console.log(xx)
         this.item = item
         this.state = state
         // this.loadIterations(this.item)
@@ -80,7 +78,6 @@
       saveItem (item) {
         /* updateitem(item)
           .then(data => {
-            console.log(data)
           }) */
         Services.updateOne(item)
         Toastr.success('Dados gravados!')

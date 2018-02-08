@@ -16,7 +16,7 @@
     components: { oiAccumulatedGrid, oiDailyGrid, oiChartCurvaS, oiChartProductivityXDefects, oiChartProductivityXDefectsGroupWeekly, oiShowGroupSystemGrid },
 
     computed: {
-      ...mapState('trg', ['selectedRelease', 'systemsMultiSelected']),
+      ...mapState('trg', ['selectedRelease', 'selectedSystems']),
       ...mapState('trgExecution', ['loading', 'last05Days', 'last30Days', 'groupMonth', 'productivityXDefects', 'productivityXDefectsGroupWeekly'])
     },
 
@@ -25,9 +25,9 @@
     },
 
     watch: {
-      'systemsMultiSelected': {
+      'selectedSystems': {
         handler () {
-          let filters = { release: this.selectedRelease, systems: this.systemsMultiSelected.map(i => i.id) }
+          let filters = { release: this.selectedRelease, systems: this.selectedSystems.map(i => i.id) }
           this.loadDataLastDays(filters)
           this.loadDataGroupMonth(filters)
           this.loadDataProductivityXDefects(filters)

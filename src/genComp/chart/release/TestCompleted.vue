@@ -24,9 +24,15 @@
 
     methods: {
       loadParameters () {
-        this.parameters.title.text = 'Com Teste Finalizado'
+        let averageTestCompleted = Math.floor(this.value.testCompleted / this.value.candidate * 100)
+        let averageLowRiskProgress = Math.floor(this.value.lowRiskProgress / this.value.candidate * 100)
+        let averageMediumRiskProgress = Math.floor(this.value.mediumRiskProgress / this.value.candidate * 100)
+        let averageHighRiskProgress = Math.floor(this.value.highRiskProgress / this.value.candidate * 100)
+
+        this.parameters.title.text = 'Teste Finalizado'
         this.parameters.yAxis.title.text = 'Qte<br>Entrega'
-        this.parameters.plotOptions.gauge.dataLabels.format = '{point.y:.0f}'
+        this.parameters.plotOptions.gauge.dataLabels.useHTML = true
+        this.parameters.plotOptions.gauge.dataLabels.format = '<center>{point.y:.0f}<br>' + averageTestCompleted + '%</center>'
         this.parameters.yAxis.max = this.value.candidate
 
         let l12 = this.value.testCompleted
@@ -37,20 +43,15 @@
         this.parameters.yAxis.plotBands = [
           {from: 0, to: l12, color: '#00CC00'}, // 5F9EA0 azul
           {from: l12, to: l22, color: '#FFD700'},
-          {from: l22, to: l32, color: '#FF9E0D'}, // FF9E0D
+          {from: l22, to: l32, color: '#FF8C00'}, // FF9E0D
           {from: l32, to: l42, color: '#FF3300'}
         ]
 
-        let averageTestCompleted = Math.floor(this.value.testCompleted / this.value.candidate * 100)
-        let averageLowRiskProgress = Math.floor(this.value.lowRiskProgress / this.value.candidate * 100)
-        let averageMediumRiskProgress = Math.floor(this.value.mediumRiskProgress / this.value.candidate * 100)
-        let averageHighRiskProgress = Math.floor(this.value.highRiskProgress / this.value.candidate * 100)
-
-        this.parameters.tooltip.pointFormat = 'Entrega Candidatada: ' + this.value.candidate + '<br>' +
-          'C/ Teste Finalizado: ' + this.value.testCompleted + ' (' + averageTestCompleted + '%)<br>' +
-          'Em Andamento - Risco Baixo: ' + this.value.lowRiskProgress + ' (' + averageLowRiskProgress + '%)<br>' +
-          'Em Médio - Risco Médio: ' + this.value.mediumRiskProgress + ' (' + averageMediumRiskProgress + '%)<br>' +
-          'Em Alto - Risco Alto: ' + this.value.highRiskProgress + ' (' + averageHighRiskProgress + '%)'
+        this.parameters.tooltip.pointFormat = 'Candidatada: ' + this.value.candidate + '<br>' +
+          'Teste Finalizado: ' + this.value.testCompleted + ' (' + averageTestCompleted + '%)<br>' +
+          'Em Teste C/Risco Baixo: ' + this.value.lowRiskProgress + ' (' + averageLowRiskProgress + '%)<br>' +
+          'Em Teste C/Risco Médio: ' + this.value.mediumRiskProgress + ' (' + averageMediumRiskProgress + '%)<br>' +
+          'Em Teste C/Risco Alto: ' + this.value.highRiskProgress + ' (' + averageHighRiskProgress + '%)'
 
         this.parameters.series = [ { name: 'testCompleted', colorByPoint: true, data: [ this.value.testCompleted ] } ]
       },

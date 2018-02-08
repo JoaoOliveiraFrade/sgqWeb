@@ -1,4 +1,5 @@
 import * as types from './mutationsTypes'
+import Toastr from 'toastr'
 
 import trgServices from '../services'
 import trgDefectServices from '../module/trgDefect/services'
@@ -6,27 +7,26 @@ import trgDefectServices from '../module/trgDefect/services'
 export const setSelectedRelease = ({ commit }, paramenter) => {
   commit(types.selectedRelease, paramenter)
 
-  commit(types.viewState, false)
+  commit(types.selectedSystems, [])
+  commit(types.viewState, 'hide')
 
-  trgServices.systems(paramenter)
+  trgServices.loadSystems(paramenter)
     .then(
       r => {
-        console.log(r.data)
+        Toastr.info('Informe os Sistemas, para geração do report!', '', { timeOut: 4000 })
         commit(types.systems, r.data)
-        commit(types.loading, false)
       },
       e => {
         console.log(e)
-        commit(types.loading, false)
       }
     )
 }
 
-export const setSystemsMultiSelected = ({ commit, state, dispatch }, paramenter) => {
-  commit(types.systemsMultiSelected, paramenter)
-  commit(types.viewState, true)
+export const setSelectedSystems = ({ commit, state, dispatch }, paramenter) => {
+  commit(types.selectedSystems, paramenter)
+  commit(types.viewState, 'show')
 
-  let filters = { release: state.selectedRelease, systems: state.systemsMultiSelected.map(i => i.id) }
+  let filters = { release: state.selectedRelease, systems: state.selectedSystems.map(i => i.id) }
 
   trgDefectServices.defectStatus(filters).then(r => {
     // commit(types.defectStatus, r.data)

@@ -37,7 +37,6 @@
     }
 
     // mounted () {
-    //   console.log('ShowData - mounted')
     //   this.load()
     // }
   }

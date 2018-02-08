@@ -66,12 +66,10 @@
     methods: {
       replaceDateBegin (inputDate) {
         var dateBegin = this.inputDate.replace(/-/g, '').substr(2)
-        // console.log(dateBegin)
         return dateBegin
       },
       replaceDateEnd (inputDate2) {
         var dateEnd = this.inputDate2.replace(/-/g, '').substr(2)
-        // console.log(dateEnd)
         return dateEnd
       },
       convertDate (inputFormat) {

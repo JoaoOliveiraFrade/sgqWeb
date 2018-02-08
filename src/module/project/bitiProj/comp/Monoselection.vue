@@ -18,9 +18,12 @@
         'distinctReleaseSGQ',
         'distinctReleaseClarity',
         'distinctCategory',
-        'distinctProjectManager',
-        'distinctTechnicalLeader',
-        'distinctLTManager',
+        'distinctGP',
+        'distinctGpN4',
+        'distinctGpN3',
+        'distinctLT',
+        'distinctLtN4',
+        'distinctLtN3',
         'distinctPMO',
         'distinctBusinessAnalyst',
         'distinctTestLeader'
@@ -109,7 +112,7 @@
             yesNoImage: false,
             filterOptions: this.distinctCategory
           }, {
-            id: 'projectManager',
+            id: 'GP',
             name: 'GP',
             alignHeader: 'center',
             align: 'left',
@@ -117,17 +120,57 @@
             visible: false,
             sort: true,
             yesNoImage: false,
-            filterOptions: this.distinctProjectManager
+            filterOptions: this.distinctGP
           }, {
-            id: 'LTManager',
-            name: 'Gerente<br>L.Téc.',
+            id: 'GP_N4',
+            name: 'GP-N4',
             alignHeader: 'center',
             align: 'left',
             minWidth: '',
             visible: false,
             sort: true,
             yesNoImage: false,
-            filterOptions: this.distinctLTManager
+            filterOptions: this.distinctGpN4
+          }, {
+            id: 'GP_N3',
+            name: 'GP-N3',
+            alignHeader: 'center',
+            align: 'left',
+            minWidth: '',
+            visible: false,
+            sort: true,
+            yesNoImage: false,
+            filterOptions: this.distinctGpN3
+          }, {
+            id: 'LT',
+            name: 'LT',
+            alignHeader: 'center',
+            align: 'left',
+            minWidth: '',
+            visible: false,
+            sort: true,
+            yesNoImage: false,
+            filterOptions: this.distinctLT
+          }, {
+            id: 'LT_N4',
+            name: 'LT-N4',
+            alignHeader: 'center',
+            align: 'left',
+            minWidth: '',
+            visible: false,
+            sort: true,
+            yesNoImage: false,
+            filterOptions: this.distinctLtN4
+          }, {
+            id: 'LT_N3',
+            name: 'LT-N3',
+            alignHeader: 'center',
+            align: 'left',
+            minWidth: '',
+            visible: false,
+            sort: true,
+            yesNoImage: false,
+            filterOptions: this.distinctLtN3
           }, {
             id: 'businessAnalyst',
             name: 'Analista<br>Negócio',
@@ -138,16 +181,6 @@
             sort: true,
             yesNoImage: false,
             filterOptions: this.distinctBusinessAnalyst
-          }, {
-            id: 'technicalLeader',
-            name: 'Lider<br>Técnico',
-            alignHeader: 'center',
-            align: 'left',
-            minWidth: '',
-            visible: false,
-            sort: true,
-            yesNoImage: false,
-            filterOptions: this.distinctTechnicalLeader
           }, {
             id: 'PMO',
             name: 'PMO',

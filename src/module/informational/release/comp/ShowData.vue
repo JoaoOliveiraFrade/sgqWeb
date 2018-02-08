@@ -3,7 +3,7 @@
   // import ServicesProjectXgrouper from '@/module/projectXgrouper/services'
   // import ServicesProject from '@/module/project/testProj/services'
   // import ServicesGrouper from '@/module/grouperConsult/services'
-  import oiShowGridProject from '@/module/project/testProj/comp/ShowGridProject.vue'
+  import oiShowGridProject from '@/genComp/project/testProj/ShowGrid.vue'
 
   export default {
     name: 'ShowData',

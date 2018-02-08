@@ -1,5 +1,0 @@
-export const groupers = 'groupers'
-export const filterTerm = 'filterTerm'
-export const filterProperties = 'filterProperties'
-export const grouper = 'grouper'
-export const grouperProjects = 'grouperProjects'

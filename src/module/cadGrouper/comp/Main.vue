@@ -48,8 +48,9 @@
 
     methods: {
       ...mapActions(['setFeatureName']),
+
       loadData () {
-        ServicesCadgroupers.getData().then(resp => {
+        ServicesCadgroupers.loadData().then(resp => {
           this.items = resp.data
           this.itemsFilteredByText = resp.data
         })

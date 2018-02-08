@@ -13,22 +13,6 @@ export default {
   loadData () {
     let resource = Resource.resource(paths.api + '/informational/release/loadData')
     return resource.get()
-  },
-
-  loadById (id) {
-    let resource = Resource.resource(paths.api + '//informational/release/loadById/{id}')
-    return resource.get({id: id})
-  },
-
-  // Update
-  update (item) {
-    let resource = Resource.resource(paths.api + '/grouper/update/{id}')
-    return resource.update({id: item.id}, item)
-  },
-
-  // Delete
-  delete (id) {
-    let resource = Resource.resource(paths.api + '/grouper/{id}')
-    return resource.delete({id: id})
   }
+
 }

@@ -24,17 +24,20 @@
 
     methods: {
       loadParameters () {
+        let averageDeployOff = Math.floor(this.value.deployOff / this.value.candidate * 100)
+
         this.parameters.title.text = 'Sobe Desligada'
         this.parameters.yAxis.title.text = 'Qte<br>Entrega'
-        this.parameters.plotOptions.gauge.dataLabels.format = '{point.y:.0f}'
+
+        this.parameters.plotOptions.gauge.dataLabels.useHTML = true
+        this.parameters.plotOptions.gauge.dataLabels.format = '<center>{point.y:.0f}<br>' + averageDeployOff + '%</center>'
+
         this.parameters.yAxis.max = this.value.candidate
 
         this.parameters.yAxis.plotBands = [
           {from: 0, to: this.value.deployOff, color: '#FF3300'},
           {from: this.value.deployOff, to: this.value.candidate, color: '#00CC00'}
         ]
-
-        let averageDeployOff = Math.floor(this.value.deployOff / this.value.candidate * 100)
 
         this.parameters.tooltip.pointFormat = 'Candidatada: ' + this.value.candidate + '<br>' +
           'Sobre Desligado: ' + this.value.deployOff + ' (' + averageDeployOff + '%)'
