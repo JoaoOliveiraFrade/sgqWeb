@@ -329,7 +329,7 @@
         </li>
     
         <li class="dropdown">
-            <oiSelectionLogonLogoff v-show="!isLogged"/>
+            <!--<oiSelectionLogonLogoff v-show="!isLogged"/>-->
         </li>
         
         <!--

@@ -1,15 +1,19 @@
 import * as types from './mutationsTypes'
 
 export default {
-  [types.user] (state, data) {
-    state.user = data
+  [types.user] (state, parameter) {
+    state.user = parameter
   },
 
-  [types.token] (state, data) {
-    state.token = data
+  [types.token] (state, parameter) {
+    state.token = parameter
   },
 
-  [types.currentUserProfiles] (state, data) {
-    state.currentUserProfiles = data
+  [types.profiles] (state, parameter) {
+    state.profiles = parameter
+  },
+
+  [types.to] (state, parameter) {
+    state.to = parameter
   }
 }

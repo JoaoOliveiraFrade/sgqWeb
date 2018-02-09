@@ -9,11 +9,19 @@
     components: { oiUserButton },
 
     computed: {
-      ...mapGetters('auth', ['isLogged', 'buttonLabel'])
+      ...mapGetters('auth', ['isLogged', 'buttonTexts'])
     },
 
     methods: {
-      ...mapActions['logOff']
+      ...mapActions('auth', ['logoff']),
+
+      logOnOff () {
+        if (this.isLogged) {
+          this.logoff()
+        } else {
+          this.$router.push({ name: 'LoginForm' })
+        }
+      }
     }
   }
 </script>
@@ -23,8 +31,8 @@
     <span style="margin:0; border:0; padding:0">
 
       <oiUserButton
-        :label="buttonLabel"
-        @click=""
+        :texts="buttonTexts"
+        @click="logOnOff"
       />
 
     </span>

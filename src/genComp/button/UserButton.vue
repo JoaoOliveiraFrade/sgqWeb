@@ -3,7 +3,7 @@
     name: 'UserButton',
 
     props: {
-      label: { type: String, default: '' }
+      texts: { type: Object, default: { label: '', title: '' } }
     }
   }
 </script>
@@ -13,13 +13,13 @@
   <button
     style="font-size: small; margin-top:2px" 
     class="btn btn-primary btn-xs"
-    :title="label"
+    :title="texts.title"
     @click="$emit('click')">
 
     <span class="glyphicon glyphicon-user"/>
     
     <span style="font-weight: bold;">
-      {{label}}
+      {{texts.label}}
     </span>
 
   </button>

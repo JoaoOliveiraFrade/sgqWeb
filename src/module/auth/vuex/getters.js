@@ -1,5 +1,5 @@
-export const isLogged = ({ token }) => token !== ''
-export const buttonLabel = (state, { isLogged }) => isLogged ? 'Logoff' : 'Logon'
+export const isLogged = ({ token }) => token !== undefined
+export const buttonTexts = (state, { isLogged }) => isLogged ? { label: state.user.name, title: 'Sair' } : { label: 'Login', title: 'Entrar' }
 
 export const currentUser = ({ user }) => user
 export const currentUserProfiles = ({ currentUserProfiles }) => currentUserProfiles

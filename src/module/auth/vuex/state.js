@@ -10,7 +10,9 @@ export default {
     password: ''
   },
 
-  currentUserProfiles: [],
+  token: '1',
 
-  token: '1'
+  profiles: [],
+
+  to: ''
 }

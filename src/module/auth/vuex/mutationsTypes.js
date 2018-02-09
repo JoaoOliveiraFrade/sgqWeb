@@ -1,3 +1,4 @@
 export const user = 'user'
 export const token = 'token'
-export const currentUserProfiles = 'currentUserProfiles'
+export const profiles = 'profiles'
+export const to = 'to'
