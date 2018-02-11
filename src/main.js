@@ -21,6 +21,19 @@ import 'froala-editor/css/froala_editor.pkgd.min.css'
 import 'font-awesome/css/font-awesome.css'
 import 'froala-editor/css/froala_style.min.css'
 import VueFroala from 'vue-froala-wysiwyg'
+
+import ToggleButton from 'vue-js-toggle-button'
+
+import VModal from 'vue-js-modal'
+// Vue.use(VModal)
+// import VueJsModal from 'plugin'
+
+Vue.use(VModal, {
+  dialog: true
+})
+
+Vue.use(ToggleButton)
+
 Vue.use(VueFroala)
 
 Vue.use(VueResource)

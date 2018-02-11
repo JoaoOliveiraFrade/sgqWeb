@@ -1,7 +1,7 @@
 <script>
   // import jQuery from 'jquery/dist/jquery.js'
   export default {
-    name: 'Modal2',
+    name: 'Modal3',
 
     props: {
       id: { type: String },

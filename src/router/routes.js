@@ -1,7 +1,9 @@
 import { routesModules } from '../module'
+import oiMyModal from '@/genComp/m/App'
 
 const routesCore = [
-  { path: '/', name: 'root', redirect: '/home' }
+  { path: '/', name: 'root', redirect: '/home' },
+  { path: '/genComp/m/App', name: 'myModal', component: oiMyModal }
 ]
 
 export default [ ...routesCore, ...routesModules ]

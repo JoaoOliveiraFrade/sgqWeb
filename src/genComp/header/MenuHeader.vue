@@ -58,6 +58,10 @@
                     <a class="oi-menu">Agrupador</a>
                 </router-link>
 
+                <router-link :to="{ name: 'myModal' }" tag="li" @click.native="$emit('collapseMenuMobile')">
+                    <a class="oi-menu">myModal</a>
+                </router-link>
+
                 <router-link :to="{ name: 'trg' }" tag="li" @click.native="$emit('collapseMenuMobile')">
                     <a class="oi-menu">TRG</a>
                 </router-link>

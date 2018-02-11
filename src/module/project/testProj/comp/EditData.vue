@@ -155,7 +155,12 @@
                   <label class="fd-label">Sobe Desligado:</label>
                 </div>
                 <div>
-                  <input type="checkbox" v-model="selectedMonoselection.deployOff">                  
+                  <toggle-button sync="true"
+                    v-model="selectedMonoselection.deployOff"
+                    :color="{checked: '#ff4d4d', unchecked: '#6B8E23'}"
+                    :labels="{checked: 'SIM', unchecked: 'NÃO'}"
+                    width="60"
+                  />
                 </div>
               </div>
 
@@ -164,7 +169,12 @@
                   <label class="fd-label">Perdeu Release:</label>
                 </div>
                 <div>
-                  <input type="checkbox" v-model="selectedMonoselection.lossRelease">                  
+                  <toggle-button sync="true"
+                    v-model="selectedMonoselection.lossRelease"
+                    :color="{checked: '#ff4d4d', unchecked: '#6B8E23'}"
+                    :labels="{checked: 'SIM', unchecked: 'NÃO'}"
+                    width="60"
+                  />
                 </div>
               </div>
 

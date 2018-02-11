@@ -50,7 +50,7 @@ export const tryLoadProfiles = ({ commit }, userId) => {
   // return new Promise((resolve, reject) => {
   //   services.getProfilesByUser(userId)
   //     .then(d => {
-  //       commit(types.currentUserProfiles, d.data)
+  //       commit(types.profiles, d.data)
   //       resolve(d.data)
   //     },
   //     e => {
@@ -61,7 +61,7 @@ export const tryLoadProfiles = ({ commit }, userId) => {
 
 export const logoff = ({ commit }) => {
   commit(types.token, undefined)
-  commit(types.currentUserProfiles, [])
+  commit(types.profiles, [])
 }
 
 export const setTo = ({ commit }, parameter) => {
