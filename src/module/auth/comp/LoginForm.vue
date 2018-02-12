@@ -1,9 +1,13 @@
 <script>
-  import { mapState, mapActions } from 'vuex'
+  import { mapState } from 'vuex'
+  import oiButton from '@/genComp/link/button'
+
   // import Toastr from 'toastr'
 
   export default {
     name: 'LoginForm',
+
+    components: { oiButton },
 
     computed: {
       ...mapState('auth', ['user']),
@@ -11,25 +15,13 @@
       isUserValid () {
         return this.user.login !== '' && this.user.cpf !== ''
       }
-    },
-
-    methods: {
-      ...mapActions('auth', ['setTo', 'tryLogon']),
-
-      logon () {
-        console.log('logon')
-      }
-    },
-
-    mounted () {
-      this.setTo(this.$route.query.to)
     }
   }
 </script>
 
 <template>
 
-  <div class="container-fluid" style="margin-top:7px;">
+  <div class="container-fluid" style="margin-top:15px;">
 
     <div class="row">
         <div class="form-group">
@@ -46,16 +38,18 @@
     </div>
 
     <div class="row">
-        <div class="form-group" style="text-align: center; margin-bottom:5px;">
-            <button
-            :disabled="!isUserValid"
-            class="btn btn-default btn-xs" 
-            @click.prevent="tryLogon(user)">Autenticar
-            </button>
-        </div>
-    </div>
+      <div class="form-group" style="text-align: center; margin-bottom:5px;">
 
-    <button id="exit" style="display: none;" data-dismiss="modal"/>
+        <oiButton
+          icon="log-in"
+          label="Logon"
+          title="Autenticar"
+          :disabled="!isUserValid"
+          @click="$emit('onLogon', user)"
+        />
+
+      </div>
+    </div>
 
   </div>
 

@@ -7,7 +7,7 @@ import services from '../services'
 export const tryLogon = ({ commit, state, dispatch }, user) => {
   services.loadUserByCpf(user)
     .then(d => {
-      Toastr.success('Autenicação com sucesso!', '', { timeOut: 1000 })
+      Toastr.success('Logon com sucesso!', '', { timeOut: 1000 })
 
       commit(types.token, user.cpf)
       commit(types.user, d.data)
@@ -21,7 +21,8 @@ export const tryLogon = ({ commit, state, dispatch }, user) => {
       }
     },
     e => {
-      Toastr.error('Falha na Autenticação!<br>Cheque as credencias utilizadas...', '', { timeOut: 2000 })
+      Toastr.error('Falha no Logon!<br>Cheque as credencias utilizadas...', '', { timeOut: 2000 })
+      router.push({ name: 'home' })
     })
 
   // return new Promise((resolve, reject) => {

@@ -1,15 +1,17 @@
 <script>
-  import { mapGetters, mapActions } from 'vuex'
+  import { mapState, mapGetters, mapActions } from 'vuex'
 
-  import oiUserButton from '@/genComp/button/UserButton'
+  // import oiUserButton from '@/genComp/button/UserButton'
+  import oiButton from '@/genComp/link/Button'
 
   export default {
     name: 'Button',
 
-    components: { oiUserButton },
+    components: { oiButton },
 
     computed: {
-      ...mapGetters('auth', ['isLogged', 'buttonTexts'])
+      ...mapState('auth', ['user']),
+      ...mapGetters('auth', ['isLogged'])
     },
 
     methods: {
@@ -19,7 +21,7 @@
         if (this.isLogged) {
           this.logoff()
         } else {
-          this.$router.push({ name: 'LoginForm' })
+          this.$router.push({ name: 'login' })
         }
       }
     }
@@ -30,8 +32,10 @@
 
     <span style="margin:0; border:0; padding:0">
 
-      <oiUserButton
-        :texts="buttonTexts"
+      <oiButton
+        icon="user"
+        :label="isLogged ? user.name : 'Login'"
+        :title="isLogged ? 'Sair' : 'Entrar'"
         @click="logOnOff"
       />
 

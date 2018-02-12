@@ -1,7 +1,11 @@
 <script>
   // import jQuery from 'jquery/dist/jquery.js'
+  import oiIcon from '@/genComp/link/Icon.vue'
+
   export default {
     name: 'Modal2',
+
+    components: { oiIcon },
 
     props: {
       id: { type: String },
@@ -12,38 +16,43 @@
     methods: {
       close () {
         this.$emit('onClose')
+        this.$router.push('/')
       }
     }
   }
 </script>
 
 <template>
-    <div class="modal fade" :id="id" :ref="id">
-        <div class="modal-dialog" :style="size==='l' ? 'max-width: 95%; width: auto !important;' : ''">
-            <div class="modal-content" style="margin:0; border:0; padding:0; background-color: #f8f8ff">
+<div class="modal fade" :id="id" :ref="id">
+    <div class="modal-dialog" :style="size==='l' ? 'max-width: 95%; width: auto !important;' : ''">
+        <div class="modal-content" style="margin:0; border:0; padding:0; background-color: #f8f8ff">
 
-                <div class="modal-header">
-                    <!--data-toggle="tooltip" -->
-                    <a @click="close"
-                        data-dismiss="modal"
-                        title="Fechar">
-                        <i class='glyphicon glyphicon-remove-circle'></i>
-                    </a>                        
-                    <hr class="col-xs-12">
-                    <label class="fd-label" >{{title}}</label>
-                </div>
+            <div class="modal-header">
+                <!--data-toggle="tooltip" data-dismiss="modal" -->
 
-                <div class="modal-body" >
-                    <slot name="body"></slot>
-                </div>
-                
-                <div class="modal-footer">
-                    <slot name="footer"></slot>
-                </div>
-                
+                <oiIcon class="icon" 
+                    icon="remove-circle" 
+                    title="Fechar"
+                    data-dismiss="modal" 
+                    @click="close"
+                />
+
+                <hr class="col-xs-12">
+                <label class="fd-label" >{{title}}</label>
             </div>
+
+
+            <div class="modal-body" >
+                <slot name="body"></slot>
+            </div>
+            
+            <div class="modal-footer">
+                <slot name="footer"></slot>
+            </div>
+            
         </div>
-    </div>      
+    </div>
+</div>      
 </template>
 
 <style scoped>
@@ -69,7 +78,7 @@
         vertical-align: top;
         color: #E95420;
     }
-    .glyphicon {
+    .icon {
         margin:0;
         border:0;
         padding:0;

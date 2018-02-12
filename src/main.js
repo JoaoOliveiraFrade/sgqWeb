@@ -9,6 +9,7 @@ import VueResource from 'vue-resource'
 
 // import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.js'
+// jQuery = require('jquery')
 
 // toastr
 // =============================================================

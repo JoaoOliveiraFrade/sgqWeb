@@ -1,5 +1,5 @@
-import oiLoginForm from './comp/LoginForm.vue'
+import oiLogin from './comp/Login.vue'
 
 export default [
-  { path: '/auth/LoginForm', name: 'LoginForm', component: oiLoginForm }
+  { path: '/auth/login', name: 'login', component: oiLogin }
 ]

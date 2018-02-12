@@ -1,8 +1,11 @@
 <script>
   import { mapGetters, mapActions } from 'vuex'
+  import oiIcon from '@/genComp/link/Icon.vue'
 
   export default {
     name: 'MonoSelectionGrid',
+
+    components: { oiIcon },
 
     computed: {
       // ...mapGetters('grouperConsult', ['filteredByTerm'])
@@ -23,11 +26,10 @@
 <template>
   <div>
     <table class="table table-condensed table-striped table-hover table-bordered" style="margin-bottom:0; padding-bottom:0">
+
       <thead>
         <tr>
-          <th style="padding: 1px; margin: 0px; border-top: 1px; text-align: center; width: 25px;">
-            <font size="2px"></font>
-          </th>                                
+          <th style="width: 1px"/>
           <!--
           <th class="text-center">
               <font size="2px">Farol</font>
@@ -38,16 +40,15 @@
           </th>                                
         </tr>
       </thead>
+
       <tbody v-for="item in filteredByTerm">
         <tr>
-          <td style="padding: 1px; margin: 0px; border-top: 1px; text-align: center; width: 25px; border-radius: 3px;">
-            <a class='btn' 
-              style="padding: 0px; margin: 0px; border-top: 1px"
-              data-toggle="tooltip" 
-              title="Exibir" 
-              @click="select(item)">
-              <i class='glyphicon glyphicon-list-alt'></i>
-            </a>
+          <td style="padding: 1px 1px 0px 0px">
+            <oiIcon class="icon"
+                icon="list-alt" 
+                title="Exibir"
+                @click="select(item)"
+            />            
           </td>
           <!--
           <td class="text-center" style="padding:0;">

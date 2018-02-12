@@ -10,7 +10,7 @@
   import Toastr from 'toastr'
 
   export default {
-    name: 'ShowReportById',
+    name: 'ReportById',
 
     // components: { oiModal },
 

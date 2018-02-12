@@ -23,8 +23,11 @@
 </script>
 
 <template>
-  <div>
+
+  <span style="padding:0px; margin: 0px; border: 0px">
+
     <table class="table table-condensed table-striped table-hover table-bordered" style="margin-bottom:0; padding-bottom:0">
+
         <thead>
             <tr>
                 <th style="padding: 1px; margin: 0px; border-top: 1px; text-align: center; width: 25px;">
@@ -77,6 +80,7 @@
                 -->
             </tr>
         </thead>
+
         <tbody v-for="item in items">
             <tr>
                 <td class="text-center" style="padding: 1px; margin: 0px; border-top: 1px; padding-left: 5px; padding:1px; white-space: nowrap; width:26px;">
@@ -123,23 +127,23 @@
                     <span v-html="item.informative"/>
                 </td>
             </tr>
+        
         </tbody> 
+        
     </table>
-  </div>
+
+  </span>
+
 </template>
 
 <style scoped>
+
   img {
     margin-top: 8px; 
     border: 0; 
     padding: 0;
     height: 18px;
     width: 18px;
-  }  
-  table {
-    border-collapse: separate;
-    border-radius: 5px;
-    border: 1px solid #d9d9d9;
-  }  
+  }
   
 </style>
